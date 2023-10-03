@@ -2,7 +2,7 @@
     position: sticky;
     top:20px;
     width:45%;
-    height: 480px;
+    height: 520px;
     padding: 24px;
     border: 1px solid black;
     .title{
@@ -27,6 +27,15 @@
         padding: 0;
         img{
             margin-inline-end: 12px;
+        }
+    }
+    .continue{
+        display: flex;
+        justify-content: center;
+        button{
+            background-color: #19a463;
+            color: white;
+            border: 1px solid #19a463;
         }
     }
 }
