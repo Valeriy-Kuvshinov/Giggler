@@ -5,26 +5,29 @@
 @import "setup/typography";
 
 // Basics
+@import "basics/base";
+@import "basics/forms";
 @import "basics/helpers";
 @import "basics/layout";
-@import "basics/base";
 @import "basics/links";
-@import "basics/forms";
 
+// Components
+@import "cmps/AppFooter";
+@import "cmps/AppHeader";
+@import "cmps/GigInfo";
+@import "cmps/GigOrder";
+@import "cmps/ShoppingCart";
+@import "cmps/UserMsg";
 
 // Views
 @import "views/AboutUs";
-@import "views/HomePage";
-@import "views/CarIndex";
 @import "views/BabaIndex";
+@import "views/CarIndex";
+@import "views/GigDetails";
+@import "views/HomePage";
 @import "views/ReviewIndex";
 @import "views/UserDetails";
 
-// Components
-@import "cmps/AppHeader";
-@import "cmps/AppFooter";
-@import "cmps/UserMsg";
-@import "cmps/ShoppingCart";
 
 
 
