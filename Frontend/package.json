@@ -37,5 +37,9 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "sass": "^1.67.0",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "gig.js",
+  "author": "",
+  "license": "ISC"
 }
