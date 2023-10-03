@@ -1,17 +1,32 @@
 .gig-order{
+    position: sticky;
+    top:20px;
     width:45%;
+    height: 480px;
     padding: 24px;
     border: 1px solid black;
     .title{
         display: flex;
         justify-content: space-between;
+    }   
+    img{
+        width:13px;
     }
     .shipping-info{
         display: flex;
         justify-content: space-between;
+        .inside-shipping{
+            display: flex;
+            span{
+                margin-inline-start: 8px;
+            }
+        }
     }
     ul{
         list-style: none;
         padding: 0;
+        img{
+            margin-inline-end: 12px;
+        }
     }
 }
