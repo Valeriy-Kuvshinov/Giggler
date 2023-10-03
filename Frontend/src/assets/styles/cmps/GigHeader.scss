@@ -1,0 +1,25 @@
+.gig-header{
+    display: flex;
+    flex-direction: column;
+    p{
+        margin: 0;
+    }
+    .rating{
+        display: flex;
+        justify-content: space-between;
+        img{
+            width:13px;
+        }
+        .catto{
+            width: 30px;
+        }
+    }
+    img{
+        width: 100%;
+    }
+    .gig-images{
+        img{
+            width: 20%;
+        }
+    }
+}
