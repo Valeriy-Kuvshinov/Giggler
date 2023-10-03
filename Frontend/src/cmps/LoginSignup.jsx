@@ -52,17 +52,9 @@ export function LoginSignup(props) {
     return (
         <div className="login-page">
             <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
+                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Join' : 'Sign In'}</button>
             </p>
             {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
                 {/* <input
                         type="text"
                         name="username"
@@ -80,7 +72,6 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     /> */}
-                <button>Login!</button>
             </form>}
             <div className="signup-section">
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
@@ -109,7 +100,6 @@ export function LoginSignup(props) {
                         required
                     />
                     <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
                 </form>}
             </div>
         </div>
