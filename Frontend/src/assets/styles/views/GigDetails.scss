@@ -1,0 +1,10 @@
+.gig-details{
+    display: grid;
+    grid-template-columns: 24px 1fr 24px;
+    color: black;
+    .gig{
+        display: flex;
+        grid-column: 2;
+        justify-content: space-between;
+    }
+}
