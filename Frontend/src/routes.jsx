@@ -7,6 +7,8 @@ import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
 import { BabaIndex } from './pages/BabaIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
+import { GigIndex } from './pages/GigIndex.jsx'
+
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -18,12 +20,12 @@ const routes = [
     {
         path: 'gigdetails',
         component: <GigDetails />,
-        label: 'details'
+        label: 'Details'
     },
     {
-        path: 'car',
-        component: <CarIndex />,
-        label: 'Cars'
+        path: 'explore',
+        component: <GigIndex />,
+        label: 'Explore'
     },
     // {
     //     path: 'admin',
