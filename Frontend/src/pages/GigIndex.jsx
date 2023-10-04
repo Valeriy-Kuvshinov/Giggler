@@ -71,7 +71,7 @@ export function GigIndex() {
   // }
 
   return (
-    <main className="gig-index-Layout">
+    <main className="gig-index main-layout">
       <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <GigList
         gigs={gigs}
