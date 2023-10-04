@@ -1,11 +1,9 @@
 import { HomePage } from './pages/HomePage.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
-import { CarIndex } from './pages/CarIndex.jsx'
 import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminApp } from './pages/AdminIndex.jsx'
 import { SurveyIndex } from './pages/SurveyIndex.jsx'
-import { BabaIndex } from './pages/BabaIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 
