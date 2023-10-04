@@ -6,7 +6,7 @@ export function UserGigs(){
                 Active Gigs
             </div>
             <div className='info-block gig'>
-                <Link to="editgig" className="gig-creation-btn">
+                <Link to="gig/edit" className="gig-creation-btn">
                     <button>+</button>
                     <span>Create a new Gig</span>
                 </Link>
