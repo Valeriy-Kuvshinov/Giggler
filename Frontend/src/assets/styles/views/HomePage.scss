@@ -46,8 +46,10 @@
 
     .home-services-section {
         position: relative;
+        padding: 1em 2em;
         overflow: hidden;
-        padding: 1em;
+        max-width: 1400px;
+        margin: auto;
 
         h2 {
             font-size: 32px;
@@ -55,18 +57,14 @@
             color: $clrGray4;
             font-family: Arial, Helvetica, sans-serif;
             margin-bottom: 20px;
+            margin-left: 8px;
         }
 
         .services {
-            overflow-x: scroll;
-            display: flex;
-            scrollbar-width: none;
-            gap: 1em;
-
             .service {
                 position: relative;
-                flex: 0 0 auto;
-                width: 305px;
+                flex: 0 0 calc(100% / 3);
+                padding: 0em 0.5em;
                 height: 345px;
 
                 img {
@@ -75,14 +73,18 @@
                 }
 
                 .service-text {
-                    position: absolute;
-                    bottom: 20%;
+                    position: relative;
+                    bottom: 100%;
                     left: 10px;
-                    color: white;
-                    font-size: 20px;
-                    padding: 5px 10px;
-                    border-radius: 5px;
-                    text-align: center;
+                    color: $clrGray0;
+                    font-size: 24px;
+                    padding: 0px 10px;
+                    line-height: 30px;
+                    font-family: Arial, Helvetica, sans-serif;
+
+                    span {
+                        font-size: 14px;
+                    }
                 }
             }
         }
@@ -94,6 +96,7 @@
             border-radius: 50%;
             width: 48px;
             height: 48px;
+            z-index: 1;
 
             img {
                 width: 50%;
@@ -101,14 +104,12 @@
             }
 
             &.left-side {
-                left: -10px;
+                left: 10px;
             }
 
             &.right-side {
-                right: -10px;
+                right: 10px;
             }
         }
     }
-
-
 }

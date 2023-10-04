@@ -109,8 +109,7 @@
         padding: 0em 1em;
 
         .container {
-            overflow-x: scroll;
-            scrollbar-width: none;
+            overflow: hidden;
 
             a {
                 flex: 0 0 auto;
