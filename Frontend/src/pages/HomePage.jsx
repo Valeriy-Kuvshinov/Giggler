@@ -4,10 +4,10 @@ import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 
 export function HomePage() {
-    const { personImages, companyImages, serviceImages, categoryIcons, serviceTexts } = galleryService
+    const { personImages, companyImages, serviceImages, categoryIcons, serviceTexts, categoryTexts } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [visibleStartIndex, setVisibleStartIndex] = useState(0)
-    const itemsPerPage = 3
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -15,6 +15,19 @@ export function HomePage() {
         }, 10000)
         return () => clearInterval(interval)
     }, [])
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth)
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    let itemsPerPage = 5
+    if (windowWidth < 1300) itemsPerPage = 4
+    if (windowWidth < 1100) itemsPerPage = 3
 
     function scrollServicesCarousel(direction) {
         if (direction === 'left') {
@@ -82,12 +95,12 @@ export function HomePage() {
                 </button>
             </section>
             <section className='home-categories-section'>
-                <div className='categories flex row'>
-                    <h2>You need it, we've got it</h2>
+                <h2>You need it, we've got it</h2>
+                <div className='categories grid'>
                     {categoryIcons.map((category, index) => (
                         <div key={index}>
                             <img src={category} />
-                            <p>Graphics & Design</p>
+                            <p>{categoryTexts[index]}</p>
                         </div>
                     ))}
                 </div>

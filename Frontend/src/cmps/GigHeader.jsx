@@ -1,10 +1,5 @@
 
-import star from "../assets/img/svg/star.icon.svg"
-import cat from "../assets/img/cat.jpg"
-import catto from "../assets/img/catto.avif"
-
 export function GigHeader({ gig }){
-    console.log(gig)
     const rating=gig.owner.rate
     var stars=''
     for(var i=0;i<rating;i++){

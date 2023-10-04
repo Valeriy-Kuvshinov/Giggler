@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
@@ -11,7 +11,7 @@ export function AppHeader() {
     const carouselRef = useRef(null)
     const [isAtStart, setIsAtStart] = useState(true)
     const [isAtEnd, setIsAtEnd] = useState(false)
-
+    const location = useLocation()
     const user = useSelector(storeState => storeState.userModule.user)
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
@@ -67,8 +67,9 @@ export function AppHeader() {
         }
     }, [])
 
+    const isHomePage = location.pathname === '/'
     return (
-        <header className="app-header flex column full">
+        <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''}`}>
             <nav className="main-nav">
                 <div className="container flex row">
                     <Link to="/">

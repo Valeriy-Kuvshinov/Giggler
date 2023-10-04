@@ -2,6 +2,7 @@
     .welcome-section {
         position: relative;
         height: 450px;
+        background: $bgColor1;
 
         img {
             position: absolute;
@@ -61,15 +62,18 @@
         }
 
         .services {
+            gap: 2em;
+
             .service {
                 position: relative;
-                flex: 0 0 calc(100% / 3);
-                padding: 0em 0.5em;
+                padding: 0em;
                 height: 345px;
+                cursor: pointer;
 
                 img {
                     width: 100%;
                     height: 100%;
+                    border-radius: 5px;
                 }
 
                 .service-text {
@@ -97,6 +101,7 @@
             width: 48px;
             height: 48px;
             z-index: 1;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
 
             img {
                 width: 50%;
@@ -104,11 +109,63 @@
             }
 
             &.left-side {
-                left: 10px;
+                left: 5px;
             }
 
             &.right-side {
-                right: 10px;
+                right: 5px;
+            }
+        }
+    }
+
+    .home-categories-section {
+        padding: 1em 2em;
+        max-width: 1400px;
+        margin: auto;
+
+        h2 {
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            font-size: 32px;
+            line-height: 120%;
+            color: $clrGray7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        div {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+
+            img {
+                max-width: 48px;
+                height: 48px;
+                display: block;
+                margin: 0 auto;
+            }
+
+            ::after {
+                content: "";
+                display: block;
+                width: 48px;
+                height: 2px;
+                background-color: $clrGray5;
+                position: absolute;
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: all 0.3s;
+            }
+
+            &:hover::after {
+                width: 98px;
+                background-color: $bgColor2;
+            }
+
+            p {
+                margin-top: 0.5em;
+                font-family: Arial, Helvetica, sans-serif;
+                color: $clrGray3;
             }
         }
     }

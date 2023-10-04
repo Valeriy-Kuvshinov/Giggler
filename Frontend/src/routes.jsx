@@ -1,12 +1,7 @@
 import { HomePage } from './pages/HomePage.jsx'
-import { AboutUs } from './pages/AboutUs.jsx'
-import { ReviewIndex } from './pages/ReviewIndex.jsx'
-import { ChatApp } from './pages/Chat.jsx'
-import { AdminApp } from './pages/AdminIndex.jsx'
-import { SurveyIndex } from './pages/SurveyIndex.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
-
+import { UserProfile } from './pages/UserProfile.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -25,11 +20,11 @@ const routes = [
         component: <GigIndex />,
         label: 'Explore'
     },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // }
+    {
+        path: 'profile',
+        component: <UserProfile />,
+        label: 'profile'
+    }
 ]
 
 export default routes
