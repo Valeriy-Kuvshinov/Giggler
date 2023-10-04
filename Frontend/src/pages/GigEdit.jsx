@@ -2,28 +2,46 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
+import { addGig } from '../store/gig.actions.js'
+import { utilService } from '../services/util.service.js'
 
 export function GigEdit() {
     const { categoryTexts } = galleryService
     const navigate = useNavigate()
 
     const [fields, , handleChange] = useForm({
+        _id: utilService.makeId(),
         title: '',
-        description: '',
-        category: categoryTexts[0],
-        days: 1,
         price: '',
-        imgs: [
+        owner: {
+            _id: 'u102',
+            fullName: 'Jane Doe',
+            imgUrl: 'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
+            level: 'level 1',
+            rate: 4.9
+        },
+        daysToMake: 1,
+        description: '',
+        imgUrls: [
             'https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg',
             'https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg',
             'https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
             'https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
             'https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-        ]
+        ],
+        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
+        likedByUsers: [],
+        category: categoryTexts[0]
     })
 
-    function onSave() {
-        console.log(fields)
+    async function onSave() {
+        try {
+            const savedGig = await addGig(fields)
+            console.log('Gig saved successfully:', savedGig)
+            navigate('/profile')
+        } catch (err) {
+            console.error('Failed to save gig:', err)
+        }
     }
 
     function onCancel() {
@@ -32,7 +50,7 @@ export function GigEdit() {
 
     return (
         <div className="gig-edit-container flex column">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={onSave}>
                 <div className='form-inputs flex column'>
                     <div className="input-group flex row">
                         <div className="info flex column">
@@ -103,7 +121,7 @@ export function GigEdit() {
                                 name="price"
                                 min={0}
                                 max={1000}
-                                style={{flex: '0'}}
+                                style={{ flex: '0' }}
                                 placeholder="Price"
                                 value={fields.price}
                                 onChange={handleChange}
@@ -113,8 +131,8 @@ export function GigEdit() {
                 </div>
 
                 <div className="actions flex row">
-                    <button onClick={onCancel}>Cancel</button>
-                    <button onClick={onSave}>Save</button>
+                    <button type="button" onClick={onCancel}>Cancel</button>
+                    <button type="submit">Save</button>
                 </div>
             </form>
         </div>
