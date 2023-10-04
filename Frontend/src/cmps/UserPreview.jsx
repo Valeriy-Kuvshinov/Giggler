@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom'
-import { userService } from '../services/user.service'
-import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { loadUser } from '../store/user.actions'
 
-export function UserPreview({is, ownerId, children} ) {
-    console.log('ownerId' , ownerId)
+
+
+export function UserPreview({is, userId, children} ) {
+    console.log('userId' , userId)
   
-    const users = useSelector((storeState) => storeState.userModule.users)
-    const owner = users.find((user) => user._id === ownerId)
-  if (owner=== undefined) return
+    const user = loadUser(userId)
+  if (user=== undefined) return
 //   console.log('gig',gig)
   return (
     <>
@@ -16,18 +15,18 @@ export function UserPreview({is, ownerId, children} ) {
         <div className="avatar-fullname">
           <img
             className="avatar"
-            src={owner.imgUrl}
-            alt={`${owner.fullName} gig avatar`}
+            src={user.imgUrl}
+            alt={`${user.fullName} gig avatar`}
           />
-          <span className="full-name">{owner.fullName}</span>
+          <span className="full-name">{user.fullName}</span>
         </div>
-        <span className="level">{owner.level}</span>
+        <span className="level">{user.level}</span>
       </div>
       {is === 'explore' && (
         children
       )}
       <div className="user-rating">
-        <span className="rating-score">{`★${owner.rate}`}</span>
+        <span className="rating-score">{`★${user.rate}`}</span>
       </div>
     </>
   )
