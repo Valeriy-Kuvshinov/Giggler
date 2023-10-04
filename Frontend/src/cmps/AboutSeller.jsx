@@ -16,10 +16,10 @@ export function AboutSeller({gig}) {
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
-        <img className="catto" src={catto} />
+        <img className="seller-picture" src={gig.owner.imgUrl} />
 
         <div>
-          <p>Roei</p>
+          <p>{gig.owner.fullName}</p>
           <p className="stars2">
           </p>
           <button>Contact Me</button>

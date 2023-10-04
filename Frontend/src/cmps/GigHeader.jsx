@@ -18,8 +18,8 @@ export function GigHeader({ gig }){
         <section className="gig-header">
         <h2>{gig.title}</h2>
         <div className="rating">
-            <img className='catto' src={catto}/>
-            <p>Roei</p>
+            <img className='seller-picture' src={gig.owner.imgUrl}/>
+            <p>{gig.owner.fullName}</p>
             |
             <p className="stars">
             </p>

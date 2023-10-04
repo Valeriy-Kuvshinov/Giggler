@@ -27,11 +27,11 @@ export function GigDetails() {
       <section className="gig">
       <div className="gig-info">
       <GigHeader gig={gig} />
-      <AboutGig/>
+      <AboutGig gig={gig}/>
       <AboutSeller gig={gig}/>
       <GigReviews/>
       </div>
-      <GigOrder/>
+      <GigOrder gig={gig}/>
       </section>
     </section>
   )
