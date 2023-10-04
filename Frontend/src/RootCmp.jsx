@@ -21,6 +21,7 @@ export function RootCmp() {
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route path="explore/" element={<GigIndex />} />
                     <Route path="gigdetails/" element={<GigDetails />} />
+                    <Route path="gigdetails/:id" element={<GigDetails />} />
                 </Routes>
             </main>
             <AppFooter />

@@ -3,31 +3,37 @@ import star from "../assets/img/svg/star.icon.svg"
 import cat from "../assets/img/cat.jpg"
 import catto from "../assets/img/catto.avif"
 
-export function GigHeader(){
+export function GigHeader({ gig }){
+    console.log(gig)
+    const rating=gig.owner.rate
+    var stars=''
+    for(var i=0;i<rating;i++){
+        stars+='<img src=/src/assets/img/svg/star.icon.svg />'
+    }
+    function load(){
+        document.querySelector(".stars").innerHTML=stars+`${rating}`+`(${gig.likedByUsers.length})`
+    }
+    setTimeout(load,10)
     return (
         <section className="gig-header">
-        <h2>its a good gig</h2>
+        <h2>{gig.title}</h2>
         <div className="rating">
-            <img className='catto' src={catto}/>
-            <p>Roei</p>
+            <img className='seller-picture' src={gig.owner.imgUrl}/>
+            <p>{gig.owner.fullName}</p>
             |
-            <p>
-                <img src={star}/>
-                <img src={star}/>
-                <img src={star}/>
-                <img src={star}/>
-                <img src={star}/>
-                5
-                (420)
+            <p className="stars">
             </p>
         </div>
-        <img src={cat}/>
+        <img src={gig.imgUrls[0]}/>
         <div className='gig-images'>
-           <img src={cat}/>
-           <img src={cat}/>
-           <img src={cat}/>
-           <img src={cat}/>
-           <img src={cat}/>
+            {/* {gig.imgUrls.map((image)=>{
+                <img src={`${image}`}/>
+            })} */}
+           <img src={gig.imgUrls[0]}/>
+           <img src={gig.imgUrls[1]}/>
+           <img src={gig.imgUrls[2]}/>
+           <img src={gig.imgUrls[3]}/>
+           <img src={gig.imgUrls[4]}/>
         </div>
         </section>)
 }

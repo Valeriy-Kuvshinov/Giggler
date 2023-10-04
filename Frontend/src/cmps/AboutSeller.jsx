@@ -1,21 +1,26 @@
 import star from "../assets/img/svg/star.icon.svg"
 import catto from "../assets/img/catto.avif"
 
-export function AboutSeller() {
+export function AboutSeller({gig}) {
+  const rating=gig.owner.rate
+    var stars=''
+    for(var i=0;i<rating;i++){
+        stars+='<img src=/src/assets/img/svg/star.icon.svg />'
+    }
+    function load(){
+        document.querySelector(".stars2").innerHTML=stars+`${rating}`+`(${gig.likedByUsers.length})`
+    }
+    setTimeout(load,10)
+
   return (
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
-        <img className="catto" src={catto} />
+        <img className="seller-picture" src={gig.owner.imgUrl} />
 
         <div>
-          <p>Roei</p>
-          <p>
-            <img src={star} />
-            <img src={star} />
-            <img src={star} />
-            <img src={star} />
-            <img src={star} />5 (420)
+          <p>{gig.owner.fullName}</p>
+          <p className="stars2">
           </p>
           <button>Contact Me</button>
         </div>

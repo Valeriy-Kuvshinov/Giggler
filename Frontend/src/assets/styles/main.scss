@@ -13,8 +13,10 @@
 
 // Components
 @import "cmps/AboutSeller";
-@import "cmps/AppFooter";
 @import "cmps/AppHeader";
+@import "cmps/GigList";
+@import "cmps/GigPreview";
+@import "cmps/AppFooter";
 @import "cmps/GigHeader";
 @import "cmps/GigInfo";
 @import "cmps/GigOrder";
@@ -22,13 +24,12 @@
 @import "cmps/UserMsg";
 
 // Views
-@import "views/AboutUs";
-@import "views/BabaIndex";
-@import "views/CarIndex";
-@import "views/GigDetails";
 @import "views/HomePage";
+@import "views/GigIndex";
+@import "views/GigDetails";
 @import "views/ReviewIndex";
 @import "views/UserDetails";
+@import "views/AboutUs";
 
 
 

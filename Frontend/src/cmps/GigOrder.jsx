@@ -3,7 +3,7 @@ import refresh from "../assets/img/svg/refresh.icon.svg"
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 import arrow from "../assets/img/svg/arrow.icon.svg"
 
-export function GigOrder() {
+export function GigOrder({gig}) {
 
     function onContinue(){
         console.log('continue!')
@@ -13,7 +13,7 @@ export function GigOrder() {
     <section className="gig-order">
       <div className="title">
         <span>Order Details</span>
-        <span>US$10000</span>
+        <span>US${gig.price}</span>
       </div>
       <p>
         1 custom logo+high resolution file+3d mockup+logo transparency+ 300dpi
@@ -21,7 +21,7 @@ export function GigOrder() {
       <div className="shipping-info">
         <div className="inside-shipping">
           <img src={clock}/>
-          <span> 1 Days Delivery</span>
+          <span> {gig.daysToMake} Days Delivery</span>
         </div>
         <div className="inside-shipping">
           <img src={refresh}/>
