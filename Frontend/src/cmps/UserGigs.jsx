@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 
-export function UserGigs(){
+export function UserGigs({gigs}){
+
+    if(gigs.length===0) return 
+
+    
     return (<section className="user-gigs">
             <div className='info-block title'>
                 Active Gigs
