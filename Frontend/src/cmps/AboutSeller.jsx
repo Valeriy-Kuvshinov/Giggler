@@ -1,5 +1,3 @@
-import star from "../assets/img/svg/star.icon.svg"
-import catto from "../assets/img/catto.avif"
 
 export function AboutSeller({gig}) {
   const rating=gig.owner.rate
