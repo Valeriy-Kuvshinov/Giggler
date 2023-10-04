@@ -5,8 +5,6 @@ export function UserGigs({ gigs }) {
     const is = 'userProfile'
     if (gigs.length === 0) return
 
-    if (gigs.length === 0) return
-
     return (<section className="user-gigs">
         <div className='info-block title'>
             Active Gigs
