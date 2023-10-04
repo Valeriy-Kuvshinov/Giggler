@@ -34,7 +34,7 @@ export function GigIndex() {
   }
 
   async function onAddGig() {
-    const gig = GigService.getEmptyGig()
+    const gig = gigService.getEmptyGig()
     gig.title = prompt('Title?')
     try {
       const savedGig = await addGig(gig)
