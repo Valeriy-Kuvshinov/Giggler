@@ -44,7 +44,7 @@ export function AppHeader() {
     }
 
     function scrollCarousel(direction) {
-        const carousel = carouselRef.current
+        const carousel = carouselRef?.current
         const scrollAmount = 250
 
         if (direction === 'left') carousel.scrollLeft -= scrollAmount
@@ -53,7 +53,7 @@ export function AppHeader() {
 
     useEffect(() => {
         const checkScrollPosition = () => {
-            if (!carouselRef.current) return
+            if (!carouselRef?.current) return
             setIsAtStart(carouselRef.current.scrollLeft === 0)
             setIsAtEnd(carouselRef.current.scrollLeft + carouselRef.current.offsetWidth === carouselRef.current.scrollWidth)
         }
@@ -61,7 +61,9 @@ export function AppHeader() {
 
         checkScrollPosition()
         return () => {
-            carouselRef.current.removeEventListener('scroll', checkScrollPosition)
+            if (carouselRef?.current) {
+                carouselRef.current.removeEventListener('scroll', checkScrollPosition)
+            }
         }
     }, [])
 
