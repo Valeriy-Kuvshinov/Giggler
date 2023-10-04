@@ -10,7 +10,6 @@ export function GigEdit() {
     const navigate = useNavigate()
 
     const [fields, , handleChange] = useForm({
-        _id: utilService.makeId(),
         title: '',
         price: '',
         owner: {
@@ -50,7 +49,10 @@ export function GigEdit() {
 
     return (
         <div className="gig-edit-container flex column">
-            <form onSubmit={onSave}>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                onSave();
+            }}>
                 <div className='form-inputs flex column'>
                     <div className="input-group flex row">
                         <div className="info flex column">
@@ -101,16 +103,18 @@ export function GigEdit() {
                         <div className="info flex column">
                             <label htmlFor="days">Days to Make</label>
                             <p>Days it will take you on average to finish this gig.</p>
-                            <input
+                            <select
                                 id="days"
-                                type="number"
-                                name="days"
-                                min={0}
-                                max={7}
-                                value={fields.days}
+                                name="daysToMake"
+                                value={fields.daysToMake}
                                 onChange={handleChange}
-                                placeholder="Number of days"
-                            />
+                            >
+                                {[...Array(7).keys()].map(day => (
+                                    <option key={day + 1} value={day + 1}>
+                                        {day + 1} {day === 0 ? 'Day' : 'Days'}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className="info flex column">
                             <label htmlFor="price">Price</label>

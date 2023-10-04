@@ -21,11 +21,11 @@ export function RootCmp() {
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     <Route path="/" element={<HomePage />} />
-                    <Route path="user/:id" element={<UserDetails />} />
-                    <Route path="explore/" element={<GigIndex />} />
-                    <Route path="gig/:id" element={<GigDetails />} />
-                    <Route path="profile/" element={<UserProfile />} />
-                    <Route path="gig/edit" element={<GigEdit />} />
+                    <Route path="/user/:id" element={<UserDetails />} />
+                    <Route path="/explore/" element={<GigIndex />} />
+                    <Route path="/gig/:id" element={<GigDetails />} />
+                    <Route path="/profile/" element={<UserProfile />} />
+                    <Route path="/gig/edit" element={<GigEdit />} />
                 </Routes>
             </main>
             <AppFooter />
