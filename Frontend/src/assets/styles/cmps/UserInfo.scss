@@ -1,15 +1,37 @@
 .user-info{
-
+    margin-block-start: 40px;
+    color: black;
     .info-block{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         width:400px;
-        height:400px;
+        height:360px;
+        padding: 30px;
+        background-color: white;
+        border: 1px solid #dadbdd;
+        margin-block-end: 20px;
         img{
             width: 150px;
             height: 150px;
         }
+        h2{
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid #dadbdd;
+            text-transform: capitalize;
+        }
         .into-line{
             display: flex;
             justify-content: space-between;
+            width: 100%;
+            span{
+                img{
+                    height: 16px;
+                    width: 14px;
+                }
+            }
         }
     }
 

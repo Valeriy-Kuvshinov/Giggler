@@ -1,16 +1,18 @@
 import catto from '../assets/img/catto.avif'
+import icon from '../assets/img/svg/user.icon.svg'
+import location from '../assets/img/svg/location.icon.svg'
 
 export function UserInfo({user}){
     return (<section className='user-info'>
         <div className='info-block'>
             <img src={catto}/>
-            <span>Catto</span>
+            <h2>Catto</h2>
             <div className='into-line'>
-                <span>😀 Country</span>
+                <span><img src={location}/> Country</span>
                 <span>Israel</span>
             </div>
             <div className='into-line'>
-                <span>💀 Member Since</span>
+                <span><img src={icon}/> Member Since</span>
                 <span>May 42069</span>
             </div>
 

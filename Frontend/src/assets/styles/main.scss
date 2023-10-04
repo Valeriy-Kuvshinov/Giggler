@@ -25,14 +25,16 @@
 @import "cmps/GigPreview";
 
 @import "cmps/UserInfo";
+@import "cmps/UserGigs.scss";
 
 @import "cmps/ShoppingCart";
 @import "cmps/UserMsg";
 
 // Views
 @import "views/HomePage";
+@import "views/AboutUs";
 @import "views/GigIndex";
 @import "views/GigDetails";
 @import "views/ReviewIndex";
 @import "views/UserDetails";
-@import "views/AboutUs";
+@import "views/UserProfile";

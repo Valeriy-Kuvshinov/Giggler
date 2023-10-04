@@ -1,0 +1,41 @@
+.user-gigs{
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 40px;
+    margin-block-end: 20px;
+    margin-inline-start: 20px;
+    color: black;
+    width: 100%;
+    .info-block{
+        border: 1px solid #dadbdd;
+        background-color: white;
+        &.title{
+            display: flex;
+            align-items: center;
+            height: 60px;
+            padding: 23px;
+            margin-block-end: 40px;
+        }
+        &.gig{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            .gig-creation-btn{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: black;
+                button{
+                    height: 65px;
+                    width: 65px;
+                    border-radius: 50%;
+                    font-size:36px;
+                    padding: 0;
+                    background-color: #78cdd2;
+                }
+            }
+        }
+    }
+}
