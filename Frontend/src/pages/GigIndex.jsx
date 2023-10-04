@@ -9,8 +9,8 @@ import { userService } from '../services/user.service.js'
 import { gigService } from '../services/gig.service.local.js'
 
 export function GigIndex() {
-  const gigs = useSelector((storeState) => storeState.GigModule.gigs)
-  const filterBy = useSelector((storeState) => storeState.GigModule.filterBy)
+  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
 
   
   //   const [currentPage, setCurrentPage] = useState(0)

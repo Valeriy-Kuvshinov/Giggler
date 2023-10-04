@@ -15,7 +15,7 @@ export function gigReducer(state = initialState, action) {
     var babas
     switch (action.type) {
         case SET_GIGS:
-            newState = { ...state, gigs: action.action.giggigs }
+            newState = { ...state, gigs: action.gigs }
             break
         case REMOVE_GIG:
             const lastRemovedBaba = state.gigs.find(gig => gig._id === action.gigId)
