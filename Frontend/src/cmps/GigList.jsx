@@ -22,7 +22,6 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
   const sortedGigs = _.orderBy(gigs, sortBy, sortOrder)
 
   return (
-    <section className="main-gig-list">
       <ul className="gig-list">
         {sortedGigs.map((gig) => (
           <li className="gig-preview" key={gig._id}>
@@ -34,6 +33,5 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
           </li>
         ))}
       </ul>
-    </section>
   )
 }
