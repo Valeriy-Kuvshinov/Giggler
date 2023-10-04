@@ -28,6 +28,7 @@ export function AppFooter() {
                 {socialMediaIcons.map((icon, idx) => (
                     <div key={idx} className="icon-container">
                         <img src={icon} className="social-icon" />
+                        <a href="https://twitter.com/">link</a>
                     </div>
                 ))}
             </div>
