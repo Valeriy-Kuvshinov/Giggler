@@ -66,7 +66,7 @@ export function AppHeader() {
     }, [])
 
     return (
-        <header className="app-header flex column">
+        <header className="app-header flex column full">
             <nav className="main-nav">
                 <div className="container flex row">
                     <Link to="/">
@@ -81,8 +81,8 @@ export function AppHeader() {
                     </div>
 
                     <ul className="nav-links flex">
-                        <li><Link to="/">Explore</Link></li>
-                        <li><Link to="/">Become a Seller</Link></li>
+                        <li><Link to="/explore">Explore</Link></li>
+                        <li><Link to="/gigdetails">Become a Seller</Link></li>
 
                         {user ? (
                             <>
