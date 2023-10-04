@@ -3,6 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
+@import "setup/mq";
 
 // Basics
 @import "basics/base";
@@ -30,10 +31,3 @@
 @import "views/ReviewIndex";
 @import "views/UserDetails";
 @import "views/AboutUs";
-
-
-
-
-
-
-
