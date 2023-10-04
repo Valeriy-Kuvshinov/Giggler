@@ -2,7 +2,22 @@ import catto from '../assets/img/catto.avif'
 import icon from '../assets/img/svg/user.icon.svg'
 import location from '../assets/img/svg/location.icon.svg'
 
-export function UserInfo({user}){
+import { useState, useEffect } from 'react'
+import {userService} from "../services/user.service"
+
+export function UserInfo(){
+
+    // const [users,setUsers]=useState([])
+
+    // useEffect(()=>
+    // {
+    //     userService.getUsers().then(users=>setUsers(users))
+    // },[])
+
+    // if(users.length===0)return 
+
+    // console.log(users)
+
     return (<section className='user-info'>
         <div className='info-block'>
             <img src={catto}/>

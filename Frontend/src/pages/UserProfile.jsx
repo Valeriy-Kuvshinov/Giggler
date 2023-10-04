@@ -4,14 +4,15 @@ import { UserGigs } from "../cmps/UserGigs"
 import { UserInfo } from "../cmps/UserInfo"
 
 import {gigService} from "../services/gig.service.local"
-import {userService} from "../services/user.service"
 
 export function UserProfile() {
   const [gigs,setGigs]=useState([])
 
   useEffect(()=>
   {
-    gigService.query().then(gigs=>setGigs(gigs))
+    (gigService.query().then(
+      gigs=>setGigs(gigs)
+      ))
   },[])
 
   return (
