@@ -12,14 +12,19 @@
 @import "basics/links";
 
 // Components
-@import "cmps/AboutSeller";
 @import "cmps/AppHeader";
+@import "cmps/AppFooter";
+
+@import "cmps/GigHeader";
+@import "cmps/AboutSeller";
+@import "cmps/GigOrder";
+@import "cmps/GigInfo";
+
 @import "cmps/GigList";
 @import "cmps/GigPreview";
-@import "cmps/AppFooter";
-@import "cmps/GigHeader";
-@import "cmps/GigInfo";
-@import "cmps/GigOrder";
+
+@import "cmps/UserInfo";
+
 @import "cmps/ShoppingCart";
 @import "cmps/UserMsg";
 

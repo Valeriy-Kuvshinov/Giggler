@@ -5,10 +5,12 @@ import routes from './routes'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
-import { UserDetails } from './pages/UserDetails'
+
+import { GigDetails } from './pages/GigDetails'
 import { GigIndex } from './pages/GigIndex'
-import { GigDetails } from './pages/GigDetails.jsx'
 import { HomePage } from './pages/HomePage'
+import { UserDetails } from './pages/UserDetails'
+import { UserProfile } from './pages/UserProfile'
 
 export function RootCmp() {
     return (
@@ -21,6 +23,7 @@ export function RootCmp() {
                     <Route path="user/:id" element={<UserDetails />} />
                     <Route path="explore/" element={<GigIndex />} />
                     <Route path="gig/:id" element={<GigDetails />} />
+                    <Route path="profile" element={<UserProfile/>}/>
                 </Routes>
             </main>
             <AppFooter />
