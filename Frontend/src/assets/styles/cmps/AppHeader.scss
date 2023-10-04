@@ -109,13 +109,8 @@
         padding: 0em 1em;
 
         .container {
-            display: flex;
             overflow-x: scroll;
             scrollbar-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
 
             a {
                 flex: 0 0 auto;
