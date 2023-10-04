@@ -1,6 +1,7 @@
 .main-container {
     display: grid;
     grid-template-columns: 24px 1fr 24px;
+    background-color: #f7f7f7;
 
     > * {
         grid-column: 2;
