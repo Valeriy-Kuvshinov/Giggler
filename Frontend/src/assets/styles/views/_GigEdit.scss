@@ -1,0 +1,85 @@
+.gig-edit-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        width: 700px;
+
+        .form-inputs {
+            gap: 1em;
+            width: 100%;
+            background: $clrGray0;
+            border: 1px solid $clrGray2;
+            padding: 1em;
+
+            .input-group {
+                gap: 1em;
+
+                .info {
+                    justify-content: space-between;
+                    flex: 1;
+
+                    label {
+                        font-weight: bold;
+                    }
+
+                    p {
+                        font-size: 0.9em;
+                        color: gray;
+                    }
+                }
+
+                input,
+                textarea,
+                select {
+                    flex: 2;
+                    min-height: 30px;
+                    height: fit-content;
+                }
+
+                textarea {
+                    width: 100%;
+                    resize: none;
+                }
+            }
+        }
+
+        .actions {
+            justify-content: space-between;
+            gap: 1em;
+            width: 100%;
+
+            button {
+                font-weight: bold;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1rem;
+                padding: 10px 16px;
+
+                &:first-child {
+                    background: $clrGray2;
+                    color: $clrGray3;
+                    border: 1px solid $clrGray3;
+
+                    &:hover {
+                        background: $clrGray6;
+                        border: 1px solid $clrGray6;
+                        color: $clrGray0;
+                    }
+                }
+
+                &:last-child {
+                    background: $bgColor2;
+                    color: $clrGray0;
+
+                    &:hover {
+                        background: $bgColor1;
+                    }
+                }
+            }
+        }
+    }
+}
