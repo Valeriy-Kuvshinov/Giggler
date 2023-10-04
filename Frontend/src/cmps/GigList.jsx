@@ -5,6 +5,7 @@ import _ from 'lodash'
 export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
   const [sortBy, setSortBy] = useState(null)
   const [sortOrder, setSortOrder] = useState('asc')
+  const is = 'explore'
 
   const handleSort = (criteria) => {
     if (sortBy === criteria) {
@@ -26,9 +27,9 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
         {sortedGigs.map((gig) => (
           <li className="gig-preview" key={gig._id}>
             <GigPreview
-              onRemoveGig={onRemoveGig}
-              onUpdateGig={onUpdateGig}
+              is={is}
               gig={gig}
+              key={gig._id}
             />
           </li>
         ))}

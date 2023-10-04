@@ -1,6 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-
+import { loadUsers } from '../store/user.actions'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
@@ -141,5 +141,6 @@ const users = [
 _createUsers()
 
   function _createUsers(){
-    localStorage.setItem('users',JSON.stringify(users))
+    localStorage.setItem('user',JSON.stringify(users))
+    loadUsers()
   }

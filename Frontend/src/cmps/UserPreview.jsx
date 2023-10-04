@@ -1,12 +1,24 @@
 import { Link } from 'react-router-dom'
 import { loadUser } from '../store/user.actions'
+import { useEffect } from 'react'
 
 
 
 export function UserPreview({is, userId, children} ) {
     console.log('userId' , userId)
-  
-    const user = loadUser(userId)
+
+    useEffect(()=> {
+        loadsUser()
+    })
+
+    function loadsUser(){
+        try{
+            const user = loadUser(userId)
+        }
+        catch{
+            console.log('cannot load user in UserPreview')
+        }
+    }
   if (user=== undefined) return
 //   console.log('gig',gig)
   return (
