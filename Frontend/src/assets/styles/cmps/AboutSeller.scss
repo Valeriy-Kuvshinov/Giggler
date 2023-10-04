@@ -23,4 +23,26 @@
             }
         }
     }
+    .seller-info{
+        border: 1px solid #dadbdd;
+        color: #74767e;
+        padding: 24px;
+        .seller-details{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #dadbdd;
+            padding-block-end: 16px;
+            .inner-details{
+                width: 50%;
+                .inner-inner-details{
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+        p{
+            padding-block-start: 16px;
+            margin: 0;
+        }
+    }
 }
