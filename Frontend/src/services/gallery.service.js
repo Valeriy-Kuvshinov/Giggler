@@ -49,5 +49,6 @@ export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
     serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
+    categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     serviceTexts: serviceTexts
 }
