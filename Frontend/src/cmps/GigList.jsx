@@ -22,7 +22,7 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
   const sortedGigs = _.orderBy(gigs, sortBy, sortOrder)
 
   return (
-      <ul className="gig-list">
+      <ul className="gig-list layout-row">
         {sortedGigs.map((gig) => (
           <li className="gig-preview" key={gig._id}>
             <GigPreview

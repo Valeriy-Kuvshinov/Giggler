@@ -3,25 +3,48 @@
   max-width: 17.325em;
   max-height: 23.125em;
 
-  .gig-preview-img {
+  img {
     width: 100%;
     height: 166.312px;
     background-color: #fff;
     border: 1px solid #e4e5e7;
-    border-radius: .5em;
+    border-radius: 0.5em;
     z-index: 0;
   }
 
   .preview-user-info {
-    font-size: .875rem;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.75em 0;
+
+    .avatar-fullname {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 0.5em;
+    }
+    .avatar {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: none;
+    }
+    .level {
+      text-transform: capitalize;
+    }
+    .gig-title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .gig-price-likes {
     display: flex;
     align-items: center;
-    height: 3.375em;
-    margin-block-end: 0.75em;
-
-    .avatar {
-      width: 1.5em;
-      height: 1.5em;
-    }
+    justify-content: space-between;
+    height: 2.8125em;
+    padding: 0.625em 0.75em;
+    border-top: 0.0625em solid #e4e5e7;
   }
 }
