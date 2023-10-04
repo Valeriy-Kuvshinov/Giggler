@@ -28,7 +28,6 @@
 }
 
 // flex helpers
-
 .flex {
     display: flex;
 
@@ -40,7 +39,7 @@
         flex-direction: column;
     }
 
-    &.row{
+    &.row {
         flex-direction: row;
     }
 
@@ -53,8 +52,12 @@
     }
 }
 
-// Media helpers
+// grid helper
+.grid {
+    display: grid;
+}
 
+// Media helpers
 .square-ratio {
     @include aspect-ratio(1, 1);
 }
