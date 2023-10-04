@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -7,7 +6,6 @@ import { UserMsg } from './UserMsg.jsx'
 export function AppFooter() {
     // const [isCartShown, setIsCartShown] = useState(false)
     // const cart = useSelector(storeState => storeState.carModule.cart)
-    // const count = useSelector(storeState => storeState.userModule.count)
     // const cartTotal = cart.reduce((acc, car) => acc + car.price, 0)
 
     // async function onCheckout() {
@@ -21,10 +19,8 @@ export function AppFooter() {
 
     return (
         <footer className="app-footer full">
-            {/* <p>
-                coffeerights - count: {count}
-            </p>
-            {cart.length > 0 &&
+
+            {/*{cart.length > 0 &&
                 <h5>
                     <span>{cart.length}</span> Products in your Cart
                     <button className="btn-link" onClick={(ev) => {
@@ -50,7 +46,6 @@ export function AppFooter() {
                 </ul>
                 <p>Total: ${cartTotal.toLocaleString()} </p>
                 <button onClick={onCheckout}>Checkout</button> */}
-            {/* </section>} */}
             <UserMsg />
         </footer>
     )
