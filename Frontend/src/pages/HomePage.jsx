@@ -18,8 +18,8 @@ export function HomePage() {
     }, [])
 
     function scrollServicesCarousel(direction) {
-        const carousel = servicesCarouselRef.current;
-        const scrollAmount = 250;
+        const carousel = servicesCarouselRef?.current
+        const scrollAmount = 250
 
         if (direction === 'left') carousel.scrollLeft -= scrollAmount
         else if (direction === 'right') carousel.scrollLeft += scrollAmount
@@ -27,7 +27,7 @@ export function HomePage() {
 
     useEffect(() => {
         const checkScrollPosition = () => {
-            if (!servicesCarouselRef.current) return
+            if (!servicesCarouselRef?.current) return
             setIsAtStart(servicesCarouselRef.current.scrollLeft === 0)
             setIsAtEnd(servicesCarouselRef.current.scrollLeft + servicesCarouselRef.current.offsetWidth === servicesCarouselRef.current.scrollWidth)
         }
@@ -35,7 +35,9 @@ export function HomePage() {
 
         checkScrollPosition()
         return () => {
-            // servicesCarouselRef.current.removeEventListener('scroll', checkScrollPosition)
+            if (servicesCarouselRef?.current) {
+                servicesCarouselRef.current.removeEventListener('scroll', checkScrollPosition)
+            }
         }
     }, [])
     return (
