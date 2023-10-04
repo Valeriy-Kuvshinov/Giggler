@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { UserMsg } from './UserMsg.jsx'
+import { galleryService } from '../services/gallery.service.js'
 
 export function AppFooter() {
+    const { socialMediaIcons } = galleryService
+
     // const [isCartShown, setIsCartShown] = useState(false)
     // const cart = useSelector(storeState => storeState.carModule.cart)
     // const cartTotal = cart.reduce((acc, car) => acc + car.price, 0)
@@ -18,8 +21,16 @@ export function AppFooter() {
     // }
 
     return (
-        <footer className="app-footer full">
-
+        <footer className="app-footer flex row full">
+            <h1 className="logo">fiverr</h1>
+            <h2>© Fiverr International Ltd. 2023</h2>
+            <div className="social-icons flex row">
+                {socialMediaIcons.map((icon, idx) => (
+                    <div key={idx} className="icon-container">
+                        <img src={icon} className="social-icon" />
+                    </div>
+                ))}
+            </div>
             {/*{cart.length > 0 &&
                 <h5>
                     <span>{cart.length}</span> Products in your Cart

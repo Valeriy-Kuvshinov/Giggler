@@ -1,0 +1,43 @@
+.app-footer {
+    color: $clrGray4;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    border-top: 1px solid $clrGray2;
+
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: $clrGray5;
+        font-size: 16px;
+    }
+
+    .social-icons {
+        gap: 1em;
+        align-self: self-start;
+
+        .icon-container {
+            display: inline-flex;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s;
+            padding: 10px;
+
+            &:hover {
+                background: $clrGray2;
+            }
+
+            .social-icon {
+                width: 20px;
+            }
+        }
+    }
+}
