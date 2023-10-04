@@ -35,7 +35,7 @@ export function HomePage() {
 
         checkScrollPosition()
         return () => {
-            servicesCarouselRef.current.removeEventListener('scroll', checkScrollPosition)
+            // servicesCarouselRef.current.removeEventListener('scroll', checkScrollPosition)
         }
     }, [])
     return (
