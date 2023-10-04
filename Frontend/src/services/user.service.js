@@ -142,5 +142,5 @@ _createUsers()
 
   function _createUsers(){
     localStorage.setItem('user',JSON.stringify(users))
-    loadUsers()
+    // loadUsers()
   }
