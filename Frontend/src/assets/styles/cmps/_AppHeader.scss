@@ -151,16 +151,12 @@
 
             &.left-side {
                 left: 10px;
+                box-shadow: 0px 0px 20px 20px $clrGray0;
             }
 
             &.right-side {
                 right: 10px;
-            }
-        }
-
-        @media (min-width: 1250px) {
-            .carousel-btn {
-                display: none;
+                box-shadow: 0px 0px 20px 20px $clrGray0;
             }
         }
     }
