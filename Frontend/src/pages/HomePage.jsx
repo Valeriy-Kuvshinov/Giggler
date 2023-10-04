@@ -6,9 +6,8 @@ import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 export function HomePage() {
     const { personImages, companyImages, serviceImages, categoryIcons, serviceTexts } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
-    const servicesCarouselRef = useRef(null)
-    const [isAtStart, setIsAtStart] = useState(true)
-    const [isAtEnd, setIsAtEnd] = useState(false)
+    const [visibleStartIndex, setVisibleStartIndex] = useState(0)
+    const itemsPerPage = 3
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -18,26 +17,30 @@ export function HomePage() {
     }, [])
 
     function scrollServicesCarousel(direction) {
-        const carousel = servicesCarouselRef.current;
-        const scrollAmount = 250;
-
-        if (direction === 'left') carousel.scrollLeft -= scrollAmount
-        else if (direction === 'right') carousel.scrollLeft += scrollAmount
+        if (direction === 'left') {
+            if (visibleStartIndex - itemsPerPage < 0) {
+                setVisibleStartIndex(serviceImages.length - itemsPerPage)
+            } else {
+                setVisibleStartIndex(visibleStartIndex - itemsPerPage)
+            }
+        } else if (direction === 'right') {
+            if (visibleStartIndex + itemsPerPage >= serviceImages.length) {
+                setVisibleStartIndex(0)
+            } else {
+                setVisibleStartIndex(visibleStartIndex + itemsPerPage)
+            }
+        }
     }
 
-    useEffect(() => {
-        const checkScrollPosition = () => {
-            if (!servicesCarouselRef.current) return
-            setIsAtStart(servicesCarouselRef.current.scrollLeft === 0)
-            setIsAtEnd(servicesCarouselRef.current.scrollLeft + servicesCarouselRef.current.offsetWidth === servicesCarouselRef.current.scrollWidth)
+    function getCurrentDisplayItems() {
+        let items = []
+        for (let i = 0; i < itemsPerPage; i++) {
+            items.push(serviceImages[(visibleStartIndex + i) % serviceImages.length])
         }
-        servicesCarouselRef.current.addEventListener('scroll', checkScrollPosition)
+        return items
+    }
+    const displayItems = getCurrentDisplayItems()
 
-        checkScrollPosition()
-        return () => {
-            servicesCarouselRef.current.removeEventListener('scroll', checkScrollPosition)
-        }
-    }, [])
     return (
         <section className='home-wrapper'>
             <section className='welcome-section'>
@@ -59,28 +62,24 @@ export function HomePage() {
             </section>
             <section className='home-services-section'>
                 <h2>Popular services</h2>
-                {!isAtStart && (
-                    <button className="carousel-btn left-side" onClick={() => scrollServicesCarousel('left')}>
-                        <img src={leftArrowSvg} alt="Left Arrow" />
-                    </button>
-                )}
-                <div className='services flex row' ref={servicesCarouselRef}>
-                    {serviceImages.map((service, index) => (
+                <button className="carousel-btn left-side" onClick={() => scrollServicesCarousel('left')}>
+                    <img src={leftArrowSvg} alt="Left Arrow" />
+                </button>
+                <div className='services flex row'>
+                    {displayItems.map((service, index) => (
                         <div className="service" key={index}>
                             <img src={service} />
                             <h4 className="service-text">
-                                {serviceTexts[index].title}
+                                <span>{serviceTexts[(visibleStartIndex + index) % serviceTexts.length].title}</span>
                                 <br />
-                                {serviceTexts[index].subtitle}
+                                {serviceTexts[(visibleStartIndex + index) % serviceTexts.length].subtitle}
                             </h4>
                         </div>
                     ))}
                 </div>
-                {!isAtEnd && (
-                    <button className="carousel-btn right-side" onClick={() => scrollServicesCarousel('right')}>
-                        <img src={rightArrowSvg} alt="Right Arrow" />
-                    </button>
-                )}
+                <button className="carousel-btn right-side" onClick={() => scrollServicesCarousel('right')}>
+                    <img src={rightArrowSvg} alt="Right Arrow" />
+                </button>
             </section>
             <section className='home-categories-section'>
                 <div className='categories flex row'>

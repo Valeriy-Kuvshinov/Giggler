@@ -15,12 +15,15 @@ export function GigDetails() {
    const [ gig, setGig ] = useState(null)
 
    useEffect(()=>{
-      gigService.query().then((gigs)=>{
-          var gigIdx = gigs.findIndex(gig => gig._id===params.id)
-        setGig(gigs[gigIdx])
-    })
+      loadGig()
    },[])
-   if(gig===null) return
+
+   async function loadGig(){
+    const gig =await gigService.getById(params.id)
+    setGig(gig)
+   }
+
+   if(gig===null) return <h1>loading...</h1>
 
   return (
     <section className="gig-details main-container full">
