@@ -16,10 +16,15 @@ const routes = [
         label: 'Home 🏠',
     },
     {
-        path: 'gigdetails',
+        path: 'gigdetails/:id',
         component: <GigDetails />,
         label: 'Details'
     },
+    // {
+    //     path: 'gigdetails',
+    //     component: <GigDetails />,
+    //     label: 'Details'
+    // },
     {
         path: 'explore',
         component: <GigIndex />,

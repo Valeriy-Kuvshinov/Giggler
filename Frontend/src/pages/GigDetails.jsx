@@ -12,20 +12,23 @@ import { useParams } from 'react-router-dom'
 export function GigDetails() {
 
    const params = useParams()
-   const { gig, setGig } = useState({})
+   const [ gig, setGig ] = useState(null)
 
    useEffect(()=>{
-    console.log(params._id)
-      console.log(gigService.query())
+      gigService.query().then((gigs)=>{
+          var gigIdx = gigs.findIndex(gig => gig._id===params.id)
+        setGig(gigs[gigIdx])
+    })
    },[])
+   if(gig===null) return
 
   return (
     <section className="gig-details main-container full">
       <section className="gig">
       <div className="gig-info">
-      <GigHeader/>
+      <GigHeader gig={gig} />
       <AboutGig/>
-      <AboutSeller/>
+      <AboutSeller gig={gig}/>
       <GigReviews/>
       </div>
       <GigOrder/>
