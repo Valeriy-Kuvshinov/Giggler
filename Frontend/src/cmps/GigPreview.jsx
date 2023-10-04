@@ -4,7 +4,7 @@ import { UserPreview } from './UserPreview'
 export function GigPreview({is, gig }) {
 
   const ownerId = gig.owner._id
-  console.log('gig.owner._id', ownerId);
+  console.log('gig.owner._id', ownerId)
   return (
     <>
       <Link className="link-gig-img" to={`/gig/${gig._id}`}>
