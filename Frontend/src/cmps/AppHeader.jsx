@@ -85,7 +85,7 @@ export function AppHeader() {
 
                     <ul className="nav-links flex">
                         <li><Link to="/explore">Explore</Link></li>
-                        <li><Link to="/gig">Become a Seller</Link></li>
+                        <li><Link to="/profile">Become a Seller</Link></li>
 
                         {user ? (
                             <>

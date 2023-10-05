@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
 import { addGig } from '../store/gig.actions.js'
-import { utilService } from '../services/util.service.js'
 
 export function GigEdit() {
     const { categoryTexts } = galleryService
@@ -50,8 +49,8 @@ export function GigEdit() {
     return (
         <div className="gig-edit-container flex column">
             <form onSubmit={(e) => {
-                e.preventDefault();
-                onSave();
+                e.preventDefault()
+                onSave()
             }}>
                 <div className='form-inputs flex column'>
                     <div className="input-group flex row">
