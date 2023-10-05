@@ -15,17 +15,11 @@ export function UserGigs({ gigs }) {
                 <span>Create a new Gig</span>
             </Link>
         </div>
-<<<<<<< HEAD
-        
-        {gigs.map((gig) => <GigPreview gig={gig} />)}
-
-=======
 
         {gigs.map((gig) => 
         <div className='info-block '>
         <GigPreview is={is} gig={gig} />
         </div>     
         )}
->>>>>>> e760d6fa0afaabd50721191e8f1915e7201c6b61
     </section>)
 }
