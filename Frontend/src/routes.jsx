@@ -3,7 +3,7 @@ import { GigDetails } from './pages/GigDetails.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { UserProfile } from './pages/UserProfile.jsx'
 
-// Routes accessible from the main navigation (in AppHeader)
+// Routes accesible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',

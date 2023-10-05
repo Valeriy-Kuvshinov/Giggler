@@ -1,8 +1,8 @@
 
-export function AboutGig({gig}){
+export function AboutGig({ gig }) {
     return (
-        <section>
-        <h3>About This Gig</h3>
-        <p>{gig.description}</p>
+        <section style={{ overflow: 'hidden' }}>
+            <h3>About This Gig</h3>
+            <p>{gig.description}</p>
         </section>)
 }
