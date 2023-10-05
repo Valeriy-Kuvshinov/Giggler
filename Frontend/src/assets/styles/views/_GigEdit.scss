@@ -12,8 +12,8 @@
         .form-inputs {
             gap: 2em;
             width: 100%;
-            background: $clrGray0;
-            border: 1px solid $clrGray2;
+            background: $clrPrimary1;
+            border: 1px solid $clrSecondary3;
             padding: 2em;
 
             .input-group {
@@ -60,20 +60,20 @@
                 padding: 10px 16px;
 
                 &:first-child {
-                    background: $clrGray2;
-                    color: $clrGray3;
-                    border: 1px solid $clrGray3;
+                    background: $clrSecondary3;
+                    color: $clrPrimary2;
+                    border: 1px solid $clrPrimary2;
 
                     &:hover {
-                        background: $clrGray6;
-                        border: 1px solid $clrGray6;
-                        color: $clrGray0;
+                        background: $clrSecondary6;
+                        border: 1px solid $clrSecondary6;
+                        color: $clrPrimary1;
                     }
                 }
 
                 &:last-child {
                     background: $bgColor2;
-                    color: $clrGray0;
+                    color: $clrPrimary1;
 
                     &:hover {
                         background: $bgColor1;

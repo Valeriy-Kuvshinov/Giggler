@@ -1,5 +1,5 @@
 .app-footer {
-    color: $clrGray4;
+    color: $clrSecondary7;
     padding: 20px;
     text-align: center;
     position: relative;
@@ -8,7 +8,7 @@
     width: 100%;
     max-width: 1400px;
     margin: auto;
-    border-top: 1px solid $clrGray2;
+    border-top: 1px solid $clrSecondary3;
 
     h1 {
         font-family: Arial, Helvetica, sans-serif;
@@ -16,7 +16,7 @@
 
     h2 {
         font-family: Arial, Helvetica, sans-serif;
-        color: $clrGray5;
+        color: $clrSecondary4;
         font-size: 16px;
     }
 
@@ -32,7 +32,7 @@
             padding: 10px;
 
             &:hover {
-                background: $clrGray2;
+                background: $clrSecondary3;
             }
 
             .social-icon {

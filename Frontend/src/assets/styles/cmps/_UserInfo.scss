@@ -1,6 +1,6 @@
 .user-info{
     margin-block-start: 40px;
-    color: black;
+    color: $clrPrimary2;
     .info-block{
         display: flex;
         flex-direction: column;
@@ -9,8 +9,8 @@
         width:400px;
         height:360px;
         padding: 30px;
-        background-color: white;
-        border: 1px solid #dadbdd;
+        background-color: $clrPrimary1;
+        border: 1px solid $clrSecondary2;
         margin-block-end: 20px;
         img{
             width: 150px;
@@ -19,7 +19,7 @@
         h2{
             text-align: center;
             width: 100%;
-            border-bottom: 1px solid #dadbdd;
+            border-bottom: 1px solid $clrSecondary2;
             text-transform: capitalize;
         }
         .into-line{
