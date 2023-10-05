@@ -7,21 +7,21 @@ import {userService} from "../services/user.service"
 
 export function UserInfo(){
 
-    // const [users,setUsers]=useState([])
+    const [users,setUsers]=useState([])
 
-    // useEffect(()=>
-    // {
-    //     userService.getUsers().then(users=>setUsers(users))
-    // },[])
+    useEffect(()=>
+    {
+        userService.getUsers().then(users=>setUsers(users))
+    },[])
 
-    // if(users.length===0)return 
-
-    // console.log(users)
+    if(users.length===0)return 
+    // const user=userService.getById('u102')
+    // console.log(users[1])
 
     return (<section className='user-info'>
         <div className='info-block'>
-            <img src={catto}/>
-            <h2>El Gatto</h2>
+            <img src={users[1].imgUrl}/>
+            <h2>{users[1].fullName}</h2>
             <div className='into-line'>
                 <span><img src={location}/> Country</span>
                 <span>Israel</span>
