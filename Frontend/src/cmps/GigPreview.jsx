@@ -27,8 +27,6 @@ export function GigPreview({is, gig }) {
         <Link className="gig-title" to={`/gig/${gig._id}`}>
           {gig.title}
         </Link>
-      {/* <img /> */}
-      <button><Link className="gig-title" to={`/gig/${gig._id}`}>view</Link></button>
       <button><Link className="gig-title" to={`/gig/edit/${gig._id}`}>update</Link></button>
       <button onClick={onRemoveGig}>remove</button>
       </>
