@@ -1,8 +1,8 @@
-import personOne from '../assets/img/Jenny.png'
-import personTwo from '../assets/img/Col.png'
-import personThree from '../assets/img/Christina.png'
-import personFour from '../assets/img/Scarlett.png'
-import personFive from '../assets/img/Jordan.png'
+import personOne from '../assets/img/Jenny.webp'
+import personTwo from '../assets/img/Colin.webp'
+import personThree from '../assets/img/Christina.webp'
+import personFour from '../assets/img/Scarlett.webp'
+import personFive from '../assets/img/Jordan.webp'
 
 import metaImg from '../assets/img/meta.logo.png'
 import netflixImg from '../assets/img/netflix.logo.png'
