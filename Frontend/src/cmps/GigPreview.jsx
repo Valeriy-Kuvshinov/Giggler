@@ -4,7 +4,7 @@ import { removeGig } from '../store/gig.actions'
 import { useNavigate } from 'react-router-dom'
 export function GigPreview({ is, gig }) {
   const navigate = useNavigate()
-  const ownerId = gig.owner._id
+  const owner = gig.owner
   // console.log('is', is)
 
   async function onRemoveGig() {
