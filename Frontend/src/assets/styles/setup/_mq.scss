@@ -1,3 +1,15 @@
+.home-wrapper {
+    .home-services-section {
+        @media (max-width: 1400px) {
+            padding: 1em 2em;
+        }
+
+        @media (min-width: 1400px) {
+            padding: 1em 0em;
+        }
+    }
+}
+
 .app-header {
     @media (min-width: 1250px) {
         .carousel-btn {
