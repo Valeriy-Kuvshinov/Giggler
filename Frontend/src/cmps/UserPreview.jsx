@@ -13,7 +13,7 @@ export function UserPreview({ is, ownerId, children }) {
     try {
       await loadUsers()
       const loadedUser = await loadUser(ownerId)
-      console.log('Loadeduser', loadedUser);
+      
       setUser(loadedUser)
     } catch (error) {
       console.log('Error loading user in UserPreview', error)
