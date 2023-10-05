@@ -21,5 +21,5 @@ export function UserGigs({ gigs }) {
         <GigPreview is={is} gig={gig} />
         </div>     
         )}
-        </section>
-    )}
+    </section>)
+}
