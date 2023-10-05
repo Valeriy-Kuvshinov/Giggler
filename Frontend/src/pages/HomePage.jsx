@@ -57,6 +57,10 @@ export function HomePage() {
     return (
         <section className='home-wrapper'>
             <section className='welcome-section'>
+                <div className='welcome-text-search'>
+                    <h1>Find the right freelance service, right away</h1>
+                    
+                </div>
                 {personImages.map((image, index) => (
                     <img
                         key={index}

@@ -1,8 +1,23 @@
 .home-wrapper {
     .welcome-section {
         position: relative;
-        height: 450px;
+        height: 760px;
         background: $bgColor1;
+        color: $clrPrimary1;
+
+        .welcome-text-search {
+            width: 650px;
+            height: fit-content;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            font-size: 40px;
+            margin-left: 0.65em;
+
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        }
 
         img {
             position: absolute;
