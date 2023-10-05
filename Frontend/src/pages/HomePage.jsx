@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { galleryService } from '../services/gallery.service.js'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
@@ -59,14 +59,12 @@ export function HomePage() {
             <section className='welcome-section'>
                 <div className='welcome-text-search'>
                     <h1>Find the right freelance service, right away</h1>
-                    
                 </div>
-                {personImages.map((image, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        className={index === currentImageIndex ? 'active' : ''}
-                    />
+                {personImages.map((img, index) => (
+                    <div key={index} className={`background-image ${index === currentImageIndex ? 'active' : ''}`} style={{ backgroundImage: `url(${img.big})` }}></div>
+                ))}
+                {personImages.map((img, index) => (
+                    <img key={index} src={img.small} alt="Small Person" className={`small-img ${index === currentImageIndex ? 'active' : ''}`} />
                 ))}
             </section>
             <section className='home-companies-section'>
