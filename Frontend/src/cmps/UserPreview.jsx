@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { loadUser, loadUsers } from '../store/user.actions'
 import { useEffect, useState } from 'react'
 import star from '../assets/img/svg/star.icon.svg'
+import SvgIcon from '../cmps/SvgIcon'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
@@ -34,7 +35,10 @@ console.log('I AM HERE!!!!!!!!!!!!!')
       </div>
       {is === 'explore' && children}
       <div className="user-rating">
-        <span className="rating-score"><img className="icon" src={star}/> {`${user.rate}`}</span>
+        <span className="rating-score">
+          {/* <img className="icon" src={star}/> */}
+          <SvgIcon iconName={'star'}/>
+           {`${user.rate}`}</span>
       </div>
     </>
   )

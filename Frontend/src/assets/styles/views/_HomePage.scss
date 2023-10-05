@@ -1,20 +1,57 @@
 .home-wrapper {
     .welcome-section {
-        position: relative;
-        height: 450px;
+        height: 760px;
         background: $bgColor1;
+        color: $clrPrimary1;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        position: relative;
 
-        img {
+        .background-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s;
+            z-index: 0;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+
+        .small-img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 150px;
+            height: auto;
+            z-index: 2;
             opacity: 0;
             transition: opacity 1s;
 
             &.active {
                 opacity: 1;
+            }
+        }
+
+        .welcome-text-search {
+            width: 650px;
+            height: fit-content;
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            font-size: 40px;
+            margin-left: 0.65em;
+
+            h1 {
+                font-family: Arial, Helvetica, sans-serif;
             }
         }
     }
@@ -47,7 +84,6 @@
 
     .home-services-section {
         position: relative;
-        padding: 1em 2em;
         overflow: hidden;
         max-width: 1400px;
         margin: auto;
@@ -100,7 +136,7 @@
             border-radius: 50%;
             width: 48px;
             height: 48px;
-            z-index: 1;
+            z-index: 100;
             box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
 
             img {
@@ -109,11 +145,11 @@
             }
 
             &.left-side {
-                left: 5px;
+                left: 0%;
             }
 
             &.right-side {
-                right: 5px;
+                right: 0%;
             }
         }
     }

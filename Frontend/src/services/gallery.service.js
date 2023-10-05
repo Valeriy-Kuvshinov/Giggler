@@ -1,8 +1,13 @@
-import personOne from '../assets/img/Jenny.png'
-import personTwo from '../assets/img/Col.png'
-import personThree from '../assets/img/Christina.png'
-import personFour from '../assets/img/Scarlett.png'
-import personFive from '../assets/img/Jordan.png'
+import personOne from '../assets/img/jenny.webp'
+import miniPersonOne from '../assets/img/mini-jenny.webp'
+import personTwo from '../assets/img/colin.webp'
+import miniPersonTwo from '../assets/img/mini-colin.webp'
+import personThree from '../assets/img/christina.webp'
+import miniPersonThree from '../assets/img/mini-colin.webp'
+import personFour from '../assets/img/scarlett.webp'
+import miniPersonFour from '../assets/img/mini-scarlett.webp'
+import personFive from '../assets/img/jordan.webp'
+import miniPersonFive from '../assets/img/mini-jordan.webp'
 
 import metaImg from '../assets/img/meta.logo.png'
 import netflixImg from '../assets/img/netflix.logo.png'
@@ -54,8 +59,16 @@ const serviceTexts = [
     { title: "Showcase your story", subtitle: "Book Covers" }
 ]
 
+const personImages = [
+    { big: personOne, small: miniPersonOne },
+    { big: personTwo, small: miniPersonTwo },
+    { big: personThree, small: miniPersonThree },
+    { big: personFour, small: miniPersonFour },
+    { big: personFive, small: miniPersonFive }
+]
+
+
 export const galleryService = {
-    personImages: [personOne, personTwo, personThree, personFour, personFive],
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
     serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
@@ -68,5 +81,6 @@ export const galleryService = {
         { img: socialMediaPinterest, url: 'https://www.fiverr.com' },
         { img: socialMediaTwitter, url: 'https://www.fiverr.com' },
     ],
-    serviceTexts: serviceTexts
+    serviceTexts: serviceTexts,
+    personImages: personImages
 }
