@@ -6,8 +6,8 @@ export function AppFooter() {
 
     return (
         <footer className="app-footer flex row full">
-            <h1 className="logo">fiverr</h1>
-            <h2>© Fiverr International Ltd. 2023</h2>
+            <h1 className="logo">giggler</h1>
+            <h2>© Giggler International Ltd. 2023</h2>
             <div className="social-icons flex row">
                 {socialMediaLinks.map((link, idx) => (
                     <div key={idx} className="icon-container">
