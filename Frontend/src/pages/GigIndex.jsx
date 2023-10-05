@@ -1,78 +1,55 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { loadGigs, addGig, updateGig, removeGig } from '../store/gig.actions.js'
+import { useSelector, useDispatch } from 'react-redux'
+import { gigService } from '../services/gig.service.local.js'
 import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { userService } from '../services/user.service.js'
-import { gigService } from '../services/gig.service.local.js'
+import { loadGigs, saveGig, removeGig } from '../store/gig.actions.js'
 
 export function GigIndex() {
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-
-  
-  //   const [currentPage, setCurrentPage] = useState(0)
-  //   const itemsPerPage = 12
-
-  //   const startIndex = currentPage * itemsPerPage
-  //   const endIndex = startIndex + itemsPerPage
-  //   const displayedGigs = gigs.slice(startIndex, endIndex)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    loadGigs()
-  }, [])
+    loadGigs(filterBy)
+        .catch((err) => {
+            console.log('Oops.. something went wrong, try again', err)
+        })
+}, [filterBy])
 
-  async function onRemoveGig(gigId) {
+  function onRemoveGig(gigId) {
     try {
-      await removeGig(gigId)
+      dispatch(removeGig(gigId))
       showSuccessMsg('Gig removed')
     } catch (err) {
       showErrorMsg('Cannot remove Gig')
     }
   }
 
-  async function onAddGig() {
+  function onAddGig() {
     const gig = gigService.getEmptyGig()
-    gig.title = prompt('Title?')
     try {
-      const savedGig = await addGig(gig)
-      showSuccessMsg(`Gig added (id: ${savedGig._id})`)
+      dispatch(saveGig(gig))
+      showSuccessMsg(`Gig added`)
     } catch (err) {
       showErrorMsg('Cannot add gig')
     }
   }
 
-  async function onUpdateGig(gig) {
-    const price = +prompt('New price?')
-    const gigToSave = { ...gig, price }
+  function onUpdateGig(gig) {
+    const gigToSave = { ...gig }
     try {
-      const savedGig = await updateGig(gigToSave)
-      showSuccessMsg(`Gig updated, new price: ${savedGig.price}`)
+      dispatch(saveGig(gigToSave))
+      showSuccessMsg(`Gig updated`)
     } catch (err) {
       showErrorMsg('Cannot update gig')
     }
   }
 
-  function onSetFilter(filterBy) {
-    setGigFilter(filterBy)
-    setCurrentPage(0)
-  }
-
-  // function onAddGigMsg(gig) {
-  //     console.log(`TODO Adding msg to gig`)
-  // }
-  // function shouldShowActionBtns(gig) {
-  //     const user = userService.getLoggedinUser()
-  //     if (!user) return false
-  //     if (user.isAdmin) return true
-  //     return gig.owner?._id === user._id
-  // }
-
   return (
     <main className="gig-index main-layout">
-      <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+      <GigFilter filterBy={filterBy} />
       <GigList
         gigs={gigs}
         onRemoveGig={onRemoveGig}
@@ -80,13 +57,30 @@ export function GigIndex() {
         onAddGig={onAddGig}
       />
       <Pagination
-      //   previousLabel={'Previous'}
-      //   nextLabel={'Next'}
-      //   pageCount={Math.ceil(gigs.length / itemsPerPage)}
-      //   onPageChange={({ selected }) => setCurrentPage(selected)}
-      //   containerClassName={'pagination'}
-      //   activeClassName={'active'}
       />
     </main>
   )
 }
+//   const [currentPage, setCurrentPage] = useState(0)
+//   const itemsPerPage = 12
+
+//   const startIndex = currentPage * itemsPerPage
+//   const endIndex = startIndex + itemsPerPage
+//   const displayedGigs = gigs.slice(startIndex, endIndex)
+
+// function onAddGigMsg(gig) {
+//     console.log(`TODO Adding msg to gig`)
+// }
+// function shouldShowActionBtns(gig) {
+//     const user = userService.getLoggedinUser()
+//     if (!user) return false
+//     if (user.isAdmin) return true
+//     return gig.owner?._id === user._id
+// }
+
+//   previousLabel={'Previous'}
+//   nextLabel={'Next'}
+//   pageCount={Math.ceil(gigs.length / itemsPerPage)}
+//   onPageChange={({ selected }) => setCurrentPage(selected)}
+//   containerClassName={'pagination'}
+//   activeClassName={'active'}

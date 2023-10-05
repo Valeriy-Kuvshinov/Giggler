@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
-import { addGig } from '../store/gig.actions.js'
+import { saveGig } from '../store/gig.actions.js'
+import { gigService } from '../services/gig.service.local.js'
 
 export function GigEdit() {
     const params = useParams()
-    const id=params.id
+    const id = params.id
     const { categoryTexts } = galleryService
     const navigate = useNavigate()
 
-    const [fields, , handleChange] = useForm({
+    const [fields, setFields, handleChange] = useForm({
         title: '',
         price: '',
         owner: {
@@ -35,9 +36,23 @@ export function GigEdit() {
         category: categoryTexts[0]
     })
 
+    useEffect(() => {
+        if (id) {
+            async function fetchGig() {
+                try {
+                    const gig = await gigService.getById(id)
+                    if (gig) setFields(gig)
+                } catch (err) {
+                    console.error('Failed to load gig:', err)
+                }
+            }
+            fetchGig()
+        }
+    }, [id, setFields])
+
     async function onSave() {
         try {
-            const savedGig = await addGig(fields)
+            const savedGig = await saveGig(fields)
             console.log('Gig saved successfully:', savedGig)
             navigate('/profile')
         } catch (err) {

@@ -1,6 +1,5 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'gig'
 _createGigs()
@@ -10,8 +9,8 @@ export const gigService = {
   getById,
   save,
   remove,
-  getEmptyGig,
-  addGigMsg,
+  // getEmptyGig,
+  // addGigMsg,
 }
 // debug trick
 window.bs = gigService
@@ -51,28 +50,28 @@ async function save(gig) {
   return savedGig
 }
 
-async function addGigMsg(gigId, txt) {
-  // Later, this is all done by the backend
-  const gig = await getById(gigId)
-  if (!gig.msgs) gig.msgs = []
+// async function addGigMsg(gigId, txt) {
+//   // Later, this is all done by the backend
+//   const gig = await getById(gigId)
+//   if (!gig.msgs) gig.msgs = []
 
-  const msg = {
-    id: utilService.makeId(),
-    by: userService.getLoggedinUser(),
-    txt,
-  }
-  gig.msgs.push(msg)
-  await storageService.put(STORAGE_KEY, gig)
+//   const msg = {
+//     id: utilService.makeId(),
+//     by: userService.getLoggedinUser(),
+//     txt,
+//   }
+//   gig.msgs.push(msg)
+//   await storageService.put(STORAGE_KEY, gig)
 
-  return msg
-}
+//   return msg
+// }
 
-function getEmptyGig() {
-  return {
-    title: 'Gig-' + (Date.now() % 1000),
-    price: utilService.getRandomIntInclusive(30, 600),
-  }
-}
+// function getEmptyGig() {
+//   return {
+//     title: 'Gig-' + (Date.now() % 1000),
+//     price: utilService.getRandomIntInclusive(30, 600),
+//   }
+// }
 
 function _createGigs() {
   let gigs = utilService.loadFromStorage(STORAGE_KEY)
@@ -130,6 +129,3 @@ function _createGigs() {
     utilService.saveToStorage(STORAGE_KEY, gigs)
   }
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {title: 'Jira G', price: 980}).then(x => console.log(x))
