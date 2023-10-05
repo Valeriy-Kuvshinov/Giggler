@@ -140,7 +140,11 @@ const users = [
   ]
 _createUsers()
 
-  function _createUsers(){
+  async function _createUsers() { 
     localStorage.setItem('user',JSON.stringify(users))
-    // loadUsers()
+    // try {
+    //   await loadUsers()
+    // } catch (error) {
+    //   console.log('Error loading users', error)
+    // }
   }

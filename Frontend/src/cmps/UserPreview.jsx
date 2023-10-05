@@ -1,23 +1,17 @@
 import { Link } from 'react-router-dom'
 import { loadUser, loadUsers } from '../store/user.actions'
 import { useEffect, useState } from 'react'
+import star from '../assets/img/svg/star.icon.svg'
 
-export function UserPreview({ is, ownerId, children }) {
+export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
-    console.log('userId',ownerId)
+    console.log('userId',owner)
   useEffect(() => {
     loadUserData()
-  }, [ownerId])
+  }, [owner])
 
-  async function loadUserData() {
-    try {
-      await loadUsers()
-      const loadedUser = await loadUser(ownerId)
-      
-      setUser(loadedUser)
-    } catch (error) {
-      console.log('Error loading user in UserPreview', error)
-    }
+  function loadUserData() {
+      setUser(owner)
   }
 
   if (!user) {
@@ -40,7 +34,7 @@ console.log('I AM HERE!!!!!!!!!!!!!')
       </div>
       {is === 'explore' && children}
       <div className="user-rating">
-        <span className="rating-score">{`★${user.rate}`}</span>
+        <span className="rating-score"><img className="icon" src={star}/> {`${user.rate}`}</span>
       </div>
     </>
   )

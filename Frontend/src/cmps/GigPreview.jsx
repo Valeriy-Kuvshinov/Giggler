@@ -2,9 +2,10 @@ import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
 import { removeGig } from '../store/gig.actions'
 
+
 export function GigPreview({ is, gig }) {
 
-  const ownerId = gig.owner._id
+  const owner = gig.owner
   // console.log('is', is)
 
   async function onRemoveGig() {
@@ -22,7 +23,7 @@ export function GigPreview({ is, gig }) {
         <img src={gig.imgUrls[0]} alt={`${gig.owner.fullName} gig img`} />
       </Link>
       {is === 'explore' && (
-        <UserPreview is={is} ownerId={ownerId} gig={gig}>
+        <UserPreview is={is} owner={owner} gig={gig}>
           <Link className="gig-title" to={`/gig/${gig._id}`}>
             {gig.title}
           </Link>

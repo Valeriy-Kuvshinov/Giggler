@@ -37,6 +37,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    .user-rating {
+      .rating-score{
+        img {
+          width: 13px;
+        }
+      }
+    }
   }
 
   .gig-price-likes {
