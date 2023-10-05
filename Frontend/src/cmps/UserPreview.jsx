@@ -6,7 +6,7 @@ import SvgIcon from '../cmps/SvgIcon'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
-    console.log('userId',owner)
+    // console.log('userId',owner)
   useEffect(() => {
     loadUserData()
   }, [owner])
@@ -19,7 +19,6 @@ export function UserPreview({ is, owner, children }) {
     return null // Or render a loading state if necessary
   }
 
-console.log('I AM HERE!!!!!!!!!!!!!')
   return (
     <>
       <div className="preview-user-info">

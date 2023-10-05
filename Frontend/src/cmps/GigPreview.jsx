@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
 import { removeGig } from '../store/gig.actions'
 import { useNavigate } from 'react-router-dom'
+import {ImageCarousel} from './ImageCarousel'
 
 
 export function GigPreview({ is, gig }) {
@@ -20,9 +21,10 @@ export function GigPreview({ is, gig }) {
   }
   return (
     <>
-      <Link className="link-gig-img" to={`/gig/${gig._id}`}>
-        <img src={gig.imgUrls[0]} alt={`${gig.owner.fullName} gig img`} />
-      </Link>
+        {/* <img src={gig.imgUrls[0]} alt={`${gig.owner.fullName} gig img`} /> */}
+      {/* <Link className="link-gig-img" to={`/gig/${gig._id}`}> */}
+        <ImageCarousel images={gig.imgUrls} />
+      {/* </Link> */}
       {is === 'explore' && (
         <UserPreview is={is} owner={owner} gig={gig}>
           <Link className="gig-title" to={`/gig/${gig._id}`}>

@@ -54,6 +54,15 @@ ol {
   list-style-type: none;
 }
 
-.icon {
-    width: 13px;
-}
+// .icon {
+//     width: 13px;
+// }
+
+
+.active {
+    display: block;
+  }
+  
+  .hidden {
+    display: none;
+  }
