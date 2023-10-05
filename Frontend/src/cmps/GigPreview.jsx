@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
 import { removeGig } from '../store/gig.actions'
 import { useNavigate } from 'react-router-dom'
+
+
 export function GigPreview({ is, gig }) {
   const navigate = useNavigate()
   const owner = gig.owner
@@ -37,7 +39,6 @@ export function GigPreview({ is, gig }) {
           <button onClick={onRemoveGig}>remove</button>
         </>
       )}
-
       <div className="gig-price-likes">
         <span className="price">{`From $${gig.price}`}</span>
       </div>
