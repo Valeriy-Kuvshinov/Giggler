@@ -1,10 +1,21 @@
 import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
+import { removeGig } from '../store/gig.actions'
 
-export function GigPreview({is, gig }) {
+export function GigPreview({ is, gig }) {
 
   const ownerId = gig.owner._id
-  console.log('gig.owner._id', ownerId)
+  // console.log('is', is)
+
+  async function onRemoveGig() {
+    try {
+      await removeGig(gig._id)
+      console.log('Gig removed successfully:')
+      navigate('/profile')
+    } catch (err) {
+      console.error('Failed to save gig:', err)
+    }
+  }
   return (
     <>
       <Link className="link-gig-img" to={`/gig/${gig._id}`}>
@@ -18,9 +29,13 @@ export function GigPreview({is, gig }) {
         </UserPreview>
       )}
       {is === 'userProfile' && (
-        <Link className="gig-title" to={`/gig/${gig._id}`}>
-          {gig.title}
-        </Link>
+        <>
+          <Link className="gig-title" to={`/gig/${gig._id}`}>
+            {gig.title}
+          </Link>
+          <button><Link className="gig-title" to={`/gig/edit/${gig._id}`}>update</Link></button>
+          <button onClick={onRemoveGig}>remove</button>
+        </>
       )}
 
       <div className="gig-price-likes">

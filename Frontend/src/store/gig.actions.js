@@ -61,17 +61,16 @@ export async function addGig(gig) {
     }
 }
 
-export function updateGig(gig) {
-    return gigService.save(gig)
-        .then(savedGig => {
-            console.log('Updated gig:', savedGig)
-            store.dispatch(getActionUpdateGig(savedGig))
-            return savedGig
-        })
-        .catch(err => {
-            console.log('Cannot save gig', err)
-            throw err
-        })
+export async function updateGig(gig) {
+    try {
+        const savedGig = await gigService.save(gig)
+        console.log('Updated gig:', savedGig)
+        store.dispatch(getActionUpdateGig(savedGig))
+        return savedGig
+    } catch (err) {
+        console.log('Cannot save gig', err)
+        throw err
+    }
 }
 
 // Demo for Optimistic Mutation 

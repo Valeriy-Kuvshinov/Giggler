@@ -4,7 +4,6 @@ export const ADD_GIG = 'ADD_GIG'
 export const UPDATE_GIG = 'UPDATE_GIG'
 export const UNDO_REMOVE_GIG = 'UNDO_REMOVE_GIG'
 
-
 const initialState = {
     gigs: [],
     lastRemovedGig: null

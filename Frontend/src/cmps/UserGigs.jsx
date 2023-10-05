@@ -16,10 +16,10 @@ export function UserGigs({ gigs }) {
             </Link>
         </div>
 
-        {gigs.map((gig) => 
-        <div className='info-block '>
-        <GigPreview is={is} gig={gig} />
-        </div>     
+        {gigs.map((gig) =>
+            <div className='info-block' key={gig._id}>
+                <GigPreview is={is} gig={gig} />
+            </div>
         )}
     </section>)
 }
