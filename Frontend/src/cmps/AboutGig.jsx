@@ -1,4 +1,3 @@
-
 export function AboutGig({ gig }) {
     return (
         <section style={{ overflow: 'hidden' }}>

@@ -55,23 +55,23 @@ export function LoginSignup(props) {
                 <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Join' : 'Sign In'}</button>
             </p>
             {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                {/* <input
-                        type="text"
-                        name="username"
-                        value={username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    /> */}
+                <input
+                    type="text"
+                    name="username"
+                    value={username}
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                    autoFocus
+                />
+                <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
             </form>}
             <div className="signup-section">
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>

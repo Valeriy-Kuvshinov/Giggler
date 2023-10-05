@@ -60,6 +60,13 @@ export const galleryService = {
     serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
-    socialMediaIcons: [socialMediaTiktok, socialMediaInstagram, socialMediaLinkedin, socialMediaFacebook, socialMediaPinterest, socialMediaTwitter],
+    socialMediaLinks: [
+        { img: socialMediaTiktok, url: 'https://www.fiverr.com' },
+        { img: socialMediaInstagram, url: 'https://www.fiverr.com' },
+        { img: socialMediaLinkedin, url: 'https://www.fiverr.com' },
+        { img: socialMediaFacebook, url: 'https://www.fiverr.com' },
+        { img: socialMediaPinterest, url: 'https://www.fiverr.com' },
+        { img: socialMediaTwitter, url: 'https://www.fiverr.com' },
+    ],
     serviceTexts: serviceTexts
 }
