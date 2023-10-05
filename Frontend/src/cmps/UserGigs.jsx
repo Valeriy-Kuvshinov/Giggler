@@ -17,7 +17,7 @@ export function UserGigs({ gigs }) {
         </div>
 
         {gigs.map((gig) => 
-        <div className='info-block '>
+        <div className='info-block ' key={gig._id}>
         <GigPreview is={is} gig={gig} />
         </div>     
         )}

@@ -5,7 +5,7 @@ import { removeGig } from '../store/gig.actions'
 export function GigPreview({ is, gig }) {
 
   const ownerId = gig.owner._id
-  console.log('is', is)
+  // console.log('is', is)
 
   async function onRemoveGig() {
     try {
