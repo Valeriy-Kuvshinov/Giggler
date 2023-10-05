@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
 import { addGig } from '../store/gig.actions.js'
 
 export function GigEdit() {
+    const params = useParams()
+    const id=params.id
     const { categoryTexts } = galleryService
     const navigate = useNavigate()
 

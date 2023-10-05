@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
+import update from '../assets/img/svg/edit.icon.svg'
 
 export function GigPreview({is, gig }) {
 
   const ownerId = gig.owner._id
-  console.log('gig.owner._id', ownerId)
+  console.log('is', is)
+
+  function onRemoveGig(){
+    console.log('remove')
+  }
   return (
     <>
       <Link className="link-gig-img" to={`/gig/${gig._id}`}>
@@ -18,9 +23,15 @@ export function GigPreview({is, gig }) {
         </UserPreview>
       )}
       {is === 'userProfile' && (
+        <>
         <Link className="gig-title" to={`/gig/${gig._id}`}>
           {gig.title}
         </Link>
+      {/* <img /> */}
+      <button><Link className="gig-title" to={`/gig/${gig._id}`}>view</Link></button>
+      <button><Link className="gig-title" to={`/gig/edit/${gig._id}`}>update</Link></button>
+      <button onClick={onRemoveGig}>remove</button>
+      </>
       )}
 
       <div className="gig-price-likes">
