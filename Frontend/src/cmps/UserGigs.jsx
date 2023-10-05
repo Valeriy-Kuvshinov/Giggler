@@ -15,6 +15,8 @@ export function UserGigs({ gigs }) {
                 <span>Create a new Gig</span>
             </Link>
         </div>
+        
         {gigs.map((gig) => <GigPreview gig={gig} />)}
+
     </section>)
 }
