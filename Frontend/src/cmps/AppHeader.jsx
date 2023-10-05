@@ -73,7 +73,7 @@ export function AppHeader() {
             <nav className="main-nav">
                 <div className="container flex row">
                     <Link to="/">
-                        <h1 className="logo">fiverr<span>.</span></h1>
+                        <h1 className="logo">giggler<span>.</span></h1>
                     </Link>
 
                     <div className="search-bar flex">

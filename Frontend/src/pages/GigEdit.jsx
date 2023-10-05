@@ -141,7 +141,7 @@ export function GigEdit() {
                                 type="number"
                                 name="price"
                                 min={0}
-                                max={1000}
+                                max={10000}
                                 style={{ flex: '0' }}
                                 placeholder="Price"
                                 value={fields.price}

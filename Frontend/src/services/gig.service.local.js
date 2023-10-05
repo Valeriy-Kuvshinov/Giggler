@@ -8,9 +8,7 @@ export const gigService = {
   query,
   getById,
   save,
-  remove,
-  // getEmptyGig,
-  // addGigMsg,
+  remove
 }
 // debug trick
 window.bs = gigService
@@ -34,7 +32,6 @@ function getById(gigId) {
 }
 
 async function remove(gigId) {
-  // throw new Error('Nope')
   await storageService.remove(STORAGE_KEY, gigId)
 }
 
@@ -43,7 +40,6 @@ async function save(gig) {
   if (gig._id) {
     savedGig = await storageService.put(STORAGE_KEY, gig)
   } else {
-    // Later, owner is set by the backend
     // gig.owner = userService.getLoggedinUser()
     savedGig = await storageService.post(STORAGE_KEY, gig)
   }
@@ -64,13 +60,6 @@ async function save(gig) {
 //   await storageService.put(STORAGE_KEY, gig)
 
 //   return msg
-// }
-
-// function getEmptyGig() {
-//   return {
-//     title: 'Gig-' + (Date.now() % 1000),
-//     price: utilService.getRandomIntInclusive(30, 600),
-//   }
 // }
 
 function _createGigs() {

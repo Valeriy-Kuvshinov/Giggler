@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import { UserPreview } from './UserPreview'
 import { removeGig } from '../store/gig.actions'
-
-
+import { useNavigate } from 'react-router-dom'
 export function GigPreview({ is, gig }) {
-
-  const owner = gig.owner
+  const navigate = useNavigate()
+  const ownerId = gig.owner._id
   // console.log('is', is)
 
   async function onRemoveGig() {
