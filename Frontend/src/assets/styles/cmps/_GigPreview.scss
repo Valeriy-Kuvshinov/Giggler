@@ -1,7 +1,4 @@
 .gig-preview {
-  // min-width: 150px;
-  // max-width: 17.325em;
-  // max-height: 23.125em;
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
   background-color: #fff;
@@ -11,7 +8,7 @@
   img {
     width: 100%;
     height: 166px;
-    // height: auto;
+    // height: auto;  //way to check the dots!!!!!!!
     background-color: $clrPrimary1;
     border: 1px solid $clrSecondary2;
     border-top-left-radius: 0.5em;
@@ -25,6 +22,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0.75em 0;
+    padding: 0 0 0 0.25em;
 
     .avatar-fullname {
       display: grid;
@@ -39,17 +37,25 @@
     }
     .level {
       text-transform: capitalize;
+      padding: 0 0.5em;
     }
-    .gig-title {
-      overflow: hidden;
-      text-overflow: ellipsis;
+  }
+  .gig-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // display: -webkit-box;
+    // -webkit-box-orient: vertical;
+    // -webkit-line-clamp: 2;
+    padding: 0 0.5em;
+    margin-top: rem(5px);
+  }
+  .user-rating {
+    padding: 0 0.5em;
+    .rate {
+      padding: 0 0.25em 0 0;
     }
-    .user-rating {
-      .rating-score {
-        img {
-          width: 13px;
-        }
-      }
+    .rate-count {
+      color: $clrSecondary5;
     }
   }
 
@@ -58,7 +64,7 @@
     align-items: center;
     justify-content: space-between;
     height: 2.8125em;
-    padding: 0.625em 0.75em;
+    padding: 0.625em 0.5em;
     border-top: 0.0625em solid $clrSecondary2;
   }
 }

@@ -42,7 +42,7 @@ export function GigPreview({ is, gig }) {
         </>
       )}
       <div className="gig-price-likes">
-        <span className="price">{`From $${gig.price}`}</span>
+        <span className="price b">{`From $${gig.price}`}</span>
       </div>
     </>
   )
