@@ -1,0 +1,50 @@
+.payment-details{
+    width: 45%;
+    margin-block-start: 20px;
+    margin-block-end: 20px;
+    background-color: $clrPrimary1;
+    border: 1px solid $clrSecondary5;
+    color: $clrSecondary5;
+    padding: 28px;
+    h2{
+        font-family: macan-light;
+    }
+    .credit-details{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 80%;
+        span{
+            font-weight: 700;
+        }
+    }
+    .credit-type{
+        display: flex;
+        align-items: center;
+        height: 50px;
+        img{
+            width: 80px;
+            height: 50px;
+        }
+    }
+    .credit-number{
+        display: flex;
+        flex-direction: column;
+        width: 240px;
+    }
+    .rest-of-details{
+        display: flex;
+        justify-content: space-between;
+        .credit-date{
+            display: flex;
+            flex-direction: column;
+            input{
+                width: 80%;
+            }
+        }
+    }
+    .buyer-info{
+        display: flex;
+        flex-direction: column;
+    }
+}

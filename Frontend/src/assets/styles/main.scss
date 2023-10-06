@@ -31,6 +31,9 @@
 @import "cmps/ShoppingCart";
 @import "cmps/UserMsg";
 
+@import "cmps/PaymentDetails";
+@import "cmps/PaymentInfo";
+
 // Views
 @import "views/HomePage";
 @import "views/AboutUs";
@@ -40,3 +43,4 @@
 @import "views/UserDetails";
 @import "views/UserProfile";
 @import "views/GigEdit";
+@import "views/GigPurchase";

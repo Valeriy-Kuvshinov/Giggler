@@ -1,0 +1,56 @@
+.payment-info{
+    width: 45%;
+    margin-inline-start: 10%;
+    margin-block-start: 20px;
+    margin-block-end: 20px;
+    background-color: $clrPrimary1;
+    border: 1px solid $clrSecondary5;
+    padding: 28px;
+    .payment-header{
+        display: flex;
+        height: 70px;
+        margin-block-end: 20px;
+        img{
+            width: 70px;
+        }
+        // flex-direction: column;
+    }
+    .payment-price{
+        color: $clrSecondary6;
+    }
+    .gig-qualities{
+        display: flex;
+        flex-direction: column;
+        margin-block-end: 20px;
+        color: $clrSecondary6;
+        .gig-quality{
+            display: flex;
+            img{
+                width: 14px;
+                margin-inline-end: 5px;
+            }
+        }
+    }
+
+    .paying-fee{
+        display: flex;
+        justify-content: space-between;
+        margin-block-end: 25px;
+    }
+    .final{
+        border-top: 1px solid $clrPrimary2;
+        font-weight: 700;
+    }
+
+    .not{ 
+        color: $clrSecondary6;
+    }
+
+    .confirm-btn{
+        background-color: $clrPrimary2;
+        color: $clrPrimary1;
+        width: 100%;
+        height: 42px;
+        font-weight: 600;
+    }
+}
