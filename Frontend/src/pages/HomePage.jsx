@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { galleryService } from '../services/gallery.service.js'
+import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 
 export function HomePage() {
-    const { personImages, companyImages, serviceImages, categoryIcons, serviceTexts, categoryTexts } = galleryService
-    const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const { companyImages, serviceImages, categoryIcons, serviceTexts, categoryTexts } = galleryService
     const [visibleStartIndex, setVisibleStartIndex] = useState(0)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % personImages.length)
-        }, 10000)
-        return () => clearInterval(interval)
-    }, [])
 
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth)
         }
-
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener('resize', handleResize)
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, [])
 
     let itemsPerPage = 5
@@ -38,7 +30,7 @@ export function HomePage() {
             }
         } else if (direction === 'right') {
             if (visibleStartIndex + itemsPerPage >= serviceImages.length) {
-                setVisibleStartIndex(0)
+                setVisibleStartIndex(0);
             } else {
                 setVisibleStartIndex(visibleStartIndex + itemsPerPage)
             }
@@ -46,7 +38,7 @@ export function HomePage() {
     }
 
     function getCurrentDisplayItems() {
-        let items = []
+        let items = [];
         for (let i = 0; i < itemsPerPage; i++) {
             items.push(serviceImages[(visibleStartIndex + i) % serviceImages.length])
         }
@@ -56,22 +48,12 @@ export function HomePage() {
 
     return (
         <section className='home-wrapper'>
-            <section className='welcome-section'>
-                <div className='welcome-text-search'>
-                    <h1>Find the right freelance service, right away</h1>
-                </div>
-                {personImages.map((img, index) => (
-                    <div key={index} className={`background-image ${index === currentImageIndex ? 'active' : ''}`} style={{ backgroundImage: `url(${img.big})` }}></div>
-                ))}
-                {personImages.map((img, index) => (
-                    <img key={index} src={img.small} alt="Small Person" className={`small-img ${index === currentImageIndex ? 'active' : ''}`} />
-                ))}
-            </section>
+            <WelcomeSection />
             <section className='home-companies-section'>
                 <div className='companies flex row'>
                     <h4>Trusted by: </h4>
                     {companyImages.map((company, index) => (
-                        <img key={index} src={company} />
+                        <img key={index} src={company} alt={`Company logo ${index}`} />
                     ))}
                 </div>
             </section>
@@ -83,7 +65,7 @@ export function HomePage() {
                 <div className='services flex row'>
                     {displayItems.map((service, index) => (
                         <div className="service" key={index}>
-                            <img src={service} />
+                            <img src={service} alt={`Service image ${index}`} />
                             <h4 className="service-text">
                                 <span>{serviceTexts[(visibleStartIndex + index) % serviceTexts.length].title}</span>
                                 <br />
@@ -101,7 +83,7 @@ export function HomePage() {
                 <div className='categories grid'>
                     {categoryIcons.map((category, index) => (
                         <div key={index}>
-                            <img src={category} />
+                            <img src={category} alt={`Category icon ${index}`} />
                             <p>{categoryTexts[index]}</p>
                         </div>
                     ))}
