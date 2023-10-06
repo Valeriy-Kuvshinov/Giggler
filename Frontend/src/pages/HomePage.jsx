@@ -13,13 +13,15 @@ export function HomePage() {
         const handleResize = () => {
             setWindowWidth(window.innerWidth)
         }
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
     }, [])
 
     let itemsPerPage = 5
     if (windowWidth < 1300) itemsPerPage = 4
     if (windowWidth < 1100) itemsPerPage = 3
+    if (windowWidth < 800) itemsPerPage = 2
+    if (windowWidth < 600) itemsPerPage = 1
 
     function scrollServicesCarousel(direction) {
         if (direction === 'left') {
@@ -37,7 +39,7 @@ export function HomePage() {
     }
 
     function getCurrentDisplayItems() {
-        let items = [];
+        let items = []
         for (let i = 0; i < itemsPerPage; i++) {
             items.push(serviceImages[(visibleStartIndex + i) % serviceImages.length])
         }
