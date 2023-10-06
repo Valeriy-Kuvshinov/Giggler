@@ -2,10 +2,11 @@ import clock from "../assets/img/svg/clock.icon.svg"
 import refresh from "../assets/img/svg/refresh.icon.svg"
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 import arrow from "../assets/img/svg/arrow.icon.svg"
+import { Link } from "react-router-dom"
 
 export function GigOrder({ gig }) {
   function onContinue() {
-    console.log('continue!')
+    console.log("continue!")
   }
 
   return (
@@ -29,8 +30,7 @@ export function GigOrder({ gig }) {
       </div>
       <ul>
         <li>
-          <img src={checkmark} />
-          1 concept included
+          <img src={checkmark} />1 concept included
         </li>
         <li>
           <img src={checkmark} />
@@ -42,7 +42,8 @@ export function GigOrder({ gig }) {
         </li>
         <li>
           <img src={checkmark} />
-          Printable file</li>
+          Printable file
+        </li>
         <li>
           <img src={checkmark} />
           Include 3D mockup
@@ -56,11 +57,13 @@ export function GigOrder({ gig }) {
           Include social media kit
         </li>
       </ul>
-      <div className="continue">
-        <button onClick={onContinue}>
-          Continue <img src={arrow} />
-        </button>
-      </div>
+      <Link to={`/purchase/${gig._id}`}>
+        <div className="continue">
+          <button onClick={onContinue}>
+            Continue <img src={arrow} />
+          </button>
+        </div>
+      </Link>
     </section>
   )
 }

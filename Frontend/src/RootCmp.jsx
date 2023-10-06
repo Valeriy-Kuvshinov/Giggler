@@ -12,6 +12,7 @@ import { HomePage } from './pages/HomePage'
 import { UserDetails } from './pages/UserDetails'
 import { UserProfile } from './pages/UserProfile'
 import { GigEdit } from './pages/GigEdit'
+import { GigPurchase } from './pages/GigPurchase'
 
 export function RootCmp() {
     return (
@@ -27,6 +28,8 @@ export function RootCmp() {
                     <Route path="/profile/" element={<UserProfile />} />
                     <Route path="/gig/edit" element={<GigEdit />} />
                     <Route path="/gig/edit/:id" element={<GigEdit />} />
+                    <Route path="/purchase/" element={<GigPurchase />} />
+                    <Route path="/purchase/:id" element={<GigPurchase />} />
                 </Routes>
             </main>
             <AppFooter />
