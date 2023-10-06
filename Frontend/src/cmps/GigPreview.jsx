@@ -3,7 +3,7 @@ import { UserPreview } from './UserPreview'
 import { removeGig } from '../store/gig.actions'
 import { useNavigate } from 'react-router-dom'
 import {ImageCarousel} from './ImageCarousel'
-import heart from '../assets/img/svg/heart.icon.svg'
+import SvgIcon from './SvgIcon'
 
 export function GigPreview({ is, gig }) {
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ export function GigPreview({ is, gig }) {
       )}
       <div className="gig-price-likes">
         <span className="price b">{`From $${gig.price}`}</span>
-        <span className="heart">{heart}</span>
+        <SvgIcon iconName={'heart'} />
       </div>
     </>
   )
