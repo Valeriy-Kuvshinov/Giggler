@@ -25,15 +25,14 @@ export function HomePage() {
         if (direction === 'left') {
             if (visibleStartIndex - itemsPerPage < 0) {
                 setVisibleStartIndex(serviceImages.length - itemsPerPage)
-            } else {
-                setVisibleStartIndex(visibleStartIndex - itemsPerPage)
             }
+            else setVisibleStartIndex(visibleStartIndex - itemsPerPage)
+
         } else if (direction === 'right') {
             if (visibleStartIndex + itemsPerPage >= serviceImages.length) {
-                setVisibleStartIndex(0);
-            } else {
-                setVisibleStartIndex(visibleStartIndex + itemsPerPage)
+                setVisibleStartIndex(0)
             }
+            else setVisibleStartIndex(visibleStartIndex + itemsPerPage)
         }
     }
 
