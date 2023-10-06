@@ -1,6 +1,19 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
+export const categories = [
+  'Graphics & Design',
+  'Programming & Tech',
+  'Digital Marketing',
+  'Video & Animation',
+  'Writing & Translation',
+  'Music & Audio',
+  'Business',
+  'Data',
+  'Photography',
+  'AI Services',
+]
+
 const STORAGE_KEY = 'gig'
 _createGigs()
 
@@ -8,7 +21,8 @@ export const gigService = {
   query,
   getById,
   save,
-  remove
+  remove,
+  getDefaultFilter
 }
 // debug trick
 window.bs = gigService
@@ -23,6 +37,12 @@ async function query(filterBy = { txt: '', price: 0 }) {
   }
   if (filterBy.price) {
     gigs = gigs.filter((gig) => gig.price <= filterBy.price)
+  }
+
+  if (filterBy.tags && filterBy.tags.length) {
+    gigs = gigs.filter((gig) =>
+      gig.tags.some((tag) => filterBy.tags.include(tag))
+    )
   }
   return gigs
 }
@@ -45,6 +65,16 @@ async function save(gig) {
   }
   return savedGig
 }
+
+function getDefaultFilter() {
+  return {
+    search: '',
+    category: '',
+    price: '',
+    daysToMake: '',
+    pageIdx: 0
+  }
+} 
 
 // async function addGigMsg(gigId, txt) {
 //   // Later, this is all done by the backend
@@ -71,13 +101,14 @@ function _createGigs() {
         title: 'I will take unique photos of Spiderman',
         price: 99,
         owner: {
-          _id: 'u101',
+          id: 'u101',
           fullName: 'Peter Parker',
           imgUrl:
             'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
           level: 'level 2',
           rate: 4.9,
         },
+        category: 'Photography',
         daysToMake: 3,
         description: 'I am actually the real Spiderman...',
         imgUrls: [
@@ -87,15 +118,14 @@ function _createGigs() {
           'https://www.gamespot.com/a/uploads/scale_medium/1582/15828986/3552444-spider%20train%202.jpg',
           'https://www.gamespot.com/a/uploads/screen_kubrick/1582/15828986/3552441-hed.jpg',
         ],
-        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
-        likedByUsers: ['mini-user'],
+        tags: ['logo-design', 'artistic', 'professional', 'accessible'],
       },
       {
         _id: 'g102',
         title: 'I will design your logo',
         price: 49,
         owner: {
-          _id: 'u102',
+          id: 'u102',
           fullName: 'Jane Doe',
           imgUrl:
             'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
@@ -111,8 +141,7 @@ function _createGigs() {
           'https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
           'https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
         ],
-        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
-        likedByUsers: ['mini-user'],
+        tags: ['logo-design', 'artistic', 'professional', 'accessible'],
       },
     ]
     utilService.saveToStorage(STORAGE_KEY, gigs)

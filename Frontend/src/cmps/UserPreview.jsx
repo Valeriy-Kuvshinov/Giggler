@@ -7,7 +7,6 @@ import { userService } from '../services/user.service'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
-  // console.log('userId',owner)
   useEffect(() => {
     loadUserData()
   }, [owner])
@@ -15,31 +14,8 @@ export function UserPreview({ is, owner, children }) {
   function loadUserData() {
     setUser(owner)
   }
-  // function getRatingCount() {
-  //   let countMax = 500
-  //   let countMin = 1
-  //   switch (user.level) {
-  //     case 'level 1':
-  //       countMax = 50
-  //       break
-  //     case 'level 2':
-  //       countMin = 51
-  //       countMax = 250
-  //       break
-  //     case 'level 3':
-  //       countMin = 251
-  //       break
 
-  //     default:
-  //       console.log('NO LEVEL! :(')
-  //       break
-  //   }
-  //   return utilService.getRandomIntInclusive(countMin, countMax)
-  // }
-
-  if (!user) {
-    return null // Or render a loading state if necessary
-  }
+  if (!user)  return null 
 
   return (
     <>
@@ -59,7 +35,9 @@ export function UserPreview({ is, owner, children }) {
         <span className="rating-score">
           <SvgIcon iconName={'star'} />
           <span className="rate b">{user.rate}</span>
-          <span className="rate-count ">{`(${userService.getUserRatingCount(user)})`}</span>
+          <span className="rate-count ">{`(${userService.getUserRatingCount(
+            user
+          )})`}</span>
         </span>
       </div>
     </>

@@ -1,63 +1,39 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { gigService } from '../services/gig.service.local.js'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
-import { loadGigs, saveGig, removeGig } from '../store/gig.actions.js'
+import { loadGigs } from '../store/gig.actions.js'
 
 export function GigIndex() {
-  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+  const { gigs } = useSelector((storeState) => storeState.gigModule)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-  const dispatch = useDispatch()
+  const [currentPage, setCurrentPage] = useState(0)
+  const itemsPerPage = 12
+
+  const startIndex = currentPage * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const displayedGigs = gigs.slice(startIndex, endIndex)
 
   useEffect(() => {
-    loadGigs(filterBy)
-        .catch((err) => {
-            console.log('Oops.. something went wrong, try again', err)
-        })
-}, [filterBy])
+    loadGigs(filterBy).catch((err) => {
+      console.log('Oops.. something went wrong fetching gigs, try again', err)
+    })
+  }, [filterBy])
 
-  function onRemoveGig(gigId) {
-    try {
-      dispatch(removeGig(gigId))
-      showSuccessMsg('Gig removed')
-    } catch (err) {
-      showErrorMsg('Cannot remove Gig')
-    }
-  }
-
-  function onAddGig() {
-    const gig = gigService.getEmptyGig()
-    try {
-      dispatch(saveGig(gig))
-      showSuccessMsg(`Gig added`)
-    } catch (err) {
-      showErrorMsg('Cannot add gig')
-    }
-  }
-
-  function onUpdateGig(gig) {
-    const gigToSave = { ...gig }
-    try {
-      dispatch(saveGig(gigToSave))
-      showSuccessMsg(`Gig updated`)
-    } catch (err) {
-      showErrorMsg('Cannot update gig')
-    }
+  function onSetFilter(filterBy) {
+    setToyFilter(filterBy)
+    setCurrentPage(0)
   }
 
   return (
     <main className="gig-index main-layout">
-      <GigFilter filterBy={filterBy} />
+      <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
       <GigList
+        // gigs={displayedGigs}
         gigs={gigs}
-        onRemoveGig={onRemoveGig}
-        onUpdateGig={onUpdateGig}
-        onAddGig={onAddGig}
       />
-      <Pagination
-      />
+      <Pagination />
     </main>
   )
 }
@@ -81,6 +57,4 @@ export function GigIndex() {
 //   previousLabel={'Previous'}
 //   nextLabel={'Next'}
 //   pageCount={Math.ceil(gigs.length / itemsPerPage)}
-//   onPageChange={({ selected }) => setCurrentPage(selected)}
-//   containerClassName={'pagination'}
-//   activeClassName={'active'}
+//   onPageChange={({ selected }) => setCurrentPage(selected)

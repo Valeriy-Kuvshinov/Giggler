@@ -1,7 +1,6 @@
-import { useParams, useSearchParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
-import home from '../assets/img/svg/home.icon.svg'
-// import { categories as cat } from '../services/gig.service.local.js'
+import SvgIcon from './SvgIcon'
 
 export function GigFilter(filterBy) {
   const [searchParams] = useSearchParams()
@@ -10,28 +9,34 @@ export function GigFilter(filterBy) {
   for (const [key, value] of searchParams) {
     queryParams[key] = value
   }
-
   useEffect(() => {
-    console.log(queryParams.param1)
+    queryParams
+  })
+  useEffect(() => {
+    console.log('search params: ', queryParams)
   }, [searchParams])
-
+  console.log('search after useEffect: ', queryParams)
   return (
-    <>
-      {/* {quaryParams.search ? (
-        <section className="search-param">
-          <span className="title">
-            results for <span className="search-word"></span>
-          </span>
-        </section>
-      ) : (
-        quaryParams.cat && (
-          <section className="explore-category">
-            <img src={home} alt="home-icon" />
+    <main className="gig-filter layout-row">
+      {queryParams &&
+        (queryParams.search ? (
+          <section className="search-param">
+            <h1>{`Results for ${queryParams.search}`}</h1>
           </section>
-        )
-      )} */}
+        ) : (
+          queryParams.cat && (
+            <section className="explore-category">
+               <Link to="/"><SvgIcon iconName={'home'} /></Link>
+              <span className="divider">/</span>
+              <span className="category">
+                {queryParams.cat.replace('---', ' & ').replace('-', ' ')}
+              </span>
+            </section>
+          )
+        ))}
 
+      <span className="search-word"></span>
       <section className="floating-top-bar"></section>
-    </>
+    </main>
   )
 }

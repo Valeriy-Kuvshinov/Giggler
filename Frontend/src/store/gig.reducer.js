@@ -3,10 +3,13 @@ export const REMOVE_GIG = 'REMOVE_GIG'
 export const ADD_GIG = 'ADD_GIG'
 export const UPDATE_GIG = 'UPDATE_GIG'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
-
+export const SET_FILTER = 'SET_FILTER'
+export const SET_PAGE_IDX = 'SET_PAGE_IDX'
+import { gigService } from "../services/gig.service.local"
 const initialState = {
     gigs: [],
-    isLoading: false
+    isLoading: false,
+    filterBy: gigService.getDefaultFilter()
 }
 
 export function gigReducer(state = initialState, action = {}) {
@@ -25,6 +28,12 @@ export function gigReducer(state = initialState, action = {}) {
             return { ...state, gigs }
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }
+             //Filter
+        case SET_FILTER:
+            return { ...state, filterBy: action.filterBy }
+        case SET_PAGE_IDX:
+            return { ...state, filterBy: { ...state.filterBy, pageIdx: action.pageIdx } }
+
         default:
             return state
     }
