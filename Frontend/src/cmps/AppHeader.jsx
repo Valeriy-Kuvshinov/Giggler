@@ -1,18 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 import searchIconSvg from '../assets/img/svg/search.icon.svg'
+import { galleryService } from '../services/gallery.service.js'
 
 export function AppHeader() {
+    const user = useSelector(storeState => storeState.userModule.user)
     const carouselRef = useRef(null)
     const [isAtStart, setIsAtStart] = useState(true)
     const [isAtEnd, setIsAtEnd] = useState(false)
+    const [searchQuery, setSearchQuery] = useState('')
     const location = useLocation()
-    const user = useSelector(storeState => storeState.userModule.user)
+    const navigate = useNavigate()
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
 
@@ -67,7 +70,19 @@ export function AppHeader() {
         }
     }, [])
 
+    function handleSearchChange(e) {
+        const newSearchQuery = e.target.value
+        setSearchQuery(newSearchQuery)
+    }
+
+    function handleSearchSubmit(e) {
+        e.preventDefault()
+        if (!searchQuery) return
+        
+        navigate(`/explore?search=${searchQuery}`)
+    }
     const isHomePage = location.pathname === '/'
+
     return (
         <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''}`}>
             <nav className="main-nav">
@@ -77,9 +92,14 @@ export function AppHeader() {
                     </Link>
 
                     <div className="search-bar flex">
-                        <input type="text" placeholder="What service are you looking for today?" />
+                        <input
+                            type="text"
+                            placeholder="What service are you looking for today?"
+                            value={searchQuery}
+                            onChange={handleSearchChange}
+                        />
                         <button type="submit">
-                            <img src={searchIconSvg} alt="Search" />
+                            <img src={searchIconSvg} alt="Search" onClick={handleSearchSubmit} />
                         </button>
                     </div>
 
@@ -116,7 +136,7 @@ export function AppHeader() {
                 )}
                 <div className="container flex" ref={carouselRef}>
                     {categories.map(category => (
-                        <NavLink key={category} to={`/${category.replace(' ', '-').toLowerCase()}`}>
+                        <NavLink key={category} to={`/explore?cat=${category.replace(' ', '-').toLowerCase()}`}>
                             {category}
                         </NavLink>
                     ))}

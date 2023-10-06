@@ -1,12 +1,21 @@
-import personOne from '../assets/img/jenny.webp'
+import personOne from '../assets/img/jenny.jpg'
+import mediumPersonOne from '../assets/img/medium-jenny.webp'
 import miniPersonOne from '../assets/img/mini-jenny.webp'
-import personTwo from '../assets/img/colin.webp'
+
+import personTwo from '../assets/img/colin.jpg'
+import mediumPersonTwo from '../assets/img/medium-colin.webp'
 import miniPersonTwo from '../assets/img/mini-colin.webp'
-import personThree from '../assets/img/scarlett.webp'
+
+import personThree from '../assets/img/scarlett.jpg'
+import mediumPersonThree from '../assets/img/medium-scarlett.webp'
 import miniPersonThree from '../assets/img/mini-scarlett.webp'
+
 import personFour from '../assets/img/jordan.webp'
+import mediumPersonFour from '../assets/img/medium-jordan.webp'
 import miniPersonFour from '../assets/img/mini-jordan.webp'
+
 import personFive from '../assets/img/christina.webp'
+import mediumPersonFive from '../assets/img/medium-christina.webp'
 import miniPersonFive from '../assets/img/mini-christina.webp'
 
 import metaImg from '../assets/img/meta.logo.png'
@@ -60,11 +69,11 @@ const serviceTexts = [
 ]
 
 const personImages = [
-    { big: personOne, small: miniPersonOne, title: "@Jenny", subtitle: "Children's Voice Over" },
-    { big: personTwo, small: miniPersonTwo, title: "@colinstark", subtitle: "Creative Director" },
-    { big: personThree, small: miniPersonThree, title: "Scarlett", subtitle: "Business Founder" },
-    { big: personFour, small: miniPersonFour, title: "@jordanruncle_", subtitle: "Production Assistant" },
-    { big: personFive, small: miniPersonFive, title: "Christina", subtitle: "Jewelery Shop Owner" }
+    { big: personOne, medium: mediumPersonOne, small: miniPersonOne, backgroundColor: "#0a4226", title: "@Jenny", subtitle: "Children's Voice Over" },
+    { big: personTwo, medium: mediumPersonTwo, small: miniPersonTwo, backgroundColor: "#a7445a", title: "@colinstark", subtitle: "Creative Director" },
+    { big: personThree, medium: mediumPersonThree, small: miniPersonThree, backgroundColor: "#5f1628", title: "Scarlett", subtitle: "Business Founder" },
+    { big: personFour, medium: mediumPersonFour, small: miniPersonFour, backgroundColor: "#0f4926", title: "@jordanruncle_", subtitle: "Production Assistant" },
+    { big: personFive, medium: mediumPersonFive, small: miniPersonFive, backgroundColor: "#ad3906", title: "Christina", subtitle: "Jewelery Shop Owner" }
 ]
 
 

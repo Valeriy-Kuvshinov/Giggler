@@ -1,40 +1,15 @@
 .home-wrapper {
-    .welcome-section {
+    .welcome-wrapper {
         height: 760px;
+        width: 100%;
         color: $clrPrimary1;
         position: relative;
         background-color: $bgColor1;
 
-        // &.person-1 {
-        //     background: url(../../../../img/jenny.webp) no-repeat center center;
-        // }
-
-        // &.person-2 {
-        //     background: url(../../../../img/colin.webp) no-repeat center center;
-        //     background-color: $bgColor1;
-        // }
-
-        // &.person-3 {
-        //     background: url(../../../../img/scarlett.webp) no-repeat center center;
-        //     background-color: $bgColor1;
-        // }
-
-        // &.person-4 {
-        //     background: url(../../../../img/jordan.webp) no-repeat center center;
-        //     background-color: $bgColor1;
-        // }
-
-        // &.person-5 {
-        //     background: url(../../../../img/christina.webp) no-repeat center center;
-        //     background-color: $bgColor1;
-        // }
-
-        background-size: cover;
-
         .person-info {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 30px;
+            right: 30px;
             display: flex;
             align-items: center;
             z-index: 3;
@@ -44,7 +19,8 @@
             width: fit-content;
             padding: 0.5em 1em;
             border: 1px solid #ffffff66;
-            
+            backdrop-filter: blur(30px);
+
             .small-img {
                 width: 20%;
                 transition: opacity 1s;
@@ -52,7 +28,8 @@
 
             .text-content {
                 width: 80%;
-                padding-left: 10px;
+                padding: 0em 0.5em;
+                white-space: nowrap;
 
                 .title,
                 .subtitle {
@@ -70,17 +47,85 @@
             }
         }
 
-        .welcome-text-search {
-            width: 650px;
-            height: fit-content;
-            position: absolute;
-            z-index: 3;
-            top: 50%;
-            font-size: 40px;
-            margin-left: 0.65em;
+        .welcome-section {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            margin: auto;
+            padding: 1em;
 
-            h1 {
-                font-family: Arial, Helvetica, sans-serif;
+            .welcome-text-search {
+                width: 650px;
+                height: fit-content;
+                position: absolute;
+                z-index: 3;
+                top: 50%;
+                font-size: 40px;
+
+                h1 {
+                    font-family: Arial, Helvetica, sans-serif;
+
+                    span {
+                        font-style: italic;
+                        font-family: 'domain-display-medium';
+                        font-weight: 400;
+                    }
+                }
+
+                .search-bar {
+                    width: 100%;
+                    margin-bottom: 0.5em;
+
+                    input[type="text"] {
+                        width: 90%;
+                        padding: 1em;
+                        border-radius: 5px 0px 0px 5px;
+                        border: 1px solid $clrPrimary2;
+                    }
+
+                    button {
+                        margin: 0;
+                        padding: 1em 1.5em;
+                        border-radius: 0px 5px 5px 0px;
+                        border: 1px solid $bgColor3;
+                        border-left: none;
+                        background: $bgColor3;
+
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                }
+
+                div {
+                    align-items: center;
+                    gap: 0.3em;
+                    width: fit-content;
+
+                    a,
+                    h4 {
+                        font-size: 14px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-weight: bold;
+                        margin: 0;
+
+                        &:not(:first-child) {
+                            color: $clrPrimary1;
+                            border: 1px solid;
+                            border-radius: 50px;
+                            padding: 0.1rem 0.7rem;
+
+                            &:hover {
+                                text-decoration: none;
+                                background: $clrPrimary1;
+                                color: $clrSecondary8;
+                                border: none;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,4 +1,14 @@
 .home-wrapper {
+    .welcome-wrapper {
+        .welcome-section {
+            .welcome-text-search {
+                @media(min-width: 1400px) {
+                    margin-left: -0.35em;
+                }
+            }
+        }
+    }
+
     .home-services-section {
         @media (max-width: 1400px) {
             padding: 1em 2em;
