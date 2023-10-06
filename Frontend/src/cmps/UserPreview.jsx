@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { loadUser, loadUsers } from '../store/user.actions'
 import { useEffect, useState } from 'react'
-import star from '../assets/img/svg/star.icon.svg'
 import SvgIcon from '../cmps/SvgIcon'
 import { utilService } from '../services/util.service'
+import { userService } from '../services/user.service'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
@@ -15,27 +15,27 @@ export function UserPreview({ is, owner, children }) {
   function loadUserData() {
     setUser(owner)
   }
-  function getRatingCount() {
-    let countMax = 500
-    let countMin = 1
-    switch (user.level) {
-      case 'level 1':
-        countMax = 50
-        break
-      case 'level 2':
-        countMin = 51
-        countMax = 250
-        break
-      case 'level 3':
-        countMin = 251
-        break
+  // function getRatingCount() {
+  //   let countMax = 500
+  //   let countMin = 1
+  //   switch (user.level) {
+  //     case 'level 1':
+  //       countMax = 50
+  //       break
+  //     case 'level 2':
+  //       countMin = 51
+  //       countMax = 250
+  //       break
+  //     case 'level 3':
+  //       countMin = 251
+  //       break
 
-      default:
-        console.log('NO LEVEL! :(')
-        break
-    }
-    return utilService.getRandomIntInclusive(countMin, countMax)
-  }
+  //     default:
+  //       console.log('NO LEVEL! :(')
+  //       break
+  //   }
+  //   return utilService.getRandomIntInclusive(countMin, countMax)
+  // }
 
   if (!user) {
     return null // Or render a loading state if necessary
@@ -59,7 +59,7 @@ export function UserPreview({ is, owner, children }) {
         <span className="rating-score">
           <SvgIcon iconName={'star'} />
           <span className="rate b">{user.rate}</span>
-          <span className="rate-count ">{`(${getRatingCount()})`}</span>
+          <span className="rate-count ">{`(${userService.getUserRatingCount(user)})`}</span>
         </span>
       </div>
     </>

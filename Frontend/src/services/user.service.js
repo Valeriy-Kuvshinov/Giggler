@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { loadUsers } from '../store/user.actions'
+import { utilService } from './util.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
@@ -14,6 +15,7 @@ export const userService = {
   remove,
   update,
   changeScore,
+  getUserRatingCount,
 }
 
 window.userService = userService
@@ -147,4 +149,27 @@ _createUsers()
     // } catch (error) {
     //   console.log('Error loading users', error)
     // }
+  }
+
+
+  function getUserRatingCount(user) {
+    let countMax = 500
+    let countMin = 1
+    switch (user.level) {
+      case 'level 1':
+        countMax = 50
+        break
+      case 'level 2':
+        countMin = 51
+        countMax = 250
+        break
+      case 'level 3':
+        countMin = 251
+        break
+
+      default:
+        console.log('NO LEVEL! :(')
+        break
+    }
+    return utilService.getRandomIntInclusive(countMin, countMax)
   }
