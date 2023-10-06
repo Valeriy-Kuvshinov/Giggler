@@ -33,8 +33,7 @@
 
                 .title,
                 .subtitle {
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-weight: bold;
+                    font-family: 'macan-bold';
                 }
 
                 .title {
@@ -61,11 +60,12 @@
                 height: fit-content;
                 position: absolute;
                 z-index: 3;
-                top: 50%;
+                top: 30%;
                 font-size: 40px;
 
                 h1 {
-                    font-family: Arial, Helvetica, sans-serif;
+                    font-family: 'macan-bold';
+                    line-height: 48px;
 
                     span {
                         font-style: italic;
@@ -75,19 +75,21 @@
                 }
 
                 .search-bar {
-                    width: 100%;
+                    width: 90%;
                     margin-bottom: 0.5em;
+                    gap: 0;
 
                     input[type="text"] {
                         width: 90%;
-                        padding: 1em;
+                        padding: 0.9em 1em;
                         border-radius: 5px 0px 0px 5px;
-                        border: 1px solid $clrPrimary2;
+                        border: none;
+                        font-size: 16px;
                     }
 
                     button {
                         margin: 0;
-                        padding: 1em 1.5em;
+                        padding: 1em 1.8em;
                         border-radius: 0px 5px 5px 0px;
                         border: 1px solid $bgColor3;
                         border-left: none;
@@ -107,9 +109,12 @@
                     a,
                     h4 {
                         font-size: 14px;
-                        font-family: Arial, Helvetica, sans-serif;
-                        font-weight: bold;
+                        font-family: 'macan-bold';
                         margin: 0;
+
+                        &:first-child {
+                            font-weight: 500;
+                        }
 
                         &:not(:first-child) {
                             color: $clrPrimary1;
@@ -121,7 +126,7 @@
                                 text-decoration: none;
                                 background: $clrPrimary1;
                                 color: $clrSecondary8;
-                                border: none;
+                                border: 1px solid $clrPrimary1;
                             }
                         }
                     }
