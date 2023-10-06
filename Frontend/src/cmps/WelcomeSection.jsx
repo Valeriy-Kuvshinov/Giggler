@@ -6,6 +6,7 @@ import searchIconSvg from '../assets/img/svg/search.icon.svg'
 export function WelcomeSection() {
     const { personImages } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const [showImage, setShowImage] = useState(true)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const [searchQuery, setSearchQuery] = useState('')
     const navigate = useNavigate()
@@ -23,9 +24,12 @@ export function WelcomeSection() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % personImages.length)
+            setShowImage(false)
+            setTimeout(() => {
+                setCurrentImageIndex((prevIndex) => (prevIndex + 1) % personImages.length)
+                setShowImage(true)
+            }, 1000)
         }, 10000)
-
         return () => clearInterval(interval)
     }, [])
 
@@ -49,7 +53,21 @@ export function WelcomeSection() {
     }
     return (
         <main className="welcome-wrapper" style={{ backgroundColor: `${personImages[currentImageIndex].backgroundColor}` }}>
-            <section className='welcome-section' style={{ backgroundImage: `url("${backgroundImage}")` }}>
+            <section className='welcome-section'>
+                <div className="background-content" style={{
+                    backgroundImage: `url("${backgroundImage}")`,
+                    opacity: showImage ? '1' : '0'
+                }}>
+                    {windowWidth >= 900 && (
+                        <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
+                            <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
+                            <div className="text-content">
+                                <div className="title">{personImages[currentImageIndex].title}</div>
+                                <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <div className="welcome-text-search">
                     <h1>Find the right <span>freelance</span> service, right away</h1>
                     <div className="search-bar flex">
@@ -72,15 +90,6 @@ export function WelcomeSection() {
                     </div>
                 </div>
             </section>
-            {windowWidth >= 900 && (
-                <div className="person-info">
-                    <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
-                    <div className="text-content">
-                        <div className="title">{personImages[currentImageIndex].title}</div>
-                        <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
-                    </div>
-                </div>
-            )}
         </main>
     )
 }

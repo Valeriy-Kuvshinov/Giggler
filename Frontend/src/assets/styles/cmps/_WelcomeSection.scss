@@ -20,6 +20,7 @@
             padding: 0.5em 1em;
             border: 1px solid #ffffff66;
             backdrop-filter: blur(30px);
+            transition: opacity 1s;
 
             .small-img {
                 width: 20%;
@@ -27,7 +28,6 @@
             }
 
             .text-content {
-                width: 80%;
                 padding: 0em 0.5em;
                 white-space: nowrap;
 
@@ -50,10 +50,22 @@
             width: 100%;
             max-width: 1400px;
             height: 100%;
-            background-size: cover;
-            background-position: center;
             margin: auto;
             padding: 1em;
+            position: relative;
+            overflow: hidden;
+
+            .background-content {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-size: cover;
+                background-position: right;
+                transition: opacity 1s;
+                z-index: 1;
+            }
 
             .welcome-text-search {
                 width: 650px;
@@ -62,6 +74,7 @@
                 z-index: 3;
                 top: 30%;
                 font-size: 40px;
+                margin-left: 0.4em;
 
                 h1 {
                     font-family: 'macan-bold';
@@ -85,6 +98,10 @@
                         border-radius: 5px 0px 0px 5px;
                         border: none;
                         font-size: 16px;
+
+                        &:focus{
+                            outline: none;
+                        }
                     }
 
                     button {
