@@ -2,12 +2,12 @@ import personOne from '../assets/img/jenny.webp'
 import miniPersonOne from '../assets/img/mini-jenny.webp'
 import personTwo from '../assets/img/colin.webp'
 import miniPersonTwo from '../assets/img/mini-colin.webp'
-import personThree from '../assets/img/christina.webp'
-import miniPersonThree from '../assets/img/mini-colin.webp'
-import personFour from '../assets/img/scarlett.webp'
-import miniPersonFour from '../assets/img/mini-scarlett.webp'
-import personFive from '../assets/img/jordan.webp'
-import miniPersonFive from '../assets/img/mini-jordan.webp'
+import personThree from '../assets/img/scarlett.webp'
+import miniPersonThree from '../assets/img/mini-scarlett.webp'
+import personFour from '../assets/img/jordan.webp'
+import miniPersonFour from '../assets/img/mini-jordan.webp'
+import personFive from '../assets/img/christina.webp'
+import miniPersonFive from '../assets/img/mini-christina.webp'
 
 import metaImg from '../assets/img/meta.logo.png'
 import netflixImg from '../assets/img/netflix.logo.png'
@@ -60,11 +60,11 @@ const serviceTexts = [
 ]
 
 const personImages = [
-    { big: personOne, small: miniPersonOne },
-    { big: personTwo, small: miniPersonTwo },
-    { big: personThree, small: miniPersonThree },
-    { big: personFour, small: miniPersonFour },
-    { big: personFive, small: miniPersonFive }
+    { big: personOne, small: miniPersonOne, title: "@Jenny", subtitle: "Children's Voice Over" },
+    { big: personTwo, small: miniPersonTwo, title: "@colinstark", subtitle: "Creative Director" },
+    { big: personThree, small: miniPersonThree, title: "Scarlett", subtitle: "Business Founder" },
+    { big: personFour, small: miniPersonFour, title: "@jordanruncle_", subtitle: "Production Assistant" },
+    { big: personFive, small: miniPersonFive, title: "Christina", subtitle: "Jewelery Shop Owner" }
 ]
 
 

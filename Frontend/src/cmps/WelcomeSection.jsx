@@ -13,16 +13,18 @@ export function WelcomeSection() {
     }, [])
 
     return (
-        <section className='welcome-section'>
-            <div className='welcome-text-search'>
+        <section className="welcome-section" style={{ backgroundImage: `url(${personImages[currentImageIndex].big})` }}>
+            <div className="welcome-text-search">
                 <h1>Find the right freelance service, right away</h1>
+                <h4>Popular:</h4>
             </div>
-            {personImages.map((img, index) => (
-                <div key={index} className={`background-image ${index === currentImageIndex ? 'active' : ''}`} style={{ backgroundImage: `url(${img.big})` }}></div>
-            ))}
-            {personImages.map((img, index) => (
-                <img key={index} src={img.small} alt="Small Person" className={`small-img ${index === currentImageIndex ? 'active' : ''}`} />
-            ))}
+            <div className="person-info">
+                <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
+                <div className="text-content">
+                    <div className="title">{personImages[currentImageIndex].title}</div>
+                    <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
+                </div>
+            </div>
         </section>
     )
 }

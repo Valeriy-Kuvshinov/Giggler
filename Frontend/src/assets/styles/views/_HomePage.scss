@@ -3,6 +3,7 @@
         background: $clrSecondary1;
         padding: 1em;
         position: relative;
+        margin-bottom: 4em;
 
         .companies {
             justify-content: center;
@@ -20,7 +21,7 @@
 
             img {
                 width: auto;
-                height: 50px;
+                height: auto;
             }
         }
     }
