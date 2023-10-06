@@ -1,21 +1,21 @@
 import personOne from '../assets/img/jenny.jpg'
-import mediumPersonOne from '../assets/img/medium-jenny.webp'
+import mediumPersonOne from '../assets/img/medium-jenny.jpg'
 import miniPersonOne from '../assets/img/mini-jenny.webp'
 
 import personTwo from '../assets/img/colin.jpg'
-import mediumPersonTwo from '../assets/img/medium-colin.webp'
+import mediumPersonTwo from '../assets/img/medium-colin.jpg'
 import miniPersonTwo from '../assets/img/mini-colin.webp'
 
 import personThree from '../assets/img/scarlett.jpg'
-import mediumPersonThree from '../assets/img/medium-scarlett.webp'
+import mediumPersonThree from '../assets/img/medium-scarlett.jpg'
 import miniPersonThree from '../assets/img/mini-scarlett.webp'
 
-import personFour from '../assets/img/jordan.webp'
-import mediumPersonFour from '../assets/img/medium-jordan.webp'
+import personFour from '../assets/img/jordan.jpg'
+import mediumPersonFour from '../assets/img/medium-jordan.jpg'
 import miniPersonFour from '../assets/img/mini-jordan.webp'
 
-import personFive from '../assets/img/christina.webp'
-import mediumPersonFive from '../assets/img/medium-christina.webp'
+import personFive from '../assets/img/christina.jpg'
+import mediumPersonFive from '../assets/img/medium-christina.jpg'
 import miniPersonFive from '../assets/img/mini-christina.webp'
 
 import metaImg from '../assets/img/meta.logo.png'
