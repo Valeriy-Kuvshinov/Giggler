@@ -1,71 +1,92 @@
 // Font Sizes
 .fs12 {
-    font-size: rem(12px);
+  font-size: rem(12px);
 }
 
 .fs14 {
-    font-size: rem(14px);
+  font-size: rem(14px);
 }
 
 .fs18 {
-    font-size: rem(18px);
+  font-size: rem(18px);
 }
 
 .fs20 {
-    font-size: rem(20px);
+  font-size: rem(20px);
 }
 
 .fs24 {
-    font-size: rem(24px);
+  font-size: rem(24px);
 }
 
 .fs28 {
-    font-size: rem(28px);
+  font-size: rem(28px);
 }
 
 .fs30 {
-    font-size: rem(30px);
+  font-size: rem(30px);
 }
 
 // flex helpers
 .flex {
-    display: flex;
+  display: flex;
 
-    >*.full {
-        flex: 1;
-    }
+  > *.full {
+    flex: 1;
+  }
 
-    &.column {
-        flex-direction: column;
-    }
+  &.column {
+    flex-direction: column;
+  }
 
-    &.row {
-        flex-direction: row;
-    }
+  &.row {
+    flex-direction: row;
+  }
 
-    &.justify-center {
-        justify-content: center;
-    }
+  &.justify-center {
+    justify-content: center;
+  }
 
-    &.align-center {
-        align-items: center;
-    }
+  &.align-center {
+    align-items: center;
+  }
 }
 
 // grid helper
 .grid {
-    display: grid;
+  display: grid;
 }
 
 // Media helpers
 .square-ratio {
-    @include aspect-ratio(1, 1);
+  @include aspect-ratio(1, 1);
 }
 
 .video-ratio {
-    @include aspect-ratio(16, 9);
+  @include aspect-ratio(16, 9);
 }
 
 .portrait-ratio {
-    @include aspect-ratio(9, 16);
+  @include aspect-ratio(9, 16);
+}
+
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.b {
+  font-family: macan-bold;
+}
+
+.black {
+  color: $clrPrimary2;
+}
+
+i {
+    display: flex;
+    align-items: center;
 }

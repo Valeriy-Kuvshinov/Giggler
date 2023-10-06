@@ -2,6 +2,7 @@ import { HomePage } from './pages/HomePage.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { UserProfile } from './pages/UserProfile.jsx'
+import { GigPurchase } from './pages/GigPurchase.jsx'
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         path: 'profile',
         component: <UserProfile />,
         label: 'profile'
+    },
+    {
+        path: 'purchase',
+        component: <GigPurchase />,
+        label: 'purchase'
     }
 ]
 
