@@ -23,7 +23,7 @@ export function UserPreview({ is, owner, children }) {
         <div className="avatar-fullname">
           <img
             className="avatar"
-            src={user.imgUrl}
+            src={user.avatar}
             alt={`${user.fullName} gig avatar`}
           />
           <span className="full-name">{user.fullName}</span>
@@ -34,7 +34,7 @@ export function UserPreview({ is, owner, children }) {
       <div className="user-rating">
         <span className="rating-score">
           <SvgIcon iconName={'star'} />
-          <span className="rate b">{user.rate}</span>
+          <span className="rate b">{user.rating}</span>
           <span className="rate-count ">{`(${userService.getUserRatingCount(
             user
           )})`}</span>

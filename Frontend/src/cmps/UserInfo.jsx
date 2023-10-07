@@ -20,7 +20,7 @@ export function UserInfo(){
 
     return (<section className='user-info'>
         <div className='info-block'>
-            <img src={users[1].imgUrl}/>
+            <img src={users[1].avatar}/>
             <h2>{users[1].fullName}</h2>
             <div className='into-line'>
                 <span><img src={location}/> Country</span>

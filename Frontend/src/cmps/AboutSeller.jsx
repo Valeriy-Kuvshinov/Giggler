@@ -1,5 +1,5 @@
 export function AboutSeller({ gig }) {
-  const rating = gig.owner.rate
+  const rating = gig.owner.rating
   var stars = ''
   for (var i = 0; i < rating; i++) {
     stars += '<img src=/src/assets/img/svg/star.icon.svg />'
@@ -13,7 +13,7 @@ export function AboutSeller({ gig }) {
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
-        <img className="seller-picture" src={gig.owner.imgUrl} />
+        <img className="seller-picture" src={gig.owner.avatar} />
 
         <div>
           <p>{gig.owner.fullName}</p>

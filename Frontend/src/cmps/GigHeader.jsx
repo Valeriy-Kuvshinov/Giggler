@@ -1,6 +1,6 @@
 
 export function GigHeader({ gig }) {
-    const rating = gig.owner.rate
+    const rating = gig.owner.rating
     var stars = ''
     for (var i = 0; i < rating; i++) {
         stars += '<img src=/src/assets/img/svg/star.icon.svg />'
@@ -13,7 +13,7 @@ export function GigHeader({ gig }) {
         <section style={{ overflow: 'hidden' }} className="gig-header">
             <h2>{gig.title}</h2>
             <div className="rating">
-                <img className='seller-picture' src={gig.owner.imgUrl} />
+                <img className='seller-picture' src={gig.owner.avatar} />
                 <p>{gig.owner.fullName}</p>
                 |
                 <p className="stars">
