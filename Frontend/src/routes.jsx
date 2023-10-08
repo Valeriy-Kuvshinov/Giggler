@@ -17,7 +17,8 @@ const routes = [
     { path: '/gig/edit/:id', component: GigEdit },
     // { path: '/purchase/', component: GigPurchase },
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
-    { path: '/login', component: LoginSignup, label: 'Login' }
+    { path: '/login', component: LoginSignup, label: 'Login' },
+    { path: '/join', component: LoginSignup, label: 'Signup' }
 ]
 
 export default routes

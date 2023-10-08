@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { login, logout, signup } from '../store/user.actions.js'
+import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 
@@ -13,24 +13,6 @@ export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
-
-    async function onLogin(credentials) {
-        try {
-            const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.fullName}`)
-        } catch (err) {
-            showErrorMsg('Cannot login')
-        }
-    }
-
-    async function onSignup(credentials) {
-        try {
-            const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.fullName}`)
-        } catch (err) {
-            showErrorMsg('Cannot signup')
-        }
-    }
 
     async function onLogout() {
         try {
@@ -88,8 +70,8 @@ export function AppHeader() {
                             </>
                         ) : (
                             <>
-                                <li><Link to="#" onClick={onLogin}>Sign In</Link></li>
-                                <li><Link to="#" onClick={onSignup}>Join</Link></li>
+                                <li><Link to="/login">Sign In</Link></li>
+                                <li><Link to="/join">Join</Link></li>
                             </>
                         )}
                     </ul>
