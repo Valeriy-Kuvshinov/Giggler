@@ -6,16 +6,18 @@ import { useState, useEffect } from 'react'
 
 import { orderService } from "../services/order.service.local"
 import { gigService } from "../services/gig.service.local"
-import { userService } from "../services/user.service"
 
 export function GigPurchase() {
-  const [ user, setUser ] = useState(null)
   const [ gig, setGig ] = useState(null)
   const params = useParams()
   const id = params.id
 
+  useEffect(()=>{
+    gigService.getById(id).then((gig)=>setGig(gig))
+  },[])
   function createOrder(){
-
+    const order=orderService.createOrder('u101',gig.owner.id,gig._id,gig.price)
+    orderService.save(order)
   }
 
   return (
