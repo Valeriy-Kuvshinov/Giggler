@@ -3,7 +3,10 @@ import icon from '../assets/img/svg/user.icon.svg'
 import location from '../assets/img/svg/location.icon.svg'
 
 import { useState, useEffect } from 'react'
-import {userService} from "../services/user.service.js"
+import { useSelector } from 'react-redux'
+
+import { userService } from "../services/user.service.js"
+
 
 export function UserInfo(){
 
