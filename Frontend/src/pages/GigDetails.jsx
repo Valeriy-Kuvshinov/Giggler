@@ -32,7 +32,7 @@ export function GigDetails() {
       <GigHeader gig={gig} />
       <AboutGig gig={gig}/>
       <AboutSeller gig={gig}/>
-      <GigReviews/>
+      {(gig.owner.reviews)&&<GigReviews reviews={gig.owner.reviews}/>}
       </div>
       <GigOrder gig={gig}/>
       </section>

@@ -118,7 +118,7 @@ function getLoggedinUser() {
 
 const users = [
     {
-      _id: 'u101',
+      _id: 'u001',
       fullName: 'Peter Parker',
       imgUrl:
         'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
@@ -129,16 +129,27 @@ const users = [
       isAdmin: false
     },
     {
-      _id: 'u102',
+      _id: 'u002',
       fullName: 'Jane Doe',
       username: 'jane123',
       password: '123',
       imgUrl:
         'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
       level: 'level 1',
-      rate: '4.9',
+      rate: '4.5',
       isAdmin: true
     },
+    {
+      _id: 'u003',
+      fullName: 'Catty cat',
+      username: 'cat123',
+      password: '123',
+      imgUrl:
+        'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
+      level: 'level 3',
+      rate: '4.6',
+      isAdmin: false
+    }
   ]
 _createUsers()
 

@@ -1,0 +1,17 @@
+.gig-reviews{
+    background-color: white;
+}
+.gig-review{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-block-start: 1px solid black;
+    margin-block-end: 10px;
+    .stars3{
+        img{
+            height: 14px;
+            width: 14px;
+        }
+        margin: 0;
+    }
+}
