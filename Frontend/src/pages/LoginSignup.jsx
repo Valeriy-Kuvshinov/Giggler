@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { ImgUploader } from '../cmps/ImgUploader.jsx'
 import { login, signup, loadUsers } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
@@ -7,6 +7,7 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const location = useLocation()
+    const navigate = useNavigate()
     const initialIsSignup = location.pathname === '/join'
     const [isSignup, setIsSignup] = useState(initialIsSignup)
     const [users, setUsers] = useState([])
@@ -35,6 +36,7 @@ export function LoginSignup() {
         if (!credentials.username) return
         try {
             await login(credentials)
+            navigate("/")
         } catch (err) {
             showErrorMsg('Cannot login')
         }
@@ -46,6 +48,7 @@ export function LoginSignup() {
         if (!credentials.username || !credentials.password || !credentials.fullname) return
         try {
             await signup(credentials)
+            navigate("/")
         } catch (err) {
             showErrorMsg('Cannot signup')
         }
