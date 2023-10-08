@@ -41,6 +41,8 @@
     .main-nav {
         .search-bar {
             width: 35%;
+            height: fit-content;
+            align-self: center;
 
             input[type="text"] {
                 width: 90%;
