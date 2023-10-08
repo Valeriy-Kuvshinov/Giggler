@@ -1,7 +1,33 @@
 import SvgIcon from './SvgIcon'
 import visa from '../assets/img/svg/visa.icon.svg'
 
-export function PaymentDetails(){
+export function PaymentDetails({createOrder}){
+
+    function checkInfo(){
+        if(document.getElementById('crdNum').value.length!==16){
+            alert('enter a valid credit card number')
+            return
+        }
+        else if(document.getElementById('expDate').valueAsNumber<Date.now()){
+            alert('please use a none expired credit card')
+            return
+        }
+        else if(document.getElementById('pinCode').value<100||document.getElementById('pinCode').value>=1000){
+            alert('please use a none expired credit card')
+            return
+        }
+        else if(document.getElementById('firstName').value===''||document.getElementById('lastName').value===''){
+            alert('please enter your name')
+            return
+        }
+        console.log('test')
+        return true
+    }
+
+    function createOrder(){
+        return createOrder(checkInfo)
+    }
+
     return (<section className='payment-details'>
         <h2>Payment Option</h2>
         <div className='credit-type'>
@@ -29,8 +55,9 @@ export function PaymentDetails(){
         </div>
         <div className='buyer-info'>
             <span>Last Name</span>
-            <input type="text" id="LastName"/>
+            <input type="text" id="lastName"/>
         </div>
         </div>
+        {/* <button onClick={checkInfo}>check</button> */}
         </section>)
 }

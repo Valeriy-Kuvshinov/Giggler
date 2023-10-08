@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-
-import { loadUser } from '../store/user.actions'
-import { store } from '../store/store'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { loadUser } from '../store/user.actions.js'
+import { store } from '../store/store.js'
+import { showSuccessMsg } from '../services/event-bus.service.js'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from '../services/socket.service'
 
 export function UserDetails() {
-
   const params = useParams()
   const user = useSelector(storeState => storeState.userModule.watchedUser)
 
@@ -21,7 +19,6 @@ export function UserDetails() {
     return () => {
       socketService.off(SOCKET_EVENT_USER_UPDATED, onUserUpdate)
     }
-
   }, [params.id])
 
   function onUserUpdate(user) {

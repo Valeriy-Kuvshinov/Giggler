@@ -23,7 +23,7 @@ function Projects() {
     const [projs, setProjs] = useState(['Puki Proj', 'Muki Proj'])
     const projList = projs.map((proj, idx) => (
         <article className="proj-preview" key={proj} onClick={(ev) => {
-            ev.stopPropagation();
+            ev.stopPropagation()
             setProjs(projs.filter(p => p !== proj))
         }}>
             {proj}
@@ -33,7 +33,7 @@ function Projects() {
         <h2>Projects</h2>
         {projList}
         <button onClick={ev => {
-            ev.stopPropagation();
+            ev.stopPropagation()
             setProjs([...projs, 'Babu Proj' + Date.now() % 100])
         }}>Add</button>
     </section>

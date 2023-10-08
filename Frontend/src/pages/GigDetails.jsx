@@ -1,16 +1,13 @@
-import { GigHeader } from "../cmps/GigHeader"
-import { AboutGig } from "../cmps/AboutGig"
-import { AboutSeller } from "../cmps/AboutSeller"
-import { GigOrder } from "../cmps/GigOrder"
-import { GigReviews } from "../cmps/GigReviews"
-
-import { gigService } from "../services/gig.service.local"
-
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { GigHeader } from "../cmps/GigHeader.jsx"
+import { AboutGig } from "../cmps/AboutGig.jsx"
+import { AboutSeller } from "../cmps/AboutSeller.jsx"
+import { GigOrder } from "../cmps/GigOrder.jsx"
+import { GigReviews } from "../cmps/GigReviews.jsx"
+import { gigService } from "../services/gig.service.local.js"
 
 export function GigDetails() {
-
    const params = useParams()
    const [ gig, setGig ] = useState(null)
 

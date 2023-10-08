@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { showErrorMsg, showSuccessMsg, showUserMsg } from '../services/event-bus.service'
-import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service'
+import { showErrorMsg, showSuccessMsg, showUserMsg } from '../services/event-bus.service.js'
+import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.service.js'
 
 import { loadReviews, addReview, removeReview, getActionAddReview } from '../store/review.actions'
 import { loadUsers } from '../store/user.actions'

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
-export function PaymentInfo({gigId}){
+export function PaymentInfo({gigId,createOrder}){
 
     const [gig,setGig]=useState(null)
 
@@ -15,7 +15,7 @@ export function PaymentInfo({gigId}){
     if(gig===null) return <div>loading...</div>
 
     function onConfirmPayment(){
-
+        createOrder()
     }
 
     const gigQualities=[{title:'1 concept included'},
