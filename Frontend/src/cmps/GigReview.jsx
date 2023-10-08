@@ -7,14 +7,12 @@ export function GigReview({review}){
         stars += '<img src=/src/assets/img/svg/star.icon.svg />'
     }
     function load() {
-        console.log(rating)
-        document.querySelector(".stars3").innerHTML = stars + `${rating}` 
+        document.getElementById(`${review.id}`).innerHTML = stars + `${rating}` 
     }
     setTimeout(load, 10)
-    console.log('review : ',review)
     return (<section className="gig-review">
             <span>{review.userName}</span>
-            <p className="stars3"></p>
+            <p className={`stars3`} id={review.id}>{rating}</p>
             <span>{review.text}</span>
             </section>)
 }
