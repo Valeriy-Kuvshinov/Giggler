@@ -6,7 +6,8 @@ export function GigHeader({ gig }) {
         stars += '<img src=/src/assets/img/svg/star.icon.svg />'
     }
     function load() {
-        document.querySelector(".stars").innerHTML = stars + `${rating}` + `(${gig.likedByUsers.length})`
+        document.querySelector(".stars").innerHTML = stars + `${rating}` 
+        // + `(${gig.likedByUsers.length})`
     }
     setTimeout(load, 10)
     return (
