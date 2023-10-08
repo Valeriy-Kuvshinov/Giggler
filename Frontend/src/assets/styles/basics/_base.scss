@@ -67,8 +67,11 @@ button{
 
 .btn {
   text-decoration: none;
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  gap: .5em;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid #e4e5e7;
   border-radius: rem(8px);
   box-sizing: border-box;

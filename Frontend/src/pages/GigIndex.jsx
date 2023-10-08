@@ -16,10 +16,17 @@ export function GigIndex() {
   const displayedGigs = gigs.slice(startIndex, endIndex)
 
   useEffect(() => {
-    loadGigs(filterBy).catch((err) => {
+    try{
+      loadsGigs()
+    }
+    catch(err) {
       console.log('Oops.. something went wrong fetching gigs, try again', err)
-    })
+    }
   }, [filterBy])
+
+  async function loadsGigs(){
+    await loadGigs(filterBy)
+  }
 
   function onSetFilter(filterBy) {
     setToyFilter(filterBy)

@@ -13,9 +13,7 @@ const routes = [
     { path: '/explore/', component: GigIndex, label: 'Explore' },
     { path: '/gig/:id', component: GigDetails, label: 'Details' },
     { path: '/profile/', component: UserProfile, label: 'profile' },
-    // { path: '/gig/edit', component: GigEdit },
     { path: '/gig/edit/:id', component: GigEdit },
-    // { path: '/purchase/', component: GigPurchase },
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
     { path: '/login', component: LoginSignup, label: 'Login' },
     { path: '/join', component: LoginSignup, label: 'Signup' }

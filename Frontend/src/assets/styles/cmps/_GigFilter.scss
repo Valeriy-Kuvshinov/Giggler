@@ -1,6 +1,5 @@
-.gig-filter {
+.gig-results-title {
   display: grid;
-  position: relative;
   .search-param {
     h1 {
       font-size: rem(28px);
@@ -25,10 +24,15 @@
       margin: 0 0.5em;
     }
   }
+}
+.gig-filter {
+  position: sticky;
+  z-index: 13;
+  top: 0;
+  width: 100%;
+  background-color: #fff;
 
   .floating-top-bar {
-    position: sticky;
-    top: 0;
     margin-block-start: 1em;
     .filter-nav {
       padding: 0 2em;
@@ -37,13 +41,24 @@
       .btn {
         span {
           i {
-            width: rem(12px);
-            height: rem(12px);
+            transition: all 0.24s cubic-bezier(0.215, 0.61, 0.355, 1);
           }
-
-          margin: rem(12px);
         }
       }
     }
   }
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1em;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 9px 20px -13px #74767ed9;
+  }
 }
+// .gig-filter::after {
+//   content: '';
+//   display: block;
+//   height: 1em;
+// }

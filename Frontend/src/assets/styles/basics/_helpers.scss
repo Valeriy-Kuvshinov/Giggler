@@ -85,6 +85,9 @@
 .black {
   fill: $clrPrimary2;
 }
+.rotate {
+  transform: rotate(-180deg);
+}
 
 // i {
 //     svg{
