@@ -1,4 +1,6 @@
 .gig-filter {
+  display: grid;
+  position: relative;
   .search-param {
     h1 {
       font-size: rem(28px);
@@ -25,6 +27,8 @@
   }
 
   .floating-top-bar {
+    position: sticky;
+    top: 0;
     margin-block-start: 1em;
     .filter-nav {
       padding: 0 2em;

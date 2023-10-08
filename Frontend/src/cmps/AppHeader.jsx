@@ -13,7 +13,7 @@ export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
-
+    
     async function onLogout() {
         try {
             await logout()
@@ -61,7 +61,6 @@ export function AppHeader() {
                                 <li className="user-info">
                                     <Link to={`user/${user._id}`}>
                                         {user.imgUrl && <img src={user.imgUrl} />}
-                                        {user.fullName}
                                     </Link>
                                 </li>
                                 <li>
