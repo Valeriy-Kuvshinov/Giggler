@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react'
-import { userService } from '../services/user.service.js'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router'
 import { ImgUploader } from '../cmps/ImgUploader.jsx'
+import { login, signup, loadUsers } from '../store/user.actions.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
-export function LoginSignup(props) {
+export function LoginSignup() {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-    const [isSignup, setIsSignup] = useState(false)
+    const location = useLocation()
+    const initialIsSignup = location.pathname === '/join'
+    const [isSignup, setIsSignup] = useState(initialIsSignup)
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        loadUsers()
+        async function fetchUsers() {
+            const loadedUsers = await loadUsers()
+            setUsers(loadedUsers)
+        }
+        fetchUsers()
     }, [])
-
-    async function loadUsers() {
-        const users = await userService.getUsers()
-        setUsers(users)
-    }
 
     function clearState() {
         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
@@ -27,17 +30,25 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
-    function onLogin(ev = null) {
+    async function handleLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
+        try {
+            await login(credentials)
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
         clearState()
     }
 
-    function onSignup(ev = null) {
+    async function handleSignup(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
+        try {
+            await signup(credentials)
+        } catch (err) {
+            showErrorMsg('Cannot signup')
+        }
         clearState()
     }
 
@@ -54,54 +65,59 @@ export function LoginSignup(props) {
             <p>
                 <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Join' : 'Sign In'}</button>
             </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    placeholder="Username"
-                    onChange={handleChange}
-                    required
-                    autoFocus
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    placeholder="Password"
-                    onChange={handleChange}
-                    required
-                />
-            </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="text"
-                        name="username"
-                        value={credentials.username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <ImgUploader onUploaded={onUploaded} />
-                </form>}
-            </div>
+            <form onSubmit={isSignup ? handleSignup : handleLogin}>
+                {!isSignup && (
+                    <>
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                            autoFocus
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                    </>
+                )}
+                {isSignup && (
+                    <div className="signup-section">
+                        <input
+                            type="text"
+                            name="fullname"
+                            value={credentials.fullname}
+                            placeholder="Fullname"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                        <ImgUploader onUploaded={onUploaded} />
+                    </div>
+                )}
+                <button type="submit">{isSignup ? 'Sign Up' : 'Log In'}</button>
+            </form>
         </div>
     )
 }
