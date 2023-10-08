@@ -72,49 +72,21 @@
                 height: fit-content;
                 position: absolute;
                 z-index: 3;
-                top: 30%;
+                top: 35%;
                 font-size: 40px;
                 margin-left: 0.4em;
 
                 h1 {
-                    font-family: 'macan-bold';
+                    font-family: "macan-regular";
                     line-height: 48px;
+                    font-weight: bold;
+                    font-size: 40px;
+                    max-width: 500px;
 
                     span {
                         font-style: italic;
                         font-family: 'domain-display-medium';
-                        font-weight: 400;
-                    }
-                }
-
-                .search-bar {
-                    width: 90%;
-                    margin-bottom: 0.5em;
-                    gap: 0;
-
-                    input[type="text"] {
-                        width: 90%;
-                        padding: 0.9em 1em;
-                        border-radius: 5px 0px 0px 5px;
-                        border: none;
-                        font-size: 16px;
-
-                        &:focus{
-                            outline: none;
-                        }
-                    }
-
-                    button {
-                        margin: 0;
-                        padding: 1em 1.8em;
-                        border-radius: 0px 5px 5px 0px;
-                        border: 1px solid $bgColor3;
-                        border-left: none;
-                        background: $bgColor3;
-
-                        &:hover {
-                            opacity: 0.8;
-                        }
+                        font-weight: 500;
                     }
                 }
 

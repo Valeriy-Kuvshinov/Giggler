@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from '../services/gallery.service.js'
-import searchIconSvg from '../assets/img/svg/search.icon.svg'
+import { SearchBar } from './SearchBar.jsx'
 
 export function WelcomeSection() {
     const { personImages } = galleryService
@@ -70,17 +70,12 @@ export function WelcomeSection() {
                 </div>
                 <div className="welcome-text-search">
                     <h1>Find the right <span>freelance</span> service, right away</h1>
-                    <div className="search-bar flex">
-                        <input
-                            type="text"
-                            placeholder="Search for any service..."
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                        />
-                        <button type="submit">
-                            <img src={searchIconSvg} alt="Search" onClick={handleSearchSubmit} />
-                        </button>
-                    </div>
+                    <SearchBar
+                        placeholder="Search for any service..."
+                        searchQuery={searchQuery}
+                        onSearchChange={handleSearchChange}
+                        onSearchSubmit={handleSearchSubmit}
+                    />
                     <div className='flex row'>
                         <h4>Popular:</h4>
                         <a href="">Website Design</a>
