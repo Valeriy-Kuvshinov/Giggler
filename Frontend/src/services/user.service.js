@@ -1,6 +1,5 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
-import { loadUsers } from '../store/user.actions'
 import { utilService } from './util.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
@@ -14,10 +13,8 @@ export const userService = {
   getById,
   remove,
   update,
-  changeScore,
   getUserRatingCount,
 }
-
 window.userService = userService
 
 function getUsers() {
@@ -36,12 +33,11 @@ function remove(userId) {
   // return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id, score }) {
+async function update({ _id }) {
   const user = await storageService.get('user', _id)
-  user.score = score
   await storageService.put('user', user)
 
-  // const user = await httpService.put(`user/${_id}`, {_id, score})
+  // const user = await httpService.put(`user/${_id}`, {_id})
   // // Handle case in which admin updates other user's details
   if (getLoggedinUser()._id === user._id) saveLocalUser(user)
   return user
@@ -57,7 +53,6 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
- 
   const user = await storageService.post('user', userCred)
   // const user = await httpService.post('auth/signup', userCred)
   return saveLocalUser(user)
@@ -68,20 +63,11 @@ async function logout() {
   // return await httpService.post('auth/logout')
 }
 
-async function changeScore(by) {
-  const user = getLoggedinUser()
-  if (!user) throw new Error('Not loggedin')
-  user.score = user.score + by || by
-  await update(user)
-  return user.score
-}
-
 function saveLocalUser(user) {
   user = {
     _id: user._id,
     fullname: user.fullname,
-    imgUrl: user.imgUrl,
-    score: user.score,
+    imgUrl: user.imgUrl
   }
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
@@ -91,92 +77,79 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-// ;(async () => {
-//   await userService.signup({
-//     _id: 'u101',
-//     fullName: 'Peter Parker',
-//     imgUrl:
-//       'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
-//     username: 'peter123',
-//     password: '123',
-//     level: 'level 2',
-//     rating: 4.9,
-//     isAdmin: false,
-//   })
-//   await userService.signup({
-//     _id: 'u102',
-//     fullName: 'Jane Doe',
-//     username: 'jane123',
-//     password: '123',
-//     imgUrl:
-//       'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
-//     level: 'level 1',
-//     rate: 4.9,
-//     isAdmin: true
-//   })
-// })
-
 const users = [
-    {
-      _id: 'u001',
-      fullName: 'Peter Parker',
-      imgUrl:
-        'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
-      username: 'peter123',
-      password: '123',
-      level: 'level 2',
-      rating: '4.9',
-      isAdmin: false
-    },
-    {
-      _id: 'u002',
-      fullName: 'Jane Doe',
-      username: 'jane123',
-      password: '123',
-      imgUrl:
-        'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
-      level: 'level 1',
-      rate: '4.5',
-      isAdmin: true
-    },
-    {
-      _id: 'u003',
-      fullName: 'Catty cat',
-      username: 'cat123',
-      password: '123',
-      imgUrl:
-        'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
-      level: 'level 3',
-      rate: '4.6',
-      isAdmin: false
-    }
-  ]
+  {
+    _id: 'u101',
+    fullName: 'Peter Parker',
+    imgUrl:
+      'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
+    username: 'peter123',
+    password: '123',
+    level: 'level 2',
+    rating: '4.9',
+    isAdmin: false
+  },
+  {
+    _id: 'u102',
+    fullName: 'Jane Doe',
+    username: 'jane123',
+    password: '123',
+    imgUrl:
+      'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
+    level: 'level 1',
+    rate: '4.9',
+    isAdmin: true
+  },
+]
 _createUsers()
 
-  async function _createUsers() { 
-    localStorage.setItem('user',JSON.stringify(users))
-    // try {
-    //   await loadUsers()
-    // } catch (error) {
-    //   console.log('Error loading users', error)
-    // }
+async function _createUsers() {
+  localStorage.setItem('user', JSON.stringify(users))
+  // try {
+  //   await loadUsers()
+  // } catch (error) {
+  //   console.log('Error loading users', error)
+  // }
+}
+
+function getUserRatingCount(user) {
+  let countMax = 500
+  let countMin = 1
+  switch (user.level) {
+    case 'level 1':
+      countMax = 50
+      break
+    case 'level 2':
+      countMin = 51
+      countMax = 250
+      break
+    case 'level 3':
+      countMin = 251
+      break
+
+    default:
+      console.log('NO LEVEL! :(')
+      break
   }
+<<<<<<< HEAD
 
 
   function getUserRatingCount(user) {
-    let countMax = 500
+    let countMax = 1000
     let countMin = 1
     switch (user.level) {
-      case 'level 1':
-        countMax = 50
+      case 'Level 1':
+        countMax = 100
         break
-      case 'level 2':
-        countMin = 51
-        countMax = 250
+      case 'Level 2':
+        countMin = 101
+        countMax = 500
         break
-      case 'level 3':
-        countMin = 251
+      case 'Level 3':
+        countMin = 501
         break
+      case 'Pro Talent':
+        return '+1k';
 
       default:
         console.log('NO LEVEL! :(')
@@ -184,3 +157,7 @@ _createUsers()
     }
     return utilService.getRandomIntInclusive(countMin, countMax)
   }
+=======
+  return utilService.getRandomIntInclusive(countMin, countMax)
+}
+>>>>>>> f007f687d9e59a7cb782b3d18ab64160531d44e8

@@ -1,6 +1,6 @@
 import { surveyService } from "../services/survey.service.js"
-
 import { useState, useEffect } from 'react'
+
 export function SurveyIndex() {
     const [survey, setSurvey] = useState(null)
     const [answersMap, setAnswersMap] = useState({})
@@ -12,8 +12,6 @@ export function SurveyIndex() {
             })
     }, [])
 
-
-
     function onChangeVal(id, val) {
 
         const answersToSave = { ...answersMap }
@@ -21,13 +19,12 @@ export function SurveyIndex() {
         setAnswersMap(answersToSave)
     }
 
-
-    if (!survey) return '<div></div>'
-
     const style = {
         backgroundColor: 'lightcoral',
         padding: '5px', margin: '5px'
     }
+    if (!survey) return '<div></div>'
+
     return (
         <section className="survey-app">
             <h2>Survey - {survey.title}</h2>
@@ -48,10 +45,6 @@ export function SurveyIndex() {
         </section >
     )
 }
-
-
-
-
 
 function TextBox({ info, val = '', onChangeVal }) {
     const { label } = info
@@ -91,6 +84,3 @@ function DynamicCmp(props) {
             return <SelectBox {...props} />
     }
 }
-
-
-

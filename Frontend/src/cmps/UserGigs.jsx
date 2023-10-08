@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { GigPreview } from './GigPreview'
+import { GigPreview } from './GigPreview.jsx'
 
 export function UserGigs({ gigs }) {
     const is = 'userProfile'

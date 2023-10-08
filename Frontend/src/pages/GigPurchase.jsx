@@ -1,8 +1,7 @@
-import { PaymentDetails } from "../cmps/PaymentDetails"
-import { PaymentInfo } from "../cmps/PaymentInfo"
-
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
+import { PaymentDetails } from "../cmps/PaymentDetails.jsx"
+import { PaymentInfo } from "../cmps/PaymentInfo.jsx"
 
 import { orderService } from "../services/order.service.local"
 import { gigService } from "../services/gig.service.local"
