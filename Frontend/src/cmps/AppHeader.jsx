@@ -1,16 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
-import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
-import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 import { SearchBar } from './SearchBar.jsx'
+import { NavBar } from './NavBar.jsx'
 
 export function AppHeader() {
-    const carouselRef = useRef(null)
-    const [isAtStart, setIsAtStart] = useState(true)
-    const [isAtEnd, setIsAtEnd] = useState(false)
     const [searchQuery, setSearchQuery] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
@@ -45,30 +41,6 @@ export function AppHeader() {
         }
     }
 
-    function scrollCarousel(direction) {
-        const carousel = carouselRef?.current
-        const scrollAmount = 250
-
-        if (direction === 'left') carousel.scrollLeft -= scrollAmount
-        else if (direction === 'right') carousel.scrollLeft += scrollAmount
-    }
-
-    useEffect(() => {
-        const checkScrollPosition = () => {
-            if (!carouselRef?.current) return
-            setIsAtStart(carouselRef.current.scrollLeft === 0)
-            setIsAtEnd(carouselRef.current.scrollLeft + carouselRef.current.offsetWidth === carouselRef.current.scrollWidth)
-        }
-        carouselRef.current.addEventListener('scroll', checkScrollPosition)
-
-        checkScrollPosition()
-        return () => {
-            if (carouselRef?.current) {
-                carouselRef.current.removeEventListener('scroll', checkScrollPosition)
-            }
-        }
-    }, [])
-
     const isHomePage = location.pathname === '/'
 
     function handleSearchChange(e) {
@@ -82,6 +54,7 @@ export function AppHeader() {
 
         navigate(`/explore?search=${searchQuery}`)
     }
+
     return (
         <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''}`}>
             <nav className="main-nav">
@@ -122,25 +95,7 @@ export function AppHeader() {
                     </ul>
                 </div>
             </nav>
-            <nav className="category-nav">
-                {!isAtStart && (
-                    <div className="carousel-btn left-side" onClick={() => scrollCarousel('left')}>
-                        <img src={leftArrowSvg} alt="Left Arrow" />
-                    </div>
-                )}
-                <div className="container flex" ref={carouselRef}>
-                    {categories.map(category => (
-                        <NavLink key={category} to={`/explore?cat=${category.split(' ').join('-').replace('&', '-')}`}>
-                            {category}
-                        </NavLink>
-                    ))}
-                </div>
-                {!isAtEnd && (
-                    <div className="carousel-btn right-side" onClick={() => scrollCarousel('right')}>
-                        <img src={rightArrowSvg} alt="Right Arrow" />
-                    </div>
-                )}
-            </nav>
+            <NavBar categories={categories} />
         </header>
     )
 }
