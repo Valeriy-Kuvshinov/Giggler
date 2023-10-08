@@ -131,7 +131,6 @@ function getUserRatingCount(user) {
       console.log('NO LEVEL! :(')
       break
   }
-<<<<<<< HEAD
 
 
   function getUserRatingCount(user) {
@@ -157,7 +156,4 @@ function getUserRatingCount(user) {
     }
     return utilService.getRandomIntInclusive(countMin, countMax)
   }
-=======
-  return utilService.getRandomIntInclusive(countMin, countMax)
 }
->>>>>>> f007f687d9e59a7cb782b3d18ab64160531d44e8
