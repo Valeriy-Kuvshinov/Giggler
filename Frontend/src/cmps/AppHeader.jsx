@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { showErrorMsg } from '../services/event-bus.service'
 import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
+import { LoginSignup } from './LoginSignup.jsx'
 
 export function AppHeader() {
     const [searchQuery, setSearchQuery] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
+    const [showModal, setShowModal] = useState('')
     const user = useSelector(storeState => storeState.userModule.user)
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
-    
+
     async function onLogout() {
         try {
             await logout()
@@ -38,7 +40,7 @@ export function AppHeader() {
     }
 
     return (
-        <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''}`}>
+        <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''} ${showModal ? 'show-modal' : ''}`}>
             <nav className="main-nav">
                 <div className="container flex row">
                     <Link to="/">
@@ -69,14 +71,15 @@ export function AppHeader() {
                             </>
                         ) : (
                             <>
-                                <li><Link to="/login">Sign In</Link></li>
-                                <li><Link to="/join">Join</Link></li>
+                                <li><button onClick={() => setShowModal('login')}>Sign In</button></li>
+                                <li><button onClick={() => setShowModal('signup')}>Join</button></li>
                             </>
                         )}
                     </ul>
                 </div>
             </nav>
             <NavBar categories={categories} />
+            {showModal && <LoginSignup mode={showModal} closeModal={() => setShowModal('')} />}
         </header>
     )
 }

@@ -5,7 +5,7 @@ import { UserProfile } from './pages/UserProfile.jsx'
 import { GigPurchase } from './pages/GigPurchase.jsx'
 import { UserDetails } from './pages/UserDetails.jsx'
 import { GigEdit } from './pages/GigEdit.jsx'
-import { LoginSignup } from './pages/LoginSignup.jsx'
+import { LoginSignup } from './cmps/LoginSignup.jsx'
 
 const routes = [
     { path: '/', component: HomePage, label: 'Home 🏠' },
@@ -14,9 +14,7 @@ const routes = [
     { path: '/gig/:id', component: GigDetails, label: 'Details' },
     { path: '/profile/', component: UserProfile, label: 'profile' },
     { path: '/gig/edit/:id', component: GigEdit },
-    { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
-    { path: '/login', component: LoginSignup, label: 'Login' },
-    { path: '/join', component: LoginSignup, label: 'Signup' }
+    { path: '/purchase/:id', component: GigPurchase, label: 'purchase' }
 ]
 
 export default routes
