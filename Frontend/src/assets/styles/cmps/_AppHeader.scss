@@ -43,34 +43,6 @@
             align-self: center;
         }
 
-        .search-bar {
-            width: 35%;
-
-            input[type="text"] {
-                width: 90%;
-                padding: 1em;
-                border-radius: 5px 0px 0px 5px;
-                border: 1px solid $clrPrimary2;
-
-                &:focus {
-                    outline: none;
-                }
-            }
-
-            button {
-                margin: 0;
-                padding: 1em 1.5em;
-                border-radius: 0px 5px 5px 0px;
-                border: 1px solid $clrPrimary2;
-                border-left: none;
-                background: $clrPrimary2;
-
-                &:hover {
-                    opacity: 0.8;
-                }
-            }
-        }
-
         .nav-links {
             list-style-type: none;
             margin: 0;
