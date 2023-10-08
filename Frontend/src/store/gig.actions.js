@@ -17,7 +17,7 @@ export async function loadGigs(filterBy = {}) {
 export async function removeGig(gigId) {
     try {
         await gigService.remove(gigId)
-        store.dispatch({ type: REMOVE_GIG, gigId });
+        store.dispatch({ type: REMOVE_GIG, gigId })
     } catch (err) {
         console.log('Cannot remove gig', err)
         throw err
@@ -25,7 +25,7 @@ export async function removeGig(gigId) {
 }
 
 export async function saveGig(gig) {
-    const type = gig._id ? UPDATE_GIG : ADD_GIG;
+    const type = gig._id ? UPDATE_GIG : ADD_GIG
     try {
         const savedGig = await gigService.save(gig)
         console.log(gig._id ? 'Updated gig' : 'Added gig', savedGig)

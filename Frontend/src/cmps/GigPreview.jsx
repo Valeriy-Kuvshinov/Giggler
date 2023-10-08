@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { UserPreview } from './UserPreview'
-import { removeGig } from '../store/gig.actions'
+import { UserPreview } from './UserPreview.jsx'
+import { removeGig } from '../store/gig.actions.js'
 import { useNavigate } from 'react-router-dom'
-import { ImageCarousel } from './ImageCarousel'
-import SvgIcon from './SvgIcon'
+import { ImageCarousel } from './ImageCarousel.jsx'
+import SvgIcon from './SvgIcon.jsx'
 import { useState } from 'react'
 
 export function GigPreview({ is, gig }) {

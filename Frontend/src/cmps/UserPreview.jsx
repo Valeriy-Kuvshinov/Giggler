@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom'
-import { loadUser, loadUsers } from '../store/user.actions'
 import { useEffect, useState } from 'react'
 import SvgIcon from '../cmps/SvgIcon'
-import { utilService } from '../services/util.service'
-import { userService } from '../services/user.service'
+import { userService } from '../services/user.service.js'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)

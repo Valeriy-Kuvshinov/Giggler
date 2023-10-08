@@ -1,6 +1,6 @@
-import { Link, useParams, useSearchParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
-import SvgIcon from './SvgIcon'
+import { Link, useSearchParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import SvgIcon from './SvgIcon.jsx'
 
 export function GigFilter(filterBy) {
   const [searchParams] = useSearchParams()
