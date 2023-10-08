@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
 import { GigPreview } from './GigPreview.jsx'
 
+import { gigService } from '../services/gig.service.local.js'
 
-
-export function UserGigs({ gigs }) {
+export function UserGigs({ user }) {
     const is = 'userProfile'
+
+    const [gigs, setGigs] = useState([])
+
+    useEffect(() => {
+        gigService.query({userId:user._id}).then((gigs) => setGigs(gigs))
+      }, [])
 
     if (gigs.length === 0) return
 

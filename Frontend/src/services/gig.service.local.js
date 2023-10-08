@@ -14,23 +14,26 @@ export const gigService = {
 // debug trick
 window.bs = gigService
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = { userId: ''}) {
   var gigs = await storageService.query(STORAGE_KEY)
-  if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
+  console.log(filterBy)
+  if (filterBy.userId) {
+    const regex = new RegExp(filterBy.userId, 'i')
     gigs = gigs.filter(
-      (gig) => regex.test(gig.title) || regex.test(gig.description)
+      (gig) => gig.owner.id===filterBy.userId
+      // regex.test(gig.title) || regex.test(gig.description)
     )
   }
-  if (filterBy.price) {
-    gigs = gigs.filter((gig) => gig.price <= filterBy.price)
-  }
+  // if (filterBy.price) {
+  //   gigs = gigs.filter((gig) => gig.price <= filterBy.price)
+  // }
 
   if (filterBy.tags && filterBy.tags.length) {
     gigs = gigs.filter((gig) =>
       gig.tags.some((tag) => filterBy.tags.include(tag))
     )
   }
+  console.log('filtered gigs : ',gigs)
   return gigs
 }
 
