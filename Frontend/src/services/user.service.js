@@ -153,19 +153,21 @@ _createUsers()
 
 
   function getUserRatingCount(user) {
-    let countMax = 500
+    let countMax = 1000
     let countMin = 1
     switch (user.level) {
-      case 'level 1':
-        countMax = 50
+      case 'Level 1':
+        countMax = 100
         break
-      case 'level 2':
-        countMin = 51
-        countMax = 250
+      case 'Level 2':
+        countMin = 101
+        countMax = 500
         break
-      case 'level 3':
-        countMin = 251
+      case 'Level 3':
+        countMin = 501
         break
+      case 'Pro Talent':
+        return '+1k';
 
       default:
         console.log('NO LEVEL! :(')

@@ -1,15 +1,45 @@
 .gig-filter {
+  .search-param {
+    h1 {
+      font-size: rem(28px);
+      font-family: macan-light;
+      font-weight: 400;
+      line-height: 36px;
+      color: #222325;
+      padding-bottom: 12px;
+      padding-top: 32px;
+    }
+  }
   .explore-category {
     padding: 1.25em 0 0.75em 0;
-    color:$clrSecondary8;
+    color: $clrSecondary8;
 
-     Link {
+    Link {
       padding: rem(9px);
     }
 
     .divider {
       color: $clrSecondary45;
       margin: 0 0.5em;
+    }
+  }
+
+  .floating-top-bar {
+    margin-block-start: 1em;
+    .filter-nav {
+      padding: 0 2em;
+      display: flex;
+
+      .btn {
+        span {
+          i {
+            width: rem(12px);
+            height: rem(12px);
+          }
+
+          margin: rem(12px);
+        }
+      }
     }
   }
 }

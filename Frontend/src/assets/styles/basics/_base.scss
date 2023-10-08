@@ -26,9 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: caveat;
-  margin: 0 0 0.6em;
-  line-height: 1;
+  margin: 0;
 }
 
 img {
@@ -54,7 +52,28 @@ ol {
   list-style-type: none;
 }
 
-// .icon {
-//     width: 13px;
-// }
+Link,
+a {
+  color: $clrSecondary8;
+}
 
+.btn {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e4e5e7;
+  border-radius: rem(8px);
+  box-sizing: border-box;
+  color: $clrPrimary2;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 rem(6px) 0 0;
+  min-height: rem(48px);
+  padding: rem(12px) rem(16px);
+  font-family: macan-regular;
+  transition: border-color 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn:hover {
+  border: 1px solid $clrPrimary2;
+}
