@@ -8,7 +8,7 @@ export const userService = {
   logout,
   signup,
   getLoggedinUser,
-  saveLocalUser,
+  saveLocalUser: setLoggedinUser,
   getUsers,
   getById,
   remove,
@@ -39,7 +39,7 @@ async function update({ _id }) {
 
   // const user = await httpService.put(`user/${_id}`, {_id})
   // // Handle case in which admin updates other user's details
-  if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+  if (getLoggedinUser()._id === user._id) setLoggedinUser(user)
   return user
 }
 
@@ -48,14 +48,14 @@ async function login(userCred) {
   const user = users.find((user) => user.username === userCred.username)
   // const user = await httpService.post('auth/login', userCred)
   if (user) {
-    return saveLocalUser(user)
+    return setLoggedinUser(user)
   }
 }
 
 async function signup(userCred) {
   const user = await storageService.post('user', userCred)
   // const user = await httpService.post('auth/signup', userCred)
-  return saveLocalUser(user)
+  return setLoggedinUser(user)
 }
 
 async function logout() {
@@ -63,12 +63,7 @@ async function logout() {
   // return await httpService.post('auth/logout')
 }
 
-function saveLocalUser(user) {
-  user = {
-    _id: user._id,
-    fullname: user.fullname,
-    imgUrl: user.imgUrl
-  }
+function setLoggedinUser(user) {
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
