@@ -77,6 +77,30 @@ function getLoggedinUser() {
   return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+function getUserRatingCount(user) {
+  let countMax = 1000
+  let countMin = 1
+  switch (user.level) {
+    case 'Level 1':
+      countMax = 100
+      break
+    case 'Level 2':
+      countMin = 101
+      countMax = 500
+      break
+    case 'Level 3':
+      countMin = 501
+      break
+    case 'Pro Talent':
+      return '+1k'
+
+    default:
+      // console.log('NO LEVEL! :(')
+      break
+  }
+  return utilService.getRandomIntInclusive(countMin, countMax)
+}
+
 const users = [
   {
     _id: 'u101',
@@ -110,28 +134,4 @@ async function _createUsers() {
   // } catch (error) {
   //   console.log('Error loading users', error)
   // }
-}
-
-function getUserRatingCount(user) {
-  let countMax = 1000
-  let countMin = 1
-  switch (user.level) {
-    case 'Level 1':
-      countMax = 100
-      break
-    case 'Level 2':
-      countMin = 101
-      countMax = 500
-      break
-    case 'Level 3':
-      countMin = 501
-      break
-    case 'Pro Talent':
-      return '+1k'
-
-    default:
-      // console.log('NO LEVEL! :(')
-      break
-  }
-  return utilService.getRandomIntInclusive(countMin, countMax)
 }
