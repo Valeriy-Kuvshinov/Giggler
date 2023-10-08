@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'order'
+const STORAGE_KEY = 'orders'
 
 export const orderService = {
     query,
@@ -51,19 +51,20 @@ async function save(order) {
 
 function getEmptyOrder() {
     return {
-        orderedBy: '',
-        userId: '',
+        buyerId: '',
         sellerId: '',
-        orderedGig: {}
+        orderedGigId: '',
+        createdAt: Date.now(),
+        price:0
     }
 }
 
-function createOrder(fullName,userId,sellerId,gig){
+function createOrder(buyerId,sellerId,gigId,price){
     var order=getEmptyOrder()
-    order.orderedBy=fullName
-    order.userId=userId
+    order.buyerId=buyerId
     order.sellerId=sellerId
-    order.orderedGig=gig
+    order.orderedGigId=gigId
+    order.price=price
     return order
 }
 
