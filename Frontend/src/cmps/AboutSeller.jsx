@@ -5,7 +5,8 @@ export function AboutSeller({ gig }) {
     stars += '<img src=/src/assets/img/svg/star.icon.svg />'
   }
   function load() {
-    document.querySelector(".stars2").innerHTML = stars + `${rating}` + `(${gig.likedByUsers.length})`
+    document.querySelector(".stars2").innerHTML = stars + `${rating}` 
+    // + `(${gig.likedByUsers.length})`
   }
   setTimeout(load, 10)
 
