@@ -5,22 +5,24 @@ import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
 import { saveGig } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.local.js'
+import { useSelector } from 'react-redux'
 
 export function GigEdit() {
     const params = useParams()
     const id = params.id
     const { categoryTexts } = galleryService
+    const user = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 
     const [fields, setFields, handleChange] = useForm({
         title: '',
         price: '',
         owner: {
-            _id: 'u102',
-            fullName: 'Jane Doe',
-            imgUrl: 'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
-            level: 'level 1',
-            rate: 4.9
+            _id: user._id,
+            fullName: user.fullName,
+            avatar: user.avatar,
+            level: user.level,
+            rate: user.rating
         },
         daysToMake: 1,
         description: '',
@@ -37,7 +39,7 @@ export function GigEdit() {
     })
 
     useEffect(() => {
-        if (id) {
+        if (id && id !== 'edit') {
             async function fetchGig() {
                 try {
                     const gig = await gigService.getById(id)
@@ -52,16 +54,25 @@ export function GigEdit() {
 
     async function onSave() {
         try {
+            if (!id || id === 'edit') {
+                fields.owner = {
+                    _id: user._id,
+                    fullName: user.fullName,
+                    avatar: user.avatar,
+                    level: user.level,
+                    rate: user.rating
+                }
+            }
             const savedGig = await saveGig(fields)
             console.log('Gig saved successfully:', savedGig)
-            navigate('/profile')
+            navigate(`/user/${user._id}`)
         } catch (err) {
             console.error('Failed to save gig:', err)
         }
     }
 
     function onCancel() {
-        navigate('/profile')
+        navigate(`/user/${user._id}`)
     }
 
     return (

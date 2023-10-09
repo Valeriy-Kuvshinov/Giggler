@@ -20,7 +20,7 @@ async function query(filterBy = { userId: ''}) {
   if (filterBy.userId) {
     const regex = new RegExp(filterBy.userId, 'i')
     gigs = gigs.filter(
-      (gig) => gig.owner.id===filterBy.userId
+      (gig) => gig.owner._id===filterBy.userId
       // regex.test(gig.title) || regex.test(gig.description)
     )
   }
@@ -191,7 +191,7 @@ function _createGigs() {
         title: 'I will take unique photos of Spiderman',
         price: 99,
         owner: {
-          id: 'u001',
+          _id: 'u001',
           fullName: 'Peter Parker',
           avatar:
             'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
@@ -215,7 +215,7 @@ function _createGigs() {
         title: 'I will design your logo',
         price: 49,
         owner: {
-          id: 'u002',
+          _id: 'u002',
           fullName: 'Jane Doe',
           avatar:
             'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
@@ -256,7 +256,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Logo5',
         ],
         owner: {
-          id: 'u101',
+          _id: 'u101',
           name: 'Alice Smith',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar',
           level: 'Level 1',
@@ -316,7 +316,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Template5',
         ],
         owner: {
-          id: 'u102',
+          _id: 'u102',
           name: 'Ella Johnson',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar2',
           level: 'Level 2',
@@ -408,7 +408,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Song5',
         ],
         owner: {
-          id: 'u104',
+          _id: 'u104',
           name: 'Sophia Anderson',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar4',
           level: 'Level 2',
@@ -452,7 +452,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Animation5',
         ],
         owner: {
-          id: 'u105',
+          _id: 'u105',
           name: 'Lucas Johnson',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar5',
           level: 'Level 3',
@@ -501,7 +501,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Legal5',
         ],
         owner: {
-          id: 'u106',
+          _id: 'u106',
           name: 'Olivia Adams',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar6',
           level: 'Level 2',
@@ -549,7 +549,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Coaching5',
         ],
         owner: {
-          id: 'u107',
+          _id: 'u107',
           name: 'Sophie Johnson',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar7',
           level: 'Level 3',
@@ -594,7 +594,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Fitness5',
         ],
         owner: {
-          id: 'u108',
+          _id: 'u108',
           name: 'Max Trainer',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar8',
           level: 'Level 3',
@@ -639,7 +639,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Candle5',
         ],
         owner: {
-          id: 'u109',
+          _id: 'u109',
           name: 'Ava Crafters',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar9',
           level: 'Level 2',
@@ -684,7 +684,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Avatar5',
         ],
         owner: {
-          id: 'u110',
+          _id: 'u110',
           name: 'Evelyn DigitalArt',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar10',
           level: 'Pro Talent',
@@ -733,7 +733,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Fantasy5',
         ],
         owner: {
-          id: 'u111',
+          _id: 'u111',
           name: 'Luna Wordsmith',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar11',
           level: 'Level 1',
@@ -777,7 +777,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=VR5',
         ],
         owner: {
-          id: 'u112',
+          _id: 'u112',
           name: 'Alex VR Explorer',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar12',
           level: 'Level 1',
@@ -821,7 +821,7 @@ function _createGigs() {
           'https://via.placeholder.com/400x300?text=Gaming5',
         ],
         owner: {
-          id: 'u113',
+          _id: 'u113',
           name: 'GamerGuffaw',
           avatar: 'https://via.placeholder.com/150x150?text=Avatar13',
           level: 'Level 1',
