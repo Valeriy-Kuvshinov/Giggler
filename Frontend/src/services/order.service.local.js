@@ -16,11 +16,12 @@ export const orderService = {
 window.cs = orderService
 
 
-async function query(filterBy = { sellerId: ''}) {
+async function query(filterBy) {
     var orders = await storageService.query(STORAGE_KEY)
-    if (filterBy.sellerId) {
+    if (filterBy) {
         // const regex = new RegExp(filterBy.sellerId, 'i')
-        orders = orders.filter(order => order.sellerId === sellerId)
+
+        orders = orders.filter(order => order.sellerId === filterBy)
     }
     return orders
 }
@@ -52,8 +53,8 @@ function getEmptyOrder() {
         buyerName: '',
         sellerId: '',
         orderedGigId: '',
-        createdAt: Date.now(),
         price:0,
+        createdAt: Date.now(),
         orderState: 'pending'
     }
 }

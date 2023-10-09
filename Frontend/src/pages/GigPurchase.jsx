@@ -18,7 +18,7 @@ export function GigPurchase() {
     gigService.getById(id).then((gig)=>setGig(gig))
   },[])
   function createOrder(){
-    const order=orderService.createOrder(user._id,user.fullName,gig.owner.id,gig._id,gig.price)
+    const order=orderService.createOrder(user._id,user.fullName,gig.owner._id,gig._id,gig.price)
     orderService.save(order)
   }
   
