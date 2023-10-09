@@ -22,7 +22,7 @@ export function GigEdit() {
             fullName: user.fullName,
             avatar: user.avatar,
             level: user.level,
-            rate: user.rating
+            rating: user.rating
         },
         daysToMake: 1,
         description: '',
@@ -60,7 +60,7 @@ export function GigEdit() {
                     fullName: user.fullName,
                     avatar: user.avatar,
                     level: user.level,
-                    rate: user.rating
+                    rating: user.rating
                 }
             }
             const savedGig = await saveGig(fields)
