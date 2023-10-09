@@ -1,0 +1,32 @@
+.user-orders{
+    display: flex;
+    margin-block-end: 20px;
+    .orders-title{
+        display: flex;
+        align-items: center;
+        height: 60px;
+        width: 300px;
+        padding: 23px;
+        border: 1px solid $clrSecondary2;
+        background-color: $clrPrimary1;
+    }
+    ul{
+        width: 100%;
+        li{
+            width: 100%;
+            .user-order{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 23px;
+                border: 1px solid $clrSecondary2;
+                margin-block-start: 20px;
+                background-color: $clrPrimary1;
+                .order-buttons{
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}

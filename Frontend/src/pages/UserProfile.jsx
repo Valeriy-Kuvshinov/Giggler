@@ -5,6 +5,8 @@ import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 
 import { gigService } from '../services/gig.service.local.js'
+import { UserOrders } from '../cmps/UserOrders.jsx'
+import { userReducer } from '../store/user.reducer.js'
 
 export function UserProfile() {
   const [gigs, setGigs] = useState([])
@@ -22,6 +24,7 @@ export function UserProfile() {
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
+        <UserOrders user={userReducer}/>
     </section>
   )
 }

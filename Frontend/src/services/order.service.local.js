@@ -16,15 +16,12 @@ export const orderService = {
 window.cs = orderService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy = { sellerId: ''}) {
     var orders = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     orders = orders.filter(order => regex.test(order.vendor) || regex.test(order.description))
-    // }
-    // if (filterBy.price) {
-    //     orders = orders.filter(order => order.price <= filterBy.price)
-    // }
+    if (filterBy.sellerId) {
+        // const regex = new RegExp(filterBy.sellerId, 'i')
+        orders = orders.filter(order => order.sellerId === sellerId)
+    }
     return orders
 }
 
@@ -52,16 +49,19 @@ async function save(order) {
 function getEmptyOrder() {
     return {
         buyerId: '',
+        buyerName: '',
         sellerId: '',
         orderedGigId: '',
         createdAt: Date.now(),
-        price:0
+        price:0,
+        orderState: 'pending'
     }
 }
 
-function createOrder(buyerId,sellerId,gigId,price){
+function createOrder(buyerId,buyerName,sellerId,gigId,price){
     var order=getEmptyOrder()
     order.buyerId=buyerId
+    order.buyerName=buyerName
     order.sellerId=sellerId
     order.orderedGigId=gigId
     order.price=price
