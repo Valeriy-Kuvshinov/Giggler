@@ -16,7 +16,7 @@ export function GigPreview({ is, gig }) {
     try {
       await removeGig(gig._id)
       console.log('Gig removed successfully:')
-      navigate('/profile')
+      navigate(`/user/${owner._id}`)
     } catch (err) {
       console.error('Failed to save gig:', err)
     }
@@ -30,7 +30,7 @@ export function GigPreview({ is, gig }) {
     <>
       {/* <img src={gig.imgUrls[0]} alt={`${gig.owner.fullName} gig img`} /> */}
       <Link className="link-gig-img" to={`/gig/${gig._id}`}>
-      <ImageCarousel images={gig.imgUrls} />
+        <ImageCarousel images={gig.imgUrls} />
       </Link>
       {is === 'explore' && (
         <UserPreview is={is} owner={owner} gig={gig}>

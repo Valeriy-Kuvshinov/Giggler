@@ -62,7 +62,7 @@ export function AppHeader() {
                             <>
                                 <li className="user-info">
                                     <Link to={`user/${user._id}`}>
-                                        {user.imgUrl && <img src={user.imgUrl} />}
+                                        {user.avatar && <img src={user.avatar} />}
                                     </Link>
                                 </li>
                                 <li>

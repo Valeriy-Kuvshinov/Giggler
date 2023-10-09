@@ -11,8 +11,7 @@ export function UserPreview({ is, owner, children }) {
   function loadUserData() {
     setUser(owner)
   }
-
-  if (!user)  return null 
+  if (!user) return null
 
   return (
     <>
