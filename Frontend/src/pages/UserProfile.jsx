@@ -13,14 +13,14 @@ export function UserProfile() {
   // console.log('user : ',user)
 
   useEffect(() => {
-    gigService.query({userId:user._id}).then((gigs) => setGigs(gigs))
+    gigService.query({ userId: user._id }).then((gigs) => setGigs(gigs))
   }, [])
 
   return (
     <section className="main-container full">
       <div className="user-profile">
-        <UserInfo user={user}/>
-        <UserGigs gigs={gigs} user={user}/>
+        <UserInfo user={user} />
+        <UserGigs gigs={gigs} user={user} />
       </div>
     </section>
   )
