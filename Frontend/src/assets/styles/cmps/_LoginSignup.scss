@@ -9,24 +9,100 @@
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     display: flex;
+    max-width: 1000px;
+    margin: auto;
 
     .login-notes {
         width: 50%;
+        padding: 3em 2.5em;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 15px 0px 0px 15px;
+        color: $clrPrimary1;
 
-        img {
-            height: 100%;
-            border-radius: 15px 0px 0px 15px;
+        .text {
+            h2 {
+                font-size: 32px;
+                font-weight: bold;
+                margin-bottom: 0.5em;
+            }
+
+            li {
+                align-items: center;
+                gap: 0.5em;
+                margin-bottom: 1em;
+
+                h3 {
+                    font-size: 18px;
+                }
+
+                img {
+                    width: 12px;
+                    height: 12px;
+                    align-self: self-start;
+                    margin-top: 0.5em;
+                }
+            }
         }
     }
 
     .user-interaction {
         width: 50%;
-        padding: 1.5em 3em;
+        padding: 3.5em 3em;
 
         h3 {
+            line-height: 1.0;
+            margin-top: 0.5em;
+            color: $clrSecondary6;
+            margin-bottom: 1em;
+
             span {
                 cursor: pointer;
                 text-decoration: underline;
+                color: $clrPrimary2;
+            }
+        }
+
+        form {
+
+            .signup-section,
+            .login-section {
+                gap: 0.5em;
+
+                div {
+                    label {
+                        color: #404145;
+                        font-weight: 600;
+                        margin-bottom: 0.3em;
+                    }
+
+                    input {
+                        font: inherit;
+                        padding: 8px 12px;
+                        border: 1px solid $clrSecondary45;
+                        border-radius: 5px;
+
+                        &:focus {
+                            border: 1px solid $clrSecondary5;
+                            outline: none;
+                        }
+                    }
+                }
+            }
+
+            button {
+                margin-top: 2em;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 100%;
+                padding: 12px 24px;
+            }
+
+            p {
+                font-size: 12px;
+                line-height: 20px;
+                margin-top: 5em;
             }
         }
     }

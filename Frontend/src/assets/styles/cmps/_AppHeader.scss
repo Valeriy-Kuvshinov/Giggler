@@ -8,7 +8,6 @@
     &.home-page {
         position: fixed;
         top: 0;
-        z-index: 10;
     }
 
     .container {
@@ -28,19 +27,13 @@
         }
     }
 
-    a {
-        &:hover {
-            text-decoration: none;
-        }
+    a:hover {
+        text-decoration: none;
     }
 
     .main-nav {
         padding: 1em 2em;
         border-bottom: 1px solid $clrSecondary3;
-
-        a:first-child {
-            align-self: center;
-        }
 
         .nav-links {
             list-style-type: none;
@@ -51,44 +44,38 @@
             font-size: 16px;
             font-weight: bold;
 
-            a {
-                color: $clrSecondary6;
-                transition: color 0.3s, background-color 0.3s, border 0.3s;
-
-                &:hover {
-                    color: $bgColor2;
-                }
-            }
-
+            a,
             button {
-                background: none;
                 color: $clrSecondary6;
                 transition: color 0.3s, background-color 0.3s, border 0.3s;
-                font-size: 16px;
-                font-weight: bold;
-                font-family: 'macan-regular';
-                padding: 0;
 
                 &:hover {
                     color: $bgColor2;
                 }
             }
 
-            li:last-child button {
+            .join {
                 padding: 10px 16px;
                 color: #2dd12d;
                 border: 1px solid #2dd12d;
                 border-radius: 5px;
-                transition: color 0.3s, background-color 0.3s, border 0.3s;
-                background: none;
                 font-size: 14px;
-                font-weight: bold;
                 font-family: "macan-bold";
+                background: none;
 
                 &:hover {
                     background-color: $bgColor2;
                     color: $clrPrimary1;
                 }
+            }
+
+            .login,
+            .logout {
+                background: none;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 0;
+                font-family: 'macan-regular';
             }
 
             .user-info {
@@ -105,7 +92,6 @@
 
                     img {
                         border-radius: 50%;
-                        height: 100%;
                     }
                 }
             }
@@ -163,14 +149,17 @@
             padding: 1em 0em;
             background: $clrPrimary1;
 
+            &.left-side,
+            &.right-side {
+                box-shadow: 0px 0px 20px 20px $clrPrimary1;
+            }
+
             &.left-side {
                 left: 30px;
-                box-shadow: 0px 0px 20px 20px $clrPrimary1;
             }
 
             &.right-side {
                 right: 30px;
-                box-shadow: 0px 0px 20px 20px $clrPrimary1;
             }
         }
     }
