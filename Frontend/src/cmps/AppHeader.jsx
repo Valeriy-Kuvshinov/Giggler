@@ -16,6 +16,8 @@ export function AppHeader() {
     const categories = ["Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
 
+    const isHomePage = location.pathname === '/'
+
     async function onLogout() {
         try {
             navigate("/")
@@ -24,8 +26,6 @@ export function AppHeader() {
             showErrorMsg('Cannot logout')
         }
     }
-
-    const isHomePage = location.pathname === '/'
 
     function handleSearchChange(e) {
         const newSearchQuery = e.target.value

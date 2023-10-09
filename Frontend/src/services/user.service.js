@@ -100,7 +100,7 @@ const users = [
   {
     _id: 'u001',
     fullName: 'Peter Parker',
-    imgUrl:
+    avatar:
       'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
     username: 'peter123',
     password: '123',
@@ -113,7 +113,7 @@ const users = [
     fullName: 'Jane Doe',
     username: 'jane123',
     password: '123',
-    imgUrl:
+    avatar:
       'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
     level: 'level 1',
     rate: '4.9',

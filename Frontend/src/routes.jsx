@@ -11,7 +11,7 @@ const routes = [
     { path: '/explore/', component: GigIndex, label: 'Explore' },
     { path: '/gig/:id', component: GigDetails, label: 'Details' },
     { path: '/user/:id', component: UserProfile, label: 'profile' },
-    { path: '/gig/edit/:id', component: GigEdit },
+    { path: '/gig/edit/:id?', component: GigEdit },
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' }
 ]
 

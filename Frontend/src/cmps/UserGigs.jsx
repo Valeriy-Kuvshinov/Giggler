@@ -7,12 +7,11 @@ import { gigService } from '../services/gig.service.local.js'
 
 export function UserGigs({ user }) {
     const is = 'userProfile'
-
     const [gigs, setGigs] = useState([])
 
     useEffect(() => {
-        gigService.query({userId:user._id}).then((gigs) => setGigs(gigs))
-      }, [])
+        gigService.query({ userId: user._id }).then((gigs) => setGigs(gigs))
+    }, [])
 
     if (gigs.length === 0) return
 
