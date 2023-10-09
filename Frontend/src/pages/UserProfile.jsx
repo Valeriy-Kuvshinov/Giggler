@@ -24,7 +24,7 @@ export function UserProfile() {
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-        <UserOrders user={userReducer}/>
+        <UserOrders user={ user }/>
     </section>
   )
 }
