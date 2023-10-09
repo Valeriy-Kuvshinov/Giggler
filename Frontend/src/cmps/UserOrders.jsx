@@ -11,7 +11,7 @@ export function UserOrders({ user }){
 
     useEffect(()=>{
         orderService.query(user._id).then(orders => setOrders(orders))
-    },[])
+    },[orders])
 
     function acceptOrder(order){
         console.log(`order ${order._id} accepted`)

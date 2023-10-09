@@ -23,7 +23,8 @@ export function UserOrder({ order , acceptOrder , denyOrder }){
         denyOrder(order)
     }
 
-    return (<section className='user-order'>
+    return (<section className={(order.orderState==='pending') ?'pending user-order' : 
+           (order.orderState==='accepted') ? 'accepted user-order' : 'denied user-order'}> 
            <span>order by: {order.buyerName}</span>
            <span>ordered gig title: {gig.title}</span>
            <span>ordered gig price: {gig.price}</span>
