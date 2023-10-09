@@ -27,7 +27,7 @@
 }
 .gig-filter {
   position: sticky;
-  z-index: 13;
+  z-index: 5;
   top: 0;
   width: 100%;
   background-color: #fff;
@@ -35,7 +35,6 @@
   .floating-top-bar {
     margin-block-start: 1em;
     .filter-nav {
-      padding: 0 2em;
       display: flex;
 
       .btn {

@@ -18,7 +18,7 @@ export function GigFilter(filterBy) {
   console.log('search after useEffect: ', queryParams)
   return (
     <>
-      <div className="gig-results-title">
+      <div className="gig-results-title layout-row">
         {queryParams &&
           (queryParams.search ? (
             <section className="search-param">
