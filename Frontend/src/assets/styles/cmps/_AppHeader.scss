@@ -1,7 +1,6 @@
 .app-header {
     background: $clrPrimary1;
     color: $clrPrimary2;
-    font-family: Arial, Helvetica, sans-serif;
     position: relative;
     z-index: 10;
     width: 100%;
@@ -49,8 +48,8 @@
             padding: 0;
             gap: 2em;
             align-items: center;
-            font-weight: bold;
             font-size: 16px;
+            font-weight: bold;
 
             a {
                 color: $clrSecondary6;
@@ -61,13 +60,30 @@
                 }
             }
 
-            li:last-child a {
-                padding: 9px 14px;
-                color: $bgColor2;
-                border: 1px solid $bgColor2;
+            button {
+                background: none;
+                color: $clrSecondary6;
+                transition: color 0.3s, background-color 0.3s, border 0.3s;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'macan-regular';
+                padding: 0;
+
+                &:hover {
+                    color: $bgColor2;
+                }
+            }
+
+            li:last-child button {
+                padding: 10px 16px;
+                color: #2dd12d;
+                border: 1px solid #2dd12d;
                 border-radius: 5px;
                 transition: color 0.3s, background-color 0.3s, border 0.3s;
-                margin-right: 1em;
+                background: none;
+                font-size: 14px;
+                font-weight: bold;
+                font-family: "macan-bold";
 
                 &:hover {
                     background-color: $bgColor2;

@@ -138,7 +138,7 @@ export function LoginSignup({ closeModal, mode }) {
                             <ImgUploader onUploaded={onUploaded} />
                         </div>
                     )}
-                    <button type="submit">{isSignup ? 'Sign Up' : 'Log In'}</button>
+                    <button type="submit">Continue</button>
                 </form>
             </section>
         </main>
