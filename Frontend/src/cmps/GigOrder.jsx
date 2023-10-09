@@ -57,6 +57,7 @@ export function GigOrder({ gig }) {
           Include social media kit
         </li>
       </ul>
+      <div className="continue-btn">
       <Link to={`/purchase/${gig._id}`}>
         <div className="continue">
           <button onClick={onContinue}>
@@ -64,6 +65,7 @@ export function GigOrder({ gig }) {
           </button>
         </div>
       </Link>
+      </div>
     </section>
   )
 }
