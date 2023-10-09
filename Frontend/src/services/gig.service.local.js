@@ -16,7 +16,6 @@ window.bs = gigService
 
 async function query(filterBy = { userId: ''}) {
   var gigs = await storageService.query(STORAGE_KEY)
-  console.log(filterBy)
   if (filterBy.userId) {
     const regex = new RegExp(filterBy.userId, 'i')
     gigs = gigs.filter(
@@ -33,7 +32,6 @@ async function query(filterBy = { userId: ''}) {
       gig.tags.some((tag) => filterBy.tags.include(tag))
     )
   }
-  console.log('filtered gigs : ',gigs)
   return gigs
 }
 
