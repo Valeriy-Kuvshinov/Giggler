@@ -29,9 +29,9 @@ export function UserOrders({ user }){
     }
 
     // const orders = useSelector(storeState => storeState.orderModule.orders)
-    // console.log(orders)
+    // console.log(orders.length)
 
-    if(orders.length===0) return <div>loading... </div>
+    // if(orders.length===0) return <div>loading... </div>
 
     return (<section className="user-orders">
              <ul>

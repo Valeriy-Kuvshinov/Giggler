@@ -3,9 +3,20 @@
         "buyerId": "u001",
         "buyerName": "Peter Parker",
         "sellerId": "u001",
+        "orderedGigId": "g001",
         "price": 99,
-        "createdAt": 1696942275505,
-        "orderState": "pending",
-        "_id": "Cn7QP"
+        "createdAt": 1696949208572,
+        "orderState": "accepted",
+        "_id": "VCnAa"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u002",
+        "orderedGigId": "g002",
+        "price": 49,
+        "createdAt": 1696950004779,
+        "orderState": "denied",
+        "_id": "cNwqG"
     }
 ]
