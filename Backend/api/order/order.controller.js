@@ -38,10 +38,25 @@ export async function deleteOrder(req, res) {
 export async function updateOrder(req, res) {
     try {
         const order = req.body
-        const savedOrder = await orderService.update(order)
+        const savedOrder = await orderService.save(order)
         res.send(savedOrder)
     } catch (err) {
         loggerService.error('Failed to update order', err)
         res.status(500).send({ err: 'Failed to update order' })
+    }
+}
+
+export async function addOrder(req, res) {
+    // const { loggedinUser } = req
+
+    try {
+        const order = req.body
+        // order.owner = loggedinUser
+        const addedOrder = await orderService.save(order)
+        res.json(addedOrder)
+    }
+    catch (err) {
+        loggerService.error('Failed to add order', err)
+        res.status(500).send({ err: 'Failed to add order' })
     }
 }

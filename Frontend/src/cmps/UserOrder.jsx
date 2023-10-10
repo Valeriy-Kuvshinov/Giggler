@@ -6,7 +6,7 @@ export function UserOrder({ order , acceptOrder , denyOrder }){
     var gigs = useSelector(storeState => storeState.gigModule.gigs)
     var gig=gigs.find((gig)=>gig._id===order.orderedGigId)
 
-    if (gig===null) return <div>loading order...</div>
+    if (gig===undefined) return <div>loading order...</div>
     
     // console.log(gig)
 
