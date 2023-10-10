@@ -1,4 +1,4 @@
-import { orderService } from './order.service'
+import { orderService } from './order.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
 export async function getOrder(req, res) {
