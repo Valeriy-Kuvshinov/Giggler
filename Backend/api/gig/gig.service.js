@@ -88,19 +88,19 @@ async function add(gig) {
     }
 }
 
-function save(order) {
-    if (order._id) {
-        const newOrder = orders.find(currOrder => currOrder._id === order._id)
-        // if (orderToUpdate.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
-        newOrder.buyerId=order.buyerId
-        newOrder.buyerName=order.buyerName
-        newOrder.sellerId=order.sellerId
-        newOrder.orderedGigId=order.gigId
-        newOrder.price=order.price
+function save(gig) {
+    if (gig._id) {
+        const newOrder = gigs.find(currOrder => currOrder._id === gig._id)
+        // if (gigToUpdate.owner._id !== loggedinUser._id) return Promise.reject('Not your gig')
+        newOrder.buyerId=gig.buyerId
+        newOrder.buyerName=gig.buyerName
+        newOrder.sellerId=gig.sellerId
+        // newOrder.gigedGigId=gig.gigId
+        newOrder.price=gig.price
     } else {
-        order._id = _makeId()
-        // order.owner = loggedinUser
-        orders.push(order)
+        gig._id = _makeId()
+        // gig.owner = loggedinUser
+        gigs.push(gig)
     }
 
     return _saveOrdersToFile().then(() => order)

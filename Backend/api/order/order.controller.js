@@ -45,3 +45,18 @@ export async function updateOrder(req, res) {
         res.status(500).send({ err: 'Failed to update order' })
     }
 }
+
+export async function addOrder(req, res) {
+    // const { loggedinUser } = req
+
+    try {
+        const order = req.body
+        // order.owner = loggedinUser
+        const addedOrder = await orderService.save(order)
+        res.json(addedOrder)
+    }
+    catch (err) {
+        loggerService.error('Failed to add order', err)
+        res.status(500).send({ err: 'Failed to add order' })
+    }
+}

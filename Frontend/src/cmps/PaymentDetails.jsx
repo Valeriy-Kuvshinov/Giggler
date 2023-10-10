@@ -28,6 +28,19 @@ export function PaymentDetails({createOrder}){
         return createOrder(checkInfo)
     }
 
+    function onAddToy() {
+        const ToyToSave = toyService.getEmptyToy()
+        saveToy(ToyToSave)
+            .then(savedToy => {
+                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
+            })
+            .catch(err => {
+                console.log('Cannot add Toy', err)
+                showErrorMsg('Cannot add Toy')
+            })
+    }
+
+
     return (<section className='payment-details'>
         <h2>Payment Option</h2>
         <div className='credit-type'>

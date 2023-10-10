@@ -1,4 +1,5 @@
 import { orderService } from "../services/order.service.local.js"
+import { orderBackendService } from "../services/order.backend.service.js"
 import { store } from '../store/store.js'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from "./order.reducer.js"
 
@@ -26,15 +27,25 @@ export async function removeOrder(orderId) {
 
 export async function saveOrder(order) {
     const type = ADD_ORDER
-    try {
-        const savedOrder = await orderService.save(order)
-        console.log(order._id ? 'Updated order' : 'Added order', savedOrder)
-        store.dispatch({ type, order: savedOrder })
-        return savedOrder
-    } catch (err) {
-        console.log('Cannot save order', err)
-        throw err
-    }
+    // try {
+    //     const savedOrder = await orderService.save(order)
+    //     console.log(order._id ? 'Updated order' : 'Added order', savedOrder)
+    //     store.dispatch({ type, order: savedOrder })
+    //     return savedOrder
+    // } catch (err) {
+    //     console.log('Cannot save order', err)
+    //     throw err
+    // }
+    // const type = toy._id ? UPDATE_TOY : ADD_TOY
+    return orderBackendService.save(order)
+        .then(orderToSave => {
+            store.dispatch({ type, order: orderToSave })
+            return orderToSave
+        })
+        .catch(err => {
+            console.log('order action -> Cannot save order', err)
+            throw err
+        })
 }
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
