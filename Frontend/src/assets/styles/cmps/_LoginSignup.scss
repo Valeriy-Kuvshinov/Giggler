@@ -10,6 +10,7 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     max-width: 1000px;
+    max-height: 650px;
     margin: auto;
 
     .login-notes {
@@ -50,6 +51,7 @@
     .user-interaction {
         width: 50%;
         padding: 3.5em 3em;
+        justify-content: space-between;
 
         h3 {
             line-height: 1.0;
@@ -91,6 +93,10 @@
                 }
             }
 
+            .login-section {
+                margin-top: -8em;
+            }
+
             button {
                 margin-top: 2em;
                 font-size: 16px;
@@ -98,12 +104,11 @@
                 line-height: 100%;
                 padding: 12px 24px;
             }
+        }
 
-            p {
-                font-size: 12px;
-                line-height: 20px;
-                margin-top: 5em;
-            }
+        p {
+            font-size: 12px;
+            line-height: 20px;
         }
     }
 }
