@@ -1,7 +1,6 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -22,5 +21,6 @@
     "express-session": "^1.17.3",
     "mongodb": "^6.1.0",
     "socket.io": "^4.7.2"
-  }
+  },
+  "description": ""
 }
