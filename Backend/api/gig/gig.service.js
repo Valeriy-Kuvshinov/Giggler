@@ -1,28 +1,39 @@
+import fs from 'fs'
+import { utilService } from '../../services/util.service.js'
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
+const gigs = utilService.readJsonFile('data/gig.json')
+
 export const gigService = {
     remove,
     query,
     getById,
+    get,
     add,
-    update
+    update,
+    save
 }
 
-async function query(filterBy = {}, sortBy = {}) {
-    try {
-        const collection = await dbService.getCollection('gig')
-        const criteria = _buildCriteria(filterBy)
+// async function query(filterBy = {}, sortBy = {}) {
+//     try {
+//         const collection = await dbService.getCollection('gig')
+//         const criteria = _buildCriteria(filterBy)
 
-        const gigs = await collection.find(criteria).sort(sortBy).toArray()
-        return gigs
-    }
-    catch (err) {
-        console.error('cannot find gigs', err)
-        throw err
-    }
+//         const gigs = await collection.find(criteria).sort(sortBy).toArray()
+//         return gigs
+//     }
+//     catch (err) {
+//         console.error('cannot find gigs', err)
+//         throw err
+//     }
+// }
+
+function query() {
+    let gigsToDisplay = [...gigs]
+    return Promise.resolve(gigsToDisplay)
 }
 
 async function getById(gigId) {
@@ -37,15 +48,31 @@ async function getById(gigId) {
     }
 }
 
-async function remove(gigId) {
-    try {
-        const collection = await dbService.getCollection('gig')
-        await collection.deleteOne({ _id: new ObjectId(gigId) })
-    }
-    catch (err) {
-        loggerService.error(`cannot remove gig ${gigId}`, err)
-        throw err
-    }
+function get(gigId) {
+    const gig = gigs.find(gig => gig._id === gigId)
+    if (!gig) return Promise.reject('Order not found!')
+    return Promise.resolve(gig)
+}
+
+// async function remove(gigId) {
+//     try {
+//         const collection = await dbService.getCollection('gig')
+//         await collection.deleteOne({ _id: new ObjectId(gigId) })
+//     }
+//     catch (err) {
+//         loggerService.error(`cannot remove gig ${gigId}`, err)
+//         throw err
+//     }
+// }
+
+function remove(gigId) {
+    const idx = gigs.findIndex(gig => gig._id === gigId)
+    if (idx === -1) return Promise.reject('No Such Order')
+    // const gig = gigs[idx]
+    // if (gig.owner._id !== loggedinUser._id) return Promise.reject('Not your gig')
+    gigs.splice(idx, 1)
+    return _saveOrdersToFile()
+
 }
 
 async function add(gig) {
@@ -60,6 +87,26 @@ async function add(gig) {
         throw err
     }
 }
+
+function save(order) {
+    if (order._id) {
+        const newOrder = orders.find(currOrder => currOrder._id === order._id)
+        // if (orderToUpdate.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
+        newOrder.buyerId=order.buyerId
+        newOrder.buyerName=order.buyerName
+        newOrder.sellerId=order.sellerId
+        newOrder.orderedGigId=order.gigId
+        newOrder.price=order.price
+    } else {
+        order._id = _makeId()
+        // order.owner = loggedinUser
+        orders.push(order)
+    }
+
+    return _saveOrdersToFile().then(() => order)
+    // return Promise.resolve(order)
+}
+
 
 async function update(gig) {
     try {
