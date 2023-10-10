@@ -66,13 +66,13 @@ export function AppHeader() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <button onClick={onLogout}>Logout</button>
+                                    <button className='logout' onClick={onLogout}>Logout</button>
                                 </li>
                             </>
                         ) : (
                             <>
-                                <li><button onClick={() => setShowModal('login')}>Sign In</button></li>
-                                <li><button onClick={() => setShowModal('signup')}>Join</button></li>
+                                <li><button className='login' onClick={() => setShowModal('login')}>Sign In</button></li>
+                                <li><button className='join' onClick={() => setShowModal('signup')}>Join</button></li>
                             </>
                         )}
                     </ul>
