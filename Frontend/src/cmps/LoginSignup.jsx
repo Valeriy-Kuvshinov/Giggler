@@ -184,7 +184,7 @@ export function LoginSignup({ closeModal, mode }) {
                     )}
                     <button type="submit">Continue</button>
                 </form>
-                <p>By joining, you agree to the Fiverr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.</p>
+                <p>By joining, you agree to the Giggler Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.</p>
             </section>
         </main>
     )
