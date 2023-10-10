@@ -5,6 +5,10 @@
                 @media(min-width: 1400px) {
                     margin-left: -0.35em;
                 }
+
+                @media (max-width: 900px) {
+                    margin: auto;
+                }
             }
         }
     }
