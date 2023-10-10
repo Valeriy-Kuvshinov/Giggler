@@ -38,8 +38,9 @@ function save(order) {
         newOrder.buyerId=order.buyerId
         newOrder.buyerName=order.buyerName
         newOrder.sellerId=order.sellerId
-        newOrder.orderedGigId=order.gigId
+        newOrder.orderedGigId=order.orderedGigId
         newOrder.price=order.price
+        newOrder.orderState=order.orderState
     } else {
         order._id = _makeId()
         // order.owner = loggedinUser
