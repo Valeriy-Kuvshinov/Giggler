@@ -1,17 +1,14 @@
-import { useState, useEffect } from 'react'
 
-import { gigService } from "../services/gig.service.local"
+import { useSelector } from 'react-redux'
 
 export function UserOrder({ order , acceptOrder , denyOrder }){
 
-    const [gig,setGig]=useState(null)
-
-    useEffect(()=>{
-        gigService.getById(order.orderedGigId).then(gig=>setGig(gig))
-    },[])
-    // console.log(gig)
+    var gigs = useSelector(storeState => storeState.gigModule.gigs)
+    var gig=gigs.find((gig)=>gig._id===order.orderedGigId)
 
     if (gig===null) return <div>loading order...</div>
+    
+    // console.log(gig)
 
     function acceptTheOrder(){
         // console.log(order)

@@ -1,22 +1,17 @@
-import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 
-import { gigService } from '../services/gig.service.local.js'
 import { UserOrders } from '../cmps/UserOrders.jsx'
-import { userReducer } from '../store/user.reducer.js'
 
 export function UserProfile() {
-  const [gigs, setGigs] = useState([])
 
   const user = useSelector(storeState => storeState.userModule.user)
+  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  
   // console.log('user : ',user)
-
-  useEffect(() => {
-    gigService.query({ userId: user._id }).then((gigs) => setGigs(gigs))
-  }, [])
+  // console.log('gigs : ',gigs)
 
   return (
     <section className="main-container full">

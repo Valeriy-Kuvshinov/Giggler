@@ -1,31 +1,23 @@
-import { useState, useEffect } from 'react'
+
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 import { GigHeader } from '../cmps/GigHeader.jsx'
 import { AboutGig } from '../cmps/AboutGig.jsx'
 import { AboutSeller } from '../cmps/AboutSeller.jsx'
 import { GigOrder } from '../cmps/GigOrder.jsx'
 import { GigReviews } from '../cmps/GigReviews.jsx'
-import { gigService } from '../services/gig.service.local.js'
 
 export function GigDetails() {
   const params = useParams()
-  const [gig, setGig] = useState(null)
 
-  useEffect(() => {
-    loadGig()
-  }, [])
+  var gigs = useSelector(storeState => storeState.gigModule.gigs)
+  var gig=gigs.find((gig)=>gig._id===params.id)
 
-  async function loadGig() {
-    try {
-      const gig = await gigService.getById(params.id)
-      setGig(gig)
-    }
-    catch(err){
-        console.log('Can not load gig ', err)
-    }
-  }
 
   if (!gig) return <h1>loading...</h1>
+
+  // console.log(gig)
 
   return (
     <section className="gig-details main-container full">
