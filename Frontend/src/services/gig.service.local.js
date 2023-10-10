@@ -14,12 +14,12 @@ export const gigService = {
 // debug trick
 window.bs = gigService
 
-async function query(filterBy = { userId: ''}) {
+async function query(filterBy = { userId: '' }) {
   var gigs = await storageService.query(STORAGE_KEY)
   if (filterBy.userId) {
     const regex = new RegExp(filterBy.userId, 'i')
     gigs = gigs.filter(
-      (gig) => gig.owner._id===filterBy.userId
+      (gig) => gig.owner._id === filterBy.userId
       // regex.test(gig.title) || regex.test(gig.description)
     )
   }

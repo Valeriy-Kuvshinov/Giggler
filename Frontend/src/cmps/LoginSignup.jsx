@@ -95,13 +95,17 @@ export function LoginSignup({ closeModal, mode }) {
             <section className='user-interaction flex column'>
                 {isSignup ? (
                     <>
-                        <h2>Create a new account</h2>
-                        <h3>Already have an account? <span onClick={() => setIsSignup(false)}>Sign in</span></h3>
+                        <div>
+                            <h2>Create a new account</h2>
+                            <h3>Already have an account? <span onClick={() => setIsSignup(false)}>Sign in</span></h3>
+                        </div>
                     </>
                 ) : (
                     <>
-                        <h2>Sign in to your account</h2>
-                        <h3>Don’t have an account? <span onClick={() => setIsSignup(true)}>Join here</span></h3>
+                        <div>
+                            <h2>Sign in to your account</h2>
+                            <h3>Don’t have an account? <span onClick={() => setIsSignup(true)}>Join here</span></h3>
+                        </div>
                     </>
                 )}
                 <form className='flex column' onSubmit={isSignup ? handleSignup : handleLogin}>
@@ -179,8 +183,8 @@ export function LoginSignup({ closeModal, mode }) {
                         </div>
                     )}
                     <button type="submit">Continue</button>
-                    <p>By joining, you agree to the Fiverr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.</p>
                 </form>
+                <p>By joining, you agree to the Fiverr Terms of Service and to occasionally receive emails from us. Please read our Privacy Policy to learn how we use your personal data.</p>
             </section>
         </main>
     )
