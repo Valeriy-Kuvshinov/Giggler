@@ -32,17 +32,16 @@ export async function getGigById(req, res) {
 }
 
 export async function addGig(req, res) {
-    const { loggedinUser } = req
     try {
         const gig = req.body
-        console.log("Adding gig:", gig)
-        gig.owner = loggedinUser
-        if (!gig._id) gig._id = null
+        console.log("Before sending to service:", gig)
         const addedGig = await gigService.save(gig)
+        console.log("After service returned:", addedGig)
+
         res.json(addedGig)
     }
     catch (err) {
-        console.log('Failed to add gig', err)
+        loggerService.error('Failed to add gig', err)
         res.status(500).send({ err: 'Failed to add gig' })
     }
 }
@@ -55,7 +54,7 @@ export async function updateGig(req, res) {
         res.json(updatedGig)
     }
     catch (err) {
-        console.log('Failed to update gig', err)
+        loggerService.error('Failed to update gig', err)
         res.status(500).send({ err: 'Failed to update gig' })
     }
 }

@@ -40,6 +40,7 @@ function remove(gigId) {
 }
 
 function save(gig) {
+    console.log('recieved gig', gig)
     let gigs = utilService.readJsonFile(GIGS_PATH)
     if (gig._id) {
         const idx = gigs.findIndex(g => g._id === gig._id)
@@ -47,14 +48,10 @@ function save(gig) {
             loggerService.error(`Failed to update gig with id ${gig._id}`)
             throw new Error(`No gig found with id ${gig._id}`)
         }
-        loggerService.info(`Old gig: `, gigs[idx])
-        loggerService.info(`New gig: `, gig)
         gigs[idx] = { ...gigs[idx], ...gig }
-        loggerService.info(`Updated gig with id ${gig._id}`)
     } else {
         gig._id = utilService.makeId()
         gigs.push(gig)
-        loggerService.info(`Added gig with id ${gig._id}`)
     }
     _saveGigs(gigs)
     return Promise.resolve(gig)
@@ -62,6 +59,7 @@ function save(gig) {
 
 function _saveGigs(gigs) {
     try {
+        console.log("Gigs before saving: ", gigs)
         fs.writeFileSync(GIGS_PATH, JSON.stringify(gigs, null, 2))
         loggerService.info('Gigs saved successfully')
     } catch (err) {
