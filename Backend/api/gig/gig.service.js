@@ -2,7 +2,7 @@ import fs from 'fs'
 import { utilService } from '../../services/util.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
-const GIGS_PATH = '..data/gig.json'
+const GIGS_PATH = 'data/gig.json'
 
 export const gigService = {
     remove,
