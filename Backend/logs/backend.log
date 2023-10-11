@@ -111,3 +111,154 @@
 11.10.2023, 13:34:24 - ERROR - Failed to get gig | Error: No gig found with id "g002"
 11.10.2023, 13:34:27 - INFO - Req was made | /
 11.10.2023, 13:38:55 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:49:35 - INFO - Req was made | /
+11.10.2023, 13:49:50 - INFO - Req was made | /
+11.10.2023, 13:49:54 - INFO - Req was made | /
+11.10.2023, 13:50:34 - INFO - Req was made | /
+11.10.2023, 13:51:07 - INFO - Req was made | /
+11.10.2023, 13:51:09 - INFO - Req was made | /
+11.10.2023, 13:51:43 - INFO - Req was made | /
+11.10.2023, 13:52:24 - INFO - Req was made | /
+11.10.2023, 13:52:29 - INFO - Req was made | /
+11.10.2023, 13:53:14 - INFO - Req was made | /
+11.10.2023, 13:54:28 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 13:54:45 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 13:56:35 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:56:56 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:57:37 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:57:48 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 13:58:22 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:58:36 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:58:52 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:59:05 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 13:59:13 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 13:59:24 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:01:11 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:01:17 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 14:01:31 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:01:32 - ERROR - Failed to get order | TypeError: orderService.getById is not a function
+11.10.2023, 14:03:16 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:03:17 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:03:18 - ERROR - Failed to get order | Order not found!
+11.10.2023, 14:04:45 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:04:48 - ERROR - Failed to get order | ReferenceError: loggerService is not defined
+11.10.2023, 14:05:25 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:05:27 - ERROR - No order found with id u001
+11.10.2023, 14:05:27 - ERROR - Failed to get order | Error: No order found with id u001
+11.10.2023, 14:05:38 - ERROR - Failed to get order | Error: No order found with id u002
+11.10.2023, 14:05:38 - ERROR - No order found with id u002
+11.10.2023, 14:07:41 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:07:42 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:08:25 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:08:32 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:08:59 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:09:05 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:09:15 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:09:41 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:09:43 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:10:18 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:10:20 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:10:31 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:10:33 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:11:30 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:11:32 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:12:08 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:12:10 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:12:26 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:12:29 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:13:09 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:13:11 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:13:30 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:13:32 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:13:36 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:13:59 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:14:00 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:14:15 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:14:17 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:15:16 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:15:18 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:16:26 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:39:06 - ERROR - Failed to get order | TypeError: Assignment to constant variable.
+11.10.2023, 14:41:08 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:42:11 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:43:12 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:43:57 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:44:57 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:45:37 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:47:39 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:47:50 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:48:13 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:48:53 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:49:04 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:50:07 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:50:08 - ERROR - Failed to get order | ReferenceError: sellerId is not defined
+11.10.2023, 14:50:17 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:51:02 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:52:44 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:52:55 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:54:24 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 14:54:35 - INFO - Req was made | /
+11.10.2023, 14:55:09 - INFO - Req was made | /
+11.10.2023, 15:00:07 - INFO - Req was made | /
+11.10.2023, 15:00:36 - INFO - Req was made | /
+11.10.2023, 15:00:42 - INFO - Req was made | /
+11.10.2023, 15:00:46 - INFO - Req was made | /
+11.10.2023, 15:01:47 - INFO - Req was made | /
+11.10.2023, 15:01:50 - INFO - Req was made | /
+11.10.2023, 15:02:01 - INFO - Req was made | /
+11.10.2023, 15:02:14 - INFO - Req was made | /
+11.10.2023, 15:02:56 - INFO - Req was made | /
+11.10.2023, 15:05:18 - INFO - Req was made | /
+11.10.2023, 15:05:27 - INFO - Req was made | /
+11.10.2023, 15:05:29 - INFO - Req was made | /
+11.10.2023, 15:05:36 - INFO - Req was made | /
+11.10.2023, 15:05:39 - INFO - Req was made | /
+11.10.2023, 15:14:17 - INFO - Req was made | /
+11.10.2023, 15:17:10 - INFO - Req was made | /
+11.10.2023, 15:17:20 - INFO - Req was made | /
+11.10.2023, 15:17:45 - INFO - Req was made | /
+11.10.2023, 15:17:45 - INFO - Req was made | /
+11.10.2023, 15:17:50 - INFO - Req was made | /
+11.10.2023, 15:17:50 - INFO - Req was made | /
+11.10.2023, 15:18:07 - INFO - Req was made | /
+11.10.2023, 15:18:07 - INFO - Req was made | /
+11.10.2023, 15:19:21 - INFO - Req was made | /
+11.10.2023, 15:19:25 - INFO - Req was made | /
+11.10.2023, 15:19:25 - INFO - Req was made | /
+11.10.2023, 15:19:38 - INFO - Req was made | /
+11.10.2023, 15:20:41 - ERROR - Failed to get gig | Error: No gig found with id [object Object]
+11.10.2023, 15:20:41 - ERROR - No gig found with id [object Object]
+11.10.2023, 15:20:43 - ERROR - No gig found with id [object Object]
+11.10.2023, 15:20:43 - ERROR - Failed to get gig | Error: No gig found with id [object Object]
+11.10.2023, 15:20:43 - INFO - Req was made | /
+11.10.2023, 15:21:07 - INFO - Req was made | /
+11.10.2023, 15:21:11 - INFO - Req was made | /
+11.10.2023, 15:21:11 - INFO - Req was made | /
+11.10.2023, 15:21:32 - INFO - Req was made | /
+11.10.2023, 15:21:32 - INFO - Req was made | /
+11.10.2023, 15:22:39 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 15:22:40 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 15:22:41 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 15:25:02 - INFO - Req was made | /
+11.10.2023, 15:25:33 - INFO - Req was made | /
+11.10.2023, 15:26:33 - INFO - Server listening on port http://127.0.0.1:3030/
+11.10.2023, 15:38:18 - INFO - Req was made | /
+11.10.2023, 15:38:18 - INFO - Req was made | /
+11.10.2023, 15:38:34 - INFO - Req was made | /
+11.10.2023, 15:39:08 - INFO - Req was made | /
+11.10.2023, 15:39:41 - INFO - Req was made | /
+11.10.2023, 15:40:25 - INFO - Req was made | /
+11.10.2023, 15:40:49 - INFO - Req was made | /
+11.10.2023, 15:40:49 - INFO - Req was made | /
+11.10.2023, 15:41:41 - INFO - Req was made | /
+11.10.2023, 15:41:43 - INFO - Req was made | /
+11.10.2023, 15:41:43 - INFO - Req was made | /
+11.10.2023, 15:42:02 - INFO - Req was made | /
+11.10.2023, 15:42:05 - INFO - Req was made | /
+11.10.2023, 15:42:18 - INFO - Req was made | /
+11.10.2023, 15:42:18 - INFO - Req was made | /
+11.10.2023, 15:42:37 - INFO - Req was made | /
+11.10.2023, 15:42:37 - INFO - Req was made | /
+11.10.2023, 15:42:41 - INFO - Req was made | /
+11.10.2023, 15:42:41 - INFO - Req was made | /
+11.10.2023, 15:42:51 - INFO - Req was made | /

@@ -1,17 +1,40 @@
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
 
 import { GigPreview } from './GigPreview.jsx'
 
+import { gigBackendService } from '../services/gig.backend.service.js'
+
 export function UserGigs({ user }) {
     const is = 'userProfile'
+    
+    const [gigs,setGigs]=useState([])
 
-    var gigs = useSelector(storeState => storeState.gigModule.gigs)
-    gigs=gigs.filter((gig)=>gig.owner._id===user._id)
+    useEffect(()=>{
+        loadGigs()
+    },[])
 
+    async function loadGigs(){
+        try{
+            var gigs=await gigBackendService.query()
+            gigs=gigs.filter((gig)=>{
+                // console.log(gig)
+                // console.log(user._id)
+                if(gig.owner._id.localeCompare(user._id)===0){
+                    return true
+                } else {
+                    return false
+                }
+            })
+            setGigs(gigs)
+        } catch (err){
+            console.log('couldnt load gig : ',err)
+        }
+    }
+    
     if (gigs.length === 0) return
-
-    // console.log(gigs)
+    
+    // console.log('gigs :',gigs)
 
     return (<section className="user-gigs">
         <div className='info-block title'>

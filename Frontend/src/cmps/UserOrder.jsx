@@ -1,14 +1,28 @@
 
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { gigBackendService } from '../services/gig.backend.service'
 
 export function UserOrder({ order , acceptOrder , denyOrder }){
 
-    var gigs = useSelector(storeState => storeState.gigModule.gigs)
-    var gig=gigs.find((gig)=>gig._id===order.orderedGigId)
+    const [gig,setGig]=useState([])
 
-    if (gig===undefined) return <div>loading order...</div>
+    useEffect(()=>{
+        loadGig()
+    },[])
+
+    async function loadGig(){
+        try{
+            const gig=await gigBackendService.getById(order.orderedGigId)
+            setGig(gig)
+        } catch (err){
+            console.log('couldnt load gig : ',err)
+        }
+    }
     
-    // console.log(gig)
+    
+    if (gig===undefined) return <div>loading gig...</div>
+    
+    // console.log('gig : ',gig)
 
     function acceptTheOrder(){
         // console.log(order)

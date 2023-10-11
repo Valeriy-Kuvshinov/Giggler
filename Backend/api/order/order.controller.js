@@ -2,6 +2,7 @@ import { orderService } from './order.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
 export async function getOrder(req, res) {
+    // console.log('asdhasdasdjyasyagsjdaygsduagsuduasdiadasdas',req.params)
     try {
         const order = await orderService.getById(req.params.id)
         res.send(order)
@@ -14,8 +15,7 @@ export async function getOrder(req, res) {
 export async function getOrders(req, res) {
     try {
         const filterBy = {
-            txt: req.query?.txt || '',
-            minBalance: +req.query?.minBalance || 0
+            id: req.query?.id || '',
         }
         const orders = await orderService.query(filterBy)
         res.send(orders)
