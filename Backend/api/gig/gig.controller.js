@@ -21,7 +21,7 @@ export async function getGigs(req, res) {
 export async function getGigById(req, res) {
     try {
         const gigId = req.params.id
-        const gig = await gigService.getById(gigId)
+        var gig = await gigService.getById(gigId)
         console.log('gig to show: ', JSON.stringify(gig, null, 2))
         res.json(gig)
     }

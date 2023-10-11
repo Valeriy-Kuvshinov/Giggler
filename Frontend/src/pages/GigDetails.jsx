@@ -8,7 +8,7 @@ import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
 import { useEffect, useState } from "react"
 
-import { gigBackendService } from "../services/gig.backend.service copy.js"
+import { gigBackendService } from "../services/gig.backend.service.js"
 
 export function GigDetails() {
   const params = useParams()

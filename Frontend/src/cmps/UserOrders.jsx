@@ -11,8 +11,17 @@ export function UserOrders({ user }){
     const [orders,setOrders]=useState([])
 
     useEffect(()=>{
-        orderBackendService.query().then((orders)=>setOrders(orders))
-    },[orders])
+        loadOrders()
+    },[])
+
+    async function loadOrders(){
+        try{
+            const orders=await orderBackendService.query({id:user._id})
+            setOrders(orders)
+        } catch (err) {
+            console.log('couldnt load orders : ',err)
+        }
+    }
 
     // console.log('orders from backend : ',orders)
 

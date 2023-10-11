@@ -1,24 +1,47 @@
 import fs from 'fs'
 import { utilService } from '../../services/util.service.js'
+import { loggerService } from '../../services/logger.service.js'
 
 const orders = utilService.readJsonFile('data/order.json')
 
 export const orderService = {
     query,
-    get,
+    getById,
     remove,
     save
 }
 
-function query() {
+function query(filterBy) {
     let ordersToDisplay = [...orders]
+    if(filterBy.id!=='') {
+        ordersToDisplay=ordersToDisplay.filter((order)=>
+        order.sellerId===filterBy.id)
+    }
     return Promise.resolve(ordersToDisplay)
 }
 
-function get(orderId) {
-    const order = orders.find(order => order._id === orderId)
-    if (!order) return Promise.reject('Order not found!')
-    return Promise.resolve(order)
+function getById(orderId) {
+    // const order = orders.find(order => order._id === orderId)
+    // if (!order) return Promise.reject('Order not found!')
+    // return Promise.resolve(order)
+    // let orders = utilService.readJsonFile(GIGS_PATH)
+    // console.log('orders : ',orders)
+    var orders2 = [...orders]
+    // console.log('orders2',orders2)
+    console.log('orderId',orderId)
+    orders2 = orders2.filter((order) => {
+        console.log( order.sellerId.localeCompare(orderId))
+        if(order.sellerId.localeCompare(orderId)===0) {
+            return true 
+        }
+        return false
+    })
+    console.log('orders2',orders2)
+    if (!orders2) {
+        loggerService.error(`No order found with id ${orderId}`)
+        throw new Error(`No order found with id ${orderId}`)
+    }
+    return Promise.resolve(orders2)
 }
 
 function remove(orderId) {
