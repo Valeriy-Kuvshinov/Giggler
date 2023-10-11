@@ -47,6 +47,8 @@ function save(gig) {
             loggerService.error(`Failed to update gig with id ${gig._id}`)
             throw new Error(`No gig found with id ${gig._id}`)
         }
+        loggerService.info(`Old gig: `, gigs[idx])
+        loggerService.info(`New gig: `, gig)
         gigs[idx] = { ...gigs[idx], ...gig }
         loggerService.info(`Updated gig with id ${gig._id}`)
     } else {

@@ -10,6 +10,6 @@ export const gigRoutes = express.Router()
 
 gigRoutes.get('/', log, getGigs)
 gigRoutes.get('/:id', getGigById)
-gigRoutes.post('/', requireAdmin, addGig)
-gigRoutes.put('/:id', requireAdmin, updateGig)
+gigRoutes.post('/', addGig)
+gigRoutes.put('/:id', updateGig)
 gigRoutes.delete('/:id', requireAdmin, requireAuth, removeGig)
