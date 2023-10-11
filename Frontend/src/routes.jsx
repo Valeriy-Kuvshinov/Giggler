@@ -9,7 +9,7 @@ const routes = [
     { path: '/', component: HomePage, label: 'Home 🏠' },
     // { path: '/user/:id', component: UserDetails },
     { path: '/explore/', component: GigIndex, label: 'Explore' },
-    { path: '/gig/:id', component: GigDetails, label: 'Details' },
+    { path: '/gig/:id', component: GigDetails },
     { path: '/user/:id', component: UserProfile, label: 'profile' },
     { path: '/gig/edit/:id?', component: GigEdit },
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' }

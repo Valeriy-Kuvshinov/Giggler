@@ -11,7 +11,7 @@ export function UserGigs({ user }) {
 
     if (gigs.length === 0) return
 
-    console.log(gigs)
+    // console.log(gigs)
 
     return (<section className="user-gigs">
         <div className='info-block title'>

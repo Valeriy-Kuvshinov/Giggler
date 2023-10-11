@@ -7,9 +7,9 @@ import { UserOrders } from '../cmps/UserOrders.jsx'
 
 export function UserProfile() {
   const user = useSelector(storeState => storeState.userModule.user)
-  console.log(user)
+  // console.log(user)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
-  console.log(gigs)
+  // console.log(gigs)
 
   return (
     <section className="main-container full">
