@@ -32,12 +32,12 @@ export async function getGigById(req, res) {
 }
 
 export async function addGig(req, res) {
-    const { loggedinUser } = req
-
     try {
         const gig = req.body
-        gig.owner = loggedinUser
-        const addedGig = await gigService.add(gig)
+        console.log("Before sending to service:", gig)
+        const addedGig = await gigService.save(gig)
+        console.log("After service returned:", addedGig)
+
         res.json(addedGig)
     }
     catch (err) {
@@ -49,7 +49,8 @@ export async function addGig(req, res) {
 export async function updateGig(req, res) {
     try {
         const gig = req.body
-        const updatedGig = await gigService.update(gig)
+        console.log("Updating gig:", gig)
+        const updatedGig = await gigService.save(gig)
         res.json(updatedGig)
     }
     catch (err) {
