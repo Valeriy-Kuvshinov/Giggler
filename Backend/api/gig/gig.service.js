@@ -19,6 +19,7 @@ function query() {
 function getById(gigId) {
     let gigs = utilService.readJsonFile(GIGS_PATH)
     const gig = gigs.find(g => g._id === gigId)
+
     if (!gig) {
         loggerService.error(`No gig found with id ${gigId}`)
         throw new Error(`No gig found with id ${gigId}`)
@@ -29,6 +30,7 @@ function getById(gigId) {
 function remove(gigId) {
     let gigs = utilService.readJsonFile(GIGS_PATH)
     const idx = gigs.findIndex(g => g._id === gigId)
+
     if (idx === -1) {
         loggerService.error(`Failed to remove gig with id ${gigId}`)
         throw new Error(`No gig found with id ${gigId}`)
@@ -42,6 +44,7 @@ function remove(gigId) {
 function save(gig) {
     console.log('recieved gig', gig)
     let gigs = utilService.readJsonFile(GIGS_PATH)
+
     if (gig._id) {
         const idx = gigs.findIndex(g => g._id === gig._id)
         if (idx === -1) {

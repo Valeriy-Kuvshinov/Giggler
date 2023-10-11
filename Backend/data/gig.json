@@ -679,7 +679,7 @@
   },
   {
     "title": "ahhhhhh",
-    "price": 2,
+    "price": 36,
     "owner": {
       "_id": "u001",
       "fullName": "Peter Parker",
@@ -687,7 +687,7 @@
       "level": "level 2",
       "rating": "4.9"
     },
-    "daysToMake": 1,
+    "daysToMake": "5",
     "description": "ahhhhhh",
     "imgUrls": [
       "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",

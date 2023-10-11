@@ -63,8 +63,7 @@ export function GigEdit() {
                     rating: user.rating
                 }
             }
-            const savedGig = await saveGig(fields)
-            console.log('Gig saved successfully:', savedGig)
+            await saveGig(fields)
             navigate(`/user/${user._id}`)
         } catch (err) {
             console.error('Failed to save gig:', err)
