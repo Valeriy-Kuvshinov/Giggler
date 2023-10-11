@@ -89,6 +89,20 @@
   transform: rotate(-180deg);
 }
 
+.shadow {
+  box-shadow: 0 0.266px 1.13052px rgba(0, 0, 0, 0.069),
+  0 0.89345px 3.79717px rgba(0, 0, 0, 0.101), 0 5px 17px rgba(0, 0, 0, 0.17);
+}
+
+.open {
+  margin-top: 8px;
+  opacity: 1;
+  pointer-events: all;
+  span{
+    transform: rotate(-180deg);
+  }
+}
+
 // i {
 //     svg{
 //         width:100%;
