@@ -1,25 +1,31 @@
-.gig-header{
+.gig-header {
     display: flex;
     flex-direction: column;
-    p{
+
+    p {
         margin: 0;
     }
-    .rating{
+
+    .rating {
         display: flex;
         justify-content: space-between;
-        img{
-            width:13px;
+
+        img {
+            width: 20px;
         }
-        .seller-picture{
+
+        .seller-picture {
             width: 30px;
             height: 30px;
         }
     }
-    img{
+
+    img {
         width: 100%;
     }
-    .gig-images{
-        img{
+
+    .gig-images {
+        img {
             width: 20%;
         }
     }

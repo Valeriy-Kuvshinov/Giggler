@@ -1,16 +1,25 @@
-import { Link } from 'react-router-dom'
-import { UserPreview } from './UserPreview.jsx'
-import { removeGig } from '../store/gig.actions.js'
-import { useNavigate } from 'react-router-dom'
-import { ImageCarousel } from './ImageCarousel.jsx'
+import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
 import SvgIcon from './SvgIcon.jsx'
-import { useState } from 'react'
+import { userService } from '../services/user.service.js'
+import { removeGig } from '../store/gig.actions.js'
+
+import { UserPreview } from './UserPreview.jsx'
+import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
   const [isLiked, setIsLiked] = useState(true)
+  const [owner, setOwner] = useState(null)
   const navigate = useNavigate()
-  const owner = gig.owner
-  // console.log('is', is)
+
+  useEffect(() => {
+    async function fetchOwnerDetails() {
+      const ownerData = await userService.getById(gig.ownerId)
+      setOwner(ownerData)
+    }
+    fetchOwnerDetails()
+  }, [gig.ownerId])
 
   async function onRemoveGig() {
     try {
@@ -25,10 +34,10 @@ export function GigPreview({ is, gig }) {
   function onToggleHeart() {
     setIsLiked((prevIsLiked) => !prevIsLiked)
   }
+  if (!owner) return null
 
   return (
     <>
-      {/* <img src={gig.imgUrls[0]} alt={`${gig.owner.fullName} gig img`} /> */}
       <Link className="link-gig-img" to={`/gig/${gig._id}`}>
         <ImageCarousel images={gig.imgUrls} />
       </Link>

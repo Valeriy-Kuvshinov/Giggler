@@ -1,15 +1,18 @@
-.about-seller{
-    .seller{
+.about-seller {
+    .seller {
         display: flex;
-        img{
-            width: 13px;
+
+        img {
+            width: 20px;
         }
-        .seller-picture{
+
+        .seller-picture {
             width: 130px;
             height: 130px;
             margin-inline-end: 10px;
         }
-        button{
+
+        button {
             margin: 0;
             padding: 0;
             height: 40px;
@@ -18,30 +21,36 @@
             background-color: $clrPrimary1;
             border: 1px solid $clrSecondary5;
             border-radius: 4px;
-            &:hover{
+
+            &:hover {
                 color: $clrPrimary1;
                 background-color: $clrSecondary5;
             }
         }
     }
-    .seller-info{
+
+    .seller-info {
         border: 1px solid $clrSecondary2;
         color: $clrSecondary5;
         padding: 24px;
-        .seller-details{
+
+        .seller-details {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid $clrSecondary2;
             padding-block-end: 16px;
-            .inner-details{
+
+            .inner-details {
                 width: 50%;
-                .inner-inner-details{
+
+                .inner-inner-details {
                     display: flex;
                     flex-direction: column;
                 }
             }
         }
-        p{
+
+        p {
             padding-block-start: 16px;
             margin: 0;
         }

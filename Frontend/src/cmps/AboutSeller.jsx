@@ -1,25 +1,21 @@
-export function AboutSeller({ gig }) {
-  const rating = gig.owner.rating
-  var stars = ''
-  for (var i = 0; i < rating; i++) {
-    stars += '<img src=/src/assets/img/svg/star.icon.svg />'
-  }
-  function load() {
-    document.querySelector(".stars2").innerHTML = stars + `${rating}` 
-    // + `(${gig.likedByUsers.length})`
-  }
-  setTimeout(load, 10)
+import starIcon from '../assets/img/svg/star.icon.svg'
+
+export function AboutSeller({ owner }) {
+  const fullStarsCount = Math.ceil(owner.rating)
 
   return (
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
-        <img className="seller-picture" src={gig.owner.avatar} />
-
+        <img className="seller-picture" src={owner.avatar} />
         <div>
-          <p>{gig.owner.fullName}</p>
-          <p className="stars2">
-          </p>
+          <p>{owner.fullName}</p>
+          <div className="stars2">
+            {[...Array(fullStarsCount)].map((_, idx) => (
+              <img src={starIcon} key={idx} alt="star" />
+            ))}
+            {owner.rating}
+          </div>
           <button>Contact Me</button>
         </div>
       </div>

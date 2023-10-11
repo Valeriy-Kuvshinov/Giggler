@@ -1,7 +1,9 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+
+const SESSION_KEY_LOGGEDIN_USER = 'loggedinUser'
+const BASE_URL = 'user'
 
 export const userService = {
   login,
@@ -19,23 +21,23 @@ window.userService = userService
 
 function getUsers() {
   // return storageService.query('user')
-  return httpService.get(`user`)
+  return httpService.get(BASE_URL)
 }
 
 async function getById(userId) {
-  const user = await storageService.get('user', userId)
+  const user = await storageService.get(BASE_URL, userId)
   // const user = await httpService.get(`user/${userId}`)
   return user
 }
 
 function remove(userId) {
-  return storageService.remove('user', userId)
+  return storageService.remove(BASE_URL, userId)
   // return httpService.delete(`user/${userId}`)
 }
 
 async function update({ _id }) {
-  const user = await storageService.get('user', _id)
-  await storageService.put('user', user)
+  const user = await storageService.get(BASE_URL, _id)
+  await storageService.put(BASE_URL, user)
 
   // const user = await httpService.put(`user/${_id}`, {_id})
   // // Handle case in which admin updates other user's details
@@ -44,7 +46,7 @@ async function update({ _id }) {
 }
 
 async function login(userCred) {
-  const users = await storageService.query('user')
+  const users = await storageService.query(BASE_URL)
   const user = users.find((user) => user.username === userCred.username)
   // const user = await httpService.post('auth/login', userCred)
   if (user) {
@@ -53,23 +55,23 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-  const user = await storageService.post('user', userCred)
+  const user = await storageService.post(BASE_URL, userCred)
   // const user = await httpService.post('auth/signup', userCred)
   return setLoggedinUser(user)
 }
 
 async function logout() {
-  sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+  sessionStorage.removeItem(SESSION_KEY_LOGGEDIN_USER)
   // return await httpService.post('auth/logout')
 }
 
 function setLoggedinUser(user) {
-  sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+  sessionStorage.setItem(SESSION_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
 
 function getLoggedinUser() {
-  return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+  return JSON.parse(sessionStorage.getItem(SESSION_KEY_LOGGEDIN_USER))
 }
 
 function getUserRatingCount(user) {
@@ -105,7 +107,7 @@ const users = [
     username: 'peter123',
     password: '123',
     level: 'level 2',
-    rating: '4.9',
+    rating: 4.9,
     isAdmin: false
   },
   {
@@ -116,7 +118,7 @@ const users = [
     avatar:
       'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
     level: 'level 1',
-    rate: '4.9',
+    rating: 4.9,
     isAdmin: true
   },
 ]
