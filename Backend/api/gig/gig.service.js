@@ -42,7 +42,7 @@ function remove(gigId) {
 }
 
 function save(gig) {
-    console.log('recieved gig', gig)
+    console.log('received gig', gig)
     let gigs = utilService.readJsonFile(GIGS_PATH)
 
     if (gig._id) {
@@ -51,10 +51,10 @@ function save(gig) {
             loggerService.error(`Failed to update gig with id ${gig._id}`)
             throw new Error(`No gig found with id ${gig._id}`)
         }
-        gigs[idx] = { ...gigs[idx], ...gig }
+        gigs[idx] = { _id: gig._id, ...gig }
     } else {
         gig._id = utilService.makeId()
-        gigs.push(gig)
+        gigs.push({ _id: gig._id, ...gig })
     }
     _saveGigs(gigs)
     return Promise.resolve(gig)
