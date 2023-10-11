@@ -1,9 +1,5 @@
 node_modules
 .env
-backend.log
-gig-copy
-gig
-order
-user-copy
-user
+logs
+data
 .gitignore
