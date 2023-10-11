@@ -27,15 +27,17 @@
 }
 .gig-filter {
   position: sticky;
-  z-index: 13;
+  z-index: 5;
   top: 0;
   width: 100%;
   background-color: #fff;
 
   .floating-top-bar {
+    .floating-menu {
+      position: relative;
+    }
     margin-block-start: 1em;
     .filter-nav {
-      padding: 0 2em;
       display: flex;
 
       .btn {
@@ -54,7 +56,6 @@
     height: 1em;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0 9px 20px -13px #74767ed9;
   }
 }
 // .gig-filter::after {
