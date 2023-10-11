@@ -1,17 +1,31 @@
-import { useSelector } from 'react-redux'
+import { useState , useEffect } from "react"
 import { Link } from 'react-router-dom'
+
+import { gigBackendService } from "../services/gig.backend.service"
 
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
 export function PaymentInfo({gigId,createOrder}){
 
-    const gigs = useSelector(storeState => storeState.gigModule.gigs)
-    const gig=gigs.find((gig)=>gig._id===gigId)
+    const [gig,setGig]=useState(null)
+
+    useEffect(()=>{
+        loadGig()
+      },[])
     
-    // console.log(gig)
+      async function loadGig(){
+        try{
+          const gig=await gigBackendService.getById(gigId)
+          setGig(gig)
+        } catch (err){
+          console.log('couldnt load gig : ',err)
+        }
+      }
 
     if(gig===null) return <div>loading...</div>
-
+    
+    // console.log('gig : ',gig)
+      
     function onConfirmPayment(){
         createOrder()
     }
