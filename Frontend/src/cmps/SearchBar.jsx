@@ -1,9 +1,9 @@
 import React from 'react'
 import searchIconSvg from '../assets/img/svg/search.icon.svg'
 
-export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSubmit }) {
+export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSubmit, visibility }) {
     return (
-        <div className="search-bar flex">
+        <div className="search-bar flex" style={{ visibility: visibility }}>
             <input
                 type="text"
                 placeholder={placeholder}

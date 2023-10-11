@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 
-export function NavBar({ categories }) {
+export function NavBar({ categories, display, headerStage }) {
     const carouselRef = useRef(null)
     const [isAtStart, setIsAtStart] = useState(true)
     const [isAtEnd, setIsAtEnd] = useState(false)
@@ -30,16 +30,16 @@ export function NavBar({ categories }) {
                 carouselRef.current.removeEventListener('scroll', checkScrollPosition)
             }
         }
-    }, [])
+    }, [headerStage])
 
     return (
-        <nav className="category-nav">
+        <nav className="category-nav" style={{ borderBottom: headerStage === 2 ? '2px solid #ced1d6' : 'none' }}>
             {!isAtStart && (
                 <div className="carousel-btn left-side" onClick={() => scrollCarousel('left')}>
                     <img src={leftArrowSvg} alt="Left Arrow" />
                 </div>
             )}
-            <div className="container flex" ref={carouselRef}>
+            <div className={`container flex ${display === 'none' ? 'hidden' : ''}`} ref={carouselRef}>
                 {categories.map(category => (
                     <NavLink key={category} to={`/explore?cat=${category.split(' ').join('-').replace('&', '-')}`}>
                         {category}

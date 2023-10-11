@@ -46,9 +46,10 @@
 
             input[type="text"] {
                 width: 90%;
-                padding: 1em;
+                padding: 0.5em;
                 border-radius: 5px 0px 0px 5px;
                 border: 1px solid $clrPrimary2;
+                font-size: 16px;
 
                 &:focus {
                     outline: none;
