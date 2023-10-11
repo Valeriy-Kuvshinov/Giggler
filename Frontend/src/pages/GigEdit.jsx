@@ -16,16 +16,12 @@ export function GigEdit() {
 
     const [fields, setFields, handleChange] = useForm({
         title: '',
+        category: categoryTexts[0],
+        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
         price: '',
-        owner: {
-            _id: user._id,
-            fullName: user.fullName,
-            avatar: user.avatar,
-            level: user.level,
-            rating: user.rating
-        },
-        daysToMake: 1,
         description: '',
+        daysToMake: 1,
+        ownerId: user._id,
         imgUrls: [
             'https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg',
             'https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg',
@@ -33,9 +29,8 @@ export function GigEdit() {
             'https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
             'https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
         ],
-        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
         likedByUsers: [],
-        category: categoryTexts[0]
+        reviews: [],
     })
 
     useEffect(() => {
@@ -55,16 +50,9 @@ export function GigEdit() {
     async function onSave() {
         try {
             if (!id || id === 'edit') {
-                fields.owner = {
-                    _id: user._id,
-                    fullName: user.fullName,
-                    avatar: user.avatar,
-                    level: user.level,
-                    rating: user.rating
-                }
+                fields.ownerId = user._id
             }
-            const savedGig = await saveGig(fields)
-            console.log('Gig saved successfully:', savedGig)
+            await saveGig(fields)
             navigate(`/user/${user._id}`)
         } catch (err) {
             console.error('Failed to save gig:', err)

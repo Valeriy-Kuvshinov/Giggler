@@ -1,11 +1,11 @@
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 // import { userService } from './services/user.service.js'
-import { loggerService } from './services/logger.service.js';
+import { loggerService } from './services/logger.service.js'
 
 const app = express()
 
