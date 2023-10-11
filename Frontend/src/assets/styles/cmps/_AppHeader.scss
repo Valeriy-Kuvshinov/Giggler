@@ -1,6 +1,4 @@
 .app-header {
-    background: $clrPrimary1;
-    color: $clrPrimary2;
     position: relative;
     z-index: 10;
     width: 100%;
@@ -18,9 +16,9 @@
 
     h1 {
         margin: 0;
-        font-family: inherit;
-        color: $clrSecondary7;
+        font-family: arial;
         font-size: 40px;
+        letter-spacing: -3px;
 
         span {
             color: $bgColor2;
@@ -32,8 +30,7 @@
     }
 
     .main-nav {
-        padding: 1em 2em;
-        border-bottom: 1px solid $clrSecondary3;
+        padding: 0.5em 2em;
 
         .nav-links {
             list-style-type: none;
@@ -50,22 +47,23 @@
                 transition: color 0.3s, background-color 0.3s, border 0.3s;
 
                 &:hover {
-                    color: $bgColor2;
+                    color: $bgColor3 !important;
                 }
             }
 
             .join {
                 padding: 10px 16px;
-                color: #2dd12d;
-                border: 1px solid #2dd12d;
+                border: 1px solid $bgColor3;
+                color: $bgColor3;
                 border-radius: 5px;
                 font-size: 14px;
                 font-family: "macan-bold";
                 background: none;
 
                 &:hover {
-                    background-color: $bgColor2;
-                    color: $clrPrimary1;
+                    background-color: #1dbf73;
+                    color: #fff !important;
+                    border-color: #1dbf73 !important;
                 }
             }
 
@@ -102,12 +100,16 @@
         position: relative;
         overflow: hidden;
         color: $clrSecondary7;
-        border-bottom: 2px solid $clrSecondary3;
         padding: 0em 2em;
 
         .container {
             scroll-behavior: smooth;
             overflow-x: hidden;
+
+            .hidden {
+                visibility: hidden;
+                opacity: 0;
+            }
 
             a {
                 flex: 0 0 auto;

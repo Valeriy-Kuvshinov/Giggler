@@ -1,16 +1,14 @@
-import {gigService} from '../services/gig.service.local'
-import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
 export function PaymentInfo({gigId,createOrder}){
 
-    const [gig,setGig]=useState(null)
-
-    useEffect(()=>{
-        gigService.getById(gigId).then(gig=>setGig(gig))
-    },[])
+    const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const gig=gigs.find((gig)=>gig._id===gigId)
+    
+    // console.log(gig)
 
     if(gig===null) return <div>loading...</div>
 

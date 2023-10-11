@@ -6,6 +6,7 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
 export const SET_PAGE_IDX = 'SET_PAGE_IDX'
 import { gigService } from "../services/gig.service.local.js"
+
 const initialState = {
     gigs: [],
     isLoading: false,

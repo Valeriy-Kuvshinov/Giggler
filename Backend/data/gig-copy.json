@@ -1,5 +1,59 @@
-{
-  "gigs": [
+[
+    {
+      "_id": "g001",
+      "title": "I will take unique photos of Spiderman",
+      "price": 99,
+      "owner": {
+        "_id": "u001",
+        "fullName": "Peter Parker",
+        "avatar": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
+        "level": "level 2",
+        "rating": 4.9
+      },
+      "category": "Photography",
+      "deliveryTime": "Up to 3 days",
+      "description": "I am actually the real Spiderman...",
+      "imgUrls": [
+        "https://cdn.britannica.com/54/93454-050-5AC49E5E/Spider-Man-Tobey-Maguire-2.jpg",
+        "https://i.insider.com/5d5d70df4afbf9310528d139?width=750&format=jpeg&auto=webp",
+        "https://assets-prd.ignimgs.com/2022/03/18/spidermannowayhomeexclusivefirst10minutesignblogroll-1647047297213-1647633871978.jpeg",
+        "https://www.gamespot.com/a/uploads/scale_medium/1582/15828986/3552444-spider%20train%202.jpg",
+        "https://www.gamespot.com/a/uploads/screen_kubrick/1582/15828986/3552441-hed.jpg"
+      ],
+      "tags": [
+        "logo-design",
+        "artistic",
+        "professional",
+        "accessible"
+      ]
+    },
+    {
+      "_id": "g002",
+      "title": "I will design your logo",
+      "price": 49,
+      "owner": {
+        "_id": "u002",
+        "fullName": "Jane Doe",
+        "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+        "level": "level 1",
+        "rating": 4.9
+      },
+      "deliveryTime": "Express 24H",
+      "description": "I will design your robot logo in 24 hours or less...",
+      "imgUrls": [
+        "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
+        "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
+        "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+        "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+        "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
+      ],
+      "tags": [
+        "logo-design",
+        "artistic",
+        "professional",
+        "accessible"
+      ]
+    },
     {
       "_id": "g101",
       "title": "I will create logos for your company",
@@ -21,10 +75,10 @@
         "https://via.placeholder.com/400x300?text=Logo5"
       ],
       "owner": {
-        "id": "u101",
+        "_id": "u101",
         "name": "Alice Smith",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar",
-        "level": "Pro",
+        "level": "Level 1",
         "rating": 4.9,
         "reviews": [
           {
@@ -80,7 +134,7 @@
         "https://via.placeholder.com/400x300?text=Template5"
       ],
       "owner": {
-        "id": "u102",
+        "_id": "u102",
         "name": "Ella Johnson",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar2",
         "level": "Level 2",
@@ -101,7 +155,7 @@
           {
             "id": 203,
             "userName": "DigitalAgencyXYZ",
-            "rating": 4.0,
+            "rating": 4,
             "text": "Working with Ella was a good experience overall. Her templates are visually appealing, and she provided timely updates. While there were a few minor issues with responsiveness, she addressed them promptly."
           }
         ]
@@ -111,7 +165,10 @@
       "_id": "g103",
       "title": "I will write engaging blog articles for your niche",
       "category": "Writing & Translation",
-      "tags": ["Content Writing", "Editing & Critique"],
+      "tags": [
+        "Content Writing",
+        "Editing & Critique"
+      ],
       "price": 29.99,
       "description": "Looking for high-quality blog articles to boost your website's SEO and engage your audience? I'm here to help! I specialize in creating informative and engaging articles tailored to your niche.",
       "deliveryTime": "3 Days Delivery",
@@ -132,7 +189,7 @@
           {
             "id": 301,
             "userName": "WebsiteOwnerXYZ",
-            "rating": 4.0,
+            "rating": 4,
             "text": "David delivered well-researched articles that fit my niche. They were informative and SEO-friendly. However, there were some minor grammar issues that needed editing."
           },
           {
@@ -170,10 +227,10 @@
         "https://via.placeholder.com/400x300?text=Song5"
       ],
       "owner": {
-        "id": "u104",
+        "_id": "u104",
         "name": "Sophia Anderson",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar4",
-        "level": "Pro Talent",
+        "level": "Level 2",
         "rating": 4.9,
         "reviews": [
           {
@@ -201,7 +258,11 @@
       "_id": "g105",
       "title": "I will create custom 3D animations for your project",
       "category": "Video & Animation",
-      "tags": ["3D Animation", "Custom Graphics", "Visual Effects"],
+      "tags": [
+        "3D Animation",
+        "Custom Graphics",
+        "Visual Effects"
+      ],
       "price": 99.99,
       "description": "Transform your ideas into stunning 3D animations! Whether it's for a marketing video, product presentation, or artistic project, I'll bring your vision to life with custom animations and visual effects.",
       "deliveryTime": "Up to 7 days",
@@ -213,10 +274,10 @@
         "https://via.placeholder.com/400x300?text=Animation5"
       ],
       "owner": {
-        "id": "u105",
+        "_id": "u105",
         "name": "Lucas Johnson",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar5",
-        "level": "Pro Talent",
+        "level": "Level 3",
         "rating": 4.8,
         "reviews": [
           {
@@ -261,10 +322,10 @@
         "https://via.placeholder.com/400x300?text=Legal5"
       ],
       "owner": {
-        "id": "u106",
+        "_id": "u106",
         "name": "Olivia Adams",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar6",
-        "level": "Pro Talent",
+        "level": "Level 2",
         "rating": 4.9,
         "reviews": [
           {
@@ -308,10 +369,10 @@
         "https://via.placeholder.com/400x300?text=Coaching5"
       ],
       "owner": {
-        "id": "u107",
+        "_id": "u107",
         "name": "Sophie Johnson",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar7",
-        "level": "Pro Talent",
+        "level": "Level 3",
         "rating": 4.8,
         "reviews": [
           {
@@ -339,7 +400,11 @@
       "_id": "g108",
       "title": "I will create personalized workout planed videos for your fitness journey",
       "category": "Video & Animation",
-      "tags": ["Filmed Video Production", "Explainer Videos", "Product Videos"],
+      "tags": [
+        "Filmed Video Production",
+        "Explainer Videos",
+        "Product Videos"
+      ],
       "price": 39.99,
       "description": "Achieve your fitness goals with customized workout plans tailored to your needs. Whether you want to lose weight, build muscle, or improve your overall health, I'll help you get there.",
       "deliveryTime": "Up to 3 days",
@@ -351,7 +416,7 @@
         "https://via.placeholder.com/400x300?text=Fitness5"
       ],
       "owner": {
-        "id": "u108",
+        "_id": "u108",
         "name": "Max Trainer",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar8",
         "level": "Level 3",
@@ -382,7 +447,11 @@
       "_id": "g109",
       "title": "I will create handcrafted artisanal candles for your relaxation",
       "category": "Graphics & Design",
-      "tags": ["Visual Design", "Marketing Design", "Fashion & Merchandise"],
+      "tags": [
+        "Visual Design",
+        "Marketing Design",
+        "Fashion & Merchandise"
+      ],
       "price": 34.99,
       "description": "Experience the soothing ambiance of handcrafted artisanal candles. Each candle is meticulously made with love and care, perfect for creating a relaxing atmosphere in your home or as a thoughtful gift.",
       "deliveryTime": "Express 24H",
@@ -394,7 +463,7 @@
         "https://via.placeholder.com/400x300?text=Candle5"
       ],
       "owner": {
-        "id": "u109",
+        "_id": "u109",
         "name": "Ava Crafters",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar9",
         "level": "Level 2",
@@ -425,7 +494,11 @@
       "_id": "g110",
       "title": "I will create personalized digital avatars for your social media",
       "category": "Graphics & Design",
-      "tags": ["Art & Illustration", "Visual Design", "3D Design"],
+      "tags": [
+        "Art & Illustration",
+        "Visual Design",
+        "3D Design"
+      ],
       "price": 49.99,
       "description": "Elevate your online presence with custom digital avatars. Whether you're a content creator, gamer, or social media enthusiast, I'll design unique avatars that represent your personality and style.",
       "deliveryTime": "Express 24H",
@@ -437,7 +510,7 @@
         "https://via.placeholder.com/400x300?text=Avatar5"
       ],
       "owner": {
-        "id": "u110",
+        "_id": "u110",
         "name": "Evelyn DigitalArt",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar10",
         "level": "Pro Talent",
@@ -484,10 +557,10 @@
         "https://via.placeholder.com/400x300?text=Fantasy5"
       ],
       "owner": {
-        "id": "u111",
+        "_id": "u111",
         "name": "Luna Wordsmith",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar11",
-        "level": "Pro Talent",
+        "level": "Level 1",
         "rating": 4.9,
         "reviews": [
           {
@@ -515,7 +588,10 @@
       "_id": "g112",
       "title": "I will provide virtual reality tours of historical landmarks",
       "category": "AI Services",
-      "tags": ["AI Artists", "Creative services"],
+      "tags": [
+        "AI Artists",
+        "Creative services"
+      ],
       "price": 59.99,
       "description": "Step back in time and explore historical landmarks like never before with immersive virtual reality tours. I'll take you on a journey through the past, providing interactive experiences and historical insights.",
       "deliveryTime": "Up to 3 days",
@@ -527,10 +603,10 @@
         "https://via.placeholder.com/400x300?text=VR5"
       ],
       "owner": {
-        "id": "u112",
+        "_id": "u112",
         "name": "Alex VR Explorer",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar12",
-        "level": "Pro Talent",
+        "level": "Level 1",
         "rating": 4.7,
         "reviews": [
           {
@@ -558,7 +634,11 @@
       "_id": "g113",
       "title": "I will provide hilarious video game 'assistance'",
       "category": "Video & Animation",
-      "tags": ["Video Game Help", "Gaming Shenanigans", "Humor"],
+      "tags": [
+        "Video Game Help",
+        "Gaming Shenanigans",
+        "Humor"
+      ],
       "price": 19.99,
       "description": "Are you tired of serious video game help? Look no further! I offer 'assistance' that's guaranteed to make you laugh. Expect unexpected in-game antics, questionable advice, and loads of humor. Let's turn your gaming experience into a comedy show!",
       "deliveryTime": "Express 24H",
@@ -570,7 +650,7 @@
         "https://via.placeholder.com/400x300?text=Gaming5"
       ],
       "owner": {
-        "id": "u113",
+        "_id": "u113",
         "name": "GamerGuffaw",
         "avatar": "https://via.placeholder.com/150x150?text=Avatar13",
         "level": "Level 1",
@@ -598,4 +678,3 @@
       }
     }
   ]
-}
