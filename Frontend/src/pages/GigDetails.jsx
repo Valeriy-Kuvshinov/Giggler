@@ -6,18 +6,26 @@ import { AboutGig } from "../cmps/AboutGig.jsx"
 import { AboutSeller } from "../cmps/AboutSeller.jsx"
 import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+
+import { gigBackendService } from "../services/gig.backend.service copy.js"
 
 export function GigDetails() {
   const params = useParams()
+  const [gig,setGig]=useState(null)
 
-  var gigs = useSelector((storeState) => storeState.gigModule.gigs)
-  var gig = gigs.find((gig) => gig._id === params.id)
+  useEffect(() => {
+    loadGig()
+  }, [])
 
-  // useEffect(() => {
-  //   console.log("use effect")
-  // }, [])
-  console.log(gigs)
+  async function loadGig(){
+    try{
+      const gig=await gigBackendService.getById(params.id)
+      setGig(gig)
+    } catch (err) {
+      console.log('couldnt load gig : ',err)
+    }
+  }
 
   if (!gig) return <h1>loading...</h1>
 
