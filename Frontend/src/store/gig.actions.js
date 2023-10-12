@@ -16,6 +16,7 @@ export async function loadGigs(filterBy = {}) {
 
 export async function getGig(gigId) {
     try {
+        console.log('gigId',gigId)
         await gigService.getById(gigId)
         store.dispatch({ type: GET_GIG, gigId })
     } catch (err) {

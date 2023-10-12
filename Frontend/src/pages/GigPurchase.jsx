@@ -11,33 +11,41 @@ import { gigService } from "../services/gig.service.js"
 import { userService } from "../services/user.service.js"
 
 import { saveOrder } from "../store/order.actions.js"
+import { loadGigs } from "../store/gig.actions.js"
 
 export function GigPurchase() {
   const params = useParams()
-  const [gig,setGig]=useState(null)
-  const [user,setUser]=useState(null)
+  
+  const user = useSelector(storeState => storeState.userModule.user)
+  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const gig=gigs.find((gig)=>gig._id===params.id)
+  // const [gig,setGig]=useState(null)
+  // const [user,setUser]=useState(null)
 
   useEffect(()=>{
-    loadGig()
-    loadUser()
+    loadGig2()
+    // loadUser2()
   },[])
 
-  async function loadGig(){
+  async function loadGig2(){
     try{
-      const gig=await gigService.getById(params.id)
-      setGig(gig)
+      await loadGigs()
+      // await getGig(params.id)
+      // const gig=await gigService.getById(params.id)
+      // setGig(gig)
     } catch (err){
       console.log('couldnt load gig : ',err)
     }
   }
-  async function loadUser(){
-    try{
-      const user=await userService.getLoggedinUser()
-      setUser(user)
-    } catch (err){
-      console.log('couldnt load user : ',err)
-    }
-  }
+  // async function loadUser2(){
+  //   try{
+  //     await loadUser()
+  //     // const user=await userService.getLoggedinUser()
+  //     // setUser(user)
+  //   } catch (err){
+  //     console.log('couldnt load user : ',err)
+  //   }
+  // }
 
   function createOrder() {
     const orderToSave = orderBackendService.
@@ -52,16 +60,16 @@ export function GigPurchase() {
             showErrorMsg('Cannot add Order')
         })
   }
-
-  if(gig===null||user===null) return <div>loading...</div>
-
+  
+  if(gig===undefined||gigs===undefined||user===null) return <div>loading...</div>
+  
   // console.log('gig : ',gig)
   
   return (
     <section className="main-container">
       <section className="gig-purchase">
         <PaymentDetails createOrder={createOrder}/>
-        <PaymentInfo gigId={params.id} createOrder={createOrder}/>
+        <PaymentInfo gig={gig} createOrder={createOrder}/>
       </section>
     </section>
   )

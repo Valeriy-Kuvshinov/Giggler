@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom'
 import { getGig } from '../store/gig.actions.js'
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
-export function PaymentInfo({gigId,createOrder}){
+export function PaymentInfo({gig,createOrder}){
 
-    const [gig,setGig]=useState(null)
+    // const [gig,setGig]=useState(null)
 
-    useEffect(()=>{
-        loadGig()
-      },[])
+    // useEffect(()=>{
+    //     loadGig()
+    //   },[])
     
-      async function loadGig(){
-        try{
-          const gig=await getGig(gigId)
-          setGig(gig)
-        } catch (err){
-          console.log('couldnt load gig : ',err)
-        }
-      }
+    //   async function loadGig(){
+    //     try{
+    //       const gig=await getGig(gigId)
+    //       setGig(gig)
+    //     } catch (err){
+    //       console.log('couldnt load gig : ',err)
+    //     }
+    //   }
 
     if(gig===null) return <div>loading...</div>
     
