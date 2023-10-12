@@ -31,7 +31,7 @@
 
         .info-section {
             max-width: 1400px;
-            padding: 4em 2em;
+            margin: auto;
 
             h2 {
                 color: $clrSecondary8;
@@ -43,8 +43,6 @@
             }
 
             .text {
-                width: 50%;
-
                 div {
                     align-items: center;
                     gap: 0.5em;
@@ -62,15 +60,13 @@
 
                 p {
                     margin-top: 1em;
-                    max-width: 75%;
                     font-size: 18px;
                     line-height: 26px;
                     color: $clrSecondary6;
                 }
             }
 
-            img {
-                width: 50%;
+            .info-img {
                 align-self: center;
             }
         }
@@ -124,6 +120,42 @@
                 margin-top: 0.5em;
                 font-family: Arial, Helvetica, sans-serif;
                 color: $clrPrimary2;
+            }
+        }
+    }
+
+    .join-wrapper {
+        .join-section {
+            width: 100%;
+            max-width: 1400px;
+            margin: auto;
+            border-radius: 5px;
+
+            h2 {
+                color: $clrPrimary1;
+                font-family: 'macan-bold';
+                font-weight: 500;
+
+                span {
+                    font-family: 'domain-display-medium';
+                    font-weight: 500;
+                }
+            }
+
+            button {
+                background: $bgColor3;
+                color: $clrPrimary1;
+                font-size: 16px;
+                font-family: 'macan-bold';
+                line-height: 100%;
+                padding: 12px 24px;
+                border: 1px solid transparent;
+                border-radius: 5px;
+                margin-top: 2.5em;
+
+                &:hover {
+                    background: $bgColor5;
+                }
             }
         }
     }
