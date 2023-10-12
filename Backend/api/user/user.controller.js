@@ -38,10 +38,25 @@ export async function deleteUser(req, res) {
 export async function updateUser(req, res) {
     try {
         const user = req.body
-        const savedUser = await userService.update(user)
+        const savedUser = await userService.updateUser(user)
         res.send(savedUser)
     } catch (err) {
         loggerService.error('Failed to update user', err)
         res.status(500).send({ err: 'Failed to update user' })
+    }
+}
+
+export async function addUser(req, res) {
+    // const { loggedinUser } = req
+
+    try {
+        const user = req.body
+        // user.owner = loggedinUser
+        const addedUser = await userService.addUser(user)
+        res.json(addedUser)
+    }
+    catch (err) {
+        loggerService.error('Failed to add user', err)
+        res.status(500).send({ err: 'Failed to add user' })
     }
 }

@@ -21,27 +21,22 @@ function query(filterBy) {
 }
 
 function getById(orderId) {
-    // const order = orders.find(order => order._id === orderId)
-    // if (!order) return Promise.reject('Order not found!')
-    // return Promise.resolve(order)
-    // let orders = utilService.readJsonFile(GIGS_PATH)
-    // console.log('orders : ',orders)
-    var orders2 = [...orders]
-    // console.log('orders2',orders2)
+    var orders = [...orders]
+    // console.log('orders',orders)
     console.log('orderId',orderId)
-    orders2 = orders2.filter((order) => {
+    orders = orders.filter((order) => {
         console.log( order.sellerId.localeCompare(orderId))
         if(order.sellerId.localeCompare(orderId)===0) {
             return true 
         }
         return false
     })
-    console.log('orders2',orders2)
-    if (!orders2) {
+    console.log('orders',orders)
+    if (!orders) {
         loggerService.error(`No order found with id ${orderId}`)
         throw new Error(`No order found with id ${orderId}`)
     }
-    return Promise.resolve(orders2)
+    return Promise.resolve(orders)
 }
 
 function remove(orderId) {
@@ -51,7 +46,6 @@ function remove(orderId) {
     // if (order.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
     orders.splice(idx, 1)
     return _saveOrdersToFile()
-
 }
 
 function save(order) {
