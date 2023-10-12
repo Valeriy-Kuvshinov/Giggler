@@ -17,6 +17,7 @@
     position: relative;
     display: flex;
     transition: transform 0.3s ease-in-out;
+
     img {
       width: 100%;
       object-fit: cover;
@@ -41,6 +42,7 @@
         transform: rotate(90deg);
       }
     }
+
     .right {
       border-top-left-radius: 50%;
       border-bottom-left-radius: 50%;
@@ -48,6 +50,7 @@
         transform: rotate(-90deg);
       }
     }
+
     .arrow {
       background: rgba(0, 0, 0, 0.2);
       color: white;
@@ -62,10 +65,12 @@
       background: rgba(0, 0, 0, 0.4);
     }
   }
+
   .dot-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+
     .dot {
       width: 10px;
       height: 10px;
@@ -80,8 +85,10 @@
     .dot:hover {
       transform: scale(1.2);
     }
+
     .dot.active {
-      background-color: #007bff; /* Active dot color */
+      background-color: #007bff;
+      /* Active dot color */
     }
   }
 }

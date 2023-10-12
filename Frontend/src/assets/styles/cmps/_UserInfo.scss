@@ -1,33 +1,38 @@
-.user-info{
+.user-info {
     margin-block-start: 40px;
     color: $clrPrimary2;
-    .info-block{
+
+    .info-block {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width:400px;
-        height:360px;
+        width: 400px;
+        height: 360px;
         padding: 30px;
         background-color: $clrPrimary1;
         border: 1px solid $clrSecondary2;
         margin-block-end: 20px;
-        img{
+
+        img {
             width: 150px;
             height: 150px;
         }
-        h2{
+
+        h2 {
             text-align: center;
             width: 100%;
             border-bottom: 1px solid $clrSecondary2;
             text-transform: capitalize;
         }
-        .into-line{
+
+        .into-line {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            span{
-                img{
+
+            span {
+                img {
                     height: 16px;
                     width: 14px;
                 }

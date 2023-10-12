@@ -72,4 +72,99 @@
             }
         }
     }
+
+    .home-info-wrapper {
+        .info-section {
+            @media (max-width: 1400px) {
+                padding: 4em 2em;
+
+                .text {
+                    width: 50%;
+
+                    p {
+                        max-width: 75%;
+                    }
+                }
+
+                .info-img {
+                    width: 50%;
+                }
+            }
+
+            @media(max-width: 900px) {
+                flex-direction: column;
+
+                .text {
+                    width: 100%;
+
+                    p {
+                        max-width: 100%;
+                    }
+                }
+
+                .info-img {
+                    width: 100%;
+                    margin-top: 1.5em;
+                }
+            }
+
+            @media (min-width: 1400px) {
+                padding: 4em 0em;
+
+                .text {
+                    width: 50%;
+
+                    p {
+                        max-width: 75%;
+                    }
+                }
+
+                .info-img {
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+    .join-wrapper {
+        @media (max-width: 1400px) {
+            padding: 1em 2em;
+        }
+
+        @media (min-width: 1400px) {
+            padding: 1em 0em;
+        }
+
+        .join-section {
+            @media(min-width: 300px) {
+                background-color: $bgColor4;
+                padding: 5em 2em;
+
+                h2 {
+                    font-size: 40px;
+                    line-height: 48px;
+                }
+            }
+
+            @media (min-width: 900px) {
+                background-image: url("../../../assets/img/bg-mini-signup.webp");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            @media (min-width: 1160px) {
+                background-image: url("../../../assets/img/bg-signup.webp");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                padding: 8em 6em;
+
+                h2 {
+                    font-size: 48px;
+                    line-height: 56px;
+                }
+            }
+        }
+    }
 }

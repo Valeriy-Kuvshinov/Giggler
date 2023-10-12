@@ -1,4 +1,4 @@
-.payment-details{
+.payment-details {
     width: 45%;
     margin-block-start: 20px;
     margin-block-end: 20px;
@@ -6,44 +6,54 @@
     border: 1px solid $clrSecondary5;
     color: $clrSecondary5;
     padding: 28px;
-    h2{
+
+    h2 {
         font-family: macan-light;
     }
-    .credit-details{
+
+    .credit-details {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 80%;
-        span{
+
+        span {
             font-weight: 700;
         }
     }
-    .credit-type{
+
+    .credit-type {
         display: flex;
         align-items: center;
         height: 50px;
-        img{
+
+        img {
             width: 80px;
             height: 50px;
         }
     }
-    .credit-number{
+
+    .credit-number {
         display: flex;
         flex-direction: column;
         width: 240px;
     }
-    .rest-of-details{
+
+    .rest-of-details {
         display: flex;
         justify-content: space-between;
-        .credit-date{
+
+        .credit-date {
             display: flex;
             flex-direction: column;
-            input{
+
+            input {
                 width: 80%;
             }
         }
     }
-    .buyer-info{
+
+    .buyer-info {
         display: flex;
         flex-direction: column;
     }

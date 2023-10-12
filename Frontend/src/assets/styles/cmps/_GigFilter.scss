@@ -1,5 +1,6 @@
 .gig-results-title {
   display: grid;
+
   .search-param {
     h1 {
       font-size: rem(28px);
@@ -11,6 +12,7 @@
       padding-top: 32px;
     }
   }
+
   .explore-category {
     padding: 1.25em 0 0.75em 0;
     color: $clrSecondary8;
@@ -25,6 +27,7 @@
     }
   }
 }
+
 .gig-filter {
   position: sticky;
   z-index: 5;
@@ -36,7 +39,9 @@
     .floating-menu {
       position: relative;
     }
+
     margin-block-start: 1em;
+
     .filter-nav {
       display: flex;
 
@@ -56,6 +61,7 @@
     background-color: #fff;
   }
 }
+
 // .gig-filter::after {
 //   content: '';
 //   display: block;

@@ -76,6 +76,24 @@ const personImages = [
     { big: personFive, medium: mediumPersonFive, small: miniPersonFive, backgroundColor: "#ad3906", title: "Christina", subtitle: "Jewelery Shop Owner" }
 ]
 
+const infoListData = [
+    {
+        title: "Stick to your budget",
+        description: "Find the right service for every price point. No hourly rates, just project-based pricing."
+    },
+    {
+        title: "Get quality work done quickly",
+        description: "Hand your project over to a talented freelancer in minutes, get long-lasting results."
+    },
+    {
+        title: "Pay when you're happy",
+        description: "Upfront quotes mean no surprises. Payments only get released when you approve."
+    },
+    {
+        title: "Count on 24/7 support",
+        description: "Our round-the-clock support team is available to help anytime, anywhere."
+    }
+]
 
 export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
@@ -83,13 +101,14 @@ export const galleryService = {
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     socialMediaLinks: [
-        { img: socialMediaTiktok, url: 'https://www.fiverr.com' },
-        { img: socialMediaInstagram, url: 'https://www.fiverr.com' },
-        { img: socialMediaLinkedin, url: 'https://www.fiverr.com' },
-        { img: socialMediaFacebook, url: 'https://www.fiverr.com' },
-        { img: socialMediaPinterest, url: 'https://www.fiverr.com' },
-        { img: socialMediaTwitter, url: 'https://www.fiverr.com' },
+        { img: socialMediaTiktok, url: 'https://www.tiktok.com/@fiverr' },
+        { img: socialMediaInstagram, url: 'https://www.instagram.com/fiverr/' },
+        { img: socialMediaLinkedin, url: 'https://www.linkedin.com/company/fiverr-com' },
+        { img: socialMediaFacebook, url: 'https://www.facebook.com/Fiverr/' },
+        { img: socialMediaPinterest, url: 'https://www.pinterest.com/fiverr/' },
+        { img: socialMediaTwitter, url: 'https://twitter.com/fiverr' },
     ],
     serviceTexts: serviceTexts,
-    personImages: personImages
+    personImages: personImages,
+    infoListData: infoListData,
 }
