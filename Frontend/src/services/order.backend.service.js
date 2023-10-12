@@ -50,34 +50,19 @@ function addLabel(){
     
 }
 
-// function getDefaultFilter() {
-//     return { title: '', subject: '' }
-// }
-
-
-// function _createOrders() {
-//     let orders = utilService.loadFromStorage(TODO_KEY)
-//     if (!orders || !orders.length) {
-//         orders = []
-//         orders.push(_createOrder( 'bread jays', 200,['comfortable','bready'] ))
-//         orders.push(_createOrder( 'breadBOT', 5,['fun','bready'],true ))
-//         orders.push(_createOrder( 'bread glasses', 25,['sight assisting','bready',false] ))
-//         utilService.saveToStorage(TODO_KEY, orders)
-//         console.log('orders created')
-//     }
-// }
-
 function _createOrder(name, price, labels, inStock) {
     const order = createOrder( name, price, labels, inStock )
     order._id = utilService.makeId()
     return order
 }
 
-function createOrder(buyerId='',buyerName='',sellerId='',gigId='',price=99) {
+function createOrder(buyerId='',buyerName='',sellerId='',title='important order',deliveryTime='2 days',gigId='',price=99) {
     return {
         buyerId: buyerId,
         buyerName:  buyerName,
         sellerId: sellerId,
+        title: title,
+        deliveryTime: deliveryTime,
         orderedGigId: gigId,
         price:price,
         createdAt: Date.now(),

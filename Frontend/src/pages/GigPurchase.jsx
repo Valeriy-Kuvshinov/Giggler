@@ -21,6 +21,7 @@ export function GigPurchase() {
   const gig=gigs.find((gig)=>gig._id===params.id)
   // const [gig,setGig]=useState(null)
   // const [user,setUser]=useState(null)
+  console.log(gig)
 
   useEffect(()=>{
     loadGig2()
@@ -49,7 +50,7 @@ export function GigPurchase() {
 
   function createOrder() {
     const orderToSave = orderBackendService.
-    createOrder(user._id,user.fullName,gig.owner._id,gig._id,gig.price)
+    createOrder(user._id,user.fullName,gig.owner._id,gig._id,gig.title,gig.deliveryTime,gig.price)
 
     saveOrder(orderToSave)
         .then(savedOrder => {
