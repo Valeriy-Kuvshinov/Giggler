@@ -62,6 +62,9 @@ button{
   cursor: pointer;
 }
 
+input[type=radio] {
+  display: none;
+}
 // .icon {
 //     width: 13px;
 // }

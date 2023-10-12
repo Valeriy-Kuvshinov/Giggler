@@ -1,17 +1,18 @@
 import { useRef, useState } from 'react'
+import SvgIcon from './SvgIcon'
 
 export function ImageCarousel({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const carouselRef = useRef()
 
-  function nextImage(e) {
-    e.stopPropagation()
+  function nextImage(event) {
+    event.stopPropagation()
     // transform()
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length)
   }
 
-  function prevImage(e) {
-    e.stopPropagation()
+  function prevImage(event) {
+    event.stopPropagation()
     // transform()
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -52,11 +53,11 @@ export function ImageCarousel({ images }) {
         ))}
       </div>
       <div className="arrow-container">
-        <button className="arrow left" onClick={prevImage}>
-          {`<`}
+        <button className="arrow left" onClick={(e) => prevImage(e)}>
+          <SvgIcon iconName={'arrowDown'}/>
         </button>
-        <button className="arrow right" onClick={nextImage}>
-          {`>`}
+        <button className="arrow right" onClick={(e) => nextImage(e)}>
+          <SvgIcon iconName={'arrowDown'}/>
         </button>
       </div>
     </div>

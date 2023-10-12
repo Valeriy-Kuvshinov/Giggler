@@ -23,9 +23,9 @@ function getUsers() {
 }
 
 async function getById(userId) {
-  console.log(`Fetching user by ID: ${userId}`)
+  // console.log(`Fetching user by ID: ${userId}`)
   const user = await httpService.get(BASE_URL + userId)
-  console.log('Fetched user:', user)
+  // console.log('Fetched user:', user)
   return user
 }
 

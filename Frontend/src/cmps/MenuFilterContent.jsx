@@ -1,3 +1,5 @@
+import { ApplyBtn } from './ApplyBtn'
+
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
   const levels = ['Level 1', 'Level 2', 'Level 3', 'Pro Talent']
@@ -104,26 +106,37 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   return (
     <>
       {renderedChoice && (
-        <section className="menu-content">
+        <section className="menu-filter-content">
           {(() => {
             switch (renderedChoice) {
               case 'delivery_time':
+                console.log('I AM IN DELIVERY TIME IN MENUFILTERCONTENT')
                 return (
-                  <div className="content-scroll">
-                    <div className="radio-list">
-                      {deliveryTime.map((time) => {
-                        <div className="radio-item-wrapper">
+                  <>
+                    <div className="content-scroll">
+                      <div className="radio-list">
+                        {deliveryTime.map((time) => (
+                          <div className="radio-item-wrapper" key={time}>
                             <label className="radio-item">
-                                <input type="radio" name={renderedChoice} value={time} />
-                                <span></span>
+                              <span className="radio-btn"></span>
+                              <input
+                                type="radio"
+                                name={renderedChoice}
+                                value={time}
+                              />
+                              <span>{time}</span>
                             </label>
-                        </div>
-                      })}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                    <ApplyBtn />
+                  </>
                 )
               default:
-                return <p>{`This is default in switch in MenuFilterContent with renderChoice: ${renderedChoice}`}</p>
+                return (
+                  <p>{`This is default in switch in MenuFilterContent with renderChoice: ${renderedChoice}`}</p>
+                )
             }
           })()}
         </section>

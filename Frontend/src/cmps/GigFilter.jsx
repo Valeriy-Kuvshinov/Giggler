@@ -25,9 +25,9 @@ export function GigFilter(filterBy) {
     }
   }, [])
   useEffect(() => {
-    console.log('search params: ', queryParams)
+    // console.log('search params: ', queryParams)
   }, [searchParams])
-  console.log('search after useEffect: ', queryParams)
+  // console.log('search after useEffect: ', queryParams)
 
   function handleScroll() {
     queryParams.cat ? (shadowStart = 197) : (shadowStart = 139)
@@ -36,7 +36,7 @@ export function GigFilter(filterBy) {
   }
 
   function setMenuFilter() {
-    console.log('I AM IN SET MENU FILTER!')
+    // console.log('I AM IN SET MENU FILTER!')
   }
 
   function onHandleChoice(renderedChoice) {
@@ -44,7 +44,7 @@ export function GigFilter(filterBy) {
       setIsRenderedChoice([false, ''])
       return
     }
-    console.log(renderedChoice)
+    // console.log(renderedChoice)
     switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
@@ -56,8 +56,8 @@ export function GigFilter(filterBy) {
         setIsRenderedChoice([true, 'budget'])
         break
       case 'categories':
-        if (queryParams.cat) setIsRenderedChoice([true, queryParams.cat])
-        else setIsRenderedChoice([true, 'category'])
+        setIsRenderedChoice([true, categorySelect])
+
         break
 
       default:
@@ -65,7 +65,7 @@ export function GigFilter(filterBy) {
         break
     }
   }
-
+  console.log('IS RENDERED CHOICE !: ', isRenderedChoice[1])
   return (
     <>
       <div className="gig-results-title layout-row">
@@ -95,7 +95,34 @@ export function GigFilter(filterBy) {
         <section className="floating-top-bar">
           <div className="filter-nav">
             <button className="btn filtered-clr">Clear Filter</button>
-            <div className="filter-seller-level floating-menu">
+            <div
+              className={`filter-categories floating-menu ${
+                isRenderedChoice[1] === categorySelect ? 'open' : ''
+              }`}
+            >
+              <button
+                onClick={() => onHandleChoice('categories')}
+                className="btn filtered-sc"
+              >
+                {categorySelect.charAt(0).toUpperCase() +
+                  categorySelect.slice(1)}
+                <span>
+                  <SvgIcon iconName={'arrowDown'} />
+                </span>
+                {isRenderedChoice[1] === 'category' ||
+                  (isRenderedChoice[1] === queryParams.tags && (
+                    <MenuFilterContent
+                      renderedChoice={isRenderedChoice[1]}
+                      setMenuFilter={setMenuFilter}
+                    />
+                  ))}
+              </button>
+            </div>
+            <div
+              className={`filter-seller-level floating-menu ${
+                isRenderedChoice[1] === 'seller_level' ? 'open' : ''
+              }`}
+            >
               <button
                 onClick={() => onHandleChoice('seller_level')}
                 className="btn filtered-sl"
@@ -112,25 +139,11 @@ export function GigFilter(filterBy) {
                 )}
               </button>
             </div>
-            <div className={`filter-categories floating-menu `}>
-              <button
-                onClick={() => onHandleChoice(categorySelect)}
-                className="btn filtered-sc"
-              >
-                {categorySelect}
-                <span>
-                  <SvgIcon iconName={'arrowDown'} />
-                </span>
-                {isRenderedChoice[1] === 'category' ||
-                  (isRenderedChoice[1] === queryParams.tags && (
-                    <MenuFilterContent
-                      renderedChoice={isRenderedChoice[1]}
-                      setMenuFilter={setMenuFilter}
-                    />
-                  ))}
-              </button>
-            </div>
-            <div className="filter-budget floating-menu">
+            <div
+              className={`filter-budget floating-menu ${
+                isRenderedChoice[1] === 'budget' ? 'open' : ''
+              }`}
+            >
               <button
                 onClick={() => onHandleChoice('budget')}
                 className="btn filtered-bg"
