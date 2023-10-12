@@ -361,3 +361,26 @@
 11.10.2023, 19:23:20 - INFO - Req was made | /
 11.10.2023, 19:27:13 - INFO - Req was made | /
 11.10.2023, 19:28:49 - INFO - Req was made | /
+12.10.2023, 10:53:40 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 10:54:05 - INFO - Req was made | /
+12.10.2023, 10:55:33 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 10:57:27 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 10:57:31 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 10:59:31 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:01:24 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:01:32 - ERROR - Failed to get user | TypeError: Cannot read properties of undefined (reading 'localeCompare')
+12.10.2023, 11:02:16 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:02:34 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:03:37 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:03:38 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:04:31 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:05:58 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:07:52 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:08:26 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:08:34 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:09:09 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:09:20 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:10:17 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:10:43 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:12:38 - INFO - Server listening on port http://127.0.0.1:3030/
+12.10.2023, 11:12:41 - INFO - Server listening on port http://127.0.0.1:3030/
