@@ -19,23 +19,25 @@ async function login(username, password) {
     const user = await userService.getByUsername(username)
     if (!user) throw new Error('Invalid username or password')
 
-    // const match = await bcrypt.compare(password, user.password)
-    const match = (password === user.password)
+    const match = await bcrypt.compare(password, user.password)
+    console.log("bcrypt comparison result:", match)
     if (!match) throw new Error('Invalid username or password')
 
     delete user.password
     return user
 }
 
-async function signup(username, password, fullname, imgUrl) {
+async function signup(username, password, fullname, level, rating, imgUrl) {
     console.log(`Attempting to signup user: ${username}`)
     const saltRounds = 10
 
-    loggerService.debug(`auth.service - signup with username: ${username}, fullname: ${fullname}, imgUrl: ${imgUrl}`)
+    loggerService.debug(`auth.service - signup with username: ${username}
+    , fullname: ${fullname}, imgUrl: ${imgUrl}, level: ${level}, rating: ${rating}`)
+
     if (!username || !password || !fullname || !imgUrl) throw new Error('Missing details')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname, imgUrl })
+    return userService.save({ username, password: hash, fullname, imgUrl })
 }
 
 function getLoginToken(user) {
