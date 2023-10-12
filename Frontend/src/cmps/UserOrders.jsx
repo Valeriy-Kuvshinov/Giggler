@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react'
 
+import { useSelector } from 'react-redux'
 import { orderService } from '../services/order.service.local'
 import { orderBackendService } from '../services/order.backend.service'
 import { UserOrder } from './UserOrder'
+import { loadOrders } from '../store/order.actions'
 
-export function UserOrders({ user }) {
-    const [orders, setOrders] = useState([])
+export function UserOrders() {
+    const orders = useSelector(storeState => storeState.orderModule.orders)
 
     useEffect(() => {
-        loadOrders()
+        loadOrders2()
     }, [])
 
-    async function loadOrders() {
+    async function loadOrders2() {
         try {
-            const orders = await orderBackendService.query({ id: user._id })
-            setOrders(orders)
+            await loadOrders()
         } catch (err) {
             console.log('couldnt load orders : ', err)
         }
@@ -34,10 +35,7 @@ export function UserOrders({ user }) {
         orderBackendService.save(order)
     }
 
-    // const orders = useSelector(storeState => storeState.orderModule.orders)
-    // console.log(orders.length)
-
-    // if(orders.length===0) return <div>loading... </div>
+    if(orders.length===0) return <div>loading... </div>
 
     return (<section className="user-orders">
         <ul>

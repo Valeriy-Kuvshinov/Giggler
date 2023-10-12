@@ -4,20 +4,21 @@ import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 import { UserOrders } from '../cmps/UserOrders.jsx'
 
-import { gigService } from '../services/gig.service.js'
+import { loadGigs } from '../store/gig.actions.js'
 
 export function UserProfile() {
   const user = useSelector(storeState => storeState.userModule.user)
-  const [gigs, setGigs] = useState([])
+  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+
+  // console.log('user ',user)
 
   useEffect(() => {
-    loadGigs()
+    loadGigs2()
   }, [])
 
-  async function loadGigs() {
+  async function loadGigs2() {
     try {
-      const gigs = await gigService.query()
-      setGigs(gigs)
+      await loadGigs()
     } catch (err) {
       console.log('couldnt load gigs : ', err)
     }
@@ -30,7 +31,7 @@ export function UserProfile() {
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-      <UserOrders user={user} />
+      <UserOrders />
     </section>
   )
 }

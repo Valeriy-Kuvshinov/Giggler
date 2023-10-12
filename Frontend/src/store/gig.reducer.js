@@ -31,7 +31,7 @@ export function gigReducer(state = initialState, action = {}) {
       )
       return { ...state, gigs }
     case GET_GIG:
-      console.log('state',state.gigs)
+      // console.log('state',state.gigs)
       return state.gigs.find((gig) => gig._id === action.gigId)
     case SET_IS_LOADING:
       return { ...state, isLoading: action.isLoading }

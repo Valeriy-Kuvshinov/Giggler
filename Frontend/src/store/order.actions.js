@@ -4,20 +4,20 @@ import { store } from '../store/store.js'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from "./order.reducer.js"
 
 export async function loadOrders(filterBy = {}) {
-    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+    // store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
-        const orders = await orderService.query(filterBy)
+        const orders = await orderBackendService.query(filterBy)
         store.dispatch({ type: SET_ORDERS, orders })
     } catch (err) {
         console.log('cannot load orders, heres why:', err)
     } finally {
-        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+        // store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 
 export async function removeOrder(orderId) {
     try {
-        await orderService.remove(orderId)
+        await orderBackendService.remove(orderId)
         store.dispatch({ type: REMOVE_ORDER, orderId })
     } catch (err) {
         console.log('Cannot remove order', err)
