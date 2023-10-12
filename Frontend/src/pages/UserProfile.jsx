@@ -17,7 +17,7 @@ export function UserProfile() {
 
   useEffect(() => {
     loadGigs2()
-    loadUser()
+    // loadUser()
   }, [])
 
   async function loadGigs2() {
