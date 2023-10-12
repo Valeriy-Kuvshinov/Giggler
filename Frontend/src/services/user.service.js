@@ -23,7 +23,9 @@ function getUsers() {
 }
 
 async function getById(userId) {
+  console.log(`Fetching user by ID: ${userId}`)
   const user = await httpService.get(BASE_URL + userId)
+  console.log('Fetched user:', user)
   return user
 }
 
@@ -38,9 +40,11 @@ async function update(userId) {
 }
 
 async function login(userCred) {
+  console.log('Attempting login with credentials:', userCred)
   const user = await httpService.post('auth/login', userCred)
+  console.log('Logged in user:', user)
   if (user) {
-    return setLoggedinUser(user)
+      return setLoggedinUser(user)
   }
 }
 

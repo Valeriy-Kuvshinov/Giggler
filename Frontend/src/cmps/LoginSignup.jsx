@@ -6,7 +6,7 @@ import loginSignupImg from '../assets/img/login-signup.png'
 import checkmarkImg from '../assets/img/svg/checkmark.icon.svg'
 
 export function LoginSignup({ closeModal, mode }) {
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '' })
     const wrapperRef = useRef(null)
     const [isSignup, setIsSignup] = useState(mode === 'signup')
     const [users, setUsers] = useState([])
