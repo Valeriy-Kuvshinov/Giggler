@@ -5,12 +5,7 @@ import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 import { UserOrders } from '../cmps/UserOrders.jsx'
 
-<<<<<<< HEAD
 import { gigService } from '../services/gig.service.js'
-=======
-import { gigBackendService } from '../services/gig.backend.service.js'
-import { userService } from '../services/user.service.js'
->>>>>>> 27c72419cfba54abedd192e09dd4ece943422fbd
 
 export function UserProfile() {
   const [gigs, setGigs] = useState([])
