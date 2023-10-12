@@ -1,22 +1,21 @@
 [
   {
     "_id": "u001",
-    "fullName": "Peter Parker",
-    "avatar": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
     "username": "peter123",
-    "password": "123",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullname": "Peter Parker",
     "level": "level 2",
     "rating": 4.9,
-    "isAdmin": false
+    "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq"
   },
   {
     "_id": "u002",
-    "fullName": "Jane Doe",
     "username": "jane123",
-    "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "password": "$2b$10$Vat9eTitM6m/MyiasMmPFu6jJTjws0hxZ9ca2tu7h6Ako9od8XsxG",
+    "fullname": "Jane Doe",
     "level": "level 1",
     "rating": 4.9,
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "isAdmin": true
   },
   {

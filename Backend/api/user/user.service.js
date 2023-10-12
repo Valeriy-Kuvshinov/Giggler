@@ -8,6 +8,7 @@ export const userService = {
     remove,
     query,
     getById,
+    getByUsername,
     save
 }
 
@@ -23,6 +24,17 @@ function getById(userId) {
     if (!user) {
         loggerService.error(`No user found with id ${userId}`)
         throw new Error(`No user found with id ${userId}`)
+    }
+    return Promise.resolve(user)
+}
+
+function getByUsername(username) {
+    const users = utilService.readJsonFile(USERS_PATH)
+    const user = users.find(u => u.username === username)
+
+    if (!user) {
+        loggerService.error(`No user found with username ${username}`)
+        throw new Error(`No user found with username ${username}`)
     }
     return Promise.resolve(user)
 }
