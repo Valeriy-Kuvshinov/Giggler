@@ -25,6 +25,57 @@
         }
     }
 
+    .home-info-wrapper {
+        width: 100%;
+        background: $clrSeconday9;
+
+        .info-section {
+            max-width: 1400px;
+            padding: 4em 2em;
+
+            h2 {
+                color: $clrSecondary8;
+                font-size: 32px;
+                line-height: 120%;
+                max-width: 75%;
+                margin-bottom: 1em;
+                font-family: 'macan-bold';
+            }
+
+            .text {
+                width: 50%;
+
+                div {
+                    align-items: center;
+                    gap: 0.5em;
+
+                    h3 {
+                        font-size: 18px;
+                        color: $clrSecondary8;
+                    }
+
+                    img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                p {
+                    margin-top: 1em;
+                    max-width: 75%;
+                    font-size: 18px;
+                    line-height: 26px;
+                    color: $clrSecondary6;
+                }
+            }
+
+            img {
+                width: 50%;
+                align-self: center;
+            }
+        }
+    }
+
     .home-categories-section {
         padding: 1em 2em;
         max-width: 1400px;
