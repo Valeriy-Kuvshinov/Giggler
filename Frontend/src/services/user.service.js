@@ -1,16 +1,15 @@
-import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
-import { utilService } from './util.service'
+import { httpService } from './http.service.js'
+import { utilService } from './util.service.js'
 
 const SESSION_KEY_LOGGEDIN_USER = 'loggedinUser'
-const BASE_URL = 'user'
+const BASE_URL = 'user/'
 
 export const userService = {
   login,
   logout,
   signup,
   getLoggedinUser,
-  saveLocalUser: setLoggedinUser,
+  setLoggedinUser,
   getUsers,
   getById,
   remove,
@@ -20,49 +19,38 @@ export const userService = {
 window.userService = userService
 
 function getUsers() {
-  // return storageService.query('user')
   return httpService.get(BASE_URL)
 }
 
 async function getById(userId) {
-  const user = await storageService.get(BASE_URL, userId)
-  // const user = await httpService.get(`user/${userId}`)
+  const user = await httpService.get(BASE_URL + userId)
   return user
 }
 
 function remove(userId) {
-  return storageService.remove(BASE_URL, userId)
-  // return httpService.delete(`user/${userId}`)
+  return httpService.delete(BASE_URL, userId)
 }
 
-async function update({ _id }) {
-  const user = await storageService.get(BASE_URL, _id)
-  await storageService.put(BASE_URL, user)
-
-  // const user = await httpService.put(`user/${_id}`, {_id})
-  // // Handle case in which admin updates other user's details
-  if (getLoggedinUser()._id === user._id) setLoggedinUser(user)
+async function update(userId) {
+  const user = await httpService.put(BASE_URL, userId)
+  if (getLoggedinUser()._id === userId) setLoggedinUser(user)
   return user
 }
 
 async function login(userCred) {
-  const users = await storageService.query(BASE_URL)
-  const user = users.find((user) => user.username === userCred.username)
-  // const user = await httpService.post('auth/login', userCred)
+  const user = await httpService.post('auth/login', userCred)
   if (user) {
     return setLoggedinUser(user)
   }
 }
 
 async function signup(userCred) {
-  const user = await storageService.post(BASE_URL, userCred)
-  // const user = await httpService.post('auth/signup', userCred)
+  const user = await httpService.post('auth/signup', userCred)
   return setLoggedinUser(user)
 }
 
 async function logout() {
-  sessionStorage.removeItem(SESSION_KEY_LOGGEDIN_USER)
-  // return await httpService.post('auth/logout')
+  return await httpService.post('auth/logout')
 }
 
 function setLoggedinUser(user) {
@@ -96,34 +84,4 @@ function getUserRatingCount(user) {
       break
   }
   return utilService.getRandomIntInclusive(countMin, countMax)
-}
-
-const users = [
-  {
-    _id: 'u001',
-    fullName: 'Peter Parker',
-    avatar:
-      'https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq',
-    username: 'peter123',
-    password: '123',
-    level: 'level 2',
-    rating: 4.9,
-    isAdmin: false
-  },
-  {
-    _id: 'u002',
-    fullName: 'Jane Doe',
-    username: 'jane123',
-    password: '123',
-    avatar:
-      'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000',
-    level: 'level 1',
-    rating: 4.9,
-    isAdmin: true
-  },
-]
-_createUsers()
-
-async function _createUsers() {
-  localStorage.setItem('user', JSON.stringify(users))
 }
