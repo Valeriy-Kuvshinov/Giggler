@@ -2,7 +2,7 @@ import { httpService } from './http.service.js'
 const BASE_URL = 'gig/'
 // var gFilterBy = 'all'
 
-export const gigBackendService = {
+export const gigService = {
     query,
     remove,
     save,

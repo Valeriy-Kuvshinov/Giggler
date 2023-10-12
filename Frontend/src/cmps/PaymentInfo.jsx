@@ -1,8 +1,7 @@
 import { useState , useEffect } from "react"
 import { Link } from 'react-router-dom'
 
-import { gigBackendService } from "../services/gig.backend.service"
-
+import { getGig } from '../store/gig.actions.js'
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
 export function PaymentInfo({gigId,createOrder}){
@@ -15,7 +14,7 @@ export function PaymentInfo({gigId,createOrder}){
     
       async function loadGig(){
         try{
-          const gig=await gigBackendService.getById(gigId)
+          const gig=await getGig(gigId)
           setGig(gig)
         } catch (err){
           console.log('couldnt load gig : ',err)

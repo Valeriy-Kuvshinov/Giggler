@@ -5,7 +5,7 @@ import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 import { UserOrders } from '../cmps/UserOrders.jsx'
 
-import { gigBackendService } from '../services/gig.backend.service.js'
+import { gigService } from '../services/gig.service.js'
 
 export function UserProfile() {
   const user = useSelector(storeState => storeState.userModule.user)
@@ -17,7 +17,7 @@ export function UserProfile() {
 
   async function loadGigs() {
     try {
-      const gigs = await gigBackendService.query()
+      const gigs = await gigService.query()
       setGigs(gigs)
     } catch (err) {
       console.log('couldnt load gigs : ', err)

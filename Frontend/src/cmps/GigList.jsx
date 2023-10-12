@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { GigPreview } from './GigPreview.jsx'
 import _ from 'lodash'
 
-export function GigList({ gigs, onRemoveGig, onUpdateGig, onAddGig }) {
+export function GigList({ gigs }) {
   const [sortBy, setSortBy] = useState(null)
   const [sortOrder, setSortOrder] = useState('asc')
   const is = 'explore'

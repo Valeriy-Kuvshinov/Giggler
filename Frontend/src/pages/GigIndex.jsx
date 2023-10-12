@@ -25,7 +25,12 @@ export function GigIndex() {
   }, [filterBy])
 
   async function loadsGigs(){
-    await loadGigs(filterBy)
+    try{
+      await loadGigs(filterBy)
+    }
+    catch(err) {
+      console.log('Error getting gigs to gigIndex: ',err)
+    }
   }
 
   function onSetFilter(filterBy) {
