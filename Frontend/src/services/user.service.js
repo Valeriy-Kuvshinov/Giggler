@@ -126,9 +126,4 @@ _createUsers()
 
 async function _createUsers() {
   localStorage.setItem('user', JSON.stringify(users))
-  // try {
-  //   await loadUsers()
-  // } catch (error) {
-  //   console.log('Error loading users', error)
-  // }
 }
