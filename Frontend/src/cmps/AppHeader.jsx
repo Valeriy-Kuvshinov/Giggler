@@ -88,7 +88,7 @@ export function AppHeader() {
                             <>
                                 <li className="user-info">
                                     <Link to={`user/${user._id}`} style={{ color: textColor }}>
-                                        {user.avatar && <img src={user.avatar} />}
+                                        {user.imgUrl && <img src={user.imgUrl} />}
                                     </Link>
                                 </li>
                                 <li>

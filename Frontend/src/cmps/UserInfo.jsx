@@ -4,7 +4,7 @@ import location from '../assets/img/svg/location.icon.svg'
 export function UserInfo({ user }) {
     return (<section className='user-info'>
         <div className='info-block'>
-            <img src={user.avatar} />
+            <img src={user.imgUrl} />
             <h2>{user.fullName}</h2>
 
             <div className='into-line'>
