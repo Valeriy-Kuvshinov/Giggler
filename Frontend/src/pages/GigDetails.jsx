@@ -6,7 +6,7 @@ import { AboutSeller } from "../cmps/AboutSeller.jsx"
 import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
 
-import { gigBackendService } from "../services/gig.backend.service.js"
+import { gigService } from "../services/gig.service.js"
 import { userService } from "../services/user.service.js"
 
 export function GigDetails() {
@@ -20,7 +20,7 @@ export function GigDetails() {
 
   async function loadGig() {
     try {
-      const gig = await gigBackendService.getById(params.id)
+      const gig = await gigService.getById(params.id)
       setGig(gig)
 
       const ownerData = await userService.getById(gig.ownerId)

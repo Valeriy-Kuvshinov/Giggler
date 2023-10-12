@@ -7,7 +7,7 @@ import { PaymentInfo } from "../cmps/PaymentInfo.jsx"
 
 import {showErrorMsg,showSuccessMsg} from '../services/event-bus.service.js'
 import { orderBackendService } from "../services/order.backend.service.js"
-import { gigBackendService } from "../services/gig.backend.service.js"
+import { gigService } from "../services/gig.service.js"
 import { userService } from "../services/user.service.js"
 
 import { saveOrder } from "../store/order.actions.js"
@@ -24,7 +24,7 @@ export function GigPurchase() {
 
   async function loadGig(){
     try{
-      const gig=await gigBackendService.getById(params.id)
+      const gig=await gigService.getById(params.id)
       setGig(gig)
     } catch (err){
       console.log('couldnt load gig : ',err)

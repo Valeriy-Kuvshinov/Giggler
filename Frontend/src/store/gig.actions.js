@@ -1,11 +1,11 @@
-import { gigBackendService } from "../services/gig.backend.service.js"
+import { gigService } from "../services/gig.service.js"
 import { store } from '../store/store.js'
-import { ADD_GIG, REMOVE_GIG, SET_GIGS, UPDATE_GIG, SET_IS_LOADING } from "./gig.reducer.js"
+import { ADD_GIG, GET_GIG, REMOVE_GIG, SET_GIGS, UPDATE_GIG, SET_IS_LOADING } from "./gig.reducer.js"
 
 export async function loadGigs(filterBy = {}) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
-        const gigs = await gigBackendService.query(filterBy)
+        const gigs = await gigService.query(filterBy)
         store.dispatch({ type: SET_GIGS, gigs })
     } catch (err) {
         console.log('cannot load gigs, heres why:', err)
@@ -14,9 +14,19 @@ export async function loadGigs(filterBy = {}) {
     }
 }
 
+export async function getGig(gigId) {
+    try {
+        await gigService.getById(gigId)
+        store.dispatch({ type: GET_GIG, gigId })
+    } catch (err) {
+        console.log('Cannot remove gig', err)
+        throw err
+    }
+}
+
 export async function removeGig(gigId) {
     try {
-        await gigBackendService.remove(gigId)
+        await gigService.remove(gigId)
         store.dispatch({ type: REMOVE_GIG, gigId })
     } catch (err) {
         console.log('Cannot remove gig', err)
@@ -27,7 +37,7 @@ export async function removeGig(gigId) {
 export async function saveGig(gig) {
     const type = gig._id ? UPDATE_GIG : ADD_GIG
     try {
-        const savedGig = await gigBackendService.save(gig)
+        const savedGig = await gigService.save(gig)
         console.log(gig._id ? 'Updated gig' : 'Added gig', savedGig)
         store.dispatch({ type, gig: savedGig })
         return savedGig

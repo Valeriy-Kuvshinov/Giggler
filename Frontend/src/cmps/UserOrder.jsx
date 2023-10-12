@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { gigBackendService } from '../services/gig.backend.service'
+import { getGig } from '../store/gig.actions.js'
 
 export function UserOrder({ order, acceptOrder, denyOrder }) {
     const [gig, setGig] = useState([])
@@ -11,7 +11,7 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
 
     async function loadGig() {
         try {
-            const gig = await gigBackendService.getById(order.orderedGigId)
+            const gig = await getGig(order.orderedGigId)
             setGig(gig)
         } catch (err) {
             console.log('couldnt load gig : ', err)

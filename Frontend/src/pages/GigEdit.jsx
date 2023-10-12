@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { galleryService } from "../services/gallery.service.js"
 import { useForm } from '../customHooks/useForm.js'
 import { saveGig } from '../store/gig.actions.js'
-import { gigBackendService } from '../services/gig.backend.service.js'
+import { gigService } from '../services/gig.service.js'
 import { useSelector } from 'react-redux'
 
 export function GigEdit() {
@@ -37,7 +37,7 @@ export function GigEdit() {
         if (id && id !== 'edit') {
             async function fetchGig() {
                 try {
-                    const gig = await gigBackendService.getById(id)
+                    const gig = await gigService.getById(id)
                     if (gig) setFields(gig)
                 } catch (err) {
                     console.error('Failed to load gig:', err)
