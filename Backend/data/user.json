@@ -23,7 +23,7 @@
     "fullName": "Alice Smith",
     "username": "alice123",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "level 1",
     "rating": 4.9,
     "isAdmin": false
@@ -33,7 +33,7 @@
     "fullName": "Ella Johnson",
     "username": "ejhonsontemp",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 2",
     "rating": 4.7,
     "isAdmin": false
@@ -43,7 +43,7 @@
     "fullName": "David Turner",
     "username": "dave1973",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "level 1",
     "rating": 4.4,
     "isAdmin": false
@@ -53,7 +53,7 @@
     "fullName": "Sophia Anderson",
     "username": "songrite109",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 2",
     "rating": 4.9,
     "isAdmin": false
@@ -63,7 +63,7 @@
     "fullName": "Lucas Johnson",
     "username": "eviluca3d4",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 3",
     "rating": 4.8,
     "isAdmin": false
@@ -73,7 +73,7 @@
     "fullName": "Olivia Adams",
     "username": "legalser911",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 2",
     "rating": 4.9,
     "isAdmin": false
@@ -83,7 +83,7 @@
     "fullName": "Sophie Johnson",
     "username": "buswomansj",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 3",
     "rating": 4.8,
     "isAdmin": false
@@ -93,7 +93,7 @@
     "fullName": "Max Trainer",
     "username": "tothemaxxx",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level":  "Level 3",
     "rating": 4.6,
     "isAdmin": false
@@ -103,7 +103,7 @@
     "fullName": "Ava Crafters",
     "username": "artcraftava123",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Level 2",
     "rating": 4.7,
     "isAdmin": false
@@ -113,7 +113,7 @@
     "fullName": "Evelyn DigitalArt",
     "username": "evylife1991",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "Pro Talent",
     "rating": 4.9,
     "isAdmin": false
@@ -123,7 +123,7 @@
     "fullName": "Luna Wordsmith",
     "username": "novelist642",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "level 1",
     "rating": 4.9,
     "isAdmin": true
@@ -133,7 +133,7 @@
     "fullName": "Alex VR",
     "username": "alex1993",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "level 2",
     "rating": 4.7,
     "isAdmin": false
@@ -143,7 +143,7 @@
     "fullName": "Gerald Winston",
     "username": "gamerguffaw",
     "password": "123",
-    "avatar": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
+    "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
     "level": "level 1",
     "rating": 3.2,
     "isAdmin": false
