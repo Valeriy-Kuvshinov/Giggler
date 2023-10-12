@@ -19,7 +19,7 @@ export function UserPreview({ is, owner, children }) {
         <div className="avatar-fullname">
           <img
             className="avatar"
-            src={user.avatar}
+            src={user.imgUrl}
             alt={`${user.fullName} gig avatar`}
           />
           <span className="full-name">{user.fullName}</span>

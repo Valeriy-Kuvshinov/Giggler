@@ -8,7 +8,7 @@
   img {
     width: 100%;
     height: 166px;
-     //height: auto;  //way to check the dots!!!!!!!
+    //height: auto;  //way to check the dots!!!!!!!
     background-color: $clrPrimary1;
     border: 1px solid $clrSecondary2;
     border-top-left-radius: 0.5em;
@@ -18,7 +18,7 @@
 
   .gig-title img:hover {
     text-decoration: underline;
-  } 
+  }
 
   .preview-user-info {
     font-size: 0.875rem;
@@ -33,17 +33,20 @@
       grid-auto-flow: column;
       gap: 0.5em;
     }
+
     .avatar {
       width: 1.5rem;
       height: 1.5rem;
       border-radius: 50%;
       border: none;
     }
+
     .level {
       text-transform: capitalize;
       padding: 0 0.5em;
     }
   }
+
   .gig-title {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -53,11 +56,14 @@
     padding: 0 0.5em;
     margin-top: rem(5px);
   }
+
   .user-rating {
     padding: 0 0.5em;
+
     .rate {
       padding: 0 0.25em;
     }
+
     .rate-count {
       color: $clrSecondary5;
     }
@@ -70,10 +76,10 @@
     height: 2.8125em;
     padding: 0.625em 0.5em;
     border-top: 0.0625em solid $clrSecondary2;
-    
-    span{
+
+    span {
       .i {
-        display:flex;
+        display: flex;
       }
     }
   }

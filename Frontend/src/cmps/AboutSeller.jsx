@@ -7,7 +7,7 @@ export function AboutSeller({ owner }) {
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
-        <img className="seller-picture" src={owner.avatar} />
+        <img className="seller-picture" src={owner.imgUrl} />
         <div>
           <p>{owner.fullName}</p>
           <div className="stars2">

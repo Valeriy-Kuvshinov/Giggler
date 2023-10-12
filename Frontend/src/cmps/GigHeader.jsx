@@ -7,7 +7,7 @@ export function GigHeader({ gig, owner }) {
         <section style={{ overflow: 'hidden' }} className="gig-header">
             <h2>{gig.title}</h2>
             <div className="rating">
-                <img className='seller-picture' src={owner.avatar} alt="Seller Avatar" />
+                <img className='seller-picture' src={owner.imgUrl} alt="Seller Avatar" />
                 <p>{owner.fullName}</p>
 
                 <p className="stars">

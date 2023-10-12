@@ -8,7 +8,8 @@
   border: 1px solid $clrSecondary2;
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
-//   z-index: 0;
+
+  //   z-index: 0;
   button {
     margin: 0;
   }
@@ -17,6 +18,7 @@
     position: relative;
     display: flex;
     transition: transform 0.3s ease-in-out;
+
     img {
       width: 100%;
       object-fit: cover;
@@ -38,10 +40,12 @@
       border-top-right-radius: 50%;
       border-bottom-right-radius: 50%;
     }
+
     .right {
       border-top-left-radius: 50%;
       border-bottom-left-radius: 50%;
     }
+
     .arrow {
       background: rgba(0, 0, 0, 0.2);
       color: white;
@@ -56,10 +60,12 @@
       background: rgba(0, 0, 0, 0.4);
     }
   }
+
   .dot-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+
     .dot {
       width: 10px;
       height: 10px;
@@ -69,14 +75,16 @@
       margin: 0 5px;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
-      
+
     }
 
     .dot:hover {
       transform: scale(1.2);
     }
+
     .dot.active {
-      background-color: #007bff; /* Active dot color */
+      background-color: #007bff;
+      /* Active dot color */
     }
   }
 }
