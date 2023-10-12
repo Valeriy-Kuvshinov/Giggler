@@ -34,7 +34,7 @@ async function signup(username, password, fullname, level, rating, imgUrl) {
     loggerService.debug(`auth.service - signup with username: ${username}
     , fullname: ${fullname}, imgUrl: ${imgUrl}, level: ${level}, rating: ${rating}`)
 
-    if (!username || !password || !fullname || !imgUrl) throw new Error('Missing details')
+    if (!username || !password || !fullname || !imgUrl || !level || !rating) throw new Error('Missing details')
 
     const hash = await bcrypt.hash(password, saltRounds)
     return userService.save({ username, password: hash, fullname, imgUrl })
