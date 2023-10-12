@@ -6,12 +6,12 @@ export const UPDATE_GIG = 'UPDATE_GIG'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
 export const SET_PAGE_IDX = 'SET_PAGE_IDX'
-import { gigService } from '../services/gig.service.local.js'
+import { gigService } from '../services/gig.service.js'
 
 const initialState = {
   gigs: [],
   isLoading: false,
-  filterBy: gigService.getDefaultFilter(),
+  // filterBy: gigService.getDefaultFilter(),
 }
 
 export function gigReducer(state = initialState, action = {}) {
@@ -31,7 +31,8 @@ export function gigReducer(state = initialState, action = {}) {
       )
       return { ...state, gigs }
     case GET_GIG:
-      return gigs.filter((gig) => gig._id === action.gigId)
+      console.log('state',state.gigs)
+      return state.gigs.find((gig) => gig._id === action.gigId)
     case SET_IS_LOADING:
       return { ...state, isLoading: action.isLoading }
     //Filter

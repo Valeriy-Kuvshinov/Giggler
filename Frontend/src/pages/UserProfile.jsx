@@ -1,26 +1,30 @@
 
 import { useState, useEffect } from 'react'
-
+import { useSelector } from 'react-redux'
 import { UserGigs } from '../cmps/UserGigs.jsx'
 import { UserInfo } from '../cmps/UserInfo.jsx'
 import { UserOrders } from '../cmps/UserOrders.jsx'
+
+import { loadGigs } from '../store/gig.actions.js'
 
 import { gigService } from '../services/gig.service.js'
 import { userService } from '../services/user.service.js'
 
 export function UserProfile() {
-  const [gigs, setGigs] = useState([])
+  const { gigs } = useSelector((storeState) => storeState.gigModule)
+  // const [gigs, setGigs] = useState([])
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    loadGigs()
+    loadGigs2()
     loadUser()
   }, [])
 
-  async function loadGigs() {
+  async function loadGigs2() {
     try {
-      const gigs = await gigService.query()
-      setGigs(gigs)
+      await loadGigs()
+      // const gigs = await gigService.query()
+      // setGigs(gigs)
     } catch (err) {
       console.log('couldnt load gigs : ', err)
     }
@@ -34,7 +38,7 @@ export function UserProfile() {
       console.log('couldnt load users : ', err)
     }
   }
-  console.log('user : ',user)
+  // console.log('gigs : ',gigs)
   if (user === null || gigs === null) return <div>loading...</div>
 
   return (
