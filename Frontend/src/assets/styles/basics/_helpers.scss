@@ -91,18 +91,27 @@
 
 .shadow {
   box-shadow: 0 0.266px 1.13052px rgba(0, 0, 0, 0.069),
-  0 0.89345px 3.79717px rgba(0, 0, 0, 0.101), 0 5px 17px rgba(0, 0, 0, 0.17);
+    0 0.89345px 3.79717px rgba(0, 0, 0, 0.101), 0 5px 17px rgba(0, 0, 0, 0.17);
 }
 
 .open {
-  margin-top: 8px;
-  opacity: 1;
-  pointer-events: all;
-  span{
+  .menu-filter-content {
+    margin-block-start: .5em;
+    opacity: 1;
+    pointer-events: all;
+  }
+  span {
     transform: rotate(-180deg);
   }
 }
 
+.bg-co-black {
+  background-color: #000;
+}
+
+.co-white {
+  color: #fff;
+}
 // i {
 //     svg{
 //         width:100%;
