@@ -69,7 +69,7 @@ export function AppHeader() {
             <nav className="main-nav" style={{ borderBottom: mainNavBorder }}>
                 <div className="container flex row" style={{ color: textColor }}>
                     <Link to="/" style={{ color: textColor }}>
-                        <h1 className="logo">giggler<span>.</span></h1>
+                        <h1 className="logo">Giggler<span>.</span></h1>
                     </Link>
 
                     <SearchBar
