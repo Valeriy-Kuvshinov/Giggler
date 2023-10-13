@@ -30,6 +30,21 @@
             display: none;
         }
     }
+
+    .main-nav {
+        .search-bar {
+            @media (max-width: 500px){
+                width: 100%;
+            }
+            @media (min-width: 500px){
+                width: 30%;
+            }
+
+            @media (min-width: 700px){
+                width: 45%;
+            }
+        }
+    }
 }
 
 .home-wrapper {

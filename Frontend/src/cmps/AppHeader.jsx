@@ -6,19 +6,20 @@ import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { LoginSignup } from './LoginSignup.jsx'
+import { UserDropdown } from './UserDropdown.jsx'
 
 export function AppHeader() {
     const [searchQuery, setSearchQuery] = useState('')
+    const [headerStage, setHeaderStage] = useState(0)
+    const [showDropdown, setShowDropdown] = useState(false)
+    const [showModal, setShowModal] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
-    const [showModal, setShowModal] = useState('')
     const user = useSelector(storeState => storeState.userModule.user)
     const categories = [
         "Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
         "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
-
     const isHomePage = location.pathname === '/'
-    const [headerStage, setHeaderStage] = useState(0)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -46,6 +47,17 @@ export function AppHeader() {
         }
     }
 
+    useEffect(() => {
+        const closeDropdown = (e) => {
+            if (e.target.className !== 'user-info') setShowDropdown(false)
+        }
+        window.addEventListener('click', closeDropdown)
+
+        return () => {
+            window.removeEventListener('click', closeDropdown)
+        }
+    }, [])
+
     function handleSearchChange(e) {
         const newSearchQuery = e.target.value
         setSearchQuery(newSearchQuery)
@@ -57,6 +69,12 @@ export function AppHeader() {
 
         navigate(`/explore?search=${searchQuery}`)
     }
+
+    const toggleDropdown = (e) => {
+        e.stopPropagation()
+        setShowDropdown(!showDropdown)
+    }
+
     const headerBgColor = headerStage >= 1 ? '#fff' : 'transparent'
     const searchVisibility = headerStage === 2 ? 'visible' : 'hidden'
     const mainNavBorder = headerStage === 2 ? '1px solid #ced1d6' : 'none'
@@ -79,17 +97,13 @@ export function AppHeader() {
                         onSearchSubmit={handleSearchSubmit}
                         visibility={searchVisibility}
                     />
-
                     <ul className="nav-links flex">
                         <li><Link to="/explore" style={{ color: textColor }}>Explore</Link></li>
-                        <li><Link to="/" style={{ color: textColor }}>Become a Seller</Link></li>
-
                         {user ? (
                             <>
-                                <li className="user-info">
-                                    <Link to={`user/${user._id}`} style={{ color: textColor }}>
-                                        {user.imgUrl && <img src={user.imgUrl} />}
-                                    </Link>
+                                <li className="user-info flex" onClick={toggleDropdown}>
+                                    {user.imgUrl && <img src={user.imgUrl} />}
+                                    {showDropdown && <UserDropdown user={user} onClose={toggleDropdown} />}
                                 </li>
                                 <li>
                                     <button className='logout' onClick={onLogout} style={{ color: textColor }}>Logout</button>
