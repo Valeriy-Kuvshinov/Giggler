@@ -29,12 +29,15 @@
       .radio-item-wrapper {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         min-width: 214px;
         .radio-item {
+          display: flex;
+          align-items: center;
           border-radius: 8px;
           color: #404145;
           cursor: pointer;
-          font-size: 14px;
+          // font-size: 14px;
           font-weight: 600;
           line-height: 22px;
           padding: 12px;
@@ -43,16 +46,22 @@
           span {
             height: 22px;
             width: 22px;
+            white-space: nowrap;
           }
           .radio-btn {
+            display: inline-block;
             border: 1px solid #b5b6ba;
+            border-radius: 50%;
             cursor: pointer;
-            height: 18px;
+            height: 22px;
+            width: 22px;
             margin-right: 8px;
             position: relative;
-            width: 18px;
           }
           .radio-btn::after {
+            border: 2px solid #222325 !important;
+            background: #222325;
+            display: block;
             position: absolute;
             content: '';
             height: 0.5em;
@@ -61,12 +70,19 @@
             top: 50%;
             transform: translate(-50%, -50%) scale(0);
             border-radius: 50%;
-            // display: inline-block;
-            background: #95979d;
+            display: inline-block;
             transition: 0.15s ease-in-out;
           }
         }
       }
+    }
+    .budget-filter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .input-wrapper:first-child {
+      margin-right: 12px;
     }
   }
   .apply-row {

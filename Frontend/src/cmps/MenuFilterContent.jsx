@@ -1,9 +1,14 @@
+import { useState } from 'react'
 import { ApplyBtn } from './ApplyBtn'
 
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
+  const [selectedFilter, setSelectedFilter] = useState({
+    min_price: '',
+    max_price: '',
+  })
   const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
   const levels = ['Level 1', 'Level 2', 'Level 3', 'Pro Talent']
-  const categories = [
+  const category = [
     'Graphics & Design',
     'Programming & Tech',
     'Digital Marketing',
@@ -15,8 +20,9 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     'Photography',
     'AI Services',
   ]
+  const budget = ['min_price', 'max_price']
   const categoriesAndTags = {
-    graphicsAndDesign: [
+    Graphics_And_Design: [
       'Logo & Brand Identity',
       'Art & Illustration',
       'Web & App Design',
@@ -29,7 +35,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
       'Fashion & Merchandise',
       '3D Design',
     ],
-    programmingAndTech: [
+    Programming_And_Tech: [
       'Website Development',
       'Website Platforms',
       'Website Maintenance',
@@ -42,14 +48,14 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
       'AI Development',
       'Chatbots',
     ],
-    digital_Marketing: [
+    Digital_Marketing: [
       'Search Marketing',
       'Social Marketing',
       'Methods & Techniques',
       'Analytics & Strategy',
       'Industry & Purpose-Specific',
     ],
-    videoAndAnimation: [
+    Video_And_Animation: [
       'Editing & Post-Production',
       'Social & Marketing Videos',
       'Animation',
@@ -58,13 +64,13 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
       'Product Videos',
       'AI Video',
     ],
-    writingAndTranslation: [
+    Writing_And_Translation: [
       'Content Writing',
       'Editing & Critique',
       'Business & Marketing Copy',
       'Translation & Transcription',
     ],
-    musicAndAudio: [
+    Music_And_Audio: [
       'Music Production & Writing',
       'Audio Engineering & Post Production',
       'Voice Over & Narration',
@@ -73,7 +79,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
       'Sound Design',
       'Lessons & Transcriptions',
     ],
-    business: [
+    Business: [
       'Business Formation',
       'Business Growth',
       'General & Administrative',
@@ -82,18 +88,18 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
       'Professional Development',
       'Accounting & Finance',
     ],
-    data: [
+    Data: [
       'Data Science & ML',
       'Data Analysis',
       'Data Collection',
       'Data Management',
     ],
-    photography: [
+    Photography: [
       'Products & Lifestyle',
       'People & Scenes',
       'Local Photography',
     ],
-    aIServices: [
+    AI_Services: [
       'Build your AI app',
       'Refine AI with experts',
       'AI Artists',
@@ -103,6 +109,16 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     ],
   }
 
+  function onHandleChange(event) {
+    switch (event.target.name) {
+      case 'min':
+        setSelectedFilter({ ...selectedFilter, min_price: event.target.value })
+        break
+      case 'max':
+        setSelectedFilter({ ...selectedFilter, max_price: event.target.value })
+        break
+    }
+  }
   return (
     <>
       {renderedChoice && (
@@ -110,7 +126,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
           {(() => {
             switch (renderedChoice) {
               case 'delivery_time':
-                console.log('I AM IN DELIVERY TIME IN MENUFILTERCONTENT')
+                console.log('I AM IN DELIVERY TIME')
                 return (
                   <>
                     <div className="content-scroll">
@@ -130,7 +146,151 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                         ))}
                       </div>
                     </div>
-                    <ApplyBtn />
+                    <div className="apply-row">
+                      <button
+                        onClick={(e) => setMenuFilter(e)}
+                        className="apply bg-co-black co-white"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </>
+                )
+              case 'budget':
+                console.log('I AM IN Budget')
+                return (
+                  <form onSubmit={() => setMenuFilter(selectedFilter)}>
+                    <div className="content-scroll">
+                      <div className="budget-filter">
+                        {budget.map((type) => (
+                          <div className="input-wrapper" key={type}>
+                            <label>{`${type.toUpperCase()}.`}</label>
+                            <input
+                              type="number"
+                              name={type}
+                              className={type}
+                              placeholder="Any"
+                              min="0"
+                              max="10000"
+                              value={selectedFilter[type]}
+                              onChange={onHandleChange}
+                            />
+                            <i>$</i>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="apply-row">
+                      <button
+                        className="apply bg-co-black co-white"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </form>
+                )
+              case 'seller_level':
+                console.log('I AM IN Seller Level')
+                return (
+                  <>
+                    <div className="content-scroll">
+                      <div className="radio-list">
+                        {levels.map((level) => (
+                          <div className="radio-item-wrapper" key={level}>
+                            <label className="radio-item">
+                              <span className="radio-btn"></span>
+                              <input
+                                type="radio"
+                                name={renderedChoice}
+                                value={level}
+                              />
+                              <span>{level}</span>
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="apply-row">
+                      <button
+                        onClick={(e) => setMenuFilter(e)}
+                        className="apply bg-co-black co-white"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </>
+                )
+              case 'category':
+                console.log('I AM IN Category')
+                return (
+                  <>
+                    <div className="content-scroll">
+                      <div className="radio-list">
+                        {category.map((category) => (
+                          <div className="radio-item-wrapper" key={category}>
+                            <label className="radio-item">
+                              <span className="radio-btn"></span>
+                              <input
+                                type="radio"
+                                name={renderedChoice}
+                                value={category}
+                              />
+                              <span>{category}</span>
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="apply-row">
+                      <button
+                        onClick={(e) => setMenuFilter(e)}
+                        className="apply bg-co-black co-white"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  </>
+                )
+              case 'Graphics & Design':
+              case 'Programming & Tech':
+              case 'Digital Marketing':
+              case 'Video & Animation':
+              case 'Writing & Translation':
+              case 'Music & Audio':
+              case 'Business':
+              case 'Data':
+              case 'Photography':
+              case 'AI Services':
+                console.log('I AM IN SubCategory')
+                const subCategory = renderedChoice.replace(' ', '_')
+                console.log(`subCategory ${subCategory}`)
+                return (
+                  <>
+                    <div className="content-scroll">
+                      <div className="radio-list">
+                        {categoriesAndTags[subCategory].map((category) => (
+                          <div className="radio-item-wrapper" key={category}>
+                            <label className="radio-item">
+                              <span className="radio-btn"></span>
+                              <input
+                                type="radio"
+                                name={renderedChoice}
+                                value={category}
+                              />
+                              <span>{category}</span>
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="apply-row">
+                      <button
+                        onClick={(e) => setMenuFilter(e)}
+                        className="apply bg-co-black co-white"
+                      >
+                        Apply
+                      </button>
+                    </div>
                   </>
                 )
               default:

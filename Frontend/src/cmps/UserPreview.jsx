@@ -4,9 +4,18 @@ import { userService } from '../services/user.service.js'
 
 export function UserPreview({ is, owner, children }) {
   const [user, setUser] = useState(null)
+  const [ratingCount, setRatingCount] = useState(null)
+
   useEffect(() => {
     loadUserData()
   }, [owner])
+
+  useEffect(() => {
+    if (user && ratingCount === null) {
+      const count = userService.getUserRatingCount(user)
+      setRatingCount(count)
+    }
+  }, [user])
 
   function loadUserData() {
     setUser(owner)
@@ -31,9 +40,7 @@ export function UserPreview({ is, owner, children }) {
         <span className="rating-score">
           <SvgIcon iconName={'star'} />
           <span className="rate b">{user.rating}</span>
-          <span className="rate-count ">{`(${userService.getUserRatingCount(
-            user
-          )})`}</span>
+          <span className="rate-count ">{`(${ratingCount})`}</span>
         </span>
       </div>
     </>

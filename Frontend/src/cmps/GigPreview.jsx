@@ -9,7 +9,7 @@ import { UserPreview } from './UserPreview.jsx'
 import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
-  const [isLiked, setIsLiked] = useState(true)
+  const [isLiked, setIsLiked] = useState(false)
   const [owner, setOwner] = useState(null)
   const navigate = useNavigate()
 
@@ -32,6 +32,7 @@ export function GigPreview({ is, gig }) {
   }
 
   function onToggleHeart() {
+    // event.stopPropagation()
     setIsLiked((prevIsLiked) => !prevIsLiked)
   }
   if (!owner) return null
@@ -65,7 +66,7 @@ export function GigPreview({ is, gig }) {
         <span className="price b">{`From $${gig.price}`}</span>
         <span
           className={`${isLiked ? 'black' : ''}`}
-          onClick={() => onToggleHeart()}
+          onClick={(e) => onToggleHeart(e)}
         >
           <SvgIcon iconName={'heart'} />
         </span>

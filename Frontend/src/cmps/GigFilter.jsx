@@ -8,6 +8,7 @@ export function GigFilter(filterBy) {
   const [isSticky, setIsSticky] = useState(false)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
   const queryParams = {}
+  let prevChoice = ''
   let shadowStart = 139
   for (const [key, value] of searchParams) {
     queryParams[key] = value
@@ -40,10 +41,11 @@ export function GigFilter(filterBy) {
   }
 
   function onHandleChoice(renderedChoice) {
-    if (isRenderedChoice[0]) {
+    if (prevChoice === isRenderedChoice[0] || isRenderedChoice[0]  ) {
       setIsRenderedChoice([false, ''])
       return
     }
+    prevChoice = renderedChoice
     // console.log(renderedChoice)
     switch (renderedChoice) {
       case 'seller_level':
@@ -57,7 +59,7 @@ export function GigFilter(filterBy) {
         break
       case 'categories':
         setIsRenderedChoice([true, categorySelect])
-
+        prevChoice = categorySelect
         break
 
       default:
@@ -106,16 +108,16 @@ export function GigFilter(filterBy) {
               >
                 {categorySelect.charAt(0).toUpperCase() +
                   categorySelect.slice(1)}
-                <span>
+                <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
-                {isRenderedChoice[1] === 'category' ||
-                  (isRenderedChoice[1] === queryParams.tags && (
+                {(isRenderedChoice[1] === 'category' ||
+                  isRenderedChoice[1] === queryParams.cat) && (
                     <MenuFilterContent
                       renderedChoice={isRenderedChoice[1]}
                       setMenuFilter={setMenuFilter}
                     />
-                  ))}
+                  )}
               </button>
             </div>
             <div
@@ -128,7 +130,7 @@ export function GigFilter(filterBy) {
                 className="btn filtered-sl"
               >
                 Seller level
-                <span>
+                <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
                 {isRenderedChoice[1] === 'seller_level' && (
@@ -149,7 +151,7 @@ export function GigFilter(filterBy) {
                 className="btn filtered-bg"
               >
                 Budget
-                <span>
+                <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
               </button>
@@ -170,7 +172,7 @@ export function GigFilter(filterBy) {
                 className="btn filtered-dt"
               >
                 Delivery Time
-                <span>
+                <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
               </button>

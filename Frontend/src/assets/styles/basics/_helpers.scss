@@ -84,6 +84,9 @@
 
 .black {
   fill: $clrPrimary2;
+  svg{
+    fill: $clrPrimary2;
+  }
 }
 .rotate {
   transform: rotate(-180deg);
@@ -100,9 +103,9 @@
     opacity: 1;
     pointer-events: all;
   }
-  span {
-    transform: rotate(-180deg);
-  }
+   .dwn-arr {
+    transform: translateY(-3px) rotate(-180deg);
+   }
 }
 
 .bg-co-black {

@@ -57,23 +57,48 @@ Link,
 a {
   color: $clrSecondary8;
 }
-button{
+button {
   border: 0;
   cursor: pointer;
 }
 
-input[type=radio] {
+input[type='radio'] {
   display: none;
 }
 // .icon {
 //     width: 13px;
 // }
-
+input[type='date'],
+input[type='datetime-local'],
+input[type='datetime'],
+input[type='email'],
+input[type='month'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+textarea {
+  background-color: #fff;
+  border: 1px solid #c5c6c9;
+  border-radius: 4px;
+  box-shadow: none;
+  color: #404145;
+  font: inherit;
+  padding: 8px 12px;
+  resize: none;
+  -webkit-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+  width: 8em;
+}
 .btn {
   text-decoration: none;
   display: grid;
   grid-auto-flow: column;
-  gap: .5em;
+  gap: 0.5em;
   align-items: center;
   justify-content: space-between;
   border: 1px solid #e4e5e7;

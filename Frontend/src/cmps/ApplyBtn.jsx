@@ -1,7 +1,12 @@
-export function ApplyBtn() {
+export function ApplyBtn(setMenuFilter) {
   return (
     <div className="apply-row">
-      <button className="apply bg-co-black co-white">Apply</button>
+      <button
+        onSubmit={(e) => setMenuFilter(e)}
+        className="apply bg-co-black co-white"
+      >
+        Apply
+      </button>
     </div>
   )
 }
