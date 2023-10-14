@@ -11,13 +11,15 @@
     border-top: 1px solid $clrSecondary3;
 
     h1 {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: arial;
+        font-size: 32px;
+        letter-spacing: -3px;
     }
 
     h2 {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'macan-regular';
         color: $clrSecondary4;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .social-icons {
@@ -35,8 +37,8 @@
             }
 
             a {
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
         }
     }
