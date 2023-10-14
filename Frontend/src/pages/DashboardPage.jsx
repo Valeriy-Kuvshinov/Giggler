@@ -73,7 +73,7 @@ export function DashboardPage() {
     return (
         <main className="dashboard-page flex flex-column">
             <div className='dashboard-container-header flex flex-column'>
-                <h1>Welcome dear manager!</h1>
+                <h1>Welcome dear admin!</h1>
                 <h2>Here is our most updated business statistics:</h2>
             </div>
             <section className='dashboard-container'>
