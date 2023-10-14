@@ -4,6 +4,7 @@ import { GigIndex } from './pages/GigIndex.jsx'
 import { UserProfile } from './pages/UserProfile.jsx'
 import { GigPurchase } from './pages/GigPurchase.jsx'
 import { GigEdit } from './pages/GigEdit.jsx'
+import { DashboardPage } from './pages/DashboardPage.jsx'
 
 const routes = [
     { path: '/', component: HomePage, label: 'Home 🏠' },
@@ -12,7 +13,8 @@ const routes = [
     { path: '/gig/:id', component: GigDetails },
     { path: '/user/:id', component: UserProfile, label: 'profile' },
     { path: '/gig/edit/:id?', component: GigEdit },
-    { path: '/purchase/:id', component: GigPurchase, label: 'purchase' }
+    { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
+    { path: '/dashboard', component: DashboardPage, label: 'dashboard'}
 ]
 
 export default routes
