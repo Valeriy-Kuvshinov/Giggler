@@ -22,10 +22,9 @@
 
     .social-icons {
         gap: 1em;
-        align-self: self-start;
 
         .icon-container {
-            display: inline-flex;
+            display: flex;
             border-radius: 50%;
             cursor: pointer;
             transition: background 0.3s;
@@ -35,9 +34,37 @@
                 background: $clrSecondary3;
             }
 
-            .social-icon {
-                width: 20px;
-                height: 100%;
+            a {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
+
+    .access-icon {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+
+        .circle-wrapper {
+            fill: $clrSecondary1;
+            stroke: $clrSecondary5;
+        }
+
+        .person-head,
+        .person-torso {
+            fill: $clrSecondary5;
+        }
+
+        &:hover {
+            .circle-wrapper {
+                fill: $clrSecondary45;
+                stroke: none;
+            }
+
+            .person-head,
+            .person-torso {
+                fill: $clrSecondary8;
             }
         }
     }
