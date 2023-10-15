@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ApplyBtn } from './ApplyBtn'
 
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
+  const [selectedOption, setSelectedOption] = useState('')
   const [selectedFilter, setSelectedFilter] = useState({
     min_price: '',
     max_price: '',
@@ -130,21 +131,12 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                 return (
                   <>
                     <div className="content-scroll">
-                      <div className="radio-list">
-                        {deliveryTime.map((time) => (
-                          <div className="radio-item-wrapper" key={time}>
-                            <label className="radio-item">
-                              <span className="radio-btn"></span>
-                              <input
-                                type="radio"
-                                name={renderedChoice}
-                                value={time}
-                              />
-                              <span>{time}</span>
-                            </label>
-                          </div>
-                        ))}
-                      </div>
+                      <RenderRadioButtons
+                        options={deliveryTime}
+                        groupName="delivery_time"
+                        selectedOption={selectedOption}
+                        onOptionChange={setSelectedOption}
+                      />
                     </div>
                     <div className="apply-row">
                       <button
@@ -181,9 +173,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                       </div>
                     </div>
                     <div className="apply-row">
-                      <button
-                        className="apply bg-co-black co-white"
-                      >
+                      <button className="apply bg-co-black co-white">
                         Apply
                       </button>
                     </div>
@@ -194,21 +184,12 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                 return (
                   <>
                     <div className="content-scroll">
-                      <div className="radio-list">
-                        {levels.map((level) => (
-                          <div className="radio-item-wrapper" key={level}>
-                            <label className="radio-item">
-                              <span className="radio-btn"></span>
-                              <input
-                                type="radio"
-                                name={renderedChoice}
-                                value={level}
-                              />
-                              <span>{level}</span>
-                            </label>
-                          </div>
-                        ))}
-                      </div>
+                      <RenderRadioButtons
+                        options={levels}
+                        groupName="seller_level"
+                        selectedOption={selectedOption}
+                        onOptionChange={setSelectedOption}
+                      />
                     </div>
                     <div className="apply-row">
                       <button
@@ -225,21 +206,12 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                 return (
                   <>
                     <div className="content-scroll">
-                      <div className="radio-list">
-                        {category.map((category) => (
-                          <div className="radio-item-wrapper" key={category}>
-                            <label className="radio-item">
-                              <span className="radio-btn"></span>
-                              <input
-                                type="radio"
-                                name={renderedChoice}
-                                value={category}
-                              />
-                              <span>{category}</span>
-                            </label>
-                          </div>
-                        ))}
-                      </div>
+                      <RenderRadioButtons
+                        options={category}
+                        groupName="category"
+                        selectedOption={selectedOption}
+                        onOptionChange={setSelectedOption}
+                      />
                     </div>
                     <div className="apply-row">
                       <button
@@ -302,5 +274,36 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
         </section>
       )}
     </>
+  )
+}
+
+function RenderRadioButtons({
+  options,
+  groupName,
+  selectedOption,
+  onOptionChange,
+}) {
+  return (
+    <div className="radio-list">
+      {options.map((option) => (
+        <div className="radio-item-wrapper" key={option}>
+          <label
+            className={`radio-item ${
+              selectedOption === option ? 'selected' : ''
+            }`}
+          >
+            <input
+              type="radio"
+              name={groupName}
+              value={option}
+              checked={selectedOption === option}
+              onChange={() => onOptionChange(option)}
+            />
+            <span className="radio-btn"></span>
+            <span>{option}</span>
+          </label>
+        </div>
+      ))}
+    </div>
   )
 }

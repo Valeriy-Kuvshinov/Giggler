@@ -7,7 +7,8 @@ export const gigService = {
     remove,
     save,
     createGig,
-    getById
+    getById,
+    getDefaultFilter
 }
 
 function query(filterBy = {}) {
@@ -38,4 +39,16 @@ function createGig(buyerId = '', buyerName = '', sellerId = '', gigId = '', pric
         createdAt: Date.now(),
         gigState: 'pending'
     }
+}
+
+function getDefaultFilter() {
+    return { 
+        search: '', 
+        cat: '', 
+        tag: '',
+        level: '', 
+        minPrice: undefined, 
+        maxPrice: undefined, 
+        deliveryTime: '', 
+        pageIdx: 0 }
 }
