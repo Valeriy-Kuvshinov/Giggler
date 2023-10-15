@@ -3,12 +3,10 @@ import {
     Chart as ChartJS, ArcElement, LinearScale, BarElement, CategoryScale
     , LineController, LineElement, PointElement, Tooltip, Legend
 } from 'chart.js'
-import { Bar, Doughnut, Line } from 'react-chartjs-2'
-import { gigService } from '../services/gig.service.js'
 ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
     , LineElement, PointElement, BarElement, Tooltip, Legend)
-import Typography from '@mui/material/Typography'
-import { DashboardInfo } from '../cmps/DashboardInfo.jsx'
+import { gigService } from '../services/gig.service.js'
+import { FinancePricingInfo } from '../cmps/FinancePricingInfo.jsx'
 
 export function DashboardPage() {
     const [dailyData, setDailyData] = useState({})
@@ -50,10 +48,6 @@ export function DashboardPage() {
             }
         }
         fetchData()
-        return () => {
-            ChartJS.unregister(ArcElement, CategoryScale, LineController, LineElement
-                , PointElement, BarElement, LinearScale)
-        }
     }, [])
     return (
         <main className="dashboard-page flex column">
@@ -61,55 +55,16 @@ export function DashboardPage() {
                 <h1>Welcome dear admin!</h1>
                 <h2>Here is our most updated business statistics:</h2>
             </div>
+
             <section className='dashboard-container'>
-                <h2>Finances & Pricing:</h2>
-                <DashboardInfo dailyData={dailyData} weeklyData={weeklyData} monthlyData={monthlyData} />
-                <div className="chart-section">
-                    <Typography variant="h6">Daily site revenue</Typography>
-                    <Line
-                        data={{
-                            labels: dailyData.dates,
-                            datasets: [{
-                                label: 'Profits in $',
-                                data: dailyData.values,
-                                borderColor: '#404145',
-                                color: '#404145',
-                                fill: false,
-                            }]
-                        }}
-                    />
-                </div>
-                <div className="chart-section">
-                    <Typography variant="h6">Weekly site revenue</Typography>
-                    <Line
-                        data={{
-                            labels: weeklyData.dates,
-                            datasets: [{
-                                label: 'Profits in $',
-                                data: weeklyData.values,
-                                borderColor: '#404145',
-                                color: '#404145',
-                                fill: false,
-                            }]
-                        }}
-                    />
-                </div>
-                <div className="chart-section">
-                    <Typography variant="h6">Monthly site revenue</Typography>
-                    <Line
-                        data={{
-                            labels: monthlyData.dates,
-                            datasets: [{
-                                label: 'Profits in $',
-                                data: monthlyData.values,
-                                borderColor: '#404145',
-                                color: '#404145',
-                                fill: false,
-                            }]
-                        }}
-                    />
-                </div>
+                <h2>General Gigs Info:</h2>
             </section>
+
+            <section className='dashboard-container'>
+                <h2>General Users Info:</h2>
+            </section>
+
+            <FinancePricingInfo dailyData={dailyData} weeklyData={weeklyData} monthlyData={monthlyData} />
         </main>
     )
 }
