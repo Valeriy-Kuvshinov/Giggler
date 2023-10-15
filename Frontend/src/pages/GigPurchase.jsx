@@ -7,8 +7,6 @@ import { PaymentInfo } from "../cmps/PaymentInfo.jsx"
 
 import {showErrorMsg,showSuccessMsg} from '../services/event-bus.service.js'
 import { orderBackendService } from "../services/order.backend.service.js"
-import { gigService } from "../services/gig.service.js"
-import { userService } from "../services/user.service.js"
 
 import { saveOrder } from "../store/order.actions.js"
 import { loadGigs } from "../store/gig.actions.js"
@@ -19,38 +17,23 @@ export function GigPurchase() {
   const user = useSelector(storeState => storeState.userModule.user)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const gig=gigs.find((gig)=>gig._id===params.id)
-  // const [gig,setGig]=useState(null)
-  // const [user,setUser]=useState(null)
-  console.log(gig)
+  // console.log(gig)
 
   useEffect(()=>{
     loadGig2()
-    // loadUser2()
   },[])
 
   async function loadGig2(){
     try{
       await loadGigs()
-      // await getGig(params.id)
-      // const gig=await gigService.getById(params.id)
-      // setGig(gig)
     } catch (err){
       console.log('couldnt load gig : ',err)
     }
   }
-  // async function loadUser2(){
-  //   try{
-  //     await loadUser()
-  //     // const user=await userService.getLoggedinUser()
-  //     // setUser(user)
-  //   } catch (err){
-  //     console.log('couldnt load user : ',err)
-  //   }
-  // }
 
   function createOrder() {
     const orderToSave = orderBackendService.
-    createOrder(user._id,user.fullName,gig.owner._id,gig._id,gig.title,gig.deliveryTime,gig.price)
+    createOrder(user._id,user.fullName,gig.ownerId,gig._id,gig.title,gig.deliveryTime,gig.price)
 
     saveOrder(orderToSave)
         .then(savedOrder => {

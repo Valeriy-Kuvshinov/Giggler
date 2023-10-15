@@ -3,36 +3,24 @@
         "buyerId": "u001",
         "buyerName": "Peter Parker",
         "sellerId": "u001",
-        "orderedGigId": "g001",
-        "title":"bread",
-        "deliveryTime":"2 day",
+        "title": "g001",
+        "deliveryTime": "I will take unique photos of Spiderman",
+        "orderedGigId": "",
         "price": 99,
-        "createdAt": 1696949208572,
+        "createdAt": 1697359487773,
         "orderState": "accepted",
-        "_id": "VCnAa"
+        "_id": "yS5Vt"
     },
     {
         "buyerId": "u001",
         "buyerName": "Peter Parker",
         "sellerId": "u002",
-        "orderedGigId": "g002",
-        "title":"bread",
-        "deliveryTime":"2 day",
+        "title": "g002",
+        "deliveryTime": "I will design your logo",
+        "orderedGigId": "",
         "price": 49,
-        "createdAt": 1696950004779,
-        "orderState": "denied",
-        "_id": "cNwqG"
-    },
-    {
-        "buyerId": "u001",
-        "buyerName": "Peter Parker",
-        "sellerId": "u001",
-        "orderedGigId": "g001",
-        "title":"bread",
-        "deliveryTime":"2 day",
-        "price": 99,
-        "createdAt": 1697037516698,
+        "createdAt": 1697359505876,
         "orderState": "accepted",
-        "_id": "vmjYV"
+        "_id": "6vABW"
     }
 ]

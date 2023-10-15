@@ -7,7 +7,10 @@ import { UserOrder } from './UserOrder'
 import { loadOrders } from '../store/order.actions'
 
 export function UserOrders() {
+    const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    var sellerOrders=orders.filter((order)=>order.sellerId===user._id)
+    var userOrders=orders.filter((order)=>(order.buyerId===user._id)&&(order.orderState==='accepted'))
 
     useEffect(() => {
         loadOrders2()
@@ -42,7 +45,17 @@ export function UserOrders() {
             <div className='orders-title'>
                 Active Orders
             </div>
-            {orders.map((order) =>
+            {sellerOrders.map((order) =>
+                <li key={order._id}>
+                    <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
+                </li>
+            )}
+        </ul>
+        <ul>
+            <div className='orders-title'>
+                Recieved Orders
+            </div>
+            {userOrders.map((order) =>
                 <li key={order._id}>
                     <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
                 </li>
