@@ -22,9 +22,10 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
         <span>ordered gig price: {order.price}</span>
         <span>time to make: {order.deliveryTime}</span>
 
+        {order.orderState === 'pending' && 
         <div className='order-buttons'>
             <button onClick={acceptTheOrder}>accept order</button>
             <button onClick={denyTheOrder}>deny order</button>
-        </div>
+        </div>}
     </section>)
 }
