@@ -24,21 +24,17 @@
     "reviews": [
       {
         "userName": "peter123",
-        "rating": "1",
-        "text": ".",
-        "id": "CqLvt7"
-      },
-      {
-        "userName": "peter123",
-        "rating": "1",
-        "text": "ass service",
-        "id": "fSNolA"
-      },
-      {
-        "userName": "peter123",
+        "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
         "rating": "5",
         "text": "",
-        "id": "N8daUj"
+        "id": "RDli13"
+      },
+      {
+        "userName": "peter123",
+        "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
+        "rating": "1",
+        "text": "trash",
+        "id": "RxxeAl"
       }
     ]
   },

@@ -13,9 +13,10 @@ export function GigReviews({reviews,gig}) {
 
     function submitReview(){
         const userName=user.username
+        const imgUrl=user.imgUrl
         const reviewText=document.getElementById('reviewText').value
         const reviewRating=document.getElementById('reviewRating').value
-        const review={userName:userName,rating:reviewRating,text:reviewText}
+        const review={userName:userName,imgUrl:imgUrl,rating:reviewRating,text:reviewText}
         console.log(review)
         gigService.addReview(gig,review)
     }

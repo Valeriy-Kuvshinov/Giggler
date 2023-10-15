@@ -5,14 +5,17 @@ export function GigReview({ review }) {
 
     return (
         <section className="gig-review">
+            <img src={review.imgUrl}/>
+            <div>
             <span>{review.userName}</span>
             <div className="stars">
                 {[...Array(fullStarsCount)].map((_, idx) => (
                     <img src={starIcon} key={idx} alt="star" />
-                ))}
+                    ))}
                 {review.rating}
             </div>
             <span>{review.text}</span>
+                    </div>
         </section>
     )
 }
