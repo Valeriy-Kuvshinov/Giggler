@@ -12,7 +12,7 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
         denyOrder(order)
     }
 
-    console.log('order',order)
+    // console.log('order',order)
 
     return (<section className={(order.orderState === 'pending') ? 'pending user-order' :
         (order.orderState === 'accepted') ? 'accepted user-order' : 'denied user-order'}>
