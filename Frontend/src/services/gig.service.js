@@ -1,4 +1,5 @@
 import { httpService } from './http.service.js'
+import { utilService } from './util.service.js'
 const BASE_URL = 'gig/'
 // var gFilterBy = 'all'
 
@@ -6,6 +7,7 @@ export const gigService = {
     query,
     remove,
     save,
+    addReview,
     createGig,
     getById,
     getDefaultFilter
@@ -29,6 +31,11 @@ function save(gig) {
     return savedGig
 }
 
+function addReview(gig , review){
+    review.id=utilService.makeId()
+    gig.reviews.unshift(review)
+    save(gig)
+}
 function createGig(buyerId = '', buyerName = '', sellerId = '', gigId = '', price = 99) {
     return {
         buyerId: buyerId,
