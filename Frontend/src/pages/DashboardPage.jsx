@@ -11,55 +11,40 @@ import Typography from '@mui/material/Typography'
 import { DashboardInfo } from '../cmps/DashboardInfo.jsx'
 
 export function DashboardPage() {
-    const [labelPrices, setLabelPrices] = useState({})
-    const [inventoryByLabel, setInventoryByLabel] = useState({})
-    const [lineChartData, setLineChartData] = useState({})
-    const [toys, setToys] = useState([])
-
-    const filterBy = gigService.getDefaultFilter()
-    const sort = gigService.getDefaultSort()
+    const [dailyData, setDailyData] = useState({})
+    const [weeklyData, setWeeklyData] = useState({})
+    const [monthlyData, setMonthlyData] = useState({})
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const initialToys = await gigService.query(filterBy, sort)
-                setToys(initialToys)
+                // Daily data by the hour
+                const dailyHours = [...Array(24)].map((_, i) => {
+                    const d = new Date()
+                    d.setHours(d.getHours() - i)
+                    return `${d.getHours()}:00`
+                }).reverse()
+                const dailyValues = [...Array(24)].map(() => Math.floor(Math.random() * 1000))
+                setDailyData({ dates: dailyHours, values: dailyValues })
 
-                // Calculate average prices per label
-                let labelPriceCount = {}
-                initialToys.forEach(toy => {
-                    toy.labels.forEach(label => {
-                        labelPriceCount[label] = (labelPriceCount[label] || { sum: 0, count: 0 })
-                        labelPriceCount[label].sum += toy.price
-                        labelPriceCount[label].count += 1
-                    })
-                })
-
-                let avgLabelPrices = {}
-                Object.keys(labelPriceCount).forEach(label => {
-                    avgLabelPrices[label] = parseFloat((labelPriceCount[label].sum / labelPriceCount[label].count))
-                })
-                setLabelPrices(avgLabelPrices)
-
-                // Calculate inventory by label
-                let labelInventoryCount = {}
-                initialToys.forEach(toy => {
-                    toy.labels.forEach(label => {
-                        labelInventoryCount[label] = (labelInventoryCount[label] || { inStock: 0, outOfStock: 0 })
-                        if (toy.inStock) labelInventoryCount[label].inStock += 1
-                        else labelInventoryCount[label].outOfStock += 1
-                    })
-                })
-                setInventoryByLabel(labelInventoryCount)
-
-                // Generate random numbers for line chart
-                const dates = [...Array(7)].map((_, i) => {
+                // Weekly data
+                const weeklyDates = [...Array(7)].map((_, i) => {
                     const d = new Date()
                     d.setDate(d.getDate() - i)
                     return d.toISOString().split('T')[0]
                 }).reverse()
-                const values = [...Array(7)].map(() => Math.floor(Math.random() * 1000))
-                setLineChartData({ dates, values })
+                const weeklyValues = [...Array(7)].map(() => Math.floor(Math.random() * 10000))
+                setWeeklyData({ dates: weeklyDates, values: weeklyValues })
+
+                // Monthly data
+                const monthlyDates = [...Array(30)].map((_, i) => {
+                    const d = new Date()
+                    d.setDate(d.getDate() - i)
+                    return d.toISOString().split('T')[0]
+                }).reverse()
+                const monthlyValues = [...Array(30)].map(() => Math.floor(Math.random() * 10000))
+                setMonthlyData({ dates: monthlyDates, values: monthlyValues })
+
             } catch (error) {
                 console.error("Error fetching data:", error)
             }
@@ -71,48 +56,54 @@ export function DashboardPage() {
         }
     }, [])
     return (
-        <main className="dashboard-page flex flex-column">
-            <div className='dashboard-container-header flex flex-column'>
+        <main className="dashboard-page flex column">
+            <div className='dashboard-container-header flex column'>
                 <h1>Welcome dear admin!</h1>
                 <h2>Here is our most updated business statistics:</h2>
             </div>
             <section className='dashboard-container'>
-                <DashboardInfo initialToys={toys} lineChartData={lineChartData} avgLabelPrices={labelPrices} inventoryByLabel={inventoryByLabel} />
+                <DashboardInfo dailyData={dailyData} weeklyData={weeklyData} monthlyData={monthlyData} />
 
                 <div className="chart-section">
-                    <Typography variant="h6">Current average price per label</Typography>
-                    <Bar
-                        data={{
-                            labels: Object.keys(labelPrices),
-                            datasets: [{
-                                label: 'Average Price',
-                                data: Object.values(labelPrices),
-                                backgroundColor: '#42a5f5',
-                            }]
-                        }}
-                    />
-                </div>
-                <div className="chart-section">
-                    <Typography variant="h6">Current amount of toys in-stock</Typography>
-                    <Doughnut
-                        data={{
-                            labels: Object.keys(inventoryByLabel),
-                            datasets: [{
-                                data: Object.values(inventoryByLabel).map(labelData => labelData.inStock),
-                                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#c45850', '#8e5ea2', '#3cba9f', '#e8c3b9'],
-                            }]
-                        }}
-                    />
-                </div>
-                <div className="chart-section">
-                    <Typography variant="h6">Daily overall toy sales</Typography>
+                    <Typography variant="h6">Daily site revenue</Typography>
                     <Line
                         data={{
-                            labels: lineChartData.dates,
+                            labels: dailyData.dates,
                             datasets: [{
                                 label: 'Profits in $',
-                                data: lineChartData.values,
-                                borderColor: '#3e95cd',
+                                data: dailyData.values,
+                                borderColor: '#404145',
+                                color: '#404145',
+                                fill: false,
+                            }]
+                        }}
+                    />
+                </div>
+                <div className="chart-section">
+                    <Typography variant="h6">Weekly site revenue</Typography>
+                    <Line
+                        data={{
+                            labels: weeklyData.dates,
+                            datasets: [{
+                                label: 'Profits in $',
+                                data: weeklyData.values,
+                                borderColor: '#404145',
+                                color: '#404145',
+                                fill: false,
+                            }]
+                        }}
+                    />
+                </div>
+                <div className="chart-section">
+                    <Typography variant="h6">Monthly site revenue</Typography>
+                    <Line
+                        data={{
+                            labels: monthlyData.dates,
+                            datasets: [{
+                                label: 'Profits in $',
+                                data: monthlyData.values,
+                                borderColor: '#404145',
+                                color: '#404145',
                                 fill: false,
                             }]
                         }}
