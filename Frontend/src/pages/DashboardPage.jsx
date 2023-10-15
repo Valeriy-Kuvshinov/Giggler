@@ -5,8 +5,8 @@ import {
 } from 'chart.js'
 ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
     , LineElement, PointElement, BarElement, Tooltip, Legend)
-import { gigService } from '../services/gig.service.js'
-import { FinancePricingInfo } from '../cmps/FinanceDashboard.jsx'
+import { FinanceDashboard } from '../cmps/FinanceDashboard.jsx'
+import { GigDashboard } from '../cmps/GigDashboard.jsx'
 
 export function DashboardPage() {
     const [data, setData] = useState({
@@ -44,15 +44,13 @@ export function DashboardPage() {
                 <h2>Here is our most updated business statistics:</h2>
             </div>
 
-            <section className='dashboard-container'>
-                <h2>General Gigs Info:</h2>
-            </section>
+            <GigDashboard />
 
             <section className='dashboard-container'>
                 <h2>General Users Info:</h2>
             </section>
 
-            <FinancePricingInfo weeklyData={data.weekly} monthlyData={data.monthly} annualData={data.annual} />
+            <FinanceDashboard weeklyData={data.weekly} monthlyData={data.monthly} annualData={data.annual} />
         </main>
     )
 }

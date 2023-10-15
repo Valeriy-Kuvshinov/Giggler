@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography'
 import { Line } from 'react-chartjs-2'
 import { InfoDiv } from "./InfoDiv.jsx"
 
-export function FinancePricingInfo({ weeklyData, monthlyData, annualData }) {
+export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
     const latestDayProfit = weeklyData.values?.[weeklyData.values.length - 1] || 0
     const previousDayProfit = weeklyData.values?.[weeklyData.values.length - 2] || 0
 
