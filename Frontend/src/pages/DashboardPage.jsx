@@ -62,8 +62,8 @@ export function DashboardPage() {
                 <h2>Here is our most updated business statistics:</h2>
             </div>
             <section className='dashboard-container'>
+                <h2>Finances & Pricing:</h2>
                 <DashboardInfo dailyData={dailyData} weeklyData={weeklyData} monthlyData={monthlyData} />
-
                 <div className="chart-section">
                     <Typography variant="h6">Daily site revenue</Typography>
                     <Line
