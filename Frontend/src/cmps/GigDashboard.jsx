@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 import { Pie, Bar } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
-import { galleryService } from '../services/gallery.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
 export function GigDashboard() {
-    const { categoryTexts } = galleryService
     const [avgCategoryPrices, setAvgCategoryPrices] = useState([])
     const [topCategories, setTopCategories] = useState([])
     const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
     const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
     const [mostPopularGig, setMostPopularGig] = useState(null)
+    const [forceRenderKey, setForceRenderKey] = useState(Date.now())
 
     useEffect(() => {
         const fetchGigs = async () => {
@@ -34,7 +33,6 @@ export function GigDashboard() {
                     categoryPrices[gig.category] = gig.price
                     categoryCounts[gig.category] = 1
                 }
-
                 if (gig.price > expensiveGig.price) expensiveGig = gig
                 if (gig.price < cheapGig.price) cheapGig = gig
                 if (gig.reviews.length > popularGig.reviews.length) popularGig = gig
@@ -55,14 +53,47 @@ export function GigDashboard() {
             })
         }
         fetchGigs()
+        setForceRenderKey(Date.now())
     }, [])
+
+    const barChartOptions = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    title: function () {
+                        return ''
+                    },
+                    label: function (context) {
+                        return context.raw
+                    }
+                }
+            }
+        }
+    }
+    const pieChartOptions = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return `${context.raw} gigs`
+                    }
+                }
+            }
+        }
+    }
 
     return (
         <section className='dashboard-finances-container'>
             <h2>Gigs General Info:</h2>
 
             <section className="finance-info grid">
-            <InfoDiv
+                <InfoDiv
                     title="Most expensive"
                     info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
@@ -90,10 +121,11 @@ export function GigDashboard() {
                                 borderWidth: 1
                             }]
                         }}
+                        options={barChartOptions}
                     />
                 </div>
                 <div className="chart-section" style={{ backgroundColor: '#fff' }}>
-                    <Typography variant="h6">Most common (by category)</Typography>
+                    <Typography variant="h6">Top 10 Most common (by category)</Typography>
                     <Pie
                         data={{
                             labels: topCategories.categories,
@@ -107,6 +139,7 @@ export function GigDashboard() {
                                 ]
                             }]
                         }}
+                        options={pieChartOptions}
                     />
                 </div>
             </main>

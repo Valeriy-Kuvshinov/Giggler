@@ -17,6 +17,23 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
         const sign = difference >= 0 ? '+' : '-'
         return `(${sign}$${Math.abs(difference).toFixed(2)})`
     }
+    const lineChartOptions = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    title: function () {
+                        return ''
+                    },
+                    label: function (context) {
+                        return `$${context.raw.toFixed(2)}`
+                    }
+                }
+            }
+        }
+    }
     return (
         <section className='dashboard-finances-container'>
             <h2>Site Finances:</h2>
@@ -50,6 +67,7 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
                                 fill: false,
                             }]
                         }}
+                        options={lineChartOptions}
                     />
                 </div>
                 <div className="chart-section" style={{ backgroundColor: '#f5f5f5' }}>
@@ -65,6 +83,7 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
                                 fill: false,
                             }]
                         }}
+                        options={lineChartOptions}
                     />
                 </div>
                 <div className="chart-section" style={{ backgroundColor: '#f1fdf7' }}>
@@ -80,6 +99,7 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
                                 fill: false,
                             }]
                         }}
+                        options={lineChartOptions}
                     />
                 </div>
             </main>
