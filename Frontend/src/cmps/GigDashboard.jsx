@@ -7,7 +7,7 @@ import { galleryService } from '../services/gallery.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
 export function GigDashboard() {
-    const { categoryTexts } = galleryService;
+    const { categoryTexts } = galleryService
     const [avgCategoryPrices, setAvgCategoryPrices] = useState([])
     const [topCategories, setTopCategories] = useState([])
     const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
@@ -38,7 +38,7 @@ export function GigDashboard() {
                 if (gig.price > expensiveGig.price) expensiveGig = gig
                 if (gig.price < cheapGig.price) cheapGig = gig
                 if (gig.reviews.length > popularGig.reviews.length) popularGig = gig
-            });
+            })
             setMostExpensiveGig(expensiveGig)
             setLeastExpensiveGig(cheapGig)
             setMostPopularGig(popularGig)
@@ -94,7 +94,7 @@ export function GigDashboard() {
                 </div>
                 <div className="chart-section" style={{ backgroundColor: '#fff' }}>
                     <Typography variant="h6">Most common (by category)</Typography>
-                    <Pie  // Use Pie instead of Bar for this chart
+                    <Pie
                         data={{
                             labels: topCategories.categories,
                             datasets: [{
@@ -103,7 +103,7 @@ export function GigDashboard() {
                                 backgroundColor: [
                                     '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',
                                     '#33FF57', '#8533FF', '#33B5FF', '#FF8333',
-                                    '#B833FF', '#FF335E' // Add more colors if necessary
+                                    '#B833FF', '#FF335E'
                                 ]
                             }]
                         }}
