@@ -23,6 +23,7 @@ export function UserProfile() {
       console.log('couldnt load gigs : ', err)
     }
   }
+  
   if (user === null || gigs === null) return <div>loading...</div>
 
   return (
