@@ -1,5 +1,13 @@
 .gig-reviews {
     background-color: white;
+    .review-addition{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        .text{
+            width: 100%;
+        }
+    }
 }
 
 .gig-review {
@@ -10,11 +18,10 @@
     margin-block-end: 10px;
 
     .stars {
+        margin: 0;
         img {
             height: 14px;
             width: 14px;
         }
-
-        margin: 0;
     }
 }

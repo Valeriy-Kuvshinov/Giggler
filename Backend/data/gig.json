@@ -21,7 +21,26 @@
       "https://www.gamespot.com/a/uploads/screen_kubrick/1582/15828986/3552441-hed.jpg"
     ],
     "likedByUsers": [],
-    "reviews": []
+    "reviews": [
+      {
+        "userName": "peter123",
+        "rating": "1",
+        "text": ".",
+        "id": "CqLvt7"
+      },
+      {
+        "userName": "peter123",
+        "rating": "1",
+        "text": "ass service",
+        "id": "fSNolA"
+      },
+      {
+        "userName": "peter123",
+        "rating": "5",
+        "text": "",
+        "id": "N8daUj"
+      }
+    ]
   },
   {
     "_id": "g002",
