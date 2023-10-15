@@ -1,20 +1,34 @@
 .gig-reviews {
     background-color: white;
+    .review-addition{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        .text{
+            width: 100%;
+        }
+    }
 }
 
 .gig-review {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: white;
     border-block-start: 1px solid black;
-    margin-block-end: 10px;
+    padding: 20px;
+    // align-items: center;
 
+    img{
+        height: 48px;
+        width: 48px;
+        border-radius: 24px;
+        margin-inline-end: 20px;
+    }
     .stars {
+        margin: 0;
         img {
             height: 14px;
             width: 14px;
         }
-
-        margin: 0;
     }
 }
