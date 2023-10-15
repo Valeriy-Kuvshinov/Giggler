@@ -11,7 +11,7 @@ import { gigService } from '../services/gig.service.js'
 const initialState = {
   gigs: [],
   isLoading: false,
-  // filterBy: gigService.getDefaultFilter(),
+  filterBy: gigService.getDefaultFilter(),
 }
 
 export function gigReducer(state = initialState, action = {}) {

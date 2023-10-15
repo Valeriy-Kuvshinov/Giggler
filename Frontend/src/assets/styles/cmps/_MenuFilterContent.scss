@@ -64,19 +64,25 @@
           }
 
           .radio-btn::after {
-            border: 2px solid #222325 !important;
-            background: #222325;
-            display: block;
-            position: absolute;
             content: '';
+            background: transparent;
+            position: absolute;
             height: 0.5em;
             width: 0.5em;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%) scale(0);
+            transform: translate(-50%, -50%);
             border-radius: 50%;
             display: inline-block;
-            transition: 0.15s ease-in-out;
+            transition: all 0.15s ease-in-out;
+          }
+        }
+        .radio-item.selected {
+          .radio-btn {
+            border: 2px solid #222325;
+          }
+          .radio-btn::after {
+            background: #222325;
           }
         }
       }

@@ -8,7 +8,6 @@ export function GigFilter(filterBy) {
   const [isSticky, setIsSticky] = useState(false)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
   const queryParams = {}
-  let prevChoice = ''
   let shadowStart = 139
   for (const [key, value] of searchParams) {
     queryParams[key] = value
@@ -38,16 +37,11 @@ export function GigFilter(filterBy) {
 
   function setMenuFilter() {
     // console.log('I AM IN SET MENU FILTER!')
+    
   }
 
   function onHandleChoice(renderedChoice) {
-    if (prevChoice === isRenderedChoice[0] || isRenderedChoice[0]  ) {
-      setIsRenderedChoice([false, ''])
-      return
-    }
-    prevChoice = renderedChoice
-    // console.log(renderedChoice)
-    switch (renderedChoice) {
+     switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
         break
@@ -59,7 +53,6 @@ export function GigFilter(filterBy) {
         break
       case 'categories':
         setIsRenderedChoice([true, categorySelect])
-        prevChoice = categorySelect
         break
 
       default:
