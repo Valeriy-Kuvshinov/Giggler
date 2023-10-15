@@ -9,46 +9,36 @@ import { gigService } from '../services/gig.service.js'
 import { FinancePricingInfo } from '../cmps/FinancePricingInfo.jsx'
 
 export function DashboardPage() {
-    const [dailyData, setDailyData] = useState({})
-    const [weeklyData, setWeeklyData] = useState({})
-    const [monthlyData, setMonthlyData] = useState({})
+    const [data, setData] = useState({
+        daily: {},
+        weekly: {},
+        monthly: {},
+        annual: {}
+    })
+
+    const generateData = (length, dateModifier, maxValue, latestDateFormatter) => {
+        const dates = [...Array(length)].map((_, i) => {
+            const d = new Date()
+            dateModifier(d, i)
+            return i === 0 ? latestDateFormatter(d) : d.toISOString().split('T')[0]
+        }).reverse()
+        const values = [...Array(length)].map(() => Math.floor(Math.random() * maxValue))
+        return { dates, values }
+    }
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                // Daily data by the hour
-                const dailyHours = [...Array(24)].map((_, i) => {
-                    const d = new Date()
-                    d.setHours(d.getHours() - i)
-                    return `${d.getHours()}:00`
-                }).reverse()
-                const dailyValues = [...Array(24)].map(() => Math.floor(Math.random() * 1000))
-                setDailyData({ dates: dailyHours, values: dailyValues })
-
-                // Weekly data
-                const weeklyDates = [...Array(7)].map((_, i) => {
-                    const d = new Date()
-                    d.setDate(d.getDate() - i)
-                    return d.toISOString().split('T')[0]
-                }).reverse()
-                const weeklyValues = [...Array(7)].map(() => Math.floor(Math.random() * 10000))
-                setWeeklyData({ dates: weeklyDates, values: weeklyValues })
-
-                // Monthly data
-                const monthlyDates = [...Array(30)].map((_, i) => {
-                    const d = new Date()
-                    d.setDate(d.getDate() - i)
-                    return d.toISOString().split('T')[0]
-                }).reverse()
-                const monthlyValues = [...Array(30)].map(() => Math.floor(Math.random() * 10000))
-                setMonthlyData({ dates: monthlyDates, values: monthlyValues })
-
-            } catch (error) {
-                console.error("Error fetching data:", error)
-            }
+        try {
+            setData({
+                daily: generateData(24, (d, i) => d.setHours(d.getHours() - i), 1000, d => `${d.getHours()}:00`),
+                weekly: generateData(7, (d, i) => d.setDate(d.getDate() - i), 10000, d => d.toISOString().split('T')[0]),
+                monthly: generateData(30, (d, i) => d.setDate(d.getDate() - i), 10000, d => d.toISOString().split('T')[0]),
+                annual: generateData(12, (d, i) => d.setMonth(d.getMonth() - i), 100000, d => `${d.getMonth() + 1}-${d.getFullYear()}`)
+            })
+        } catch (error) {
+            console.error("Error fetching data:", error)
         }
-        fetchData()
     }, [])
+
     return (
         <main className="dashboard-page flex column">
             <div className='dashboard-container-header flex column'>
@@ -64,7 +54,7 @@ export function DashboardPage() {
                 <h2>General Users Info:</h2>
             </section>
 
-            <FinancePricingInfo dailyData={dailyData} weeklyData={weeklyData} monthlyData={monthlyData} />
+            <FinancePricingInfo dailyData={data.daily} weeklyData={data.weekly} monthlyData={data.monthly} annualData={data.annual} />
         </main>
     )
 }

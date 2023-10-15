@@ -43,4 +43,9 @@
             font-weight: bold;
         }
     }
+
+    .finance-charts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
 }

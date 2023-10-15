@@ -6,6 +6,7 @@
                     width: 85%;
                     margin-bottom: 0.5em;
                     gap: 0;
+                    height: 47px;
 
                     input[type="text"] {
                         width: 90%;
@@ -13,6 +14,7 @@
                         border-radius: 5px 0px 0px 5px;
                         border: none;
                         font-size: 16px;
+                        height: 100%;
 
                         &:focus {
                             outline: none;
@@ -26,6 +28,7 @@
                         border: 1px solid $bgColor3;
                         border-left: none;
                         background: $bgColor3;
+                        height: 100%;
 
                         &:hover {
                             opacity: 0.8;
