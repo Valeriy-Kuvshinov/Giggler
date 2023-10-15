@@ -36,7 +36,7 @@ function remove(orderId) {
 }
 
 function save(order) {
-    console.log(order._id)
+    // console.log(order._id)
     if (order._id) {
         console.log('changed order')
         return httpService.put(BASE_URL, order)
