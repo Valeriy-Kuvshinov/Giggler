@@ -41,6 +41,11 @@ export function GigFilter(filterBy) {
   }
 
   function onHandleChoice(renderedChoice) {
+    if (renderedChoice === isRenderedChoice[1] && isRenderedChoice[0]) {
+      setIsRenderedChoice([false, ''])
+      return
+    }
+
      switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
