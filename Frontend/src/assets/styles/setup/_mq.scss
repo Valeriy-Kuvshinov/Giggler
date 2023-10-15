@@ -33,14 +33,15 @@
 
     .main-nav {
         .search-bar {
-            @media (max-width: 500px){
+            @media (max-width: 500px) {
                 width: 100%;
             }
-            @media (min-width: 500px){
+
+            @media (min-width: 500px) {
                 width: 30%;
             }
 
-            @media (min-width: 700px){
+            @media (min-width: 700px) {
                 width: 45%;
             }
         }
@@ -162,14 +163,14 @@
             }
 
             @media (min-width: 900px) {
-                background-image: url("../../../assets/img/bg-mini-signup.webp");
+                background-image: url("../src/assets/img/bg-mini-signup.webp");
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             @media (min-width: 1160px) {
-                background-image: url("../../../assets/img/bg-signup.webp");
+                background-image: url("../src/assets/img/bg-signup.webp");
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
