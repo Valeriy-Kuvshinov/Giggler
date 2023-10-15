@@ -1,6 +1,7 @@
+import { useSelector } from "react-redux"
 import { gigService } from "../services/gig.service.js"
 import { store } from '../store/store.js'
-import { ADD_GIG, GET_GIG, REMOVE_GIG, SET_GIGS, UPDATE_GIG, SET_IS_LOADING } from "./gig.reducer.js"
+import { ADD_GIG, GET_GIG, REMOVE_GIG, SET_GIGS, UPDATE_GIG, SET_IS_LOADING, SET_FILTER } from "./gig.reducer.js"
 
 export async function loadGigs(filterBy = {}) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
@@ -45,6 +46,13 @@ export async function saveGig(gig) {
     } catch (err) {
         console.log('Cannot save gig', err)
         throw err
+    }
+}
+
+export function setFilter(filterBy) {
+    if(!filterBy){
+        store.dispatch({ SET_FILTER, filterBy: filterBy })
+        return useSelector((storeState) => storeState.gigModule.filterBy)
     }
 }
 // Demo for Optimistic Mutation
