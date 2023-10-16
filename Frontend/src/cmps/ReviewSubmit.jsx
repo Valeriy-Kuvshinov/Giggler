@@ -1,7 +1,10 @@
 import { useState } from 'react'
+
 import starIcon from '../assets/img/svg/star.icon.svg'
 import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
+
 import { reviewService } from '../services/review.service.js'
+import { saveGig } from '../store/gig.actions.js'
 
 export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
     const [reviewText, setReviewText] = useState('')
@@ -35,16 +38,27 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
     }
 
     const submitReview = async () => {
-        const review = {
-            userId: loggedInUser._id,
-            gigId: gig._id,
-            rating: reviewRating,
-            text: reviewText
+        try {
+            const review = {
+                userId: loggedInUser._id,
+                gigId: gig._id,
+                rating: reviewRating,
+                text: reviewText,
+                createdAt: Date.now()
+            }
+            const savedReview = await reviewService.save(review)
+
+            // Update the gig with the new review ID
+            gig.reviews.push(savedReview._id)
+            await saveGig(gig)
+
+            setReviewText('')
+            setReviewRating(0)
+            onReviewAdded(savedReview)
         }
-        await reviewService.addReview(review)
-        setReviewText('')
-        setReviewRating(0)
-        onReviewAdded(review)
+        catch (err) {
+            console.log('Error while submitting the review:', err)
+        }
     }
 
     return (

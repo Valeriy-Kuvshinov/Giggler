@@ -52,7 +52,8 @@ function save(gig) {
             throw new Error(`No gig found with id ${gig._id}`)
         }
         gigs[idx] = { _id: gig._id, ...gig }
-    } else {
+    }
+    else {
         gig._id = utilService.makeId()
         gigs.push({ _id: gig._id, ...gig })
     }
@@ -65,7 +66,8 @@ function _saveGigs(gigs) {
         console.log("Gigs before saving: ", gigs)
         fs.writeFileSync(GIGS_PATH, JSON.stringify(gigs, null, 2))
         loggerService.info('Gigs saved successfully')
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to save gigs', err)
     }
 }

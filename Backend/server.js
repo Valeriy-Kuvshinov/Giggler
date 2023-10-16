@@ -4,7 +4,6 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 // Sup Giggler
-// import { userService } from './services/user.service.js'
 import { loggerService } from './services/logger.service.js'
 
 const app = express()
