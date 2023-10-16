@@ -1,42 +1,65 @@
-import { httpService } from './http.service'
-import { storageService } from './async-storage.service'
-import { userService } from './user.service'
+import { utilService } from "./util.service.js"
+import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
+const TODO_KEY = 'reviewDB'
+const BASE_URL = 'review/'
+// var gFilterBy = 'all'
+// _createReviews()
 
-
-export const reviewService = {
-  add,
-  query,
-  remove
+export const reviewBackendService = {
+    query,
+    get,
+    remove,
+    save,
+    getById,
+    createReview,
+    addReview
 }
 
-function query(filterBy) {
-  var queryStr = (!filterBy) ? '' : `?name=${filterBy.name}&sort=anaAref`
-  return httpService.get(`review${queryStr}`)
-  // return storageService.query('review')
+function query(filterBy = {}) {
+    return httpService.get(BASE_URL, filterBy)
 }
 
-async function remove(reviewId) {
-  await httpService.delete(`review/${reviewId}`)
-  // await storageService.remove('review', reviewId)
+function get(reviewId) {
+    return storageService.get(TODO_KEY, reviewId)
+        .then((review) => {
+            return review
+        })
 }
 
-async function add({txt, aboutUserId}) {
-  const addedReview = await httpService.post(`review`, {txt, aboutUserId})
-  
-  // const aboutUser = await userService.getById(aboutUserId)
+function getById(reviewId) {
+    return httpService.get(BASE_URL + reviewId)
+}
+function remove(reviewId) {
+    return httpService.delete(BASE_URL + reviewId)
+}
 
-  // const reviewToAdd = {
-  //   txt,
-  //   byUser: userService.getLoggedinUser(),
-  //   aboutUser: {
-  //     _id: aboutUser._id,
-  //     fullname: aboutUser.fullname,
-  //     imgUrl: aboutUser.imgUrl
-  //   }
-  // }
+function save(review) {
+    // console.log(review._id)
+    if (review._id) {
+        console.log('changed review')
+        return httpService.put(BASE_URL, review)
+    } else {
+        console.log('created review')
+        return httpService.post(BASE_URL, review)
+    }
+}
 
-  // reviewToAdd.byUser.score += 10
-  // await userService.update(reviewToAdd.byUser)
-  // const addedReview = await storageService.post('review', reviewToAdd)
-  return addedReview
+function createReview(userId='',gigId='',username='',imgUrl='',rating='2 days',text='good service') {
+    return {
+        userId: userId,
+        gigId: gigId,
+        userName:  username,
+        imgUrl: imgUrl,
+        rating: rating,
+        reviewedGigId: gigId,
+        text:text,
+        createdAt: Date.now()
+    }
+}
+
+function addReview(gig, review){
+  review.id=utilService.makeId()
+  gig.reviews.unshift(review)
+  save(gig)
 }
