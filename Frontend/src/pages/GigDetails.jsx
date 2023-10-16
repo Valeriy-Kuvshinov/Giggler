@@ -9,6 +9,7 @@ import { GigReviews } from "../cmps/GigReviews.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
 import { loadUser } from "../store/user.actions.js"
+import { loadReviews } from "../store/review.actions.js"
 
 export function GigDetails() {
   const params = useParams()
@@ -16,9 +17,13 @@ export function GigDetails() {
   const user = useSelector(storeState => storeState.userModule.watchedUser)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const gig=gigs.find((gig)=>gig._id===params.id)
+  const reviews = useSelector(storeState => storeState.reviewModule.reviews)
+  const filteredReviews=reviews.filter((review)=>review.gigId===gig._id)
+  console.log('filtered reviews from backend ',filteredReviews)
 
   useEffect(() => {
     loadTheGig()
+    loadTheReviews()
   }, [])
 
   async function loadTheGig() {
@@ -34,6 +39,14 @@ export function GigDetails() {
       await loadUser(gig.ownerId)
     } catch (err) {
       console.log('couldnt load user ',err)
+    }
+  }
+
+  async function loadTheReviews(){
+    try{
+      await loadReviews()
+    } catch (err) {
+      console.log('couldnt load reviews ',err)
     }
   }
   
@@ -58,7 +71,7 @@ export function GigDetails() {
 
           <AboutSeller owner={user} />
 
-          <GigReviews reviews={gig.reviews} gig={gig}/>
+          <GigReviews reviews={filteredReviews} gig={gig}/>
         </div>
         <GigOrder gig={gig} />
       </section>

@@ -6,7 +6,7 @@ const BASE_URL = 'review/'
 // var gFilterBy = 'all'
 // _createReviews()
 
-export const reviewBackendService = {
+export const reviewService = {
     query,
     get,
     remove,
@@ -58,8 +58,9 @@ function createReview(userId='',gigId='',username='',imgUrl='',rating='2 days',t
     }
 }
 
-function addReview(gig, review){
+function addReview(review){
   review.id=utilService.makeId()
-  gig.reviews.unshift(review)
-  save(gig)
+  review.createdAt= Date.now()
+  console.log(review)
+  save(review)
 }
