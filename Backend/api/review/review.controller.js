@@ -17,7 +17,7 @@ export async function getReviews(req, res) {
             // id: req.query?.id || '',
         }
         const reviews = await reviewService.query(
-            // filterBy
+            filterBy
         )
         res.send(reviews)
     } catch (err) {
