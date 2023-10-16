@@ -32,9 +32,30 @@ function save(review) {
     }
 }
 
+<<<<<<< HEAD
 function addReview(review) {
     review._id = utilService.makeId()
     review.createdAt = Date.now()
     console.log(review)
     save(review)
 }
+=======
+function createReview(userId='',gigId='',username='',imgUrl='',rating='2 days',text='good service') {
+    return {
+        userId: userId,
+        gigId: gigId,
+        userName:  username,
+        imgUrl: imgUrl,
+        rating: rating,
+        reviewedGigId: gigId,
+        text:text,
+        createdAt: Date.now()
+    }
+}
+
+function addReview(review){
+  review.createdAt= Date.now()
+  console.log(review)
+  save(review)
+}
+>>>>>>> 60c45f50375981ffb39379abc9e94c90710977ad
