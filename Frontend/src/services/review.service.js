@@ -59,7 +59,6 @@ function createReview(userId='',gigId='',username='',imgUrl='',rating='2 days',t
 }
 
 function addReview(review){
-  review.id=utilService.makeId()
   review.createdAt= Date.now()
   console.log(review)
   save(review)
