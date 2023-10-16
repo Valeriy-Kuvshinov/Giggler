@@ -31,6 +31,14 @@
         }
     }
 
+    .home-companies-section {
+        h4 {
+            @media(max-width: 1200px) {
+                display: none;
+            }
+        }
+    }
+
     .home-services-section {
         @media (max-width: 1400px) {
             padding: 1em 2em;
@@ -110,7 +118,7 @@
     .home-info-wrapper {
         .info-section {
             @media (max-width: 1400px) {
-                padding: 4em 2em;
+                padding: 2.5em 2em;
 
                 .text {
                     width: 50%;
