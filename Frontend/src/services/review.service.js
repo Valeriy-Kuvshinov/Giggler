@@ -33,7 +33,6 @@ function save(review) {
 }
 
 function addReview(review) {
-    review._id = utilService.makeId()
     review.createdAt = Date.now()
     console.log(review)
     save(review)

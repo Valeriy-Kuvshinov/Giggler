@@ -7,55 +7,33 @@ import { AboutSeller } from "../cmps/AboutSeller.jsx"
 import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
 
-import { loadGigs } from "../store/gig.actions.js"
 import { loadUser } from "../store/user.actions.js"
 import { loadReviews } from "../store/review.actions.js"
+import { gigService } from "../services/gig.service.js"
 
 export function GigDetails() {
   const params = useParams()
+  const [gig, setGig] = useState(null)
   const owner = useSelector(storeState => storeState.userModule.user)
   const user = useSelector(storeState => storeState.userModule.watchedUser)
-  const gigs = useSelector(storeState => storeState.gigModule.gigs)
-  const gig = gigs.find((gig) => gig._id === params.id)
   const reviews = useSelector(storeState => storeState.reviewModule.reviews)
-  const filteredReviewIds = reviews.filter((review) => review.gigId === gig._id).map(review => review._id)
-
-  // console.log('filtered reviews from backend ', filteredReviewIds)
-  // console.log('the reviews : ', reviews)
+  const filteredReviewIds = gig ? reviews.filter(review => review.gigId === gig._id).map(review => review._id) : []
 
   useEffect(() => {
-    loadTheGig()
-    loadTheReviews()
-  }, [])
+    async function fetchData() {
+      try {
+        const fetchedGig = await gigService.getById(params.id)
+        setGig(fetchedGig)
 
-  async function loadTheGig() {
-    try {
-      await loadGigs()
-    } catch (err) {
-      console.log('couldnt load gig : ', err)
+        await loadReviews()
+
+        if (user === null && fetchedGig) await loadUser(fetchedGig.ownerId)
+      } catch (err) {
+        console.error("Error loading data:", err)
+      }
     }
-  }
-
-  async function loadTheUser() {
-    try {
-      await loadUser(gig.ownerId)
-    } catch (err) {
-      console.log('couldnt load user ', err)
-    }
-  }
-
-  async function loadTheReviews() {
-    try {
-      await loadReviews()
-    } catch (err) {
-      console.log('couldnt load reviews ', err)
-    }
-  }
-
-  // console.log('the gig : ', gig)
-  // console.log('the gig creator : ', owner)
-  // console.log('the logged in user : ', user)
-  if (user === null && gig) loadTheUser()
+    fetchData()
+  }, [params.id, user])
 
   if (!gig || !owner || !user) return <h1>loading...</h1>
 
@@ -75,6 +53,7 @@ export function GigDetails() {
           <GigReviews reviews={filteredReviewIds} gig={gig} />
         </div>
         <GigOrder gig={gig} />
+
       </section>
     </section>
   )
