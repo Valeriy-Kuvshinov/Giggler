@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
@@ -7,6 +7,8 @@ export function GigFilter(filterBy) {
   const [searchParams] = useSearchParams()
   const [isSticky, setIsSticky] = useState(false)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
+  const navigate = useNavigate()
+
   const queryParams = {}
   let shadowStart = 139
   for (const [key, value] of searchParams) {
@@ -35,9 +37,72 @@ export function GigFilter(filterBy) {
     else setIsSticky(false)
   }
 
-  function setMenuFilter() {
-    // console.log('I AM IN SET MENU FILTER!')
-    
+  function setMenuFilter(event, selectedOption) {
+    event.preventDefault()
+    console.log('selectedOption: ', selectedOption)
+    // const navigate = useNavigate()
+    const updatedQueryParams = { ...queryParams }
+    let updatedFilterBy = { ...filterBy }
+
+    switch (isRenderedChoice[1]) {
+      case 'delivery_time':
+        updatedQueryParams['time'] = selectedOption
+        filterBy = { ...updatedFilterBy, time: selectedOption }
+        break
+
+      case 'budget':
+        if (selectedOption.min) {
+          updatedQueryParams['min'] = selectedOption.min
+          filterBy = { ...filterBy, min: selectedOption.min }
+        }
+        if (selectedOption.max) {
+          updatedQueryParams['max'] = selectedOption.max
+          filterBy = { ...filterBy, max: selectedOption.max }
+        }
+        break
+
+      case 'seller_level':
+        updatedQueryParams['level'] = selectedOption
+        filterBy = { ...filterBy, level: selectedOption }
+        break
+
+      case 'category':
+        updatedQueryParams['cat'] = selectedOption
+          .replace(' & ', '---')
+          .replace(' ', '-')
+        filterBy = { ...filterBy, cat: selectedOption }
+        break
+
+      // Handle subcategories
+      case 'Graphics & Design':
+      case 'Programming & Tech':
+      case 'Digital Marketing':
+      case 'Video & Animation':
+      case 'Writing & Translation':
+      case 'Music & Audio':
+      case 'Business':
+      case 'Data':
+      case 'Photography':
+      case 'AI Services':
+        updatedQueryParams['tag'] = selectedOption
+          .replace(' & ', '---')
+          .replace(' ', '-')
+        filterBy = { ...filterBy, tag: selectedOption }
+        break
+
+      default:
+        // Handle any other cases or defaults
+        break
+    }
+
+    const searchParams = new URLSearchParams(updatedQueryParams)
+
+    const newURL = `?${searchParams.toString()}`
+
+    console.log('filterBy end of menuFilter: ', filterBy)
+    navigate(newURL)
+
+    setIsRenderedChoice([false,''])
   }
 
   function onHandleChoice(renderedChoice) {
@@ -46,7 +111,7 @@ export function GigFilter(filterBy) {
       return
     }
 
-     switch (renderedChoice) {
+    switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
         break
@@ -111,11 +176,11 @@ export function GigFilter(filterBy) {
                 </span>
                 {(isRenderedChoice[1] === 'category' ||
                   isRenderedChoice[1] === queryParams.cat) && (
-                    <MenuFilterContent
-                      renderedChoice={isRenderedChoice[1]}
-                      setMenuFilter={setMenuFilter}
-                    />
-                  )}
+                  <MenuFilterContent
+                    renderedChoice={isRenderedChoice[1]}
+                    setMenuFilter={setMenuFilter}
+                  />
+                )}
               </button>
             </div>
             <div

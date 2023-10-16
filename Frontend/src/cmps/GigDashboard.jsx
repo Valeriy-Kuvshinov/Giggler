@@ -11,7 +11,7 @@ export function GigDashboard() {
     const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
     const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
     const [mostPopularGig, setMostPopularGig] = useState(null)
-    const [forceRenderKey, setForceRenderKey] = useState(Date.now())
+    const [totalGigs, setTotalGigs] = useState(0)
 
     useEffect(() => {
         const fetchGigs = async () => {
@@ -40,6 +40,7 @@ export function GigDashboard() {
             setMostExpensiveGig(expensiveGig)
             setLeastExpensiveGig(cheapGig)
             setMostPopularGig(popularGig)
+            setTotalGigs(gigs.length)
 
             const categories = Object.keys(categoryPrices)
             const averages = categories.map(cat => categoryPrices[cat] / categoryCounts[cat])
@@ -53,7 +54,6 @@ export function GigDashboard() {
             })
         }
         fetchGigs()
-        setForceRenderKey(Date.now())
     }, [])
 
     const barChartOptions = {
@@ -94,6 +94,10 @@ export function GigDashboard() {
 
             <section className="finance-info grid">
                 <InfoDiv
+                    title="Total Gigs"
+                    info={totalGigs ? totalGigs : 'Loading...'}
+                />
+                <InfoDiv
                     title="Most expensive"
                     info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
@@ -102,7 +106,7 @@ export function GigDashboard() {
                     info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
                 <InfoDiv
-                    title="Most popular (by reviews)"
+                    title="Most popular (reviews)"
                     info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>}
                 />
             </section>

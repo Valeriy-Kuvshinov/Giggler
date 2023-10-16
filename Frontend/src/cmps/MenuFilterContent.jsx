@@ -4,8 +4,8 @@ import { ApplyBtn } from './ApplyBtn'
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   const [selectedOption, setSelectedOption] = useState('')
   const [selectedFilter, setSelectedFilter] = useState({
-    min_price: '',
-    max_price: '',
+    min: '',
+    max: '',
   })
   const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
   const levels = ['Level 1', 'Level 2', 'Level 3', 'Pro Talent']
@@ -21,7 +21,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     'Photography',
     'AI Services',
   ]
-  const budget = ['min_price', 'max_price']
+  const budget = ['min', 'max']
   const categoriesAndTags = {
     Graphics_And_Design: [
       'Logo & Brand Identity',
@@ -111,12 +111,13 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   }
 
   function onHandleChange(event) {
+    if (!event.target.value) return 
     switch (event.target.name) {
       case 'min':
-        setSelectedFilter({ ...selectedFilter, min_price: event.target.value })
+        setSelectedFilter({ ...selectedFilter, min: event.target.value })
         break
       case 'max':
-        setSelectedFilter({ ...selectedFilter, max_price: event.target.value })
+        setSelectedFilter({ ...selectedFilter, max: event.target.value })
         break
     }
   }
@@ -140,7 +141,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                     </div>
                     <div className="apply-row">
                       <button
-                        onClick={(e) => setMenuFilter(e)}
+                        onClick={(e) => setMenuFilter(e, selectedOption)}
                         className="apply bg-co-black co-white"
                       >
                         Apply
@@ -151,7 +152,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
               case 'budget':
                 console.log('I AM IN Budget')
                 return (
-                  <form onSubmit={() => setMenuFilter(selectedFilter)}>
+                  <form onSubmit={(event) => setMenuFilter( event, selectedFilter)}>
                     <div className="content-scroll">
                       <div className="budget-filter">
                         {budget.map((type) => (
@@ -193,7 +194,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                     </div>
                     <div className="apply-row">
                       <button
-                        onClick={(e) => setMenuFilter(e)}
+                        onClick={(e) => setMenuFilter(e, selectedOption)}
                         className="apply bg-co-black co-white"
                       >
                         Apply
@@ -215,7 +216,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                     </div>
                     <div className="apply-row">
                       <button
-                        onClick={(e) => setMenuFilter(e)}
+                        onClick={(e) => setMenuFilter(e, selectedOption)}
                         className="apply bg-co-black co-white"
                       >
                         Apply
@@ -257,7 +258,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                     </div>
                     <div className="apply-row">
                       <button
-                        onClick={(e) => setMenuFilter(e)}
+                        onClick={(e) => setMenuFilter(e, selectedOption)}
                         className="apply bg-co-black co-white"
                       >
                         Apply
