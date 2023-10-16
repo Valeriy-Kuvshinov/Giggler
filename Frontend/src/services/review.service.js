@@ -22,7 +22,7 @@ function remove(reviewId) {
 }
 
 function save(review) {
-    // console.log(review._id)
+    console.log(review)
     if (review._id) {
         console.log('changed review')
         return httpService.put(BASE_URL, review)

@@ -1,6 +1,7 @@
 import starIcon from '../assets/img/svg/star.icon.svg'
 
 export function GigReview({ review }) {
+    // console.log(review)
     const renderStars = () => {
         const fullStarsCount = Math.ceil(review.rating);
         return [...Array(fullStarsCount)].map((_, idx) => (

@@ -13,7 +13,7 @@ export function GigReviews({ reviews, gig }) {
     useEffect(() => {
         const fetchFullReviews = async () => {
             const fetchedReviews = await Promise.all(reviews.map(reviewId => reviewService.getById(reviewId)));
-
+            console.log('correct reviews ',fetchedReviews)
             const reviewsWithUser = await Promise.all(fetchedReviews.map(async review => {
                 const user = await userService.getById(review.userId);
                 return {
@@ -25,7 +25,9 @@ export function GigReviews({ reviews, gig }) {
             setFullReviews(reviewsWithUser);
         };
         fetchFullReviews();
-    }, [reviews]);
+    }, [
+        // reviews
+    ]);
 
     const submitReview = async () => {
         const review = {
@@ -34,12 +36,16 @@ export function GigReviews({ reviews, gig }) {
             rating: reviewRating,
             text: reviewText
         };
+        console.log('review to add ',review)
         await reviewService.addReview(review);
         setReviewText('');
         setReviewRating(1);
         const updatedReviews = [...reviews, review._id];
         setFullReviews(updatedReviews);
     };
+
+    console.log('fullReviews ',fullReviews)
+    if(fullReviews.length===0) return
 
     return (
         <section className="gig-reviews">

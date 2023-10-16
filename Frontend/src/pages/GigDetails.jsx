@@ -20,7 +20,8 @@ export function GigDetails() {
   const reviews = useSelector(storeState => storeState.reviewModule.reviews)
   const filteredReviewIds = reviews.filter((review) => review.gigId === gig._id).map(review => review._id)
 
-  console.log('filtered reviews from backend ', filteredReviewIds)
+  // console.log('filtered reviews from backend ', filteredReviewIds)
+  // console.log('the reviews : ', reviews)
 
   useEffect(() => {
     loadTheGig()
@@ -51,9 +52,9 @@ export function GigDetails() {
     }
   }
 
-  console.log('the gig : ', gig)
-  console.log('the gig creator : ', owner)
-  console.log('the logged in user : ', user)
+  // console.log('the gig : ', gig)
+  // console.log('the gig creator : ', owner)
+  // console.log('the logged in user : ', user)
   if (user === null && gig) loadTheUser()
 
   if (!gig || !owner || !user) return <h1>loading...</h1>
