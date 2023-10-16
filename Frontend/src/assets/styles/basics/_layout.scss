@@ -1,6 +1,6 @@
 .main-container {
     display: grid;
-    grid-template-columns: 24px 1fr 24px;
+    grid-template-columns: 32px 1fr 32px;
     background-color: $clrSecondary1;
 
     > * {
@@ -12,22 +12,25 @@
     }
 
     @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
+        // grid-template-columns: 
+        //     minmax(20px, 1fr)
+        //     minmax(auto, $mobile-breakpoint)
+        //     minmax(20px, 1fr);
+            grid-template-columns: 32px 1fr 32px;
     }
     @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+        // grid-template-columns: 
+        //     minmax(20px, 1fr)
+        //     minmax(auto, $narrow-breakpoint)
+        //     minmax(20px, 1fr);
+            grid-template-columns: 32px 1fr 32px;
     }
     @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
+        // grid-template-columns: 
+        //     minmax(20px, 1fr)
+        //     minmax(auto, $normal-breakpoint)
+        //     minmax(20px, 1fr);
+            grid-template-columns: 32px 1fr 32px;
     }
 }
 
