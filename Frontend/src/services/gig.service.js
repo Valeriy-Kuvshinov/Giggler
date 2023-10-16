@@ -8,7 +8,6 @@ export const gigService = {
     remove,
     save,
     addReview,
-    createGig,
     getById,
     getDefaultFilter
 }
@@ -35,18 +34,6 @@ function addReview(gig , review){
     review.id=utilService.makeId()
     gig.reviews.unshift(review)
     save(gig)
-}
-
-function createGig(buyerId = '', buyerName = '', sellerId = '', gigId = '', price = 99) {
-    return {
-        buyerId: buyerId,
-        buyerName: buyerName,
-        sellerId: sellerId,
-        gigedGigId: gigId,
-        price: price,
-        createdAt: Date.now(),
-        gigState: 'pending'
-    }
 }
 
 function getDefaultFilter() {
