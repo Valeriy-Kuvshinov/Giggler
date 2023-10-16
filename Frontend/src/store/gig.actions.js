@@ -49,9 +49,9 @@ export async function saveGig(gig) {
     }
 }
 
-export function setFilter(filterBy) {
-    if(!filterBy){
-        store.dispatch({ SET_FILTER, filterBy: filterBy })
+export function setFilter(newFilterBy) {
+    if(!newFilterBy){
+        store.dispatch({ SET_FILTER, filterBy: newFilterBy })
         return useSelector((storeState) => storeState.gigModule.filterBy)
     }
 }
