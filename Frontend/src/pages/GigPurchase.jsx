@@ -33,7 +33,7 @@ export function GigPurchase() {
 
   function createOrder() {
     const orderToSave = orderBackendService.
-    createOrder(user._id,user.fullName,gig.ownerId,gig._id,gig.title,gig.deliveryTime,gig.price)
+    createOrder(user._id,user.fullName,gig.ownerId,gig.title,gig.deliveryTime,gig._id,gig.price)
 
     saveOrder(orderToSave)
         .then(savedOrder => {

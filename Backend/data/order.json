@@ -1,3 +1,14 @@
 [
-    
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1697455836447,
+        "orderState": "pending",
+        "_id": "y1ycv"
+    }
 ]

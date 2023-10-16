@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { GigReview } from "./GigReview.jsx"
 
 import { gigService } from '../services/gig.service.js'
+import { reviewService } from '../services/review.service.js'
 
 export function GigReviews({reviews,gig}) {
     
@@ -16,9 +17,9 @@ export function GigReviews({reviews,gig}) {
         const imgUrl=user.imgUrl
         const reviewText=document.getElementById('reviewText').value
         const reviewRating=document.getElementById('reviewRating').value
-        const review={userName:userName,imgUrl:imgUrl,rating:reviewRating,text:reviewText}
+        const review={userId:user._id,gigId:gig._id,userName:userName,imgUrl:imgUrl,rating:reviewRating,text:reviewText}
         console.log(review)
-        gigService.addReview(gig,review)
+        reviewService.addReview(review)
     }
     
     return (<section className="gig-reviews">
@@ -31,7 +32,7 @@ export function GigReviews({reviews,gig}) {
 
             {(reviews.length!==0) && <ul>
                 {reviews.map((review)=>
-                    <li key={review.id}>
+                    <li key={review._id}>
                         <GigReview review={review}/>
                     </li>
                 )}

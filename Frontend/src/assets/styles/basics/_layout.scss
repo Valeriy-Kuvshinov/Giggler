@@ -1,7 +1,7 @@
 .main-container {
     display: grid;
     grid-template-columns: 32px 1fr 32px;
-    background-color: $clrSecondary1;
+    background-color: $clrPrimary1;
 
     > * {
         grid-column: 2;
