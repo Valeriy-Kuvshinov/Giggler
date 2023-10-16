@@ -36,18 +36,6 @@ function addReview(gig , review){
     save(gig)
 }
 
-// function createGig(buyerId = '', buyerName = '', sellerId = '', gigId = '', price = 99) {
-//     return {
-//         buyerId: buyerId,
-//         buyerName: buyerName,
-//         sellerId: sellerId,
-//         gigedGigId: gigId,
-//         price: price,
-//         createdAt: Date.now(),
-//         gigState: 'pending'
-//     }
-// }
-
 function getDefaultFilter() {
     return { 
         search: '', 

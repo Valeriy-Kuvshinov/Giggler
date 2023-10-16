@@ -31,6 +31,8 @@ export function GigEdit() {
         ],
         likedByUsers: [],
         reviews: [],
+        createdAt: Date.now(),
+        state: 'pending'
     })
 
     useEffect(() => {

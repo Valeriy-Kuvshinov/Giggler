@@ -11,8 +11,13 @@ export function GigDashboard() {
     const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
     const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
     const [mostPopularGig, setMostPopularGig] = useState(null)
-    const [forceRenderKey, setForceRenderKey] = useState(Date.now())
-
+    const [totalGigs, setTotalGigs] = useState(0)
+    const [pendingGigs, setPendingGigs] = useState(0)
+    const [deniedGigs, setDeniedGigs] = useState(0)
+    const [weeklyGigs, setWeeklyGigs] = useState(0)
+    const [monthlyGigs, setMonthlyGigs] = useState(0)
+    const [avgGigPrice, setAvgGigPrice] = useState(0)
+    
     useEffect(() => {
         const fetchGigs = async () => {
             const gigs = await gigService.query()
@@ -21,6 +26,13 @@ export function GigDashboard() {
             let expensiveGig = gigs[0]
             let cheapGig = gigs[0]
             let popularGig = gigs[0]
+            let pendingCount = 0
+            let deniedCount = 0
+            let weeklyCount = 0
+            let monthlyCount = 0
+            let totalGigPrice = 0
+            const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000)
+            const oneMonthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000)
 
             // Average price for each category and other statistics
             const categoryPrices = {}
@@ -36,10 +48,23 @@ export function GigDashboard() {
                 if (gig.price > expensiveGig.price) expensiveGig = gig
                 if (gig.price < cheapGig.price) cheapGig = gig
                 if (gig.reviews.length > popularGig.reviews.length) popularGig = gig
+                if (gig.state === 'pending') pendingCount++
+                if (gig.state === 'denied') deniedCount++
+                if (gig.createdAt > oneWeekAgo) weeklyCount++
+                if (gig.createdAt > oneMonthAgo) monthlyCount++
+
+                totalGigPrice += gig.price
+                const averagePrice = totalGigPrice / gigs.length
+                setAvgGigPrice(averagePrice.toFixed(2))
             })
             setMostExpensiveGig(expensiveGig)
             setLeastExpensiveGig(cheapGig)
             setMostPopularGig(popularGig)
+            setTotalGigs(gigs.length)
+            setPendingGigs(pendingCount)
+            setDeniedGigs(deniedCount)
+            setWeeklyGigs(weeklyCount)
+            setMonthlyGigs(monthlyCount)
 
             const categories = Object.keys(categoryPrices)
             const averages = categories.map(cat => categoryPrices[cat] / categoryCounts[cat])
@@ -53,7 +78,6 @@ export function GigDashboard() {
             })
         }
         fetchGigs()
-        setForceRenderKey(Date.now())
     }, [])
 
     const barChartOptions = {
@@ -94,6 +118,34 @@ export function GigDashboard() {
 
             <section className="finance-info grid">
                 <InfoDiv
+                    title="Pending Gigs"
+                    info={pendingGigs}
+                />
+                <InfoDiv
+                    title="Denied Gigs"
+                    info={deniedGigs}
+                />
+                <InfoDiv
+                    title="Gigs in the past week"
+                    info={weeklyGigs}
+                />
+                <InfoDiv
+                    title="Gigs in the past month"
+                    info={monthlyGigs}
+                />
+                <InfoDiv
+                    title="Total Gigs"
+                    info={totalGigs ? totalGigs : 'Loading...'}
+                />
+                <InfoDiv
+                    title="Most popular (reviews)"
+                    info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>}
+                />
+                <InfoDiv
+                    title="Average Gig Price"
+                    info={`$${avgGigPrice}`}
+                />
+                <InfoDiv
                     title="Most expensive"
                     info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
@@ -101,10 +153,7 @@ export function GigDashboard() {
                     title="Least expensive"
                     info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
-                <InfoDiv
-                    title="Most popular (by reviews)"
-                    info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>}
-                />
+
             </section>
 
             <main className='grid finance-charts'>
