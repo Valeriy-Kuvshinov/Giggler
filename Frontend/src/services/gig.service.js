@@ -55,8 +55,8 @@ function getDefaultFilter() {
         cat: '', 
         tag: '',
         level: '', 
-        minPrice: undefined, 
-        maxPrice: undefined, 
-        deliveryTime: '', 
+        min: undefined, 
+        max: undefined, 
+        time: '', 
         pageIdx: 0 }
 }

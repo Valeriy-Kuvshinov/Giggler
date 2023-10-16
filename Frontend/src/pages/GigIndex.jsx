@@ -8,12 +8,13 @@ import { loadGigs } from '../store/gig.actions.js'
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-  const [currentPage, setCurrentPage] = useState(0)
-  const itemsPerPage = 12
+  console.log('filterBy in index: ',filterBy);
+  // const [currentPage, setCurrentPage] = useState(0)
+  // const itemsPerPage = 12
 
-  const startIndex = currentPage * itemsPerPage
-  const endIndex = startIndex + itemsPerPage
-  const displayedGigs = gigs.slice(startIndex, endIndex)
+  // const startIndex = currentPage * itemsPerPage
+  // const endIndex = startIndex + itemsPerPage
+  // const displayedGigs = gigs.slice(startIndex, endIndex)
 
   useEffect(() => {
     try{
@@ -33,14 +34,14 @@ export function GigIndex() {
     }
   }
 
-  function onSetFilter(filterBy) {
-    setToyFilter(filterBy)
-    setCurrentPage(0)
-  }
+  // function onSetFilter(filterBy) {
+  //   setToyFilter(filterBy)
+  //   setCurrentPage(0)
+  // }
 
   return (
     <main className="gig-index main-layout">
-      <GigFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+      <GigFilter filterBy={filterBy} />
       <GigList
         // gigs={displayedGigs}
         gigs={gigs}
