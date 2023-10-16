@@ -22,7 +22,9 @@
     ],
     "likedByUsers": [],
     "reviews": [
-    ]
+    ],
+    "createdAt": 1695643112145,
+    "state": "approved"
   },
   {
     "_id": "g002",
@@ -54,7 +56,9 @@
         "text": "good service",
         "id": "pKdA0y"
       }
-    ]
+    ],
+    "createdAt": 1695643112145,
+    "state": "approved"
   },
   {
     "_id": "g101",
@@ -109,7 +113,9 @@
         "rating": 4.8,
         "text": "Alice's logo design skills are top-notch. She was receptive to my vision and incorporated my ideas seamlessly into the final product. The communication was excellent, and I appreciate the effort she put into my project."
       }
-    ]
+    ],
+    "createdAt": 1695643112145,
+    "state": "approved"
   },
   {
     "_id": "g102",
@@ -151,7 +157,9 @@
         "rating": 4,
         "text": "Working with Ella was a good experience overall. Her templates are visually appealing, and she provided timely updates. While there were a few minor issues with responsiveness, she addressed them promptly."
       }
-    ]
+    ],
+    "createdAt": 1695643112145,
+    "state": "approved"
   },
   {
     "_id": "g103",
@@ -192,7 +200,9 @@
         "rating": 3.8,
         "text": "While David's articles were decent, there were a few factual inaccuracies that needed correction. Communication was also somewhat delayed. Overall, the service was satisfactory."
       }
-    ]
+    ],
+    "createdAt": 1696247912145,
+    "state": "approved"
   },
   {
     "_id": "g104",
@@ -234,7 +244,9 @@
         "rating": 4.5,
         "text": "Sophia's songwriting skills are impressive. She composed a theme song for our corporate event that left a lasting impression on our guests. However, there were minor delays in delivery."
       }
-    ]
+    ],
+    "createdAt": 1696247912145,
+    "state": "approved"
   },
   {
     "_id": "g105",
@@ -276,7 +288,9 @@
         "rating": 4.5,
         "text": "Lucas did an excellent job with our product presentation animation. It helped us showcase our product's features effectively. While there were minor delays, the quality made up for it."
       }
-    ]
+    ],
+    "createdAt": 1696247912145,
+    "state": "approved"
   },
   {
     "_id": "g106",
@@ -319,7 +333,9 @@
         "rating": 4.7,
         "text": "Olivia's legal services were a game-changer for our company. She assisted us in resolving a complex legal matter efficiently. Her professionalism and dedication were commendable."
       }
-    ]
+    ],
+    "createdAt": 1696247912145,
+    "state": "approved"
   },
   {
     "_id": "g107",
@@ -361,7 +377,9 @@
         "rating": 4.9,
         "text": "Sophie's business coaching services have been invaluable. Her approach is practical and results-driven. She helped me achieve my goals and develop a more positive mindset."
       }
-    ]
+    ],
+    "createdAt": 1696247912145,
+    "state": "approved"
   },
   {
     "_id": "g108",
@@ -403,7 +421,9 @@
         "rating": 4.5,
         "text": "Max's workout plans are effective, and he provides great support throughout the journey. While there were minor delays in communication, the results were worth it."
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
   },
   {
     "_id": "g109",
@@ -445,7 +465,9 @@
         "rating": 4.8,
         "text": "Ava's artisanal candles are a must-try. They add a special touch to any room. While there were slight delays in delivery, the quality of the candles exceeded my expectations."
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
   },
   {
     "_id": "g110",
@@ -487,7 +509,9 @@
         "rating": 4.8,
         "text": "Evelyn's avatars have enhanced my social media presence. Her communication and delivery were prompt. She's a professional in the digital art world."
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
   },
   {
     "_id": "g111",
@@ -529,7 +553,9 @@
         "rating": 4.9,
         "text": "Luna's fantasy novels are a treasure. Her attention to detail and character development make her books a joy to read. While the delivery was a bit delayed, the quality made up for it."
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
   },
   {
     "_id": "g112",
@@ -570,7 +596,9 @@
         "rating": 4.8,
         "text": "Alex's VR tours are a unique way to explore history. Although there was a slight delay in communication, the tours themselves are worth every penny. I learned so much!"
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
   },
   {
     "_id": "g113",
@@ -612,6 +640,34 @@
         "rating": 1,
         "text": "GamerGuffaw's 'assistance' is a disaster in the best way possible. It's so bad that it's good. My character glitched into walls, and I laughed so hard I cried. A must-try for a good time!"
       }
-    ]
+    ],
+    "createdAt": 1696852712145,
+    "state": "approved"
+  },
+  {
+    "_id": "4uSOYc",
+    "title": "Another one",
+    "category": "Photography",
+    "tags": [
+      "logo-design",
+      "artisitic",
+      "proffesional",
+      "accessible"
+    ],
+    "price": 203,
+    "description": "idk",
+    "daysToMake": "3",
+    "ownerId": "u001",
+    "imgUrls": [
+      "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
+      "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
+      "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+      "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+      "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
+    ],
+    "likedByUsers": [],
+    "reviews": [],
+    "createdAt": 1697457962581,
+    "state": "denied"
   }
 ]
