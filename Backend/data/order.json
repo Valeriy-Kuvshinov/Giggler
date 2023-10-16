@@ -56,7 +56,19 @@
         "orderedGigId": "",
         "price": 99,
         "createdAt": 1697377742331,
-        "orderState": "pending",
+        "orderState": "accepted",
         "_id": "meEFY"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u002",
+        "title": "g002",
+        "deliveryTime": "I will design your logo",
+        "orderedGigId": "",
+        "price": 49,
+        "createdAt": 1697388674415,
+        "orderState": "accepted",
+        "_id": "6pGKz"
     }
 ]

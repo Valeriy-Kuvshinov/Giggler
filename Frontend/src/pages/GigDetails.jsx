@@ -37,13 +37,13 @@ export function GigDetails() {
     }
   }
   
+  console.log('the gig : ',gig)
+  console.log('the gig creator : ',owner)
+  console.log('the logged in user : ',user)
   if(user===null && gig) loadTheUser()
   
   if (!gig || !owner || !user) return <h1>loading...</h1>
 
-  // console.log('the gig : ',gig)
-  // console.log('the gig creator : ',owner)
-  // console.log('the logged in user : ',user)
 
   return (
     <section className="gig-details main-container full">
