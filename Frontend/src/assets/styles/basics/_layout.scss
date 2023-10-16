@@ -35,12 +35,8 @@
 }
 
 .layout-row {
-    display: flex;
-    flex-flow: row wrap;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     max-width: 1400px;
-    padding: 0 10px;
 }
 
 .card-grid {

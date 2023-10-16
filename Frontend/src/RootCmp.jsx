@@ -9,7 +9,7 @@ export function RootCmp() {
   return (
     <main className="main-container">
       <AppHeader />
-      <main className="full">
+      {/* <main className="full"> */}
         <Routes>
           {routes.map((route) => (
             <Route
@@ -20,7 +20,7 @@ export function RootCmp() {
           ))}
           {/* <Route path="/gig/:id" component={GigDetails} /> */}
         </Routes>
-      </main>
+      {/* </main> */}
       <AppFooter />
     </main>
   )

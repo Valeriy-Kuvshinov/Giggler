@@ -1,19 +1,17 @@
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
 
-export function GigFilter(filterBy) {
-  const [searchParams] = useSearchParams()
+export function GigFilter({
+  filterBy,
+  setMenuFilter,
+  onHandleChoice,
+  queryParams,
+  isRenderedChoice,
+}) {
   const [isSticky, setIsSticky] = useState(false)
-  const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
-  const navigate = useNavigate()
-
-  const queryParams = {}
   let shadowStart = 139
-  for (const [key, value] of searchParams) {
-    queryParams[key] = value
-  }
   const categorySelect = queryParams.cat
     ? queryParams.cat.replace('---', ' & ').replace('-', ' ')
     : 'category'
@@ -26,10 +24,6 @@ export function GigFilter(filterBy) {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-  useEffect(() => {
-    // console.log('search params: ', queryParams)
-  }, [searchParams])
-  // console.log('search after useEffect: ', queryParams)
 
   function handleScroll() {
     queryParams.cat ? (shadowStart = 197) : (shadowStart = 139)
@@ -37,100 +31,6 @@ export function GigFilter(filterBy) {
     else setIsSticky(false)
   }
 
-  function setMenuFilter(event, selectedOption) {
-    event.preventDefault()
-    console.log('selectedOption: ', selectedOption)
-    // const navigate = useNavigate()
-    const updatedQueryParams = { ...queryParams }
-    let updatedFilterBy = { ...filterBy }
-
-    switch (isRenderedChoice[1]) {
-      case 'delivery_time':
-        updatedQueryParams['time'] = selectedOption
-        filterBy = { ...updatedFilterBy, time: selectedOption }
-        break
-
-      case 'budget':
-        if (selectedOption.min) {
-          updatedQueryParams['min'] = selectedOption.min
-          filterBy = { ...filterBy, min: selectedOption.min }
-        }
-        if (selectedOption.max) {
-          updatedQueryParams['max'] = selectedOption.max
-          filterBy = { ...filterBy, max: selectedOption.max }
-        }
-        break
-
-      case 'seller_level':
-        updatedQueryParams['level'] = selectedOption
-        filterBy = { ...filterBy, level: selectedOption }
-        break
-
-      case 'category':
-        updatedQueryParams['cat'] = selectedOption
-          .replace(' & ', '---')
-          .replace(' ', '-')
-        filterBy = { ...filterBy, cat: selectedOption }
-        break
-
-      // Handle subcategories
-      case 'Graphics & Design':
-      case 'Programming & Tech':
-      case 'Digital Marketing':
-      case 'Video & Animation':
-      case 'Writing & Translation':
-      case 'Music & Audio':
-      case 'Business':
-      case 'Data':
-      case 'Photography':
-      case 'AI Services':
-        updatedQueryParams['tag'] = selectedOption
-          .replace(' & ', '---')
-          .replace(' ', '-')
-        filterBy = { ...filterBy, tag: selectedOption }
-        break
-
-      default:
-        // Handle any other cases or defaults
-        break
-    }
-
-    const searchParams = new URLSearchParams(updatedQueryParams)
-
-    const newURL = `?${searchParams.toString()}`
-
-    console.log('filterBy end of menuFilter: ', filterBy)
-    navigate(newURL)
-
-    setIsRenderedChoice([false,''])
-  }
-
-  function onHandleChoice(renderedChoice) {
-    if (renderedChoice === isRenderedChoice[1] && isRenderedChoice[0]) {
-      setIsRenderedChoice([false, ''])
-      return
-    }
-
-    switch (renderedChoice) {
-      case 'seller_level':
-        setIsRenderedChoice([true, 'seller_level'])
-        break
-      case 'delivery_time':
-        setIsRenderedChoice([true, 'delivery_time'])
-        break
-      case 'budget':
-        setIsRenderedChoice([true, 'budget'])
-        break
-      case 'categories':
-        setIsRenderedChoice([true, categorySelect])
-        break
-
-      default:
-        console.log('default switch in onHandleChoice')
-        break
-    }
-  }
-  console.log('IS RENDERED CHOICE !: ', isRenderedChoice[1])
   return (
     <>
       <div className="gig-results-title layout-row">
@@ -162,7 +62,7 @@ export function GigFilter(filterBy) {
             <button className="btn filtered-clr">Clear Filter</button>
             <div
               className={`filter-categories floating-menu ${
-                isRenderedChoice[1] === categorySelect ? 'open' : ''
+                isRenderedChoice[1] === categorySelect.trim() ? 'open' : ''
               }`}
             >
               <button
@@ -174,14 +74,14 @@ export function GigFilter(filterBy) {
                 <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
-                {(isRenderedChoice[1] === 'category' ||
-                  isRenderedChoice[1] === queryParams.cat) && (
-                  <MenuFilterContent
-                    renderedChoice={isRenderedChoice[1]}
-                    setMenuFilter={setMenuFilter}
-                  />
-                )}
               </button>
+              {(isRenderedChoice[1] === 'category' ||
+                isRenderedChoice[1] === categorySelect.trim()) && (
+                <MenuFilterContent
+                  renderedChoice={isRenderedChoice[1]}
+                  setMenuFilter={setMenuFilter}
+                />
+              )}
             </div>
             <div
               className={`filter-seller-level floating-menu ${
@@ -196,13 +96,13 @@ export function GigFilter(filterBy) {
                 <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
-                {isRenderedChoice[1] === 'seller_level' && (
-                  <MenuFilterContent
-                    renderedChoice={isRenderedChoice[1]}
-                    setMenuFilter={setMenuFilter}
-                  />
-                )}
               </button>
+              {isRenderedChoice[1] === 'seller_level' && (
+                <MenuFilterContent
+                  renderedChoice={isRenderedChoice[1]}
+                  setMenuFilter={setMenuFilter}
+                />
+              )}
             </div>
             <div
               className={`filter-budget floating-menu ${

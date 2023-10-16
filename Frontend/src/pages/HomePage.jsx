@@ -10,7 +10,7 @@ export function HomePage() {
     const { companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
 
     return (
-        <section className='home-wrapper'>
+        <section className='home-wrapper full'>
             <WelcomeSection />
             <section className='home-companies-section'>
                 <div className='companies flex row'>

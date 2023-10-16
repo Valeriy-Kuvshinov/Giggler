@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ApplyBtn } from './ApplyBtn'
+import { ApplyFilterBtn } from './ApplyFilterBtn'
+import { levels, deliveryTime, category, budget, subcategories} from '../services/gig.service'
 
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   const [selectedOption, setSelectedOption] = useState('')
@@ -7,110 +8,8 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     min: '',
     max: '',
   })
-  const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
-  const levels = ['Level 1', 'Level 2', 'Level 3', 'Pro Talent']
-  const category = [
-    'Graphics & Design',
-    'Programming & Tech',
-    'Digital Marketing',
-    'Video & Animation',
-    'Writing & Translation',
-    'Music & Audio',
-    'Business',
-    'Data',
-    'Photography',
-    'AI Services',
-  ]
-  const budget = ['min', 'max']
-  const categoriesAndTags = {
-    Graphics_And_Design: [
-      'Logo & Brand Identity',
-      'Art & Illustration',
-      'Web & App Design',
-      'Product & Gaming',
-      'Print Design',
-      'Visual Design',
-      'Marketing Design',
-      'Packaging & Covers',
-      'Architecture & Building Design',
-      'Fashion & Merchandise',
-      '3D Design',
-    ],
-    Programming_And_Tech: [
-      'Website Development',
-      'Website Platforms',
-      'Website Maintenance',
-      'Software Development',
-      'Software Developers',
-      'QA & Review',
-      'Mobile App Development',
-      'Game Development',
-      'Support & Cybersecurity',
-      'AI Development',
-      'Chatbots',
-    ],
-    Digital_Marketing: [
-      'Search Marketing',
-      'Social Marketing',
-      'Methods & Techniques',
-      'Analytics & Strategy',
-      'Industry & Purpose-Specific',
-    ],
-    Video_And_Animation: [
-      'Editing & Post-Production',
-      'Social & Marketing Videos',
-      'Animation',
-      'Filmed Video Production',
-      'Explainer Videos',
-      'Product Videos',
-      'AI Video',
-    ],
-    Writing_And_Translation: [
-      'Content Writing',
-      'Editing & Critique',
-      'Business & Marketing Copy',
-      'Translation & Transcription',
-    ],
-    Music_And_Audio: [
-      'Music Production & Writing',
-      'Audio Engineering & Post Production',
-      'Voice Over & Narration',
-      'Streaming & Audio',
-      'DJing',
-      'Sound Design',
-      'Lessons & Transcriptions',
-    ],
-    Business: [
-      'Business Formation',
-      'Business Growth',
-      'General & Administrative',
-      'Legal Services',
-      'Sales & Customer Care',
-      'Professional Development',
-      'Accounting & Finance',
-    ],
-    Data: [
-      'Data Science & ML',
-      'Data Analysis',
-      'Data Collection',
-      'Data Management',
-    ],
-    Photography: [
-      'Products & Lifestyle',
-      'People & Scenes',
-      'Local Photography',
-    ],
-    AI_Services: [
-      'Build your AI app',
-      'Refine AI with experts',
-      'AI Artists',
-      'Creative services',
-      'Data Science & ML',
-      'Get your data right',
-    ],
-  }
-
-  function onHandleChange(event) {
+ 
+  function onHandleBudgetChange(event) {
     if (!event.target.value) return 
     switch (event.target.name) {
       case 'min':
@@ -139,14 +38,10 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                         onOptionChange={setSelectedOption}
                       />
                     </div>
-                    <div className="apply-row">
-                      <button
-                        onClick={(e) => setMenuFilter(e, selectedOption)}
-                        className="apply bg-co-black co-white"
-                      >
-                        Apply
-                      </button>
-                    </div>
+                    <ApplyFilterBtn
+                      setMenuFilter={setMenuFilter}
+                      selectedOption={selectedOption}
+                    />
                   </>
                 )
               case 'budget':
@@ -166,7 +61,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                               min="0"
                               max="10000"
                               value={selectedFilter[type]}
-                              onChange={onHandleChange}
+                              onChange={onHandleBudgetChange}
                             />
                             <i>$</i>
                           </div>
@@ -192,14 +87,10 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                         onOptionChange={setSelectedOption}
                       />
                     </div>
-                    <div className="apply-row">
-                      <button
-                        onClick={(e) => setMenuFilter(e, selectedOption)}
-                        className="apply bg-co-black co-white"
-                      >
-                        Apply
-                      </button>
-                    </div>
+                    <ApplyFilterBtn
+                      setMenuFilter={setMenuFilter}
+                      selectedOption={selectedOption}
+                    />
                   </>
                 )
               case 'category':
@@ -214,14 +105,10 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                         onOptionChange={setSelectedOption}
                       />
                     </div>
-                    <div className="apply-row">
-                      <button
-                        onClick={(e) => setMenuFilter(e, selectedOption)}
-                        className="apply bg-co-black co-white"
-                      >
-                        Apply
-                      </button>
-                    </div>
+                    <ApplyFilterBtn
+                      setMenuFilter={setMenuFilter}
+                      selectedOption={selectedOption}
+                    />
                   </>
                 )
               case 'Graphics & Design':
@@ -234,36 +121,21 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
               case 'Data':
               case 'Photography':
               case 'AI Services':
-                console.log('I AM IN SubCategory')
-                const subCategory = renderedChoice.replace(' ', '_')
-                console.log(`subCategory ${subCategory}`)
+                const subcategory = renderedChoice.replace('&','And').split(' ').join('_')
                 return (
                   <>
                     <div className="content-scroll">
-                      <div className="radio-list">
-                        {categoriesAndTags[subCategory].map((category) => (
-                          <div className="radio-item-wrapper" key={category}>
-                            <label className="radio-item">
-                              <span className="radio-btn"></span>
-                              <input
-                                type="radio"
-                                name={renderedChoice}
-                                value={category}
-                              />
-                              <span>{category}</span>
-                            </label>
-                          </div>
-                        ))}
-                      </div>
+                      <RenderRadioButtons
+                        options={subcategories[subcategory]}
+                        groupName={renderedChoice}
+                        selectedOption={selectedOption}
+                        onOptionChange={setSelectedOption}
+                      />
                     </div>
-                    <div className="apply-row">
-                      <button
-                        onClick={(e) => setMenuFilter(e, selectedOption)}
-                        className="apply bg-co-black co-white"
-                      >
-                        Apply
-                      </button>
-                    </div>
+                    <ApplyFilterBtn
+                      setMenuFilter={setMenuFilter}
+                      selectedOption={selectedOption}
+                    />
                   </>
                 )
               default:
