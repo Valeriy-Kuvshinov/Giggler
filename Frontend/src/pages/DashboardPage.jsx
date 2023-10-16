@@ -30,7 +30,7 @@ export function DashboardPage() {
             setData({
                 weekly: generateData(7, (d, i) => d.setDate(d.getDate() - i), 1000, d => d.toISOString().split('T')[0]),
                 monthly: generateData(30, (d, i) => d.setDate(d.getDate() - i), 10000, d => d.toISOString().split('T')[0]),
-                annual: generateData(12, (d, i) => d.setMonth(d.getMonth() - i), 25000, d => `${d.getMonth() + 1}-${d.getFullYear()}`)
+                annual: generateData(12, (d, i) => d.setMonth(d.getMonth() - i), 25000, d => d.toISOString().split('T')[0])
             })
         } catch (error) {
             console.error("Error fetching data:", error)
