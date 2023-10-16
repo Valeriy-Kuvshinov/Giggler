@@ -36,6 +36,7 @@ function addReview(gig , review){
     gig.reviews.unshift(review)
     save(gig)
 }
+
 function createGig(buyerId = '', buyerName = '', sellerId = '', gigId = '', price = 99) {
     return {
         buyerId: buyerId,

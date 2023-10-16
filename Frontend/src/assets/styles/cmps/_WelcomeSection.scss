@@ -8,8 +8,7 @@
 
         .person-info {
             position: absolute;
-            bottom: 30px;
-            right: 30px;
+            bottom: 35px;
             display: flex;
             align-items: center;
             z-index: 3;
@@ -17,7 +16,7 @@
             background: #ffffff24;
             border-radius: 100px;
             width: fit-content;
-            padding: 0.5em 1em;
+            padding: 0.5em 0.8em;
             border: 1px solid #ffffff66;
             backdrop-filter: blur(30px);
             transition: opacity 1s;
@@ -25,6 +24,7 @@
             .small-img {
                 width: 20%;
                 transition: opacity 1s;
+                margin-right: 0.3em;
             }
 
             .text-content {
@@ -38,6 +38,7 @@
 
                 .title {
                     font-size: 12px;
+                    line-height: 12px;
                 }
 
                 .subtitle {
@@ -48,10 +49,9 @@
 
         .welcome-section {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1650px;
             height: 100%;
             margin: auto;
-            padding: 1em;
             position: relative;
             overflow: hidden;
 
@@ -74,7 +74,6 @@
                 z-index: 3;
                 top: 35%;
                 font-size: 40px;
-                margin-left: 0.4em;
 
                 h1 {
                     font-family: "macan-bold";

@@ -13,10 +13,10 @@ export function UserOrders() {
     var userOrders=orders.filter((order)=>(order.buyerId===user._id)&&(order.orderState==='accepted'))
 
     useEffect(() => {
-        loadOrders2()
+        loadTheOrders()
     }, [])
 
-    async function loadOrders2() {
+    async function loadTheOrders() {
         try {
             await loadOrders()
         } catch (err) {
@@ -41,7 +41,7 @@ export function UserOrders() {
     if(orders.length===0) return <div>loading... </div>
 
     return (<section className="user-orders">
-        <ul>
+        <ul className='orders'>
             <div className='orders-title'>
                 Active Orders
             </div>
@@ -51,7 +51,7 @@ export function UserOrders() {
                 </li>
             )}
         </ul>
-        <ul>
+        <ul className='orders'>
             <div className='orders-title'>
                 Recieved Orders
             </div>

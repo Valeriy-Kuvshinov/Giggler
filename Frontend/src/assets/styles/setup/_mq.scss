@@ -1,14 +1,40 @@
 .home-wrapper {
     .welcome-wrapper {
         .welcome-section {
+            @media (max-width: 1400px) {
+                padding: 1em;
+            }
+
+            .person-info {
+                @media (max-width: 1400px) {
+                    right: 30px;
+                }
+
+                @media (min-width: 1400px) {
+                    right: 0px;
+                }
+            }
+
             .welcome-text-search {
-                @media(min-width: 1400px) {
-                    margin-left: -0.35em;
+                @media (max-width: 1400px) {
+                    margin-left: 0.4em;
+                }
+
+                @media (min-width: 1400px) {
+                    margin-left: 3.1em;
                 }
 
                 @media (max-width: 900px) {
                     margin: auto;
                 }
+            }
+        }
+    }
+
+    .home-companies-section {
+        h4 {
+            @media(max-width: 1200px) {
+                display: none;
             }
         }
     }
@@ -33,14 +59,15 @@
 
     .main-nav {
         .search-bar {
-            @media (max-width: 500px){
+            @media (max-width: 500px) {
                 width: 100%;
             }
-            @media (min-width: 500px){
+
+            @media (min-width: 500px) {
                 width: 30%;
             }
 
-            @media (min-width: 700px){
+            @media (min-width: 700px) {
                 width: 45%;
             }
         }
@@ -91,7 +118,7 @@
     .home-info-wrapper {
         .info-section {
             @media (max-width: 1400px) {
-                padding: 4em 2em;
+                padding: 2.5em 2em;
 
                 .text {
                     width: 50%;
@@ -162,14 +189,14 @@
             }
 
             @media (min-width: 900px) {
-                background-image: url("../../../assets/img/bg-mini-signup.webp");
+                background-image: url("../src/assets/img/bg-mini-signup.webp");
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
             }
 
             @media (min-width: 1160px) {
-                background-image: url("../../../assets/img/bg-signup.webp");
+                background-image: url("../src/assets/img/bg-signup.webp");
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;

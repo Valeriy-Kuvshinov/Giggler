@@ -22,5 +22,53 @@
         "createdAt": 1697359505876,
         "orderState": "accepted",
         "_id": "6vABW"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u001",
+        "title": "g001",
+        "deliveryTime": "I will take unique photos of Spiderman",
+        "orderedGigId": "",
+        "price": 99,
+        "createdAt": 1697376830307,
+        "orderState": "denied",
+        "_id": "xYAuj"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u002",
+        "title": "g002",
+        "deliveryTime": "I will design your logo",
+        "orderedGigId": "",
+        "price": 49,
+        "createdAt": 1697377089139,
+        "orderState": "accepted",
+        "_id": "K2Jc9"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u001",
+        "title": "g001",
+        "deliveryTime": "I will take unique photos of Spiderman",
+        "orderedGigId": "",
+        "price": 99,
+        "createdAt": 1697377742331,
+        "orderState": "accepted",
+        "_id": "meEFY"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u002",
+        "title": "g002",
+        "deliveryTime": "I will design your logo",
+        "orderedGigId": "",
+        "price": 49,
+        "createdAt": 1697388674415,
+        "orderState": "accepted",
+        "_id": "6pGKz"
     }
 ]
