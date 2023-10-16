@@ -9,7 +9,6 @@
         .person-info {
             position: absolute;
             bottom: 35px;
-            right: 30px;
             display: flex;
             align-items: center;
             z-index: 3;
@@ -39,6 +38,7 @@
 
                 .title {
                     font-size: 12px;
+                    line-height: 12px;
                 }
 
                 .subtitle {

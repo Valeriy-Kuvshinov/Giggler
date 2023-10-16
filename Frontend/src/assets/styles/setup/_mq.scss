@@ -5,6 +5,16 @@
                 padding: 1em;
             }
 
+            .person-info {
+                @media (max-width: 1400px) {
+                    right: 30px;
+                }
+
+                @media (min-width: 1400px) {
+                    right: 0px;
+                }
+            }
+
             .welcome-text-search {
                 @media (max-width: 1400px) {
                     margin-left: 0.4em;
