@@ -1,12 +1,12 @@
 import { reviewService } from '../services/review.service'
 import { store } from '../store/store.js'
 import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from './review.reducer'
-// import { SET_SCORE, SET_WATCHED_USER } from './user.reducer'
 
 // Action Creators
 export function getActionRemoveReview(reviewId) {
   return { type: REMOVE_REVIEW, reviewId }
 }
+
 export function getActionAddReview(review) {
   return { type: ADD_REVIEW, review }
 }

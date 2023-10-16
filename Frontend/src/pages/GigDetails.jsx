@@ -16,10 +16,11 @@ export function GigDetails() {
   const owner = useSelector(storeState => storeState.userModule.user)
   const user = useSelector(storeState => storeState.userModule.watchedUser)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
-  const gig=gigs.find((gig)=>gig._id===params.id)
+  const gig = gigs.find((gig) => gig._id === params.id)
   const reviews = useSelector(storeState => storeState.reviewModule.reviews)
-  const filteredReviews=reviews.filter((review)=>review.gigId===gig._id)
-  console.log('filtered reviews from backend ',filteredReviews)
+  const filteredReviewIds = reviews.filter((review) => review.gigId === gig._id).map(review => review._id)
+
+  console.log('filtered reviews from backend ', filteredReviewIds)
 
   useEffect(() => {
     loadTheGig()
@@ -34,29 +35,28 @@ export function GigDetails() {
     }
   }
 
-  async function loadTheUser(){
-    try{
+  async function loadTheUser() {
+    try {
       await loadUser(gig.ownerId)
     } catch (err) {
-      console.log('couldnt load user ',err)
+      console.log('couldnt load user ', err)
     }
   }
 
-  async function loadTheReviews(){
-    try{
+  async function loadTheReviews() {
+    try {
       await loadReviews()
     } catch (err) {
-      console.log('couldnt load reviews ',err)
+      console.log('couldnt load reviews ', err)
     }
   }
-  
-  console.log('the gig : ',gig)
-  console.log('the gig creator : ',owner)
-  console.log('the logged in user : ',user)
-  if(user===null && gig) loadTheUser()
-  
-  if (!gig || !owner || !user) return <h1>loading...</h1>
 
+  console.log('the gig : ', gig)
+  console.log('the gig creator : ', owner)
+  console.log('the logged in user : ', user)
+  if (user === null && gig) loadTheUser()
+
+  if (!gig || !owner || !user) return <h1>loading...</h1>
 
   return (
     <section className="gig-details main-container full">
@@ -71,7 +71,7 @@ export function GigDetails() {
 
           <AboutSeller owner={user} />
 
-          <GigReviews reviews={filteredReviews} gig={gig}/>
+          <GigReviews reviews={filteredReviewIds} gig={gig} />
         </div>
         <GigOrder gig={gig} />
       </section>

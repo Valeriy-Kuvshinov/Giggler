@@ -1,30 +1,17 @@
 import { utilService } from "./util.service.js"
-import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
-const TODO_KEY = 'reviewDB'
 const BASE_URL = 'review/'
-// var gFilterBy = 'all'
-// _createReviews()
 
 export const reviewService = {
     query,
-    get,
     remove,
     save,
     getById,
-    createReview,
     addReview
 }
 
 function query(filterBy = {}) {
     return httpService.get(BASE_URL, filterBy)
-}
-
-function get(reviewId) {
-    return storageService.get(TODO_KEY, reviewId)
-        .then((review) => {
-            return review
-        })
 }
 
 function getById(reviewId) {
@@ -45,22 +32,9 @@ function save(review) {
     }
 }
 
-function createReview(userId='',gigId='',username='',imgUrl='',rating='2 days',text='good service') {
-    return {
-        userId: userId,
-        gigId: gigId,
-        userName:  username,
-        imgUrl: imgUrl,
-        rating: rating,
-        reviewedGigId: gigId,
-        text:text,
-        createdAt: Date.now()
-    }
-}
-
-function addReview(review){
-  review.id=utilService.makeId()
-  review.createdAt= Date.now()
-  console.log(review)
-  save(review)
+function addReview(review) {
+    review._id = utilService.makeId()
+    review.createdAt = Date.now()
+    console.log(review)
+    save(review)
 }
