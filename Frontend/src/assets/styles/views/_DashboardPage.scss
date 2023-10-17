@@ -1,6 +1,5 @@
 .dashboard-page {
     width: 100%;
-    padding: 2em;
     max-width: 1400px;
     text-align: center;
     justify-content: center;
@@ -80,7 +79,6 @@
     .dashboard-gigs-container {
         .gigs-info {
             grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(2, auto);
             gap: 10px;
 
             .grid-item {
