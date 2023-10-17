@@ -3,13 +3,12 @@ import { useSelector } from 'react-redux'
 import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
-import { loadGigs } from '../store/gig.actions.js'
+import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
-  let filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-  console.log('filterBy in index: ', filterBy)
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
@@ -18,63 +17,84 @@ export function GigIndex() {
     queryParams[key] = value
   }
 
-  // const [currentPage, setCurrentPage] = useState(0)
-  // const itemsPerPage = 12
-
-  // const startIndex = currentPage * itemsPerPage
-  // const endIndex = startIndex + itemsPerPage
-  // const displayedGigs = gigs.slice(startIndex, endIndex)
-
   useEffect(() => {
-    try {
-      loadsGigs()
-    } catch (err) {
-      console.log('Oops.. something went wrong fetching gigs, try again', err)
-    }
-  }, [filterBy, searchParams])
+    loadsGigs()
+  }, [])
 
   async function loadsGigs() {
     try {
-      await loadGigs(filterBy)
+      const updatedFilterBy = setFilterFromParams()
+      setFilter(updatedFilterBy)
+      await loadGigs(updatedFilterBy)
     } catch (err) {
       console.log('Error getting gigs to gigIndex: ', err)
     }
   }
 
+  function setFilterFromParams() {
+    const queryParamsToFilterMap = {
+      search: 'search',
+      time: 'time',
+      min: 'min',
+      max: 'max',
+      level: 'level',
+      cat: 'cat',
+      tag: 'tag',
+    }
+
+    const updatedFilterBy = { ...filterBy }
+
+    for (const queryParamKey in queryParamsToFilterMap) {
+      if (queryParams[queryParamKey]) {
+        const filterKey = queryParamsToFilterMap[queryParamKey]
+
+        if (filterKey === 'min' || filterKey === 'max') {
+          updatedFilterBy[filterKey] = parseInt(queryParams[queryParamKey], 10)
+        } else if (filterKey === 'cat' || filterKey === 'tag') {
+          updatedFilterBy[filterKey] = queryParams[queryParamKey]
+            .replace('---', ' & ')
+            .replace('-', ' ')
+        } else {
+          updatedFilterBy[filterKey] = queryParams[queryParamKey]
+        }
+      }
+    }
+    return updatedFilterBy
+  }
+
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
-    console.log('selectedOption: ', selectedOption)
-    // const navigate = useNavigate()
     const updatedQueryParams = { ...queryParams }
     let updatedFilterBy = { ...filterBy }
 
     switch (isRenderedChoice[1]) {
       case 'delivery_time':
         updatedQueryParams['time'] = selectedOption
-        filterBy = { ...updatedFilterBy, time: selectedOption }
+        updatedFilterBy = { ...updatedFilterBy, time: selectedOption }
+
         break
 
       case 'budget':
         if (selectedOption.min) {
           updatedQueryParams['min'] = selectedOption.min
-          filterBy = { ...filterBy, min: selectedOption.min }
+          updatedFilterBy = { ...filterBy, min: selectedOption.min }
         }
         if (selectedOption.max) {
           updatedQueryParams['max'] = selectedOption.max
-          filterBy = { ...filterBy, max: selectedOption.max }
+          updatedFilterBy = { ...filterBy, max: selectedOption.max }
         }
         break
 
       case 'seller_level':
         updatedQueryParams['level'] = selectedOption
-        filterBy = { ...filterBy, level: selectedOption }
+        updatedFilterBy = { ...filterBy, level: selectedOption }
         break
 
       case 'category':
         updatedQueryParams['cat'] = selectedOption
           .replace(' & ', '---')
           .replace(' ', '-')
-        filterBy = { ...filterBy, cat: selectedOption }
+        updatedFilterBy = { ...filterBy, cat: selectedOption }
         break
 
       // Handle subcategories
@@ -91,7 +111,7 @@ export function GigIndex() {
         updatedQueryParams['tag'] = selectedOption
           .replace(' & ', '---')
           .replace(' ', '-')
-        filterBy = { ...filterBy, tag: selectedOption }
+        updatedFilterBy = { ...filterBy, tag: selectedOption }
         break
 
       default:
@@ -105,7 +125,7 @@ export function GigIndex() {
 
     console.log('filterBy end of menuFilter: ', filterBy)
     navigate(newURL)
-
+    setFilter(updatedFilterBy)
     setIsRenderedChoice([false, ''])
   }
 
@@ -148,31 +168,8 @@ export function GigIndex() {
         queryParams={queryParams}
         isRenderedChoice={isRenderedChoice}
       />
-      <GigList
-        gigs={gigs}
-      />
+      <GigList gigs={gigs} />
       <Pagination />
     </main>
   )
 }
-//   const [currentPage, setCurrentPage] = useState(0)
-//   const itemsPerPage = 12
-
-//   const startIndex = currentPage * itemsPerPage
-//   const endIndex = startIndex + itemsPerPage
-//   const displayedGigs = gigs.slice(startIndex, endIndex)
-
-// function onAddGigMsg(gig) {
-//     console.log(`TODO Adding msg to gig`)
-// }
-// function shouldShowActionBtns(gig) {
-//     const user = userService.getLoggedinUser()
-//     if (!user) return false
-//     if (user.isAdmin) return true
-//     return gig.owner?._id === user._id
-// }
-
-//   previousLabel={'Previous'}
-//   nextLabel={'Next'}
-//   pageCount={Math.ceil(gigs.length / itemsPerPage)}
-//   onPageChange={({ selected }) => setCurrentPage(selected)

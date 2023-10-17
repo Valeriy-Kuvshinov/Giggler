@@ -8,6 +8,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     min: '',
     max: '',
   })
+  const time = [1,3,7]
  
   function onHandleBudgetChange(event) {
     if (!event.target.value) return 

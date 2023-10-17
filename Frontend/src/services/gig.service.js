@@ -7,11 +7,66 @@ export const gigService = {
   remove,
   save,
   getById,
-  getDefaultFilter
+  getDefaultFilter,
 }
 
-function query(filterBy = {}) {
-  return httpService.get(BASE_URL, filterBy)
+// let gigsToDisplay = [...utilService.readJsonFile(GIGS_PATH)]
+// if (filterBy.search) {
+//   const regex = new RegExp(filterBy.search, 'i')
+//   gigsToDisplay = gigsToDisplay.filter(
+//     (gig) => regex.test(gig.title) || regex.test(gig.description)
+//   )
+// }
+async function query(filterBy = {}) {
+  try {
+    let gigsToDisplay = await httpService.get(BASE_URL, filterBy)
+    if (filterBy.search) {
+      const escapedSearch = escapeRegExp(filterBy.search)
+      const regex = new RegExp(escapedSearch, 'i')
+
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return regex.test(gig.title) || regex.test(gig.description)
+      })
+    }
+    if (filterBy.cat) {
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return gig.category === filterBy.cat
+      })
+    }
+    
+    if (filterBy.tag) {
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return gig.tags.includes(filterBy.tag)
+      })
+    }
+    
+    if (filterBy.time) {
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return gig.daysToMake === filterBy.time
+      })
+    }
+
+    if (filterBy.level) {
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return gig.level === filterBy.level
+      })
+    }
+
+    if (filterBy.min || filterBy.max) {
+      gigsToDisplay = gigsToDisplay.filter((gig) => {
+        return (
+          (!filterBy.min || gig.price >= filterBy.min) &&
+          (!filterBy.max || gig.price <= filterBy.max)
+        )
+      })
+    }
+
+    console.log(gigsToDisplay)
+    return gigsToDisplay
+  } catch (error) {
+    console.error('Error querying gigs:', error)
+    throw error // Rethrow the error for handling at a higher level
+  }
 }
 
 function getById(gigId) {
@@ -23,7 +78,9 @@ function remove(gigId) {
 }
 
 function save(gig) {
-  const savedGig = (gig._id) ? httpService.put(`${BASE_URL}${gig._id}`, gig) : httpService.post(BASE_URL, gig)
+  const savedGig = gig._id
+    ? httpService.put(`${BASE_URL}${gig._id}`, gig)
+    : httpService.post(BASE_URL, gig)
   console.log('Response from backend:', savedGig)
   return savedGig
 }
@@ -37,7 +94,7 @@ function getDefaultFilter() {
     min: undefined,
     max: undefined,
     time: '',
-    pageIdx: 0
+    pageIdx: 0,
   }
 }
 
@@ -129,11 +186,7 @@ export const subcategories = {
     'Data Collection',
     'Data Management',
   ],
-  Photography: [
-    'Products & Lifestyle',
-    'People & Scenes',
-    'Local Photography',
-  ],
+  Photography: ['Products & Lifestyle', 'People & Scenes', 'Local Photography'],
   AI_Services: [
     'Build your AI app',
     'Refine AI with experts',
@@ -142,4 +195,8 @@ export const subcategories = {
     'Data Science & ML',
     'Get your data right',
   ],
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }

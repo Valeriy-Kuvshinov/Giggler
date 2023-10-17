@@ -40,9 +40,8 @@ export function ImageCarousel({ images, gigId }) {
       <div className="carousel" ref={carouselRef}>
         {images.map((image, index) => (
           // <div className="carousel-item">
-          <Link className="carousel-item" to={`/gig/${gigId}`}>
+          <Link key={index} className="carousel-item" to={`/gig/${gigId}`}>
             <img
-              key={index}
               src={image}
               alt={`Image ${index}`}
               className={index === currentIndex ? 'active' :'hidden' }
