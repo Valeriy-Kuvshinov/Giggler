@@ -1,11 +1,17 @@
 import icon from '../assets/img/svg/user.icon.svg'
 import location from '../assets/img/svg/location.icon.svg'
+import { UserEditModal } from './UserEditModal'
 
 export function UserInfo({ user }) {
+
+    function onChangeUserInfo(){
+
+    }
+
     return (<section className='user-info'>
         <div className='info-block'>
             <img src={user.imgUrl} />
-            <h2>{user.fullName}</h2>
+            <h2 onClick={onChangeUserInfo}>{user.fullName}</h2>
 
             <div className='into-line'>
                 <span><img src={location} /> Country</span>
@@ -24,6 +30,8 @@ export function UserInfo({ user }) {
                 Beatae consequuntur possimus iste,pariatur hic impedit at modi,
                 rem quam velit debitis. Fugiat, magni!</p>
         </div>
+
+        <UserEditModal user={user}/>
     </section>
     )
 }

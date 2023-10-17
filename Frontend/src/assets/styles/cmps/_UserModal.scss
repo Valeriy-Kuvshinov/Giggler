@@ -1,0 +1,15 @@
+.user-modal{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    border: 1px solid $clrSecondary2;
+    img{
+        width: 200px;
+        height: 200px;
+    }
+}
