@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
+import { CatTagDisplayBar } from './CatTagDisplayBar.jsx'
 
 export function GigFilter({
   filterBy,
@@ -34,27 +35,21 @@ export function GigFilter({
   return (
     <>
       <div className="gig-results-title layout-row">
-        {queryParams &&
-          (queryParams.search ? (
-            <section className="search-param">
-              <h1>
-                {`Results for `}
-                <span className="b">{queryParams.search}</span>
-              </h1>
-            </section>
-          ) : (
-            queryParams.cat && (
-              <section className="explore-category">
-                <Link to="/">
-                  <SvgIcon iconName={'home'} />
-                </Link>
-                <span className="divider">/</span>
-                <span className="category">
-                  {queryParams.cat.replace('---', ' & ').replace('-', ' ')}
-                </span>
-              </section>
-            )
-          ))}
+        {queryParams && queryParams.search && (
+          <section className="search-param">
+            <h1>
+              {`Results for `}
+              <span className="b">{queryParams.search}</span>
+            </h1>
+          </section>
+        )}
+        {console.log('queryParams in gigFilter Not rendering: ',queryParams)}
+        {queryParams && (
+          <CatTagDisplayBar
+            category={queryParams.cat ? queryParams.cat : ''}
+            tag={queryParams.tag ? queryParams.tag : ''}
+          />
+        )}
       </div>
       <main className={`gig-filter layout-row ${isSticky ? 'shadow' : ''}`}>
         <section className="floating-top-bar">
