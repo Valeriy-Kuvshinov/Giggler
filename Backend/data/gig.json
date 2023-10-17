@@ -11,7 +11,7 @@
     ],
     "price": 99,
     "description": "I am actually the real Spiderman...",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u001",
     "imgUrls": [
       "https://cdn.britannica.com/54/93454-050-5AC49E5E/Spider-Man-Tobey-Maguire-2.jpg",
@@ -39,7 +39,7 @@
     ],
     "price": 49,
     "description": "I will design your robot logo in 24 hours or less...",
-    "daysToMake": 1,
+    "daysToMake": "Express 24H",
     "ownerId": "u002",
     "imgUrls": [
       "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
@@ -67,7 +67,7 @@
     ],
     "price": 45.99,
     "description": "I will design a unique and eye-catching logo for your brand.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u101",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Logo1",
@@ -100,7 +100,7 @@
     ],
     "price": 59.99,
     "description": "I specialize in creating beautiful and responsive website templates that will make your website stand out. Whether you need templates for your personal blog or e-commerce site, I've got you covered.",
-    "daysToMake": 7,
+    "daysToMake": "Up to 7 days",
     "ownerId": "u102",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Template1",
@@ -128,7 +128,7 @@
     ],
     "price": 29.99,
     "description": "Looking for high-quality blog articles to boost your website's SEO and engage your audience? I'm here to help! I specialize in creating informative and engaging articles tailored to your niche.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u103",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Article1",
@@ -157,7 +157,7 @@
     ],
     "price": 69.99,
     "description": "Celebrate your special moments with a custom song composed just for you. Whether it's a wedding, anniversary, or any significant event, I'll create a musical masterpiece that captures the essence of the occasion.",
-    "daysToMake": 7,
+    "daysToMake": "Up to 7 days",
     "ownerId": "u104",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Song1",
@@ -186,7 +186,7 @@
     ],
     "price": 99.99,
     "description": "Transform your ideas into stunning 3D animations! Whether it's for a marketing video, product presentation, or artistic project, I'll bring your vision to life with custom animations and visual effects.",
-    "daysToMake": 7,
+    "daysToMake": "Up to 7 days",
     "ownerId": "u105",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Animation1",
@@ -216,7 +216,7 @@
     ],
     "price": 79.99,
     "description": "Need expert legal advice for your business? I'm a seasoned attorney with years of experience in corporate law. I can help you with contracts, compliance, and business strategy to ensure legal success.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u106",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Legal1",
@@ -245,7 +245,7 @@
     ],
     "price": 49.99,
     "description": "Unlock your potential and achieve business growth with my business coaching services. Together, we'll work on setting and achieving your goals, improving your mindset, and living a more fulfilling life.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u107",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Coaching1",
@@ -274,7 +274,7 @@
     ],
     "price": 39.99,
     "description": "Achieve your fitness goals with customized workout plans tailored to your needs. Whether you want to lose weight, build muscle, or improve your overall health, I'll help you get there.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u108",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Fitness1",
@@ -303,7 +303,7 @@
     ],
     "price": 34.99,
     "description": "Experience the soothing ambiance of handcrafted artisanal candles. Each candle is meticulously made with love and care, perfect for creating a relaxing atmosphere in your home or as a thoughtful gift.",
-    "daysToMake": 1,
+    "daysToMake": "Express 24H",
     "ownerId": "u109",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Candle1",
@@ -332,7 +332,7 @@
     ],
     "price": 49.99,
     "description": "Elevate your online presence with custom digital avatars. Whether you're a content creator, gamer, or social media enthusiast, I'll design unique avatars that represent your personality and style.",
-    "daysToMake": 1,
+    "daysToMake": "Express 24H",
     "ownerId": "u110",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Avatar1",
@@ -361,7 +361,7 @@
     ],
     "price": 89.99,
     "description": "Embark on an epic adventure with a custom-written fantasy novel. I'll craft a captivating world filled with magic, mythical creatures, and unforgettable characters. Dive into a story you won't want to put down.",
-    "daysToMake": 7,
+    "daysToMake": "Up to 7 days",
     "ownerId": "u111",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Fantasy1",
@@ -389,7 +389,7 @@
     ],
     "price": 59.99,
     "description": "Step back in time and explore historical landmarks like never before with immersive virtual reality tours. I'll take you on a journey through the past, providing interactive experiences and historical insights.",
-    "daysToMake": 3,
+    "daysToMake": "Up to 3 days",
     "ownerId": "u112",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=VR1",
@@ -418,7 +418,7 @@
     ],
     "price": 19.99,
     "description": "Are you tired of serious video game help? Look no further! I offer 'assistance' that's guaranteed to make you laugh. Expect unexpected in-game antics, questionable advice, and loads of humor. Let's turn your gaming experience into a comedy show!",
-    "daysToMake": 1,
+    "daysToMake": "Express 24H",
     "ownerId": "u113",
     "imgUrls": [
       "https://via.placeholder.com/400x300?text=Gaming1",

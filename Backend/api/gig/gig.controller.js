@@ -4,12 +4,12 @@ import { loggerService } from '../../services/logger.service.js'
 export async function getGigs(req, res) {
     try {
         const filterBy = req.query.filterBy || {}
-        const sort = req.query.sort || {}
+        // const sort = req.query.sort || {}
 
-        const sortDirection = sort.asc === 'true' ? 1 : -1
-        const sortBy = { [sort.by || 'name']: sortDirection }
+        // const sortDirection = sort.asc === 'true' ? 1 : -1
+        // const sortBy = { [sort.by || 'name']: sortDirection }
 
-        const gigs = await gigService.query(filterBy, sortBy)
+        const gigs = await gigService.query(filterBy) //, sortBy
         res.json(gigs)
     }
     catch (err) {
