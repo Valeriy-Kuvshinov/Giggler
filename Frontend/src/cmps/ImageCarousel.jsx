@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
 import SvgIcon from './SvgIcon'
+import { Link } from 'react-router-dom'
 
-export function ImageCarousel({ images }) {
+export function ImageCarousel({ images, gigId }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const carouselRef = useRef()
 
@@ -26,23 +27,34 @@ export function ImageCarousel({ images }) {
   }
 
   function transform(newIndex) {
-    const translation = -newIndex * 100 
+    const translation = -newIndex * 100
 
     carouselRef.current.style.transform = `translateX(${translation}%)`
   }
 
   return (
     <div className="carousel-container">
+      <button className="arrow left" onClick={(e) => prevImage(e)}>
+        <SvgIcon iconName={'arrowDown'} />
+      </button>
       <div className="carousel" ref={carouselRef}>
         {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Image ${index}`}
-            className={index === currentIndex ? 'active' : 'hidden'}
-          />
+          // <div className="carousel-item">
+          <Link className="carousel-item" to={`/gig/${gigId}`}>
+            <img
+              key={index}
+              src={image}
+              alt={`Image ${index}`}
+              className={index === currentIndex ? 'active' :'hidden' }
+              // 'hidden'
+            />
+          </Link>
+          // </div>
         ))}
       </div>
+      <button className="arrow right" onClick={(e) => nextImage(e)}>
+        <SvgIcon iconName={'arrowDown'} />
+      </button>
       <div className="dot-container">
         {images.map((_, index) => (
           <button
@@ -52,14 +64,7 @@ export function ImageCarousel({ images }) {
           />
         ))}
       </div>
-      <div className="arrow-container">
-        <button className="arrow left" onClick={(e) => prevImage(e)}>
-          <SvgIcon iconName={'arrowDown'}/>
-        </button>
-        <button className="arrow right" onClick={(e) => nextImage(e)}>
-          <SvgIcon iconName={'arrowDown'}/>
-        </button>
-      </div>
+      {/* <div className="arrow-container"></div> */}
     </div>
   )
 }

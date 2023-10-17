@@ -1,75 +1,78 @@
 .carousel-container {
-  position: relative;
   overflow: hidden;
-  width: 100%;
-  height: 166px;
-  // height: auto;
-  background-color: $clrPrimary1;
-  border: 1px solid $clrSecondary2;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
-  //   z-index: 0;
-  button {
-    margin: 0;
-  }
+  position: relative;
+  border-radius: .5em;
 
   .carousel {
-    position: relative;
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-
-    img {
+    height: 100%;
+    overflow: hidden;
+    .carousel-item {
       width: 100%;
-      object-fit: cover;
+      height: 100%;
+      position: relative;
+      background: linear-gradient(180deg, #fff, #b5b6ba);
+      object-fit: contain;
+    }
+    .carousel-item::after {
+      background-image: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3),
+        hsla(0, 0%, 100%, 0)
+      );
+      bottom: 0;
+      content: '';
+      height: 40px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 0;
+    }
+
+    // img {
+    //   width: 100%;
+    //   height: 100%;
+    //   overflow: hidden;
+    // }
+  }
+
+  // transition: all ease-in 0.3s;
+  .arrow {
+    position: absolute;
+    user-select: none;
+    opacity: 0;
+    top: 50%;
+    background: transparent;
+    width: 25px;
+    transform: translateY(-50%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1em;
+    padding: 0.25em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &.left {
+      left: -32px;
+      transition: left 0.2s;
+      svg {
+        transform: rotate(90deg);
+        fill: $clrPrimary1;
+      }
+    }
+
+    &.right {
+      right: -32px;
+      transition: right 0.2s;
+      svg {
+        transform: rotate(-90deg);
+        fill: $clrPrimary1;
+      }
     }
   }
 
-  .arrow-container {
-    user-select: none;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    // transition: all ease-in 0.3s;
-    .arrow {
-      background: transparent;
-      width: 25px;
-      transform: translateY(-50%);
-      color: white;
-      border: none;
-      font-size: 1em;
-      padding: 0.25em;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-
-      &.left {
-        position: absolute;
-        right: auto;
-        left: 0.5em;
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
-        svg {
-          transform: rotate(90deg);
-          fill: $clrPrimary1;
-        }
-      }
-
-      &.right {
-        position: absolute;
-        left: auto;
-        right: 0.5em;
-        border-top-left-radius: 50%;
-        border-bottom-left-radius: 50%;
-        svg {
-          transform: rotate(-90deg);
-          fill: $clrPrimary1;
-        }
-      }
-    }
-
-    .arrow:hover {
-      background: rgba(0, 0, 0, 0.4);
-    }
+  .arrow:hover {
+    background: rgba(0, 0, 0, 0.4);
   }
 
   .arrow::before {
@@ -85,6 +88,8 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    position: absolute;
+    z-index: 3;
 
     .dot {
       width: 10px;
@@ -108,17 +113,16 @@
 }
 
 .carousel-container:hover {
-  .arrow-container {
-    background-color: #fff;
+  .arrow {
+    // background-color: #fff;
     opacity: 1;
-    .arrow{
-      background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+
+    &.right {
+      right: 12px;
     }
-    .right {
-      margin-inline-end: -9px;
-    }
-    .left {
-      margin-inline-start: -9px;
+    &.left {
+      left: 12px;
     }
   }
 }

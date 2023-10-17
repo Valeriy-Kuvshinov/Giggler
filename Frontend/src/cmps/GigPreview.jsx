@@ -39,38 +39,41 @@ export function GigPreview({ is, gig }) {
 
   return (
     <>
-      <Link className="link-gig-img" to={`/gig/${gig._id}`}>
-        <ImageCarousel images={gig.imgUrls} />
-      </Link>
-      {is === 'explore' && (
-        <UserPreview is={is} owner={owner} gig={gig}>
-          <Link className="gig-title" to={`/gig/${gig._id}`}>
-            {gig.title}
-          </Link>
-        </UserPreview>
-      )}
-      {is === 'userProfile' && (
-        <>
-          <Link className="gig-title" to={`/gig/${gig._id}`}>
-            {gig.title}
-          </Link>
-          <button>
-            <Link className="gig-title" to={`/gig/edit/${gig._id}`}>
-              update
+      {/* <div className="gig-wrapper"> */}
+
+      <ImageCarousel images={gig.imgUrls} gigId={gig._id} />
+      <div className="preview-body">
+        {is === 'explore' && (
+          <UserPreview is={is} owner={owner} gig={gig}>
+            <Link className="gig-title" to={`/gig/${gig._id}`}>
+              {gig.title}
             </Link>
-          </button>
-          <button onClick={onRemoveGig}>remove</button>
-        </>
-      )}
-      <div className="gig-price-likes">
-        <span className="price b">{`From $${gig.price}`}</span>
-        <span
-          className={`${isLiked ? 'black' : ''}`}
-          onClick={(e) => onToggleHeart(e)}
-        >
-          <SvgIcon iconName={'heart'} />
-        </span>
+          </UserPreview>
+        )}
+        {is === 'userProfile' && (
+          <>
+            <Link className="gig-title" to={`/gig/${gig._id}`}>
+              {gig.title}
+            </Link>
+            <button>
+              <Link className="gig-title" to={`/gig/edit/${gig._id}`}>
+                update
+              </Link>
+            </button>
+            <button onClick={onRemoveGig}>remove</button>
+          </>
+        )}
+        <div className="gig-price-likes">
+          <span className="price b">{`From $${gig.price}`}</span>
+          <span
+            className={`${isLiked ? 'black' : ''}`}
+            onClick={(e) => onToggleHeart(e)}
+          >
+            <SvgIcon iconName={'heart'} />
+          </span>
+        </div>
       </div>
+      {/* </div> */}
     </>
   )
 }

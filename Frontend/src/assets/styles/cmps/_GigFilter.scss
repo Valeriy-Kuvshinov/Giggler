@@ -34,13 +34,13 @@
   top: 0;
   width: 100%;
   background-color: #fff;
+  padding-block-start: 1em;
 
   .floating-top-bar {
     .floating-menu {
       position: relative;
     }
 
-    margin-block-start: 1em;
 
     .filter-nav {
       display: flex;
