@@ -1,9 +1,9 @@
 import {
     Chart as ChartJS, ArcElement, LinearScale, BarElement, CategoryScale
-    , LineController, LineElement, PointElement, Tooltip, Legend
+    , LineController, LineElement, PointElement, Tooltip, Legend, Filler
 } from 'chart.js'
 ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
-    , LineElement, PointElement, BarElement, Tooltip, Legend)
+    , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
 import { FinanceDashboard } from '../cmps/FinanceDashboard.jsx'
 import { GigDashboard } from '../cmps/GigDashboard.jsx'
 

@@ -9,7 +9,7 @@ export const barGigsChartOptions = {
                     return ''
                 },
                 label: function (context) {
-                    return `$${context.raw} per gig`
+                    return `$${context.raw.toFixed(2)} per gig`
                 }
             }
         }
@@ -17,6 +17,7 @@ export const barGigsChartOptions = {
 }
 
 export const pieGigsChartOptions = {
+    aspectRatio: 2,
     plugins: {
         legend: {
             display: false
@@ -46,6 +47,28 @@ export const lineGigsChartOptions = {
                 }
             }
         }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+
+export const donutGigsChartOptions = {
+    aspectRatio: 2,
+    cutout: '50%',
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return ` ${context.raw} gigs`
+                }
+            }
+        }
     }
 }
 
@@ -56,11 +79,11 @@ export const lineMoneyChartOptions = {
         },
         tooltip: {
             callbacks: {
-                title: function() {
+                title: function () {
                     return ''
                 },
-                label: function(context) {
-                    return `$${context.raw.toFixed(2)}`
+                label: function (context) {
+                    return `$${context.raw.toFixed(0)}`
                 }
             }
         }

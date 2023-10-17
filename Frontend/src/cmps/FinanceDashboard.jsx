@@ -35,10 +35,10 @@ export function FinanceDashboard() {
 
     const latestDayProfit = data.weekly.values?.[data.weekly.values.length - 1] || 0
     const previousDayProfit = data.weekly.values?.[data.weekly.values.length - 2] || 0
-    
+
     const latestWeekProfit = data.monthly.values?.[data.monthly.values.length - 7] || 0
     const previousWeekProfit = data.monthly.values?.[data.monthly.values.length - 14] || 0
-    
+
     const latestMonthProfit = data.annual.values?.[data.annual.values.length - 1] || 0
     const previousMonthProfit = data.annual.values?.[data.annual.values.length - 2] || 0
 
@@ -75,8 +75,8 @@ export function FinanceDashboard() {
                             datasets: [{
                                 data: data.weekly.values,
                                 borderColor: '#404145',
-                                color: '#222325',
-                                fill: false,
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
                             }]
                         }}
                         options={lineMoneyChartOptions}
@@ -91,8 +91,8 @@ export function FinanceDashboard() {
                             datasets: [{
                                 data: data.monthly.values,
                                 borderColor: '#404145',
-                                color: '#222325',
-                                fill: false,
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
                             }]
                         }}
                         options={lineMoneyChartOptions}
@@ -107,8 +107,8 @@ export function FinanceDashboard() {
                             datasets: [{
                                 data: data.annual.values,
                                 borderColor: '#404145',
-                                color: '#222325',
-                                fill: false,
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
                             }]
                         }}
                         options={lineMoneyChartOptions}

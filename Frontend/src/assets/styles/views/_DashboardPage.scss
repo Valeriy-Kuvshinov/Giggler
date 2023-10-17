@@ -67,12 +67,8 @@
         }
 
         .finance-charts {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(1, 1fr);
             gap: 1rem;
-
-            .chart-section:nth-child(3) {
-                grid-column: span 2;
-            }
         }
     }
 
@@ -80,6 +76,7 @@
         .gigs-info {
             grid-template-columns: repeat(5, 1fr);
             gap: 10px;
+            margin-bottom: 1em;
 
             .grid-item {
                 display: flex;
