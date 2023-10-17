@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
-import { Line, Pie, Bar } from 'react-chartjs-2'
+import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
 import { DashboardGigInfo } from './DashboardGigInfo.jsx'
-import { barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
+import { donutGigsChartOptions, barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
 
 export function GigDashboard() {
     const [avgCategoryPrices, setAvgCategoryPrices] = useState({})
@@ -76,7 +76,7 @@ export function GigDashboard() {
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">Top 10 Most Common (by category)</Typography>
+                    <Typography variant="h6">Most Common (by category)</Typography>
                     <Pie
                         data={{
                             labels: topCategories.categories,
@@ -100,8 +100,9 @@ export function GigDashboard() {
                             labels: gigsOverTime.labels,
                             datasets: [{
                                 data: gigsOverTime.data,
-                                borderColor: '#36A2EB',
-                                fill: false
+                                borderColor: '#404145',
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
                             }]
                         }}
                         options={lineGigsChartOptions}
@@ -110,7 +111,7 @@ export function GigDashboard() {
 
                 <div className="chart-section">
                     <Typography variant="h6">Gigs State Distribution</Typography>
-                    <Pie
+                    <Doughnut
                         data={{
                             labels: Object.keys(gigStateData),
                             datasets: [{
@@ -118,7 +119,7 @@ export function GigDashboard() {
                                 backgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
                             }]
                         }}
-                        options={pieGigsChartOptions}
+                        options={donutGigsChartOptions}
                     />
                 </div>
             </main>
