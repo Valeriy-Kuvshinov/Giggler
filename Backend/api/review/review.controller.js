@@ -5,7 +5,8 @@ export async function getReview(req, res) {
     try {
         const review = await reviewService.getById(req.params.id)
         res.send(review)
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to get review', err)
         res.status(500).send({ err: 'Failed to get review' })
     }
@@ -13,14 +14,12 @@ export async function getReview(req, res) {
 
 export async function getReviews(req, res) {
     try {
-        const filterBy = {
-            // id: req.query?.id || '',
-        }
-        const reviews = await reviewService.query(
-            filterBy
-        )
+        const filterBy = {}
+        const reviews = await reviewService.query(filterBy)
+        
         res.send(reviews)
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to get reviews', err)
         res.status(500).send({ err: 'Failed to get reviews' })
     }
@@ -30,7 +29,8 @@ export async function deleteReview(req, res) {
     try {
         await reviewService.remove(req.params.id)
         res.send({ msg: 'Deleted successfully' })
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to delete review', err)
         res.status(500).send({ err: 'Failed to delete review' })
     }
@@ -41,18 +41,16 @@ export async function updateReview(req, res) {
         const review = req.body
         const savedReview = await reviewService.save(review)
         res.send(savedReview)
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to update review', err)
         res.status(500).send({ err: 'Failed to update review' })
     }
 }
 
 export async function addReview(req, res) {
-    // const { loggedinUser } = req
-
     try {
         const review = req.body
-        // review.owner = loggedinUser
         const addedReview = await reviewService.save(review)
         res.json(addedReview)
     }

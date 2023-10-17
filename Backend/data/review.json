@@ -342,5 +342,21 @@
         "rating": 1,
         "text": "GamerGuffaw's 'assistance' is a disaster in the best way possible. It's so bad that it's good. My character glitched into walls, and I laughed so hard I cried. A must-try for a good time!",
         "createdAt": 1697457303713
+    },
+    {
+        "_id": "9ADxyF",
+        "userId": "u001",
+        "gigId": "g101",
+        "rating": 5,
+        "text": "best gig ever",
+        "createdAt": 1697494314442
+    },
+    {
+        "_id": "XImlYz",
+        "userId": "u001",
+        "gigId": "g101",
+        "rating": 3,
+        "text": "Idk, kinda mid",
+        "createdAt": 1697494430594
     }
 ]

@@ -1,4 +1,3 @@
-import { utilService } from "./util.service.js"
 import { httpService } from './http.service.js'
 const BASE_URL = 'review/'
 
@@ -6,8 +5,7 @@ export const reviewService = {
     query,
     remove,
     save,
-    getById,
-    addReview
+    getById
 }
 
 function query(filterBy = {}) {
@@ -22,7 +20,7 @@ function remove(reviewId) {
 }
 
 function save(review) {
-    // console.log(review._id)
+    console.log(review)
     if (review._id) {
         console.log('changed review')
         return httpService.put(BASE_URL, review)
@@ -30,11 +28,4 @@ function save(review) {
         console.log('created review')
         return httpService.post(BASE_URL, review)
     }
-}
-
-function addReview(review) {
-    review._id = utilService.makeId()
-    review.createdAt = Date.now()
-    console.log(review)
-    save(review)
 }

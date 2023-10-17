@@ -17,7 +17,7 @@ function query(filterBy) {
 }
 
 function getById(reviewId) {
-    const review = reviews.find(r => r._id === reviewId);
+    const review = reviews.find(r => r._id === reviewId)
     if (!review) {
         loggerService.error(`No review found with id ${reviewId}`)
         throw new Error(`No review found with id ${reviewId}`)
@@ -36,11 +36,11 @@ function save(review) {
     if (review._id) {
         const reviewToUpdate = reviews.find(currReview => currReview._id === review._id)
         Object.assign(reviewToUpdate, review)
-    } else {
-        review._id = utilService.makeId()
-        reviews.push(review)
     }
-
+    else {
+        review._id = utilService.makeId()
+        reviews.push({ _id: review._id, ...review })
+    }
     return _saveReviewsToFile().then(() => review)
 }
 
