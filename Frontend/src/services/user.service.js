@@ -23,9 +23,7 @@ function getUsers() {
 }
 
 async function getById(userId) {
-  // console.log(`Fetching user by ID: ${userId}`)
   const user = await httpService.get(BASE_URL + userId)
-  // console.log('Fetched user:', user)
   return user
 }
 
@@ -44,7 +42,7 @@ async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
   console.log('Logged in user:', user)
   if (user) {
-      return setLoggedinUser(user)
+    return setLoggedinUser(user)
   }
 }
 
@@ -54,7 +52,13 @@ async function signup(userCred) {
 }
 
 async function logout() {
-  return await httpService.post('auth/logout')
+  try {
+    await httpService.post('auth/logout')
+    sessionStorage.removeItem(SESSION_KEY_LOGGEDIN_USER)
+  } catch (err) {
+    console.error('Cannot logout:', err)
+    throw err
+  }
 }
 
 function setLoggedinUser(user) {

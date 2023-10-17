@@ -1,52 +1,69 @@
 .user-gigs {
-    display: flex;
-    flex-direction: column;
-    margin-block-start: 40px;
-    margin-block-end: 20px;
-    margin-inline-start: 20px;
-    color: $clrPrimary2;
-    width: 100%;
-    gap: 1em;
-
-    .info-block {
-        border: 1px solid $clrSecondary2;
-        background-color: $clrPrimary1;
-
-        &.title {
-            display: flex;
-            align-items: center;
-            height: 60px;
-            padding: 23px;
-            margin-block-end: 40px;
-        }
-
-        &.gig {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 250px;
-            height: 250px;
-            margin-top: -2.5em;
-
-            .gig-creation-btn {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                color: $clrPrimary2;
-
-                &:hover {
-                    text-decoration: none;
-                }
-
-                button {
-                    height: 65px;
-                    width: 65px;
-                    border-radius: 50%;
-                    font-size: 36px;
-                    padding: 0;
-                    background-color: $clr2;
-                }
-            }
-        }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-block-end: 20px;
+  margin-inline-start: 20px;
+  color: $clrPrimary2;
+  width: 100%;
+  gap: 1em;
+  .the-gigs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 32px;
+    height: 100%;
+    @media screen and (max-width: 1300px) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 32px;
     }
+    @media screen and (max-width: 1020px) {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 32px;
+    }
+  }
+
+  .info-block {
+    border: 1px solid $clrSecondary2;
+    background-color: $clrPrimary1;
+    width: 250px;
+    height: 300px;
+
+    &.title {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      padding: 23px;
+      margin-block-end: 20px;
+    }
+
+    &.gig {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-top: -2.5em;
+
+      .gig-creation-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $clrPrimary2;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        button {
+          height: 65px;
+          width: 65px;
+          border-radius: 50%;
+          font-size: 36px;
+          padding: 0;
+          background-color: $clr2;
+        }
+      }
+    }
+    &.seller {
+      width: 100%;
+    }
+  }
 }

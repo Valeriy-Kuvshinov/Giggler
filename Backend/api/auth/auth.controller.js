@@ -12,7 +12,8 @@ export async function login(req, res) {
         res.cookie('loginToken', loginToken)
 
         res.json(user)
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to Login ' + err)
         res.status(401).send({ err: 'Failed to Login' })
     }
@@ -21,9 +22,9 @@ export async function login(req, res) {
 export async function signup(req, res) {
     try {
         console.log('Signup request received with data:', req.body)
-        const { username, password, fullname, level, rating, imgUrl } = req.body
+        const { username, password, fullName, description, balance, level, rating, imgUrl, isAdmin } = req.body
 
-        const account = await authService.signup(username, password, fullname, level, rating, imgUrl)
+        const account = await authService.signup(username, password, fullName, description, balance, level, rating, imgUrl, isAdmin)
         loggerService.debug(`auth.route - new account created: ` + JSON.stringify(account))
 
         const user = await authService.login(username, password)
@@ -31,7 +32,8 @@ export async function signup(req, res) {
 
         res.cookie('loginToken', loginToken)
         res.json(user)
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error('Failed to signup ' + err)
         res.status(500).send({ err: 'Failed to signup' })
     }
@@ -41,7 +43,8 @@ export async function logout(req, res) {
     try {
         res.clearCookie('loginToken')
         res.send({ msg: 'Logged out successfully' })
-    } catch (err) {
+    }
+    catch (err) {
         res.status(500).send({ err: 'Failed to logout' })
     }
 }
