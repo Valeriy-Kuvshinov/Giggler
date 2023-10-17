@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
 import { UserOrders } from "../cmps/UserOrders.jsx"
+import { UserEditModal } from "../cmps/UserEditModal.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
 
@@ -29,10 +30,10 @@ export function UserProfile() {
   return (
     <section className="main-container full">
       <div className="user-profile">
-        <UserInfo user={user} />
+        <UserInfo user={user}/>
         <UserGigs gigs={gigs} user={user} />
       </div>
-        <UserOrders/>
+      <UserOrders/>
     </section>
   )
 }
