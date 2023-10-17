@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line } from 'react-chartjs-2'
-import { InfoDiv } from "./InfoDiv.jsx"
+import { FinanceDashboardInfo } from "./FinanceDashboardInfo.jsx"
 import { lineMoneyChartOptions } from '../services/chartService.js'
 
 export function FinanceDashboard() {
@@ -33,38 +33,10 @@ export function FinanceDashboard() {
         }
     }, [])
 
-    const latestDayProfit = data.weekly.values?.[data.weekly.values.length - 1] || 0
-    const previousDayProfit = data.weekly.values?.[data.weekly.values.length - 2] || 0
-
-    const latestWeekProfit = data.monthly.values?.[data.monthly.values.length - 7] || 0
-    const previousWeekProfit = data.monthly.values?.[data.monthly.values.length - 14] || 0
-
-    const latestMonthProfit = data.annual.values?.[data.annual.values.length - 1] || 0
-    const previousMonthProfit = data.annual.values?.[data.annual.values.length - 2] || 0
-
-    const getDifferenceDisplay = (current, previous) => {
-        const difference = current - previous
-        const sign = difference >= 0 ? '+' : '-'
-        return `(${sign}$${Math.abs(difference).toFixed(2)})`
-    }
-
     return (
         <section className='dashboard-finances-container'>
             <h2>Site Finances:</h2>
-            <section className="finance-info grid">
-                <InfoDiv
-                    title="This day's profits"
-                    info={`$${latestDayProfit.toFixed(2)} ${getDifferenceDisplay(latestDayProfit, previousDayProfit)}`}
-                />
-                <InfoDiv
-                    title="This week's profits"
-                    info={`$${latestWeekProfit.toFixed(2)} ${getDifferenceDisplay(latestWeekProfit, previousWeekProfit)}`}
-                />
-                <InfoDiv
-                    title="This month's profits"
-                    info={`$${latestMonthProfit.toFixed(2)} ${getDifferenceDisplay(latestMonthProfit, previousMonthProfit)}`}
-                />
-            </section>
+            <FinanceDashboardInfo />
 
             <main className='grid finance-charts'>
                 <div className="chart-section">
