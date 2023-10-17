@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 import { Pie, Bar } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
+import { orderBackendService } from '../services/order.backend.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
 export function GigDashboard() {
@@ -11,18 +12,19 @@ export function GigDashboard() {
     const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
     const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
     const [mostPopularGig, setMostPopularGig] = useState(null)
+    const [mostTrendingGig, setMostTrendingGig] = useState(null)
     const [totalGigs, setTotalGigs] = useState(0)
     const [pendingGigs, setPendingGigs] = useState(0)
     const [deniedGigs, setDeniedGigs] = useState(0)
     const [weeklyGigs, setWeeklyGigs] = useState(0)
     const [monthlyGigs, setMonthlyGigs] = useState(0)
     const [avgGigPrice, setAvgGigPrice] = useState(0)
-    
+
     useEffect(() => {
         const fetchGigs = async () => {
             const gigs = await gigService.query()
+            const orders = await orderBackendService.query()
 
-            // Variables for derived statistics
             let expensiveGig = gigs[0]
             let cheapGig = gigs[0]
             let popularGig = gigs[0]
@@ -34,14 +36,14 @@ export function GigDashboard() {
             const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000)
             const oneMonthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000)
 
-            // Average price for each category and other statistics
             const categoryPrices = {}
             const categoryCounts = {}
             gigs.forEach(gig => {
                 if (categoryPrices[gig.category]) {
                     categoryPrices[gig.category] += gig.price
                     categoryCounts[gig.category]++
-                } else {
+                }
+                else {
                     categoryPrices[gig.category] = gig.price
                     categoryCounts[gig.category] = 1
                 }
@@ -76,6 +78,16 @@ export function GigDashboard() {
                 categories: sortedCategories.map(entry => entry[0]),
                 counts: sortedCategories.map(entry => entry[1])
             })
+
+            const gigOrderCounts = {};
+            orders.forEach(order => {
+                if (!gigOrderCounts[order.orderedGigId]) gigOrderCounts[order.orderedGigId] = 1
+                else gigOrderCounts[order.orderedGigId]++
+            })
+            const trendingGigId = Object.keys(gigOrderCounts).reduce((a, b) => gigOrderCounts[a] > gigOrderCounts[b] ? a : b)
+            const trendingGig = gigs.find(gig => gig._id === trendingGigId)
+
+            setMostTrendingGig(trendingGig)
         }
         fetchGigs()
     }, [])
@@ -91,7 +103,7 @@ export function GigDashboard() {
                         return ''
                     },
                     label: function (context) {
-                        return context.raw
+                        return ` $${context.raw} per gig`
                     }
                 }
             }
@@ -105,7 +117,7 @@ export function GigDashboard() {
             tooltip: {
                 callbacks: {
                     label: function (context) {
-                        return `${context.raw} gigs`
+                        return ` ${context.raw} gigs`
                     }
                 }
             }
@@ -113,10 +125,14 @@ export function GigDashboard() {
     }
 
     return (
-        <section className='dashboard-finances-container'>
+        <section className='dashboard-gigs-container'>
             <h2>Gigs General Info:</h2>
 
-            <section className="finance-info grid">
+            <section className="gigs-info grid">
+                <InfoDiv
+                    title="Total Gigs"
+                    info={totalGigs ? totalGigs : 'Loading...'}
+                />
                 <InfoDiv
                     title="Pending Gigs"
                     info={pendingGigs}
@@ -134,12 +150,12 @@ export function GigDashboard() {
                     info={monthlyGigs}
                 />
                 <InfoDiv
-                    title="Total Gigs"
-                    info={totalGigs ? totalGigs : 'Loading...'}
-                />
-                <InfoDiv
                     title="Most popular (reviews)"
                     info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>}
+                />
+                <InfoDiv
+                    title="Most trending (orders)"
+                    info={<Link to={`/gig/${mostTrendingGig?._id}`}>{mostTrendingGig ? `${mostTrendingGig._id} (by ${mostTrendingGig.ownerId})` : 'Loading...'}</Link>}
                 />
                 <InfoDiv
                     title="Average Gig Price"
@@ -153,17 +169,15 @@ export function GigDashboard() {
                     title="Least expensive"
                     info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>}
                 />
-
             </section>
 
-            <main className='grid finance-charts'>
+            <main className='grid gigs-charts'>
                 <div className="chart-section" style={{ backgroundColor: '#fff' }}>
                     <Typography variant="h6">Average Price by Category</Typography>
                     <Bar
                         data={{
                             labels: avgCategoryPrices.categories,
                             datasets: [{
-                                label: 'Average Price',
                                 data: avgCategoryPrices.averages,
                                 backgroundColor: '#404145',
                                 borderColor: '#222325',
@@ -179,7 +193,6 @@ export function GigDashboard() {
                         data={{
                             labels: topCategories.categories,
                             datasets: [{
-                                label: 'Gig Count',
                                 data: topCategories.counts,
                                 backgroundColor: [
                                     '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',

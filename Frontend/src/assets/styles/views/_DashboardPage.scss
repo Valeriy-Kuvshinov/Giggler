@@ -76,4 +76,37 @@
             }
         }
     }
+
+    .dashboard-gigs-container {
+        .gigs-info {
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 10px;
+
+            .grid-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 2px solid $clrSecondary8;
+                padding: 10px;
+                border-radius: 5px;
+
+                .title {
+                    font-weight: bold;
+                    border-bottom: 1px solid $clrSecondary8;
+                    padding-bottom: 2px;
+                }
+
+                .info {
+                    margin-top: 1em;
+                }
+            }
+        }
+
+        .gigs-charts {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+    }
 }

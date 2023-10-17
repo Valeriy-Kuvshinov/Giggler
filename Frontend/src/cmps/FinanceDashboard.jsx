@@ -54,13 +54,12 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
             </section>
 
             <main className='grid finance-charts'>
-                <div className="chart-section" style={{ backgroundColor: '#fff' }}>
+                <div className="chart-section">
                     <Typography variant="h6">Weekly site profits</Typography>
                     <Line
                         data={{
                             labels: weeklyData.dates,
                             datasets: [{
-                                label: 'In $',
                                 data: weeklyData.values,
                                 borderColor: '#404145',
                                 color: '#222325',
@@ -70,13 +69,12 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
                         options={lineChartOptions}
                     />
                 </div>
-                <div className="chart-section" style={{ backgroundColor: '#f5f5f5' }}>
+                <div className="chart-section">
                     <Typography variant="h6">Monthly site profits</Typography>
                     <Line
                         data={{
                             labels: monthlyData.dates,
                             datasets: [{
-                                label: 'In $',
                                 data: monthlyData.values,
                                 borderColor: '#404145',
                                 color: '#222325',
@@ -86,13 +84,12 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
                         options={lineChartOptions}
                     />
                 </div>
-                <div className="chart-section" style={{ backgroundColor: '#f1fdf7' }}>
+                <div className="chart-section">
                     <Typography variant="h6">Annual site profits</Typography>
                     <Line
                         data={{
                             labels: annualData.dates,
                             datasets: [{
-                                label: 'In $',
                                 data: annualData.values,
                                 borderColor: '#404145',
                                 color: '#222325',
