@@ -1,43 +1,56 @@
+import React, { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line } from 'react-chartjs-2'
 import { InfoDiv } from "./InfoDiv.jsx"
+import { lineMoneyChartOptions } from '../services/chartService.js'
 
-export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
-    const latestDayProfit = weeklyData.values?.[weeklyData.values.length - 1] || 0
-    const previousDayProfit = weeklyData.values?.[weeklyData.values.length - 2] || 0
+export function FinanceDashboard() {
+    const [data, setData] = useState({
+        weekly: {},
+        monthly: {},
+        annual: {}
+    })
 
-    const latestWeekProfit = monthlyData.values?.[monthlyData.values.length - 7] || 0
-    const previousWeekProfit = monthlyData.values?.[monthlyData.values.length - 14] || 0
+    const generateData = (length, dateModifier, maxValue, latestDateFormatter) => {
+        const dates = [...Array(length)].map((_, i) => {
+            const d = new Date()
+            dateModifier(d, i)
+            return i === 0 ? latestDateFormatter(d) : d.toISOString().split('T')[0]
+        }).reverse()
+        const values = [...Array(length)].map(() => Math.floor(Math.random() * maxValue))
+        return { dates, values }
+    }
 
-    const latestMonthProfit = annualData.values?.[annualData.values.length - 1] || 0
-    const previousMonthProfit = annualData.values?.[annualData.values.length - 2] || 0
+    useEffect(() => {
+        try {
+            setData({
+                weekly: generateData(7, (d, i) => d.setDate(d.getDate() - i), 1000, d => d.toISOString().split('T')[0]),
+                monthly: generateData(30, (d, i) => d.setDate(d.getDate() - i), 10000, d => d.toISOString().split('T')[0]),
+                annual: generateData(12, (d, i) => d.setMonth(d.getMonth() - i), 25000, d => d.toISOString().split('T')[0])
+            })
+        } catch (error) {
+            console.error("Error fetching data:", error)
+        }
+    }, [])
+
+    const latestDayProfit = data.weekly.values?.[data.weekly.values.length - 1] || 0
+    const previousDayProfit = data.weekly.values?.[data.weekly.values.length - 2] || 0
+    
+    const latestWeekProfit = data.monthly.values?.[data.monthly.values.length - 7] || 0
+    const previousWeekProfit = data.monthly.values?.[data.monthly.values.length - 14] || 0
+    
+    const latestMonthProfit = data.annual.values?.[data.annual.values.length - 1] || 0
+    const previousMonthProfit = data.annual.values?.[data.annual.values.length - 2] || 0
 
     const getDifferenceDisplay = (current, previous) => {
         const difference = current - previous
         const sign = difference >= 0 ? '+' : '-'
         return `(${sign}$${Math.abs(difference).toFixed(2)})`
     }
-    const lineChartOptions = {
-        plugins: {
-            legend: {
-                display: false
-            },
-            tooltip: {
-                callbacks: {
-                    title: function () {
-                        return ''
-                    },
-                    label: function (context) {
-                        return `$${context.raw.toFixed(2)}`
-                    }
-                }
-            }
-        }
-    }
+
     return (
         <section className='dashboard-finances-container'>
             <h2>Site Finances:</h2>
-
             <section className="finance-info grid">
                 <InfoDiv
                     title="This day's profits"
@@ -54,52 +67,51 @@ export function FinanceDashboard({ weeklyData, monthlyData, annualData }) {
             </section>
 
             <main className='grid finance-charts'>
-                <div className="chart-section" style={{ backgroundColor: '#fff' }}>
+                <div className="chart-section">
                     <Typography variant="h6">Weekly site profits</Typography>
                     <Line
                         data={{
-                            labels: weeklyData.dates,
+                            labels: data.weekly.dates,
                             datasets: [{
-                                label: 'In $',
-                                data: weeklyData.values,
+                                data: data.weekly.values,
                                 borderColor: '#404145',
                                 color: '#222325',
                                 fill: false,
                             }]
                         }}
-                        options={lineChartOptions}
+                        options={lineMoneyChartOptions}
                     />
                 </div>
-                <div className="chart-section" style={{ backgroundColor: '#f5f5f5' }}>
+
+                <div className="chart-section">
                     <Typography variant="h6">Monthly site profits</Typography>
                     <Line
                         data={{
-                            labels: monthlyData.dates,
+                            labels: data.monthly.dates,
                             datasets: [{
-                                label: 'In $',
-                                data: monthlyData.values,
+                                data: data.monthly.values,
                                 borderColor: '#404145',
                                 color: '#222325',
                                 fill: false,
                             }]
                         }}
-                        options={lineChartOptions}
+                        options={lineMoneyChartOptions}
                     />
                 </div>
-                <div className="chart-section" style={{ backgroundColor: '#f1fdf7' }}>
+
+                <div className="chart-section">
                     <Typography variant="h6">Annual site profits</Typography>
                     <Line
                         data={{
-                            labels: annualData.dates,
+                            labels: data.annual.dates,
                             datasets: [{
-                                label: 'In $',
-                                data: annualData.values,
+                                data: data.annual.values,
                                 borderColor: '#404145',
                                 color: '#222325',
                                 fill: false,
                             }]
                         }}
-                        options={lineChartOptions}
+                        options={lineMoneyChartOptions}
                     />
                 </div>
             </main>
