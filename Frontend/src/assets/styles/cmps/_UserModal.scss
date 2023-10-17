@@ -1,5 +1,5 @@
 .user-modal{
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,8 +8,22 @@
     height: 400px;
     padding: 10px;
     border: 1px solid $clrSecondary2;
+    left: 25%;
+    bottom: 25%;
+    background-color: $clrPrimary1;
+    z-index: 100;
     img{
         width: 200px;
         height: 200px;
     }
+}
+.modal-background{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    background-color: $clrPrimary2;
+    opacity: 0.5;
 }

@@ -1,8 +1,8 @@
 import { userService } from "../services/user.service"
 
-export function UserEditModal({user}){
+export function UserEditModal({user , closeModal}){
 
-    console.log(user)
+    // console.log(user)
 
     function loadInfo(){
         document.getElementById('fullname').value=user.fullName
@@ -25,12 +25,12 @@ export function UserEditModal({user}){
     setTimeout(loadInfo,1)
 
     return (<section className="user-modal">
+                <span>profile picture: </span>
+                <img onClick={onChangeImage} id="profilePicture" src={user.imgUrl}/>
                 <span>full name: </span>
                 <input type="text" id="fullname"/>
                 <span>description: </span>
                 <input type="text" id="description"/>
-                <span>profile picture: </span>
-                <img onClick={onChangeImage} id="profilePicture" src={user.imgUrl}/>
                 <button onClick={onConfirmChange}>confirm change</button>
            </section>)
 }
