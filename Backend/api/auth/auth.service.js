@@ -27,21 +27,33 @@ async function login(username, password) {
     return user
 }
 
-async function signup(username, password, fullname, level, rating, imgUrl) {
+async function signup(username, password, fullName, description = ''
+    , balance = 0, level = 'level 0', rating = 0, imgUrl, isAdmin = false) {
     console.log(`Attempting to signup user: ${username}`)
     const saltRounds = 10
 
-    loggerService.debug(`auth.service - signup with username: ${username}
-    , fullname: ${fullname}, imgUrl: ${imgUrl}, level: ${level}, rating: ${rating}`)
-
-    if (!username || !password || !fullname || !imgUrl || !level || !rating) throw new Error('Missing details')
+    if (!username || !password || !fullName || !imgUrl) throw new Error('Missing details')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.save({ username, password: hash, fullname, imgUrl })
+    return userService.save({
+        username,
+        password: hash,
+        fullName,
+        description,
+        balance,
+        level,
+        rating,
+        imgUrl,
+        isAdmin
+    })
 }
 
 function getLoginToken(user) {
-    const userInfo = { _id: user._id, fullname: user.fullname, isAdmin: user.isAdmin }
+    const userInfo = {
+        _id: user._id,
+        fullName: user.fullName,
+        isAdmin: user.isAdmin
+    }
     return cryptr.encrypt(JSON.stringify(userInfo))
 }
 

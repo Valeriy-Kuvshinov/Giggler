@@ -1,42 +1,38 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { ImgUploader } from './ImgUploader.jsx'
-import { login, signup, loadUsers } from '../store/user.actions.js'
+import { login, signup } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import loginSignupImg from '../assets/img/login-signup.png'
 import checkmarkImg from '../assets/img/svg/checkmark.icon.svg'
 
 export function LoginSignup({ closeModal, mode }) {
-    const [credentials, setCredentials] = useState({ username: '', password: '' })
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: '',
+        fullName: '',
+        imgUrl: ''
+    })
     const wrapperRef = useRef(null)
     const [isSignup, setIsSignup] = useState(mode === 'signup')
-    const [users, setUsers] = useState([])
-
-    useEffect(() => {
-        async function fetchUsers() {
-            const loadedUsers = await loadUsers()
-            setUsers(loadedUsers)
-        }
-        fetchUsers()
-    }, [])
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ username: '', password: '', fullName: '', imgUrl: '' })
         setIsSignup(false)
     }
 
-    function handleChange(ev) {
-        const field = ev.target.name
-        const value = ev.target.value
-        setCredentials({ ...credentials, [field]: value })
+    function handleChange({ target: { name, value } }) {
+        setCredentials(prev => ({ ...prev, [name]: value }))
     }
 
     async function handleLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
+
         try {
             await login(credentials)
             closeModal()
-        } catch (err) {
+        }
+        catch (err) {
             showErrorMsg('Cannot login')
         }
         clearState()
@@ -44,12 +40,19 @@ export function LoginSignup({ closeModal, mode }) {
 
     async function handleSignup(ev = null) {
         if (ev) ev.preventDefault()
-        if (!credentials.username || !credentials.password
-            || !credentials.fullname) return
+        if (!credentials.username || !credentials.password || !credentials.fullName) return
+
+        const finalCredentials = { ...credentials }
+
+        if (!finalCredentials.imgUrl) {
+            finalCredentials.imgUrl = 'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000'
+        }
+
         try {
-            await signup(credentials)
+            await signup(finalCredentials)
             closeModal()
-        } catch (err) {
+        }
+        catch (err) {
             showErrorMsg('Cannot signup')
         }
         clearState()
@@ -143,12 +146,12 @@ export function LoginSignup({ closeModal, mode }) {
                     {isSignup && (
                         <div className="signup-section flex column">
                             <div className='flex column'>
-                                <label htmlFor="signup-fullname">Full Name</label>
+                                <label htmlFor="signup-fullName">Full Name</label>
                                 <input
-                                    id="signup-fullname"
+                                    id="signup-fullName"
                                     type="text"
-                                    name="fullname"
-                                    value={credentials.fullname}
+                                    name="fullName"
+                                    value={credentials.fullName}
                                     placeholder="Fullname"
                                     onChange={handleChange}
                                     required

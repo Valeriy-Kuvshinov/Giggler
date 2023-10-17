@@ -22,8 +22,7 @@ export function userReducer(state = initialState, action) {
             break
         case REMOVE_USER:
             newState = {
-                ...state,
-                users: state.users.filter(user => user._id !== action.userId)
+                ...state, users: state.users.filter(user => user._id !== action.userId)
             }
             break
         case SET_USERS:

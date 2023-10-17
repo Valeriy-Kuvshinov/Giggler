@@ -15,6 +15,15 @@ export async function loadUsers() {
     }
 }
 
+export async function loadUser(userId) {
+    try {
+        const user = await userService.getById(userId)
+        store.dispatch({ type: SET_WATCHED_USER, user })
+    } catch (err) {
+        console.log('Cannot load user', err)
+    }
+}
+
 export async function removeUser(userId) {
     try {
         await userService.remove(userId)
@@ -53,16 +62,6 @@ export async function logout() {
     } catch (err) {
         console.error('user actions -> Cannot logout:', err)
         throw err
-    }
-}
-
-export async function loadUser(userId) {
-    try {
-        // console.log('userId',userId)
-        const user = await userService.getById(userId)
-        store.dispatch({ type: SET_WATCHED_USER, user })
-    } catch (err) {
-        console.log('Cannot load user', err)
     }
 }
 
