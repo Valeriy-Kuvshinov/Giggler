@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
-import { DashboardGigInfo } from './DashboardGigInfo.jsx'
+import { GigDashboardInfo } from './GigDashboardInfo.jsx'
 import { donutGigsChartOptions, barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
 
 export function GigDashboard() {
@@ -56,7 +56,7 @@ export function GigDashboard() {
         <section className='dashboard-gigs-container'>
             <h2>Gigs General Info:</h2>
 
-            <DashboardGigInfo />
+            <GigDashboardInfo />
 
             <main className='grid gigs-charts'>
                 <div className="chart-section">

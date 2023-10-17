@@ -1,6 +1,5 @@
 import { httpService } from './http.service.js'
 const BASE_URL = 'order/'
-// var gFilterBy = 'all'
 
 export const orderBackendService = {
     query,
@@ -23,7 +22,6 @@ function remove(orderId) {
 }
 
 function save(order) {
-    // console.log(order._id)
     if (order._id) {
         console.log('changed order')
         return httpService.put(BASE_URL, order)

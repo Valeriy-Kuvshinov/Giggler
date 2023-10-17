@@ -7,8 +7,68 @@
         "deliveryTime": "2 days",
         "orderedGigId": "g001",
         "price": 99,
-        "createdAt": 1697455836447,
-        "orderState": "pending",
+        "createdAt": 1697798400000,
+        "orderState": "accepted",
         "_id": "y1ycv"
+    },
+    {
+        "buyerId": "u002",
+        "buyerName": "Jane Doe",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1697798400000,
+        "orderState": "pending",
+        "_id": "a1ycv"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1697452800000,
+        "orderState": "denied",
+        "_id": "b1ycv"
+    },
+    {
+        "buyerId": "u002",
+        "buyerName": "Jane Doe",
+        "sellerId": "u002",
+        "title": "I will design your logo",
+        "deliveryTime": "1 days",
+        "orderedGigId": "g002",
+        "price": 49,
+        "createdAt": 1697452800000,
+        "orderState": "accepted",
+        "_id": "c1ycv"
+    },
+    {
+        "buyerId": "u101",
+        "buyerName": "Alice Smith",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1696368000000,
+        "orderState": "accepted",
+        "_id": "d1ycv"
+    },
+    {
+        "buyerId": "u101",
+        "buyerName": "Ella Johnson",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1696368000000,
+        "orderState": "pending",
+        "_id": "e1ycv"
     }
 ]
