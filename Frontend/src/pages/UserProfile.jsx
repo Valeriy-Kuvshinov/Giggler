@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { UserGigs } from '../cmps/UserGigs.jsx'
-import { UserInfo } from '../cmps/UserInfo.jsx'
-import { UserOrders } from '../cmps/UserOrders.jsx'
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { UserGigs } from "../cmps/UserGigs.jsx"
+import { UserInfo } from "../cmps/UserInfo.jsx"
+import { UserOrders } from "../cmps/UserOrders.jsx"
 
-import { loadGigs } from '../store/gig.actions.js'
+import { loadGigs } from "../store/gig.actions.js"
 
 export function UserProfile() {
-  const user = useSelector(storeState => storeState.userModule.user)
-  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const user = useSelector((storeState) => storeState.userModule.user)
+  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
 
   // console.log('user ',user)
 
@@ -20,10 +20,10 @@ export function UserProfile() {
     try {
       await loadGigs()
     } catch (err) {
-      console.log('couldnt load gigs : ', err)
+      console.log("couldnt load gigs : ", err)
     }
   }
-  
+
   if (user === null || gigs === null) return <div>loading...</div>
 
   return (
@@ -32,7 +32,7 @@ export function UserProfile() {
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-      <UserOrders />
+        <UserOrders/>
     </section>
   )
 }
