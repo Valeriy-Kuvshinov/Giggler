@@ -5,6 +5,7 @@ import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { gigService } from '../services/gig.service.js'
 
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
@@ -16,6 +17,7 @@ export function GigIndex() {
   for (const [key, value] of searchParams) {
     queryParams[key] = value
   }
+  console.log('queryParams in index: ', queryParams)
 
   useEffect(() => {
     loadsGigs()
@@ -64,7 +66,7 @@ export function GigIndex() {
 
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
-    const updatedQueryParams = { ...queryParams }
+    let updatedQueryParams = { ...queryParams }
     let updatedFilterBy = { ...filterBy }
 
     switch (isRenderedChoice[1]) {
@@ -114,6 +116,12 @@ export function GigIndex() {
         updatedFilterBy = { ...filterBy, tag: selectedOption }
         break
 
+      case 'clear':
+        updatedFilterBy = gigService.getDefaultFilter()
+        updatedQueryParams = {}
+        console.log('updatedfilterby: ', updatedFilterBy)
+        break
+
       default:
         // Handle any other cases or defaults
         break
@@ -124,9 +132,9 @@ export function GigIndex() {
     const newURL = `?${searchParams.toString()}`
 
     console.log('filterBy end of menuFilter: ', filterBy)
-    navigate(newURL)
     setFilter(updatedFilterBy)
     setIsRenderedChoice([false, ''])
+    navigate(newURL)
   }
 
   function onHandleChoice(renderedChoice) {
@@ -135,6 +143,7 @@ export function GigIndex() {
       return
     }
 
+    console.log('renderedChoice in gigindex onhandlechoice: ', renderedChoice)
     switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
@@ -148,7 +157,13 @@ export function GigIndex() {
       case 'categories':
         setIsRenderedChoice([true, categorySelect.trim()])
         break
-
+      case 'clear':
+        setFilter(gigService.getDefaultFilter())
+        const searchParams = new URLSearchParams()
+        const newURL = `?${searchParams.toString()}`
+        navigate(newURL)
+        setIsRenderedChoice([false, 'clear'])
+        break
       default:
         console.log('default switch in onHandleChoice')
         break

@@ -43,7 +43,7 @@ export function GigFilter({
             </h1>
           </section>
         )}
-        {console.log('queryParams in gigFilter Not rendering: ',queryParams)}
+        {console.log('queryParams in gigFilter Not rendering: ', queryParams)}
         {queryParams && (
           <CatTagDisplayBar
             category={queryParams.cat ? queryParams.cat : ''}
@@ -54,7 +54,12 @@ export function GigFilter({
       <main className={`gig-filter layout-row ${isSticky ? 'shadow' : ''}`}>
         <section className="floating-top-bar">
           <div className="filter-nav">
-            <button className="btn filtered-clr">Clear Filter</button>
+            <button
+              onClick={() => onHandleChoice('clear')}
+              className="btn filtered-clr"
+            >
+              Clear Filter
+            </button>
             <div
               className={`filter-categories floating-menu ${
                 isRenderedChoice[1] === categorySelect.trim() ? 'open' : ''
