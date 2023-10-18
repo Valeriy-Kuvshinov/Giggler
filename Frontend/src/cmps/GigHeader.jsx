@@ -10,15 +10,15 @@ export function GigHeader({ gig, owner }) {
         <section style={{ overflow: 'hidden' }} className="gig-header">
             <div className='nav-header'>
                 <Link to={'/'}>
-                <img src={houseIcon}/>
+                    <img src={houseIcon} />
                 </Link>
                 /
                 <Link to={`/explore?cat=${gig.category}`}>
-                {gig.category}
+                    {gig.category}
                 </Link>
                 /
                 <Link to={`/explore?cat=${gig.category}&${gig.tags[2]}`}>
-                {gig.tags[2]}
+                    {gig.tags[2]}
                 </Link>
             </div>
 
