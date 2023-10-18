@@ -8,13 +8,13 @@ export function UserInfo({ user }) {
   const [isModal,setModal]=useState(false)
 
   function loadModal(){
-    console.log('open')
     setModal(true)
   }
   function closeModal(){
-    console.log('close')
     setModal(false)
   }
+
+  // console.log(user)
 
   return (
     <section className="user-info">

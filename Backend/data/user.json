@@ -4,12 +4,12 @@
     "username": "peter123",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "Peter Parker",
-    "description": "",
-    "balance": 500,
+    "description": "smelly bread",
+    "balance": 0,
     "level": "level 2",
     "rating": 4.9,
     "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
-    "isAdmin": false
+    "isAdmin": true
   },
   {
     "_id": "u002",

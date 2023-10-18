@@ -8,8 +8,9 @@
     height: 400px;
     padding: 10px;
     border: 1px solid $clrSecondary2;
-    left: 25%;
-    bottom: 25%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
     background-color: $clrPrimary1;
     z-index: 100;
     img{

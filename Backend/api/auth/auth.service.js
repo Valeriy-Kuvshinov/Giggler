@@ -23,7 +23,7 @@ async function login(username, password) {
     console.log("bcrypt comparison result:", match)
     if (!match) throw new Error('Invalid username or password')
 
-    delete user.password
+    // delete user.password
     return user
 }
 

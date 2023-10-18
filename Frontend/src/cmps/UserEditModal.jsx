@@ -1,4 +1,5 @@
 import { userService } from "../services/user.service"
+import { loadUser } from "../store/user.actions"
 
 export function UserEditModal({user , closeModal}){
 
@@ -16,10 +17,13 @@ export function UserEditModal({user , closeModal}){
     function onConfirmChange(){
         const fullName=document.getElementById('fullname').value
         const description=document.getElementById('description').value
-        const imageUrl=document.getElementById('profilePicture').src
-        const newUser={...user,fullName:fullName,description:description,imageUrl:imageUrl}
+        const imgUrl=document.getElementById('profilePicture').src
+        const newUser={...user,fullName:fullName,description:description,imgUrl:imgUrl}
         console.log('new user : ',newUser)
         console.log('user changed')
+        loadUser(newUser._id)
+        userService.updateUser(newUser)
+        closeModal()
     }
 
     setTimeout(loadInfo,1)
