@@ -92,10 +92,32 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
-    }
+      .input-wrapper {
+        input[type='number'] {
+          border: 1px solid $clrSecondary2;
+          &:hover {
+            border: 1px solid $clrSecondary5;
+          }
+          &:focus {
+            border: 1px solid $clrSecondary5 !important;
+          }
+        }
+        i {
+          color: $clrSecondary4;
+          font-style: normal;
+          position: absolute;
+          right: 0.5em;
+          &.min {
+            right: rem(132px);
+          }
+          top: 31.5px;
+          z-index: 1;
+        }
+      }
 
-    .input-wrapper:first-child {
-      margin-right: 12px;
+      .input-wrapper:first-child {
+        margin-right: 12px;
+      }
     }
   }
 

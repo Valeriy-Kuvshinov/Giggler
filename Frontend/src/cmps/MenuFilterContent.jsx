@@ -64,7 +64,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                               value={selectedFilter[type]}
                               onChange={onHandleBudgetChange}
                             />
-                            <i>$</i>
+                            <i className={type}>$</i>
                           </div>
                         ))}
                       </div>

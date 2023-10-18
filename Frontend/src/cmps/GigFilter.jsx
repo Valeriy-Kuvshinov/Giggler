@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
 import { CatTagDisplayBar } from './CatTagDisplayBar.jsx'
+import { SelectedFilters } from './SelectedFilters.jsx'
 
 export function GigFilter({
   filterBy,
@@ -57,8 +58,9 @@ export function GigFilter({
             <button
               onClick={() => onHandleChoice('clear')}
               className="btn filtered-clr"
+              title="Clear all filters"
             >
-              Clear Filter
+              Clear filter
             </button>
             <div
               className={`filter-categories floating-menu ${
@@ -90,7 +92,7 @@ export function GigFilter({
             >
               <button
                 onClick={() => onHandleChoice('seller_level')}
-                className="btn filtered-sl"
+                className={`btn filtered-sl ${filterBy.level ? 'border' : ''}`}
               >
                 Seller level
                 <span className="dwn-arr">
@@ -111,7 +113,9 @@ export function GigFilter({
             >
               <button
                 onClick={() => onHandleChoice('budget')}
-                className="btn filtered-bg"
+                className={`btn filtered-bg ${
+                  filterBy.min || filterBy.max ? 'border' : ''
+                }`}
               >
                 Budget
                 <span className="dwn-arr">
@@ -132,9 +136,9 @@ export function GigFilter({
             >
               <button
                 onClick={() => onHandleChoice('delivery_time')}
-                className="btn filtered-dt"
+                className={`btn filtered-dt ${filterBy.time ? 'border' : ''}`}
               >
-                Delivery Time
+                Delivery time
                 <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
@@ -149,6 +153,7 @@ export function GigFilter({
           </div>
         </section>
       </main>
+      <SelectedFilters filterBy={filterBy} />
     </>
   )
 }

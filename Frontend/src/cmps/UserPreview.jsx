@@ -31,7 +31,7 @@ export function UserPreview({ is, owner, children }) {
             src={user.imgUrl}
             alt={`${user.fullName} gig avatar`}
           />
-          <span className="full-name">{user.fullName}</span>
+          <span className="full-name b">{user.fullName}</span>
         </div>
         <span className="level">{user.level}</span>
       </div>
