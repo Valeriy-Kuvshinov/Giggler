@@ -21,6 +21,8 @@ export function PaymentInfo({gig,createOrder}){
     //     }
     //   }
 
+    console.log(gig)
+    
     if(gig===null) return <div>loading...</div>
     
     // console.log('gig : ',gig)

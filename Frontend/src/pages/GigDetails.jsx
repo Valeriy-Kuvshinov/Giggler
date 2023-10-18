@@ -35,7 +35,7 @@ export function GigDetails() {
     fetchData()
   }, [params.id, user])
 
-  if (!gig || !owner || !user) return <h1>loading...</h1>
+  if (!gig || !user) return <h1>loading...</h1>
 
   return (
     <section className="gig-details main-container full">

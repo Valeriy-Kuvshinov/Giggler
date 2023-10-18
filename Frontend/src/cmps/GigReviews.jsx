@@ -28,7 +28,7 @@ export function GigReviews({ reviews, gig }) {
 
     return (
         <section className="gig-reviews">
-            <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />
+            {loggedInUser && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
             
             {fullReviews.length !== 0 && (
                 <ul>

@@ -44,9 +44,10 @@ export function GigPurchase() {
             showErrorMsg('Cannot add Order')
         })
   }
+  if(user===null) return <div>please log into a account to make a purchase</div>
+  if(gig===undefined||gigs===undefined) return <div>loading...</div>
   
-  if(gig===undefined||gigs===undefined||user===null) return <div>loading...</div>
-  
+  // console.log('user : ',user)
   // console.log('gig : ',gig)
   
   return (
