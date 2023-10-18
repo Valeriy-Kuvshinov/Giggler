@@ -98,11 +98,15 @@ input[type='number'] {
   border: none;
   outline: none;
 }
+
 input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-moz-number-spin-up,
+input[type='number']::-moz-number-spin-down  {
   -webkit-appearance: none;
   appearance: none;
   -moz-appearance: textfield;
+  -moz-appearance: none;
 }
 .btn {
   text-decoration: none;
