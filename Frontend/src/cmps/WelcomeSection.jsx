@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from '../services/gallery.service.js'
 import { SearchBar } from './SearchBar.jsx'
+import { useSelector } from 'react-redux'
+import { setFilter } from '../store/gig.actions.js'
 
 export function WelcomeSection() {
     const { personImages } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [showImage, setShowImage] = useState(true)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const [searchQuery, setSearchQuery] = useState('')
     const navigate = useNavigate()
 
@@ -48,8 +51,8 @@ export function WelcomeSection() {
     function handleSearchSubmit(e) {
         e.preventDefault()
         if (!searchQuery) return
-
-        navigate(`/explore?search=${searchQuery}`)
+        setFilter({ ...filterBy, search: searchQuery })
+        navigate(`/explore`)
     }
     return (
         <main className="welcome-wrapper" style={{ backgroundColor: `${personImages[currentImageIndex].backgroundColor}` }}>

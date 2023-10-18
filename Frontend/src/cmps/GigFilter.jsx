@@ -9,13 +9,12 @@ export function GigFilter({
   filterBy,
   setMenuFilter,
   onHandleChoice,
-  queryParams,
   isRenderedChoice,
 }) {
   const [isSticky, setIsSticky] = useState(false)
   let shadowStart = 139
-  const categorySelect = queryParams.cat
-    ? queryParams.cat.replace('---', ' & ').replace('-', ' ')
+  const categorySelect = filterBy.cat
+    ? filterBy.cat
     : 'category'
 
   useEffect(() => {
@@ -28,7 +27,7 @@ export function GigFilter({
   }, [])
 
   function handleScroll() {
-    queryParams.cat ? (shadowStart = 197) : (shadowStart = 139)
+    filterBy.cat ? (shadowStart = 197) : (shadowStart = 139)
     if (window.scrollY >= shadowStart) setIsSticky(true)
     else setIsSticky(false)
   }
@@ -36,19 +35,18 @@ export function GigFilter({
   return (
     <>
       <div className="gig-results-title layout-row">
-        {queryParams && queryParams.search && (
+        {filterBy.search && (
           <section className="search-param">
             <h1>
               {`Results for `}
-              <span className="b">{queryParams.search}</span>
+              <span className="b">{filterBy.search}</span>
             </h1>
           </section>
         )}
-        {console.log('queryParams in gigFilter Not rendering: ', queryParams)}
-        {queryParams && (
+        {filterBy.cat && (
           <CatTagDisplayBar
-            category={queryParams.cat ? queryParams.cat : ''}
-            tag={queryParams.tag ? queryParams.tag : ''}
+            category={filterBy.cat}
+            tag={filterBy.tag}
           />
         )}
       </div>

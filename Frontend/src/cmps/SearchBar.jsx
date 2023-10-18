@@ -16,17 +16,20 @@ export function SearchBar({
   }
 
   return (
-    <div className="search-bar flex" style={{ visibility: visibility }}>
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={searchQuery}
-        onChange={onSearchChange}
-        onKeyPress={handleKeyPress}
-      />
-      <button type="submit" onClick={onSearchSubmit}>
-        <img src={searchIconSvg} alt="Search" />
-      </button>
-    </div>
+    <>
+      <div className="search-bar-dim-background"></div>
+      <div className="search-bar flex" style={{ visibility: visibility }}>
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={searchQuery}
+          onChange={onSearchChange}
+          onKeyPress={handleKeyPress}
+        />
+        <button type="submit" onClick={onSearchSubmit}>
+          <img src={searchIconSvg} alt="Search" />
+        </button>
+      </div>
+    </>
   )
 }

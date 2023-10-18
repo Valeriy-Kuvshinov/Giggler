@@ -100,11 +100,12 @@ input[type='number'] {
 }
 
 input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-moz-number-spin-up,
-input[type='number']::-moz-number-spin-down  {
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
+}
+input[type='number']::-moz-number-spin-up,
+input[type='number']::-moz-number-spin-down {
   -moz-appearance: textfield;
   -moz-appearance: none;
 }
