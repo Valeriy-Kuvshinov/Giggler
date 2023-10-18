@@ -143,7 +143,6 @@ export function GigIndex() {
       return
     }
 
-    console.log('renderedChoice in gigindex onhandlechoice: ', renderedChoice)
     switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])

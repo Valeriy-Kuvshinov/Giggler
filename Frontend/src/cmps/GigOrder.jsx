@@ -23,6 +23,7 @@ export function GigOrder({ gig }) {
           <img src={clock} />
           <span> {gig.daysToMake} Days Delivery</span>
         </div>
+
         <div className="inside-shipping">
           <img src={refresh} />
           <span>Unlimited Revisions</span>
@@ -32,39 +33,45 @@ export function GigOrder({ gig }) {
         <li>
           <img src={checkmark} />1 concept included
         </li>
+
         <li>
           <img src={checkmark} />
           Logo transparency
         </li>
+
         <li>
           <img src={checkmark} />
           Vector file
         </li>
+
         <li>
           <img src={checkmark} />
           Printable file
         </li>
+
         <li>
           <img src={checkmark} />
           Include 3D mockup
         </li>
+
         <li>
           <img src={checkmark} />
           Include source file
         </li>
+
         <li>
           <img src={checkmark} />
           Include social media kit
         </li>
       </ul>
       <div className="continue-btn">
-      <Link to={`/purchase/${gig._id}`}>
-        <div className="continue">
-          <button onClick={onContinue}>
-            Continue <img src={arrow} />
-          </button>
-        </div>
-      </Link>
+        <Link to={`/purchase/${gig._id}`}>
+          <div className="continue">
+            <button onClick={onContinue}>
+              Continue <img src={arrow} />
+            </button>
+          </div>
+        </Link>
       </div>
     </section>
   )

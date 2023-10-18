@@ -57,6 +57,10 @@
   display: grid;
 }
 
+.border{
+  border: 1px solid $clrPrimary2;
+}
+
 // Media helpers
 .square-ratio {
   @include aspect-ratio(1, 1);
