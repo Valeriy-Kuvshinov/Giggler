@@ -77,10 +77,12 @@
             transition: all 0.15s ease-in-out;
           }
         }
+
         .radio-item.selected {
           .radio-btn {
             border: 2px solid #222325;
           }
+
           .radio-btn::after {
             background: #222325;
           }
@@ -92,24 +94,31 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
+
       .input-wrapper {
         input[type='number'] {
           border: 1px solid $clrSecondary2;
+          appearance: textfield;
+
           &:hover {
             border: 1px solid $clrSecondary5;
           }
+
           &:focus {
             border: 1px solid $clrSecondary5 !important;
           }
         }
+
         i {
           color: $clrSecondary4;
           font-style: normal;
           position: absolute;
           right: 0.5em;
+
           &.min {
             right: rem(132px);
           }
+
           top: 31.5px;
           z-index: 1;
         }
