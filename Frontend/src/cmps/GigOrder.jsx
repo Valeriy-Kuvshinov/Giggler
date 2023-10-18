@@ -2,11 +2,22 @@ import clock from "../assets/img/svg/clock.icon.svg"
 import refresh from "../assets/img/svg/refresh.icon.svg"
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 import arrow from "../assets/img/svg/arrow.icon.svg"
-import { Link } from "react-router-dom"
+
+import { useModal } from "../customHooks/ModalContext"
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export function GigOrder({ gig }) {
+  const user = useSelector(storeState => storeState.userModule.user)
+  const navigate = useNavigate()
+  const { openLogin } = useModal()
+
   function onContinue() {
-    console.log("continue!")
+    if (!user) {
+      openLogin()
+      return
+    }
+    navigate(`/purchase/${gig._id}`)
   }
 
   return (
@@ -64,14 +75,13 @@ export function GigOrder({ gig }) {
           Include social media kit
         </li>
       </ul>
+
       <div className="continue-btn">
-        <Link to={`/purchase/${gig._id}`}>
-          <div className="continue">
-            <button onClick={onContinue}>
-              Continue <img src={arrow} />
-            </button>
-          </div>
-        </Link>
+        <div className="continue">
+          <button onClick={onContinue}>
+            Continue <img src={arrow} />
+          </button>
+        </div>
       </div>
     </section>
   )

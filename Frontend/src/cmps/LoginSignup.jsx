@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { ImgUploader } from './ImgUploader.jsx'
 import { login, signup } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'

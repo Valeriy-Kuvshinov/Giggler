@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { showErrorMsg } from '../services/event-bus.service'
+import { useModal } from '../customHooks/ModalContext'
+import { showErrorMsg } from '../services/event-bus.service.js'
 import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
-import { LoginSignup } from './LoginSignup.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
 
 export function AppHeader() {
     const [searchQuery, setSearchQuery] = useState('')
     const [headerStage, setHeaderStage] = useState(0)
     const [showDropdown, setShowDropdown] = useState(false)
-    const [showModal, setShowModal] = useState('')
     const location = useLocation()
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.user)
+    const { showModal, openLogin, openSignup } = useModal()
     const categories = [
         "Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
-        "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
+        "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"
+    ]
     const isHomePage = location.pathname === '/'
 
     useEffect(() => {
@@ -42,7 +43,8 @@ export function AppHeader() {
         try {
             navigate("/")
             await logout()
-        } catch (err) {
+        }
+        catch (err) {
             showErrorMsg('Cannot logout')
         }
     }
@@ -70,7 +72,7 @@ export function AppHeader() {
         navigate(`/explore?search=${searchQuery}`)
     }
 
-    const toggleDropdown = (e) => {
+    function toggleDropdown(e) {
         e.stopPropagation()
         setShowDropdown(!showDropdown)
     }
@@ -89,7 +91,6 @@ export function AppHeader() {
                     <Link to="/" style={{ color: textColor }}>
                         <h1 className="logo">Giggler<span>.</span></h1>
                     </Link>
-
                     <SearchBar
                         placeholder="Search for any service..."
                         searchQuery={searchQuery}
@@ -111,15 +112,14 @@ export function AppHeader() {
                             </>
                         ) : (
                             <>
-                                <li><button className='login' onClick={() => setShowModal('login')} style={{ color: textColor }}>Sign In</button></li>
-                                <li><button className='join' onClick={() => setShowModal('signup')} style={{ color: joinBtnColor, borderColor: joinBtnColor }}>Join</button></li>
+                                <li><button className='login' onClick={openLogin} style={{ color: textColor }}>Sign In</button></li>
+                                <li><button className='join' onClick={openSignup} style={{ color: joinBtnColor, borderColor: joinBtnColor }}>Join</button></li>
                             </>
                         )}
                     </ul>
                 </div>
             </nav>
             <NavBar categories={categories} display={categoryNavDisplay} headerStage={headerStage} />
-            {showModal && <LoginSignup mode={showModal} closeModal={() => setShowModal('')} />}
         </header>
     )
 }
