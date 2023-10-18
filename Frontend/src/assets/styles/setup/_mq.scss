@@ -221,6 +221,28 @@
     }
 }
 
+.user-login-wrapper {
+    @media (max-width: 900px) {
+        width: 400px;
+
+        .login-notes {
+            display: none;
+        }
+
+        .user-interaction {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 900px) {
+        width: 850px;
+
+        .user-interaction {
+            width: 50%;
+        }
+    }
+}
+
 .dashboard-page {
     @media (max-width: 1400px) {
         padding: 2em;
