@@ -1,16 +1,15 @@
 .user-login-wrapper {
     position: fixed;
     top: 5%;
-    left: 5%;
-    right: 5%;
+    left: 0%;
+    right: 0%;
     bottom: 5%;
     background: $clrPrimary1;
     z-index: 60;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     display: flex;
-    max-width: 1000px;
-    max-height: 650px;
+    height: 650px;
     margin: auto;
 
     .login-notes {
@@ -49,7 +48,6 @@
     }
 
     .user-interaction {
-        width: 50%;
         padding: 3.5em 3em;
         justify-content: space-between;
 
