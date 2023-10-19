@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 
-export function NavBar({ categories, display, headerStage, setCatFilter }) {
+export function NavBar({ categories, display, headerStage, setCatFilter, style }) {
     const carouselRef = useRef(null)
     const [isAtStart, setIsAtStart] = useState(true)
     const [isAtEnd, setIsAtEnd] = useState(false)
@@ -33,7 +33,7 @@ export function NavBar({ categories, display, headerStage, setCatFilter }) {
     }, [headerStage])
 
     return (
-        <nav className="category-nav" style={{ borderBottom: headerStage === 2 ? '2px solid #ced1d6' : 'none' }}>
+        <nav className="category-nav" style={style}>
             {!isAtStart && (
                 <div className="carousel-btn left-side" onClick={() => scrollCarousel('left')}>
                     <img src={leftArrowSvg} alt="Left Arrow" />
@@ -41,7 +41,7 @@ export function NavBar({ categories, display, headerStage, setCatFilter }) {
             )}
             <div className={`container flex ${display === 'none' ? 'hidden' : ''}`} ref={carouselRef}>
                 {categories.map(category => (
-                    <NavLink key={category} onClick={()=>setCatFilter(category)} to={`/explore`}>
+                    <NavLink key={category} onClick={() => setCatFilter(category)} to={`/explore`}>
                         {category}
                     </NavLink>
                 ))}

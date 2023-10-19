@@ -6,6 +6,7 @@ const ModalContext = createContext()
 export function ModalProvider({ children }) {
     const [showModal, setShowModal] = useState(false)
     const [modalMode, setModalMode] = useState('login')
+    const [isDimmed, setIsDimmed] = useState(false)
 
     const openLogin = () => {
         setModalMode('login')
@@ -22,7 +23,10 @@ export function ModalProvider({ children }) {
     }
 
     return (
-        <ModalContext.Provider value={{ showModal, modalMode, openLogin, openSignup, closeModal }}>
+        <ModalContext.Provider value={{
+            showModal, modalMode, openLogin, openSignup
+            , closeModal, isDimmed, setIsDimmed
+        }}>
             {children}
             {showModal && <LoginSignup mode={modalMode} closeModal={closeModal} />}
         </ModalContext.Provider>
