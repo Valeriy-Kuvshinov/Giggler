@@ -10,6 +10,7 @@ import { GigReviews } from "../cmps/GigReviews.jsx"
 import { loadUser } from "../store/user.actions.js"
 import { loadReviews } from "../store/review.actions.js"
 import { gigService } from "../services/gig.service.js"
+import { GigNavbar } from "../cmps/GigNavbar.jsx"
 
 export function GigDetails() {
   const params = useParams()
@@ -38,6 +39,7 @@ export function GigDetails() {
 
   return (
     <section className="gig-details main-container full">
+      <GigNavbar gig={gig} user={user} />
       <section className="gig">
         <div className="gig-info">
           <GigHeader gig={gig} owner={user} />

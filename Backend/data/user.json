@@ -9,7 +9,8 @@
     "level": "level 2",
     "rating": 4.9,
     "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
-    "isAdmin": true
+    "isAdmin": true,
+    "likedGigs":[]
   },
   {
     "_id": "u002",
