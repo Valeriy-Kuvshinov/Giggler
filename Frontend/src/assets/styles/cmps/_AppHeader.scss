@@ -52,12 +52,11 @@
 
       .join {
         padding: 9px 16px;
-        border: 1px solid $bgColor3;
-        color: $bgColor3;
         border-radius: 5px;
         font-size: 14px;
         font-family: 'macan-bold';
-        background: none;
+        background: transparent;
+        border: 1px solid;
 
         &:hover {
           background-color: #1dbf73;
@@ -131,6 +130,7 @@
     }
   }
 }
+
 // .search-bar-dim-background {
 //   position: absolute;
 //   top: 80.8889px;
@@ -168,12 +168,10 @@
 //     z-index: -1;
 //     transition: all 0.1s ease-in-out;
 //   }
-  
+
 //   /* When the input is focused, change styles */
 //   .search-bar-dim-background + .search-bar:focus-within  {
 //     opacity: 0.6;
 //     visibility: visible;
 //     z-index: 99; 
 //   }
-  
-  
