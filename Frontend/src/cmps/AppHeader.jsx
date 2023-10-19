@@ -11,41 +11,28 @@ import { category } from '../services/gig.service'
 import { setFilter } from '../store/gig.actions'
 
 export function AppHeader() {
-    const [searchQuery, setSearchQuery] = useState('')
-    const [headerStage, setHeaderStage] = useState(0)
-    const [showDropdown, setShowDropdown] = useState(false)
-    const location = useLocation()
-    const navigate = useNavigate()
-    const user = useSelector(storeState => storeState.userModule.user)
-    const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-    const { showModal, openLogin, openSignup } = useModal()
-    const categories = category
-    const isHomePage = location.pathname === '/'
+  const [searchQuery, setSearchQuery] = useState('')
+  const [headerStage, setHeaderStage] = useState(0)
+  const [showDropdown, setShowDropdown] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const user = useSelector(storeState => storeState.userModule.user)
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+  const { showModal, openLogin, openSignup } = useModal()
+  const categories = category
+  const isHomePage = location.pathname === '/'
 
-    useEffect(() => {
-      const handleScroll = () => {
-        if (isHomePage) {
-          if (window.scrollY < 50) setHeaderStage(0)
-          else if (window.scrollY < 150) setHeaderStage(1)
-          else setHeaderStage(2)
-        }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isHomePage) {
+        if (window.scrollY < 50) setHeaderStage(0)
+        else if (window.scrollY < 150) setHeaderStage(1)
+        else setHeaderStage(2)
       }
-    
-      async function onLogout() {
-        try {
-          navigate("/")
-          await logout()
-        } catch (err) {
-          showErrorMsg('Cannot logout')
-        }
-      }
-    
-      window.addEventListener('scroll', handleScroll)
-      return () => {
-        window.removeEventListener('scroll', handleScroll)
-      }
-    }, [isHomePage])
-    
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
 
   useEffect(() => {
     if (isHomePage) setHeaderStage(0)
@@ -67,10 +54,9 @@ export function AppHeader() {
     }
     window.addEventListener('click', closeDropdown)
 
-    // function toggleDropdown(e) {
-    //     e.stopPropagation()
-    //     setShowDropdown(!showDropdown)
-    // }
+    return () => {
+      window.removeEventListener('click', closeDropdown)
+    }
   }, [])
 
   function handleSearchChange(e) {
@@ -103,9 +89,8 @@ export function AppHeader() {
 
   return (
     <header
-      className={`app-header flex column full ${
-        isHomePage ? 'home-page' : ''
-      } ${showModal ? 'show-modal' : ''}`}
+      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
+        } ${showModal ? 'show-modal' : ''}`}
       style={{ backgroundColor: headerBgColor }}
     >
       <nav className="main-nav" style={{ borderBottom: mainNavBorder }}>
@@ -152,7 +137,7 @@ export function AppHeader() {
                 <li>
                   <button
                     className="login"
-                    onClick={() => setShowModal('login')}
+                    onClick={openLogin}
                     style={{ color: textColor }}
                   >
                     Sign In
@@ -161,7 +146,7 @@ export function AppHeader() {
                 <li>
                   <button
                     className="join"
-                    onClick={() => setShowModal('signup')}
+                    onClick={openSignup}
                     style={{ color: joinBtnColor, borderColor: joinBtnColor }}
                   >
                     Join
@@ -178,9 +163,6 @@ export function AppHeader() {
         headerStage={headerStage}
         setCatFilter={setCatFilter}
       />
-      {showModal && (
-        <LoginSignup mode={showModal} closeModal={() => setShowModal('')} />
-      )}
     </header>
   )
 }
