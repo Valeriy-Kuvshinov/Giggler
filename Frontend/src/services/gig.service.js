@@ -1,7 +1,5 @@
-// import { useSearchParams } from 'react-router-dom'
 import { httpService } from './http.service.js'
 const BASE_URL = 'gig/'
-// var gFilterBy = 'all'
 
 export const gigService = {
   query,
@@ -9,7 +7,6 @@ export const gigService = {
   save,
   getById,
   getDefaultFilter,
-  // getFilterFromParams
 }
 
 // let gigsToDisplay = [...utilService.readJsonFile(GIGS_PATH)]
@@ -99,15 +96,6 @@ function getDefaultFilter() {
     pageIdx: 0,
   }
 }
-
-// function getFilterFromParams(){
-//   const [searchParams] = useSearchParams()
-//   newFilterBy = getDefaultFilter()
-//   for (const [key, value] of searchParams) {
-//     newFilterBy[key] = value
-//   }
-//   return newFilterBy
-// }
 
 export const filterKeyMap = {
   search: 'search',

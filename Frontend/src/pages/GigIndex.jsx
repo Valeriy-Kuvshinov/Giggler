@@ -5,20 +5,16 @@ import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { gigService } from '../services/gig.service.js'
+import { category, gigService } from '../services/gig.service.js'
 
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
+  const [searchParams, setSearchparams] = useSearchParams()
+  getFilterFromParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
-  const [searchParams, setSearchparams] = useSearchParams()
-  const navigate = useNavigate()
-  const queryParams = {}
-  for (const [key, value] of searchParams) {
-    queryParams[key] = value
-  }
-  console.log('queryParams in index: ', queryParams)
 
+  
   useEffect(() => {
     loadSetParams()
     loadsGigs()
@@ -40,36 +36,15 @@ export function GigIndex() {
     setSearchparams(newQueryParam)
   }
 
-  // function setFilterFromParams() {
-  //   const queryParamsToFilterMap = {
-  //     search: 'search',
-  //     time: 'time',
-  //     min: 'min',
-  //     max: 'max',
-  //     level: 'level',
-  //     cat: 'cat',
-  //     tag: 'tag',
-  //   }
-
-  //   const updatedFilterBy = { ...filterBy }
-
-  //   for (const queryParamKey in queryParamsToFilterMap) {
-  //     if (queryParams[queryParamKey]) {
-  //       const filterKey = queryParamsToFilterMap[queryParamKey]
-
-  //       if (filterKey === 'min' || filterKey === 'max') {
-  //         updatedFilterBy[filterKey] = parseInt(queryParams[queryParamKey], 10)
-  //       } else if (filterKey === 'cat' || filterKey === 'tag') {
-  //         updatedFilterBy[filterKey] = queryParams[queryParamKey]
-  //           .replace('---', ' & ')
-  //           .replace('-', ' ')
-  //       } else {
-  //         updatedFilterBy[filterKey] = queryParams[queryParamKey]
-  //       }
-  //     }
-  //   }
-  //   return updatedFilterBy
-  // }
+  function getFilterFromParams(){
+    const newFilterBy = gigService.getDefaultFilter()
+    const isNewRefresh = false
+    for (const [key, value] of searchParams) {
+      newFilterBy[key] = value
+      if (newFilterBy[key]) !isNewRefresh
+    }
+    if (isNewRefresh) setFilter({ ...filterBy, ...newFilterBy})
+  }
 
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
@@ -123,11 +98,22 @@ export function GigIndex() {
     setIsRenderedChoice([false, ''])
   }
 
+  function onDeleteFilter(filterToDelete) {
+    if (filterToDelete === ('min' || 'max'))
+      setFilter({ ...filterBy, [filterToDelete]: undefined })
+
+    setFilter({ ...filterBy, [filterToDelete]: '' })
+  }
+
   function onHandleChoice(renderedChoice) {
-    if (renderedChoice === isRenderedChoice[1] && isRenderedChoice[0]) {
+    if (
+      (renderedChoice === isRenderedChoice[1] && isRenderedChoice[0]) ||
+      (renderedChoice === 'category' && isRenderedChoice[0])
+    ) {
       setIsRenderedChoice([false, ''])
       return
     }
+
     switch (renderedChoice) {
       case 'seller_level':
         setIsRenderedChoice([true, 'seller_level'])
@@ -138,7 +124,7 @@ export function GigIndex() {
       case 'budget':
         setIsRenderedChoice([true, 'budget'])
         break
-      case 'categories':
+      case 'category':
         setIsRenderedChoice([true, categorySelect.trim()])
         break
       case 'clear':
@@ -160,6 +146,7 @@ export function GigIndex() {
         setMenuFilter={setMenuFilter}
         onHandleChoice={onHandleChoice}
         isRenderedChoice={isRenderedChoice}
+        onDeleteFilter={onDeleteFilter}
       />
       <GigList gigs={gigs} />
       <Pagination />

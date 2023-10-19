@@ -10,12 +10,11 @@ export function GigFilter({
   setMenuFilter,
   onHandleChoice,
   isRenderedChoice,
+  onDeleteFilter,
 }) {
   const [isSticky, setIsSticky] = useState(false)
   let shadowStart = 139
-  const categorySelect = filterBy.cat
-    ? filterBy.cat
-    : 'category'
+  const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   useEffect(() => {
     handleScroll()
@@ -44,10 +43,7 @@ export function GigFilter({
           </section>
         )}
         {filterBy.cat && (
-          <CatTagDisplayBar
-            category={filterBy.cat}
-            tag={filterBy.tag}
-          />
+          <CatTagDisplayBar category={filterBy.cat} tag={filterBy.tag} />
         )}
       </div>
       <main className={`gig-filter layout-row ${isSticky ? 'shadow' : ''}`}>
@@ -66,7 +62,7 @@ export function GigFilter({
               }`}
             >
               <button
-                onClick={() => onHandleChoice('categories')}
+                onClick={() => onHandleChoice('category')}
                 className="btn filtered-sc"
               >
                 {categorySelect.charAt(0).toUpperCase() +
@@ -151,7 +147,7 @@ export function GigFilter({
           </div>
         </section>
       </main>
-      <SelectedFilters filterBy={filterBy} />
+      <SelectedFilters filterBy={filterBy} onDeleteFilter={onDeleteFilter} />
     </>
   )
 }
