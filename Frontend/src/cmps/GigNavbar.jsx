@@ -9,10 +9,13 @@ import { CatTagDisplayBar } from "./CatTagDisplayBar"
 import { gigService } from "../services/gig.service"
 
 export function GigNavbar({ gig }) {
-
+  
   const user = useSelector(storeState => storeState.userModule.user)
-  const isLiked=((gig.likedByUsers.findIndex(liked => liked===user._id))!==-1) ? true : false
-  console.log('isLiked ',isLiked)
+  var isLiked=false
+  if(user!==null){
+    isLiked=((gig.likedByUsers.findIndex(liked => liked===user._id))!==-1) ? true : false
+  }
+  // console.log('isLiked ',isLiked)
   // console.log('loggedin ',user)
 
   function shareGig() {
@@ -26,15 +29,15 @@ export function GigNavbar({ gig }) {
     }
     const gigToSave={...gig}
     if(gigToSave.likedByUsers.findIndex(gig=>gig===user._id)!==-1){
-        var likedByUsers=[...gigToSave.likedByUsers]
-        likedByUsers=likedByUsers.filter(liker => liker!== user._id)
-        gigToSave.likedByUsers=[...likedByUsers]
-        gigService.save(gigToSave)
-        console.log("unlike")
+      var likedByUsers=[...gigToSave.likedByUsers]
+      likedByUsers=likedByUsers.filter(liker => liker!== user._id)
+      gigToSave.likedByUsers=[...likedByUsers]
+      gigService.save(gigToSave)
+      console.log("unlike")
     } else {
-        gigToSave.likedByUsers.push(user._id)
-        gigService.save(gigToSave)
-        console.log("like")
+      gigToSave.likedByUsers.push(user._id)
+      gigService.save(gigToSave)
+      console.log("like")
     }
   }
   return (
