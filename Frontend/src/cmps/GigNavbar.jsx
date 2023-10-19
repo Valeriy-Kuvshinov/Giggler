@@ -10,25 +10,29 @@ import { gigService } from "../services/gig.service"
 
 export function GigNavbar({ gig }) {
 
-  const user2 = useSelector(storeState => storeState.userModule.user)
-  const isLiked=((gig.likedByUsers.findIndex(liked => liked===user2._id))!==-1) ? true : false
+  const user = useSelector(storeState => storeState.userModule.user)
+  const isLiked=((gig.likedByUsers.findIndex(liked => liked===user._id))!==-1) ? true : false
   console.log('isLiked ',isLiked)
-  // console.log('loggedin ',user2)
+  // console.log('loggedin ',user)
 
   function shareGig() {
     console.log("share")
   }
 
   function likeGig() {
+    if(user===null) {
+      alert('log in to like gig')
+      return
+    }
     const gigToSave={...gig}
-    if(gigToSave.likedByUsers.findIndex(gig=>gig===user2._id)!==-1){
+    if(gigToSave.likedByUsers.findIndex(gig=>gig===user._id)!==-1){
         var likedByUsers=[...gigToSave.likedByUsers]
-        likedByUsers=likedByUsers.filter(liker => liker!== user2._id)
+        likedByUsers=likedByUsers.filter(liker => liker!== user._id)
         gigToSave.likedByUsers=[...likedByUsers]
         gigService.save(gigToSave)
         console.log("unlike")
     } else {
-        gigToSave.likedByUsers.push(user2._id)
+        gigToSave.likedByUsers.push(user._id)
         gigService.save(gigToSave)
         console.log("like")
     }
