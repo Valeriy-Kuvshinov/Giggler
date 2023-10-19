@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext'
@@ -15,8 +15,10 @@ export function AppHeader() {
   const [headerStage, setHeaderStage] = useState(0)
   const [showDropdown, setShowDropdown] = useState(false)
 
+  const userInfoRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
+
   const user = useSelector(storeState => storeState.userModule.user)
   const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
   const { showModal, openLogin, openSignup } = useModal()
@@ -26,12 +28,22 @@ export function AppHeader() {
   const headerStyles = {
     backgroundColor: headerStage >= 1 ? '#fff' : 'transparent',
     color: isHomePage && headerStage === 0 ? '#fff' : '#62646a',
-    borderBottom: headerStage === 2 ? '1px solid #ced1d6' : 'none',
+  }
+
+  const navBarStyles = {
+    borderBottom: headerStage >= 2 ? '2px solid #e4e5e7' : 'none',
+    borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
   }
 
   const joinButtonStyles = {
     color: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
     borderColor: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
+  }
+
+  const closeDropdown = (e) => {
+    if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
+      setShowDropdown(false);
+    }
   }
 
   useEffect(() => {
@@ -48,14 +60,11 @@ export function AppHeader() {
       setHeaderStage(2)
     }
 
-    const closeDropdown = (e) => {
-      if (e.target.className !== 'user-info') setShowDropdown(false)
-    }
-    window.addEventListener('click', closeDropdown)
+    window.addEventListener('click', closeDropdown);
     return () => {
-      window.removeEventListener('click', closeDropdown)
+      window.removeEventListener('click', closeDropdown);
     }
-  }, [isHomePage])
+  }, [isHomePage]);
 
   async function onLogout() {
     try {
@@ -89,6 +98,7 @@ export function AppHeader() {
           <Link to="/" style={{ color: headerStyles.color }}>
             <h1 className="logo">Giggler<span>.</span></h1>
           </Link>
+          
           <SearchBar
             placeholder="Search for any service..."
             searchQuery={searchQuery}
@@ -102,10 +112,11 @@ export function AppHeader() {
             </li>
             {user ? (
               <>
-                <li className="user-info flex" onClick={() => setShowDropdown(!showDropdown)}>
+                <li className="user-info flex" onClick={() => setShowDropdown(!showDropdown)} ref={userInfoRef}>
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
                   {showDropdown && <UserDropdown user={user} onClose={() => setShowDropdown(false)} />}
                 </li>
+
                 <li>
                   <button className="logout" onClick={onLogout} style={{ color: headerStyles.color }}>Logout</button>
                 </li>
@@ -115,6 +126,7 @@ export function AppHeader() {
                 <li>
                   <button className="login" onClick={openLogin} style={{ color: headerStyles.color }}>Sign In</button>
                 </li>
+
                 <li>
                   <button className="join" onClick={openSignup} style={joinButtonStyles}>Join</button>
                 </li>
@@ -128,6 +140,7 @@ export function AppHeader() {
         display={headerStage === 2 ? 'flex' : 'none'}
         headerStage={headerStage}
         setCatFilter={setCatFilter}
+        style={navBarStyles}
       />
     </header>
   )

@@ -20,7 +20,7 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697798400000,
-        "orderState": "pending",
+        "orderState": "denied",
         "_id": "a1ycv"
     },
     {

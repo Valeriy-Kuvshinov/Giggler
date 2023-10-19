@@ -61,15 +61,7 @@ export function WelcomeSection() {
                     backgroundImage: `url("${backgroundImage}")`,
                     opacity: showImage ? '1' : '0'
                 }}>
-                    {windowWidth >= 900 && (
-                        <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
-                            <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
-                            <div className="text-content">
-                                <div className="title">{personImages[currentImageIndex].title}</div>
-                                <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
-                            </div>
-                        </div>
-                    )}
+
                 </div>
                 <div className="welcome-text-search">
                     <h1>Find the right <span>freelance</span> service, right away</h1>
@@ -78,6 +70,7 @@ export function WelcomeSection() {
                         searchQuery={searchQuery}
                         onSearchChange={handleSearchChange}
                         onSearchSubmit={handleSearchSubmit}
+                        controlDimming={false}
                     />
                     <div className='flex row'>
                         <h4>Popular:</h4>
@@ -88,6 +81,15 @@ export function WelcomeSection() {
                     </div>
                 </div>
             </section>
+            {windowWidth >= 900 && (
+                <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
+                    <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
+                    <div className="text-content">
+                        <div className="title">{personImages[currentImageIndex].title}</div>
+                        <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

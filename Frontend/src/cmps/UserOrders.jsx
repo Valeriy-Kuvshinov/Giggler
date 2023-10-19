@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
-import { orderService } from '../services/order.service.local'
 import { orderBackendService } from '../services/order.backend.service'
 import { UserOrder } from './UserOrder'
 import { loadOrders } from '../store/order.actions'
@@ -10,7 +9,7 @@ export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     var sellerOrders=orders.filter((order)=>order.sellerId===user._id)
-    var userOrders=orders.filter((order)=>(order.buyerId===user._id)&&(order.orderState==='accepted'))
+    var userOrders=orders.filter((order)=>(order.buyerId===user._id)&&(order.orderState!=='pending'))
 
     useEffect(() => {
         loadTheOrders()
@@ -34,8 +33,10 @@ export function UserOrders() {
 
     function denyOrder(order) {
         console.log(`order ${order._id} denied`)
-        order.orderState = 'denied'
-        orderBackendService.save(order)
+        const newOrder={...order}
+        newOrder.orderState = 'denied'
+        console.log(newOrder)
+        orderBackendService.save(newOrder)
     }
 
     if(orders.length===0) return <div>loading... </div>

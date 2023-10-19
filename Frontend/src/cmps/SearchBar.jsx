@@ -1,15 +1,11 @@
-import React from 'react'
 import searchIconSvg from '../assets/img/svg/search.icon.svg'
+import { useModal } from '../customHooks/ModalContext'
 
-export function SearchBar({
-  placeholder,
-  searchQuery,
-  onSearchChange,
-  onSearchSubmit,
-  visibility,
-}) {
+export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSubmit
+  , visibility, controlDimming = true }) {
+  const { setIsDimmed } = useModal()
+
   const handleKeyPress = (e) => {
-    console.log('e.key: ')
     if (e.key === 'Enter') {
       onSearchSubmit(e)
     }
@@ -17,7 +13,6 @@ export function SearchBar({
 
   return (
     <>
-      <div className="search-bar-dim-background"></div>
       <div className="search-bar flex" style={{ visibility: visibility }}>
         <input
           type="text"
@@ -25,6 +20,8 @@ export function SearchBar({
           value={searchQuery}
           onChange={onSearchChange}
           onKeyPress={handleKeyPress}
+          onFocus={() => controlDimming && setIsDimmed(true)}
+          onBlur={() => controlDimming && setIsDimmed(false)}
         />
         <button type="submit" onClick={onSearchSubmit}>
           <img src={searchIconSvg} alt="Search" />

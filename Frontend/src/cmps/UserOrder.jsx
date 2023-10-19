@@ -1,6 +1,10 @@
+import { useState } from "react"
+
+import { DenialOrderModal } from "./DenialOrderModal"
 
 export function UserOrder({ order, acceptOrder, denyOrder }) {
 
+    const [isDenied,setDenial]=useState(false)
 
     function acceptTheOrder() {
         // console.log(order)
@@ -9,7 +13,17 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
 
     function denyTheOrder() {
         // console.log(order)
-        denyOrder(order)
+        setDenial(true)
+        // denyOrder(order)
+    }
+
+    function denyIt(order){
+        if(order){
+            denyOrder(order)
+            setDenial(true)
+        } else {
+            setDenial(false)
+        }
     }
 
     // console.log('order',order)
@@ -27,5 +41,9 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
             <button onClick={acceptTheOrder}>accept order</button>
             <button onClick={denyTheOrder}>deny order</button>
         </div>}
+        {isDenied && <DenialOrderModal order={order} denyOrder={denyIt}/>}
+        {isDenied && <div className="deny-background" 
+        // onClick={denyIt()}
+        ></div>}
     </section>)
 }

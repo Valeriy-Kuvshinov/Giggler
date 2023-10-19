@@ -39,7 +39,7 @@ export function GigDetails() {
 
   return (
     <section className="gig-details main-container full">
-      <GigNavbar gig={gig} user={user} />
+      <GigNavbar gig={gig} onGigChange={updatedGig => setGig(updatedGig)} />
       <section className="gig">
         <div className="gig-info">
           <GigHeader gig={gig} owner={user} />
