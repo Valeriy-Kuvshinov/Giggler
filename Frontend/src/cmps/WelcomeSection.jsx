@@ -78,6 +78,7 @@ export function WelcomeSection() {
                         searchQuery={searchQuery}
                         onSearchChange={handleSearchChange}
                         onSearchSubmit={handleSearchSubmit}
+                        controlDimming={false}
                     />
                     <div className='flex row'>
                         <h4>Popular:</h4>

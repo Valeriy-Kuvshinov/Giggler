@@ -20,9 +20,10 @@
                 line-height: 24px;
                 padding: 8px 0px;
                 position: relative;
+                color: $clrSecondary6;
 
                 &:not(:first-child) {
-                    margin-left: 1em;
+                    margin-left: 1.25em;
                 }
 
                 &::after {
@@ -47,12 +48,14 @@
 
         .carousel-btn {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0%;
+            transform: translateY(-15%);
             cursor: pointer;
             z-index: 1;
             padding: 1em 0em;
             background: $clrPrimary1;
+            width: 15px;
+            height: 47px;
 
             &.left-side {
                 left: 30px;

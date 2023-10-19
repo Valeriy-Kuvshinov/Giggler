@@ -1,4 +1,3 @@
-import React from 'react'
 import { galleryService } from '../services/gallery.service.js'
 import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
