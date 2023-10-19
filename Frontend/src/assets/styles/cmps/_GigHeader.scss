@@ -27,10 +27,23 @@
             margin-inline-end: 10px;
         }
 
+        .stars{
+            display: flex;
+            align-items: center;
+            img{
+                margin-inline-end: 4px;
+            }
+        }
+
         .seller-picture {
             width: 64px;
             height: 64px;
             border-radius: 32px;
+        }
+        .user-stats{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 

@@ -4,7 +4,6 @@ import houseIcon from '../assets/img/svg/home.icon.svg'
 import { Link } from 'react-router-dom'
 
 export function GigHeader({ gig, owner }) {
-    const fullStarsCount = Math.ceil(owner.rating)
 
     return (
         <section style={{ overflow: 'hidden' }} className="gig-header">
@@ -12,13 +11,11 @@ export function GigHeader({ gig, owner }) {
             <h2>{gig.title}</h2>
             <div className="header">
                 <img className='seller-picture' src={owner.imgUrl} alt="Seller Avatar" />
-                <div>
+                <div className='user-stats'>
                 <p>{owner.fullName}</p>
 
                 <p className="stars">
-                    {[...Array(fullStarsCount)].map((_, idx) => (
-                        <img src={starIcon} key={idx} alt="star" />
-                    ))}
+                        <img src={starIcon} alt="star" />
                     {owner.rating}
                 </p>
                 </div>
