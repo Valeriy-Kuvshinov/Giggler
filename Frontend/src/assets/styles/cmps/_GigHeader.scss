@@ -1,7 +1,8 @@
 .gig-header {
     display: flex;
     flex-direction: column;
-
+    margin-block-end: 30px;
+    
     .nav-header{
         display: flex;
         gap:8px;
@@ -16,18 +17,33 @@
         margin: 0;
     }
 
-    .rating {
+    .header {
         display: flex;
-        justify-content: space-between;
+        margin-block-end: 15px;
 
         img {
             width: 20px;
             height: 20px;
+            margin-inline-end: 10px;
+        }
+
+        .stars{
+            display: flex;
+            align-items: center;
+            img{
+                margin-inline-end: 4px;
+            }
         }
 
         .seller-picture {
-            width: 30px;
-            height: 30px;
+            width: 64px;
+            height: 64px;
+            border-radius: 32px;
+        }
+        .user-stats{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
     }
 

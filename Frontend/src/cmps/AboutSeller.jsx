@@ -1,25 +1,21 @@
-import starIcon from '../assets/img/svg/star.icon.svg'
+import starIcon from "../assets/img/svg/star.icon.svg"
 
 export function AboutSeller({ owner }) {
-  const fullStarsCount = Math.ceil(owner.rating)
-
   return (
     <section className="about-seller">
       <h3>About The Seller</h3>
       <div className="seller">
         <img className="seller-picture" src={owner.imgUrl} />
-        <div>
+        <div className="seller-stats">
           <p>{owner.fullName}</p>
           <div className="stars2">
-            {[...Array(fullStarsCount)].map((_, idx) => (
-              <img src={starIcon} key={idx} alt="star" />
-            ))}
+            <img src={starIcon} alt="star" />
             {owner.rating}
           </div>
-          <button>Contact Me</button>
         </div>
       </div>
 
+      <button>Contact Me</button>
       <div className="seller-info">
         <div className="seller-details">
           <div className="inner-details">
@@ -46,7 +42,8 @@ export function AboutSeller({ owner }) {
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit esse,
           nobis a qui accusantium beatae enim non adipisci saepe, labore illo
-          ipsum perspiciatis itaque. Consequuntur dicta molestiae non ipsa nulla?
+          ipsum perspiciatis itaque. Consequuntur dicta molestiae non ipsa
+          nulla?
         </p>
       </div>
     </section>
