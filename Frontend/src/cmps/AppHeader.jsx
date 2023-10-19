@@ -1,125 +1,168 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { showErrorMsg } from '../services/event-bus.service'
+import { useModal } from '../customHooks/ModalContext'
+import { showErrorMsg } from '../services/event-bus.service.js'
 import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
-import { LoginSignup } from './LoginSignup.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
+import { category } from '../services/gig.service'
+import { setFilter } from '../store/gig.actions'
 
 export function AppHeader() {
-    const [searchQuery, setSearchQuery] = useState('')
-    const [headerStage, setHeaderStage] = useState(0)
-    const [showDropdown, setShowDropdown] = useState(false)
-    const [showModal, setShowModal] = useState('')
-    const location = useLocation()
-    const navigate = useNavigate()
-    const user = useSelector(storeState => storeState.userModule.user)
-    const categories = [
-        "Graphics & Design", "Programming & Tech", "Digital Marketing", "Video & Animation",
-        "Writing & Translation", "Music & Audio", "Business", "Data", "Photography", "AI Services"]
-    const isHomePage = location.pathname === '/'
+  const [searchQuery, setSearchQuery] = useState('')
+  const [headerStage, setHeaderStage] = useState(0)
+  const [showDropdown, setShowDropdown] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const user = useSelector(storeState => storeState.userModule.user)
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+  const { showModal, openLogin, openSignup } = useModal()
+  const categories = category
+  const isHomePage = location.pathname === '/'
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (isHomePage) {
-                if (window.scrollY < 50) setHeaderStage(0)
-                else if (window.scrollY < 150) setHeaderStage(1)
-                else setHeaderStage(2)
-            }
-        }
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [isHomePage])
-
-    useEffect(() => {
-        if (isHomePage) setHeaderStage(0)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (isHomePage) {
+        if (window.scrollY < 50) setHeaderStage(0)
+        else if (window.scrollY < 150) setHeaderStage(1)
         else setHeaderStage(2)
-    }, [isHomePage])
-
-    async function onLogout() {
-        try {
-            navigate("/")
-            await logout()
-        } catch (err) {
-            showErrorMsg('Cannot logout')
-        }
+      }
     }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
 
-    useEffect(() => {
-        const closeDropdown = (e) => {
-            if (e.target.className !== 'user-info') setShowDropdown(false)
-        }
-        window.addEventListener('click', closeDropdown)
+  useEffect(() => {
+    if (isHomePage) setHeaderStage(0)
+    else setHeaderStage(2)
+  }, [isHomePage])
 
-        return () => {
-            window.removeEventListener('click', closeDropdown)
-        }
-    }, [])
-
-    function handleSearchChange(e) {
-        const newSearchQuery = e.target.value
-        setSearchQuery(newSearchQuery)
+  async function onLogout() {
+    try {
+      navigate('/')
+      await logout()
+    } catch (err) {
+      showErrorMsg('Cannot logout')
     }
+  }
 
-    function handleSearchSubmit(e) {
-        e.preventDefault()
-        if (!searchQuery) return
-
-        navigate(`/explore?search=${searchQuery}`)
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (e.target.className !== 'user-info') setShowDropdown(false)
     }
+    window.addEventListener('click', closeDropdown)
 
-    const toggleDropdown = (e) => {
-        e.stopPropagation()
-        setShowDropdown(!showDropdown)
+    return () => {
+      window.removeEventListener('click', closeDropdown)
     }
+  }, [])
 
-    const headerBgColor = headerStage >= 1 ? '#fff' : 'transparent'
-    const searchVisibility = headerStage === 2 ? 'visible' : 'hidden'
-    const mainNavBorder = headerStage === 2 ? '1px solid #ced1d6' : 'none'
-    const categoryNavDisplay = headerStage === 2 ? 'flex' : 'none'
-    const textColor = (isHomePage && headerStage === 0) ? '#fff' : '#62646a'
-    const joinBtnColor = (headerStage >= 1 || !isHomePage) ? '#1dbf73' : '#fff'
+  function handleSearchChange(e) {
+    const newSearchQuery = e.target.value
+    setSearchQuery(newSearchQuery)
+  }
 
-    return (
-        <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''} ${showModal ? 'show-modal' : ''}`} style={{ backgroundColor: headerBgColor }}>
-            <nav className="main-nav" style={{ borderBottom: mainNavBorder }}>
-                <div className="container flex row" style={{ color: textColor }}>
-                    <Link to="/" style={{ color: textColor }}>
-                        <h1 className="logo">Giggler<span>.</span></h1>
-                    </Link>
+  function handleSearchSubmit(e) {
+    e.preventDefault()
+    if (!searchQuery) return
+    setFilter({ ...filterBy, search: searchQuery })
+    navigate(`/explore`)
+  }
 
-                    <SearchBar
-                        placeholder="Search for any service..."
-                        searchQuery={searchQuery}
-                        onSearchChange={handleSearchChange}
-                        onSearchSubmit={handleSearchSubmit}
-                        visibility={searchVisibility}
-                    />
-                    <ul className="nav-links flex">
-                        <li><Link to="/explore" style={{ color: textColor }}>Explore</Link></li>
-                        {user ? (
-                            <>
-                                <li className="user-info flex" onClick={toggleDropdown}>
-                                    {user.imgUrl && <img src={user.imgUrl} />}
-                                    {showDropdown && <UserDropdown user={user} onClose={toggleDropdown} />}
-                                </li>
-                                <li>
-                                    <button className='logout' onClick={onLogout} style={{ color: textColor }}>Logout</button>
-                                </li>
-                            </>
-                        ) : (
-                            <>
-                                <li><button className='login' onClick={() => setShowModal('login')} style={{ color: textColor }}>Sign In</button></li>
-                                <li><button className='join' onClick={() => setShowModal('signup')} style={{ color: joinBtnColor, borderColor: joinBtnColor }}>Join</button></li>
-                            </>
-                        )}
-                    </ul>
-                </div>
-            </nav>
-            <NavBar categories={categories} display={categoryNavDisplay} headerStage={headerStage} />
-            {showModal && <LoginSignup mode={showModal} closeModal={() => setShowModal('')} />}
-        </header>
-    )
+  function setCatFilter(category) {
+    setFilter({ ...filterBy, cat: category })
+  }
+
+  const toggleDropdown = (e) => {
+    e.stopPropagation()
+    setShowDropdown(!showDropdown)
+  }
+
+  const headerBgColor = headerStage >= 1 ? '#fff' : 'transparent'
+  const searchVisibility = headerStage === 2 ? 'visible' : 'hidden'
+  const mainNavBorder = headerStage === 2 ? '1px solid #ced1d6' : 'none'
+  const categoryNavDisplay = headerStage === 2 ? 'flex' : 'none'
+  const textColor = isHomePage && headerStage === 0 ? '#fff' : '#62646a'
+  const joinBtnColor = headerStage >= 1 || !isHomePage ? '#1dbf73' : '#fff'
+
+  return (
+    <header
+      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
+        } ${showModal ? 'show-modal' : ''}`}
+      style={{ backgroundColor: headerBgColor }}
+    >
+      <nav className="main-nav" style={{ borderBottom: mainNavBorder }}>
+        <div className="container flex row" style={{ color: textColor }}>
+          <Link to="/" style={{ color: textColor }}>
+            <h1 className="logo">
+              Giggler<span>.</span>
+            </h1>
+          </Link>
+
+          <SearchBar
+            placeholder="Search for any service..."
+            searchQuery={searchQuery}
+            onSearchChange={handleSearchChange}
+            onSearchSubmit={handleSearchSubmit}
+            visibility={searchVisibility}
+          />
+          <ul className="nav-links flex">
+            <li>
+              <Link to="/explore" style={{ color: textColor }}>
+                Explore
+              </Link>
+            </li>
+            {user ? (
+              <>
+                <li className="user-info flex" onClick={toggleDropdown}>
+                  {user.imgUrl && <img src={user.imgUrl} />}
+                  {showDropdown && (
+                    <UserDropdown user={user} onClose={toggleDropdown} />
+                  )}
+                </li>
+                <li>
+                  <button
+                    className="logout"
+                    onClick={onLogout}
+                    style={{ color: textColor }}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <button
+                    className="login"
+                    onClick={openLogin}
+                    style={{ color: textColor }}
+                  >
+                    Sign In
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className="join"
+                    onClick={openSignup}
+                    style={{ color: joinBtnColor, borderColor: joinBtnColor }}
+                  >
+                    Join
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      </nav>
+      <NavBar
+        categories={categories}
+        display={categoryNavDisplay}
+        headerStage={headerStage}
+        setCatFilter={setCatFilter}
+      />
+    </header>
+  )
 }

@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import { store } from './store/store'
+import { ModalProvider } from './customHooks/ModalContext'
 import { RootCmp } from './RootCmp'
 import './assets/styles/main.scss'
 
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <Provider store={store}>
     <Router>
-      <RootCmp />
+      <ModalProvider>
+        <RootCmp />
+      </ModalProvider>
     </Router>
   </Provider>
 )

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 
-export function NavBar({ categories, display, headerStage }) {
+export function NavBar({ categories, display, headerStage, setCatFilter }) {
     const carouselRef = useRef(null)
     const [isAtStart, setIsAtStart] = useState(true)
     const [isAtEnd, setIsAtEnd] = useState(false)
@@ -41,7 +41,7 @@ export function NavBar({ categories, display, headerStage }) {
             )}
             <div className={`container flex ${display === 'none' ? 'hidden' : ''}`} ref={carouselRef}>
                 {categories.map(category => (
-                    <NavLink key={category} to={`/explore?cat=${category.split(' ').join('-').replace('&', '-')}`}>
+                    <NavLink key={category} onClick={()=>setCatFilter(category)} to={`/explore`}>
                         {category}
                     </NavLink>
                 ))}
