@@ -1,6 +1,7 @@
 .about-seller {
     .seller {
         display: flex;
+        margin-block-end: 15px;
 
         img {
             width: 20px;
@@ -9,6 +10,7 @@
         .seller-picture {
             width: 130px;
             height: 130px;
+            border-radius: 65px;
             margin-inline-end: 10px;
         }
 
@@ -33,6 +35,7 @@
         border: 1px solid $clrSecondary2;
         color: $clrSecondary5;
         padding: 24px;
+        margin-block-end: 15px;
 
         .seller-details {
             display: flex;

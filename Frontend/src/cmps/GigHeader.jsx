@@ -8,23 +8,11 @@ export function GigHeader({ gig, owner }) {
 
     return (
         <section style={{ overflow: 'hidden' }} className="gig-header">
-            <div className='nav-header'>
-                <Link to={'/'}>
-                    <img src={houseIcon} />
-                </Link>
-                /
-                <Link to={`/explore?cat=${gig.category}`}>
-                    {gig.category}
-                </Link>
-                /
-                <Link to={`/explore?cat=${gig.category}&${gig.tags[2]}`}>
-                    {gig.tags[2]}
-                </Link>
-            </div>
 
             <h2>{gig.title}</h2>
-            <div className="rating">
+            <div className="header">
                 <img className='seller-picture' src={owner.imgUrl} alt="Seller Avatar" />
+                <div>
                 <p>{owner.fullName}</p>
 
                 <p className="stars">
@@ -33,6 +21,7 @@ export function GigHeader({ gig, owner }) {
                     ))}
                     {owner.rating}
                 </p>
+                </div>
             </div>
             <img src={gig.imgUrls[0]} alt="Main gig" />
 
