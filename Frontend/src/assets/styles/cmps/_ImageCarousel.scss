@@ -108,6 +108,7 @@
   }
 }
 
+.gig-preview:hover .carousel-container,
 .carousel-container:hover {
   .arrow {
     // background-color: #fff;
@@ -123,3 +124,24 @@
     }
   }
 }
+
+// .hovered {
+//   .arrow {
+//     // background-color: #fff;
+//     opacity: 1;
+//     background: rgba(0, 0, 0, 0.2);
+//     transition: all 0.5s ease-in-out;
+
+//     &.right {
+//       right: 12px;
+//     }
+//     &.left {
+//       left: 12px;
+//     }
+//   }
+// }
+
+// .gig-preview:hover .carousel-container,
+// .carousel-container:hover {
+//   @extend hovered !optional;
+// }
