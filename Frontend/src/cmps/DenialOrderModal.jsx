@@ -4,12 +4,10 @@ export function DenialOrderModal({ order, denyOrder }) {
   function onConfirmDenial() {
     try{
         const reason = document.getElementById("denialReason").value
-        const newOrder = { ...order, reasonForDenial: reason }
+        const newOrder = { ...order }
         // console.log("new order : ", newOrder)
         // console.log("reason added")
-        // loadUser(newUser._id)
-        orderBackendService.save(newOrder)
-        denyOrder(newOrder)
+        denyOrder(newOrder,reason)
     } catch (err) {
         console.log('couldnt deny order : ',err)
     }

@@ -31,10 +31,14 @@ export function UserOrders() {
         orderBackendService.save(order)
     }
 
-    function denyOrder(order) {
+    function denyOrder(order,reason) {
         console.log(`order ${order._id} denied`)
-        const newOrder={...order}
+        const newOrder={...order }
         newOrder.orderState = 'denied'
+        console.log('reason',reason)
+        console.log(newOrder.reasonForDenial)
+        newOrder.reasonForDenial = reason
+        console.log(newOrder.reasonForDenial)
         console.log(newOrder)
         orderBackendService.save(newOrder)
     }

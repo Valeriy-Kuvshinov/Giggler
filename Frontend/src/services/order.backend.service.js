@@ -40,7 +40,8 @@ function createOrder(buyerId = '', buyerName = '', sellerId = '', title = 'impor
         deliveryTime: deliveryTime,
         orderedGigId: gigId,
         price: price,
-        createdAt: Date.now(),
+        createdAt: Date.now(),  
+        reasonForDenial:'',
         orderState: 'pending'
     }
 }

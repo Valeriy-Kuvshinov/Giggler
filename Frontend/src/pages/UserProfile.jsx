@@ -28,7 +28,7 @@ export function UserProfile() {
   if (user === null || gigs === null) return <div>loading...</div>
 
   return (
-    <section className="main-container full">
+    <section className="profile layout-row">
       <div className="user-profile">
         <UserInfo user={user}/>
         <UserGigs gigs={gigs} user={user} />

@@ -58,6 +58,7 @@ function save(order) {
         newOrder.orderedGigId=order.orderedGigId
         newOrder.price=order.price
         newOrder.orderState=order.orderState
+        newOrder.reasonForDenial=order.reasonForDenial
     } else {
         order._id = _makeId()
         // order.owner = loggedinUser

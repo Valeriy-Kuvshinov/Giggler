@@ -38,7 +38,7 @@ export function GigDetails() {
   if (!gig || !user) return <h1>loading...</h1>
 
   return (
-    <section className="gig-details main-container full">
+    <section className="gig-details layout-row">
       <GigNavbar gig={gig} onGigChange={updatedGig => setGig(updatedGig)} />
       <section className="gig">
         <div className="gig-info">

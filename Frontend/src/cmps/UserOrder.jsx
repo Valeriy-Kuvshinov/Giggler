@@ -17,13 +17,11 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
         // denyOrder(order)
     }
 
-    function denyIt(order){
+    function denyIt(order,reason){
         if(order){
-            denyOrder(order)
-            setDenial(true)
-        } else {
+            denyOrder(order,reason)
+        } 
             setDenial(false)
-        }
     }
 
     // console.log('order',order)
@@ -35,6 +33,7 @@ export function UserOrder({ order, acceptOrder, denyOrder }) {
         <span>ordered gig title: {order.title}</span>
         <span>ordered gig price: {order.price}</span>
         <span>time to make: {order.deliveryTime}</span>
+        {order.orderState==='denied' && <span>reason for denial : {order.reasonForDenial}</span>}
 
         {order.orderState === 'pending' && 
         <div className='order-buttons'>
