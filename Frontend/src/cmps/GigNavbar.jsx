@@ -7,14 +7,15 @@ import { useSelector } from 'react-redux'
 import { useModal } from "../customHooks/ModalContext"
 
 import { CatTagDisplayBar } from "./CatTagDisplayBar.jsx"
-
-import { gigService } from "../services/gig.service"
-
+import { ShareGigModal } from "./ShareGigModal.jsx"
+import { gigService } from "../services/gig.service.js"
 
 export function GigNavbar({ gig, onGigChange }) {
   const user = useSelector(storeState => storeState.userModule.user)
+
   const { openLogin } = useModal()
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLiked, setIsLiked] = useState(
     user && gig.likedByUsers.includes(user._id)
   )
@@ -24,7 +25,11 @@ export function GigNavbar({ gig, onGigChange }) {
   }, [user, gig])
 
   function shareGig() {
-    console.log("share")
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
   }
 
   function likeGig() {
@@ -72,6 +77,7 @@ export function GigNavbar({ gig, onGigChange }) {
           <img src={share} />
         </button>
       </div>
+      {isModalOpen && <ShareGigModal onClose={closeModal} />}
     </div>
   )
 }

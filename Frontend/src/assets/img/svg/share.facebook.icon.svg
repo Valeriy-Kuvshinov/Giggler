@@ -1,0 +1,21 @@
+<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="path-1" cx="28" cy="28" r="28"></circle>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(-187 -369)">
+            <g transform="translate(120 189)">
+                <g transform="translate(54 180)">
+                    <g transform="translate(13)">
+                        <use fill="#3E5A99" xlink:href="#path-1"></use>
+                        <use class="image-filter" fill-opacity="0.2" fill="#000" xlink:href="#path-1"></use>
+                        <path
+                            d="M36.0548085,23.6101303 L31.1603782,23.6101303 L31.1603782,20.6914819 C31.1603782,19.5844084 31.9761166,19.2824792 32.485953,19.2824792 L35.9528412,19.2824792 L35.9528412,14.4516129 L31.1603782,14.4516129 C25.8580786,14.4516129 24.7364383,18.0747626 24.7364383,20.3895528 L24.7364383,23.6101303 L21.6774194,23.6101303 L21.6774194,28.6422827 L24.7364383,28.6422827 L24.7364383,42.7323095 L31.1603782,42.7323095 L31.1603782,28.6422827 L35.4430047,28.6422827 L36.0548085,23.6101303 Z"
+                            fill="#FFF"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
