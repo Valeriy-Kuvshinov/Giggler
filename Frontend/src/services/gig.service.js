@@ -93,7 +93,7 @@ function getDefaultFilter() {
     min: undefined,
     max: undefined,
     time: '',
-    pageIdx: 0,
+    page: 1,
   }
 }
 

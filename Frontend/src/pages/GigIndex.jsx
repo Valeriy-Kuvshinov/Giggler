@@ -13,8 +13,15 @@ export function GigIndex() {
   getFilterFromParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
+  const currentPage = filterBy.page || 1 
+  const totalGigsPerPage = 8 
+  const totalPages = Math.ceil(gigs.length / totalGigsPerPage)
 
-  
+  const startIndex = (currentPage - 1) * totalGigsPerPage;
+  const endIndex = startIndex + totalGigsPerPage;
+  const currentGigs = gigs.slice(startIndex, endIndex);
+
+ 
   useEffect(() => {
     loadSetParams()
     loadsGigs()
@@ -36,14 +43,14 @@ export function GigIndex() {
     setSearchparams(newQueryParam)
   }
 
-  function getFilterFromParams(){
+  function getFilterFromParams() {
     const newFilterBy = gigService.getDefaultFilter()
     const isNewRefresh = false
     for (const [key, value] of searchParams) {
       newFilterBy[key] = value
       if (newFilterBy[key]) !isNewRefresh
     }
-    if (isNewRefresh) setFilter({ ...filterBy, ...newFilterBy})
+    if (isNewRefresh) setFilter({ ...filterBy, ...newFilterBy })
   }
 
   function setMenuFilter(event, selectedOption) {
@@ -137,6 +144,10 @@ export function GigIndex() {
     }
   }
 
+  function handlePageChange(newPage) {
+    setFilter({ ...filterBy, page: newPage })
+  }
+
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   return (
@@ -148,8 +159,12 @@ export function GigIndex() {
         isRenderedChoice={isRenderedChoice}
         onDeleteFilter={onDeleteFilter}
       />
-      <GigList gigs={gigs} />
-      <Pagination />
+      <GigList gigs={currentGigs} />
+      <Pagination
+        currentPage={filterBy.page}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </main>
   )
 }

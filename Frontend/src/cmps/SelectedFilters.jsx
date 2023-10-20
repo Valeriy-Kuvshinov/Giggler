@@ -14,13 +14,13 @@ export function SelectedFilters({ filterBy , onDeleteFilter}) {
               text = `Under $${filterBy[key]}`
               break
             case 'search':
-              text = `Results for ${filterBy[key]}`
+              text = `Results for: ${filterBy[key]}`
               break
             default:
               text = filterBy[key]
           }
 
-          return filterBy[key] ? (
+          return (key !== 'page' && key !== 'cat' && key !== 'tag' ) && filterBy[key] ? (
             <span
               key={key}
               onClick={() => onDeleteFilter(key)}
