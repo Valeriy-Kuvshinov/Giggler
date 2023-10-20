@@ -62,7 +62,7 @@ export function GigNavbar({ gig, onGigChange }) {
       <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
 
       <div className="gig-interactions">
-        <button onClick={likeGig}>
+        <button className="heart" onClick={likeGig}>
           <img src={isLiked ? likedHeart : heart} title="liked the gig" />
         </button>
 
