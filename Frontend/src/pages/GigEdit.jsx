@@ -1,34 +1,30 @@
-import React, { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { galleryService } from "../services/gallery.service.js"
-import { useForm } from '../customHooks/useForm.js'
-import { saveGig } from '../store/gig.actions.js'
-import { gigService } from '../services/gig.service.js'
 import { useSelector } from 'react-redux'
 
+import { useForm } from '../customHooks/useForm.js'
+import { saveGig } from '../store/gig.actions.js'
+import { defaultImgUrls } from '../services/gallery.service.js'
+import { deliveryTime, category, subcategories, gigService } from '../services/gig.service.js'
+
+import { GigEditInputs } from '../cmps/GigEditInputs.jsx'
+
 export function GigEdit() {
-    const params = useParams()
-    const id = params.id
-    const { categoryTexts } = galleryService
-    const user = useSelector(storeState => storeState.userModule.user)
+    const { id } = useParams()
+    const [availableTags, setAvailableTags] = useState([])
     const navigate = useNavigate()
+    const user = useSelector(storeState => storeState.userModule.user)
 
     const [fields, setFields, handleChange] = useForm({
         title: '',
-        category: categoryTexts[0],
+        category: category[0],
         tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
         price: '',
         description: '',
-        daysToMake: 1,
+        daysToMake: "Express 24H",
         ownerId: user._id,
-        imgUrls: [
-            'https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg',
-            'https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg',
-            'https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-            'https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-            'https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-        ],
+        imgUrls: defaultImgUrls,
         likedByUsers: [],
         reviews: [],
         createdAt: Date.now(),
@@ -41,7 +37,8 @@ export function GigEdit() {
                 try {
                     const gig = await gigService.getById(id)
                     if (gig) setFields(gig)
-                } catch (err) {
+                }
+                catch (err) {
                     console.error('Failed to load gig:', err)
                 }
             }
@@ -49,14 +46,33 @@ export function GigEdit() {
         }
     }, [id, setFields])
 
+    useEffect(() => {
+        updateAvailableTags(fields.category)
+    }, [fields.category])
+
+    const updateAvailableTags = (selectedCategory) => {
+        const categoryKey = selectedCategory.replace(/\s+/g, '_').replace('&', 'And')
+        setAvailableTags(subcategories[categoryKey] || [])
+    }
+
+    const handleCategoryChange = (e) => {
+        handleChange(e)
+        updateAvailableTags(e.target.value)
+    }
+
+    const handleTagsChange = (e) => {
+        const selectedTags = Array.from(e.target.selectedOptions, option => option.value)
+        setFields(prevFields => ({ ...prevFields, tags: selectedTags }))
+    }
+
     async function onSave() {
         try {
-            if (!id || id === 'edit') {
-                fields.ownerId = user._id
-            }
-            await saveGig(fields)
+            const gigToSave = (!id || id === 'edit') ? { ...fields, ownerId: user._id } : fields
+
+            await saveGig(gigToSave)
             navigate(`/user/${user._id}`)
-        } catch (err) {
+        }
+        catch (err) {
             console.error('Failed to save gig:', err)
         }
     }
@@ -71,87 +87,15 @@ export function GigEdit() {
                 e.preventDefault()
                 onSave()
             }}>
-                <div className='form-inputs flex column'>
-                    <div className="input-group flex row">
-                        <div className="info flex column">
-                            <label htmlFor="title">Gig Title</label>
-                            <p>As your Gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
-                        </div>
-                        <input
-                            id="title"
-                            type="text"
-                            name="title"
-                            placeholder="I will..."
-                            value={fields.title}
-                            onChange={handleChange}
-                        />
-                    </div>
-
-                    <div className="input-group flex row">
-                        <div className="info flex column">
-                            <label htmlFor="description">Description</label>
-                            <p>Briefly Describe Your Gig</p>
-                        </div>
-                        <textarea
-                            id="description"
-                            name="description"
-                            placeholder="Description here..."
-                            value={fields.description}
-                            onChange={handleChange}
-                        ></textarea>
-                    </div>
-
-                    <div className="input-group flex row">
-                        <div className="info flex column">
-                            <label htmlFor="category">Category</label>
-                            <p>Choose the category most suitable for your Gig.</p>
-                            <select
-                                id="category"
-                                name="category"
-                                value={fields.category}
-                                onChange={handleChange}>
-                                {categoryTexts.map((cat, idx) => (
-                                    <option key={idx} value={cat}>
-                                        {cat}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div className="info flex column">
-                            <label htmlFor="days">Delivery Time</label>
-                            <p>Days it will take you on average to finish this gig.</p>
-                            <select
-                                id="days"
-                                name="daysToMake"
-                                value={fields.daysToMake}
-                                onChange={handleChange}
-                            >
-                                {[...Array(7).keys()].map(day => (
-                                    <option key={day + 1} value={day + 1}>
-                                        {day + 1} {day === 0 ? 'Day' : 'Days'}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="info flex column">
-                            <label htmlFor="price">Price</label>
-                            <p>Price you're offering for this gig.</p>
-                            <input
-                                id="price"
-                                type="number"
-                                name="price"
-                                min={0}
-                                max={10000}
-                                style={{ flex: '0' }}
-                                placeholder="Price"
-                                value={fields.price}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                </div>
-
+                <GigEditInputs
+                    fields={fields}
+                    handleChange={handleChange}
+                    handleCategoryChange={handleCategoryChange}
+                    handleTagsChange={handleTagsChange}
+                    category={category}
+                    availableTags={availableTags}
+                    deliveryTime={deliveryTime}
+                />
                 <div className="actions flex row">
                     <button type="button" onClick={onCancel}>Cancel</button>
                     <button type="submit">Save</button>

@@ -32,25 +32,21 @@ async function query(filterBy = {}) {
         return gig.category === filterBy.cat
       })
     }
-
     if (filterBy.tag) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return gig.tags.includes(filterBy.tag)
       })
     }
-
     if (filterBy.time) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return gig.daysToMake === filterBy.time
       })
     }
-
     if (filterBy.level) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return gig.level === filterBy.level
       })
     }
-
     if (filterBy.min || filterBy.max) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return (

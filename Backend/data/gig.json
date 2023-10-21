@@ -492,5 +492,32 @@
     "reviews": [],
     "createdAt": 1697543272000,
     "state": "pending"
+  },
+  {
+    "_id": "GI2X2r",
+    "title": "I will write you a soundtrack",
+    "category": "Music & Audio",
+    "tags": [
+      "Music Production & Writing",
+      "Audio Engineering & Post Production",
+      "Sound Design"
+    ],
+    "price": 85,
+    "description": "Hi, my name is Peter, and I'm a composer!\nI mostly do instrumentals, orchestral and rock soundtracks.\nI have 2 years experience in composing music for both video games and also Hollywood films.\nIf you're interested, just talk to me!",
+    "daysToMake": "Up to 3 days",
+    "ownerId": "u001",
+    "imgUrls": [
+      "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
+      "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
+      "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+      "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
+      "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
+    ],
+    "likedByUsers": [
+      "u001"
+    ],
+    "reviews": [],
+    "createdAt": 1697919013048,
+    "state": "pending"
   }
 ]

@@ -21,7 +21,7 @@
 
                 .info {
                     justify-content: space-between;
-                    flex: 1;
+                    flex: 2;
 
                     label {
                         font-weight: bold;
@@ -30,6 +30,7 @@
                     p {
                         font-size: 0.9em;
                         color: gray;
+                        max-width: 300px;
                     }
                 }
 
@@ -44,6 +45,12 @@
                 textarea {
                     width: 100%;
                     resize: none;
+                }
+
+                .multi-select {
+                    min-height: 62px;
+                    border-radius: 5px;
+                    border: 1px solid gray;
                 }
             }
         }
