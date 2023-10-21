@@ -24,6 +24,15 @@ export async function loadUser(userId) {
     }
 }
 
+export async function updateUser(updatedUser) {
+    try {
+        const user = await userService.updateUser(updatedUser)
+        store.dispatch({ type: SET_USER, user })
+    } catch (err) {
+        console.log('UserActions: err in updateUser', err)
+    }
+}
+
 export async function removeUser(userId) {
     try {
         await userService.remove(userId)

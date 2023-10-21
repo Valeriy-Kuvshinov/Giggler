@@ -1,17 +1,14 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
 import { UserOrders } from "../cmps/UserOrders.jsx"
-import { UserEditModal } from "../cmps/UserEditModal.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
 
 export function UserProfile() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
-
-  // console.log('user ',user)
 
   useEffect(() => {
     loadGigs2()
@@ -20,7 +17,8 @@ export function UserProfile() {
   async function loadGigs2() {
     try {
       await loadGigs()
-    } catch (err) {
+    }
+    catch (err) {
       console.log("couldnt load gigs : ", err)
     }
   }
@@ -30,10 +28,10 @@ export function UserProfile() {
   return (
     <section className="profile layout-row">
       <div className="user-profile">
-        <UserInfo user={user}/>
+        <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-      <UserOrders/>
+      <UserOrders />
     </section>
   )
 }
