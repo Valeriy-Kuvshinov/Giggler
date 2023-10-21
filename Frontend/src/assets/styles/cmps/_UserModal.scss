@@ -1,4 +1,4 @@
-.user-modal{
+.user-modal {
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -14,12 +14,14 @@
     translate: -50% -50%;
     background-color: $clrPrimary1;
     z-index: 100;
-    img{
+
+    img {
         width: 200px;
         height: 200px;
     }
 }
-.modal-background{
+
+.modal-background {
     position: fixed;
     height: 100%;
     width: 100%;

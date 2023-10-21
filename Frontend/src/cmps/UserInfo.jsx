@@ -4,13 +4,12 @@ import { UserEditModal } from "./UserEditModal"
 import { useState } from "react"
 
 export function UserInfo({ user }) {
+  const [isModal, setModal] = useState(false)
 
-  const [isModal,setModal]=useState(false)
-
-  function loadModal(){
+  function loadModal() {
     setModal(true)
   }
-  function closeModal(){
+  function closeModal() {
     setModal(false)
   }
 
@@ -19,7 +18,7 @@ export function UserInfo({ user }) {
   return (
     <section className="user-info">
       <div className="info-block">
-        <img src={user.imgUrl} onClick={loadModal}/>
+        <img src={user.imgUrl} onClick={loadModal} />
         <h2 onClick={loadModal}>{user.fullName}</h2>
 
         <div className="into-line" onClick={loadModal}>
@@ -43,7 +42,7 @@ export function UserInfo({ user }) {
         </p>
       </div>
 
-      {isModal && <UserEditModal user={user} closeModal={closeModal}/>}
+      {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
 
     </section>

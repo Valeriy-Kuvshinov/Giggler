@@ -14,6 +14,10 @@
         border: 1px solid $clrSecondary2;
         margin-block-end: 20px;
 
+        &:last-child {
+            justify-content: start;
+        }
+
         img {
             width: 150px;
             height: 150px;
