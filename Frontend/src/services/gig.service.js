@@ -32,13 +32,13 @@ async function query(filterBy = {}) {
         return gig.category === filterBy.cat
       })
     }
-    
+
     if (filterBy.tag) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return gig.tags.includes(filterBy.tag)
       })
     }
-    
+
     if (filterBy.time) {
       gigsToDisplay = gigsToDisplay.filter((gig) => {
         return gig.daysToMake === filterBy.time
@@ -194,7 +194,11 @@ export const subcategories = {
     'Data Collection',
     'Data Management',
   ],
-  Photography: ['Products & Lifestyle', 'People & Scenes', 'Local Photography'],
+  Photography: [
+    'Products & Lifestyle',
+    'People & Scenes',
+    'Local Photography'
+  ],
   AI_Services: [
     'Build your AI app',
     'Refine AI with experts',

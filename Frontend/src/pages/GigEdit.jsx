@@ -119,7 +119,7 @@ export function GigEdit() {
                         </div>
 
                         <div className="info flex column">
-                            <label htmlFor="days">Days to Make</label>
+                            <label htmlFor="days">Delivery Time</label>
                             <p>Days it will take you on average to finish this gig.</p>
                             <select
                                 id="days"
