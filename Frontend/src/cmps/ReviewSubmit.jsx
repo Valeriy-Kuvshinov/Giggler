@@ -7,6 +7,7 @@ import { reviewService } from '../services/review.service.js'
 import { saveGig } from '../store/gig.actions.js'
 
 export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
+    console.log(gig)
     const [reviewText, setReviewText] = useState('')
     const [reviewRating, setReviewRating] = useState(0)
     const [hoverRating, setHoverRating] = useState(0)
@@ -42,10 +43,17 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
             const review = {
                 userId: loggedInUser._id,
                 gigId: gig._id,
+                sellerId:gig.ownerId,
                 rating: reviewRating,
                 text: reviewText,
                 createdAt: Date.now()
             }
+            // if (gig) {
+            //     review.gigId = gig._id
+            //     review.sellerId = gig.ownerId
+            // } else {
+            //     review.sellerId = gig.ownerId
+            // }
             const savedReview = await reviewService.save(review)
 
             // Update the gig with the new review ID

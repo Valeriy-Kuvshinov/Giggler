@@ -5,6 +5,7 @@ import { UserProfile } from './pages/UserProfile.jsx'
 import { GigPurchase } from './pages/GigPurchase.jsx'
 import { GigEdit } from './pages/GigEdit.jsx'
 import { DashboardPage } from './pages/DashboardPage.jsx'
+import { Orders } from './pages/Orders.jsx'
 
 import { Testing } from './pages/Testing.jsx'
 
@@ -17,6 +18,7 @@ const routes = [
     { path: '/gig/edit/:id?', component: GigEdit },
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
     { path: '/dashboard', component: DashboardPage, label: 'dashboard'},
+    { path: '/orders' ,component: Orders, label: 'order'},
     { path: '/testing', component: Testing, label: 'testing'}
 ]
 
