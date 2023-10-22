@@ -117,11 +117,11 @@ export function UserInfo({ user }) {
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
       <UserReviews user={user} reviews={filteredReviews}/>
-      <button className="order-link info-block">
       <Link to='/orders'>
+      <button className="order-link info-block">
         to orders
-      </Link>
       </button>
+      </Link>
     </section>
   )
 }
