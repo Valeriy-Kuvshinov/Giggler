@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { gigService } from '../services/gig.service.js'
+import { reviewService } from '../services/review.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
@@ -75,16 +76,23 @@ export function GigDashboardInfo() {
 
     return (
         <section className="gigs-info grid">
-            <InfoDiv title="Total Gigs" info={totalGigs ? totalGigs : 'Loading...'} />
-            <InfoDiv title="Pending Gigs" info={pendingGigs} />
-            <InfoDiv title="Denied Gigs" info={deniedGigs} />
+            <InfoDiv title="Total gigs" info={totalGigs ? totalGigs : 'Loading...'} />
+            <InfoDiv title="Pending gigs" info={pendingGigs} />
+            <InfoDiv title="Denied gigs" info={deniedGigs} />
             <InfoDiv title="Gigs in the past week" info={weeklyGigs} />
             <InfoDiv title="Gigs in the past month" info={monthlyGigs} />
-            <InfoDiv title="Most popular (reviews)" info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Most trending (orders)" info={<Link to={`/gig/${mostTrendingGig?._id}`}>{mostTrendingGig ? `${mostTrendingGig._id} (by ${mostTrendingGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Average Gig Price" info={`$${avgGigPrice}`} />
-            <InfoDiv title="Most expensive" info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Least expensive" info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
+            <InfoDiv title="Best gig (rating)" info="good gig" />
+            <InfoDiv title="Worst gig (rating)" info="bad gig" />
+            <InfoDiv title="Best gig (reviews)"
+                info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>} />
+            <InfoDiv title="Best gig (orders)"
+                info={<Link to={`/gig/${mostTrendingGig?._id}`}>{mostTrendingGig ? `${mostTrendingGig._id} (by ${mostTrendingGig.ownerId})` : 'Loading...'}</Link>} />
+            <InfoDiv title="Average gig Price"
+                info={`$${avgGigPrice}`} />
+            <InfoDiv title="Most expensive"
+                info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
+            <InfoDiv title="Least expensive"
+                info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
         </section>
     )
 }
