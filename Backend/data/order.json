@@ -73,8 +73,21 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "pending",
-        "reasonForDenial": "",
+        "orderState": "denied",
+        "reasonForDenial": "missing credit card",
         "_id": "e1ycv"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Parker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1697967141088,
+        "reasonForDenial": "",
+        "orderState": "accepted",
+        "_id": "AWvpL"
     }
 ]
