@@ -26,17 +26,8 @@ export function UserReviews({ user, reviews }) {
     fetchFullReviews()
   }, [reviews])
 
-  const handleReviewAdded = (newReview) => {
-    setFullReviews((prevReviews) => [...prevReviews, newReview])
-  }
-  console.log(fullReviews)
-  fullReviews.map(user => console.log('test'))
-
   return (
     <section>
-      {/* <ReviewSubmit loggedInUser={user} onReviewAdded={handleReviewAdded} /> */}
-      {
-    //   (fullReviews.length !== 0) &&
     <ul>
         {fullReviews.map((userReview) => 
             <li key={userReview._id}>
@@ -44,7 +35,6 @@ export function UserReviews({ user, reviews }) {
             </li>
         )}
     </ul>
-        }
     </section>
   )
 }

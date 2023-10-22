@@ -19,6 +19,15 @@ export function UserInfo({ user }) {
   const reviews = useSelector(storeState => storeState.reviewModule.reviews)
   const filteredReviews = user ? reviews.filter(review => review.sellerId === user._id) : []
 
+  const months = ["January", "February", "March", "April",
+   "May", "June", "July", "August",
+   "September", "October", "November", "December"]
+  const time=new Date(user.createdAt*1000)
+  let month = months[time.getMonth()]
+  let year=time.getFullYear()
+
+  console.log(user)
+
   useEffect(()=>{
    loadReviews()
   },[])
@@ -86,7 +95,7 @@ export function UserInfo({ user }) {
           <span>
             <img src={icon} /> Member Since
           </span>
-          <span>May 42069</span>
+          <span>{month} {year}</span>
         </div>
       </div>
 
@@ -108,11 +117,11 @@ export function UserInfo({ user }) {
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
       <UserReviews user={user} reviews={filteredReviews}/>
-      <button className="order-link info-block">
       <Link to='/orders'>
-        to orders
-      </Link>
+      <button className="order-link info-block">
+        <span>to orders</span>
       </button>
+      </Link>
     </section>
   )
 }
