@@ -5,6 +5,7 @@ import {
 ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
     , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
 import { FinanceDashboard } from '../cmps/FinanceDashboard.jsx'
+import { UserDashboard } from '../cmps/UserDashboard.jsx'
 import { GigDashboard } from '../cmps/GigDashboard.jsx'
 
 export function DashboardPage() {
@@ -17,9 +18,7 @@ export function DashboardPage() {
 
             <GigDashboard />
 
-            <section className='dashboard-container'>
-                <h2>General Users Info:</h2>
-            </section>
+            <UserDashboard />
 
             <FinanceDashboard />
         </main>
