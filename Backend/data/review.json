@@ -447,5 +447,23 @@
         "rating": 1,
         "text": "bad, dont buy",
         "createdAt": 1697978762843
+    },
+    {
+        "_id": "zteBv9",
+        "userId": "u001",
+        "gigId": "AhNAiy",
+        "sellerId": "u001",
+        "rating": 1,
+        "text": "trash",
+        "createdAt": 1697988746288
+    },
+    {
+        "_id": "zNhA3l",
+        "userId": "u001",
+        "gigId": "GI2X2r",
+        "sellerId": "u001",
+        "rating": 4,
+        "text": "Quality is key for this guy, however we'd like to get our product with less delays next time.",
+        "createdAt": 1697988813424
     }
 ]
