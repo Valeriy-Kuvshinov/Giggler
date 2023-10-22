@@ -103,7 +103,7 @@ export function GigDashboardInfo() {
                 info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
             <InfoDiv title="Least expensive"
                 info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Average gig Price" info={`$${avgGigPrice}`} />
+            <InfoDiv title="Average gig price" info={`$${avgGigPrice}`} />
 
             <InfoDiv title="Pending gigs" info={pendingGigs} />
             <InfoDiv title="Denied gigs" info={deniedGigs} />
