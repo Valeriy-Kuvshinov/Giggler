@@ -9,7 +9,7 @@ export function UserDashboardInfo() {
     const [totalUsers, setTotalUsers] = useState(0)
     const [newUsersWeek, setNewUsersWeek] = useState(0)
     const [newUsersMonth, setNewUsersMonth] = useState(0)
-    const [usersWithNoGigs, setUsersWithNoGigs] = useState(0)
+    const [newestUser, setNewestUser] = useState(null)
 
     const [bestUserRating, setBestUserRating] = useState(null)
     const [bestUserOrders, setBestUserOrders] = useState(null)
@@ -32,40 +32,37 @@ export function UserDashboardInfo() {
 
             const newUsersThisWeek = users.filter(user => user.createdAt > oneWeekAgo).length
             const newUsersThisMonth = users.filter(user => user.createdAt > oneMonthAgo).length
-
-            const usersWithoutGigs = users.filter(user =>
-                !gigs.some(gig => gig.ownerId === user._id)
-            ).length
+            const newestUser = [...users].sort((a, b) => b.createdAt - a.createdAt)[0]
 
             const userOrderCounts = {}
             const userGigCounts = {}
 
             users.forEach(user => {
-                userOrderCounts[user._id] = orders.filter(order => order.sellerId === user._id).length
+                userOrderCounts[user._id] = orders.filter(order => order.sellerId === user._id && order.orderState === 'accepted').length
                 userGigCounts[user._id] = gigs.filter(gig => gig.ownerId === user._id).length
             })
 
-            const getMaxMinUsersBy = (field, isMax = true) => {
+            const getMaxMinUsersBy = (dataObj, field = null, isMax = true) => {
                 return users.reduce((accUser, currentUser) => {
-                    return isMax ?
-                        (currentUser[field] > accUser[field] ? currentUser : accUser) :
-                        (currentUser[field] < accUser[field] ? currentUser : accUser)
+                    const accValue = field ? accUser[field] : dataObj[accUser._id]
+                    const currValue = field ? currentUser[field] : dataObj[currentUser._id]
+                    return isMax ? (currValue > accValue ? currentUser : accUser) : (currValue < accValue ? currentUser : accUser)
                 })
             }
             setTotalUsers(users.length)
             setNewUsersWeek(newUsersThisWeek)
             setNewUsersMonth(newUsersThisMonth)
-            setUsersWithNoGigs(usersWithoutGigs)
+            setNewestUser(newestUser)
 
-            setBestUserRating(getMaxMinUsersBy('rating'))
-            setBestUserOrders(getMaxMinUsersBy(userOrderCounts, true))
-            setBestUserGigs(getMaxMinUsersBy(userGigCounts, true))
-            setBestUserBalance(getMaxMinUsersBy('balance'))
+            setBestUserRating(getMaxMinUsersBy({}, 'rating'))
+            setBestUserOrders(getMaxMinUsersBy(userOrderCounts))
+            setBestUserGigs(getMaxMinUsersBy(userGigCounts))
+            setBestUserBalance(getMaxMinUsersBy({}, 'balance'))
 
-            setWorstUserRating(getMaxMinUsersBy('rating', false))
-            setWorstUserOrders(getMaxMinUsersBy(userOrderCounts, false))
-            setWorstUserGigs(getMaxMinUsersBy(userGigCounts, false))
-            setWorstUserBalance(getMaxMinUsersBy('balance', false))
+            setWorstUserRating(getMaxMinUsersBy({}, 'rating', false))
+            setWorstUserOrders(getMaxMinUsersBy(userOrderCounts, null, false))
+            setWorstUserGigs(getMaxMinUsersBy(userGigCounts, null, false))
+            setWorstUserBalance(getMaxMinUsersBy({}, 'balance', false))
         }
         fetchData()
     }, [])
@@ -75,7 +72,7 @@ export function UserDashboardInfo() {
             <InfoDiv title="Total users" info={totalUsers} />
             <InfoDiv title="New users in the past week" info={newUsersWeek} />
             <InfoDiv title="New users in the past month" info={newUsersMonth} />
-            <InfoDiv title="Users with no gigs (customers)" info={usersWithNoGigs} />
+            <InfoDiv title="Newest User" info={newestUser ? newestUser.username : 'Loading...'} />
 
             <InfoDiv title="Best user (rating)" info={bestUserRating ? bestUserRating.username : 'Loading...'} />
             <InfoDiv title="Best user (orders)" info={bestUserOrders ? bestUserOrders.username : 'Loading...'} />

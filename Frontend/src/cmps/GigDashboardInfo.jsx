@@ -112,10 +112,10 @@ export function GigDashboardInfo() {
 
             <InfoDiv title="Best gig (rating)"
                 info={<Link to={`/gig/${bestGigByRating?._id}`}>{bestGigByRating ? `${bestGigByRating._id} (by ${bestGigByRating.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Worst gig (rating)"
-                info={<Link to={`/gig/${worstGigByRating?._id}`}>{worstGigByRating ? `${worstGigByRating._id} (by ${worstGigByRating.ownerId})` : 'Loading...'}</Link>} />
             <InfoDiv title="Best gig (orders)"
                 info={<Link to={`/gig/${bestGigByOrders?._id}`}>{bestGigByOrders ? `${bestGigByOrders._id} (by ${bestGigByOrders.ownerId})` : 'Loading...'}</Link>} />
+            <InfoDiv title="Worst gig (rating)"
+                info={<Link to={`/gig/${worstGigByRating?._id}`}>{worstGigByRating ? `${worstGigByRating._id} (by ${worstGigByRating.ownerId})` : 'Loading...'}</Link>} />
             <InfoDiv title="Worst gig (orders)"
                 info={<Link to={`/gig/${worstGigByOrders?._id}`}>{worstGigByOrders ? `${worstGigByOrders._id} (by ${worstGigByOrders.ownerId})` : 'Loading...'}</Link>} />
         </section>
