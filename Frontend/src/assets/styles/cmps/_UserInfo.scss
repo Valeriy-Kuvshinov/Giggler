@@ -60,13 +60,15 @@
         }
 
         &.order-link{
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height:50px;
             padding: 10px;
-            a:hover{
+            &:hover{
                 text-decoration: none;
+            }
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
     }

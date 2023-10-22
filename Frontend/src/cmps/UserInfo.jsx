@@ -119,7 +119,7 @@ export function UserInfo({ user }) {
       <UserReviews user={user} reviews={filteredReviews}/>
       <Link to='/orders'>
       <button className="order-link info-block">
-        to orders
+        <span>to orders</span>
       </button>
       </Link>
     </section>
