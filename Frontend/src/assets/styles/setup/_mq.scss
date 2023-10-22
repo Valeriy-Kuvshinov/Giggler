@@ -200,9 +200,9 @@
 
             @media (min-width: 900px) {
                 background-image: url("../src/assets/img/bg-mini-signup.webp");
-                background-size: cover;
+                background-size: contain;
                 background-repeat: no-repeat;
-                background-position: center;
+                background-position: right;
             }
 
             @media (min-width: 1160px) {
@@ -246,5 +246,15 @@
 .dashboard-page {
     @media (max-width: 1400px) {
         padding: 2em;
+    }
+}
+
+.app-footer {
+    @media (max-width: 1400px) {
+        padding: 1em 2em;
+    }
+
+    @media (min-width:1400px) {
+        padding: 1em 0em;
     }
 }
