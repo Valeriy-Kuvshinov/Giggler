@@ -7,6 +7,7 @@ export const gigService = {
   save,
   getById,
   getDefaultFilter,
+  getFilterFromParams,
 }
 
 // let gigsToDisplay = [...utilService.readJsonFile(GIGS_PATH)]
@@ -16,6 +17,17 @@ export const gigService = {
 //     (gig) => regex.test(gig.title) || regex.test(gig.description)
 //   )
 // }
+
+function getFilterFromParams() {
+  const newFilterBy = gigService.getDefaultFilter()
+  const isNewRefresh = false
+  for (const [key, value] of searchParams) {
+    newFilterBy[key] = value
+    if (newFilterBy[key]) !isNewRefresh
+  }
+  if (isNewRefresh) setFilter({ ...filterBy, ...newFilterBy })
+}
+
 async function query(filterBy = {}) {
   try {
     let gigsToDisplay = await httpService.get(BASE_URL, filterBy)

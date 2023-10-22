@@ -25,13 +25,13 @@ export function GigList({ gigs }) {
   return (
       <ul className="gig-list layout-row">
         {sortedGigs.map((gig) => (
-          <li className="gig-preview" key={gig._id}>
+          // <li className="gig-preview" key={gig._id}>
             <GigPreview
               is={is}
               gig={gig}
               key={gig._id}
             />
-          </li>
+          // </li>
         ))}
       </ul>
   )
