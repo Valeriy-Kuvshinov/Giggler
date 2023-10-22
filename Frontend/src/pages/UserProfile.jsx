@@ -5,6 +5,7 @@ import { UserInfo } from "../cmps/UserInfo.jsx"
 import { UserOrders } from "../cmps/UserOrders.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
+import { Link } from "react-router-dom"
 
 export function UserProfile() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -31,7 +32,7 @@ export function UserProfile() {
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-      <UserOrders />
+      {/* <UserOrders /> */}
     </section>
   )
 }

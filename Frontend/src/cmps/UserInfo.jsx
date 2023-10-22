@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSelector } from 'react-redux'
+import { Link } from "react-router-dom"
 
 import icon from "../assets/img/svg/user.icon.svg"
 import location from "../assets/img/svg/location.icon.svg"
 
 import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
+import { UserReviews } from "./UserReviews"
+import { loadReviews } from "../store/review.actions"
 
 export function UserInfo({ user }) {
   const [isModal, setModal] = useState(false)
@@ -12,6 +16,12 @@ export function UserInfo({ user }) {
   const [isEditingFullName, setIsEditingFullName] = useState(false)
   const [description, setDescription] = useState(user.description)
   const [fullName, setFullName] = useState(user.fullName)
+  const reviews = useSelector(storeState => storeState.reviewModule.reviews)
+  const filteredReviews = user ? reviews.filter(review => review.sellerId === user._id) : []
+
+  useEffect(()=>{
+   loadReviews()
+  },[])
 
   function loadModal() {
     setModal(true)
@@ -43,6 +53,8 @@ export function UserInfo({ user }) {
     setEditing(false)
     setIsEditingFullName(false)
   }
+
+  if(!reviews) return <div>loading...</div>
 
   return (
     <section className="user-info">
@@ -95,6 +107,12 @@ export function UserInfo({ user }) {
       </div>
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
+      <UserReviews user={user} reviews={filteredReviews}/>
+      <button className="order-link info-block">
+      <Link to='/orders'>
+        to orders
+      </Link>
+      </button>
     </section>
   )
 }

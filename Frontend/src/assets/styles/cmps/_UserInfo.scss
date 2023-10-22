@@ -58,5 +58,16 @@
                 }
             }
         }
+
+        &.order-link{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height:50px;
+            padding: 10px;
+            a:hover{
+                text-decoration: none;
+            }
+        }
     }
 }
