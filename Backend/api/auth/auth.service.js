@@ -44,6 +44,7 @@ async function signup(username, password, fullName, description = ''
         level,
         rating,
         imgUrl,
+        createdAt:Date.now(),
         isAdmin
     })
 }
