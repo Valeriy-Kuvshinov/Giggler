@@ -1,0 +1,24 @@
+.user-review {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-block-start: 1px solid $clrSecondary2;
+    padding: 20px;
+    // align-items: center;
+
+    img {
+        height: 48px;
+        width: 48px;
+        border-radius: 24px;
+        margin-inline-end: 16px;
+    }
+    .stars3{
+        margin: 0;
+        img{
+            margin-inline-end: 4px;
+            height: 14px;
+            width: 14px;
+        }
+    }
+
+}

@@ -1,6 +1,5 @@
 .app-footer {
     color: $clrSecondary7;
-    padding: 1em 2em;
     text-align: center;
     position: relative;
     justify-content: space-between;
@@ -10,63 +9,68 @@
     margin: auto;
     border-top: 1px solid $clrSecondary3;
 
-    h1 {
-        font-family: arial;
-        font-size: 32px;
-        letter-spacing: -3px;
-    }
+    .footer-part {
+        align-items: center;
+        gap: 2em;
 
-    h2 {
-        font-family: 'macan-regular';
-        color: $clrSecondary4;
-        font-size: 14px;
-    }
+        h1 {
+            font-family: arial;
+            font-size: 32px;
+            letter-spacing: -3px;
+        }
 
-    .social-icons {
-        gap: 1em;
+        h2 {
+            font-family: 'macan-regular';
+            color: $clrSecondary4;
+            font-size: 14px;
+        }
 
-        .icon-container {
-            display: flex;
-            border-radius: 50%;
+        .social-icons {
+            gap: 1em;
+
+            .icon-container {
+                display: flex;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background 0.3s;
+                padding: 0.5em;
+
+                &:hover {
+                    background: $clrSecondary3;
+                }
+
+                a {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        .access-icon {
+            width: 32px;
+            height: 32px;
             cursor: pointer;
-            transition: background 0.3s;
-            padding: 0.5em;
 
-            &:hover {
-                background: $clrSecondary3;
-            }
-
-            a {
-                width: 20px;
-                height: 20px;
-            }
-        }
-    }
-
-    .access-icon {
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-
-        .circle-wrapper {
-            fill: $clrSecondary1;
-            stroke: $clrSecondary5;
-        }
-
-        .person-head,
-        .person-torso {
-            fill: $clrSecondary5;
-        }
-
-        &:hover {
             .circle-wrapper {
-                fill: $clrSecondary45;
-                stroke: none;
+                fill: $clrSecondary1;
+                stroke: $clrSecondary5;
             }
 
             .person-head,
             .person-torso {
-                fill: $clrSecondary8;
+                fill: $clrSecondary5;
+            }
+
+            &:hover {
+                .circle-wrapper {
+                    fill: $clrSecondary45;
+                    stroke: none;
+                }
+
+                .person-head,
+                .person-torso {
+                    fill: $clrSecondary8;
+                }
             }
         }
     }
