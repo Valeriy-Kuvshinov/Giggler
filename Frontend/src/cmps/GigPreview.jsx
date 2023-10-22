@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import SvgIcon from './SvgIcon.jsx'
 import { userService } from '../services/user.service.js'
@@ -11,7 +11,26 @@ import { ImageCarousel } from './ImageCarousel.jsx'
 export function GigPreview({ is, gig }) {
   const [isLiked, setIsLiked] = useState(false)
   const [owner, setOwner] = useState(null)
+  const parentRef = useRef()
+  const [parentWidth, setParentWidth] = useState(0)
   const navigate = useNavigate()
+
+  function handleResize() {
+    if (parentRef.current && parentRef.current.clientWidth > 0) {
+      setParentWidth(parentRef.current.clientWidth);
+    }
+  }
+  
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('load', handleResize)
+    handleResize()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.addEventListener('load', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     async function fetchOwnerDetails() {
@@ -32,16 +51,17 @@ export function GigPreview({ is, gig }) {
   }
 
   function onToggleHeart() {
-    // event.stopPropagation()
     setIsLiked((prevIsLiked) => !prevIsLiked)
   }
   if (!owner) return null
 
   return (
-    <>
-      {/* <div className="gig-wrapper"> */}
-
-      <ImageCarousel images={gig.imgUrls} gigId={gig._id} />
+    <li className="gig-preview" ref={parentRef}>
+      <ImageCarousel
+        images={gig.imgUrls}
+        gigId={gig._id}
+        parentWidth={parentWidth}
+      />
       <div className="preview-body">
         {is === 'explore' && (
           <UserPreview is={is} owner={owner} gig={gig}>
@@ -73,7 +93,6 @@ export function GigPreview({ is, gig }) {
           </span>
         </div>
       </div>
-      {/* </div> */}
-    </>
+    </li>
   )
 }
