@@ -71,10 +71,10 @@ export function WelcomeSection({onHandleFilter}) {
                     />
                     <div className='flex row'>
                         <h4>Popular:</h4>
-                        <a href="">Website Design</a>
-                        <a href="">WordPress</a>
-                        <a href="">Logo Design</a>
-                        <a href="">AI Services</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag:'Web & App Design',})} href="">Website Design</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Programming & Tech', tag:'Website Development',})} href="">WordPress</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag: 'Logo & Brand Identity',} )} href="">Logo Design</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'AI Services', })} href="">AI Services</a>
                     </div>
                 </div>
             </section>

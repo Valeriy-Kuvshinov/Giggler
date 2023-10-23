@@ -4,7 +4,7 @@ import { svgService } from '../services/svg.service.js'
 const SvgIcon = ({ iconName }) => {
  const svg = svgService.getIcon(iconName)
  return (
-  <span dangerouslySetInnerHTML={{ __html: svg }} ></span>
+  <i dangerouslySetInnerHTML={{ __html: svg }} ></i>
  )
 }
 
