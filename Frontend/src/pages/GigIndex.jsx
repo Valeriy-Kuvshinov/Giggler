@@ -136,7 +136,9 @@ export function GigIndex() {
     setFilter({ ...filterBy, page: newPage })
   }
   // function handlePageChange(newPage) {
-  //   setFilter((prevFilter) => ({ ...prevFilter, page: newPage }))
+  //   setFilter((prevFilter) => {
+  //     return { ...prevFilter, page: newPage }
+  //   })
   // }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'

@@ -1,3 +1,4 @@
+import { setFilter } from '../store/gig.actions.js'
 import { httpService } from './http.service.js'
 const BASE_URL = 'gig/'
 
@@ -18,7 +19,7 @@ export const gigService = {
 //   )
 // }
 
-function getFilterFromParams() {
+function getFilterFromParams(searchParams) {
   const newFilterBy = gigService.getDefaultFilter()
   const isNewRefresh = false
   for (const [key, value] of searchParams) {
@@ -26,6 +27,7 @@ function getFilterFromParams() {
     if (newFilterBy[key]) !isNewRefresh
   }
   if (isNewRefresh) setFilter({ ...filterBy, ...newFilterBy })
+  return newFilterBy
 }
 
 async function query(filterBy = {}) {
