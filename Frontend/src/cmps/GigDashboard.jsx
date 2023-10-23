@@ -49,9 +49,7 @@ export function GigDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-gigs-container'>
-            <h2>Gigs General Info:</h2>
-
+        <section className='dashboard-gigs-container grid'>
             <GigDashboardInfo />
 
             <main className='grid gigs-charts'>
@@ -79,9 +77,9 @@ export function GigDashboard() {
                             datasets: [{
                                 data: topCategories.counts,
                                 backgroundColor: [
-                                    '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',
-                                    '#33FF57', '#8533FF', '#33B5FF', '#FF8333',
-                                    '#B833FF', '#FF335E'
+                                    '#4CAF50', '#8BC34A', '#CDDC39', '#7CB342',
+                                    '#AED581', '#DCE775', '#66BB6A', '#81C784',
+                                    '#9CCC65', '#D4E157'
                                 ]
                             }]
                         }}

@@ -27,11 +27,28 @@
             margin-inline-end: 10px;
         }
 
+        .user-stats{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: fit-content;
+        }
+
         .stars{
             display: flex;
             align-items: center;
+            width:100%;
+            justify-content: space-between;
             img{
                 margin-inline-end: 4px;
+            }
+            .divider{
+                margin-inline-start: 10px;
+                margin-inline-end: 10px;
+            }
+            .orders-in-queue{
+                display: flex;
+                gap: 5px;
             }
         }
 
@@ -39,11 +56,6 @@
             width: 64px;
             height: 64px;
             border-radius: 32px;
-        }
-        .user-stats{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
     }
 
