@@ -10,18 +10,16 @@ import { category, gigService } from '../services/gig.service.js'
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const [searchParams, setSearchparams] = useSearchParams()
-  // getFilterFromParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
-  const currentPage = filterBy.page || 1 
-  const totalGigsPerPage = 12 
+  const currentPage = filterBy.page || 1
+  const totalGigsPerPage = 12
   const totalPages = Math.ceil(gigs.length / totalGigsPerPage)
 
-  const startIndex = (currentPage - 1) * totalGigsPerPage;
-  const endIndex = startIndex + totalGigsPerPage;
-  const currentGigs = gigs.slice(startIndex, endIndex);
+  const startIndex = (currentPage - 1) * totalGigsPerPage
+  const endIndex = startIndex + totalGigsPerPage
+  const currentGigs = gigs.slice(startIndex, endIndex)
 
- 
   useEffect(() => {
     loadSetParams()
     loadsGigs()
@@ -42,7 +40,6 @@ export function GigIndex() {
     })
     setSearchparams(newQueryParam)
   }
-
 
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
@@ -138,6 +135,9 @@ export function GigIndex() {
   function handlePageChange(newPage) {
     setFilter({ ...filterBy, page: newPage })
   }
+  // function handlePageChange(newPage) {
+  //   setFilter((prevFilter) => ({ ...prevFilter, page: newPage }))
+  // }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
