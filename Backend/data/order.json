@@ -89,5 +89,18 @@
         "reasonForDenial": "",
         "orderState": "accepted",
         "_id": "AWvpL"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u102",
+        "title": "I will design stunning website templates",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g102",
+        "price": 59.99,
+        "createdAt": 1698042059137,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "uWoLO"
     }
 ]
