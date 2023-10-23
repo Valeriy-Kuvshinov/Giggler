@@ -3,34 +3,52 @@ import Typography from '@mui/material/Typography'
 import { Line } from 'react-chartjs-2'
 import { FinanceDashboardInfo } from "./FinanceDashboardInfo.jsx"
 import { lineMoneyChartOptions } from '../services/chartService.js'
+import { orderBackendService } from '../services/order.backend.service.js'
 
 export function FinanceDashboard() {
     const [data, setData] = useState({
-        weekly: {},
-        monthly: {},
-        annual: {}
+        weekly: { dates: [], values: [] },
+        monthly: { dates: [], values: [] }
     })
 
-    const generateData = (length, dateModifier, maxValue, latestDateFormatter) => {
-        const dates = [...Array(length)].map((_, i) => {
-            const d = new Date()
-            dateModifier(d, i)
-            return i === 0 ? latestDateFormatter(d) : d.toISOString().split('T')[0]
-        }).reverse()
-        const values = [...Array(length)].map(() => Math.floor(Math.random() * maxValue))
-        return { dates, values }
-    }
-
     useEffect(() => {
-        try {
-            setData({
-                weekly: generateData(7, (d, i) => d.setDate(d.getDate() - i), 1000, d => d.toISOString().split('T')[0]),
-                monthly: generateData(30, (d, i) => d.setDate(d.getDate() - i), 10000, d => d.toISOString().split('T')[0]),
-                annual: generateData(12, (d, i) => d.setMonth(d.getMonth() - i), 25000, d => d.toISOString().split('T')[0])
+        const fetchOrders = async () => {
+            const orders = await orderBackendService.query()
+            const acceptedOrders = orders.filter(order => 
+                order.orderState === 'accepted' || order.orderState === 'completed'
+            )
+
+            const weeklyProfits = Array(7).fill(0)
+            const monthlyProfits = Array(30).fill(0)
+
+            acceptedOrders.forEach(order => {
+                const daysAgo = Math.floor((Date.now() - order.createdAt) / (1000 * 60 * 60 * 24))
+                if (daysAgo < 7) {
+                    weeklyProfits[6 - daysAgo] += order.price
+                }
+                if (daysAgo < 30) {
+                    monthlyProfits[29 - daysAgo] += order.price
+                }
             })
-        } catch (error) {
-            console.error("Error fetching data:", error)
+
+            const weeklyDates = [...Array(7)].map((_, i) => {
+                const d = new Date()
+                d.setDate(d.getDate() - i)
+                return d.toISOString().split('T')[0]
+            }).reverse()
+
+            const monthlyDates = [...Array(30)].map((_, i) => {
+                const d = new Date()
+                d.setDate(d.getDate() - i)
+                return d.toISOString().split('T')[0]
+            }).reverse()
+
+            setData({
+                weekly: { dates: weeklyDates, values: weeklyProfits },
+                monthly: { dates: monthlyDates, values: monthlyProfits }
+            })
         }
+        fetchOrders()
     }, [])
 
     return (
@@ -62,22 +80,6 @@ export function FinanceDashboard() {
                             labels: data.monthly.dates,
                             datasets: [{
                                 data: data.monthly.values,
-                                borderColor: '#404145',
-                                fill: true,
-                                backgroundColor: 'rgba(145, 194, 245)'
-                            }]
-                        }}
-                        options={lineMoneyChartOptions}
-                    />
-                </div>
-
-                <div className="chart-section">
-                    <Typography variant="h6">Annual site profits</Typography>
-                    <Line
-                        data={{
-                            labels: data.annual.dates,
-                            datasets: [{
-                                data: data.annual.values,
                                 borderColor: '#404145',
                                 fill: true,
                                 backgroundColor: 'rgba(145, 194, 245)'
