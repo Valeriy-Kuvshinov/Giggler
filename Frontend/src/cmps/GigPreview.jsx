@@ -18,31 +18,15 @@ export function GigPreview({ is, gig }) {
 
   const [owner, setOwner] = useState(null)
   const [updatedGig, setUpdatedGig] = useState(gig)
-  const [parentWidth, setParentWidth] = useState(0)
+ 
   const [isLiked, setIsLiked] = useState(
     user && updatedGig.likedByUsers.includes(user._id)
   )
 
-  const parentRef = useRef()
+  
   const navigate = useNavigate()
   const { openLogin } = useModal()
 
-  function handleResize() {
-    if (parentRef.current && parentRef.current.clientWidth > 0) {
-      setParentWidth(parentRef.current.clientWidth)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize)
-    window.addEventListener('load', handleResize)
-    handleResize()
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      window.addEventListener('load', handleResize)
-    }
-  }, [])
 
   useEffect(() => {
     async function fetchOwnerDetails() {
@@ -101,11 +85,10 @@ export function GigPreview({ is, gig }) {
   if (!owner) return null
 
   return (
-    <li className="gig-preview" ref={parentRef}>
+    <li className="gig-preview" >
       <ImageCarousel
         images={updatedGig.imgUrls}
         gigId={updatedGig._id}
-        parentWidth={parentWidth}
       />
 
       <button className='heart' onClick={likeGig}>

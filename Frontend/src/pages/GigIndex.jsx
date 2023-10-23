@@ -144,7 +144,7 @@ export function GigIndex() {
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   return (
-    <main className="gig-index main-layout flex column">
+    <main className="gig-index">
       <GigFilter
         filterBy={filterBy}
         setMenuFilter={setMenuFilter}
