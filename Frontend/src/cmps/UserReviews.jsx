@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react"
 
-import { UserReviewSubmit } from "./UserReviewSubmit"
-import { ReviewSubmit } from "./ReviewSubmit"
-
 import { reviewService } from "../services/review.service"
 import { UserReview } from "./UserReview"
 
