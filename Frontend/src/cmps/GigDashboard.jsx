@@ -49,9 +49,7 @@ export function GigDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-gigs-container'>
-            <h2>Gigs General Info:</h2>
-
+        <section className='dashboard-gigs-container grid'>
             <GigDashboardInfo />
 
             <main className='grid gigs-charts'>

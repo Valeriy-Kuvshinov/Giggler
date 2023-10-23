@@ -40,10 +40,12 @@
     }
 
     .dashboard-gigs-container {
+        grid-template-columns: 1fr 2fr;
+
         .gigs-info {
-            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 1em;
+            grid-column: 1 / 2;
 
             .grid-item {
                 display: flex;
@@ -67,16 +69,19 @@
         }
 
         .gigs-charts {
-            grid-template-columns: repeat(2, 1fr);
+            grid-column: 2 / 4;
+            grid-template-columns: repeat(1, 1fr);
             gap: 1rem;
         }
     }
 
     .dashboard-users-container {
+        grid-template-columns: 1fr 2fr;
+
         .users-info {
-            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 1em;
+            grid-column: 1 / 2;
 
             .grid-item {
                 display: flex;
@@ -100,12 +105,15 @@
         }
 
         .users-charts {
-            grid-template-columns: repeat(2, 1fr);
+            grid-column: 2 / 4;
+            grid-template-columns: repeat(1, 1fr);
             gap: 1rem;
         }
     }
 
     .dashboard-finances-container {
+        grid-template-columns: 1fr 2fr;
+
         .finance-info {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, auto);

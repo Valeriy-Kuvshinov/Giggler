@@ -39,9 +39,7 @@ export function UserDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-users-container'>
-            <h2>General Users Info:</h2>
-
+        <section className='dashboard-users-container grid'>
             <UserDashboardInfo />
 
             <main className='grid users-charts'>

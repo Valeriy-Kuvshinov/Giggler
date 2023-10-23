@@ -1,4 +1,95 @@
-// .gig-index {
+.gig-index {
+    min-height: 100vh;
 
-    
-// }
+    .gig-list {
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        flex: 1;
+
+        @media screen and (max-width: 600px) {
+            grid-gap: rem(12px);
+        }
+
+        @media screen and (min-width: 600px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: rem(16px);
+        }
+
+        @media screen and (min-width: 900px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media screen and (min-width: 1160px) {
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 32px;
+        }
+    }
+
+    .pagination {
+        justify-content: center;
+        color: $clrSecondary6;
+        padding: rem(15px) 0;
+
+        .page-number {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                height: 2.625em;
+                width: 2.625em;
+            }
+
+            &:after {
+                border-bottom: 2px solid transparent;
+                content: '';
+                display: block;
+                position: relative;
+                width: 1em;
+
+                &.active {
+                    color: $clrPrimary2;
+                }
+            }
+
+            &.active {
+                color: $clrPrimary2;
+
+                &:after {
+                    border-bottom-color: $clrPrimary2;
+                }
+            }
+
+            &:hover {
+                color: $clrPrimary2;
+
+                &:after {
+                    border-bottom-color: $clrPrimary2;
+                }
+            }
+
+            transition: color 0.2s;
+        }
+
+        .pagination-arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            height: 2.625em;
+            width: 2.625em;
+
+            i {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

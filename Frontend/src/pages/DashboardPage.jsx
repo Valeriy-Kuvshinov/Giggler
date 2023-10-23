@@ -15,11 +15,11 @@ import { UserDashboard } from '../cmps/UserDashboard.jsx'
 import { GigDashboard } from '../cmps/GigDashboard.jsx'
 
 export function DashboardPage() {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(0)
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
+        setValue(newValue)
+    }
 
     return (
         <main className="dashboard-page flex column">
@@ -28,7 +28,7 @@ export function DashboardPage() {
                 <h2>Here is our most updated business statistics:</h2>
             </div>
 
-            <Box sx={{ width: '100%', typography: 'body1' }}>
+            <Box sx={{ width: '100%', typography: 'body0' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="dashboard tabs" centered>
                     <Tab label="Gig Dashboard" />
                     <Tab label="User Dashboard" />
@@ -41,5 +41,5 @@ export function DashboardPage() {
                 </Box>
             </Box>
         </main>
-    );
+    )
 }
