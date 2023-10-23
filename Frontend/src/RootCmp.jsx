@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router"
-import routes from "./routes"
+import { Routes, Route } from 'react-router'
+import routes from './routes'
 
-import { AppHeader } from "./cmps/AppHeader.jsx"
-import { AppFooter } from "./cmps/AppFooter.jsx"
-import { useModal } from "./customHooks/ModalContext"
+import { AppHeader } from './cmps/AppHeader.jsx'
+import { AppFooter } from './cmps/AppFooter.jsx'
+import { useModal } from './customHooks/ModalContext'
 
 export function RootCmp() {
   const { isDimmed } = useModal()
@@ -17,13 +17,12 @@ export function RootCmp() {
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 10
+    zIndex: 10,
   }
 
   return (
     <main className="main-container">
       <AppHeader />
-      {/* <main className="full"> */}
       <div className="dimmed-content" style={dimmerStyle}></div>
       <Routes>
         {routes.map((route) => (
@@ -34,7 +33,6 @@ export function RootCmp() {
           />
         ))}
       </Routes>
-      {/* </main> */}
       <AppFooter />
     </main>
   )

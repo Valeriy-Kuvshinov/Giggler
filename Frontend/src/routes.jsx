@@ -10,8 +10,7 @@ import { Orders } from './pages/Orders.jsx'
 import { Testing } from './pages/Testing.jsx'
 
 const routes = [
-    { path: '/', component: HomePage, label: 'Home 🏠' },
-    // { path: '/user/:id', component: UserDetails },
+    { path: '/', component: HomePage, label: 'Home' },
     { path: '/explore/', component: GigIndex, label: 'Explore' },
     { path: '/gig/:id', component: GigDetails },
     { path: '/user/:id', component: UserProfile, label: 'profile' },
@@ -19,7 +18,7 @@ const routes = [
     { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
     { path: '/dashboard', component: DashboardPage, label: 'dashboard'},
     { path: '/orders' ,component: Orders, label: 'order'},
-    { path: '/testing', component: Testing, label: 'testing'}
+    // { path: '/testing', component: Testing, label: 'testing'} Used for Development
 ]
 
 export default routes
