@@ -7,7 +7,7 @@ export async function loadGigs(filterBy = {}) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
         const gigs = await gigService.query(filterBy)
-        console.log('filterBy in action: ',filterBy);
+        // console.log('filterBy in action: ',filterBy)
         store.dispatch({ type: SET_GIGS, gigs })
     } catch (err) {
         console.log('cannot load gigs, heres why:', err)

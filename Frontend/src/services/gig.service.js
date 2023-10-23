@@ -68,7 +68,7 @@ async function query(filterBy = {}) {
       })
     }
 
-    console.log(gigsToDisplay)
+    // console.log(gigsToDisplay)
     return gigsToDisplay
   } catch (error) {
     console.error('Error querying gigs:', error)

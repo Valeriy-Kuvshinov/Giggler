@@ -89,5 +89,32 @@
         "reasonForDenial": "",
         "orderState": "accepted",
         "_id": "AWvpL"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1698043423353,
+        "reasonForDenial": "",
+        "orderState": "accepted",
+        "_id": "QGKks",
+        "acceptedAt": 1698043774947
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1698043512834,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "uonLD"
     }
 ]

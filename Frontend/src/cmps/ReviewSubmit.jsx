@@ -7,7 +7,6 @@ import { reviewService } from '../services/review.service.js'
 import { saveGig } from '../store/gig.actions.js'
 
 export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
-    console.log(gig)
     const [reviewText, setReviewText] = useState('')
     const [reviewRating, setReviewRating] = useState(0)
     const [hoverRating, setHoverRating] = useState(0)

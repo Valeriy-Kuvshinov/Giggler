@@ -28,6 +28,7 @@ export function UserOrders() {
     function acceptOrder(order) {
         console.log(`order ${order._id} accepted`)
         order.orderState = 'accepted'
+        order.acceptedAt=Date.now()
         orderBackendService.save(order)
     }
 
@@ -35,11 +36,8 @@ export function UserOrders() {
         console.log(`order ${order._id} denied`)
         const newOrder={...order }
         newOrder.orderState = 'denied'
-        console.log('reason',reason)
-        console.log(newOrder.reasonForDenial)
+        newOrder.deniedAt=Date.now()
         newOrder.reasonForDenial = reason
-        console.log(newOrder.reasonForDenial)
-        console.log(newOrder)
         orderBackendService.save(newOrder)
     }
 

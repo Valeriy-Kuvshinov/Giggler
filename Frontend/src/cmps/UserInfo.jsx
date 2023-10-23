@@ -26,8 +26,6 @@ export function UserInfo({ user }) {
   let month = months[time.getMonth()]
   let year=time.getFullYear()
 
-  console.log(user)
-
   useEffect(()=>{
    loadReviews()
   },[])
