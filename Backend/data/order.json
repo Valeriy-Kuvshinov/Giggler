@@ -9,8 +9,9 @@
         "price": 99,
         "createdAt": 1697798400000,
         "orderState": "denied",
-        "reasonForDenial": "didnt want to",
-        "_id": "y1ycv"
+        "reasonForDenial": "bread",
+        "_id": "y1ycv",
+        "deniedAt": 1698057634641
     },
     {
         "buyerId": "u002",
@@ -22,8 +23,9 @@
         "price": 99,
         "createdAt": 1697798400000,
         "orderState": "denied",
-        "reasonForDenial": "test",
-        "_id": "a1ycv"
+        "reasonForDenial": "L + Ratio",
+        "_id": "a1ycv",
+        "deniedAt": 1698057657551
     },
     {
         "buyerId": "u001",
@@ -34,9 +36,10 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697452800000,
-        "orderState": "completed",
+        "orderState": "accepted",
         "reasonForDenial": "",
-        "_id": "b1ycv"
+        "_id": "b1ycv",
+        "acceptedAt": 1698057658920
     },
     {
         "buyerId": "u002",
@@ -47,7 +50,7 @@
         "orderedGigId": "g002",
         "price": 49,
         "createdAt": 1697452800000,
-        "orderState": "accepted",
+        "orderState": "pending",
         "reasonForDenial": "",
         "_id": "c1ycv"
     },
@@ -60,7 +63,7 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "accepted",
+        "orderState": "pending",
         "reasonForDenial": "",
         "_id": "d1ycv"
     },
@@ -73,9 +76,10 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "denied",
+        "orderState": "accepted",
         "reasonForDenial": "missing credit card",
-        "_id": "e1ycv"
+        "_id": "e1ycv",
+        "acceptedAt": 1698057665799
     },
     {
         "buyerId": "u001",
@@ -87,7 +91,7 @@
         "price": 99,
         "createdAt": 1697967141088,
         "reasonForDenial": "",
-        "orderState": "accepted",
+        "orderState": "pending",
         "_id": "AWvpL"
     },
     {
@@ -114,7 +118,8 @@
         "price": 99,
         "createdAt": 1698043512834,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "uonLD"
+        "orderState": "accepted",
+        "_id": "uonLD",
+        "acceptedAt": 1698057136223
     }
 ]
