@@ -48,7 +48,7 @@ export function GigHeader({ gig, owner }) {
             <span className="orders-in-queue">
               <span>{sellerOrders.length - completedOrders.length}</span>
               <span>
-                {sellerOrders.length - completedOrders.length > 1
+                {sellerOrders.length - completedOrders.length !== 1
                   ? "Orders"
                   : "Order"}
               </span>
