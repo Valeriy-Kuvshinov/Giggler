@@ -59,6 +59,8 @@ function save(order) {
         newOrder.price=order.price
         newOrder.orderState=order.orderState
         newOrder.reasonForDenial=order.reasonForDenial
+        if (order.deniedAt) newOrder.deniedAt=order.deniedAt
+        if (order.acceptedAt) newOrder.acceptedAt=order.acceptedAt
     } else {
         order._id = _makeId()
         // order.owner = loggedinUser

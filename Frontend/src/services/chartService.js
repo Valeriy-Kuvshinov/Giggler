@@ -72,6 +72,62 @@ export const donutGigsChartOptions = {
     }
 }
 
+export const pieUsersChartOptions = {
+    aspectRatio: 2,
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return ` ${context.raw} / 5 stars`
+                }
+            }
+        }
+    }
+}
+
+export const lineUsersChartOptions = {
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+                title: function () {
+                    return ''
+                },
+                label: function (context) {
+                    return `${context.raw.toFixed(0)} new users`
+                }
+            }
+        }
+    },
+    scales: {
+        y: {
+            beginAtZero: true
+        }
+    }
+}
+
+export const donutUsersChartOptions = {
+    aspectRatio: 2,
+    cutout: '50%',
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return ` ${context.raw} users`
+                }
+            }
+        }
+    }
+}
+
 export const lineMoneyChartOptions = {
     plugins: {
         legend: {

@@ -1,7 +1,7 @@
 .home-wrapper {
     .home-services-section {
         position: relative;
-        overflow: hidden;
+        overflow: visible;
         max-width: 1400px;
         margin: auto;
 
@@ -57,14 +57,6 @@
             img {
                 width: 50%;
                 height: 50%;
-            }
-
-            &.left-side {
-                left: 1%;
-            }
-
-            &.right-side {
-                right: 1%;
             }
         }
     }

@@ -1,27 +1,12 @@
 import { useState , useEffect } from "react"
 import { Link } from 'react-router-dom'
 
+import { showSuccessMsg,showErrorMsg } from "../services/event-bus.service.js"
 import { getGig } from '../store/gig.actions.js'
+
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 
 export function PaymentInfo({gig,createOrder}){
-
-    // const [gig,setGig]=useState(null)
-
-    // useEffect(()=>{
-    //     loadGig()
-    //   },[])
-    
-    //   async function loadGig(){
-    //     try{
-    //       const gig=await getGig(gigId)
-    //       setGig(gig)
-    //     } catch (err){
-    //       console.log('couldnt load gig : ',err)
-    //     }
-    //   }
-
-    console.log(gig)
     
     if(gig===null) return <div>loading...</div>
     

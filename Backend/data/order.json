@@ -34,7 +34,7 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697452800000,
-        "orderState": "accepted",
+        "orderState": "completed",
         "reasonForDenial": "",
         "_id": "b1ycv"
     },
@@ -93,6 +93,7 @@
     {
         "buyerId": "u001",
         "buyerName": "Peter Porker",
+<<<<<<< HEAD
         "sellerId": "u102",
         "title": "I will design stunning website templates",
         "deliveryTime": "2 days",
@@ -102,5 +103,30 @@
         "reasonForDenial": "",
         "orderState": "pending",
         "_id": "uWoLO"
+=======
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1698043423353,
+        "reasonForDenial": "",
+        "orderState": "accepted",
+        "_id": "QGKks",
+        "acceptedAt": 1698043774947
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u001",
+        "title": "I will take unique photos of Spiderman",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g001",
+        "price": 99,
+        "createdAt": 1698043512834,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "uonLD"
+>>>>>>> e65645c4b329bd052ff7d5517c0b3f51b90d1a99
     }
 ]
