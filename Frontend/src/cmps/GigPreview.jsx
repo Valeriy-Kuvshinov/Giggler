@@ -1,26 +1,38 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
 
-import SvgIcon from './SvgIcon.jsx'
+import heart from "../assets/img/svg/heart.icon.svg"
+import likedHeart from "../assets/img/svg/liked.heart.icon.svg"
+// import SvgIcon from './SvgIcon.jsx'
+import { gigService } from '../services/gig.service'
 import { userService } from '../services/user.service.js'
 import { removeGig } from '../store/gig.actions.js'
 
+import { useModal } from "../customHooks/ModalContext"
 import { UserPreview } from './UserPreview.jsx'
 import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
-  const [isLiked, setIsLiked] = useState(false)
+  const user = useSelector(storeState => storeState.userModule.user)
+
   const [owner, setOwner] = useState(null)
-  const parentRef = useRef()
+  const [updatedGig, setUpdatedGig] = useState(gig)
   const [parentWidth, setParentWidth] = useState(0)
+  const [isLiked, setIsLiked] = useState(
+    user && updatedGig.likedByUsers.includes(user._id)
+  )
+
+  const parentRef = useRef()
   const navigate = useNavigate()
+  const { openLogin } = useModal()
 
   function handleResize() {
     if (parentRef.current && parentRef.current.clientWidth > 0) {
-      setParentWidth(parentRef.current.clientWidth);
+      setParentWidth(parentRef.current.clientWidth)
     }
   }
-  
+
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     window.addEventListener('load', handleResize)
@@ -34,15 +46,19 @@ export function GigPreview({ is, gig }) {
 
   useEffect(() => {
     async function fetchOwnerDetails() {
-      const ownerData = await userService.getById(gig.ownerId)
+      const ownerData = await userService.getById(updatedGig.ownerId)
       setOwner(ownerData)
     }
     fetchOwnerDetails()
-  }, [gig.ownerId])
+  }, [updatedGig.ownerId])
+
+  useEffect(() => {
+    setIsLiked(user && gig.likedByUsers.includes(user._id))
+  }, [user, gig])
 
   async function onRemoveGig() {
     try {
-      await removeGig(gig._id)
+      await removeGig(updatedGig._id)
       console.log('Gig removed successfully:')
       navigate(`/user/${owner._id}`)
     } catch (err) {
@@ -50,47 +66,76 @@ export function GigPreview({ is, gig }) {
     }
   }
 
-  function onToggleHeart() {
-    setIsLiked((prevIsLiked) => !prevIsLiked)
+  async function likeGig() {
+    if (!user) {
+      openLogin()
+      return
+    }
+    const gigToSave = { ...updatedGig }
+
+    if (gigToSave.likedByUsers.includes(user._id)) {
+      gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
+        liker => liker !== user._id
+      )
+      setIsLiked(false)
+      try {
+        await gigService.save(gigToSave)
+      } catch (err) {
+        console.error(err)
+      }
+      setUpdatedGig(gigToSave)
+    }
+    else {
+      gigToSave.likedByUsers.push(user._id)
+
+      setIsLiked(true)
+      try {
+        await gigService.save(gigToSave)
+      } catch (err) {
+        console.error(err)
+      }
+      setUpdatedGig(gigToSave)
+    }
   }
+
   if (!owner) return null
 
   return (
     <li className="gig-preview" ref={parentRef}>
       <ImageCarousel
-        images={gig.imgUrls}
-        gigId={gig._id}
+        images={updatedGig.imgUrls}
+        gigId={updatedGig._id}
         parentWidth={parentWidth}
       />
+
+      <button className='heart' onClick={likeGig}>
+        <img src={isLiked ? likedHeart : heart} title="liked the gig" />
+      </button>
+
       <div className="preview-body">
         {is === 'explore' && (
-          <UserPreview is={is} owner={owner} gig={gig}>
-            <Link className="gig-title" to={`/gig/${gig._id}`}>
-              {gig.title}
+          <UserPreview is={is} owner={owner} gig={updatedGig}>
+            <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
+              {updatedGig.title}
             </Link>
           </UserPreview>
         )}
+
         {is === 'userProfile' && (
           <>
-            <Link className="gig-title" to={`/gig/${gig._id}`}>
-              {gig.title}
+            <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
+              {updatedGig.title}
             </Link>
             <button>
-              <Link className="gig-title" to={`/gig/edit/${gig._id}`}>
+              <Link className="gig-title" to={`/gig/edit/${updatedGig._id}`}>
                 update
               </Link>
             </button>
             <button onClick={onRemoveGig}>remove</button>
           </>
         )}
-        <div className="gig-price-likes">
-          <span className="price b">{`From $${gig.price}`}</span>
-          <span
-            className={`${isLiked ? 'black' : ''}`}
-            onClick={(e) => onToggleHeart(e)}
-          >
-            <SvgIcon iconName={'heart'} />
-          </span>
+        <div className="gig-price">
+          <span className="price b">{`From $${updatedGig.price}`}</span>
         </div>
       </div>
     </li>

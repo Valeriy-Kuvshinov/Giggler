@@ -33,7 +33,6 @@
       "Adx463"
     ],
     "createdAt": 1695643112145
-
   },
   {
     "_id": "g002",
@@ -56,12 +55,13 @@
       "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
       "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
     ],
-    "likedByUsers": [],
+    "likedByUsers": [
+      "u001"
+    ],
     "reviews": [
       "NtvZm"
     ],
     "createdAt": 1695643112145
-
   },
   {
     "_id": "g101",
@@ -97,7 +97,6 @@
       "XImlYz"
     ],
     "createdAt": 1695643112145
-
   },
   {
     "_id": "g102",
@@ -126,7 +125,6 @@
       "203"
     ],
     "createdAt": 1695643112145
-
   },
   {
     "_id": "g103",
@@ -154,7 +152,6 @@
       "303"
     ],
     "createdAt": 1696247912145
-
   },
   {
     "_id": "g104",
@@ -183,7 +180,6 @@
       "403"
     ],
     "createdAt": 1696247912145
-
   },
   {
     "_id": "g105",
@@ -212,7 +208,6 @@
       "503"
     ],
     "createdAt": 1696247912145
-
   },
   {
     "_id": "g106",
@@ -242,7 +237,6 @@
       "603"
     ],
     "createdAt": 1696247912145
-
   },
   {
     "_id": "g107",
@@ -271,7 +265,6 @@
       "703"
     ],
     "createdAt": 1696247912145
-
   },
   {
     "_id": "g108",
@@ -300,7 +293,6 @@
       "803"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "g109",
@@ -329,7 +321,6 @@
       "903"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "g110",
@@ -358,7 +349,6 @@
       "1003"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "g111",
@@ -387,7 +377,6 @@
       "1103"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "g112",
@@ -415,7 +404,6 @@
       "1203"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "g113",
@@ -444,7 +432,6 @@
       "1303"
     ],
     "createdAt": 1696852712145
-
   },
   {
     "_id": "4uSOYc",
@@ -472,7 +459,6 @@
       "2wvGFH"
     ],
     "createdAt": 1697457962581
-
   },
   {
     "_id": "AhNAiy",
@@ -500,7 +486,6 @@
       "zteBv9"
     ],
     "createdAt": 1697543272000
-
   },
   {
     "_id": "GI2X2r",
@@ -529,7 +514,6 @@
       "zNhA3l"
     ],
     "createdAt": 1697919013048
-
   },
   {
     "_id": "yRHJqL",
@@ -554,6 +538,5 @@
     "likedByUsers": [],
     "reviews": [],
     "createdAt": 1698042300163
-    
   }
 ]

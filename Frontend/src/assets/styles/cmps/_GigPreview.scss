@@ -8,23 +8,33 @@
   img {
     aspect-ratio: 5/3;
     object-fit: cover;
-    width: 100%;
   }
 
-  .carousel-container:hover ~ .preview-body .gig-title {
+  .carousel-container:hover~.preview-body .gig-title {
     text-decoration: underline;
+  }
+
+  .heart {
+    width: fit-content;
+    position: absolute;
+    background: none;
+
+    img {
+      aspect-ratio: auto;
+    }
   }
 
   .gig-title {
     display: block;
-    overflow: hidden; 
+    overflow: hidden;
     text-overflow: ellipsis;
-    min-height: 2.4em; 
-    line-height: 1.2; 
+    min-height: 2.4em;
+    line-height: 1.2;
     max-height: 2.4em;
     padding: 0 0 0.25em 0;
     margin-top: rem(5px);
   }
+
   .preview-user-info {
     font-size: 0.875rem;
     display: flex;
@@ -66,7 +76,7 @@
     }
   }
 
-  .gig-price-likes {
+  .gig-price {
     display: flex;
     align-items: center;
     justify-content: space-between;
