@@ -2,89 +2,87 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { gigService } from '../services/gig.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
+import { userService } from '../services/user.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
 export function UserDashboardInfo() {
-    const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
-    const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
-    const [mostPopularGig, setMostPopularGig] = useState(null)
-    const [mostTrendingGig, setMostTrendingGig] = useState(null)
-    const [totalGigs, setTotalGigs] = useState(0)
-    const [pendingGigs, setPendingGigs] = useState(0)
-    const [deniedGigs, setDeniedGigs] = useState(0)
-    const [weeklyGigs, setWeeklyGigs] = useState(0)
-    const [monthlyGigs, setMonthlyGigs] = useState(0)
-    const [avgGigPrice, setAvgGigPrice] = useState(0)
+    const [totalUsers, setTotalUsers] = useState(0)
+    const [newUsersWeek, setNewUsersWeek] = useState(0)
+    const [newUsersMonth, setNewUsersMonth] = useState(0)
+    const [newestUser, setNewestUser] = useState(null)
+
+    const [bestUserRating, setBestUserRating] = useState(null)
+    const [bestUserOrders, setBestUserOrders] = useState(null)
+    const [bestUserGigs, setBestUserGigs] = useState(null)
+    const [bestUserBalance, setBestUserBalance] = useState(null)
+
+    const [worstUserRating, setWorstUserRating] = useState(null)
+    const [worstUserOrders, setWorstUserOrders] = useState(null)
+    const [worstUserGigs, setWorstUserGigs] = useState(null)
+    const [worstUserBalance, setWorstUserBalance] = useState(null)
 
     useEffect(() => {
-        const fetchGigs = async () => {
+        const fetchData = async () => {
+            const users = await userService.getUsers()
             const gigs = await gigService.query()
             const orders = await orderBackendService.query()
 
-            let expensiveGig = gigs[0]
-            let cheapGig = gigs[0]
-            let popularGig = gigs[0]
-            let pendingCount = 0
-            let deniedCount = 0
-            let weeklyCount = 0
-            let monthlyCount = 0
-            let totalGigPrice = 0
             const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000)
             const oneMonthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000)
 
-            const gigOrderCounts = {}
+            const newUsersThisWeek = users.filter(user => user.createdAt > oneWeekAgo).length
+            const newUsersThisMonth = users.filter(user => user.createdAt > oneMonthAgo).length
+            const newestUser = [...users].sort((a, b) => b.createdAt - a.createdAt)[0]
 
-            gigs.forEach(gig => {
-                if (gig.price > expensiveGig.price) expensiveGig = gig
-                if (gig.price < cheapGig.price) cheapGig = gig
+            const userOrderCounts = {}
+            const userGigCounts = {}
 
-                if (gig.reviews.length > popularGig.reviews.length) popularGig = gig
-
-                if (gig.state === 'pending') pendingCount++
-                if (gig.state === 'denied') deniedCount++
-
-                if (gig.createdAt > oneWeekAgo) weeklyCount++
-                if (gig.createdAt > oneMonthAgo) monthlyCount++
-
-                totalGigPrice += gig.price
+            users.forEach(user => {
+                userOrderCounts[user._id] = orders.filter(order => order.sellerId === user._id && order.orderState === 'accepted').length
+                userGigCounts[user._id] = gigs.filter(gig => gig.ownerId === user._id).length
             })
 
-            const averagePrice = totalGigPrice / gigs.length
-            setAvgGigPrice(averagePrice.toFixed(2))
+            const getMaxMinUsersBy = (dataObj, field = null, isMax = true) => {
+                return users.reduce((accUser, currentUser) => {
+                    const accValue = field ? accUser[field] : dataObj[accUser._id]
+                    const currValue = field ? currentUser[field] : dataObj[currentUser._id]
+                    return isMax ? (currValue > accValue ? currentUser : accUser) : (currValue < accValue ? currentUser : accUser)
+                })
+            }
+            setTotalUsers(users.length)
+            setNewUsersWeek(newUsersThisWeek)
+            setNewUsersMonth(newUsersThisMonth)
+            setNewestUser(newestUser)
 
-            orders.forEach(order => {
-                if (!gigOrderCounts[order.orderedGigId]) gigOrderCounts[order.orderedGigId] = 1
-                else gigOrderCounts[order.orderedGigId]++
-            })
+            setBestUserRating(getMaxMinUsersBy({}, 'rating'))
+            setBestUserOrders(getMaxMinUsersBy(userOrderCounts))
+            setBestUserGigs(getMaxMinUsersBy(userGigCounts))
+            setBestUserBalance(getMaxMinUsersBy({}, 'balance'))
 
-            const trendingGigId = Object.keys(gigOrderCounts).reduce((a, b) => gigOrderCounts[a] > gigOrderCounts[b] ? a : b)
-            const trendingGig = gigs.find(gig => gig._id === trendingGigId)
-
-            setMostExpensiveGig(expensiveGig)
-            setLeastExpensiveGig(cheapGig)
-            setMostPopularGig(popularGig)
-            setTotalGigs(gigs.length)
-            setPendingGigs(pendingCount)
-            setDeniedGigs(deniedCount)
-            setWeeklyGigs(weeklyCount)
-            setMonthlyGigs(monthlyCount)
-            setMostTrendingGig(trendingGig)
+            setWorstUserRating(getMaxMinUsersBy({}, 'rating', false))
+            setWorstUserOrders(getMaxMinUsersBy(userOrderCounts, null, false))
+            setWorstUserGigs(getMaxMinUsersBy(userGigCounts, null, false))
+            setWorstUserBalance(getMaxMinUsersBy({}, 'balance', false))
         }
-        fetchGigs()
+        fetchData()
     }, [])
 
     return (
-        <section className="gigs-info grid">
-            <InfoDiv title="Total Gigs" info={totalGigs ? totalGigs : 'Loading...'} />
-            <InfoDiv title="Pending Gigs" info={pendingGigs} />
-            <InfoDiv title="Denied Gigs" info={deniedGigs} />
-            <InfoDiv title="Gigs in the past week" info={weeklyGigs} />
-            <InfoDiv title="Gigs in the past month" info={monthlyGigs} />
-            <InfoDiv title="Most popular (reviews)" info={<Link to={`/gig/${mostPopularGig?._id}`}>{mostPopularGig ? `${mostPopularGig._id} (by ${mostPopularGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Most trending (orders)" info={<Link to={`/gig/${mostTrendingGig?._id}`}>{mostTrendingGig ? `${mostTrendingGig._id} (by ${mostTrendingGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Average Gig Price" info={`$${avgGigPrice}`} />
-            <InfoDiv title="Most expensive" info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Least expensive" info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
+        <section className="users-info grid">
+            <InfoDiv title="Total users" info={totalUsers} />
+            <InfoDiv title="New users in the past week" info={newUsersWeek} />
+            <InfoDiv title="New users in the past month" info={newUsersMonth} />
+            <InfoDiv title="Newest User" info={newestUser ? newestUser.username : 'Loading...'} />
+
+            <InfoDiv title="Best user (rating)" info={bestUserRating ? bestUserRating.username : 'Loading...'} />
+            <InfoDiv title="Best user (orders)" info={bestUserOrders ? bestUserOrders.username : 'Loading...'} />
+            <InfoDiv title="Best user (gigs)" info={bestUserGigs ? bestUserGigs.username : 'Loading...'} />
+            <InfoDiv title="Best user (balance)" info={bestUserBalance ? bestUserBalance.username : 'Loading...'} />
+
+            <InfoDiv title="Worst user (rating)" info={worstUserRating ? worstUserRating.username : 'Loading...'} />
+            <InfoDiv title="Worst user (orders)" info={worstUserOrders ? worstUserOrders.username : 'Loading...'} />
+            <InfoDiv title="Worst user (gigs)" info={worstUserGigs ? worstUserGigs.username : 'Loading...'} />
+            <InfoDiv title="Worst user (balance)" info={worstUserBalance ? worstUserBalance.username : 'Loading...'} />
         </section>
     )
 }

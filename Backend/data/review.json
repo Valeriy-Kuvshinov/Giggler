@@ -4,7 +4,7 @@
         "userId": "u001",
         "gigId": "g001",
         "sellerId": "u001",
-        "rating": "3",
+        "rating": 3,
         "text": "test",
         "createdAt": 1697456859393
     },
@@ -13,7 +13,7 @@
         "userId": "u001",
         "gigId": "g002",
         "sellerId": "u002",
-        "rating": "3",
+        "rating": 3,
         "text": "bread",
         "createdAt": 1697457303713
     },

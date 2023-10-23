@@ -57,21 +57,11 @@ export function FinanceDashboardInfo() {
 
     return (
         <section className="finance-info grid">
-            <InfoDiv title="New orders today" info={orders.filter(order => order.createdAt >= startOfDay).length} />
-            <InfoDiv title="New orders this week" info={orders.filter(order => order.createdAt >= startOfWeek).length} />
-            <InfoDiv title="New orders this month" info={orders.filter(order => order.createdAt >= startOfMonth).length} />
-            <InfoDiv
-                title="Order profits (daily)"
-                info={`$${orderProfitToday.toFixed(2)} ${getDifferenceDisplay(orderProfitToday, orderProfitYesterday)}`}
-            />
-            <InfoDiv
-                title="Order profits (weekly)"
-                info={`$${orderProfitThisWeek.toFixed(2)} ${getDifferenceDisplay(orderProfitThisWeek, orderProfitLastWeek)}`}
-            />
-            <InfoDiv
-                title="Order profits (monthly)"
-                info={`$${orderProfitThisMonth.toFixed(2)} ${getDifferenceDisplay(orderProfitThisMonth, orderProfitLastMonth)}`}
-            />
+            <InfoDiv title="New orders this week"
+                info={orders.filter(order => order.createdAt >= startOfWeek).length} />
+            <InfoDiv title="New orders this month"
+                info={orders.filter(order => order.createdAt >= startOfMonth).length} />
+            
             <InfoDiv
                 title="Orders pending"
                 info={orders.filter(order => order.orderState === 'pending').length}
@@ -83,6 +73,23 @@ export function FinanceDashboardInfo() {
             <InfoDiv
                 title="Orders accepted"
                 info={orders.filter(order => order.orderState === 'accepted').length}
+            />
+            <InfoDiv
+                title="Orders completed"
+                info={orders.filter(order => order.orderState === 'completed').length}
+            />
+            
+            <InfoDiv
+                title="Order profits (daily)"
+                info={`$${orderProfitToday.toFixed(2)} ${getDifferenceDisplay(orderProfitToday, orderProfitYesterday)}`}
+            />
+            <InfoDiv
+                title="Order profits (weekly)"
+                info={`$${orderProfitThisWeek.toFixed(2)} ${getDifferenceDisplay(orderProfitThisWeek, orderProfitLastWeek)}`}
+            />
+            <InfoDiv
+                title="Order profits (monthly)"
+                info={`$${orderProfitThisMonth.toFixed(2)} ${getDifferenceDisplay(orderProfitThisMonth, orderProfitLastMonth)}`}
             />
         </section>
     )

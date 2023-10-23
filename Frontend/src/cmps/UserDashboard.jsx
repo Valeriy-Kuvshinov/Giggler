@@ -1,87 +1,86 @@
 import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
-import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2'
+import { Line, Pie, Doughnut } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
+import { userService } from '../services/user.service.js'
 import { UserDashboardInfo } from './UserDashboardInfo.jsx'
-import { donutGigsChartOptions, barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
+import { donutUsersChartOptions, pieGigsChartOptions, pieUsersChartOptions, lineUsersChartOptions } from '../services/chartService.js'
 
 export function UserDashboard() {
-    const [avgCategoryPrices, setAvgCategoryPrices] = useState({})
-    const [topCategories, setTopCategories] = useState({})
-    const [gigsOverTime, setGigsOverTime] = useState({})
-    const [gigStateData, setGigStateData] = useState({})
+    const [usersOverTime, setUsersOverTime] = useState({})
+    const [topUsersByGigs, setTopUsersByGigs] = useState({})
+    const [topUsersByRating, setTopUsersByRating] = useState({})
+    const [sellersVsCustomers, setSellersVsCustomers] = useState({})
 
     useEffect(() => {
-        const fetchGigs = async () => {
+        const fetchData = async () => {
+            const users = await userService.getUsers()
             const gigs = await gigService.query()
-            const categoryPrices = {}
-            const categoryCounts = {}
-            let stateCounts = { pending: 0, approved: 0, denied: 0 }
-            let dateCounts = {}
 
-            gigs.forEach(gig => {
-                if (categoryPrices[gig.category]) {
-                    categoryPrices[gig.category] += gig.price
-                    categoryCounts[gig.category]++
-                }
-                else {
-                    categoryPrices[gig.category] = gig.price
-                    categoryCounts[gig.category] = 1
-                }
-                if (stateCounts[gig.state] !== undefined) stateCounts[gig.state]++
-
-                const date = new Date(gig.createdAt).toISOString().split('T')[0]
+            const dateCounts = {}
+            users.forEach(user => {
+                const date = new Date(user.createdAt * 1000).toISOString().split('T')[0]
                 dateCounts[date] = (dateCounts[date] || 0) + 1
             })
-            const categories = Object.keys(categoryPrices)
-            const averages = categories.map(cat => categoryPrices[cat] / categoryCounts[cat])
-            setAvgCategoryPrices({ categories, averages })
-
-            const sortedCategories = Object.entries(categoryCounts).sort(([, aCount], [, bCount]) => bCount - aCount).slice(0, 10)
-            setTopCategories({
-                categories: sortedCategories.map(entry => entry[0]),
-                counts: sortedCategories.map(entry => entry[1])
-            })
-
             const dateLabels = Object.keys(dateCounts).sort()
             const dateData = dateLabels.map(date => dateCounts[date])
+            setUsersOverTime({ labels: dateLabels, data: dateData })
 
-            setGigsOverTime({ labels: dateLabels, data: dateData })
-            setGigStateData(stateCounts)
+            const userGigCounts = {}
+            users.forEach(user => userGigCounts[user._id] = gigs.filter(gig => gig.ownerId === user._id).length)
+            const sortedUsersByGigs = [...users].sort((a, b) => userGigCounts[b._id] - userGigCounts[a._id]).slice(0, 10)
+            const sortedUsersByRating = [...users].sort((a, b) => b.rating - a.rating).slice(0, 10)
+
+            setTopUsersByGigs({
+                labels: sortedUsersByGigs.map(user => user.username),
+                data: sortedUsersByGigs.map(user => userGigCounts[user._id])
+            })
+
+            setTopUsersByRating({
+                labels: sortedUsersByRating.map(user => user.username),
+                data: sortedUsersByRating.map(user => user.rating)
+            })
+
+            const sellersCount = users.filter(user => gigs.some(gig => gig.ownerId === user._id)).length
+            const customersCount = users.length - sellersCount
+            setSellersVsCustomers({
+                labels: ['Sellers', 'Customers'],
+                data: [sellersCount, customersCount]
+            })
         }
-        fetchGigs()
+        fetchData()
     }, [])
 
     return (
-        <section className='dashboard-gigs-container'>
+        <section className='dashboard-users-container'>
             <h2>General Users Info:</h2>
 
             <UserDashboardInfo />
 
-            <main className='grid gigs-charts'>
+            <main className='grid users-charts'>
                 <div className="chart-section">
-                    <Typography variant="h6">Average Price by Category</Typography>
-                    <Bar
+                    <Typography variant="h6">New Users Over Time</Typography>
+                    <Line
                         data={{
-                            labels: avgCategoryPrices.categories,
+                            labels: usersOverTime.labels,
                             datasets: [{
-                                data: avgCategoryPrices.averages,
-                                backgroundColor: '#404145',
-                                borderColor: '#222325',
-                                borderWidth: 1
+                                data: usersOverTime.data,
+                                borderColor: '#404145',
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
                             }]
                         }}
-                        options={barGigsChartOptions}
+                        options={lineUsersChartOptions}
                     />
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">Most Common (by category)</Typography>
+                    <Typography variant="h6">Top Users by Gigs</Typography>
                     <Pie
                         data={{
-                            labels: topCategories.categories,
+                            labels: topUsersByGigs.labels,
                             datasets: [{
-                                data: topCategories.counts,
+                                data: topUsersByGigs.data,
                                 backgroundColor: [
                                     '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',
                                     '#33FF57', '#8533FF', '#33B5FF', '#FF8333',
@@ -94,32 +93,34 @@ export function UserDashboard() {
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">New Gigs Over Time</Typography>
-                    <Line
+                    <Typography variant="h6">Top Users by Rating</Typography>
+                    <Pie
                         data={{
-                            labels: gigsOverTime.labels,
+                            labels: topUsersByRating.labels,
                             datasets: [{
-                                data: gigsOverTime.data,
-                                borderColor: '#404145',
-                                fill: true,
-                                backgroundColor: 'rgba(145, 194, 245)'
+                                data: topUsersByRating.data,
+                                backgroundColor: [
+                                    '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',
+                                    '#33FF57', '#8533FF', '#33B5FF', '#FF8333',
+                                    '#B833FF', '#FF335E'
+                                ]
                             }]
                         }}
-                        options={lineGigsChartOptions}
+                        options={pieUsersChartOptions}
                     />
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">Gigs State Distribution</Typography>
+                    <Typography variant="h6">Sellers vs Customers</Typography>
                     <Doughnut
                         data={{
-                            labels: Object.keys(gigStateData),
+                            labels: sellersVsCustomers.labels,
                             datasets: [{
-                                data: Object.values(gigStateData),
-                                backgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
+                                data: sellersVsCustomers.data,
+                                backgroundColor: ['#FFCE56', '#36A2EB']
                             }]
                         }}
-                        options={donutGigsChartOptions}
+                        options={donutUsersChartOptions}
                     />
                 </div>
             </main>
