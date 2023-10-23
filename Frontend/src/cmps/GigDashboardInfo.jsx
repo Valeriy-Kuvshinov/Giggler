@@ -6,13 +6,9 @@ import { orderBackendService } from '../services/order.backend.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
 export function GigDashboardInfo() {
-    // State declarations
-    const [mostExpensiveGig, setMostExpensiveGig] = useState(null)
-    const [leastExpensiveGig, setLeastExpensiveGig] = useState(null)
     const [totalGigs, setTotalGigs] = useState(0)
     const [pendingGigs, setPendingGigs] = useState(0)
     const [deniedGigs, setDeniedGigs] = useState(0)
-    const [weeklyGigs, setWeeklyGigs] = useState(0)
     const [monthlyGigs, setMonthlyGigs] = useState(0)
     const [avgGigPrice, setAvgGigPrice] = useState(0)
     const [bestGigByRating, setBestGigByRating] = useState(null)
@@ -26,26 +22,18 @@ export function GigDashboardInfo() {
             const reviews = await reviewService.query()
             const orders = await orderBackendService.query()
 
-            let expensiveGig = gigs[0]
-            let cheapGig = gigs[0]
             let pendingCount = 0
             let deniedCount = 0
-            let weeklyCount = 0
             let monthlyCount = 0
             let totalGigPrice = 0
-            const oneWeekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000)
             const oneMonthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000)
 
             const gigOrderCounts = {}
 
             gigs.forEach(gig => {
-                if (gig.price > expensiveGig.price) expensiveGig = gig
-                if (gig.price < cheapGig.price) cheapGig = gig
-
                 if (gig.state === 'pending') pendingCount++
                 if (gig.state === 'denied') deniedCount++
 
-                if (gig.createdAt > oneWeekAgo) weeklyCount++
                 if (gig.createdAt > oneMonthAgo) monthlyCount++
 
                 totalGigPrice += gig.price
@@ -78,14 +66,11 @@ export function GigDashboardInfo() {
                 return currentGig.averageRating < worstGig.averageRating ? currentGig : worstGig
             }, gigs[0])
 
-            setMostExpensiveGig(expensiveGig)
-            setLeastExpensiveGig(cheapGig)
             setTotalGigs(gigs.length)
             setAvgGigPrice(averagePrice.toFixed(2))
 
             setPendingGigs(pendingCount)
             setDeniedGigs(deniedCount)
-            setWeeklyGigs(weeklyCount)
             setMonthlyGigs(monthlyCount)
 
             setBestGigByRating(bestGigRating)
@@ -99,15 +84,10 @@ export function GigDashboardInfo() {
     return (
         <section className="gigs-info grid">
             <InfoDiv title="Total gigs" info={totalGigs ? totalGigs : 'Loading...'} />
-            <InfoDiv title="Most expensive"
-                info={<Link to={`/gig/${mostExpensiveGig?._id}`}>{mostExpensiveGig ? `${mostExpensiveGig._id} (by ${mostExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
-            <InfoDiv title="Least expensive"
-                info={<Link to={`/gig/${leastExpensiveGig?._id}`}>{leastExpensiveGig ? `${leastExpensiveGig._id} (by ${leastExpensiveGig.ownerId})` : 'Loading...'}</Link>} />
             <InfoDiv title="Average gig price" info={`$${avgGigPrice}`} />
 
             <InfoDiv title="Pending gigs" info={pendingGigs} />
             <InfoDiv title="Denied gigs" info={deniedGigs} />
-            <InfoDiv title="New gigs in the past week" info={weeklyGigs} />
             <InfoDiv title="New gigs in the past month" info={monthlyGigs} />
 
             <InfoDiv title="Best gig (rating)"
