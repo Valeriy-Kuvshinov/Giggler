@@ -1,11 +1,10 @@
 .gig-details {
-    // height:1300px;
     color: black;
 
     .gig {
         display: flex;
-        grid-column: 2;
         justify-content: space-between;
         margin-block-end: 32px;
+        width: 100%;
     }
 }
