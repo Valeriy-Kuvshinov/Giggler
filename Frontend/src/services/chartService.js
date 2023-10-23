@@ -32,6 +32,22 @@ export const pieGigsChartOptions = {
     }
 }
 
+export const pieUsersChartOptions = {
+    aspectRatio: 2,
+    plugins: {
+        legend: {
+            display: false
+        },
+        tooltip: {
+            callbacks: {
+                label: function (context) {
+                    return ` ${context.raw} orders done / in progress`
+                }
+            }
+        }
+    }
+}
+
 export const lineGigsChartOptions = {
     plugins: {
         legend: {

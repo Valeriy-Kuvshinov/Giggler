@@ -5,6 +5,11 @@ import { reviewService } from '../services/review.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
+import gigIcon from '../assets/img/svg/gig.icon.svg'
+import addIcon from '../assets/img/svg/add.icon.svg'
+import moneyIcon from '../assets/img/svg/money.icon.svg'
+import kingIcon from '../assets/img/svg/king.icon.svg'
+
 export function GigDashboardInfo() {
     const [totalGigs, setTotalGigs] = useState(0)
     const [monthlyGigs, setMonthlyGigs] = useState(0)
@@ -69,17 +74,26 @@ export function GigDashboardInfo() {
     }, [])
 
     return (
-        <section className="gigs-info grid">
-            <InfoDiv title="Total gigs" info={totalGigs ? totalGigs : 'Loading...'} />
-            <InfoDiv title="New gigs this month" info={monthlyGigs} />
-            <InfoDiv title="Average gig price" info={`$${avgGigPrice}`} />
+        <section className="info-divs grid">
+            <InfoDiv title="Total gigs"
+                info={totalGigs ? totalGigs : 'Loading...'}
+                imgSrc={gigIcon} />
+            <InfoDiv title="New gigs this month"
+                info={monthlyGigs}
+                imgSrc={addIcon} />
+            <InfoDiv title="Average gig price"
+                info={`$${avgGigPrice}`}
+                imgSrc={moneyIcon} />
 
             <InfoDiv title="Best gig (rating)"
-                info={<Link to={`/gig/${bestGigByRating?._id}`}>{bestGigByRating ? `${bestGigByRating._id} (by ${bestGigByRating.ownerId})` : 'Loading...'}</Link>} />
+                info={<Link to={`/gig/${bestGigByRating?._id}`}>{bestGigByRating ? `${bestGigByRating._id} (by ${bestGigByRating.ownerId})` : 'Loading...'}</Link>}
+                imgSrc={kingIcon} />
             <InfoDiv title="Best gig (orders)"
-                info={<Link to={`/gig/${bestGigByOrders?._id}`}>{bestGigByOrders ? `${bestGigByOrders._id} (by ${bestGigByOrders.ownerId})` : 'Loading...'}</Link>} />
+                info={<Link to={`/gig/${bestGigByOrders?._id}`}>{bestGigByOrders ? `${bestGigByOrders._id} (by ${bestGigByOrders.ownerId})` : 'Loading...'}</Link>}
+                imgSrc={kingIcon} />
             <InfoDiv title="Best gig (reviews)"
-                info={<Link to={`/gig/${bestGigByReviews?._id}`}>{bestGigByReviews ? `${bestGigByReviews._id} (by ${bestGigByReviews.ownerId})` : 'Loading...'}</Link>} />
+                info={<Link to={`/gig/${bestGigByReviews?._id}`}>{bestGigByReviews ? `${bestGigByReviews._id} (by ${bestGigByReviews.ownerId})` : 'Loading...'}</Link>}
+                imgSrc={kingIcon} />
         </section>
     )
 }

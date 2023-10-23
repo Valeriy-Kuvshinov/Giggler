@@ -1,3 +1,7 @@
+import orderIcon from '../assets/img/svg/order.icon.svg'
+import acceptIcon from '../assets/img/svg/accept.icon.svg'
+import denyIcon from '../assets/img/svg/deny.icon.svg'
+
 import { useState, useEffect } from "react"
 import { InfoDiv } from "./InfoDiv.jsx"
 import { orderBackendService } from '../services/order.backend.service.js'
@@ -23,28 +27,22 @@ export function FinanceDashboardInfo() {
     const startOfMonth = startOfDay - oneMonth
 
     return (
-        <section className="finance-info grid">
+        <section className="info-divs grid">
             <InfoDiv title="New orders this week"
-                info={orders.filter(order => order.createdAt >= startOfWeek).length} />
+                info={orders.filter(order => order.createdAt >= startOfWeek).length}
+                imgSrc={orderIcon} />
             <InfoDiv title="New orders this month"
-                info={orders.filter(order => order.createdAt >= startOfMonth).length} />
-            
-            <InfoDiv
-                title="Orders pending"
-                info={orders.filter(order => order.orderState === 'pending').length}
-            />
+                info={orders.filter(order => order.createdAt >= startOfMonth).length}
+                imgSrc={orderIcon} />
+
             <InfoDiv
                 title="Orders denied"
                 info={orders.filter(order => order.orderState === 'denied').length}
-            />
+                imgSrc={denyIcon} />
             <InfoDiv
                 title="Orders accepted"
                 info={orders.filter(order => order.orderState === 'accepted').length}
-            />
-            <InfoDiv
-                title="Orders completed"
-                info={orders.filter(order => order.orderState === 'completed').length}
-            />
+                imgSrc={acceptIcon} />
         </section>
     )
 }

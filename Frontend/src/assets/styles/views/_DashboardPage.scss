@@ -21,14 +21,16 @@
     }
 
     .chart-section {
-        margin-bottom: 1rem;
-        padding: 1rem;
-        border-radius: 25px;
+        padding: 0.5em;
         background: $clrPrimary1;
         color: $clrSecondary8;
         opacity: 0.95;
         height: fit-content;
         border: 2px solid $clrSecondary8;
+
+        &:not(:last-child) {
+            margin-bottom: 1em;
+        }
 
         h6 {
             border-bottom: 2px solid;
@@ -40,110 +42,14 @@
     }
 
     .dashboard-gigs-container {
-        grid-template-columns: 1fr 2fr;
-
-        .gigs-info {
-            gap: 10px;
-            margin-bottom: 1em;
-            grid-column: 1 / 2;
-
-            .grid-item {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border: 2px solid $clrSecondary8;
-                padding: 10px;
-                border-radius: 5px;
-
-                .title {
-                    font-weight: bold;
-                    border-bottom: 1px solid $clrSecondary8;
-                    padding-bottom: 2px;
-                }
-
-                .info {
-                    margin-top: 1em;
-                }
-            }
-        }
-
-        .gigs-charts {
-            grid-column: 2 / 4;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-        }
+        @include container-styles;
     }
 
     .dashboard-users-container {
-        grid-template-columns: 1fr 2fr;
-
-        .users-info {
-            gap: 10px;
-            margin-bottom: 1em;
-            grid-column: 1 / 2;
-
-            .grid-item {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border: 2px solid $clrSecondary8;
-                padding: 10px;
-                border-radius: 5px;
-
-                .title {
-                    font-weight: bold;
-                    border-bottom: 1px solid $clrSecondary8;
-                    padding-bottom: 2px;
-                }
-
-                .info {
-                    margin-top: 1em;
-                }
-            }
-        }
-
-        .users-charts {
-            grid-column: 2 / 4;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-        }
+        @include container-styles;
     }
 
     .dashboard-finances-container {
-        grid-template-columns: 1fr 2fr;
-
-        .finance-info {
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, auto);
-            gap: 10px;
-            margin-bottom: 1em;
-
-            .grid-item {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border: 2px solid $clrSecondary8;
-                padding: 10px;
-                border-radius: 5px;
-
-                .title {
-                    font-weight: bold;
-                    border-bottom: 1px solid $clrSecondary8;
-                    padding-bottom: 2px;
-                }
-
-                .info {
-                    margin-top: 1em;
-                }
-            }
-        }
-
-        .finance-charts {
-            grid-template-columns: repeat(1, 1fr);
-            gap: 1rem;
-        }
+        @include container-styles;
     }
 }
