@@ -93,17 +93,6 @@
     {
         "buyerId": "u001",
         "buyerName": "Peter Porker",
-<<<<<<< HEAD
-        "sellerId": "u102",
-        "title": "I will design stunning website templates",
-        "deliveryTime": "2 days",
-        "orderedGigId": "g102",
-        "price": 59.99,
-        "createdAt": 1698042059137,
-        "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "uWoLO"
-=======
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -127,6 +116,5 @@
         "reasonForDenial": "",
         "orderState": "pending",
         "_id": "uonLD"
->>>>>>> e65645c4b329bd052ff7d5517c0b3f51b90d1a99
     }
 ]
