@@ -27,8 +27,7 @@ export function GigEdit() {
         imgUrls: defaultImgUrls,
         likedByUsers: [],
         reviews: [],
-        createdAt: Date.now(),
-        state: 'pending'
+        createdAt: Date.now()
     })
 
     useEffect(() => {

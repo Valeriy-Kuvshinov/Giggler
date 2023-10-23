@@ -1,22 +1,20 @@
 import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
-import { Line, Pie, Bar, Doughnut } from 'react-chartjs-2'
+import { Line, Pie, Bar } from 'react-chartjs-2'
 import { gigService } from '../services/gig.service.js'
 import { GigDashboardInfo } from './GigDashboardInfo.jsx'
-import { donutGigsChartOptions, barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
+import { barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
 
 export function GigDashboard() {
     const [avgCategoryPrices, setAvgCategoryPrices] = useState({})
     const [topCategories, setTopCategories] = useState({})
     const [gigsOverTime, setGigsOverTime] = useState({})
-    const [gigStateData, setGigStateData] = useState({})
 
     useEffect(() => {
         const fetchGigs = async () => {
             const gigs = await gigService.query()
             const categoryPrices = {}
             const categoryCounts = {}
-            let stateCounts = { pending: 0, approved: 0, denied: 0 }
             let dateCounts = {}
 
             gigs.forEach(gig => {
@@ -28,7 +26,6 @@ export function GigDashboard() {
                     categoryPrices[gig.category] = gig.price
                     categoryCounts[gig.category] = 1
                 }
-                if (stateCounts[gig.state] !== undefined) stateCounts[gig.state]++
 
                 const date = new Date(gig.createdAt).toISOString().split('T')[0]
                 dateCounts[date] = (dateCounts[date] || 0) + 1
@@ -47,7 +44,6 @@ export function GigDashboard() {
             const dateData = dateLabels.map(date => dateCounts[date])
 
             setGigsOverTime({ labels: dateLabels, data: dateData })
-            setGigStateData(stateCounts)
         }
         fetchGigs()
     }, [])
@@ -59,6 +55,22 @@ export function GigDashboard() {
             <GigDashboardInfo />
 
             <main className='grid gigs-charts'>
+                <div className="chart-section">
+                    <Typography variant="h6">New Gigs Over Time</Typography>
+                    <Line
+                        data={{
+                            labels: gigsOverTime.labels,
+                            datasets: [{
+                                data: gigsOverTime.data,
+                                borderColor: '#404145',
+                                fill: true,
+                                backgroundColor: 'rgba(145, 194, 245)'
+                            }]
+                        }}
+                        options={lineGigsChartOptions}
+                    />
+                </div>
+
                 <div className="chart-section">
                     <Typography variant="h6">Average Price by Category</Typography>
                     <Bar
@@ -90,36 +102,6 @@ export function GigDashboard() {
                             }]
                         }}
                         options={pieGigsChartOptions}
-                    />
-                </div>
-
-                <div className="chart-section">
-                    <Typography variant="h6">New Gigs Over Time</Typography>
-                    <Line
-                        data={{
-                            labels: gigsOverTime.labels,
-                            datasets: [{
-                                data: gigsOverTime.data,
-                                borderColor: '#404145',
-                                fill: true,
-                                backgroundColor: 'rgba(145, 194, 245)'
-                            }]
-                        }}
-                        options={lineGigsChartOptions}
-                    />
-                </div>
-
-                <div className="chart-section">
-                    <Typography variant="h6">Gigs State Distribution</Typography>
-                    <Doughnut
-                        data={{
-                            labels: Object.keys(gigStateData),
-                            datasets: [{
-                                data: Object.values(gigStateData),
-                                backgroundColor: ['#FFCE56', '#36A2EB', '#FF6384']
-                            }]
-                        }}
-                        options={donutGigsChartOptions}
                     />
                 </div>
             </main>
