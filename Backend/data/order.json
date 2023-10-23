@@ -9,9 +9,8 @@
         "price": 99,
         "createdAt": 1697798400000,
         "orderState": "denied",
-        "reasonForDenial": "bread",
-        "_id": "y1ycv",
-        "deniedAt": 1698057634641
+        "reasonForDenial": "didnt want to",
+        "_id": "y1ycv"
     },
     {
         "buyerId": "u002",
@@ -23,9 +22,8 @@
         "price": 99,
         "createdAt": 1697798400000,
         "orderState": "denied",
-        "reasonForDenial": "L + Ratio",
-        "_id": "a1ycv",
-        "deniedAt": 1698057657551
+        "reasonForDenial": "test",
+        "_id": "a1ycv"
     },
     {
         "buyerId": "u001",
@@ -36,10 +34,9 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697452800000,
-        "orderState": "accepted",
+        "orderState": "completed",
         "reasonForDenial": "",
-        "_id": "b1ycv",
-        "acceptedAt": 1698057658920
+        "_id": "b1ycv"
     },
     {
         "buyerId": "u002",
@@ -50,7 +47,7 @@
         "orderedGigId": "g002",
         "price": 49,
         "createdAt": 1697452800000,
-        "orderState": "pending",
+        "orderState": "accepted",
         "reasonForDenial": "",
         "_id": "c1ycv"
     },
@@ -63,7 +60,7 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "pending",
+        "orderState": "accepted",
         "reasonForDenial": "",
         "_id": "d1ycv"
     },
@@ -76,10 +73,9 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "accepted",
+        "orderState": "denied",
         "reasonForDenial": "missing credit card",
-        "_id": "e1ycv",
-        "acceptedAt": 1698057665799
+        "_id": "e1ycv"
     },
     {
         "buyerId": "u001",
@@ -91,7 +87,7 @@
         "price": 99,
         "createdAt": 1697967141088,
         "reasonForDenial": "",
-        "orderState": "pending",
+        "orderState": "accepted",
         "_id": "AWvpL"
     },
     {
@@ -118,8 +114,20 @@
         "price": 99,
         "createdAt": 1698043512834,
         "reasonForDenial": "",
-        "orderState": "accepted",
-        "_id": "uonLD",
-        "acceptedAt": 1698057136223
+        "orderState": "pending",
+        "_id": "uonLD"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u101",
+        "title": "I will create logos for your company",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g101",
+        "price": 45.99,
+        "createdAt": 1698067681890,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "E3odr"
     }
 ]
