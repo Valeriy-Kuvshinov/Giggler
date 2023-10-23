@@ -15,14 +15,16 @@ export function UserDashboard() {
             const users = await userService.getUsers()
             const gigs = await gigService.query()
 
-            const dateCounts = {}
+            const monthCounts = {}
+
             users.forEach(user => {
-                const date = new Date(user.createdAt * 1000).toISOString().split('T')[0]
-                dateCounts[date] = (dateCounts[date] || 0) + 1
+                const month = new Date(user.createdAt * 1000).toISOString().slice(0, 7)
+                monthCounts[month] = (monthCounts[month] || 0) + 1
             })
-            const dateLabels = Object.keys(dateCounts).sort()
-            const dateData = dateLabels.map(date => dateCounts[date])
-            setUsersOverTime({ labels: dateLabels, data: dateData })
+
+            const monthLabels = Object.keys(monthCounts).sort()
+            const monthData = monthLabels.map(month => monthCounts[month])
+            setUsersOverTime({ labels: monthLabels, data: monthData })
 
             const userGigCounts = {}
             users.forEach(user => userGigCounts[user._id] = gigs.filter(gig => gig.ownerId === user._id).length)
@@ -67,9 +69,9 @@ export function UserDashboard() {
                             datasets: [{
                                 data: topUsersByGigs.data,
                                 backgroundColor: [
-                                    '#FF6384', '#36A2EB', '#FFCE56', '#FF5733',
-                                    '#33FF57', '#8533FF', '#33B5FF', '#FF8333',
-                                    '#B833FF', '#FF335E'
+                                    '#4CAF50', '#8BC34A', '#CDDC39', '#7CB342',
+                                    '#AED581', '#DCE775', '#66BB6A', '#81C784',
+                                    '#9CCC65', '#D4E157'
                                 ]
                             }]
                         }}
