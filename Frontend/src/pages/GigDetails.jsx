@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux"
 
 import { GigHeader } from "../cmps/GigHeader.jsx"
 import { AboutSeller } from "../cmps/AboutSeller.jsx"
@@ -15,9 +15,22 @@ import { GigNavbar } from "../cmps/GigNavbar.jsx"
 export function GigDetails() {
   const params = useParams()
   const [gig, setGig] = useState(null)
-  const user = useSelector(storeState => storeState.userModule.watchedUser)
-  const reviews = useSelector(storeState => storeState.reviewModule.reviews)
-  const filteredReviewIds = gig ? reviews.filter(review => review.gigId === gig._id).map(review => review._id) : []
+  const user = useSelector((storeState) => storeState.userModule.watchedUser)
+  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
+  const filteredReviewIds = gig ? reviews.filter((review) => review.gigId === gig._id)
+        .map((review) => review._id) : []
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     async function fetchData() {
@@ -39,23 +52,52 @@ export function GigDetails() {
 
   return (
     <section className="gig-details layout-row">
-      <GigNavbar gig={gig} onGigChange={updatedGig => setGig(updatedGig)} />
-      <section className="gig">
-        <div className="gig-info">
-          <GigHeader gig={gig} owner={user} />
+      {windowWidth >= 720 && (
+        <section>
+          <GigNavbar
+            gig={gig}
+            onGigChange={(updatedGig) => setGig(updatedGig)}
+          />
+          <section className="gig">
+            <div className="gig-info">
+              <GigHeader gig={gig} owner={user} />
 
-          <section style={{ overflow: 'hidden' }}>
-            <h3>About This Gig</h3>
-            <p>{gig.description}</p>
+              <section style={{ overflow: "hidden" }}>
+                <h3>About This Gig</h3>
+                <p>{gig.description}</p>
+              </section>
+
+              <AboutSeller owner={user} />
+
+              <GigReviews reviews={filteredReviewIds} gig={gig} />
+            </div>
+            <GigOrder gig={gig} />
           </section>
+        </section>
+      )}
+      {windowWidth <= 720 && (
+        <section>
+          <GigNavbar
+            gig={gig}
+            onGigChange={(updatedGig) => setGig(updatedGig)}
+          />
+          <section className="gig">
+            <div className="gig-info">
+              <GigHeader gig={gig} owner={user} />
 
-          <AboutSeller owner={user} />
+              <section style={{ overflow: "hidden" }}>
+                <h3>About This Gig</h3>
+                <p>{gig.description}</p>
+                <GigOrder gig={gig} />
+              </section>
 
-          <GigReviews reviews={filteredReviewIds} gig={gig} />
-        </div>
-        <GigOrder gig={gig} />
+              <AboutSeller owner={user} />
 
-      </section>
+              <GigReviews reviews={filteredReviewIds} gig={gig} />
+            </div>
+          </section>
+        </section>
+      )}
     </section>
   )
 }

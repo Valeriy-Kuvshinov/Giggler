@@ -1,4 +1,8 @@
 .gig-info{
-    width: 60%;
+    width: 59%;
     background-color: $clrPrimary1;
+    margin-inline-end: 5.5%;
+    @media (max-width : 720px){
+        width: 100%;
+    }
 }
