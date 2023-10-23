@@ -71,23 +71,23 @@ export function AboutSeller({ owner }) {
           <div className="inner-details">
             <div className="inner-inner-details">
               <span>From</span>
-              <span>Breadville</span>
+              <span className="b">Breadville</span>
             </div>
             <div className="inner-inner-details">
               <span>Avg. response time</span>
-              <span>{Math.floor(average)} days</span>
+              <span className="b">{Math.floor(average)} days</span>
             </div>
           </div>
           <div className="inner-details">
             <div className="inner-inner-details">
               <span>Member since</span>
-              <span>
+              <span className="b">
                 {month} {year}
               </span>
             </div>
             <div className="inner-inner-details">
               <span>Last delivery</span>
-              <span>
+              <span className="b">
                 {month2} {year2}
               </span>
             </div>
