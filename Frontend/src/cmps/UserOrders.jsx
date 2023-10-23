@@ -1,9 +1,12 @@
 import { useEffect } from 'react'
-
 import { useSelector } from 'react-redux'
-import { orderBackendService } from '../services/order.backend.service'
+
 import { UserOrder } from './UserOrder'
+
 import { loadOrders } from '../store/order.actions'
+
+import { orderBackendService } from '../services/order.backend.service'
+import { userService } from '../services/user.service'
 
 export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -29,6 +32,9 @@ export function UserOrders() {
         console.log(`order ${order._id} accepted`)
         order.orderState = 'accepted'
         order.acceptedAt=Date.now()
+        var updatedUser={...user}
+        updatedUser.lastDelivery=Date.now()
+        userService.update(updatedUser)
         orderBackendService.save(order)
     }
 
@@ -37,6 +43,9 @@ export function UserOrders() {
         const newOrder={...order }
         newOrder.orderState = 'denied'
         newOrder.deniedAt=Date.now()
+        var updatedUser={...user}
+        updatedUser.lastDelivery=Date.now()
+        userService.update(updatedUser)
         newOrder.reasonForDenial = reason
         orderBackendService.save(newOrder)
     }

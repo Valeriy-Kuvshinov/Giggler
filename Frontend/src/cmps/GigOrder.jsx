@@ -24,10 +24,10 @@ export function GigOrder({ gig }) {
     <section className="gig-order">
       <div className="title">
         <span>Order Details</span>
-        <span>US${gig.price}</span>
+        <span>${gig.price}</span>
       </div>
       <p>
-        1 custom logo+high resolution file+3d mockup+logo transparency+ 300dpi
+        1 custom logo + high resolution file + 3d mockup + logo transparency + 300dpi
       </p>
       <div className="shipping-info">
         <div className="inside-shipping">
