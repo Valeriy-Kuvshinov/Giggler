@@ -2,17 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { galleryService } from '../services/gallery.service.js'
 import { SearchBar } from './SearchBar.jsx'
-import { useSelector } from 'react-redux'
 import { setFilter } from '../store/gig.actions.js'
 
-export function WelcomeSection() {
+export function WelcomeSection({onHandleFilter}) {
     const { personImages } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [showImage, setShowImage] = useState(true)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-    const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const [searchQuery, setSearchQuery] = useState('')
-    const navigate = useNavigate()
 
     useEffect(() => {
         const handleResize = () => {
@@ -52,8 +49,7 @@ export function WelcomeSection() {
     function handleSearchSubmit(e) {
         e.preventDefault()
         if (!searchQuery) return
-        setFilter({ ...filterBy, search: searchQuery })
-        navigate(`/explore`)
+        onHandleFilter(e,{search: searchQuery})
     }
     return (
         <main className="welcome-wrapper" style={{ backgroundColor: `${personImages[currentImageIndex].backgroundColor}` }}>
@@ -75,10 +71,10 @@ export function WelcomeSection() {
                     />
                     <div className='flex row'>
                         <h4>Popular:</h4>
-                        <a href="">Website Design</a>
-                        <a href="">WordPress</a>
-                        <a href="">Logo Design</a>
-                        <a href="">AI Services</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag:'Web & App Design',})} href="">Website Design</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Programming & Tech', tag:'Website Development',})} href="">WordPress</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag: 'Logo & Brand Identity',} )} href="">Logo Design</a>
+                        <a onClick={(e) => onHandleFilter(e, {cat:'AI Services', })} href="">AI Services</a>
                     </div>
                 </div>
             </section>
