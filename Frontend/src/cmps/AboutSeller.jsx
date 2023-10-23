@@ -94,10 +94,7 @@ export function AboutSeller({ owner }) {
           </div>
         </div>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit esse,
-          nobis a qui accusantium beatae enim non adipisci saepe, labore illo
-          ipsum perspiciatis itaque. Consequuntur dicta molestiae non ipsa
-          nulla?
+          {owner.description}
         </p>
       </div>
     </section>
