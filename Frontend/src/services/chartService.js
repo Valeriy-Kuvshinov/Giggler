@@ -72,16 +72,18 @@ export const donutGigsChartOptions = {
     }
 }
 
-export const pieUsersChartOptions = {
-    aspectRatio: 2,
+export const barUsersChartOptions = {
     plugins: {
         legend: {
             display: false
         },
         tooltip: {
             callbacks: {
+                title: function () {
+                    return ''
+                },
                 label: function (context) {
-                    return ` ${context.raw} / 5 stars`
+                    return `${context.raw} / 5 stars`
                 }
             }
         }
@@ -107,23 +109,6 @@ export const lineUsersChartOptions = {
     scales: {
         y: {
             beginAtZero: true
-        }
-    }
-}
-
-export const donutUsersChartOptions = {
-    aspectRatio: 2,
-    cutout: '50%',
-    plugins: {
-        legend: {
-            display: false
-        },
-        tooltip: {
-            callbacks: {
-                label: function (context) {
-                    return ` ${context.raw} users`
-                }
-            }
         }
     }
 }

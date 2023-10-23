@@ -72,22 +72,6 @@ export function GigDashboard() {
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">Average Price by Category</Typography>
-                    <Bar
-                        data={{
-                            labels: avgCategoryPrices.categories,
-                            datasets: [{
-                                data: avgCategoryPrices.averages,
-                                backgroundColor: '#404145',
-                                borderColor: '#222325',
-                                borderWidth: 1
-                            }]
-                        }}
-                        options={barGigsChartOptions}
-                    />
-                </div>
-
-                <div className="chart-section">
                     <Typography variant="h6">Most Common (by category)</Typography>
                     <Pie
                         data={{
@@ -102,6 +86,22 @@ export function GigDashboard() {
                             }]
                         }}
                         options={pieGigsChartOptions}
+                    />
+                </div>
+
+                <div className="chart-section">
+                    <Typography variant="h6">Average Price by Category</Typography>
+                    <Bar
+                        data={{
+                            labels: avgCategoryPrices.categories,
+                            datasets: [{
+                                data: avgCategoryPrices.averages,
+                                backgroundColor: '#404145',
+                                borderColor: '#222325',
+                                borderWidth: 1
+                            }]
+                        }}
+                        options={barGigsChartOptions}
                     />
                 </div>
             </main>
