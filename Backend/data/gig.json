@@ -145,7 +145,9 @@
       "https://images.pexels.com/photos/5077046/pexels-photo-5077046.jpeg?auto=compress&cs=tinysrgb&w=400",
       "https://images.unsplash.com/photo-1586339393565-32161f258eac?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     ],
-    "likedByUsers": [],
+    "likedByUsers": [
+      "u001"
+    ],
     "reviews": [
       "301",
       "302",

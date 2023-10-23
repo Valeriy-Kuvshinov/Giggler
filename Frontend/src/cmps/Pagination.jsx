@@ -21,7 +21,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
   }
 
   return (
-    <ul className="pagination layout-row">
+    <ul className="pagination flex layout-row">
       {currentPage > 1 && (
         <li
           className="pagination-arrows b"

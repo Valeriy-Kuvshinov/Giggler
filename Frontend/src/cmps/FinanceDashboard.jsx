@@ -53,7 +53,6 @@ export function FinanceDashboard() {
 
     return (
         <section className='dashboard-finances-container'>
-            <h2>Site Finances:</h2>
             <FinanceDashboardInfo />
 
             <main className='grid finance-charts'>
