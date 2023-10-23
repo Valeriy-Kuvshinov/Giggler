@@ -11,6 +11,7 @@ export function HomePage() {
     return (
         <section className='home-wrapper full'>
             <WelcomeSection />
+            
             <section className='home-companies-section'>
                 <div className='companies flex row'>
                     <h4>Trusted by: </h4>

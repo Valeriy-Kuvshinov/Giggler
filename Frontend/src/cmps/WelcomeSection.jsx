@@ -39,7 +39,8 @@ export function WelcomeSection() {
     let backgroundImage = ''
     if (windowWidth >= 1160) {
         backgroundImage = personImages[currentImageIndex].big
-    } else if (windowWidth >= 900) {
+    } 
+    else if (windowWidth >= 900) {
         backgroundImage = personImages[currentImageIndex].medium
     }
 
