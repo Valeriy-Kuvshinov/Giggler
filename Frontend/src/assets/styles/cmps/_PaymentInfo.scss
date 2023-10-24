@@ -1,71 +1,74 @@
 .payment-info {
-    flex: 1;
-    width: 42%;
-    margin-block-start: 32px;
-    margin-block-end: 32px;
-    margin-inline-start: 16px;
-    margin-inline-end: 16px;
+    width: 41.66667%;
+    padding: 0 16px;
+    max-width: 596.667px;
 
-    .payment{
-        
+    .payment {
         background-color: $clrPrimary1;
         border: 1px solid $clrSecondary5;
-        padding: 28px;
+        padding: 16px 24px;
         margin: 0 auto;
-        // width: 377px;
-            .payment-header {
+        width: 377px;
+        border-radius: 5px;
+
+        .payment-header {
+            display: flex;
+            height: 70px;
+            margin-block-end: 20px;
+
+            img {
+                width: 70px;
+            }
+        }
+
+        .payment-price {
+            color: $clrSecondary6;
+        }
+
+        .gig-qualities {
+            display: flex;
+            flex-direction: column;
+            margin-block-end: 20px;
+            color: $clrSecondary6;
+
+            .gig-quality {
                 display: flex;
-                height: 70px;
-                margin-block-end: 20px;
-        
+
                 img {
-                    width: 70px;
-                }
-        
-                // flex-direction: column;
-            }
-        
-            .payment-price {
-                color: $clrSecondary6;
-            }
-        
-            .gig-qualities {
-                display: flex;
-                flex-direction: column;
-                margin-block-end: 20px;
-                color: $clrSecondary6;
-        
-                .gig-quality {
-                    display: flex;
-        
-                    img {
-                        width: 14px;
-                        margin-inline-end: 5px;
-                    }
+                    width: 14px;
+                    margin-inline-end: 5px;
                 }
             }
-        
-            .paying-fee {
-                display: flex;
-                justify-content: space-between;
-                margin-block-end: 25px;
+        }
+
+        .paying-fee {
+            display: flex;
+            justify-content: space-between;
+            margin-block-end: 25px;
+        }
+
+        .final {
+            border-top: 1px solid $clrPrimary2;
+            font-weight: 700;
+        }
+
+        .not {
+            color: $clrSecondary6;
+        }
+
+        .confirm-btn {
+            background-color: $clrPrimary3;
+            color: $clrPrimary1;
+            width: 100%;
+            height: 42px;
+            font-family: 'macan-bold';
+            font-size: 16px;
+            line-height: 100%;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $clrSecondary8;
             }
-        
-            .final {
-                border-top: 1px solid $clrPrimary2;
-                font-weight: 700;
-            }
-        
-            .not {
-                color: $clrSecondary6;
-            }
-        
-            .confirm-btn {
-                background-color: $clrPrimary2;
-                color: $clrPrimary1;
-                width: 100%;
-                height: 42px;
-                font-weight: 600;
-            }
+        }
     }
 }
