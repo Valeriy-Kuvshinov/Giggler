@@ -1,8 +1,24 @@
-.gig-info{
-    width: 59%;
-    background-color: $clrPrimary1;
-    margin-inline-end: 5.5%;
-    @media (max-width : 720px){
-        width: 100%;
+.gig-info {
+  width: 59%;
+  background-color: $clrPrimary1;
+  margin-inline-end: 5.5%;
+
+  .explore-category {
+    color: $clrPrimary2;
+    margin-block-start: 30px;
+    margin-block-end: 30px;
+    Link {
+      padding: rem(9px);
     }
+
+    .divider {
+      color: $clrPrimary2;
+      margin-inline-start: 5px;
+      margin-inline-end: 5px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 }

@@ -2,15 +2,33 @@ import clock from "../assets/img/svg/clock.icon.svg"
 import refresh from "../assets/img/svg/refresh.icon.svg"
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 import arrow from "../assets/img/svg/arrow.icon.svg"
+import heart from "../assets/img/svg/heart.icon.svg"
+import likedHeart from "../assets/img/svg/liked.heart.icon.svg"
+import share from "../assets/img/svg/share.icon.svg"
 
 import { useModal } from "../customHooks/ModalContext"
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
-export function GigOrder({ gig }) {
-  const user = useSelector(storeState => storeState.userModule.user)
+import { gigService } from "../services/gig.service.js"
+
+import { ShareGigModal } from "./ShareGigModal"
+
+export function GigOrder({ gig , onGigChange}) {
+
+  const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
+
   const { openLogin } = useModal()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLiked, setIsLiked] = useState(
+    user && gig.likedByUsers.includes(user._id)
+  )
+
+  useEffect(() => {
+    setIsLiked(user && gig.likedByUsers.includes(user._id))
+  }, [user, gig])
 
   function onContinue() {
     if (!user) {
@@ -20,14 +38,70 @@ export function GigOrder({ gig }) {
     navigate(`/purchase/${gig._id}`)
   }
 
+  function shareGig() {
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
+  }
+
+  function likeGig() {
+    if (!user) {
+      openLogin()
+      return
+    }
+    const gigToSave = { ...gig }
+
+    if (gigToSave.likedByUsers.includes(user._id)) {
+      gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
+        liker => liker !== user._id
+      )
+      setIsLiked(false)
+
+      gigService.save(gigToSave)
+        .then(() => {
+          onGigChange(gigToSave)
+        })
+    }
+    else {
+      gigToSave.likedByUsers.push(user._id)
+
+      setIsLiked(true)
+
+      gigService.save(gigToSave)
+        .then(() => {
+          onGigChange(gigToSave)
+        })
+    }
+  }
+
   return (
+    <section className="gig-aside">
+
+      <div className="gig-interactions">
+        <button onClick={likeGig}>
+          <img className="heart" src={isLiked ? likedHeart : heart} title="liked the gig" />
+        </button>
+
+        <span>{gig.likedByUsers.length}</span>
+
+        <button onClick={shareGig} className="share" title="share the gig">
+          <img src={share} />
+        </button>
+      </div>
+
+      {isModalOpen && <ShareGigModal onClose={closeModal} />}
+
     <section className="gig-order">
+
       <div className="title">
         <span>Order Details</span>
         <span>${gig.price}</span>
       </div>
       <p>
-        1 custom logo + high resolution file + 3d mockup + logo transparency + 300dpi
+        1 custom logo + high resolution file + 3d mockup + logo transparency +
+        300dpi
       </p>
       <div className="shipping-info">
         <div className="inside-shipping">
@@ -83,6 +157,7 @@ export function GigOrder({ gig }) {
           </button>
         </div>
       </div>
+    </section>
     </section>
   )
 }

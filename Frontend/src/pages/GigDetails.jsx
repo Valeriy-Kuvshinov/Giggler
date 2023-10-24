@@ -6,19 +6,23 @@ import { GigHeader } from "../cmps/GigHeader.jsx"
 import { AboutSeller } from "../cmps/AboutSeller.jsx"
 import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
+import { GigNavbar } from "../cmps/GigNavbar.jsx"
+import { CatTagDisplayBar } from "../cmps/CatTagDisplayBar.jsx"
 
 import { loadUser } from "../store/user.actions.js"
 import { loadReviews } from "../store/review.actions.js"
 import { gigService } from "../services/gig.service.js"
-import { GigNavbar } from "../cmps/GigNavbar.jsx"
 
 export function GigDetails() {
   const params = useParams()
   const [gig, setGig] = useState(null)
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  const filteredReviewIds = gig ? reviews.filter((review) => review.gigId === gig._id)
-        .map((review) => review._id) : []
+  const filteredReviewIds = gig
+    ? reviews
+        .filter((review) => review.gigId === gig._id)
+        .map((review) => review._id)
+    : []
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -54,12 +58,15 @@ export function GigDetails() {
     <section className="gig-details layout-row">
       {windowWidth >= 720 && (
         <section>
-          <GigNavbar
+          {/* <GigNavbar
             gig={gig}
             onGigChange={(updatedGig) => setGig(updatedGig)}
-          />
+          /> */}
+
           <section className="gig">
             <div className="gig-info">
+              <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
+
               <GigHeader gig={gig} owner={user} />
 
               <section style={{ overflow: "hidden" }}>
@@ -71,24 +78,34 @@ export function GigDetails() {
 
               <GigReviews reviews={filteredReviewIds} gig={gig} />
             </div>
-            <GigOrder gig={gig} />
+
+            <GigOrder
+              gig={gig}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+            />
           </section>
         </section>
       )}
       {windowWidth <= 720 && (
         <section>
-          <GigNavbar
+          {/* <GigNavbar
             gig={gig}
             onGigChange={(updatedGig) => setGig(updatedGig)}
-          />
+          /> */}
+
           <section className="gig">
             <div className="gig-info">
+              <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
+
               <GigHeader gig={gig} owner={user} />
 
               <section style={{ overflow: "hidden" }}>
                 <h3>About This Gig</h3>
                 <p>{gig.description}</p>
-                <GigOrder gig={gig} />
+                <GigOrder
+                  gig={gig}
+                  onGigChange={(updatedGig) => setGig(updatedGig)}
+                />
               </section>
 
               <AboutSeller owner={user} />
