@@ -21,9 +21,10 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697798400000,
-        "orderState": "denied",
-        "reasonForDenial": "test",
-        "_id": "a1ycv"
+        "orderState": "completed",
+        "reasonForDenial": "",
+        "_id": "a1ycv",
+        "completedAt": 1698144290433
     },
     {
         "buyerId": "u001",
@@ -36,7 +37,8 @@
         "createdAt": 1697452800000,
         "orderState": "completed",
         "reasonForDenial": "",
-        "_id": "b1ycv"
+        "_id": "b1ycv",
+        "completedAt": 1698144250433
     },
     {
         "buyerId": "u002",

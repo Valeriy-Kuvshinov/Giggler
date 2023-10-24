@@ -35,19 +35,22 @@
                 background-color: $clrPrimary1;
 
                 &.pending {
-                    background-color: yellow;
+                    background-color: #0077ff;
                 }
 
                 &.denied {
-                    background-color: red;
+                    background-color: #ff0000;
                 }
 
                 &.accepted {
-                    background-color: rgb(53, 231, 53);
+                    background-color: #ffff00;
+                }
+
+                &.completed {
+                    background-color: #32cf32;
                 }
 
                 .order-buttons {
-                    display: flex;
                     justify-content: space-between;
                 }
             }

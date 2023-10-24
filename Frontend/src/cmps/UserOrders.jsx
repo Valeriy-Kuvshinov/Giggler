@@ -11,8 +11,7 @@ import { userService } from '../services/user.service.js'
 export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    var sellerOrders = orders.filter((order) => order.sellerId === user._id)
-    var userOrders = orders.filter((order) => (order.buyerId === user._id) && (order.orderState !== 'pending'))
+    let sellerOrders = orders.filter((order) => order.sellerId === user._id)
 
     useEffect(() => {
         loadTheOrders()
@@ -30,7 +29,7 @@ export function UserOrders() {
         console.log(`order ${order._id} accepted`)
         order.orderState = 'accepted'
         order.acceptedAt = Date.now()
-        var updatedUser = { ...user }
+        let updatedUser = { ...user }
         updatedUser.lastDelivery = Date.now()
         userService.update(updatedUser)
         orderBackendService.save(order)
@@ -41,11 +40,21 @@ export function UserOrders() {
         const newOrder = { ...order }
         newOrder.orderState = 'denied'
         newOrder.deniedAt = Date.now()
-        var updatedUser = { ...user }
+        let updatedUser = { ...user }
         updatedUser.lastDelivery = Date.now()
         userService.update(updatedUser)
         newOrder.reasonForDenial = reason
         orderBackendService.save(newOrder)
+    }
+
+    function completeOrder(order) {
+        console.log(`order ${order._id} completed`)
+        order.orderState = 'completed'
+        order.completedAt = Date.now()
+        let updatedUser = { ...user }
+        updatedUser.lastDelivery = Date.now()
+        userService.update(updatedUser)
+        orderBackendService.save(order)
     }
 
     if (orders.length === 0) return <div>loading... </div>
@@ -58,17 +67,12 @@ export function UserOrders() {
                 </div>
                 {sellerOrders.map((order) =>
                     <li key={order._id}>
-                        <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
-                    </li>
-                )}
-            </ul>
-            <ul className='orders'>
-                <div className='orders-title'>
-                    Recieved Orders
-                </div>
-                {userOrders.map((order) =>
-                    <li key={order._id}>
-                        <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
+                        <UserOrder
+                            order={order}
+                            acceptOrder={acceptOrder}
+                            denyOrder={denyOrder}
+                            completeOrder={completeOrder}
+                        />
                     </li>
                 )}
             </ul>
