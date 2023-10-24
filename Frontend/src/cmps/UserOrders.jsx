@@ -74,8 +74,8 @@ export function UserOrders() {
                     <tr>
                         <th>BUYER</th>
                         <th>GIG</th>
-                        <th>Action Date</th>
-                        <th>Due On</th>
+                        <th>ACTION DATE</th>
+                        <th>DUE ON</th>
                         <th>STATUS</th>
                         <th>SET</th>
                     </tr>

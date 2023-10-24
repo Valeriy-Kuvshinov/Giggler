@@ -4,9 +4,12 @@ import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
 import { gigService } from '../services/gig.service.js'
 
+import dropdownIcon from '../assets/img/svg/dropdown.icon.svg'
+
 export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
+    const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -56,6 +59,21 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
     }
 
+    const getAvailableActions = () => {
+        let actions = []
+        if (order.orderState === 'pending') {
+            actions = [
+                { label: 'Accept', action: () => acceptOrder(order) },
+                { label: 'Deny', action: () => setDenial(true) }
+            ]
+        } else if (order.orderState === 'accepted') {
+            actions = [
+                { label: 'Complete', action: () => completeOrder(order) }
+            ]
+        }
+        return actions
+    }
+
     return (
         <tr className={getOrderClass(order.orderState)}>
             <td>{order.buyerName}</td>
@@ -66,19 +84,33 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td><span className={order.orderState}>{order.orderState}</span></td>
 
             <td>
-                {order.orderState === 'pending' && (
+                {getAvailableActions().length > 0 && (
                     <>
-                        <button onClick={() => acceptOrder(order)}>Accept</button>
-                        <button onClick={() => setDenial(true)}>Deny</button>
+                        <img
+                            src={dropdownIcon}
+                            alt="Actions"
+                            onClick={() => setDropdownVisible(!isDropdownVisible)}
+                        />
+                        {isDropdownVisible && (
+                            <div className="dropdown-menu">
+                                {getAvailableActions().map((action, idx) => (
+                                    <button key={idx} onClick={action.action}>
+                                        {action.label}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </>
                 )}
-                {order.orderState === 'accepted' && (
-                    <button onClick={() => completeOrder(order)}>Complete</button>
+                {isDenied && (
+                    <DenialOrderModal
+                        order={order}
+                        denyOrder={(order, reason) => {
+                            if (order) denyOrder(order, reason);
+                            setDenial(false);
+                        }}
+                    />
                 )}
-                {isDenied && <DenialOrderModal order={order} denyOrder={(order, reason) => {
-                    if (order) denyOrder(order, reason)
-                    setDenial(false)
-                }} />}
             </td>
         </tr>
     )
