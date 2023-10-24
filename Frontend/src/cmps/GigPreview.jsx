@@ -2,31 +2,29 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-import heart from "../assets/img/svg/heart.icon.svg"
-import likedHeart from "../assets/img/svg/liked.heart.icon.svg"
-// import SvgIcon from './SvgIcon.jsx'
+import heart from '../assets/img/svg/heart.icon.svg'
+import likedHeart from '../assets/img/svg/liked.heart.icon.svg'
+import SvgIcon from './SvgIcon.jsx'
 import { gigService } from '../services/gig.service'
 import { userService } from '../services/user.service.js'
 import { removeGig } from '../store/gig.actions.js'
 
-import { useModal } from "../customHooks/ModalContext"
+import { useModal } from '../customHooks/ModalContext'
 import { UserPreview } from './UserPreview.jsx'
 import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
-  const user = useSelector(storeState => storeState.userModule.user)
+  const user = useSelector((storeState) => storeState.userModule.user)
 
   const [owner, setOwner] = useState(null)
   const [updatedGig, setUpdatedGig] = useState(gig)
- 
+
   const [isLiked, setIsLiked] = useState(
     user && updatedGig.likedByUsers.includes(user._id)
   )
 
-  
   const navigate = useNavigate()
   const { openLogin } = useModal()
-
 
   useEffect(() => {
     async function fetchOwnerDetails() {
@@ -59,7 +57,7 @@ export function GigPreview({ is, gig }) {
 
     if (gigToSave.likedByUsers.includes(user._id)) {
       gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
-        liker => liker !== user._id
+        (liker) => liker !== user._id
       )
       setIsLiked(false)
       try {
@@ -68,8 +66,7 @@ export function GigPreview({ is, gig }) {
         console.error(err)
       }
       setUpdatedGig(gigToSave)
-    }
-    else {
+    } else {
       gigToSave.likedByUsers.push(user._id)
 
       setIsLiked(true)
@@ -85,16 +82,12 @@ export function GigPreview({ is, gig }) {
   if (!owner) return null
 
   return (
-    <li className="gig-preview" >
-      <ImageCarousel
-        images={updatedGig.imgUrls}
-        gigId={updatedGig._id}
-      />
+    <li className="gig-preview">
+      <ImageCarousel images={updatedGig.imgUrls} gigId={updatedGig._id} />
 
-      <button className='heart' onClick={likeGig}>
-        <img src={isLiked ? likedHeart : heart} title="liked the gig" />
-      </button>
-
+      <span className={`heart ${isLiked ? 'liked' : ''}`} onClick={likeGig}> </span>
+      
+     
       <div className="preview-body">
         {is === 'explore' && (
           <UserPreview is={is} owner={owner} gig={updatedGig}>
