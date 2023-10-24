@@ -1,77 +1,82 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { UserOrder } from './UserOrder'
+import { UserOrder } from './UserOrder.jsx'
 
-import { loadOrders } from '../store/order.actions'
+import { loadOrders } from '../store/order.actions.js'
 
-import { orderBackendService } from '../services/order.backend.service'
-import { userService } from '../services/user.service'
+import { orderBackendService } from '../services/order.backend.service.js'
+import { userService } from '../services/user.service.js'
+import { gigService } from '../services/gig.service.js'
 
 export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    var sellerOrders=orders.filter((order)=>order.sellerId===user._id)
-    var userOrders=orders.filter((order)=>(order.buyerId===user._id)&&(order.orderState!=='pending'))
+    const sellerOrders = orders.filter(order => order.sellerId === user._id)
 
     useEffect(() => {
-        loadTheOrders()
+        loadUserOrders()
     }, [])
 
-    async function loadTheOrders() {
+    async function loadUserOrders() {
         try {
             await loadOrders()
         } catch (err) {
-            console.log('couldnt load orders : ', err)
+            console.error('Could not load orders:', err)
         }
     }
 
-    // console.log('orders from backend : ',orders)
-
-    function acceptOrder(order) {
-        console.log(`order ${order._id} accepted`)
-        order.orderState = 'accepted'
-        order.acceptedAt=Date.now()
-        var updatedUser={...user}
-        updatedUser.lastDelivery=Date.now()
+    function updateLastDeliveryForUser() {
+        const updatedUser = { ...user, lastDelivery: Date.now() }
         userService.update(updatedUser)
-        orderBackendService.save(order)
     }
 
-    function denyOrder(order,reason) {
-        console.log(`order ${order._id} denied`)
-        const newOrder={...order }
-        newOrder.orderState = 'denied'
-        newOrder.deniedAt=Date.now()
-        var updatedUser={...user}
-        updatedUser.lastDelivery=Date.now()
-        userService.update(updatedUser)
-        newOrder.reasonForDenial = reason
-        orderBackendService.save(newOrder)
+    async function acceptOrder(order) {
+        try {
+            const updatedOrder = { ...order, orderState: 'accepted', acceptedAt: Date.now() }
+            updateLastDeliveryForUser()
+            await orderBackendService.save(updatedOrder)
+        } catch (err) {
+            console.error(`Error accepting order ${order._id}:`, err)
+        }
     }
 
-    if(orders.length===0) return <div>loading... </div>
+    async function denyOrder(order, reason) {
+        try {
+            const updatedOrder = {
+                ...order,
+                orderState: 'denied',
+                deniedAt: Date.now(),
+                reasonForDenial: reason
+            }
+            updateLastDeliveryForUser()
+            await orderBackendService.save(updatedOrder)
+        } catch (err) {
+            console.error(`Error denying order ${order._id}:`, err)
+        }
+    }
 
-    return (<section className="user-orders">
-        <ul className='orders'>
-            <div className='orders-title'>
-                Active Orders
-            </div>
-            {sellerOrders.map((order) =>
-                <li key={order._id}>
-                    <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
-                </li>
-            )}
-        </ul>
-        <ul className='orders'>
-            <div className='orders-title'>
-                Recieved Orders
-            </div>
-            {userOrders.map((order) =>
-                <li key={order._id}>
-                    <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} />
-                </li>
-            )}
-        </ul>
-    </section>)
+    async function completeOrder(order) {
+        try {
+            const updatedOrder = { ...order, orderState: 'completed', completedAt: Date.now() }
+            updateLastDeliveryForUser()
+            await orderBackendService.save(updatedOrder)
+        } catch (err) {
+            console.error(`Error completing order ${order._id}:`, err)
+        }
+    }
+    if (orders.length === 0) return <div>Loading...</div>
+
+    return (
+        <section className="user-orders flex column">
+            <div className="orders-title flex">Active Orders</div>
+            <ul className="orders flex column">
+                {sellerOrders.map(order => (
+                    <li key={order._id}>
+                        <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} completeOrder={completeOrder} />
+                    </li>
+                ))}
+            </ul>
+        </section>
+    )
 }

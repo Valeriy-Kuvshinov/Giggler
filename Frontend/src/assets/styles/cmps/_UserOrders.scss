@@ -1,11 +1,9 @@
 .user-orders {
-    display: flex;
     justify-content: space-between;
     margin-block-start: 32px;
     margin-block-end: 32px;
 
     .orders-title {
-        display: flex;
         align-items: center;
         height: 60px;
         width: 200px;
@@ -15,8 +13,6 @@
     }
 
     .orders {
-        display: flex;
-        flex-direction: column;
         align-items: center;
         width: 45%;
 
@@ -35,19 +31,22 @@
                 background-color: $clrPrimary1;
 
                 &.pending {
-                    background-color: yellow;
+                    background-color: #0077ff;
                 }
 
                 &.denied {
-                    background-color: red;
+                    background-color: #ff0000;
                 }
 
                 &.accepted {
-                    background-color: rgb(53, 231, 53);
+                    background-color: #ffff00;
+                }
+
+                &.completed {
+                    background-color: #32cf32;
                 }
 
                 .order-buttons {
-                    display: flex;
                     justify-content: space-between;
                 }
             }

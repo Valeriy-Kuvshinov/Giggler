@@ -1,48 +1,48 @@
 import { useState } from "react"
 
-import { DenialOrderModal } from "./DenialOrderModal"
+import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
-export function UserOrder({ order, acceptOrder, denyOrder }) {
 
-    const [isDenied,setDenial]=useState(false)
+export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
+    const [isDenied, setDenial] = useState(false);
 
-    function acceptTheOrder() {
-        // console.log(order)
-        acceptOrder(order)
+    function getOrderClass(orderState) {
+        const orderStateClasses = {
+            'pending': 'pending user-order',
+            'accepted': 'accepted user-order',
+            'denied': 'denied user-order',
+            'completed': 'completed user-order'
+        };
+        return orderStateClasses[orderState] || '';
     }
 
-    function denyTheOrder() {
-        // console.log(order)
-        setDenial(true)
-        // denyOrder(order)
-    }
+    return (
+        <section className={getOrderClass(order.orderState)}>
+            <span>order by: {order.buyerName}</span>
+            <span>ordered gig title: {order.title}</span>
+            <span>ordered gig price: {order.price}</span>
+            <span>time to make: {order.deliveryTime}</span>
+            {order.orderState === 'denied' && <span>reason for denial : {order.reasonForDenial}</span>}
+            {order.orderState === 'completed' && <span>Order has been completed.</span>}
 
-    function denyIt(order,reason){
-        if(order){
-            denyOrder(order,reason)
-        } 
-            setDenial(false)
-    }
+            {order.orderState === 'pending' && (
+                <div className='order-buttons flex'>
+                    <button onClick={() => acceptOrder(order)}>accept order</button>
+                    <button onClick={() => setDenial(true)}>deny order</button>
+                </div>
+            )}
 
-    // console.log('order',order)
+            {order.orderState === 'accepted' && (
+                <div className='order-buttons flex'>
+                    <button onClick={() => completeOrder(order)}>complete order</button>
+                </div>
+            )}
 
-    return (<section className={(order.orderState === 'pending') ? 'pending user-order' :
-        (order.orderState === 'accepted') ? 'accepted user-order' : 'denied user-order'}>
-
-        <span>order by: {order.buyerName}</span>
-        <span>ordered gig title: {order.title}</span>
-        <span>ordered gig price: {order.price}</span>
-        <span>time to make: {order.deliveryTime}</span>
-        {order.orderState==='denied' && <span>reason for denial : {order.reasonForDenial}</span>}
-
-        {order.orderState === 'pending' && 
-        <div className='order-buttons'>
-            <button onClick={acceptTheOrder}>accept order</button>
-            <button onClick={denyTheOrder}>deny order</button>
-        </div>}
-        {isDenied && <DenialOrderModal order={order} denyOrder={denyIt}/>}
-        {isDenied && <div className="deny-background" 
-        // onClick={denyIt()}
-        ></div>}
-    </section>)
+            {isDenied && <DenialOrderModal order={order} denyOrder={(order, reason) => {
+                if (order) denyOrder(order, reason);
+                setDenial(false);
+            }} />}
+            {isDenied && <div className="deny-background"></div>}
+        </section>
+    );
 }

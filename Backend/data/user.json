@@ -7,11 +7,11 @@
     "description": "a worker of the daily beagle and totally not spider man",
     "balance": 0,
     "level": "level 2",
-    "rating": 4.5,
+    "rating": 4.9,
     "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
     "createdAt": 1664477416,
     "isAdmin": true,
-    "lastDelivery": 1698057136223
+    "lastDelivery": 1698145296560
   },
   {
     "_id": "u002",
