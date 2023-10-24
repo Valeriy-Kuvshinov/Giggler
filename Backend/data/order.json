@@ -35,10 +35,8 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1697452800000,
-        "orderState": "completed",
-        "reasonForDenial": "",
-        "_id": "b1ycv",
-        "completedAt": 1698144250433
+        "orderState": "pending",
+        "_id": "b1ycv"
     },
     {
         "buyerId": "u002",
@@ -62,9 +60,10 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "accepted",
+        "orderState": "completed",
         "reasonForDenial": "",
-        "_id": "d1ycv"
+        "_id": "d1ycv",
+        "completedAt": 1698145145928
     },
     {
         "buyerId": "u101",
@@ -115,21 +114,9 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1698043512834,
-        "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "uonLD"
-    },
-    {
-        "buyerId": "u001",
-        "buyerName": "Peter Porker",
-        "sellerId": "u101",
-        "title": "I will create logos for your company",
-        "deliveryTime": "2 days",
-        "orderedGigId": "g101",
-        "price": 45.99,
-        "createdAt": 1698067681890,
-        "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "E3odr"
+        "reasonForDenial": "don't want to",
+        "orderState": "denied",
+        "_id": "uonLD",
+        "deniedAt": 1698145179223
     }
 ]
