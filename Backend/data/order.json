@@ -90,9 +90,10 @@
         "price": 99,
         "createdAt": 1697967141088,
         "reasonForDenial": "",
-        "orderState": "accepted",
+        "orderState": "completed",
         "_id": "AWvpL",
-        "acceptedAt": 1698043774547
+        "acceptedAt": 1698043774547,
+        "completedAt": 1698152044746
     },
     {
         "buyerId": "u001",

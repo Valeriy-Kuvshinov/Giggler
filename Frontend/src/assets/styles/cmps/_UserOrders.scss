@@ -45,20 +45,20 @@
         box-shadow: 0px 0px 2px 2px #bbb2b2;
 
         &.pending {
-            background-color: #0077ff;
+            background: $clr5;
         }
 
         &.denied {
-            background-color: #ff0000;
+            background: $clr4;
         }
 
         &.accepted {
-            background-color: #ffff00;
+            background: $clr6;
             color: black;
         }
 
         &.completed {
-            background-color: #32cf32;
+            background: $clr3;
         }
     }
 }
