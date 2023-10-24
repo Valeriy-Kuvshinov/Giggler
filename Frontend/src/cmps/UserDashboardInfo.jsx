@@ -64,16 +64,35 @@ export function UserDashboardInfo() {
                 imgSrc={newUserIcon} />
 
             <InfoDiv title="Best user - by rating"
-                info={bestUserRating ? `${bestUserRating.username} (ID: ${bestUserRating._id})` : 'Loading...'}
+                info={bestUserRating ? <>
+                    {bestUserRating.username}
+                    <br />
+                    (ID: {bestUserRating._id})
+                </> : 'Loading...'}
                 imgSrc={kingIcon} />
+
             <InfoDiv title="Best user - by orders"
-                info={bestUserOrders ? `${bestUserOrders.username} (ID: ${bestUserOrders._id})` : 'Loading...'}
+                info={bestUserOrders ? <>
+                    {bestUserOrders.username}
+                    <br />
+                    (ID: {bestUserOrders._id})
+                </> : 'Loading...'}
                 imgSrc={kingIcon} />
+
             <InfoDiv title="Best user - by gigs"
-                info={bestUserGigs ? `${bestUserGigs.username} (ID: ${bestUserGigs._id})` : 'Loading...'}
+                info={bestUserGigs ? <>
+                    {bestUserGigs.username}
+                    <br />
+                    (ID: {bestUserGigs._id})
+                </> : 'Loading...'}
                 imgSrc={kingIcon} />
+
             <InfoDiv title="Best user - by balance"
-                info={bestUserBalance ? `${bestUserBalance.username} (ID: ${bestUserBalance._id})` : 'Loading...'}
+                info={bestUserBalance ? <>
+                    {bestUserBalance.username}
+                    <br />
+                    (ID: {bestUserBalance._id})
+                </> : 'Loading...'}
                 imgSrc={kingIcon} />
         </section>
     )

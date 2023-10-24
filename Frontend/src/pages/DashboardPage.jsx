@@ -10,6 +10,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 
+import { UserOrders } from '../cmps/UserOrders.jsx'
 import { FinanceDashboard } from '../cmps/FinanceDashboard.jsx'
 import { UserDashboard } from '../cmps/UserDashboard.jsx'
 import { GigDashboard } from '../cmps/GigDashboard.jsx'
@@ -23,6 +24,8 @@ export function DashboardPage() {
 
     return (
         <main className="dashboard-page flex column">
+            <UserOrders />
+
             <div className='dashboard-container-header flex column'>
                 <h1>Welcome dear admin!</h1>
                 <h2>Here is our most updated business statistics:</h2>

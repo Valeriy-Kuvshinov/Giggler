@@ -20,15 +20,15 @@ export function UserInfo({ user }) {
   const filteredReviews = user ? reviews.filter(review => review.sellerId === user._id) : []
 
   const months = ["January", "February", "March", "April",
-   "May", "June", "July", "August",
-   "September", "October", "November", "December"]
-  const time=new Date(user.createdAt*1000)
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"]
+  const time = new Date(user.createdAt * 1000)
   let month = months[time.getMonth()]
-  let year=time.getFullYear()
+  let year = time.getFullYear()
 
-  useEffect(()=>{
-   loadReviews()
-  },[])
+  useEffect(() => {
+    loadReviews()
+  }, [])
 
   function loadModal() {
     setModal(true)
@@ -61,7 +61,7 @@ export function UserInfo({ user }) {
     setIsEditingFullName(false)
   }
 
-  if(!reviews) return <div>loading...</div>
+  if (!reviews) return <div>loading...</div>
 
   return (
     <section className="user-info">
@@ -114,12 +114,7 @@ export function UserInfo({ user }) {
       </div>
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
-      <UserReviews user={user} reviews={filteredReviews}/>
-      <Link to='/orders'>
-      <button className="order-link info-block">
-        <span>to orders</span>
-      </button>
-      </Link>
+      <UserReviews user={user} reviews={filteredReviews} />
     </section>
   )
 }
