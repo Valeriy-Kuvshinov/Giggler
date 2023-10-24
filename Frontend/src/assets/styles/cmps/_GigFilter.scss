@@ -1,5 +1,6 @@
 .gig-results-title {
   display: grid;
+  margin: auto 0;
 
   .search-param {
     h1 {
@@ -62,7 +63,8 @@
 }
 
 .selected-filters-wrapper {
-  margin: 0 auto 14px;
+  margin: 0;
+
   .selected-filters {
     .select-filter {
       background-color: #efeff0;
@@ -75,14 +77,17 @@
       cursor: pointer;
       display: inline-block;
       font-family: macan-bold;
+
       .remove-icon {
         svg {
           fill: #62646a;
         }
+
         margin-left: 12px;
         position: relative;
       }
     }
+
     .select-filter:hover {
       color: #62646a;
     }
