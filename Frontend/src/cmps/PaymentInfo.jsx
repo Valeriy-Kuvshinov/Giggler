@@ -35,7 +35,6 @@ export function PaymentInfo({gig,createOrder}){
             <div className='gig-quality'><img src={checkmark}/><span>1 concept included</span></div>
             <div className='gig-quality'><img src={checkmark}/><span>Logo transparency</span></div>
             <div className='gig-quality'><img src={checkmark}/><span>Printable file</span></div>
-            <div className='gig-quality'><img src={checkmark}/><span>Printable file</span></div>
                 {/* {gigQualities.map((gig)=>{
                     <div><img src={checkmark}/><span>{gig.title}</span></div>
                 })} */}

@@ -1,60 +1,80 @@
 .payment-details {
-    width: 45%;
-    margin-block-start: 20px;
-    margin-block-end: 20px;
-    background-color: $clrPrimary1;
-    border: 1px solid $clrSecondary5;
-    color: $clrSecondary5;
-    padding: 28px;
+  width: 45%;
+  margin-block-start: 20px;
+  margin-block-end: 20px;
+  background-color: $clrPrimary1;
+  border: 1px solid $clrSecondary5;
+  color: $clrSecondary5;
+  padding: 28px;
 
-    h2 {
-        font-family: macan-light;
+  h2 {
+    font-family: macan-light;
+  }
+
+  .credit-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+
+    span {
+      font-weight: 700;
     }
+  }
 
-    .credit-details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 80%;
+  .credit-type {
+    display: flex;
+    align-items: center;
+    height: 50px;
 
-        span {
-            font-weight: 700;
-        }
+    img {
+      width: 80px;
+      height: 50px;
     }
+  }
 
-    .credit-type {
-        display: flex;
-        align-items: center;
-        height: 50px;
-
-        img {
-            width: 80px;
-            height: 50px;
-        }
+  .credit-number {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    input {
+      width: 94%;
     }
+  }
 
-    .credit-number {
-        display: flex;
-        flex-direction: column;
-        width: 240px;
+  .rest-of-details {
+    display: flex;
+    justify-content: space-between;
+
+    .credit-date {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: 80%;
+        border: 1px solid $clrSecondary5;
+      }
     }
+  }
 
-    .rest-of-details {
-        display: flex;
-        justify-content: space-between;
-
-        .credit-date {
-            display: flex;
-            flex-direction: column;
-
-            input {
-                width: 80%;
-            }
-        }
+  .credit-date {
+    display: flex;
+    flex-direction: column;
+    input {
+      width: 60%;
+      border: 1px solid $clrSecondary5;
     }
-
-    .buyer-info {
-        display: flex;
-        flex-direction: column;
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+
+  .buyer-info {
+    display: flex;
+    flex-direction: column;
+  }
 }
