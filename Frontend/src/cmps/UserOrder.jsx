@@ -106,8 +106,8 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                     <DenialOrderModal
                         order={order}
                         denyOrder={(order, reason) => {
-                            if (order) denyOrder(order, reason);
-                            setDenial(false);
+                            if (order) denyOrder(order, reason)
+                            setDenial(false)
                         }}
                     />
                 )}

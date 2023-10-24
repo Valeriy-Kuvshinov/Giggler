@@ -35,6 +35,8 @@ export function UserOrders() {
             const updatedOrder = { ...order, orderState: 'accepted', acceptedAt: Date.now() }
             updateLastDeliveryForUser()
             await orderBackendService.save(updatedOrder)
+
+            loadUserOrders()
         } catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
         }
@@ -50,6 +52,8 @@ export function UserOrders() {
             }
             updateLastDeliveryForUser()
             await orderBackendService.save(updatedOrder)
+
+            loadUserOrders()
         } catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
         }
@@ -60,6 +64,8 @@ export function UserOrders() {
             const updatedOrder = { ...order, orderState: 'completed', completedAt: Date.now() }
             updateLastDeliveryForUser()
             await orderBackendService.save(updatedOrder)
+
+            loadUserOrders()
         } catch (err) {
             console.error(`Error completing order ${order._id}:`, err)
         }
