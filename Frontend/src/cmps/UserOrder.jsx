@@ -4,7 +4,7 @@ import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
 
 export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
-    const [isDenied, setDenial] = useState(false);
+    const [isDenied, setDenial] = useState(false)
 
     function getOrderClass(orderState) {
         const orderStateClasses = {
@@ -12,8 +12,8 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             'accepted': 'accepted user-order',
             'denied': 'denied user-order',
             'completed': 'completed user-order'
-        };
-        return orderStateClasses[orderState] || '';
+        }
+        return orderStateClasses[orderState] || ''
     }
 
     return (
@@ -44,5 +44,5 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             }} />}
             {isDenied && <div className="deny-background"></div>}
         </section>
-    );
+    )
 }

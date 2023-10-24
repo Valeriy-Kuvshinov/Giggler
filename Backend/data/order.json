@@ -10,7 +10,8 @@
         "createdAt": 1697798400000,
         "orderState": "denied",
         "reasonForDenial": "didnt want to",
-        "_id": "y1ycv"
+        "_id": "y1ycv",
+        "deniedAt": 1698145145928
     },
     {
         "buyerId": "u002",
@@ -76,7 +77,8 @@
         "createdAt": 1696368000000,
         "orderState": "denied",
         "reasonForDenial": "missing credit card",
-        "_id": "e1ycv"
+        "_id": "e1ycv",
+        "deniedAt": 1698145145928
     },
     {
         "buyerId": "u001",
@@ -89,7 +91,8 @@
         "createdAt": 1697967141088,
         "reasonForDenial": "",
         "orderState": "accepted",
-        "_id": "AWvpL"
+        "_id": "AWvpL",
+        "acceptedAt": 1698043774547
     },
     {
         "buyerId": "u001",
