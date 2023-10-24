@@ -5,24 +5,29 @@
   min-width: rem(245px);
   width: 100%;
   height: 361px;
+  position: relative;
 
   img {
     aspect-ratio: 5/3;
     object-fit: cover;
   }
 
-  .carousel-container:hover~.preview-body .gig-title {
+  .carousel-container:hover ~ .preview-body .gig-title {
     text-decoration: underline;
   }
 
   .heart {
-    width: fit-content;
+    // width: fit-content;
     position: absolute;
     background: none;
-
-    img {
-      aspect-ratio: auto;
-    }
+    right: rem(6px);
+    top: rem(6px);
+    height: 34px;
+    width: 32px;
+    background-position: 0 0;
+    background-image: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_in_homepage_perseus/apps/collect.7e0cb84.svg);
+    background-position-x: left;
+ 
   }
 
   .gig-title {
@@ -81,7 +86,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-block-start: .5em;
+    margin-block-start: 0.5em;
 
     span {
       .i {
