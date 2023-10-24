@@ -39,7 +39,7 @@ export function GigHeader({ gig, owner }) {
         <div className="user-stats">
           <p>{owner.fullName}</p>
 
-          <p className="stars">
+          <div className="stars">
             <div>
               <img src={starIcon} alt="star" />
               <span>{owner.rating}</span>
@@ -54,7 +54,7 @@ export function GigHeader({ gig, owner }) {
               </span>
               <span>in Queue</span>
             </span>
-          </p>
+          </div>
         </div>
       </div>
       <img src={gig.imgUrls[0]} alt="Main gig" />
