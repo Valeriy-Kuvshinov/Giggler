@@ -4,13 +4,23 @@ import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
 import infoImg from '../assets/img/fiverr-show.webp'
+import { setFilter } from '../store/gig.actions.js'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 
 export function HomePage() {
-    const { companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
+    const {companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
+    const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+    const navigate = useNavigate()
 
+    function onHandleFilter(e, updateToFilter ) {
+        e.preventDefault()    
+        setFilter({ ...filterBy, ...updateToFilter })
+        navigate(`/explore`)
+    }
     return (
         <section className='home-wrapper full'>
-            <WelcomeSection />
+            <WelcomeSection onHandleFilter={onHandleFilter} />
             
             <section className='home-companies-section'>
                 <div className='companies flex row'>
@@ -21,7 +31,7 @@ export function HomePage() {
                 </div>
             </section>
 
-            <ServicesCarousel />
+            <ServicesCarousel onHandleFilter={onHandleFilter}/>
 
             <div className='home-info-wrapper'>
                 <section className='info-section flex row'>
@@ -46,7 +56,7 @@ export function HomePage() {
                 <h2>You need it, we've got it</h2>
                 <div className='categories grid'>
                     {categoryIcons.map((category, index) => (
-                        <div key={index}>
+                        <div onClick={(e) => onHandleFilter(e, {cat: categoryTexts[index]} )} key={index}>
                             <img src={category} alt={`Category icon ${index}`} />
                             <p>{categoryTexts[index]}</p>
                         </div>

@@ -2,25 +2,39 @@ import { useRef, useState, useEffect } from 'react'
 import SvgIcon from './SvgIcon'
 import { Link } from 'react-router-dom'
 
-export function ImageCarousel({ images, gigId, parentWidth }) {
+export function ImageCarousel({ images, gigId }) {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
+  const [parentWidth, setParentWidth] = useState(0)
   const carouselRef = useRef()
   const numImages = images.length
-  let imageWidth = parentWidth || 245
-  const currImage = [images[currentIndex]]
+  let imageWidth = parentWidth
 
   useEffect(() => {
-    imageWidth = parentWidth || carouselRef.current.clientWidth
     const totalCarouselWidth = imageWidth * numImages
-
     carouselRef.current.style.width = `${totalCarouselWidth}px`
     carouselRef.current.style.transform = `translateX(-${
       imageWidth * currentIndex
     }px`
+  }, [imageWidth, currentIndex, numImages])
 
-    setIsLoading(false)
-  }, [parentWidth, currentIndex, numImages])
+  useEffect(() => {
+    const updateParentWidth = () => {
+      if (carouselRef.current && carouselRef.current.parentElement) {
+        const newParentWidth = carouselRef.current.parentElement.clientWidth
+        if (newParentWidth > 0) {
+          setParentWidth(newParentWidth)
+        }
+      }
+    }
+
+    updateParentWidth()
+
+    window.addEventListener('resize', updateParentWidth)
+
+    return () => {
+      window.removeEventListener('resize', updateParentWidth)
+    }
+  }, [])
 
   function nextImage(event) {
     event.stopPropagation()
@@ -38,17 +52,6 @@ export function ImageCarousel({ images, gigId, parentWidth }) {
     event.stopPropagation()
     setCurrentIndex(index)
   }
-
-  // if (!isLoading && !isHovered) {
-  //   return (
-  //     <div className="img-preview">
-  //       <Link to={`/gig/${gigId}`}>
-  //         <img src={firstImage} alt={`Image 0`} className="active" />
-  //       </Link>
-  //     </div>
-  //   )
-  // }
-  
 
   return (
     <div className="carousel-container">

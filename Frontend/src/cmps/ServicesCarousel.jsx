@@ -3,8 +3,8 @@ import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 import { galleryService } from '../services/gallery.service.js'
 
-export function ServicesCarousel() {
-    const { serviceImages, serviceTexts } = galleryService
+export function ServicesCarousel({onHandleFilter}) {
+    const {popularService, serviceImages, serviceTexts } = galleryService
     const [visibleStartIndex, setVisibleStartIndex] = useState(0)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -54,7 +54,7 @@ export function ServicesCarousel() {
             </button>
             <div className='services flex row'>
                 {displayItems.map((service, index) => (
-                    <div className="service" key={index}>
+                    <div onClick={(e) => onHandleFilter(e, popularService[visibleStartIndex + index])} className="service" key={index}>
                         <img src={service} alt={`Service image ${index}`} />
                         <h4 className="service-text">
                             <span>{serviceTexts[(visibleStartIndex + index) % serviceTexts.length].title}</span>

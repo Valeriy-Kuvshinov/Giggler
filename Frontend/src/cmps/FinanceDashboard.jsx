@@ -52,12 +52,12 @@ export function FinanceDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-finances-container'>
+        <section className='dashboard-finances-container grid'>
             <FinanceDashboardInfo />
 
             <main className='grid finance-charts'>
                 <div className="chart-section">
-                    <Typography variant="h6">Weekly site profits</Typography>
+                    <Typography variant="h6">Weekly profits from orders</Typography>
                     <Line
                         data={{
                             labels: data.weekly.dates,
@@ -73,7 +73,7 @@ export function FinanceDashboard() {
                 </div>
 
                 <div className="chart-section">
-                    <Typography variant="h6">Monthly site profits</Typography>
+                    <Typography variant="h6">Monthly profits from orders</Typography>
                     <Line
                         data={{
                             labels: data.monthly.dates,

@@ -5,6 +5,10 @@ import { orderBackendService } from '../services/order.backend.service.js'
 import { userService } from '../services/user.service.js'
 import { InfoDiv } from "./InfoDiv.jsx"
 
+import userIcon from '../assets/img/svg/user.icon.svg'
+import newUserIcon from '../assets/img/svg/new.user.icon.svg'
+import kingIcon from '../assets/img/svg/king.icon.svg'
+
 export function UserDashboardInfo() {
     const [totalUsers, setTotalUsers] = useState(0)
     const [newUsersMonth, setNewUsersMonth] = useState(0)
@@ -51,14 +55,26 @@ export function UserDashboardInfo() {
     }, [])
 
     return (
-        <section className="users-info grid">
-            <InfoDiv title="Total users" info={totalUsers} />
-            <InfoDiv title="New users this month" info={newUsersMonth} />
+        <section className="info-divs grid">
+            <InfoDiv title="Total users"
+                info={totalUsers}
+                imgSrc={userIcon} />
+            <InfoDiv title="New users this month"
+                info={newUsersMonth}
+                imgSrc={newUserIcon} />
 
-            <InfoDiv title="Best user (rating)" info={bestUserRating ? bestUserRating.username : 'Loading...'} />
-            <InfoDiv title="Best user (orders)" info={bestUserOrders ? bestUserOrders.username : 'Loading...'} />
-            <InfoDiv title="Best user (gigs)" info={bestUserGigs ? bestUserGigs.username : 'Loading...'} />
-            <InfoDiv title="Best user (balance)" info={bestUserBalance ? bestUserBalance.username : 'Loading...'} />
+            <InfoDiv title="Best user (rating)"
+                info={bestUserRating ? bestUserRating.username : 'Loading...'}
+                imgSrc={kingIcon} />
+            <InfoDiv title="Best user (orders)"
+                info={bestUserOrders ? bestUserOrders.username : 'Loading...'}
+                imgSrc={kingIcon} />
+            <InfoDiv title="Best user (gigs)"
+                info={bestUserGigs ? bestUserGigs.username : 'Loading...'}
+                imgSrc={kingIcon} />
+            <InfoDiv title="Best user (balance)"
+                info={bestUserBalance ? bestUserBalance.username : 'Loading...'}
+                imgSrc={kingIcon} />
         </section>
     )
 }

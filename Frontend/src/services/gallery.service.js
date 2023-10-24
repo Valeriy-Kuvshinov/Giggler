@@ -106,6 +106,7 @@ export const defaultImgUrls = [
 export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
     serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
+    popularService:[{cat:'AI Services', tag: 'AI Artists',},{cat:'Graphics & Design', tag: 'Logo & Brand Identity',},{cat:'Programming & Tech', tag:'Website Development',},{cat:'Music & Audio', tag:'Voice Over & Narration',},{cat:'Video & Animation', tag:'Explainer Videos',},{cat:'Digital Marketing', tag:'Social Marketing',},{cat:'Digital Marketing', tag:'Search Marketing',},{cat:'Graphics & Design', tag:'Art & Illustration',},{cat:'Writing & Translation', tag:'Translation & Transcription',},{cat:'Data', tag:'Data Collection',},{cat:'Graphic & Design',tag: 'Print Design',}],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     socialMediaLinks: [
