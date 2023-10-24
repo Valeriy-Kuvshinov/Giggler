@@ -29,19 +29,19 @@ export function FinanceDashboardInfo() {
     return (
         <section className="info-divs grid">
             <InfoDiv title="New orders this week"
-                info={orders.filter(order => order.createdAt >= startOfWeek).length}
-                imgSrc={orderIcon} />
-            <InfoDiv title="New orders this month"
-                info={orders.filter(order => order.createdAt >= startOfMonth).length}
+                info={orders && orders.filter(order => order.createdAt >= startOfWeek).length ? `${orders.filter(order => order.createdAt >= startOfWeek).length} orders` : '0'}
                 imgSrc={orderIcon} />
 
-            <InfoDiv
-                title="Orders denied"
-                info={orders.filter(order => order.orderState === 'denied').length}
+            <InfoDiv title="New orders this month"
+                info={orders && orders.filter(order => order.createdAt >= startOfMonth).length ? `${orders.filter(order => order.createdAt >= startOfMonth).length} orders` : '0'}
+                imgSrc={orderIcon} />
+
+            <InfoDiv title="Orders denied"
+                info={orders && orders.filter(order => order.orderState === 'denied').length ? `${orders.filter(order => order.orderState === 'denied').length} orders` : '0'}
                 imgSrc={denyIcon} />
-            <InfoDiv
-                title="Orders accepted"
-                info={orders.filter(order => order.orderState === 'accepted').length}
+
+            <InfoDiv title="Orders accepted"
+                info={orders && orders.filter(order => order.orderState === 'accepted').length ? `${orders.filter(order => order.orderState === 'accepted').length} orders` : '0'}
                 imgSrc={acceptIcon} />
         </section>
     )

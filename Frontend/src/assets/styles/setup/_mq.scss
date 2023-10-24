@@ -265,6 +265,40 @@
     @media (max-width: 1400px) {
         padding: 2em;
     }
+
+    .info-divs {
+        .grid-item {
+            @media (max-width: 1400px) {
+                .icon {
+                    height: 75px;
+                    width: 75px;
+                }
+
+                .title {
+                    font-size: 1em;
+                }
+
+                .info {
+                    font-size: 1em;
+                }
+            }
+
+            @media (min-width: 1400px) {
+                .icon {
+                    height: 150px;
+                    width: 150px;
+                }
+
+                .title {
+                    font-size: 2em;
+                }
+
+                .info {
+                    font-size: 2em;
+                }
+            }
+        }
+    }
 }
 
 .app-footer {

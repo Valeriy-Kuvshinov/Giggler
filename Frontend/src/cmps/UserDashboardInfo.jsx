@@ -57,23 +57,23 @@ export function UserDashboardInfo() {
     return (
         <section className="info-divs grid">
             <InfoDiv title="Total users"
-                info={totalUsers}
+                info={totalUsers ? `${totalUsers} users overall` : '0'}
                 imgSrc={userIcon} />
             <InfoDiv title="New users this month"
-                info={newUsersMonth}
+                info={newUsersMonth ? `${newUsersMonth} new users` : '0'}
                 imgSrc={newUserIcon} />
 
-            <InfoDiv title="Best user (rating)"
-                info={bestUserRating ? bestUserRating.username : 'Loading...'}
+            <InfoDiv title="Best user - by rating"
+                info={bestUserRating ? `${bestUserRating.username} (ID: ${bestUserRating._id})` : 'Loading...'}
                 imgSrc={kingIcon} />
-            <InfoDiv title="Best user (orders)"
-                info={bestUserOrders ? bestUserOrders.username : 'Loading...'}
+            <InfoDiv title="Best user - by orders"
+                info={bestUserOrders ? `${bestUserOrders.username} (ID: ${bestUserOrders._id})` : 'Loading...'}
                 imgSrc={kingIcon} />
-            <InfoDiv title="Best user (gigs)"
-                info={bestUserGigs ? bestUserGigs.username : 'Loading...'}
+            <InfoDiv title="Best user - by gigs"
+                info={bestUserGigs ? `${bestUserGigs.username} (ID: ${bestUserGigs._id})` : 'Loading...'}
                 imgSrc={kingIcon} />
-            <InfoDiv title="Best user (balance)"
-                info={bestUserBalance ? bestUserBalance.username : 'Loading...'}
+            <InfoDiv title="Best user - by balance"
+                info={bestUserBalance ? `${bestUserBalance.username} (ID: ${bestUserBalance._id})` : 'Loading...'}
                 imgSrc={kingIcon} />
         </section>
     )

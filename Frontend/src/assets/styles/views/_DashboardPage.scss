@@ -29,7 +29,7 @@
         border: 2px solid $clrSecondary8;
 
         &:not(:last-child) {
-            margin-bottom: 1em;
+            border-bottom: none;
         }
 
         h6 {
@@ -38,6 +38,7 @@
             margin: auto;
             margin-bottom: 1rem;
             font-weight: bold;
+            font-size: 1.5em
         }
     }
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { gigService } from '../services/gig.service.js'
 import { reviewService } from '../services/review.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
+import { userService } from '../services/user.service.js'
+
 import { InfoDiv } from "./InfoDiv.jsx"
 
 import gigIcon from '../assets/img/svg/gig.icon.svg'
@@ -17,6 +19,9 @@ export function GigDashboardInfo() {
     const [bestGigByRating, setBestGigByRating] = useState(null)
     const [bestGigByOrders, setBestGigByOrders] = useState(null)
     const [bestGigByReviews, setBestGigByReviews] = useState(null)
+    const [bestGigRatingOwner, setBestGigRatingOwner] = useState(null)
+    const [bestGigOrdersOwner, setBestGigOrdersOwner] = useState(null)
+    const [bestGigReviewsOwner, setBestGigReviewsOwner] = useState(null)
 
     useEffect(() => {
         const fetchGigs = async () => {
@@ -69,6 +74,15 @@ export function GigDashboardInfo() {
             setBestGigByReviews(bestGigByReviewCount)
             setBestGigByRating(bestGigRating)
             setBestGigByOrders(bestOrderByOrders)
+
+            const bestGigRatingOwner = await userService.getById(bestGigRating.ownerId)
+            setBestGigRatingOwner(bestGigRatingOwner)
+
+            const bestGigOrdersOwner = await userService.getById(bestOrderByOrders.ownerId)
+            setBestGigOrdersOwner(bestGigOrdersOwner)
+
+            const bestGigReviewsOwner = await userService.getById(bestGigByReviewCount.ownerId)
+            setBestGigReviewsOwner(bestGigReviewsOwner)
         }
         fetchGigs()
     }, [])
@@ -76,23 +90,33 @@ export function GigDashboardInfo() {
     return (
         <section className="info-divs grid">
             <InfoDiv title="Total gigs"
-                info={totalGigs ? totalGigs : 'Loading...'}
+                info={totalGigs ? `${totalGigs} gigs overall` : '0'}
                 imgSrc={gigIcon} />
+
             <InfoDiv title="New gigs this month"
-                info={monthlyGigs}
+                info={monthlyGigs ? `${monthlyGigs} new gigs` : '0'}
                 imgSrc={addIcon} />
+
             <InfoDiv title="Average gig price"
-                info={`$${avgGigPrice}`}
+                info={avgGigPrice ? `$${avgGigPrice} per gig` : '$0 per gig'}
                 imgSrc={moneyIcon} />
 
-            <InfoDiv title="Best gig (rating)"
-                info={<Link to={`/gig/${bestGigByRating?._id}`}>{bestGigByRating ? `${bestGigByRating._id} (by ${bestGigByRating.ownerId})` : 'Loading...'}</Link>}
+            <InfoDiv title="Best gig - by rating"
+                info={bestGigByRating && bestGigRatingOwner
+                    ? <Link to={`/gig/${bestGigByRating._id}`}>{`${bestGigByRating._id} - by ${bestGigRatingOwner.username}`}</Link>
+                    : 'Loading...'}
                 imgSrc={kingIcon} />
-            <InfoDiv title="Best gig (orders)"
-                info={<Link to={`/gig/${bestGigByOrders?._id}`}>{bestGigByOrders ? `${bestGigByOrders._id} (by ${bestGigByOrders.ownerId})` : 'Loading...'}</Link>}
+
+            <InfoDiv title="Best gig - by orders"
+                info={bestGigByOrders && bestGigOrdersOwner
+                    ? <Link to={`/gig/${bestGigByOrders._id}`}>{`${bestGigByOrders._id} - by ${bestGigOrdersOwner.username}`}</Link>
+                    : 'Loading...'}
                 imgSrc={kingIcon} />
-            <InfoDiv title="Best gig (reviews)"
-                info={<Link to={`/gig/${bestGigByReviews?._id}`}>{bestGigByReviews ? `${bestGigByReviews._id} (by ${bestGigByReviews.ownerId})` : 'Loading...'}</Link>}
+
+            <InfoDiv title="Best gig - by reviews"
+                info={bestGigByReviews && bestGigReviewsOwner
+                    ? <Link to={`/gig/${bestGigByReviews._id}`}>{`${bestGigByReviews._id} - by ${bestGigReviewsOwner.username}`}</Link>
+                    : 'Loading...'}
                 imgSrc={kingIcon} />
         </section>
     )
