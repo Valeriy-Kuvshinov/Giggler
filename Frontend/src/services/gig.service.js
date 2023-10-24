@@ -11,14 +11,6 @@ export const gigService = {
   getFilterFromParams,
 }
 
-// let gigsToDisplay = [...utilService.readJsonFile(GIGS_PATH)]
-// if (filterBy.search) {
-//   const regex = new RegExp(filterBy.search, 'i')
-//   gigsToDisplay = gigsToDisplay.filter(
-//     (gig) => regex.test(gig.title) || regex.test(gig.description)
-//   )
-// }
-
 function getFilterFromParams(searchParams) {
   const newFilterBy = gigService.getDefaultFilter()
   const isNewRefresh = false

@@ -7,7 +7,6 @@ import { loadOrders } from '../store/order.actions.js'
 
 import { orderBackendService } from '../services/order.backend.service.js'
 import { userService } from '../services/user.service.js'
-import { gigService } from '../services/gig.service.js'
 
 export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -65,18 +64,34 @@ export function UserOrders() {
             console.error(`Error completing order ${order._id}:`, err)
         }
     }
+
     if (orders.length === 0) return <div>Loading...</div>
 
     return (
-        <section className="user-orders flex column">
-            <div className="orders-title flex">Active Orders</div>
-            <ul className="orders flex column">
-                {sellerOrders.map(order => (
-                    <li key={order._id}>
-                        <UserOrder order={order} acceptOrder={acceptOrder} denyOrder={denyOrder} completeOrder={completeOrder} />
-                    </li>
-                ))}
-            </ul>
+        <section className="user-orders">
+            <table>
+                <thead>
+                    <tr>
+                        <th>BUYER</th>
+                        <th>GIG</th>
+                        <th>Action Date</th>
+                        <th>Due On</th>
+                        <th>STATUS</th>
+                        <th>SET</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {sellerOrders.map(order => (
+                        <UserOrder
+                            key={order._id}
+                            order={order}
+                            acceptOrder={acceptOrder}
+                            denyOrder={denyOrder}
+                            completeOrder={completeOrder}
+                        />
+                    ))}
+                </tbody>
+            </table>
         </section>
     )
 }
