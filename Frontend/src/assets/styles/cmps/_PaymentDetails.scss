@@ -1,11 +1,12 @@
 .payment-details {
-  width: 45%;
-  margin-block-start: 20px;
-  margin-block-end: 20px;
+  flex: 1;
+  width: 58%;
+  margin-block-start: 32px;
+  margin-block-end: 32px;
   background-color: $clrPrimary1;
   border: 1px solid $clrSecondary5;
   color: $clrSecondary5;
-  padding: 28px;
+  padding: 0 16px;
 
   h2 {
     font-family: macan-light;

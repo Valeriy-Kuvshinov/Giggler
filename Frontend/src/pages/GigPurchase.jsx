@@ -50,11 +50,11 @@ export function GigPurchase() {
   // console.log('gig : ',gig)
 
   return (
-    <section className="main-container">
-      <section className="gig-purchase">
+    // <section className="layout-row">
+      <section className="gig-purchase layout-row">
         <PaymentDetails createOrder={createOrder} />
         <PaymentInfo gig={gig} createOrder={createOrder} />
       </section>
-    </section>
+    // </section>
   )
 }
