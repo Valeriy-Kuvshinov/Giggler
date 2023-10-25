@@ -17,16 +17,14 @@
   }
 
   .heart {
-    // width: fit-content;
     position: absolute;
     background: none;
     right: rem(6px);
     top: rem(6px);
     height: 34px;
     width: 32px;
-    background-position: 0 0;
-    background-image: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_in_homepage_perseus/apps/collect.7e0cb84.svg);
-    background-position-x: left;
+    cursor: pointer;
+    user-select: 'none';
   }
 
   .gig-title {

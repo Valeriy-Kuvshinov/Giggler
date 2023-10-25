@@ -49,7 +49,8 @@ export function GigPreview({ is, gig }) {
     }
   }
 
-  async function likeGig() {
+  async function likeGig(e) {
+    e.preventDefault()
     if (!user) {
       openLogin()
       return
@@ -91,8 +92,12 @@ export function GigPreview({ is, gig }) {
         setNewImgIndex={setNewImgIndex}
       />
 
-      <span className={`heart ${isLiked ? 'liked' : ''}`} onClick={likeGig}>
-        {' '}
+      <span className="heart" onClick={(e) => likeGig(e)}>
+        {isLiked ? (
+          <SvgIcon iconName={'heartLiked'} />
+        ) : (
+          <SvgIcon iconName={'heart'} />
+        )}
       </span>
 
       <div className="preview-body">
