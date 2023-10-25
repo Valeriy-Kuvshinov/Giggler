@@ -12,13 +12,12 @@
     overflow: hidden;
     display: flex;
     transition: transform 0.3s ease-in-out;
-    
+
     .carousel-item {
       width: 100%;
       position: relative;
       background: linear-gradient(180deg, #fff, #b5b6ba);
       object-fit: contain;
-     
     }
     .carousel-item::after {
       background-image: linear-gradient(
@@ -28,7 +27,7 @@
       );
       bottom: 0;
       content: '';
-      height: 40px;
+      height: 40%;
       left: 0;
       position: absolute;
       width: 100%;
@@ -44,8 +43,8 @@
     opacity: 0;
     top: 50%;
     background: transparent;
-    width: rem(32px);
-    height: rem(32px);
+    width: 6.5%;
+    height: 10%;
     transform: translateY(-50%);
     color: white;
     border: none;
@@ -59,7 +58,10 @@
       left: -32px;
       // transition: left 0.2s ease-in-out;
       svg {
-        transform: rotate(90deg);
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 40%;
         fill: $clrPrimary1;
       }
     }
@@ -68,7 +70,10 @@
       right: -32px;
       // transition: right 0.2s ease-in-out;
       svg {
-        transform: rotate(-90deg);
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        width: 40%;
         fill: $clrPrimary1;
       }
     }
@@ -102,16 +107,16 @@
       border: none;
       margin: 0 5px;
       cursor: pointer;
-      transition: .3s;
+      transition: 0.3s;
       font-size: 1em;
       &:after {
-        content: "\25CF";
+        content: '\25CF';
         color: #ccc;
       }
     }
 
     .dot:hover {
-      transform:translateY(-3px);
+      transform: translateY(-3px);
       transform: scale(1.2);
       &:after {
         color: #fff;
@@ -119,7 +124,7 @@
     }
 
     .dot.active {
-      transform:translateY(-3px);
+      transform: translateY(-3px);
       transform: scale(1.2);
       &:after {
         color: #fff;
