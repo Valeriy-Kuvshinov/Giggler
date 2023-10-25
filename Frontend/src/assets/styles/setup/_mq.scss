@@ -89,7 +89,7 @@
             padding: 1em 2em;
         }
 
-        @media (min-width: 1400px) {
+        @media (min-width: 1401px) {
             padding: 1em 0em;
         }
 
@@ -126,7 +126,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 &.left-side {
                     left: -1.5%;
                 }
@@ -189,7 +189,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 padding: 4em 0em;
 
                 .text {
@@ -212,7 +212,7 @@
             padding: 1em 2em;
         }
 
-        @media (min-width: 1400px) {
+        @media (min-width: 1401px) {
             padding: 1em 0em;
         }
 
@@ -258,6 +258,14 @@
     }
 
     .main-nav {
+        @media(max-width: 1400px) {
+            padding: 0.5em 2em;
+        }
+
+        @media(min-width: 1401px) {
+            padding: 0.5em 0em;
+        }
+
         .search-bar {
             @media (max-width: 500px) {
                 width: 100%;
@@ -270,6 +278,12 @@
             @media (min-width: 700px) {
                 width: 45%;
             }
+        }
+    }
+
+    .category-nav {
+        @media (max-width: 1400px) {
+            padding: 0 2em;
         }
     }
 }
@@ -301,7 +315,7 @@
         padding: 1em;
     }
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1401px) {
         margin: auto;
         margin-top: 1em;
     }
@@ -323,7 +337,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 .icon {
                     height: 150px;
                     width: 150px;
@@ -346,7 +360,7 @@
         padding: 1em 2em;
     }
 
-    @media (min-width:1400px) {
+    @media (min-width:1401px) {
         padding: 1em 0em;
     }
 }
