@@ -12,7 +12,6 @@
     padding: 16px;
     background-color: $clrSecondary0;
     border: 1px solid $clrSecondary5;
-    // border-radius: 5px;
 
     .credit-details {
       display: flex;
@@ -35,7 +34,7 @@
       }
 
       span{
-        margin-inline-start: 16px;
+        margin: 0 16px;
       }
 
       img {
@@ -66,14 +65,12 @@
 
   .private{
     display: flex;
-    // justify-content: space-between;
     .credit-date {
       display: flex;
       flex-direction: column;
       margin-inline-start: 20px;
       input {
         width: 100%;
-        // border: 1px solid $clrSecondary5;
       }
       
     }
@@ -83,7 +80,6 @@
       margin-inline-start: 20px;
       input {
         width: 100%;
-        // border: 1px solid $clrSecondary5;
       }
     }
   }

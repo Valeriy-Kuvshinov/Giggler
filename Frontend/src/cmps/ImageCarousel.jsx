@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 export function ImageCarousel({ images, gigId }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [parentWidth, setParentWidth] = useState(0)
+  const [arrowSize, setArrowSize] = useState(0)
+  const [dotSize, setDotSize] = useState(0)
   const carouselRef = useRef()
   const numImages = images.length
   let imageWidth = parentWidth
@@ -24,6 +26,11 @@ export function ImageCarousel({ images, gigId }) {
         if (newParentWidth > 0) {
           setParentWidth(newParentWidth)
         }
+
+        const newArrowSize = newParentWidth * 0.1 // Adjust as needed
+        const newDotSize = newParentWidth * 0.03
+        setArrowSize(newArrowSize)
+        setDotSize(newDotSize)
       }
     }
 
@@ -55,7 +62,11 @@ export function ImageCarousel({ images, gigId }) {
 
   return (
     <div className="carousel-container">
-      <button className="arrow left" onClick={(e) => prevImage(e)}>
+      <button
+        className="arrow left"
+        onClick={(e) => prevImage(e)}
+        style={{ width: `${arrowSize}px`, height: `${arrowSize}px` }}
+      >
         <SvgIcon iconName={'arrowDown'} />
       </button>
       <div
@@ -84,7 +95,11 @@ export function ImageCarousel({ images, gigId }) {
         ))}
       </div>
 
-      <button className="arrow right" onClick={(e) => nextImage(e)}>
+      <button
+        className="arrow right"
+        onClick={(e) => nextImage(e)}
+        style={{ width: arrowSize, height: arrowSize }}
+      >
         <SvgIcon iconName={'arrowDown'} />
       </button>
       <ul className="dot-container">
@@ -92,6 +107,7 @@ export function ImageCarousel({ images, gigId }) {
           <li
             key={index}
             onClick={(e) => handleDotClick(index, e)}
+            style={{fontSize: dotSize }}
             className={`dot ${index === currentIndex ? 'active' : ''}`}
           ></li>
         ))}

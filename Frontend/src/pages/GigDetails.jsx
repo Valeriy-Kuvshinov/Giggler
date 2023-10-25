@@ -97,7 +97,7 @@ export function GigDetails() {
             <div className="gig-info">
               <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
 
-              <GigHeader gig={gig} owner={user} />
+              <GigDetailsHeader gig={gig} owner={user} />
 
               <section style={{ overflow: "hidden" }}>
                 <h3>About This Gig</h3>

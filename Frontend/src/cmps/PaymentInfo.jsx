@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
+import question from "../assets/img/svg/question.mark.icon.svg"
+
+import { Link } from "react-router-dom"
 
 export function PaymentInfo({ gig, createOrder }) {
   if (gig === null) return <div>loading...</div>
@@ -54,12 +53,12 @@ export function PaymentInfo({ gig, createOrder }) {
       <section className="payment one">
 
         <div className="paying-fee">
-          <span>Service fee</span>
+          <span>Service fee <img src={question}/></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
         <div className="paying-fee">
-          <span>VAT</span>
+          <span>VAT  <img src={question}/></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
