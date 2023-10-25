@@ -4,6 +4,7 @@
   margin: 0.75em 0;
 
   .avatar-explore {
+    object-fit: cover;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
@@ -25,6 +26,7 @@
   }
 
   .avatar-gig-details {
+    object-fit: cover;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -76,6 +78,7 @@
   }
 
   .avatar-gig-details-2 {
+    object-fit: cover;
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
