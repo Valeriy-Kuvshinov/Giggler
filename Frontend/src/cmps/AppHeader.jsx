@@ -42,7 +42,7 @@ export function AppHeader() {
 
   const closeDropdown = (e) => {
     if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
-      setShowDropdown(false);
+      setShowDropdown(false)
     }
   }
 
@@ -56,15 +56,14 @@ export function AppHeader() {
       window.addEventListener('scroll', handleScroll)
       setHeaderStage(0)
       return () => window.removeEventListener('scroll', handleScroll)
-    } else {
-      setHeaderStage(2)
-    }
+    } 
+    else setHeaderStage(2)
 
-    window.addEventListener('click', closeDropdown);
+    window.addEventListener('click', closeDropdown)
     return () => {
-      window.removeEventListener('click', closeDropdown);
+      window.removeEventListener('click', closeDropdown)
     }
-  }, [isHomePage]);
+  }, [isHomePage])
 
   async function onLogout() {
     try {

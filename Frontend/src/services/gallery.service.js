@@ -18,6 +18,8 @@ import personFive from '../assets/img/christina.jpg'
 import mediumPersonFive from '../assets/img/medium-christina.jpg'
 import miniPersonFive from '../assets/img/mini-christina.webp'
 
+import starIcon from '../assets/img/svg/white.star.icon.svg'
+
 import metaImg from '../assets/img/meta.logo.png'
 import netflixImg from '../assets/img/netflix.logo.png'
 import googleImg from '../assets/img/google.logo.png'
@@ -69,10 +71,10 @@ const serviceTexts = [
 ]
 
 const personImages = [
-    { big: personOne, medium: mediumPersonOne, small: miniPersonOne, backgroundColor: "#0a4226", title: "@Jenny", subtitle: "Children's Voice Over" },
-    { big: personTwo, medium: mediumPersonTwo, small: miniPersonTwo, backgroundColor: "#a7445a", title: "@colinstark", subtitle: "Creative Director" },
+    { big: personOne, medium: mediumPersonOne, small: miniPersonOne, backgroundColor: "#0a4226", title: "@Jenny", subtitle: "Children's Voice Over", star: starIcon },
+    { big: personTwo, medium: mediumPersonTwo, small: miniPersonTwo, backgroundColor: "#a7445a", title: "@colinstark", subtitle: "Creative Director", star: starIcon },
     { big: personThree, medium: mediumPersonThree, small: miniPersonThree, backgroundColor: "#5f1628", title: "Scarlett", subtitle: "Business Founder" },
-    { big: personFour, medium: mediumPersonFour, small: miniPersonFour, backgroundColor: "#0f4926", title: "@jordanruncle_", subtitle: "Production Assistant" },
+    { big: personFour, medium: mediumPersonFour, small: miniPersonFour, backgroundColor: "#0f4926", title: "@jordanruncle_", subtitle: "Production Assistant", star: starIcon },
     { big: personFive, medium: mediumPersonFive, small: miniPersonFive, backgroundColor: "#ad3906", title: "Christina", subtitle: "Jewelery Shop Owner" }
 ]
 
@@ -106,7 +108,7 @@ export const defaultImgUrls = [
 export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
     serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
-    popularService:[{cat:'AI Services', tag: 'AI Artists',},{cat:'Graphics & Design', tag: 'Logo & Brand Identity',},{cat:'Programming & Tech', tag:'Website Development',},{cat:'Music & Audio', tag:'Voice Over & Narration',},{cat:'Video & Animation', tag:'Explainer Videos',},{cat:'Digital Marketing', tag:'Social Marketing',},{cat:'Digital Marketing', tag:'Search Marketing',},{cat:'Graphics & Design', tag:'Art & Illustration',},{cat:'Writing & Translation', tag:'Translation & Transcription',},{cat:'Data', tag:'Data Collection',},{cat:'Graphic & Design',tag: 'Print Design',}],
+    popularService: [{ cat: 'AI Services', tag: 'AI Artists', }, { cat: 'Graphics & Design', tag: 'Logo & Brand Identity', }, { cat: 'Programming & Tech', tag: 'Website Development', }, { cat: 'Music & Audio', tag: 'Voice Over & Narration', }, { cat: 'Video & Animation', tag: 'Explainer Videos', }, { cat: 'Digital Marketing', tag: 'Social Marketing', }, { cat: 'Digital Marketing', tag: 'Search Marketing', }, { cat: 'Graphics & Design', tag: 'Art & Illustration', }, { cat: 'Writing & Translation', tag: 'Translation & Transcription', }, { cat: 'Data', tag: 'Data Collection', }, { cat: 'Graphic & Design', tag: 'Print Design', }],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     socialMediaLinks: [

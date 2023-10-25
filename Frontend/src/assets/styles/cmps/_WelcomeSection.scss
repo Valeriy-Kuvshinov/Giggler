@@ -8,8 +8,8 @@
 
         .person-info {
             position: absolute;
-            bottom: 35px;
-            right: 35px;
+            bottom: 32px;
+            right: 32px;
             display: flex;
             align-items: center;
             z-index: 3;
@@ -17,7 +17,7 @@
             background: #ffffff24;
             border-radius: 100px;
             width: fit-content;
-            padding: 0.5em 0.8em;
+            padding: 12px 24px 12px 12px;
             border: 1px solid #ffffff66;
             backdrop-filter: blur(30px);
             transition: opacity 1s;
@@ -29,8 +29,8 @@
             }
 
             .text-content {
-                padding: 0em 0.5em;
                 white-space: nowrap;
+                padding-left: 0.4em;
 
                 .title,
                 .subtitle {
@@ -40,6 +40,21 @@
                 .title {
                     font-size: 12px;
                     line-height: 12px;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    span {
+                        align-items: self-end;
+                        height: 13px;
+                        width: 19px;
+
+                        .star-icon {
+                            padding-left: 1px;
+                            width: 50%;
+                            height: 75%;
+                            align-self: center;
+                        }
+                    }
                 }
 
                 .subtitle {
@@ -81,12 +96,13 @@
                     line-height: 48px;
                     font-weight: 100;
                     font-size: 40px;
-                    max-width: 500px;
-                    margin-bottom: 0.5em;
+                    max-width: 560px;
+                    margin-bottom: 0.6em;
 
                     span {
                         font-family: 'domain-display-medium';
                         font-weight: 500;
+                        margin-left: 3px;
                     }
                 }
 
@@ -109,7 +125,7 @@
                             color: $clrPrimary1;
                             border: 1px solid;
                             border-radius: 50px;
-                            padding: 0.1rem 0.7rem;
+                            padding: 2px 12px 2px;
 
                             &:hover {
                                 text-decoration: none;
