@@ -67,7 +67,7 @@ export function HomePage() {
             <div className='join-wrapper'>
                 <section className='join-section'>
                     <h2>Suddenly it's all so <span>doable</span>.</h2>
-                    <button>Join Fiverr</button>
+                    <button>Join Giggler</button>
                 </section>
             </div>
         </section>

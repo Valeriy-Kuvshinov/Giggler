@@ -10,6 +10,8 @@ import { UserDropdown } from './UserDropdown.jsx'
 import { category } from '../services/gig.service'
 import { setFilter } from '../store/gig.actions'
 
+import dotIcon from '../assets/img/svg/dot.icon.svg'
+
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerStage, setHeaderStage] = useState(0)
@@ -56,7 +58,7 @@ export function AppHeader() {
       window.addEventListener('scroll', handleScroll)
       setHeaderStage(0)
       return () => window.removeEventListener('scroll', handleScroll)
-    } 
+    }
     else setHeaderStage(2)
 
     window.addEventListener('click', closeDropdown)
@@ -95,9 +97,9 @@ export function AppHeader() {
       <nav className="main-nav">
         <div className="container flex row">
           <Link to="/" style={{ color: headerStyles.color }}>
-            <h1 className="logo">Giggler<span>.</span></h1>
+            <h1 className='logo flex'>Giggler<span className='flex'><img src={dotIcon} /></span></h1>
           </Link>
-          
+
           <SearchBar
             placeholder="Search for any service..."
             searchQuery={searchQuery}

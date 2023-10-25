@@ -16,11 +16,17 @@
 
   h1 {
     font-family: arial;
-    font-size: 40px;
-    letter-spacing: -3px;
+    font-size: 30.5px;
+    letter-spacing: -2.5px;
 
     span {
-      color: $bgColor2;
+      margin-bottom: 8px;
+
+      img {
+        width: 18px;
+        height: 18px;
+        align-self: flex-end;
+      }
     }
   }
 
