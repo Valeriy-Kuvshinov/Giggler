@@ -11,7 +11,7 @@
   .details {
     padding: 16px;
     background-color: $clrSecondary0;
-    border: 1px solid $clrSecondary5;
+    border: 1px solid $clrSecondary2;
 
     .credit-details {
       display: flex;
@@ -29,7 +29,7 @@
       align-items: center;
       height: 25px;
 
-      input{
+      .credit{
         margin: 0;
       }
 
@@ -69,6 +69,7 @@
       display: flex;
       flex-direction: column;
       margin-inline-start: 20px;
+      width: 50%;
       input {
         width: 100%;
       }
@@ -78,6 +79,7 @@
       display: flex;
       flex-direction: column;
       margin-inline-start: 20px;
+      width: 50%;
       input {
         width: 100%;
       }
@@ -89,10 +91,14 @@
   }
   .two{
     background-color: $clrPrimary1;
-    border-block-start: 0;
-    border-block-end: 0;
+    border-block-start: 1px solid $clrSecondary2;
+    border-block-end: 1px solid $clrSecondary2;
   }
   .three{
     border-block-start: 0;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.06);
+    input{
+      margin-block-end:16px;
+    }
   }
 }
