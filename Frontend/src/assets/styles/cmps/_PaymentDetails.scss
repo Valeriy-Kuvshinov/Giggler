@@ -88,6 +88,7 @@
 
   .one{
     border-block-end: 0;
+    border-radius: 4px 4px 0 0;
   }
   .two{
     background-color: $clrPrimary1;
@@ -97,6 +98,7 @@
   .three{
     border-block-start: 0;
     box-shadow: inset 0 2px 4px rgba(0,0,0,.06);
+    border-radius: 0 0 4px 4px;
     input{
       margin-block-end:16px;
     }
