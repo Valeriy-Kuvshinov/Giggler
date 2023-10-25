@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import SvgIcon from './SvgIcon'
 import { Link } from 'react-router-dom'
 
-export function ImageCarousel({ images, gigId }) {
+export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [parentWidth, setParentWidth] = useState(0)
   const [arrowSize, setArrowSize] = useState(0)
@@ -20,6 +20,10 @@ export function ImageCarousel({ images, gigId }) {
   }, [imageWidth, currentIndex, numImages])
 
   useEffect(() => {
+    setCurrentIndex(newImgIndex)
+  }, [newImgIndex])
+
+  useEffect(() => {
     const updateParentWidth = () => {
       if (carouselRef.current && carouselRef.current.parentElement) {
         const newParentWidth = carouselRef.current.parentElement.clientWidth
@@ -35,10 +39,11 @@ export function ImageCarousel({ images, gigId }) {
     }
 
     updateParentWidth()
-
+    window.addEventListener('reload', updateParentWidth)
     window.addEventListener('resize', updateParentWidth)
 
     return () => {
+      window.removeEventListener('reload', updateParentWidth)
       window.removeEventListener('resize', updateParentWidth)
     }
   }, [])
@@ -46,11 +51,15 @@ export function ImageCarousel({ images, gigId }) {
   function nextImage(event) {
     event.stopPropagation()
     setCurrentIndex((prevIndex) => (prevIndex + 1) % numImages)
+    setNewImgIndex((prevIndex) => (prevIndex + 1) % numImages)
   }
 
   function prevImage(event) {
     event.stopPropagation()
     setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? numImages - 1 : prevIndex - 1
+    )
+    setNewImgIndex((prevIndex) =>
       prevIndex === 0 ? numImages - 1 : prevIndex - 1
     )
   }
@@ -107,7 +116,7 @@ export function ImageCarousel({ images, gigId }) {
           <li
             key={index}
             onClick={(e) => handleDotClick(index, e)}
-            style={{fontSize: dotSize }}
+            style={{ fontSize: (dotSize*1.3), margin:(dotSize*.3) }}
             className={`dot ${index === currentIndex ? 'active' : ''}`}
           ></li>
         ))}
