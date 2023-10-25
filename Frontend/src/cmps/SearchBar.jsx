@@ -23,7 +23,7 @@ export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSu
           onFocus={() => controlDimming && setIsDimmed(true)}
           onBlur={() => controlDimming && setIsDimmed(false)}
         />
-        <button type="submit" onClick={onSearchSubmit}>
+        <button type="submit" onClick={onSearchSubmit} className='flex'>
           <img src={searchIconSvg} alt="Search" />
         </button>
       </div>
