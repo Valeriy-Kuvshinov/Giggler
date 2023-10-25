@@ -55,7 +55,7 @@ export function PaymentDetails({ createOrder }) {
 
       <section className="details two">
         <div className="credit-type">
-          <input type="radio" id="credit" value="bread"/>
+          <input type="radio" id="credit" className="credit"/>
           <span>Credit & Debit Cards</span>
           <img className="visa" src={creditCards} />
         </div>
