@@ -5,27 +5,62 @@
                 padding: 1em;
             }
 
-            .person-info {
-                @media (max-width: 1400px) {
-                    right: 30px;
-                }
-
-                @media (min-width: 1400px) {
-                    right: 0px;
-                }
-            }
-
             .welcome-text-search {
                 @media (max-width: 1400px) {
                     margin-left: 0.4em;
+
+                    h1 {
+                        line-height: 48px;
+                        font-size: 40px;
+                    }
                 }
 
-                @media (min-width: 1400px) {
-                    margin-left: 3.1em;
-                }
-
-                @media (max-width: 900px) {
+                @media (max-width: 899px) {
                     margin: auto;
+                    width: 100%;
+                    padding: 32px 64px;
+
+                    h1 {
+                        max-width: 100%;
+                    }
+
+                    .search-bar {
+                        width: 100%;
+                    }
+
+                    .quick-search {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    padding: 48px 0;
+
+                    h1 {
+                        font-size: 32px;
+                        line-height: 40px;
+                    }
+                }
+
+                @media (min-width: 900px) {
+                    width: 650px;
+
+                    h1 {
+                        max-width: 560px;
+                    }
+
+                    .search-bar {
+                        width: 86.5%;
+                    }
+                }
+
+                @media (min-width: 1401px) {
+                    margin-left: 0;
+
+                    h1 {
+                        font-size: 48px;
+                        line-height: 56px;
+                    }
                 }
             }
         }
@@ -54,7 +89,7 @@
             padding: 1em 2em;
         }
 
-        @media (min-width: 1400px) {
+        @media (min-width: 1401px) {
             padding: 1em 0em;
         }
 
@@ -91,7 +126,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 &.left-side {
                     left: -1.5%;
                 }
@@ -154,7 +189,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 padding: 4em 0em;
 
                 .text {
@@ -177,7 +212,7 @@
             padding: 1em 2em;
         }
 
-        @media (min-width: 1400px) {
+        @media (min-width: 1401px) {
             padding: 1em 0em;
         }
 
@@ -223,6 +258,14 @@
     }
 
     .main-nav {
+        @media(max-width: 1400px) {
+            padding: 0.5em 2em;
+        }
+
+        @media(min-width: 1401px) {
+            padding: 0.5em 0em;
+        }
+
         .search-bar {
             @media (max-width: 500px) {
                 width: 100%;
@@ -235,6 +278,12 @@
             @media (min-width: 700px) {
                 width: 45%;
             }
+        }
+    }
+
+    .category-nav {
+        @media (max-width: 1400px) {
+            padding: 0 2em;
         }
     }
 }
@@ -266,7 +315,7 @@
         padding: 1em;
     }
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1401px) {
         margin: auto;
         margin-top: 1em;
     }
@@ -288,7 +337,7 @@
                 }
             }
 
-            @media (min-width: 1400px) {
+            @media (min-width: 1401px) {
                 .icon {
                     height: 150px;
                     width: 150px;
@@ -311,7 +360,7 @@
         padding: 1em 2em;
     }
 
-    @media (min-width:1400px) {
+    @media (min-width:1401px) {
         padding: 1em 0em;
     }
 }

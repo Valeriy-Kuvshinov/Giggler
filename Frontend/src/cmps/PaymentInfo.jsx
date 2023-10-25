@@ -20,7 +20,7 @@ export function PaymentInfo({ gig, createOrder }) {
 
   return (
     <section className="payment-info">
-      <section className="payment zero">
+      <section className="payment one">
         <div className="payment-header">
           <img src={gig.imgUrls[0]} />
           <p>{gig.description}</p>
@@ -50,7 +50,7 @@ export function PaymentInfo({ gig, createOrder }) {
         </div>
 
       </section>
-      <section className="payment one">
+      <section className="payment two">
 
         <div className="paying-fee">
           <span>Service fee <img src={question}/></span>

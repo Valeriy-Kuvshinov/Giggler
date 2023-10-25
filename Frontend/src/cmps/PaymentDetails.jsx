@@ -1,5 +1,5 @@
 import SvgIcon from "./SvgIcon"
-import visa from "../assets/img/svg/visa.icon.svg"
+import creditCards from "../assets/img/svg/credit.cards.icon.svg"
 
 export function PaymentDetails({ createOrder }) {
   function checkInfo() {
@@ -55,9 +55,9 @@ export function PaymentDetails({ createOrder }) {
 
       <section className="details two">
         <div className="credit-type">
-          <input type="radio" id="credit" value="bread"/>
+          <input type="radio" id="credit" className="credit"/>
           <span>Credit & Debit Cards</span>
-          <img className="visa" src={visa} />
+          <img className="visa" src={creditCards} />
         </div>
       </section>
 
