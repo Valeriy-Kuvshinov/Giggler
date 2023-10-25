@@ -1,19 +1,20 @@
 .carousel-container {
   overflow: hidden;
   position: relative;
-  border-radius: 0.5em;
+  // border-radius: 0.5em;
   height: 100%;
   width: 100%;
   img {
     aspect-ratio: 5/3;
+    border-radius: 0.5em;
   }
   .carousel {
-    height: 100%;
     overflow: hidden;
     display: flex;
     transition: transform 0.3s ease-in-out;
 
     .carousel-item {
+      border-radius: 0.5em;
       width: 100%;
       position: relative;
       background: linear-gradient(180deg, #fff, #b5b6ba);
@@ -25,6 +26,7 @@
         rgba(0, 0, 0, 0.3),
         hsla(0, 0%, 100%, 0)
       );
+      border-radius: 0.5em;
       bottom: 0;
       content: '';
       height: 40%;

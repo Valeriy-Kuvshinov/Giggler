@@ -76,10 +76,11 @@ export function UserPreview({ is, owner, children }) {
       {is === 'explore' && (
         <div className="user-rating-order">
           <span className="rating-score">
-            <SvgIcon iconName={'star'} />
+            <SvgIcon iconName={'star'} tag={'span'} />
             <span className="rate b">{user.rating}</span>
             <span className="rate-count ">{`(${ratingCount})`}</span>
           </span>
+          <span></span>
         </div>
       )}
     </>
