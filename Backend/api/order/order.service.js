@@ -13,9 +13,9 @@ export const orderService = {
 
 function query(filterBy) {
     let ordersToDisplay = [...orders]
-    if(filterBy.id!=='') {
-        ordersToDisplay=ordersToDisplay.filter((order)=>
-        order.sellerId===filterBy.id)
+    if (filterBy.id !== '') {
+        ordersToDisplay = ordersToDisplay.filter((order) =>
+            order.sellerId === filterBy.id)
     }
     return Promise.resolve(ordersToDisplay)
 }
@@ -23,15 +23,15 @@ function query(filterBy) {
 function getById(orderId) {
     var orders = [...orders]
     // console.log('orders',orders)
-    console.log('orderId',orderId)
+    console.log('orderId', orderId)
     orders = orders.filter((order) => {
-        console.log( order.sellerId.localeCompare(orderId))
-        if(order.sellerId.localeCompare(orderId)===0) {
-            return true 
+        console.log(order.sellerId.localeCompare(orderId))
+        if (order.sellerId.localeCompare(orderId) === 0) {
+            return true
         }
         return false
     })
-    console.log('orders',orders)
+    console.log('orders', orders)
     if (!orders) {
         loggerService.error(`No order found with id ${orderId}`)
         throw new Error(`No order found with id ${orderId}`)
@@ -42,8 +42,7 @@ function getById(orderId) {
 function remove(orderId) {
     const idx = orders.findIndex(order => order._id === orderId)
     if (idx === -1) return Promise.reject('No Such Order')
-    // const order = orders[idx]
-    // if (order.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
+
     orders.splice(idx, 1)
     return _saveOrdersToFile()
 }
@@ -52,16 +51,19 @@ function save(order) {
     if (order._id) {
         const newOrder = orders.find(currOrder => currOrder._id === order._id)
         // if (orderToUpdate.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
-        newOrder.buyerId=order.buyerId
-        newOrder.buyerName=order.buyerName
-        newOrder.sellerId=order.sellerId
-        newOrder.orderedGigId=order.orderedGigId
-        newOrder.price=order.price
-        newOrder.orderState=order.orderState
-        newOrder.reasonForDenial=order.reasonForDenial
-        if (order.deniedAt) newOrder.deniedAt=order.deniedAt
-        if (order.acceptedAt) newOrder.acceptedAt=order.acceptedAt
-    } else {
+        newOrder.buyerId = order.buyerId
+        newOrder.buyerName = order.buyerName
+        newOrder.sellerId = order.sellerId
+        newOrder.orderedGigId = order.orderedGigId
+        newOrder.price = order.price
+        newOrder.orderState = order.orderState
+        newOrder.reasonForDenial = order.reasonForDenial
+
+        if (order.deniedAt) newOrder.deniedAt = order.deniedAt
+        if (order.acceptedAt) newOrder.acceptedAt = order.acceptedAt
+        if (order.completedAt) newOrder.completedAt = order.completedAt
+    }
+    else {
         order._id = _makeId()
         // order.owner = loggedinUser
         orders.push(order)

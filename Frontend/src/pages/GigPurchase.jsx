@@ -32,8 +32,8 @@ export function GigPurchase() {
 
   function createOrder() {
     const orderToSave = orderBackendService.
-      createOrder(user._id, user.fullName, gig.ownerId, gig.title, gig.deliveryTime, gig._id, gig.price)
-
+      createOrder(user._id, user.fullName, gig.ownerId
+      , gig.title, gig.deliveryTime, gig._id, gig.price)
     saveOrder(orderToSave)
       .then(savedOrder => {
         showSuccessMsg(`order added (id: ${savedOrder._id})`)
@@ -50,11 +50,11 @@ export function GigPurchase() {
   // console.log('gig : ',gig)
 
   return (
-    <section className="main-container">
-      <section className="gig-purchase">
+    // <section className="layout-row">
+      <section className="gig-purchase layout-row">
         <PaymentDetails createOrder={createOrder} />
         <PaymentInfo gig={gig} createOrder={createOrder} />
       </section>
-    </section>
+    // </section>
   )
 }

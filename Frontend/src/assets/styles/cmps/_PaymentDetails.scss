@@ -1,60 +1,89 @@
 .payment-details {
-    width: 45%;
-    margin-block-start: 20px;
-    margin-block-end: 20px;
+  width: 58.33333%;
+  max-width: 833.555px;
+  padding: 0 16px;
+
+  .details {
+    padding: 16px 24px;
     background-color: $clrPrimary1;
     border: 1px solid $clrSecondary5;
     color: $clrSecondary5;
-    padding: 28px;
+    border-radius: 5px;
 
     h2 {
-        font-family: macan-light;
+      font-family: macan-light;
     }
 
     .credit-details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 80%;
 
-        span {
-            font-weight: 700;
-        }
+      span {
+        font-weight: 700;
+      }
     }
 
     .credit-type {
-        display: flex;
-        align-items: center;
-        height: 50px;
+      display: flex;
+      align-items: center;
+      height: 50px;
 
-        img {
-            width: 80px;
-            height: 50px;
-        }
+      img {
+        width: 80px;
+        height: 50px;
+      }
     }
 
     .credit-number {
-        display: flex;
-        flex-direction: column;
-        width: 240px;
+      display: flex;
+      flex-direction: column;
+      width: 240px;
+
+      input {
+        width: 94%;
+      }
     }
 
     .rest-of-details {
+      display: flex;
+      justify-content: space-between;
+
+      .credit-date {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
 
-        .credit-date {
-            display: flex;
-            flex-direction: column;
-
-            input {
-                width: 80%;
-            }
+        input {
+          width: 80%;
+          border: 1px solid $clrSecondary5;
         }
+      }
+    }
+
+    .credit-date {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        width: 60%;
+        border: 1px solid $clrSecondary5;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        appearance: textfield;
+      }
     }
 
     .buyer-info {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
+  }
 }

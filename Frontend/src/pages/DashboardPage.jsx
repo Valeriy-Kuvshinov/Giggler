@@ -16,37 +16,43 @@ import { UserDashboard } from '../cmps/UserDashboard.jsx'
 import { GigDashboard } from '../cmps/GigDashboard.jsx'
 
 export function DashboardPage() {
-    const [value, setValue] = useState(0)
+    const [outerValue, setOuterValue] = useState(0)
+    const [innerValue, setInnerValue] = useState(0)
 
-    const handleChange = (event, newValue) => {
-        setValue(newValue)
+    const handleOuterChange = (event, newValue) => {
+        setOuterValue(newValue)
+        if (newValue !== 1) setInnerValue(0)
+    }
+
+    const handleInnerChange = (event, newValue) => {
+        setInnerValue(newValue)
     }
 
     return (
         <main className="dashboard-page flex column">
             <Box sx={{ width: '100%', typography: 'body0' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="dashboard tabs" centered>
+                <Tabs value={outerValue} onChange={handleOuterChange} aria-label="dashboard tabs" centered>
                     <Tab label="Personal Dashboard" />
                     <Tab label="Admin Dashboard" />
                 </Tabs>
                 <Box p={3}>
-                    {value === 0 && <UserOrders />}
-                    {value === 1 && (
+                    {outerValue === 0 && <UserOrders />}
+                    {outerValue === 1 && (
                         <>
                             <div className='dashboard-container-header flex column'>
                                 <h1>Welcome dear admin!</h1>
                                 <h2>Here is our most updated business statistics:</h2>
                             </div>
                             <Box sx={{ width: '100%', typography: 'body0' }}>
-                                <Tabs value={value - 1} onChange={handleChange} aria-label="admin dashboard tabs" centered>
+                                <Tabs value={innerValue} onChange={handleInnerChange} aria-label="admin dashboard tabs" centered>
                                     <Tab label="Gig Dashboard" />
                                     <Tab label="User Dashboard" />
                                     <Tab label="Finance Dashboard" />
                                 </Tabs>
                                 <Box p={3}>
-                                    {value - 1 === 0 && <GigDashboard />}
-                                    {value - 1 === 1 && <UserDashboard />}
-                                    {value - 1 === 2 && <FinanceDashboard />}
+                                    {innerValue === 0 && <GigDashboard />}
+                                    {innerValue === 1 && <UserDashboard />}
+                                    {innerValue === 2 && <FinanceDashboard />}
                                 </Box>
                             </Box>
                         </>
@@ -54,5 +60,5 @@ export function DashboardPage() {
                 </Box>
             </Box>
         </main>
-    );
+    )
 }
