@@ -1,4 +1,3 @@
-import { UserMsg } from './UserMsg.jsx'
 import { galleryService } from '../services/gallery.service.js'
 
 export function AppFooter() {
@@ -10,8 +9,6 @@ export function AppFooter() {
                 <h1 className="logo">Giggler</h1>
                 <h2>© Giggler International Ltd. 2023</h2>
             </div>
-
-            <UserMsg />
 
             <div className='footer-part flex row'>
                 <div className="social-icons flex row">

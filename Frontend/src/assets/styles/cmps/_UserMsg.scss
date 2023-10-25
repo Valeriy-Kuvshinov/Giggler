@@ -7,6 +7,9 @@
     right: 0;
     background-color: $clrSecondary5;
     position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: fit-content;
 }
 
 .user-msg button {
@@ -18,9 +21,9 @@
 }
 
 .user-msg.success {
-    background-color: $clr3;
+    background-color: green;
 }
 
 .user-msg.error {
-    background-color: $clr4;
+    background-color: red;
 }

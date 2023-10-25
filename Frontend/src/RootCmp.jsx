@@ -3,6 +3,8 @@ import routes from './routes'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
+
 import { useModal } from './customHooks/ModalContext'
 
 export function RootCmp() {
@@ -24,6 +26,8 @@ export function RootCmp() {
     <main className="main-container">
       <AppHeader />
       <div className="dimmed-content" style={dimmerStyle}></div>
+      <UserMsg />
+
       <Routes>
         {routes.map((route) => (
           <Route
