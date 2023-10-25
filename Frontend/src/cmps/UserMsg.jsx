@@ -50,8 +50,8 @@ export function UserMsg() {
       setIsActive(true)
       setTimeout(() => {
         setIsActive(false)
-        setTimeout(onCloseMsg, 40000)
-      }, 50000)
+        setTimeout(onCloseMsg, 4000)
+      }, 5000)
     })
     return () => {
       unsubscribe()
