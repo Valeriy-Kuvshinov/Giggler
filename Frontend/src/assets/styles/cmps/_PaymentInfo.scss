@@ -26,6 +26,7 @@
                 margin-inline-end: 1em;
             }
             p{
+                font-weight: bold;
                 margin:0;
             }
         }
@@ -43,7 +44,6 @@
         .gig-qualities {
             display: flex;
             flex-direction: column;
-            margin-block-end: 20px;
 
             .gig-quality {
                 display: flex;
@@ -58,7 +58,18 @@
         .paying-fee {
             display: flex;
             justify-content: space-between;
-            margin-block-end: 25px;
+            // align-items: center;
+            margin-block-end: 16px;
+            height: 30px;
+            span{
+                display: flex;
+                align-items: center;
+            }
+            img{
+                height: 16px;
+                width: 16px;
+                margin-inline-start: 8px;
+            }
         }
 
         .final {
