@@ -1,15 +1,19 @@
 .payment-info {
     width: 41.66667%;
-    padding: 0 16px;
+    padding: 0 0;
     max-width: 596.667px;
+    color: $clrSecondary6;
+    // border: 1px solid $clrSecondary4;
+    border-radius: 4px;
 
     .payment {
+        padding: 16px 16px;
         background-color: $clrPrimary1;
-        border: 1px solid $clrSecondary5;
-        padding: 16px 24px;
+        border: 1px solid $clrSecondary4;
+        // border-inline-start: 1px solid $clrSecondary4;
+        // border-inline-end: 1px solid $clrSecondary4;
         margin: 0 auto;
         width: 377px;
-        border-radius: 5px;
 
         .payment-header {
             display: flex;
@@ -17,26 +21,36 @@
             margin-block-end: 20px;
 
             img {
-                width: 70px;
+                width: 110px;
+                height: 70px;
+                margin-inline-end: 1em;
+            }
+            p{
+                margin:0;
             }
         }
 
         .payment-price {
-            color: $clrSecondary6;
+            display: flex;
+            justify-content: space-between;
+            padding-block-start: 20px;
+            border-block-start: 1px solid $clrSecondary4;
+            p{
+            font-weight: 600;
+            }
         }
 
         .gig-qualities {
             display: flex;
             flex-direction: column;
             margin-block-end: 20px;
-            color: $clrSecondary6;
 
             .gig-quality {
                 display: flex;
-
+                align-items: center;
                 img {
                     width: 14px;
-                    margin-inline-end: 5px;
+                    margin-inline-end: 9px;
                 }
             }
         }
@@ -48,7 +62,8 @@
         }
 
         .final {
-            border-top: 1px solid $clrPrimary2;
+            border-top: 1px solid $clrSecondary4;
+            padding-block-start: 20px;
             font-weight: 700;
         }
 
@@ -71,4 +86,10 @@
             }
         }
     }
+    
+    .zero{
+        background-color: $clrSecondary0;
+        border-block-end: 0;
+      }
+
 }
