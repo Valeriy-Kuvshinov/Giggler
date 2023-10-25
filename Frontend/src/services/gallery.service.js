@@ -56,6 +56,11 @@ import socialMediaFacebook from '../assets/img/svg/social.media.facebook.svg'
 import socialMediaPinterest from '../assets/img/svg/social.media.pinterest.svg'
 import socialMediaTwitter from '../assets/img/svg/social.media.twitter.svg'
 
+import userLevelZero from '../assets/img/svg/user.level.zero.icon.svg'
+import userLevelOne from '../assets/img/svg/user.level.one.icon.svg'
+import userLevelTwo from '../assets/img/svg/user.level.two.icon.svg'
+import userLevelThree from '../assets/img/svg/user.level.three.icon.svg'
+
 const serviceTexts = [
     { title: "Add talent to AI", subtitle: "AI Artists" },
     { title: "Build your brand", subtitle: "Logo Design" },
@@ -119,6 +124,7 @@ export const galleryService = {
         { img: socialMediaPinterest, url: 'https://www.pinterest.com/fiverr/' },
         { img: socialMediaTwitter, url: 'https://twitter.com/fiverr' },
     ],
+    levelImages: [userLevelZero, userLevelOne, userLevelTwo, userLevelThree],
     serviceTexts: serviceTexts,
     personImages: personImages,
     infoListData: infoListData,
