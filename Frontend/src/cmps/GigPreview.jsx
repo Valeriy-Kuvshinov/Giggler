@@ -15,6 +15,7 @@ import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const [newImgIndex, setNewImgIndex] = useState(0)
 
   const [owner, setOwner] = useState(null)
   const [updatedGig, setUpdatedGig] = useState(gig)
@@ -83,11 +84,17 @@ export function GigPreview({ is, gig }) {
 
   return (
     <li className="gig-preview">
-      <ImageCarousel images={updatedGig.imgUrls} gigId={updatedGig._id} />
+      <ImageCarousel
+        images={updatedGig.imgUrls}
+        gigId={updatedGig._id}
+        newImgIndex={newImgIndex}
+        setNewImgIndex={setNewImgIndex}
+      />
 
-      <span className={`heart ${isLiked ? 'liked' : ''}`} onClick={likeGig}> </span>
-      
-     
+      <span className={`heart ${isLiked ? 'liked' : ''}`} onClick={likeGig}>
+        {' '}
+      </span>
+
       <div className="preview-body">
         {is === 'explore' && (
           <UserPreview is={is} owner={owner} gig={updatedGig}>
