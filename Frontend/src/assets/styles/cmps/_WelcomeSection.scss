@@ -96,12 +96,13 @@
                     line-height: 48px;
                     font-weight: 100;
                     font-size: 40px;
-                    max-width: 500px;
-                    margin-bottom: 0.5em;
+                    max-width: 560px;
+                    margin-bottom: 0.6em;
 
                     span {
                         font-family: 'domain-display-medium';
                         font-weight: 500;
+                        margin-left: 3px;
                     }
                 }
 
@@ -124,7 +125,7 @@
                             color: $clrPrimary1;
                             border: 1px solid;
                             border-radius: 50px;
-                            padding: 0.1rem 0.7rem;
+                            padding: 2px 12px 2px;
 
                             &:hover {
                                 text-decoration: none;

@@ -3,10 +3,10 @@
         .welcome-section {
             .welcome-text-search {
                 .search-bar {
-                    width: 85%;
-                    margin-bottom: 0.5em;
+                    width: 86.5%;
+                    margin-bottom: 0.6em;
                     gap: 0;
-                    height: 47px;
+                    height: 48px;
 
                     input[type="text"] {
                         width: 90%;
@@ -32,6 +32,11 @@
 
                         &:hover {
                             opacity: 0.8;
+                        }
+
+                        img {
+                            width: 16px;
+                            height: 16px;
                         }
                     }
                 }
