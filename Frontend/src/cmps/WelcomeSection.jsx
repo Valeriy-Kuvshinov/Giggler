@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { galleryService } from '../services/gallery.service.js'
 import { SearchBar } from './SearchBar.jsx'
 import { setFilter } from '../store/gig.actions.js'
 
-export function WelcomeSection({onHandleFilter}) {
+export function WelcomeSection({ onHandleFilter }) {
     const { personImages } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [showImage, setShowImage] = useState(true)
@@ -36,7 +35,7 @@ export function WelcomeSection({onHandleFilter}) {
     let backgroundImage = ''
     if (windowWidth >= 1160) {
         backgroundImage = personImages[currentImageIndex].big
-    } 
+    }
     else if (windowWidth >= 900) {
         backgroundImage = personImages[currentImageIndex].medium
     }
@@ -49,7 +48,7 @@ export function WelcomeSection({onHandleFilter}) {
     function handleSearchSubmit(e) {
         e.preventDefault()
         if (!searchQuery) return
-        onHandleFilter(e,{search: searchQuery})
+        onHandleFilter(e, { search: searchQuery })
     }
     return (
         <main className="welcome-wrapper" style={{ backgroundColor: `${personImages[currentImageIndex].backgroundColor}` }}>
@@ -71,10 +70,10 @@ export function WelcomeSection({onHandleFilter}) {
                     />
                     <div className='flex row'>
                         <h4>Popular:</h4>
-                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag:'Web & App Design',})} href="">Website Design</a>
-                        <a onClick={(e) => onHandleFilter(e, {cat:'Programming & Tech', tag:'Website Development',})} href="">WordPress</a>
-                        <a onClick={(e) => onHandleFilter(e, {cat:'Graphics & Design', tag: 'Logo & Brand Identity',} )} href="">Logo Design</a>
-                        <a onClick={(e) => onHandleFilter(e, {cat:'AI Services', })} href="">AI Services</a>
+                        <a onClick={(e) => onHandleFilter(e, { cat: 'Graphics & Design', tag: 'Web & App Design', })} href="">Website Design</a>
+                        <a onClick={(e) => onHandleFilter(e, { cat: 'Programming & Tech', tag: 'Website Development', })} href="">WordPress</a>
+                        <a onClick={(e) => onHandleFilter(e, { cat: 'Graphics & Design', tag: 'Logo & Brand Identity', })} href="">Logo Design</a>
+                        <a onClick={(e) => onHandleFilter(e, { cat: 'AI Services', })} href="">AI Services</a>
                     </div>
                 </div>
             </section>
@@ -82,7 +81,17 @@ export function WelcomeSection({onHandleFilter}) {
                 <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
                     <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
                     <div className="text-content">
-                        <div className="title">{personImages[currentImageIndex].title}</div>
+                        <div className="title flex">
+                            {personImages[currentImageIndex].title}
+                            {personImages[currentImageIndex].star && (
+                                <>
+                                    <span className='flex'>
+                                        5
+                                        <img src={personImages[currentImageIndex].star} alt="Star Icon" className="star-icon" />
+                                    </span>
+                                </>
+                            )}
+                        </div>
                         <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
                     </div>
                 </div>
