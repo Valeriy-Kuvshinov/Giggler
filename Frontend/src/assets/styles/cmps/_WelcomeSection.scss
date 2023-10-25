@@ -63,41 +63,39 @@
             }
         }
 
+        .background-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-size: cover;
+            background-position: 100% 100%;
+            transition: opacity 1s;
+            z-index: 1;
+            max-width: 1650px;
+            margin: auto;
+        }
+
         .welcome-section {
             width: 100%;
-            max-width: 1650px;
+            max-width: 1400px;
             height: 100%;
             margin: auto;
             position: relative;
             overflow: hidden;
 
-            .background-content {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background-size: cover;
-                background-position: 100% 100%;
-                transition: opacity 1s;
-                z-index: 1;
-            }
-
             .welcome-text-search {
-                width: 650px;
                 height: fit-content;
                 position: absolute;
                 z-index: 3;
-                top: 35%;
+                top: 35.5%;
                 font-size: 40px;
 
                 h1 {
                     font-family: "macan-bold";
-                    line-height: 48px;
+                    margin-bottom: 0.5em;
                     font-weight: 100;
-                    font-size: 40px;
-                    max-width: 560px;
-                    margin-bottom: 0.6em;
 
                     span {
                         font-family: 'domain-display-medium';

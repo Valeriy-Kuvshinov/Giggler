@@ -51,14 +51,17 @@ export function WelcomeSection({ onHandleFilter }) {
         onHandleFilter(e, { search: searchQuery })
     }
     return (
-        <main className="welcome-wrapper" style={{ backgroundColor: `${personImages[currentImageIndex].backgroundColor}` }}>
-            <section className='welcome-section'>
-                <div className="background-content" style={{
-                    backgroundImage: `url("${backgroundImage}")`,
-                    opacity: showImage ? '1' : '0'
-                }}>
+        <main className="welcome-wrapper"
+            style={{
+                backgroundColor: `${personImages[currentImageIndex].backgroundColor}`
+            }}>
+            <div className="background-content" style={{
+                backgroundImage: `url("${backgroundImage}")`,
+                opacity: showImage ? '1' : '0'
+            }}>
+            </div>
 
-                </div>
+            <section className='welcome-section'>
                 <div className="welcome-text-search">
                     <h1>Find the right <span>freelance</span> service, right away</h1>
                     <SearchBar
@@ -77,6 +80,7 @@ export function WelcomeSection({ onHandleFilter }) {
                     </div>
                 </div>
             </section>
+
             {windowWidth >= 900 && (
                 <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
                     <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />

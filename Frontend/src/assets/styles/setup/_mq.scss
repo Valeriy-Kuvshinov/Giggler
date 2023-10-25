@@ -5,27 +5,41 @@
                 padding: 1em;
             }
 
-            .person-info {
-                @media (max-width: 1400px) {
-                    right: 30px;
-                }
-
-                @media (min-width: 1400px) {
-                    right: 0px;
-                }
-            }
-
             .welcome-text-search {
                 @media (max-width: 1400px) {
                     margin-left: 0.4em;
+
+                    h1 {
+                        line-height: 48px;
+                        font-size: 40px;
+                    }
+                }
+
+                @media (max-width: 899px) {
+                    margin: auto;
+                    width: 100%;
+                    padding: 32px 64px;
+
+                    h1 {
+                        max-width: 100%;
+                    }
+                }
+
+                @media (min-width: 900px) {
+                    width: 650px;
+
+                    h1 {
+                        max-width: 560px;
+                    }
                 }
 
                 @media (min-width: 1400px) {
-                    margin-left: 3.1em;
-                }
+                    margin-left: 0;
 
-                @media (max-width: 900px) {
-                    margin: auto;
+                    h1 {
+                        font-size: 48px;
+                        line-height: 56px;
+                    }
                 }
             }
         }
