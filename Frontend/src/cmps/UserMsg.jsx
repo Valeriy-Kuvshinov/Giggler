@@ -50,8 +50,8 @@ export function UserMsg() {
       setIsActive(true)
       setTimeout(() => {
         setIsActive(false)
-        setTimeout(onCloseMsg, 800)
-      }, 2500)
+        setTimeout(onCloseMsg, 40000)
+      }, 50000)
     })
     return () => {
       unsubscribe()
@@ -65,8 +65,10 @@ export function UserMsg() {
   if (!msg) return null
 
   return (
-    <section className={`user-msg ${msg.type} ${isActive ? 'active' : ''}`}>
-      <p>{msg.txt}</p>
-    </section>
+    <section className={`user-msg ${isActive ? 'active' : ''}`}>
+      <div className={`message-area flex row  ${msg.type}`}>
+      <p dangerouslySetInnerHTML={{ __html: msg.txt.split('\n').join('<br>') }}></p>
+      </div>
+    </section >
   )
 }

@@ -121,5 +121,44 @@
         "orderState": "denied",
         "_id": "uonLD",
         "deniedAt": 1698145179223
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u101",
+        "title": "I will create logos for your company",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g101",
+        "price": 45.99,
+        "createdAt": 1698273470950,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "53Gcv"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u110",
+        "title": "I will create personalized digital avatars for your social media",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g110",
+        "price": 49.99,
+        "createdAt": 1698273965327,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "4dT83"
+    },
+    {
+        "buyerId": "u001",
+        "buyerName": "Peter Porker",
+        "sellerId": "u103",
+        "title": "I will write engaging blog articles for your niche",
+        "deliveryTime": "2 days",
+        "orderedGigId": "g103",
+        "price": 29.99,
+        "createdAt": 1698274207591,
+        "reasonForDenial": "",
+        "orderState": "pending",
+        "_id": "YNtKd"
     }
 ]

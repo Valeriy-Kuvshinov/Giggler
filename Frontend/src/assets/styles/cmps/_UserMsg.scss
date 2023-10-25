@@ -1,29 +1,83 @@
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
 .user-msg {
-    color: white;
-    padding: 10px;
-    font-size: 1.4em;
     position: fixed;
     top: 0;
     right: 0;
-    background-color: $clrSecondary5;
-    position: absolute;
-    z-index: 100;
+    left: 0;
+    z-index: 999;
     width: 100%;
-    height: fit-content;
-}
+    animation: slideDown 0.5s forwards;
 
-.user-msg button {
-    float: right;
-    border: 0;
-    border-radius: 50%;
-    margin: 5px;
-    background-color: $clrPrimary2;
-}
+    .message-area {
+        position: relative;
+        width: fit-content;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1em 2em;
+        border-radius: 0 0 10px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: none;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 
-.user-msg.success {
-    background-color: green;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.user-msg.error {
-    background-color: red;
+        transition: all 0.3s ease;
+
+        ::before,
+        ::after {
+            content: "";
+            position: absolute;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            top: -6px;
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        ::before {
+            left: -6px;
+        }
+
+        ::after {
+            right: -6px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 30px;
+            line-height: 120%;
+            color: $clrSecondary2;
+        }
+
+        &.success {
+            background: linear-gradient(45deg, $bgColor3, $bgColor5);
+
+            ::before,
+            ::after {
+                background-color: $bgColor3;
+            }
+        }
+
+        &.error {
+            background: linear-gradient(45deg, $clr4, $bgColor4);
+            color: $clrSecondary8;
+
+            ::before,
+            ::after {
+                background-color: $clr4;
+            }
+        }
+    }
 }
