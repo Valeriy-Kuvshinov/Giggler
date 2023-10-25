@@ -71,7 +71,7 @@ export function WelcomeSection({ onHandleFilter }) {
                         onSearchSubmit={handleSearchSubmit}
                         controlDimming={false}
                     />
-                    <div className='flex row'>
+                    <div className='quick-search flex row'>
                         <h4>Popular:</h4>
                         <a onClick={(e) => onHandleFilter(e, { cat: 'Graphics & Design', tag: 'Web & App Design', })} href="">Website Design</a>
                         <a onClick={(e) => onHandleFilter(e, { cat: 'Programming & Tech', tag: 'Website Development', })} href="">WordPress</a>

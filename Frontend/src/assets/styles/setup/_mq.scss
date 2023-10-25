@@ -23,6 +23,23 @@
                     h1 {
                         max-width: 100%;
                     }
+
+                    .search-bar {
+                        width: 100%;
+                    }
+
+                    .quick-search {
+                        display: none;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    padding: 48px 0;
+
+                    h1 {
+                        font-size: 32px;
+                        line-height: 40px;
+                    }
                 }
 
                 @media (min-width: 900px) {
@@ -30,6 +47,10 @@
 
                     h1 {
                         max-width: 560px;
+                    }
+
+                    .search-bar {
+                        width: 86.5%;
                     }
                 }
 
