@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
-import { GigHeader } from "../cmps/GigHeader.jsx"
+import { GigDetailsHeader } from "../cmps/GigDetailsHeader.jsx"
 import { AboutSeller } from "../cmps/AboutSeller.jsx"
 import { GigOrder } from "../cmps/GigOrder.jsx"
 import { GigReviews } from "../cmps/GigReviews.jsx"
@@ -67,7 +67,7 @@ export function GigDetails() {
             <div className="gig-info">
               <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
 
-              <GigHeader gig={gig} owner={user} />
+              <GigDetailsHeader gig={gig} owner={user} />
 
               <section style={{ overflow: "hidden" }}>
                 <h3>About This Gig</h3>

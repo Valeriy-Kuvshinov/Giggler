@@ -1,0 +1,133 @@
+.user-preview {
+  font-size: 1rem;
+  display: flex;
+  margin: 0.75em 0;
+
+  .avatar-explore {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    border: none;
+    margin-inline-end: 0.5em;
+  }
+  .user-explore-wrapper {
+    font-size: 14px;
+    line-height: 21px;
+    display: grid;
+    grid-auto-flow: column;
+  }
+  .level {
+    text-transform: capitalize;
+    color: $clrSecondary8;
+    padding: 0 0.5em;
+    border-radius: 4px;
+    margin-inline-start: auto;
+  }
+
+  .avatar-gig-details {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+  }
+  .user-gig-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .name-wrapper {
+      .fullname {
+        color: $clrSecondary8;
+        font-size: 18px;
+        line-height: 26px;
+        cursor: pointer;
+        font-weight: 700;
+        margin-inline-end: 0.5em;
+      }
+      .username {
+        margin-inline-end: 0.5em;
+        color: $clrSecondary5;
+      }
+    }
+    .rating-order-wrapper {
+      width: 100%;
+      display: flex;
+      gap: 0.75em;
+      flex-direction: row;
+      align-items: baseline;
+
+      .rating-score {
+        padding: 0.5em 0 0;
+
+        .rate {
+          padding: 0 0.25em;
+        }
+
+        .rate-count {
+          color: $clrSecondary5;
+        }
+      }
+      .active-orders {
+        color: $clrSecondary5;
+        margin-inline-end: 0.5em;
+        font-size: rem(14px);
+      }
+    }
+  }
+
+  .avatar-gig-details-2 {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    // display: block;
+  }
+  .user-gig-details-2-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .name-wrapper {
+      .fullname {
+        color: $clrSecondary8;
+        font-size: 18px;
+        line-height: 26px;
+        cursor: pointer;
+        font-weight: 700;
+        margin-inline-end: 0.5em;
+      }
+      .username {
+        margin-inline-end: 0.5em;
+        color: $clrSecondary5;
+      }
+    }
+    .saying {
+      color: $clrSecondary6;
+      text-align: left;
+    }
+
+    .rating-order-wrapper {
+      width: 100%;
+      display: flex;
+      gap: 0.75em;
+      flex-direction: row;
+      align-items: baseline;
+
+      .rating-score {
+        padding: 0.5em 0 0;
+
+        .rate {
+          padding: 0 0.25em;
+        }
+
+        .rate-count {
+          color: $clrSecondary5;
+        }
+      }
+      .active-orders {
+        color: $clrSecondary5;
+        margin-inline-end: 0.5em;
+        font-size: rem(14px);
+      }
+    }
+  }
+}

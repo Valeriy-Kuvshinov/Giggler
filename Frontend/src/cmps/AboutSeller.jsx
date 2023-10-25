@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import { loadOrders } from "../store/order.actions"
 
 import starIcon from "../assets/img/svg/star.icon.svg"
+import { UserPreview } from "./UserPreview"
 
 export function AboutSeller({ owner }) {
   const orders = useSelector((storeState) => storeState.orderModule.orders)
@@ -54,16 +55,7 @@ export function AboutSeller({ owner }) {
   return (
     <section className="about-seller">
       <h3>About The Seller</h3>
-      <div className="seller">
-        <img className="seller-picture" src={owner.imgUrl} />
-        <div className="seller-stats">
-          <p>{owner.fullName}</p>
-          <div className="stars2">
-            <img src={starIcon} alt="star" />
-            {owner.rating}
-          </div>
-        </div>
-      </div>
+      <UserPreview is={'gig-details-2'} owner={owner} />
 
       <button>Contact Me</button>
       <div className="seller-info">

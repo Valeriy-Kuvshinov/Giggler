@@ -4,7 +4,9 @@
   border-radius: 0.5em;
   height: 100%;
   width: 100%;
-
+  img {
+    aspect-ratio: 5/3;
+  }
   .carousel {
     height: 100%;
     overflow: hidden;
@@ -13,7 +15,6 @@
     
     .carousel-item {
       width: 100%;
-      height: 100%;
       position: relative;
       background: linear-gradient(180deg, #fff, #b5b6ba);
       object-fit: contain;
