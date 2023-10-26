@@ -10,10 +10,10 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 
-import { UserOrders } from '../cmps/UserOrders.jsx'
-import { FinanceDashboard } from '../cmps/FinanceDashboard.jsx'
-import { UserDashboard } from '../cmps/UserDashboard.jsx'
-import { GigDashboard } from '../cmps/GigDashboard.jsx'
+import { UserOrders } from '../cmps/dashboardCmps/UserOrders.jsx'
+import { FinanceDashboard } from '../cmps/dashboardCmps/FinanceDashboard.jsx'
+import { UserDashboard } from '../cmps/dashboardCmps/UserDashboard.jsx'
+import { GigDashboard } from '../cmps/dashboardCmps/GigDashboard.jsx'
 
 export function DashboardPage() {
     const [outerValue, setOuterValue] = useState(0)

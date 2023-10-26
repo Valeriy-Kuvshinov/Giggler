@@ -9,6 +9,7 @@ import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
 import { category } from '../services/gig.service'
 import { setFilter } from '../store/gig.actions'
+import SvgIcon from './SvgIcon'
 
 import dotIcon from '../assets/img/svg/dot.icon.svg'
 
@@ -96,6 +97,8 @@ export function AppHeader() {
     <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''} ${showModal ? 'show-modal' : ''}`} style={headerStyles}>
       <nav className="main-nav">
         <div className="container flex row">
+          <SvgIcon iconName={'headerDropdownWhite'} />
+
           <Link to="/" style={{ color: headerStyles.color }}>
             <h1 className='logo flex'>Giggler<span className='flex'><img src={dotIcon} /></span></h1>
           </Link>

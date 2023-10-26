@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
-import { gigService } from '../services/gig.service.js'
+import { gigService } from '../../services/gig.service.js'
 
-import dropdownIcon from '../assets/img/svg/dropdown.icon.svg'
+import dropdownIcon from '../../assets/img/svg/order.dropdown.icon.svg'
 
 export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)

@@ -28,7 +28,9 @@ async function login(username, password) {
 }
 
 async function signup(username, password, fullName, description = ''
-    , balance = 0, level = 'level 0', rating = 0, imgUrl, isAdmin = false) {
+    , balance = 0, level = 'level 0', rating = 0, imgUrl
+    , country = 'United States', isAdmin = false) {
+
     console.log(`Attempting to signup user: ${username}`)
     const saltRounds = 10
 
@@ -44,7 +46,8 @@ async function signup(username, password, fullName, description = ''
         level,
         rating,
         imgUrl,
-        createdAt:Date.now(),
+        country,
+        createdAt: Date.now(),
         isAdmin
     })
 }

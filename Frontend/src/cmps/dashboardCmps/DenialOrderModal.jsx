@@ -1,4 +1,4 @@
-import { orderBackendService } from "../services/order.backend.service"
+import { orderBackendService } from "../../services/order.backend.service"
 
 export function DenialOrderModal({ order, denyOrder }) {
   function onConfirmDenial() {

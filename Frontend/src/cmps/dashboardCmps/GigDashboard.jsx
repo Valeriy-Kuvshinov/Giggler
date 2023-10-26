@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line, Pie, Bar } from 'react-chartjs-2'
-import { gigService } from '../services/gig.service.js'
+import { barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../../services/chartService.js'
+
+import { gigService } from '../../services/gig.service.js'
 import { GigDashboardInfo } from './GigDashboardInfo.jsx'
-import { barGigsChartOptions, pieGigsChartOptions, lineGigsChartOptions } from '../services/chartService.js'
 
 export function GigDashboard() {
     const [avgCategoryPrices, setAvgCategoryPrices] = useState({})

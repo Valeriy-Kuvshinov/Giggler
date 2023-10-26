@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line, Pie } from 'react-chartjs-2'
 
-import { gigService } from '../services/gig.service.js'
-import { userService } from '../services/user.service.js'
-import { orderBackendService } from '../services/order.backend.service.js'
+import { gigService } from '../../services/gig.service.js'
+import { userService } from '../../services/user.service.js'
+import { orderBackendService } from '../../services/order.backend.service.js'
 
 import { UserDashboardInfo } from './UserDashboardInfo.jsx'
-import { pieGigsChartOptions, lineUsersChartOptions, pieUsersChartOptions } from '../services/chartService.js'
+import { pieGigsChartOptions, lineUsersChartOptions, pieUsersChartOptions } from '../../services/chartService.js'
 
 export function UserDashboard() {
     const [usersOverTime, setUsersOverTime] = useState({})

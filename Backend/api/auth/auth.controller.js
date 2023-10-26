@@ -22,9 +22,9 @@ export async function login(req, res) {
 export async function signup(req, res) {
     try {
         console.log('Signup request received with data:', req.body)
-        const { username, password, fullName, description, balance, level, rating, imgUrl, isAdmin } = req.body
+        const { username, password, fullName, description, balance, level, rating, imgUrl, country, isAdmin } = req.body
 
-        const account = await authService.signup(username, password, fullName, description, balance, level, rating, imgUrl, isAdmin)
+        const account = await authService.signup(username, password, fullName, description, balance, level, rating, imgUrl, country, isAdmin)
         loggerService.debug(`auth.route - new account created: ` + JSON.stringify(account))
 
         const user = await authService.login(username, password)

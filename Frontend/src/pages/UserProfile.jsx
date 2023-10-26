@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
-import { UserOrders } from "../cmps/UserOrders.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
 import { Link } from "react-router-dom"
