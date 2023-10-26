@@ -5,7 +5,7 @@ export function CatTagDisplayBar({ category, tag }) {
   return (
     <section className="explore-category">
       <Link to="/">
-        <SvgIcon iconName={'home'} />
+        <SvgIcon iconName={'homeBlack'} />
       </Link>
       <span className="divider">/</span>
       <span className="category">

@@ -20,8 +20,8 @@ export function GigDetails() {
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
   const filteredReviewIds = gig
     ? reviews
-        .filter((review) => review.gigId === gig._id)
-        .map((review) => review._id)
+      .filter((review) => review.gigId === gig._id)
+      .map((review) => review._id)
     : []
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
@@ -65,7 +65,8 @@ export function GigDetails() {
           <h3>About This Gig</h3>
           <p>{gig.description}</p>
         </section>
-        {windowWidth <= 720 && (
+
+        {windowWidth < 900 && (
           <GigOrder
             gig={gig}
             onGigChange={(updatedGig) => setGig(updatedGig)}
@@ -76,7 +77,7 @@ export function GigDetails() {
 
         <GigReviews reviews={filteredReviewIds} gig={gig} />
       </div>
-      {windowWidth >= 720 && (
+      {windowWidth >= 900 && (
         <GigOrder gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
       )}
     </section>

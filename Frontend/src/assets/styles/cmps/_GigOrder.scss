@@ -1,18 +1,16 @@
 .gig-aside {
   position: sticky;
   top: 0;
-  height: 550px;
-  width: 379.783px;
   margin-block-end: 30px;
   background-color: $clrPrimary1;
   color: $clrPrimary2;
+  grid-column: 2/3;
 
   .gig-interactions {
     display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
-    margin-block-start: 30px;
     margin-block-end: 30px;
 
     button {
@@ -87,7 +85,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 480px;
+    height: fit-content;
     border: 1px solid $clrSecondary2;
     padding: 24px;
 
@@ -159,9 +157,5 @@
         }
       }
     }
-  }
-
-  @media (max-width: 720px) {
-    width: 100%;
   }
 }

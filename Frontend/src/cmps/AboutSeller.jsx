@@ -23,12 +23,10 @@ export function AboutSeller({ owner }) {
   let month = months[createdAt.getMonth()]
   let year = createdAt.getFullYear()
   let lastDelivery = new Date(owner.lastDelivery)
-  console.log('lastDelivery: ', lastDelivery)
 
   if (lastDelivery) {
     lastDelivery = generateRandomLastDelivery()
   }
-  console.log('lastDelivery: ', lastDelivery)
 
   function generateRandomLastDelivery() {
     const now = new Date()

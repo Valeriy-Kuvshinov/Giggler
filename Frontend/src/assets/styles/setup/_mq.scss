@@ -355,7 +355,31 @@
     }
 }
 
+.gig-details {
+    @media (max-width:600px) {
+        padding: 32px 24px 0;
+    }
 
+    @media(min-width: 601px) {
+        padding: 32px 32px 24px 32px;
+    }
+
+    .gig-details-main {
+        @media (max-width: 900px) {
+            width: 100%;
+
+            .gig-aside {
+                position: static;
+            }
+        }
+    }
+
+    .gig-aside {
+        @media (max-width: 900px) {
+            width: 100%;
+        }
+    }
+}
 
 .app-footer {
     @media (max-width: 1400px) {

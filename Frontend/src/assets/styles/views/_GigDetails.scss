@@ -1,41 +1,30 @@
 .gig-details {
   color: black;
   max-width: 1304px;
-
-  //     display: grid;
-  //    grid-template-columns: 3fr 5fr;
-  display: flex;
-
-  margin-block-end: 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   width: 100%;
 
   .gig-details-main {
     background-color: $clrPrimary1;
-    margin-inline-end: 5.5%;
-    width: 57.42%;
+    grid-column: 1/2;
+    max-width: 712px;
 
     .explore-category {
       color: $clrPrimary2;
-      margin-block-start: 30px;
       margin-block-end: 30px;
+      padding-top: 12px;
+      font-size: 14px;
 
       Link {
         padding: rem(9px);
       }
 
       .divider {
-        color: $clrPrimary2;
+        color: $clrSecondary45;
         margin-inline-start: 5px;
         margin-inline-end: 5px;
       }
     }
-
-    @media (max-width: 720px) {
-      width: 100%;
-      .gig-aside {
-        position: static;
-      }
-    }
   }
-  // }
 }
