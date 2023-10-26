@@ -1,6 +1,7 @@
-.gig-aside {
+.gig-details-aside {
   position: sticky;
   top: 0;
+  height: fit-content;
   margin-block-end: 30px;
   background-color: $clrPrimary1;
   color: $clrPrimary2;
@@ -13,21 +14,20 @@
     width: 100%;
     margin-block-end: 30px;
 
-    button {
-      .heart {
-        width: 16px;
-        height: 16px;
+    .heart {
+      user-select: none;
+      i {
+        display: flex;
       }
-
-      background-color:transparent;
     }
 
     img {
-      width: 16px;
-      height: 16px;
+      width: 1em;
+      height: 1em;
     }
 
-    span {
+    .liked-count {
+      min-width: 2em;
       display: flex;
       align-items: center;
       border: 1px solid $clrSecondary2;
@@ -39,7 +39,7 @@
 
       &::before,
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         display: block;
         width: 0;
@@ -52,7 +52,7 @@
         left: -9px;
         top: 50%;
         transform: translateY(-50%);
-        border-width: 8px 9px 8px 0;
+        border-width: 7px 9px 8px 0;
       }
 
       &::after {
@@ -130,31 +130,36 @@
       }
     }
 
-    .continue-btn {
+    .btn-continue {
       display: flex;
-      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      width: 100%;
+      background-color: $clrPrimary3;
+      color: $clrPrimary1;
+      border: 1px solid $clrPrimary3;
+      border-radius: 0.25rem;
+      cursor: pointer;
 
-      .continue {
+      span {
+        font-family: macan-bold;
+        margin: auto;
+      }
+
+      i {
         display: flex;
-        justify-content: center;
+        align-items: center;
 
-        button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40px;
-          background-color: $clrPrimary2;
-          color: $clrPrimary1;
-          border: 1px solid $clrPrimary2;
-          border-radius: 4px;
-
-          img {
-            position: relative;
-            left: 30%;
-          }
+        svg {
+          fill: white;
+          width: 1rem;
+          height: 1rem;
         }
+      }
+
+      &:hover {
+        background-color: $clrSecondary8;
       }
     }
   }
