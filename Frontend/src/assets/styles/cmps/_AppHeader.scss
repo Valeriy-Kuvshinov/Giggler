@@ -13,26 +13,31 @@
     margin: auto;
     justify-content: space-between;
 
-    i {
-      width: fit-content;
-      height: 100%;
-      align-self: center;
-      display: flex;
-    }
-  }
+    .logo-dropdown-area {
+      align-items: center;
+      gap: 10px;
 
-  h1 {
-    font-family: arial;
-    font-size: 30.5px;
-    letter-spacing: -2.5px;
+      i {
+        width: fit-content;
+        align-self: center;
+        display: flex;
+        cursor: pointer;
+      }
 
-    span {
-      margin-bottom: 8px;
+      h1 {
+        font-family: arial;
+        font-size: 30.5px;
+        letter-spacing: -2.5px;
 
-      img {
-        width: 18px;
-        height: 18px;
-        align-self: flex-end;
+        span {
+          margin-bottom: 8px;
+
+          img {
+            width: 18px;
+            height: 18px;
+            align-self: flex-end;
+          }
+        }
       }
     }
   }
