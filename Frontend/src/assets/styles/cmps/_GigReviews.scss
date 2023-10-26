@@ -11,7 +11,9 @@
   .review-addition {
     padding: 5px;
     margin-block-end: 10px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .stars-input {
       justify-content: center;
       margin-bottom: 0.5em;
@@ -22,8 +24,11 @@
     }
 
     .text {
-      width: 100%;
-      margin-bottom: 0.5em;
+      // min-height: 120px;
+      margin: 0 auto;
+      margin-bottom: 1em;
+      margin-block-start: 1em;
+      width: 60%;
     }
 
     button {

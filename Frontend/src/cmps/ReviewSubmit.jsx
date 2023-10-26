@@ -75,12 +75,13 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
             </div>
             <input
                 type='text'
-                placeholder="good service"
+                placeholder="Enter your review"
                 value={reviewText}
                 onChange={e => setReviewText(e.target.value)}
                 className='text'
             />
-            <button className='flex' onClick={submitReview}>Submit</button>
+            <button className='btn-contact'>Submit</button> 
+            {/* // onClick={submitReview} */}
         </div>
     )
 }
