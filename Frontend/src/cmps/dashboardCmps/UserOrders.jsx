@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux'
 
 import { UserOrder } from './UserOrder.jsx'
 
-import { loadOrders } from '../store/order.actions.js'
+import { loadOrders } from '../../store/order.actions.js'
 
-import { orderBackendService } from '../services/order.backend.service.js'
-import { userService } from '../services/user.service.js'
+import { orderBackendService } from '../../services/order.backend.service.js'
+import { userService } from '../../services/user.service.js'
 
 export function UserOrders() {
     const user = useSelector(storeState => storeState.userModule.user)

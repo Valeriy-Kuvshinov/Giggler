@@ -33,28 +33,26 @@ export function GigPurchase() {
   function createOrder() {
     const orderToSave = orderBackendService.
       createOrder(user._id, user.fullName, gig.ownerId
-      , gig.title, gig.deliveryTime, gig._id, gig.price)
+        , gig.title, gig.deliveryTime, gig._id, gig.price)
     saveOrder(orderToSave)
       .then(savedOrder => {
-        showSuccessMsg(`order added (id: ${savedOrder._id})`)
+        showSuccessMsg(`The gig has been ordered, and the owner notified.\n Estimated arrival: ${savedOrder.deliveryTime}.\n Thank you for using Giggler!`)
       })
       .catch(err => {
         console.log('Cannot add Order', err)
         showErrorMsg('Cannot add Order')
       })
   }
-  
+
   if (gig === undefined || gigs === undefined) return <div>loading...</div>
 
   // console.log('user : ',user)
   // console.log('gig : ',gig)
 
   return (
-    // <section className="layout-row">
-      <section className="gig-purchase layout-row">
-        <PaymentDetails createOrder={createOrder} />
-        <PaymentInfo gig={gig} createOrder={createOrder} />
-      </section>
-    // </section>
+    <section className="gig-purchase layout-row">
+      <PaymentDetails createOrder={createOrder} />
+      <PaymentInfo gig={gig} createOrder={createOrder} />
+    </section>
   )
 }

@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { ImgUploader } from './ImgUploader.jsx'
 import { login, signup } from '../store/user.actions.js'
-import { showErrorMsg } from '../services/event-bus.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import loginSignupImg from '../assets/img/login-signup.png'
 import checkmarkImg from '../assets/img/svg/checkmark.white.icon.svg'
 
@@ -28,6 +28,7 @@ export function LoginSignup({ closeModal, mode }) {
 
         try {
             await action(creds)
+            showSuccessMsg(`Welcome ${creds.username}!`)
             closeModal()
         }
         catch {
