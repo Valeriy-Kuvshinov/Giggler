@@ -69,7 +69,7 @@ export function PaymentInfo({ gig, createOrder }) {
 
         <div className="not paying-fee">
           <span>Total Delivery Time</span>
-          <span>{gig.daysToMake.slice(5)}</span>
+          <span>{gig.daysToMake}</span>
         </div>
 
         <Link to={`/`}>

@@ -279,6 +279,16 @@
                 width: 45%;
             }
         }
+
+        .container {
+            .logo-dropdown-area {
+                i {
+                    @media(min-width: 1151px) {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     .category-nav {
