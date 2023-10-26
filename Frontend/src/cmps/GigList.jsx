@@ -22,6 +22,8 @@ export function GigList({ gigs }) {
 
   const sortedGigs = _.orderBy(gigs, sortBy, sortOrder)
 
+  if (!gigs ) return <h1 className='layout-row'>loading...</h1>
+
   return (
       <ul className="gig-list layout-row">
         {sortedGigs.map((gig) => (
