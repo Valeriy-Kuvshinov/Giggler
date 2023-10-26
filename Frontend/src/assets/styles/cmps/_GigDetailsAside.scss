@@ -16,6 +16,9 @@
 
     .heart {
       user-select: none;
+      i {
+        display: flex;
+      }
     }
 
     img {
