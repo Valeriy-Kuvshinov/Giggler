@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux'
 
 import { GigDetailsHeader } from '../cmps/GigDetailsHeader.jsx'
 import { AboutSeller } from '../cmps/AboutSeller.jsx'
-import { GigOrder } from '../cmps/GigOrder.jsx'
+import { GigDetailsAside } from '../cmps/GigDetailsAside.jsx'
 import { GigReviews } from '../cmps/GigReviews.jsx'
-import { GigNavbar } from '../cmps/GigNavbar.jsx'
 import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 
 import { loadUser } from '../store/user.actions.js'
@@ -67,7 +66,7 @@ export function GigDetails() {
         </section>
 
         {windowWidth < 900 && (
-          <GigOrder
+          <GigDetailsAside
             gig={gig}
             onGigChange={(updatedGig) => setGig(updatedGig)}
           />
@@ -78,7 +77,7 @@ export function GigDetails() {
         <GigReviews reviews={filteredReviewIds} gig={gig} />
       </div>
       {windowWidth >= 900 && (
-        <GigOrder gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+        <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
       )}
     </section>
   )

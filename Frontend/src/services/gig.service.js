@@ -82,7 +82,6 @@ function save(gig) {
   const savedGig = gig._id
     ? httpService.put(`${BASE_URL}${gig._id}`, gig)
     : httpService.post(BASE_URL, gig)
-  console.log('Response from backend:', savedGig)
   return savedGig
 }
 
