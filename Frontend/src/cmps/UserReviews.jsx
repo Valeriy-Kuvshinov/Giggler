@@ -28,7 +28,7 @@ export function UserReviews({ reviews }) {
       <ul>
         {fullReviews.map((userReview) =>
           <li key={userReview._id}>
-            <UserReview review={userReview} />
+            <UserReview review={userReview} user={userReview} />
           </li>
         )}
       </ul>

@@ -2,7 +2,7 @@ import starIcon from '../assets/img/svg/star.icon.svg'
 import halfStarIcon from '../assets/img/svg/half.star.icon.svg'
 import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
-export function UserReview({ review }) {
+export function UserReview({ user, review }) {
     const renderStars = () => {
         let fullStarsCount = Math.floor(review.rating)
         const isHalfStar = review.rating % 1 >= 0.5
@@ -25,7 +25,8 @@ export function UserReview({ review }) {
     return (<section className="user-review">
         <img src={review.imgUrl} alt={review.userName} />
         <div>
-            <span>{review.userName}</span>
+            <span>{user.userName}</span>
+            <span>{user.country}</span>
             <div className="stars3">
                 {renderStars()}
                 {review.rating}
