@@ -15,7 +15,7 @@ export function UserReviews({ user, reviews }) {
       const reviewsWithUser = await Promise.all(
         fetchedReviews.map(async (review) => {
           const user = await userService.getById(review.userId)
-          return { ...review, userName: user.username, imgUrl: user.imgUrl }
+          return { ...review, userName: user.username, imgUrl: user.imgUrl, country:user.country }
         })
       )
       setFullReviews(reviewsWithUser)
