@@ -1,6 +1,6 @@
 .gig-details-aside {
   position: sticky;
-  top: 0;
+  top: rem(30px);
   height: fit-content;
   margin-block-end: 30px;
   background-color: $clrPrimary1;

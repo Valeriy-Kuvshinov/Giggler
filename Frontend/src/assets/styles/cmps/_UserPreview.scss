@@ -11,20 +11,26 @@
     border: none;
     margin-inline-end: 0.5em;
   }
+
   .user-explore-wrapper {
     font-size: 14px;
     line-height: 21px;
     display: grid;
     grid-auto-flow: column;
   }
+
   .level {
     text-transform: capitalize;
     color: $clrSecondary8;
     padding: 0 0.5em;
+    font-weight: 600;
     border-radius: 4px;
     margin-inline-start: auto;
   }
-
+  .username {
+    color: clrPrimary2;
+    font-weight: 700;
+  }
   .avatar-gig-details {
     object-fit: cover;
     width: 4rem;

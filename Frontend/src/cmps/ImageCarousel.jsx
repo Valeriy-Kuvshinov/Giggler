@@ -2,11 +2,17 @@ import { useRef, useState, useEffect } from 'react'
 import SvgIcon from './SvgIcon'
 import { Link } from 'react-router-dom'
 
-export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
+export function ImageCarousel({
+  isFrom,
+  images,
+  gigId,
+  newImgIndex,
+  setNewImgIndex,
+}) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [parentWidth, setParentWidth] = useState(0)
-  const [arrowSize, setArrowSize] = useState(0)
-  const [dotSize, setDotSize] = useState(0)
+  // const [arrowSize, setArrowSize] = useState(0)
+  // const [dotSize, setDotSize] = useState(0)
   const carouselRef = useRef()
   const numImages = images.length
   let imageWidth = parentWidth
@@ -31,14 +37,15 @@ export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
           setParentWidth(newParentWidth)
         }
 
-        const newArrowSize = newParentWidth * 0.07 // Adjust as needed
-        const newDotSize = newParentWidth * 0.03
-        setArrowSize(newArrowSize)
-        setDotSize(newDotSize)
+        // const newArrowSize = newParentWidth * 0.07 // Adjust as needed
+        // const newDotSize = newParentWidth * 0.03
+        // setArrowSize(newArrowSize)
+        // setDotSize(newDotSize)
       }
     }
 
     updateParentWidth()
+
     window.addEventListener('reload', updateParentWidth)
     window.addEventListener('resize', updateParentWidth)
 
@@ -70,11 +77,15 @@ export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
   }
 
   return (
-    <div className="carousel-container">
+    <div
+    className={`carousel-container`}
+    style={{ borderRadius: isFrom === 'gig-details' ? '0' : '.5em' }}>
       <button
-        className="arrow left"
+        className={`arrow${
+          isFrom === 'gig-details' ? '-gig-details' : ''
+        } left`}
         onClick={(e) => prevImage(e)}
-        style={{ width: `${arrowSize}px`, height: `${arrowSize}px` }}
+        // style={{ width: `${arrowSize}px`, height: `${arrowSize}px` }}
       >
         <SvgIcon iconName={'arrowDown'} />
       </button>
@@ -93,34 +104,49 @@ export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
               width: `${imageWidth}px`,
             }}
           >
-            <Link to={`/gig/${gigId}`}>
+            {isFrom !== 'gig-details' ? (
+              <Link to={`/gig/${gigId}`}>
+                <img
+                  src={image}
+                  style={{
+                    borderRadius: 0,
+                  }}
+                  alt={`Image ${index}`}
+                  className={index === currentIndex ? 'active' : ''}
+                />
+              </Link>
+            ) : (
               <img
                 src={image}
                 alt={`Image ${index}`}
                 className={index === currentIndex ? 'active' : ''}
               />
-            </Link>
+            )}
           </div>
         ))}
       </div>
 
       <button
-        className="arrow right"
+        className={`arrow${
+          isFrom === 'gig-details' ? '-gig-details' : ''
+        } right`}
         onClick={(e) => nextImage(e)}
-        style={{ width: arrowSize, height: arrowSize }}
+        // style={{ width: arrowSize, height: arrowSize }}
       >
         <SvgIcon iconName={'arrowDown'} />
       </button>
-      <ul className="dot-container">
-        {images.map((_, index) => (
-          <li
-            key={index}
-            onClick={(e) => handleDotClick(index, e)}
-            style={{ fontSize: (dotSize*1.3), margin:(dotSize*.3) }}
-            className={`dot ${index === currentIndex ? 'active' : ''}`}
-          ></li>
-        ))}
-      </ul>
+      {isFrom !== 'gig-details' && (
+        <ul className="dot-container">
+          {images.map((_, index) => (
+            <li
+              key={index}
+              onClick={(e) => handleDotClick(index, e)}
+              // style={{ fontSize: dotSize * 1.3, margin: dotSize * 0.3 }}
+              className={`dot ${index === currentIndex ? 'active' : ''}`}
+            ></li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

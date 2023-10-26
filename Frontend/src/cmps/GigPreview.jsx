@@ -86,6 +86,7 @@ export function GigPreview({ is, gig }) {
   return (
     <li className="gig-preview">
       <ImageCarousel
+        isFrom={is}
         images={updatedGig.imgUrls}
         gigId={updatedGig._id}
         newImgIndex={newImgIndex}

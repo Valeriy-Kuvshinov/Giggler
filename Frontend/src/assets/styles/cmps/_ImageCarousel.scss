@@ -1,7 +1,7 @@
 .carousel-container {
   overflow: hidden;
   position: relative;
-  // border-radius: 0.5em;
+  border-radius: 0.5em;
   height: 100%;
   width: 100%;
   img {
@@ -45,16 +45,21 @@
     opacity: 0;
     top: 50%;
     background: transparent;
-    width: 6.5%;
-    height: 10%;
+    width: 10.75%;
+    height: 16.5%;
     transform: translateY(-50%);
-    color: white;
+    // color: white;
     border: none;
     border-radius: 50%;
     font-size: 1em;
     padding: 0.25em;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    i {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
     &.left {
       left: -32px;
@@ -65,7 +70,7 @@
         transform: translate(-50%, -50%) rotate(90deg);
         width: 40%;
         height: 40%;
-        fill: $clrPrimary1;
+        fill: $clrPrimary2;
       }
     }
 
@@ -78,7 +83,56 @@
         transform: translate(-50%, -50%) rotate(-90deg);
         width: 40%;
         height: 40%;
-        fill: $clrPrimary1;
+        fill: $clrPrimary2;
+      }
+    }
+  }
+
+  .arrow-gig-details {
+    position: absolute;
+    user-select: none;
+    z-index: 1;
+    top: 50%;
+    background: $clrPrimary1;
+    width: 7%;
+    height: 11%;
+    transform: translateY(-50%);
+    color: $clrPrimary2;
+    border: none;
+    border-radius: 50%;
+    font-size: 1em;
+    padding: 0.25em;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    i {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    &.left {
+      left: 24px;
+      // transition: left 0.2s ease-in-out;
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 40%;
+        height: 40%;
+        fill: $clrPrimary2;
+      }
+    }
+
+    &.right {
+      right: 24px;
+      // transition: right 0.2s ease-in-out;
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        width: 40%;
+        height: 40%;
+        fill: $clrPrimary2;
       }
     }
   }
@@ -109,13 +163,13 @@
 
     .dot {
       border: none;
-      margin: 0 5px;
+      margin: 0 2.5px;
       cursor: pointer;
       transition: 0.3s;
       font-size: 1em;
       &:after {
         content: '\25CF';
-        color: #ccc;
+        color: #fff;
       }
     }
 
@@ -142,7 +196,7 @@
   .arrow {
     // background-color: #fff;
     opacity: 1;
-    background: rgba(0, 0, 0, 0.2);
+    background: $clrPrimary1;
     transition: all 0.5s ease-in-out;
 
     &.right {
@@ -153,6 +207,23 @@
     }
   }
 }
+
+// .gig-preview:hover .carousel-container,
+// .carousel-container:hover {
+//   .arrow-gig-details {
+//     // background-color: #fff;
+//     opacity: 1;
+//     background: rgba(0, 0, 0, 0.2);
+//     transition: all 0.5s ease-in-out;
+
+//     &.right {
+//       right: 12px;
+//     }
+//     &.left {
+//       left: 12px;
+//     }
+//   }
+// }
 
 // .hovered {
 //   .arrow {

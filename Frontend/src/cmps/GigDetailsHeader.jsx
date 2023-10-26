@@ -35,6 +35,7 @@ export function GigDetailsHeader({ gig, owner }) {
         <UserPreview is={'gig-details'} owner={owner} />
       </div>
       <ImageCarousel
+        isFrom={'gig-details'}
         images={gig.imgUrls}
         gigId={gig._id}
         newImgIndex={newImgIndex}
@@ -42,7 +43,13 @@ export function GigDetailsHeader({ gig, owner }) {
       />
       <div className="gig-thumbnail">
         {gig.imgUrls.map((imgUrl, idx) => (
-          <img className={`${idx === newImgIndex ? 'selected' : ''}`} onClick={()=> setNewImgIndex(idx)} src={imgUrl} key={idx} alt={`Gig image ${idx}`} />
+          <img
+            className={`${idx === newImgIndex ? 'selected' : ''}`}
+            onClick={() => setNewImgIndex(idx)}
+            src={imgUrl}
+            key={idx}
+            alt={`Gig image ${idx}`}
+          />
         ))}
       </div>
     </section>

@@ -82,6 +82,7 @@
     width: fit-content;
 
     img {
+      object-fit: cover;
       aspect-ratio: 5/3;
       width: 20%;
       opacity: 0.6;

@@ -29,6 +29,8 @@
       p {
         font-weight: bold;
         margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
