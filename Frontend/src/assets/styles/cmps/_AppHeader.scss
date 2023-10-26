@@ -12,6 +12,13 @@
     max-width: 1400px;
     margin: auto;
     justify-content: space-between;
+
+    i {
+      width: fit-content;
+      height: 100%;
+      align-self: center;
+      display: flex;
+    }
   }
 
   h1 {
@@ -129,6 +136,7 @@
 
         img {
           border-radius: 50%;
+          object-fit: cover;
         }
       }
     }
