@@ -106,7 +106,7 @@ export function AppHeader() {
           </div>
 
           <SearchBar
-            placeholder="Search for any service..."
+            placeholder="What service are you looking for today?"
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             onSearchSubmit={handleSearchSubmit}
@@ -115,6 +115,10 @@ export function AppHeader() {
           <ul className="nav-links flex">
             <li>
               <Link to="/explore" style={{ color: headerStyles.color }}>Explore</Link>
+            </li>
+
+            <li>
+              <Link to="/" style={{ color: headerStyles.color }}>Become a Seller</Link>
             </li>
             {user ? (
               <>
