@@ -15,7 +15,7 @@ export function GigReviews({ reviews, gig }) {
             const fetchedReviews = await Promise.all(reviews.map(reviewId => reviewService.getById(reviewId)))
             const reviewsWithUser = await Promise.all(fetchedReviews.map(async review => {
                 const user = await userService.getById(review.userId)
-                return { ...review, userName: user.username, imgUrl: user.imgUrl }
+                return { ...review, userName: user.username, imgUrl: user.imgUrl, country:user.country  }
             }))
             setFullReviews(reviewsWithUser)
         }

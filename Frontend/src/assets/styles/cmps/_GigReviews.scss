@@ -41,11 +41,25 @@
     border-block-start: 1px solid $clrSecondary2;
     padding: 40px 0;
 
-    img {
-      height: 48px;
-      width: 48px;
-      border-radius: 24px;
-      margin-inline-end: 16px;
+    .username{
+        font-weight: bold;
+    }
+    .pfp {
+        height: 48px;
+        width: 48px;
+        border-radius: 24px;
+        margin-inline-end: 16px;
+    }
+    .country{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: $clrSecondary6;
+        img {
+            margin-inline-end: 0.5em;
+            height: 20px;
+            width: 20px;
+          }
     }
     .review-details {
       display: flex;
@@ -53,6 +67,9 @@
       margin-block-start: 20px;
       .stars {
         margin: 0;
+        .rating{
+            font-weight: 500;
+        }
         img {
           margin-inline-end: 4px;
           height: 14px;
@@ -62,6 +79,14 @@
       .divider{
         margin: 0 8px;
       }
+      .time-ago{
+        font-size: 14px;
+        line-height: 21px;
+        color: $clrSecondary6;
+      }
+    }
+    .comment{
+        line-height: 1.5em;
     }
   }
 }

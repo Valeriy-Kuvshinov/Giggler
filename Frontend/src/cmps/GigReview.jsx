@@ -2,8 +2,27 @@ import starIcon from '../assets/img/svg/star.icon.svg'
 import halfStarIcon from '../assets/img/svg/half.star.icon.svg'
 import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
+import Australia from '../assets/img/countryFlags/Australia.png'
+import Austria from '../assets/img/countryFlags/Austria.png'
+import Canada from '../assets/img/countryFlags/Canada.png'
+import CzechRepublic from '../assets/img/countryFlags/CzechRepublic.png'
+import Germany from '../assets/img/countryFlags/Germany.png'
+import Hungary from '../assets/img/countryFlags/Hungary.png'
+import India from '../assets/img/countryFlags/India.png'
+import Netherlands from '../assets/img/countryFlags/Netherlands.png'
+import Norway from '../assets/img/countryFlags/Norway.png'
+import Poland from '../assets/img/countryFlags/Poland.png'
+import Spain from '../assets/img/countryFlags/Spain.png'
+import Switzerland from '../assets/img/countryFlags/Switzerland.png'
+import Turkey from '../assets/img/countryFlags/Turkey.png'
+import UnitedKingdom from '../assets/img/countryFlags/UnitedKingdom.png'
+import UnitedStates from '../assets/img/countryFlags/UnitedStates.png'
+
 export function GigReview({ review }) {
 
+    const flags={Australia,Austria,Canada,CzechRepublic,
+        Germany,Germany,India,Netherlands,Norway,Poland,
+    Spain,Switzerland,Turkey,UnitedKingdom,UnitedStates}
     const dateOfReview = review.createdAt
     let timeDelay=(Date.now()-dateOfReview)/1000/60/60/24
     timeDelay=Math.floor(timeDelay)
@@ -30,7 +49,6 @@ export function GigReview({ review }) {
             timeDelay=`${timeDelay} days ago`
         }
     }
-    console.log(timeDelay)
     
     const renderStars = () => {
         let fullStarsCount = Math.floor(review.rating)
@@ -52,20 +70,26 @@ export function GigReview({ review }) {
         return stars
     }
 
+    console.log(review.country.replace(' ',''))
+
     return (
         <section className="gig-review">
-            <img src={review.imgUrl} alt={review.userName} />
+            <img src={review.imgUrl} alt={review.userName} className='pfp'/>
             <div>
-                <span>{review.userName}</span>
+                <span className='username'>{review.userName}</span>
+                <div className='country'>
+                <img src={flags[review.country.replace(' ','')]}/>
+                <span>{review.country}</span>
+                </div>
                 <div className='review-details'>
                 <div className="stars">
                     {renderStars()}
-                    {review.rating}
+                <span className='rating'>{review.rating}</span>
                 </div>
                 <div className='divider'>|</div>
-                <span>{timeDelay}</span>
+                <span className='time-ago'>{timeDelay}</span>
                 </div>
-                <span>{review.text}</span>
+                <span className='comment'>{review.text}</span>
             </div>
         </section>
     )
