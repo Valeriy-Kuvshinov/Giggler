@@ -28,10 +28,11 @@ export function GigReviews({ reviews, gig }) {
 
     return (
         <section className="gig-reviews">
+            <span className="title">Reviews</span>
             {loggedInUser && loggedInUser._id!==gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
             
             {fullReviews.length !== 0 && (
-                <ul>
+                <ul className="reviews">
                     {fullReviews.map((review) => (
                         <li key={review._id}>
                             <GigReview review={review} />

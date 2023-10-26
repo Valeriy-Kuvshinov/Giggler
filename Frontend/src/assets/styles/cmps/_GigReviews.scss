@@ -1,51 +1,67 @@
 .gig-reviews {
-    background-color: white;
+  background-color: white;
+  color: $clrPrimary2;
 
-    .review-addition {
-        padding: 5px;
-        margin-block-end: 10px;
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-block-end: 1em;
+  }
 
-        .stars-input {
-            justify-content: center;
-            margin-bottom: 0.5em;
+  .review-addition {
+    padding: 5px;
+    margin-block-end: 10px;
 
-            img {
-                width: 24px;
-            }
-        }
+    .stars-input {
+      justify-content: center;
+      margin-bottom: 0.5em;
 
-        .text {
-            width: 100%;
-            margin-bottom: 0.5em;
-        }
-
-        button {
-            margin: auto;
-        }
+      img {
+        width: 24px;
+      }
     }
+
+    .text {
+      width: 100%;
+      margin-bottom: 0.5em;
+    }
+
+    button {
+      margin: auto;
+    }
+  }
 }
 
-.gig-review {
+.reviews {
+   margin-block-start: 1em;
+  .gig-review {
     display: flex;
     flex-direction: row;
     background-color: white;
     border-block-start: 1px solid $clrSecondary2;
-    padding: 20px;
-    // align-items: center;
+    padding: 40px 0;
 
     img {
-        height: 48px;
-        width: 48px;
-        border-radius: 24px;
-        margin-inline-end: 16px;
+      height: 48px;
+      width: 48px;
+      border-radius: 24px;
+      margin-inline-end: 16px;
     }
-    .stars{
+    .review-details {
+      display: flex;
+      align-items: center;
+      margin-block-start: 20px;
+      .stars {
         margin: 0;
-        img{
-            margin-inline-end: 4px;
-            height: 14px;
-            width: 14px;
+        img {
+          margin-inline-end: 4px;
+          height: 14px;
+          width: 14px;
         }
+      }
+      .divider{
+        margin: 0 8px;
+      }
     }
-
+  }
 }
