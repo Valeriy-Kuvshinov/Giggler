@@ -67,15 +67,15 @@
     }
 
     .home-companies-section {
-        .companies {
-            @media(max-width: 1200px) {
-                gap: 1.5em;
-            }
+        // .companies {
+        //     @media(max-width: 1200px) {
+        //         gap: 3em;
+        //     }
 
-            @media(min-width: 1200px) {
-                gap: 4em;
-            }
-        }
+        //     @media(min-width: 1200px) {
+        //         gap: 4em;
+        //     }
+        // }
 
         h4 {
             @media(max-width: 1200px) {
@@ -157,7 +157,7 @@
     .home-info-wrapper {
         .info-section {
             @media (max-width: 1400px) {
-                padding: 2.5em 2em;
+                padding: 3.5em 2em;
 
                 .text {
                     width: 50%;
@@ -190,7 +190,7 @@
             }
 
             @media (min-width: 1401px) {
-                padding: 4em 0em;
+                padding: 6em 0em;
 
                 .text {
                     width: 50%;
@@ -264,20 +264,6 @@
 
         @media(min-width: 1401px) {
             padding: 1em 0em;
-        }
-
-        .search-bar {
-            @media (max-width: 500px) {
-                width: 100%;
-            }
-
-            @media (min-width: 500px) {
-                width: 30%;
-            }
-
-            @media (min-width: 700px) {
-                width: 45%;
-            }
         }
 
         .container {
