@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { gigService } from '../services/gig.service.js'
-import { reviewService } from '../services/review.service.js'
-import { orderBackendService } from '../services/order.backend.service.js'
-import { userService } from '../services/user.service.js'
+import { gigService } from '../../services/gig.service.js'
+import { reviewService } from '../../services/review.service.js'
+import { orderBackendService } from '../../services/order.backend.service.js'
+import { userService } from '../../services/user.service.js'
 
-import { InfoDiv } from "./InfoDiv.jsx"
+import { InfoDiv } from "../InfoDiv.jsx"
 
-import gigIcon from '../assets/img/svg/gig.icon.svg'
-import addIcon from '../assets/img/svg/add.icon.svg'
-import moneyIcon from '../assets/img/svg/money.icon.svg'
-import kingIcon from '../assets/img/svg/king.icon.svg'
+import gigIcon from '../../assets/img/svg/gig.icon.svg'
+import addIcon from '../../assets/img/svg/add.icon.svg'
+import moneyIcon from '../../assets/img/svg/money.icon.svg'
+import kingIcon from '../../assets/img/svg/king.icon.svg'
 
 export function GigDashboardInfo() {
     const [totalGigs, setTotalGigs] = useState(0)

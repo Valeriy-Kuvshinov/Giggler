@@ -1,13 +1,15 @@
+import userIcon from '../../assets/img/svg/user.icon.svg'
+import newUserIcon from '../../assets/img/svg/new.user.icon.svg'
+import kingIcon from '../../assets/img/svg/king.icon.svg'
+
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { gigService } from '../services/gig.service.js'
-import { orderBackendService } from '../services/order.backend.service.js'
-import { userService } from '../services/user.service.js'
-import { InfoDiv } from "./InfoDiv.jsx"
 
-import userIcon from '../assets/img/svg/user.icon.svg'
-import newUserIcon from '../assets/img/svg/new.user.icon.svg'
-import kingIcon from '../assets/img/svg/king.icon.svg'
+import { gigService } from '../../services/gig.service.js'
+import { orderBackendService } from '../../services/order.backend.service.js'
+import { userService } from '../../services/user.service.js'
+
+import { InfoDiv } from "../InfoDiv.jsx"
 
 export function UserDashboardInfo() {
     const [totalUsers, setTotalUsers] = useState(0)

@@ -1,10 +1,11 @@
-import orderIcon from '../assets/img/svg/order.icon.svg'
-import acceptIcon from '../assets/img/svg/accept.icon.svg'
-import denyIcon from '../assets/img/svg/deny.icon.svg'
+import orderIcon from '../../assets/img/svg/order.icon.svg'
+import acceptIcon from '../../assets/img/svg/accept.icon.svg'
+import denyIcon from '../../assets/img/svg/deny.icon.svg'
 
 import { useState, useEffect } from "react"
-import { InfoDiv } from "./InfoDiv.jsx"
-import { orderBackendService } from '../services/order.backend.service.js'
+
+import { InfoDiv } from "../InfoDiv.jsx"
+import { orderBackendService } from '../../services/order.backend.service.js'
 
 export function FinanceDashboardInfo() {
     const [orders, setOrders] = useState([])

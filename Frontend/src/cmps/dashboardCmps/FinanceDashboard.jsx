@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import Typography from '@mui/material/Typography'
 import { Line } from 'react-chartjs-2'
+
 import { FinanceDashboardInfo } from "./FinanceDashboardInfo.jsx"
-import { lineMoneyChartOptions } from '../services/chartService.js'
-import { orderBackendService } from '../services/order.backend.service.js'
+import { lineMoneyChartOptions } from '../../services/chartService.js'
+
+import { orderBackendService } from '../../services/order.backend.service.js'
 
 export function FinanceDashboard() {
     const [data, setData] = useState({
