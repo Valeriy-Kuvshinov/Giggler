@@ -1,48 +1,10 @@
 .about-seller {
   color: $clrPrimary2;
-  .seller {
-    display: flex;
-    margin-block-start: 15px;
-    margin-block-end: 15px;
-    .seller-picture {
-      width: 130px;
-      height: 130px;
-      border-radius: 65px;
-      margin-inline-end: 10px;
-    }
 
-    .seller-stats {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      .stars2 {
-        display: flex;
-        align-items: center;
-        img {
-          width: 20px;
-          height: 20px;
-          margin-inline-end: 4px;
-        }
-      }
-    }
+  .seller-wrapper {
+    padding-block-end: 1.25em;
   }
-
-  button {
-    margin: 0;
-    padding: 0;
-    height: 40px;
-    width: 130px;
-    color: $clrSecondary5;
-    background-color: $clrPrimary1;
-    border: 1px solid $clrSecondary5;
-    border-radius: 4px;
-
-    &:hover {
-      color: $clrPrimary1;
-      background-color: $clrSecondary5;
-    }
-  }
-
+  
   .stats-desc {
     border: 1px solid $clrSecondary2;
     color: $clrSecondary6;
@@ -50,32 +12,32 @@
     border-radius: 3px;
     margin-top: 0;
     line-height: 130%;
-    // margin-block-start: 15px;
-    // margin-block-end: 15px;
 
     .user-stats {
-      display: flex;
-      flex-direction: column;
-      //   justify-content: space-between;
-    //   border-bottom: 1px solid $clrSecondary2;
-    //   padding-block-end: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       li {
+        @media only screen and (min-width: 600px) {
+          grid-template-columns: 1fr;
+        }
         color: #74767e;
-        padding-bottom: 16px;
+        padding-bottom: 1em;
+        strong {
+          font-weight: 700;
+          color: #62646a;
+          display: block;
+          padding-top: 0.25em;
+        }
       }
-    //   .inner-details {
-    //     width: 50%;
-
-    //     .inner-inner-details {
-    //       display: flex;
-    //       flex-direction: column;
-    //     }
-    //   }
+      
     }
-
-    p {
-      padding-block-start: 16px;
+    .seller-desc {
+      border-block-start: 1px solid #dadbdd;
+      line-height: 150%;
       margin: 0;
+      padding-block-start: em(15px);
+      text-align: left;
     }
+    
   }
 }

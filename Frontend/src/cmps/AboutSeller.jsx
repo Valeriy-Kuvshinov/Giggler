@@ -23,12 +23,12 @@ export function AboutSeller({ owner }) {
   let month = months[createdAt.getMonth()]
   let year = createdAt.getFullYear()
   let lastDelivery = new Date(owner.lastDelivery)
-  console.log('lastDelivery: ',lastDelivery)
+  console.log('lastDelivery: ', lastDelivery)
 
   if (lastDelivery) {
     lastDelivery = generateRandomLastDelivery()
   }
-  console.log('lastDelivery: ',lastDelivery)
+  console.log('lastDelivery: ', lastDelivery)
 
   function generateRandomLastDelivery() {
     const now = new Date()
@@ -40,44 +40,45 @@ export function AboutSeller({ owner }) {
 
   return (
     <section className="about-seller">
-      <h3>About The Seller</h3>
-      <UserPreview is={'gig-details-2'} owner={owner} />
+      <div className="seller-wrapper">
+        <h3>About The Seller</h3>
+        <UserPreview is={'gig-details-2'} owner={owner} />
 
-      <button>Contact Me</button>
+        <button className="btn-contact b">Contact Me</button>
+      </div>
       <div className="stats-desc">
-        <div className="seller-details">
-          <ul className="user-stats">
-            <li>
-              From<strong>United States</strong>
-            </li>
-            <li>
-              Member since
-              <strong>
-                {month} {year}
-              </strong>
-            </li>
-            <li>
-              Avg. response time<strong>about {average} hours ago</strong>
-            </li>
-            <li>
-              Last delivery
-              <strong>
-                {lastDelivery.getMonth()+1} {lastDelivery.getFullYear()}
-              </strong>
-            </li>
-            <li>
-              <div>
-                <p>Languages</p>
-                <div className="language">
-                  <span className="lang-type">
-                    <strong>English</strong>
-                  </span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <p>{owner.description}</p>
+        <ul className="user-stats">
+          <li>
+            From<strong>United States</strong>
+          </li>
+          <li>
+            Member since
+            <strong>
+              {month} {year}
+            </strong>
+          </li>
+          <li>
+            Avg. response time
+            <strong>about {average} hours ago</strong>
+          </li>
+          <li>
+            Last delivery
+            <strong>
+              {months[lastDelivery.getMonth()]} {lastDelivery.getFullYear()}
+            </strong>
+          </li>
+          <li className="language">
+            Languages
+            <span className="lang-type">
+              <strong>English</strong>
+            </span>
+          </li>
+        </ul>
+        {owner.description && (
+          <div className="seller-desc">
+            <span>{owner.description}</span>
+          </div>
+        )}
       </div>
     </section>
   )

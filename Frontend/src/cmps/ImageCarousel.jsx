@@ -31,7 +31,7 @@ export function ImageCarousel({ images, gigId, newImgIndex, setNewImgIndex }) {
           setParentWidth(newParentWidth)
         }
 
-        const newArrowSize = newParentWidth * 0.1 // Adjust as needed
+        const newArrowSize = newParentWidth * 0.07 // Adjust as needed
         const newDotSize = newParentWidth * 0.03
         setArrowSize(newArrowSize)
         setDotSize(newDotSize)

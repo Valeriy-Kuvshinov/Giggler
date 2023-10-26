@@ -66,7 +66,7 @@ input[type='radio'] {
   display: none;
 }
 .icon {
-    width: 13px;
+  width: 13px;
 }
 input[type='date'],
 input[type='datetime-local'],
@@ -132,4 +132,18 @@ input[type='number']::-moz-number-spin-down {
 
 .btn:hover {
   border: 1px solid $clrPrimary2;
+}
+
+.btn-contact {
+  margin-block-start: 1.25em;
+  padding: 0.75em 1.5em;
+  color: $clrSecondary5;
+  background-color: $clrPrimary1;
+  border: 1px solid $clrSecondary5;
+  border-radius: .25em;
+
+  &:hover {
+    color: $clrPrimary1;
+    background-color: $clrSecondary5;
+  }
 }
