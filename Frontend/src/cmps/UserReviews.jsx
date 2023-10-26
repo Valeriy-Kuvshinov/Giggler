@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { reviewService } from "../services/review.service"
 import { UserReview } from "./UserReview"
 
-export function UserReviews({ user, reviews }) {
+export function UserReviews({ reviews }) {
   // console.log(reviews)
   const [fullReviews, setFullReviews] = useState([])
 
@@ -15,7 +15,7 @@ export function UserReviews({ user, reviews }) {
       const reviewsWithUser = await Promise.all(
         fetchedReviews.map(async (review) => {
           const user = await userService.getById(review.userId)
-          return { ...review, userName: user.username, imgUrl: user.imgUrl, country:user.country }
+          return { ...review, userName: user.username, imgUrl: user.imgUrl, country:user.country, country: user.country }
         })
       )
       setFullReviews(reviewsWithUser)
@@ -25,13 +25,13 @@ export function UserReviews({ user, reviews }) {
 
   return (
     <section>
-    <ul>
-        {fullReviews.map((userReview) => 
-            <li key={userReview._id}>
-                <UserReview review={userReview}/>
-            </li>
+      <ul>
+        {fullReviews.map((userReview) =>
+          <li key={userReview._id}>
+            <UserReview review={userReview} user={userReview} />
+          </li>
         )}
-    </ul>
+      </ul>
     </section>
   )
 }
