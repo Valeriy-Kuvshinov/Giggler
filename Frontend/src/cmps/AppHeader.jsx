@@ -112,6 +112,7 @@ export function AppHeader() {
             onSearchSubmit={handleSearchSubmit}
             visibility={headerStage === 2 ? 'visible' : 'hidden'}
           />
+          
           <ul className="nav-links flex">
             <li>
               <Link to="/explore" style={{ color: headerStyles.color }}>Explore</Link>

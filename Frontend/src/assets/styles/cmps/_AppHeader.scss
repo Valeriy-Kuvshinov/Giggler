@@ -12,6 +12,14 @@
     max-width: 1400px;
     margin: auto;
     justify-content: space-between;
+  }
+
+  .main-nav {
+
+    .logo-dropdown-area,
+    .nav-links {
+      flex-shrink: 0;
+    }
 
     .logo-dropdown-area {
       align-items: center;
@@ -40,13 +48,7 @@
         }
       }
     }
-  }
 
-  a:hover {
-    text-decoration: none;
-  }
-
-  .main-nav {
     .nav-links {
       list-style-type: none;
       margin: 0;
@@ -145,5 +147,9 @@
         }
       }
     }
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 }
