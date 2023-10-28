@@ -20,11 +20,11 @@
         @media only screen and (min-width: 600px) {
           grid-template-columns: 1fr;
         }
-        color: #74767e;
+        color: $clrSecondary5;
         padding-bottom: 1em;
         strong {
           font-weight: 700;
-          color: #62646a;
+          color: $clrSecondary6;
           display: block;
           padding-top: 0.25em;
         }
@@ -32,7 +32,7 @@
       
     }
     .seller-desc {
-      border-block-start: 1px solid #dadbdd;
+      border-block-start: 1px solid $clrSecondary2;
       line-height: 150%;
       margin: 0;
       padding-block-start: em(15px);

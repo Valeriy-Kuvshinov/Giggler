@@ -82,11 +82,11 @@ input[type='time'],
 input[type='url'],
 input[type='week'],
 textarea {
-  background-color: #fff;
-  border: 1px solid #c5c6c9;
+  background-color: $clrPrimary1;
+  border: 1px solid $clrSecondary1;
   border-radius: 4px;
   box-shadow: none;
-  color: #404145;
+  color: $clrSecondary8;
   font: inherit;
   padding: 8px 12px;
   resize: none;
@@ -116,7 +116,7 @@ input[type='number']::-moz-number-spin-down {
   gap: 0.5em;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #e4e5e7;
+  border: 1px solid $clrSecondary10;
   border-radius: rem(8px);
   box-sizing: border-box;
   color: $clrPrimary2;

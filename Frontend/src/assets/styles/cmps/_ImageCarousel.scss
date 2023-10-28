@@ -16,7 +16,7 @@
     .carousel-item {
       width: 100%;
       position: relative;
-      background: linear-gradient(180deg, #fff, #b5b6ba);
+      background: linear-gradient(180deg, $clrPrimary1, $clrSecondary4);
       object-fit: contain;
     }
 
@@ -169,7 +169,7 @@
 
       &:after {
         content: '\25CF';
-        color: #fff;
+        color: $clrPrimary1;
       }
     }
 
@@ -178,7 +178,7 @@
       transform: scale(1.2);
 
       &:after {
-        color: #fff;
+        color: $clrPrimary1;
       }
     }
 
@@ -187,7 +187,7 @@
       transform: scale(1.2);
 
       &:after {
-        color: #fff;
+        color: $clrPrimary1;
       }
     }
   }

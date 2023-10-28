@@ -61,13 +61,13 @@
                 }
 
                 span {
-                    color: #62646a;
+                    color: $clrSecondary6;
                     font-size: 15px;
                     padding-top: 1em;
                 }
 
                 &:hover {
-                    text-decoration: underline #62646a;
+                    text-decoration: underline $clrSecondary6;
                 }
             }
         }

@@ -57,7 +57,7 @@
             }
 
             &::before {
-                border-color: transparent #dadbdd transparent transparent;
+                border-color: transparent $clrSecondary2 transparent transparent;
                 left: -9px;
                 top: 50%;
                 transform: translateY(-50%);
@@ -65,7 +65,7 @@
             }
 
             &::after {
-                border-color: transparent #fff transparent transparent;
+                border-color: transparent $clrPrimary1 transparent transparent;
                 border-width: 6px 8px 6px 0;
                 left: -8px;
                 top: 8px;

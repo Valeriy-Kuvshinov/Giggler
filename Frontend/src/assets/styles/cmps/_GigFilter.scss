@@ -7,7 +7,7 @@
       font-family: macan-light;
       font-weight: 400;
       line-height: 36px;
-      color: #222325;
+      color: $clrPrimary1;
       padding-bottom: 12px;
       padding-top: 32px;
     }
@@ -33,7 +33,7 @@
   z-index: 5;
   top: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: $clrPrimary1;
   padding-block-start: 1em;
 
   .floating-top-bar {
@@ -57,7 +57,7 @@
     display: block;
     height: 1em;
     width: 100%;
-    background-color: #fff;
+    background-color: $clrPrimary1;
   }
 }
 
@@ -66,10 +66,10 @@
 
   .selected-filters {
     .select-filter {
-      background-color: #efeff0;
+      background-color: $clrSecondary1;
       border: none;
       border-radius: 56px;
-      color: #222325;
+      color: $clrPrimary2;
       margin: 0 rem(10px) rem(10px) 0;
       padding: 0.25em 1em;
       transition: border-color 0.35s ease;
@@ -79,7 +79,7 @@
 
       .remove-icon {
         svg {
-          fill: #62646a;
+          fill: $clrSecondary6;
         }
 
         margin-left: 12px;
@@ -88,7 +88,7 @@
     }
 
     .select-filter:hover {
-      color: #62646a;
+      color: $clrSecondary6;
     }
   }
 }
