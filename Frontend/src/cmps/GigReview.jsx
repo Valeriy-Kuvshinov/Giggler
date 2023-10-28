@@ -19,11 +19,10 @@ import UnitedKingdom from '../assets/img/countryFlags/UnitedKingdom.png'
 import UnitedStates from '../assets/img/countryFlags/UnitedStates.png'
 
 export function GigReview({ review }) {
-
     const flags = {
         Australia, Austria, Canada, CzechRepublic,
         Germany, Germany, India, Netherlands, Norway, Poland,
-        Spain, Switzerland, Turkey, UnitedKingdom, UnitedStates
+        Spain, Switzerland, Turkey, UnitedKingdom, UnitedStates, Hungary
     }
     const dateOfReview = review.createdAt
     let timeDelay = (Date.now() - dateOfReview) / 1000 / 60 / 60 / 24
