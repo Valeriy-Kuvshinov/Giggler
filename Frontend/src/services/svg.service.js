@@ -72,8 +72,8 @@ const ICONS = {
         <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20" />
         <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape" />
     </filter>
-</defs>
-</svg>`,
+  </defs>
+  </svg>`,
 
   home: `<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.666 13.548H3.333a.667.667 0 01-.667-.666v-6h-2L7.552.621a.667.667 0 01.897 0l6.885 6.26h-2v6a.667.667 0 01-.667.666zm-4-1.333H12V5.653L8 2.017 4 5.653v6.562h3.333v-4h1.333v4z" fill="#404145"/></svg>`,
 
@@ -88,15 +88,27 @@ const ICONS = {
   pageArrowRight: `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#74767E"><path d="M9.923 2.969a.702.702 0 0 0-1.031 0 .801.801 0 0 0 0 1.09l2.804 2.96H1.486c-.403 0-.73.345-.73.77 0 .426.327.77.73.77h10.358l-2.952 3.118a.801.801 0 0 0 0 1.09c.285.3.747.3 1.031 0l4.123-4.355a.801.801 0 0 0 0-1.09l-.069-.072a1.422 1.422 0 0 0-.01-.01L9.923 2.969Z"></path></svg>`,
 
   headerDropdownWhite: `<svg xmlns="http://www.w3.org/2000/svg" width="23" height="19" viewBox="0 0 23 19">
-  <rect y="16" width="23" height="3" rx="1.5" fill="#fff" />
-  <rect width="23" height="3" rx="1.5" fill="#fff" />
-  <rect y="8" width="23" height="3" rx="1.5" fill="#fff" />
+    <rect y="16" width="23" height="3" rx="1.5" fill="#fff" />
+    <rect width="23" height="3" rx="1.5" fill="#fff" />
+    <rect y="8" width="23" height="3" rx="1.5" fill="#fff" />
   </svg>`,
 
   headerDropdownGray: `<svg xmlns="http://www.w3.org/2000/svg" width="23" height="19" viewBox="0 0 23 19">
-  <rect y="16" width="23" height="3" rx="1.5" fill="#62646a" />
-  <rect width="23" height="3" rx="1.5" fill="#62646a" />
-  <rect y="8" width="23" height="3" rx="1.5" fill="#62646a" />
+    <rect y="16" width="23" height="3" rx="1.5" fill="#62646a" />
+    <rect width="23" height="3" rx="1.5" fill="#62646a" />
+    <rect y="8" width="23" height="3" rx="1.5" fill="#62646a" />
+  </svg>`,
+
+  checkmarkBlackIcon: `<svg width="16" height="16" viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg" fill="#222325">
+    <path
+      d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+    </path>
+  </svg>`,
+
+  questionMarkIcon: `<svg width="16" height="16" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd"
+      d="M0 10C0 4.478 4.478 0 10 0c5.523 0 10 4.478 10 10 0 5.523-4.477 10-10 10-5.522 0-10-4.477-10-10zm11.125 2.002H8.989v-.141c.01-1.966.492-2.254 1.374-2.782.093-.056.19-.114.293-.178.73-.459 1.292-1.038 1.292-1.883 0-.948-.743-1.564-1.666-1.564-.851 0-1.657.398-1.712 1.533H6.304C6.364 4.693 8.18 3.5 10.294 3.5c2.306 0 3.894 1.447 3.894 3.488 0 1.382-.695 2.288-1.805 2.952l-.238.144c-.79.475-1.009.607-1.02 1.777V12zm.17 3.012a1.344 1.344 0 01-1.327 1.328 1.32 1.32 0 01-1.328-1.328 1.318 1.318 0 011.328-1.316c.712 0 1.322.592 1.328 1.316z"
+      fill="#b5b6ba" />
   </svg>`,
 }
 

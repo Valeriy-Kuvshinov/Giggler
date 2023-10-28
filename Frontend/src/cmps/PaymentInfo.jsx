@@ -1,5 +1,4 @@
-import checkmark from "../assets/img/svg/checkmark.icon.svg"
-import question from "../assets/img/svg/question.mark.icon.svg"
+import SvgIcon from "./SvgIcon.jsx"
 
 import { Link } from "react-router-dom"
 
@@ -32,31 +31,30 @@ export function PaymentInfo({ gig, createOrder }) {
 
         <div className="gig-qualities">
           <div className="gig-quality">
-            <img src={checkmark} />
+            <SvgIcon iconName={'checkmarkBlackIcon'} />
             <span>1 concept included</span>
           </div>
 
           <div className="gig-quality">
-            <img src={checkmark} />
+            <SvgIcon iconName={'checkmarkBlackIcon'} />
             <span>Logo transparency</span>
           </div>
 
           <div className="gig-quality">
-            <img src={checkmark} />
+            <SvgIcon iconName={'checkmarkBlackIcon'} />
             <span>Printable file</span>
           </div>
         </div>
-
       </section>
-      <section className="payment two">
 
+      <section className="payment two">
         <div className="paying-fee">
-          <span>Service fee <img src={question} /></span>
+          <span>Service fee <SvgIcon iconName={'questionMarkIcon'} /></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
         <div className="paying-fee">
-          <span>VAT  <img src={question} /></span>
+          <span>VAT <SvgIcon iconName={'questionMarkIcon'} /></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
