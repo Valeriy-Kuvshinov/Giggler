@@ -4,9 +4,8 @@ import paypal from "../assets/img/svg/paypal.icon.svg"
 
 import { useState } from "react"
 
-export function PaymentDetails({ createOrder }) {
-
-  const [paymentMethod, setPayment] =useState('credit')
+export function PaymentDetails() {
+  const [paymentMethod, setPaymentMethod] = useState(true)
 
   function checkInfo() {
     const crdNum = document.getElementById("crdNum").value
@@ -18,9 +17,9 @@ export function PaymentDetails({ createOrder }) {
     if (crdNum.length !== 16) {
       alert("enter a valid credit card number")
       return
-    // } else if (expDate < Date.now()) {
-    //   alert("please use a none expired credit card")
-    //   return
+      // } else if (expDate < Date.now()) {
+      //   alert("please use a none expired credit card")
+      //   return
     } else if (pinCode < 100 || pinCode >= 1000) {
       alert("please use a none expired credit card")
       return
@@ -39,78 +38,72 @@ export function PaymentDetails({ createOrder }) {
 
   function loadDemo() {
     document.getElementById("crdNum").value = 1111222233334444
-    document.getElementById("expDate").value = new Date().getMonth()+1+'/'+new Date().getFullYear()%100
+    document.getElementById("expDate").value =
+      new Date().getMonth() + 1 + "/" + (new Date().getFullYear() % 100)
     document.getElementById("pinCode").value = 123
     document.getElementById("firstName").value = "yaron"
     document.getElementById("lastName").value = "biton"
   }
 
-  function createOrder() {
-    return checkInfo
-  }
-
-  function changePayment(method){
-    console.log(method.target.id)
-    setPayment(method.target.id)
-  }
-
-  if(paymentMethod==='credit') setTimeout(loadDemo, 1)
-
   return (
     <section className="payment-details">
-
       <section className="details one">
         <span>Payment Options</span>
       </section>
 
-      <section className="details two" onClick={changePayment} >
+      <section className="details two" onClick={() => setPaymentMethod(true)}>
         <div className="credit-type" id="credit">
-          <input type="radio" id="credit" className="credit"/>
+          <input type="radio" id="credit" className="credit" />
           <span>Credit & Debit Cards</span>
           <img className="visa" src={creditCards} />
         </div>
       </section>
 
-      {paymentMethod==='credit' && <section className="details three">
-        <div className="credit-details">
-          <div className="credit-number">
-            <span>Card Number</span>
-            <input type="text" id="crdNum" placeholder="0000 0000 0000 0000" />
+     
+        <section className={`details three ${paymentMethod ? '' : 'hidden'}`}>
+          <div className="credit-details">
+            <div className="credit-number">
+              <span>Card Number</span>
+              <input
+                type="text"
+                id="crdNum"
+                placeholder="0000 0000 0000 0000"
+              />
+            </div>
+            <div className="private">
+              <div className="credit-date">
+                <span>Expiration Date</span>
+                <input type="text" id="expDate" placeholder="MM/YY" />
+              </div>
+
+              <div className="credit-date">
+                <span>Security Code</span>
+                <input type="text" id="pinCode" placeholder="XXX" />
+              </div>
+            </div>
+
+            <div className="private">
+              <div className="buyer-info">
+                <span>First Name</span>
+                <input type="text" id="firstName" />
+              </div>
+
+              <div className="buyer-info">
+                <span>Last Name</span>
+                <input type="text" id="lastName" />
+              </div>
+            </div>
           </div>
-          <div className="private">
-            <div className="credit-date">
-              <span>Expiration Date</span>
-              <input type="text" id="expDate" placeholder="MM/YY"/>
-            </div>
+        </section>
+      
 
-            <div className="credit-date">
-              <span>Security Code</span>
-              <input type="text" id="pinCode" placeholder="XXX" />
-            </div>
-          </div>
-
-          <div className="private">
-            <div className="buyer-info">
-              <span>First Name</span>
-              <input type="text" id="firstName" />
-            </div>
-
-            <div className="buyer-info">
-              <span>Last Name</span>
-              <input type="text" id="lastName" />
-            </div>
-          </div>
-        </div>
-      {/* <button onClick={checkInfo}>check</button> */}
-      </section>}
-
-      <section className="details four" onClick={changePayment}>
+      <section className="details four" onClick={() => setPaymentMethod(false)}>
         <div className="credit-type" id="paypal">
-          <input type="radio" id="paypal" className="credit"/>
+          <input type="radio" id="paypal" className="credit" />
           <img className="visa" src={paypal} />
         </div>
       </section>
-
+          {/* <button onClick={checkInfo}>check</button> */}
     </section>
   )
 }
