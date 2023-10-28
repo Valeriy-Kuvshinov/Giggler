@@ -15,7 +15,7 @@ export const gigService = {
 window.bs = gigService
 
 async function query(filterBy = { userId: '' }) {
-  var gigs = await storageService.query(STORAGE_KEY)
+  let gigs = await storageService.query(STORAGE_KEY)
   if (filterBy.userId) {
     const regex = new RegExp(filterBy.userId, 'i')
     gigs = gigs.filter(
@@ -44,7 +44,7 @@ async function remove(gigId) {
 }
 
 async function save(gig) {
-  var savedGig
+  let savedGig
   if (gig._id) {
     savedGig = await storageService.put(STORAGE_KEY, gig)
   } else {

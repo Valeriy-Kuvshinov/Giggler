@@ -17,7 +17,7 @@ window.cs = orderService
 
 
 async function query(filterBy) {
-    var orders = await storageService.query(STORAGE_KEY)
+    let orders = await storageService.query(STORAGE_KEY)
     if (filterBy) {
         // const regex = new RegExp(filterBy.sellerId, 'i')
 
@@ -36,7 +36,7 @@ async function remove(orderId) {
 }
 
 async function save(order) {
-    var savedOrder
+    let savedOrder
     if (order._id) {
         savedOrder = await storageService.put(STORAGE_KEY, order)
     } else {
@@ -60,7 +60,7 @@ function getEmptyOrder() {
 }
 
 function createOrder(buyerId,buyerName,sellerId,gigId,price){
-    var order=getEmptyOrder()
+    let order=getEmptyOrder()
     order.buyerId=buyerId
     order.buyerName=buyerName
     order.sellerId=sellerId

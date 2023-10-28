@@ -1,5 +1,6 @@
 import SvgIcon from "./SvgIcon"
 import creditCards from "../assets/img/svg/credit.cards.icon.svg"
+import paypal from "../assets/img/svg/paypal.icon.svg"
 
 export function PaymentDetails({ createOrder }) {
   function checkInfo() {
@@ -22,7 +23,7 @@ export function PaymentDetails({ createOrder }) {
       alert("please enter your name")
       return
     }
-    var receipt = {
+    let receipt = {
       fullName: firstName + " " + lastName,
       createdAt: Date.now(),
       creditNum: "************" + (parseInt(crdNum) % 10000),
@@ -92,6 +93,13 @@ export function PaymentDetails({ createOrder }) {
           </div>
         </div>
       {/* <button onClick={checkInfo}>check</button> */}
+      </section>
+
+      <section className="details four">
+        <div className="credit-type">
+          <input type="radio" id="credit" className="credit"/>
+          <img className="visa" src={paypal} />
+        </div>
       </section>
 
     </section>
