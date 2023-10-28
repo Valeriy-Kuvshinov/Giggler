@@ -1,5 +1,8 @@
 import { useState } from 'react'
+
 import { ApplyFilterBtn } from './ApplyFilterBtn.jsx'
+import { RenderRadioButtons } from './RenderRadioButtons.jsx'
+
 import { levels, deliveryTime, category, budget, subcategories } from '../services/gig.service.js'
 
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
@@ -144,35 +147,5 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
         </section>
       )}
     </>
-  )
-}
-
-function RenderRadioButtons({
-  options,
-  groupName,
-  selectedOption,
-  onOptionChange,
-}) {
-  return (
-    <div className="radio-list">
-      {options.map((option) => (
-        <div className="radio-item-wrapper" key={option}>
-          <label
-            className={`radio-item ${selectedOption === option ? 'selected' : ''
-              }`}
-          >
-            <input
-              type="radio"
-              name={groupName}
-              value={option}
-              checked={selectedOption === option}
-              onChange={() => onOptionChange(option)}
-            />
-            <span className="radio-btn"></span>
-            <span>{option}</span>
-          </label>
-        </div>
-      ))}
-    </div>
   )
 }

@@ -24,10 +24,10 @@ export function PaymentDetails() {
       </section>
 
       <section className="details two" onClick={() => setPaymentMethod(true)}>
-        <div className="credit-type" id="credit">
-          <input type="radio" id="credit" className="credit" />
+        <div className="credit-type">
+          <input type="radio" className="credit" />
           <span className="radio-btn"></span>
-          <span>Credit & Debit Cards</span>
+          <span className="text">Credit & Debit Cards</span>
           <SvgIcon iconName={'creditCardsIcon'} />
         </div>
       </section>
@@ -94,8 +94,8 @@ export function PaymentDetails() {
       </section>
 
       <section className="details four" onClick={() => setPaymentMethod(false)}>
-        <div className="credit-type" id="paypal">
-          <input type="radio" id="paypal" className="credit" />
+        <div className="credit-type">
+          <input type="radio" className="credit" />
           <span className="radio-btn"></span>
           <SvgIcon iconName={'paypalIcon'} />
         </div>
