@@ -16,7 +16,6 @@ export function GigPurchase() {
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const params = useParams()
   const gig = gigs.find((gig) => gig._id === params.id)
-  // console.log(gig)
 
   useEffect(() => {
     loadGig2()
@@ -45,9 +44,6 @@ export function GigPurchase() {
   }
 
   if (gig === undefined || gigs === undefined) return <div>loading...</div>
-
-  // console.log('user : ',user)
-  // console.log('gig : ',gig)
 
   return (
     <section className="gig-purchase layout-row">

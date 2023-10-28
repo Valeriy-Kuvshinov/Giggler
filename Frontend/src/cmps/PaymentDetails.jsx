@@ -55,55 +55,53 @@ export function PaymentDetails() {
         <div className="credit-type" id="credit">
           <input type="radio" id="credit" className="credit" />
           <span>Credit & Debit Cards</span>
-          <img className="visa" src={creditCards} />
+          <img src={creditCards} />
         </div>
       </section>
 
-     
-        <section className={`details three ${paymentMethod ? '' : 'hidden'}`}>
-          <div className="credit-details">
-            <div className="credit-number">
-              <span>Card Number</span>
-              <input
-                type="text"
-                id="crdNum"
-                placeholder="0000 0000 0000 0000"
-              />
-            </div>
-            <div className="private">
-              <div className="credit-date">
-                <span>Expiration Date</span>
-                <input type="text" id="expDate" placeholder="MM/YY" />
-              </div>
-
-              <div className="credit-date">
-                <span>Security Code</span>
-                <input type="text" id="pinCode" placeholder="XXX" />
-              </div>
+      <section className={`details three ${paymentMethod ? '' : 'hidden'}`}>
+        <div className="credit-details">
+          <div className="credit-number">
+            <span>Card Number</span>
+            <input
+              type="text"
+              id="crdNum"
+              placeholder="0000 0000 0000 0000"
+            />
+          </div>
+          <div className="private">
+            <div className="credit-date">
+              <span>Expiration Date</span>
+              <input type="text" id="expDate" placeholder="MM/YY" />
             </div>
 
-            <div className="private">
-              <div className="buyer-info">
-                <span>First Name</span>
-                <input type="text" id="firstName" />
-              </div>
-
-              <div className="buyer-info">
-                <span>Last Name</span>
-                <input type="text" id="lastName" />
-              </div>
+            <div className="credit-date">
+              <span>Security Code</span>
+              <input type="text" id="pinCode" placeholder="XXX" />
             </div>
           </div>
-        </section>
-      
+
+          <div className="private">
+            <div className="buyer-info">
+              <span>First Name</span>
+              <input type="text" id="firstName" />
+            </div>
+
+            <div className="buyer-info">
+              <span>Last Name</span>
+              <input type="text" id="lastName" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="details four" onClick={() => setPaymentMethod(false)}>
         <div className="credit-type" id="paypal">
           <input type="radio" id="paypal" className="credit" />
-          <img className="visa" src={paypal} />
+          <img src={paypal} />
         </div>
       </section>
-          {/* <button onClick={checkInfo}>check</button> */}
+      {/* <button onClick={checkInfo}>check</button> */}
     </section>
   )
 }

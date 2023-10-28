@@ -1,4 +1,3 @@
-
 import checkmark from "../assets/img/svg/checkmark.icon.svg"
 import question from "../assets/img/svg/question.mark.icon.svg"
 
@@ -36,29 +35,28 @@ export function PaymentInfo({ gig, createOrder }) {
             <img src={checkmark} />
             <span>1 concept included</span>
           </div>
+
           <div className="gig-quality">
             <img src={checkmark} />
             <span>Logo transparency</span>
           </div>
+
           <div className="gig-quality">
             <img src={checkmark} />
             <span>Printable file</span>
           </div>
-          {/* {gigQualities.map((gig)=>{
-                    <div><img src={checkmark}/><span>{gig.title}</span></div>
-                })} */}
         </div>
 
       </section>
       <section className="payment two">
 
         <div className="paying-fee">
-          <span>Service fee <img src={question}/></span>
+          <span>Service fee <img src={question} /></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
         <div className="paying-fee">
-          <span>VAT  <img src={question}/></span>
+          <span>VAT  <img src={question} /></span>
           <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
         </div>
 
