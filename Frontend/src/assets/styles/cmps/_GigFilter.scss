@@ -1,6 +1,6 @@
 .gig-results-title {
   display: grid;
-  margin: auto 0;
+  width: 100%;
 
   .search-param {
     h1 {
@@ -63,7 +63,7 @@
 }
 
 .selected-filters-wrapper {
-  margin: 0;
+  width: 100%;
 
   .selected-filters {
     .select-filter {

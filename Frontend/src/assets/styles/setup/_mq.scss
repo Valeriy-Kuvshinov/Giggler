@@ -351,6 +351,25 @@
     }
 }
 
+.gig-index {
+    @media(max-width: 1400px) {
+
+        .gig-results-title,
+        .selected-filters-wrapper,
+        .gig-list {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        .gig-filter {
+            .floating-top-bar {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+        }
+    }
+}
+
 .gig-details {
     @media (max-width:600px) {
         padding: 32px 24px 0;

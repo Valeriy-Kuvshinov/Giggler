@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { ApplyFilterBtn } from './ApplyFilterBtn'
-import { levels, deliveryTime, category, budget, subcategories} from '../services/gig.service'
+import { ApplyFilterBtn } from './ApplyFilterBtn.jsx'
+import { levels, deliveryTime, category, budget, subcategories } from '../services/gig.service.js'
 
 export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   const [selectedOption, setSelectedOption] = useState('')
@@ -8,10 +8,10 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
     min: '',
     max: '',
   })
-  const time = [1,3,7]
- 
+  const time = [1, 3, 7]
+
   function onHandleBudgetChange(event) {
-    if (!event.target.value) return 
+    if (!event.target.value) return
     switch (event.target.name) {
       case 'min':
         setSelectedFilter({ ...selectedFilter, min: event.target.value })
@@ -48,7 +48,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
               case 'budget':
                 console.log('I AM IN Budget')
                 return (
-                  <form onSubmit={(event) => setMenuFilter( event, selectedFilter)}>
+                  <form onSubmit={(event) => setMenuFilter(event, selectedFilter)}>
                     <div className="content-scroll">
                       <div className="budget-filter">
                         {budget.map((type) => (
@@ -122,7 +122,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
               case 'Data':
               case 'Photography':
               case 'AI Services':
-                const subcategory = renderedChoice.replace('&','And').split(' ').join('_')
+                const subcategory = renderedChoice.replace('&', 'And').split(' ').join('_')
                 return (
                   <>
                     <div className="content-scroll">
@@ -162,9 +162,8 @@ function RenderRadioButtons({
       {options.map((option) => (
         <div className="radio-item-wrapper" key={option}>
           <label
-            className={`radio-item ${
-              selectedOption === option ? 'selected' : ''
-            }`}
+            className={`radio-item ${selectedOption === option ? 'selected' : ''
+              }`}
           >
             <input
               type="radio"

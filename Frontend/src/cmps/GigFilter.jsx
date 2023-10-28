@@ -46,8 +46,8 @@ export function GigFilter({
         )}
       </div>
 
-      <main className={`gig-filter layout-row ${isSticky ? 'shadow' : ''}`}>
-        <section className="floating-top-bar">
+      <main className={`gig-filter full ${isSticky ? 'shadow' : ''}`}>
+        <section className="floating-top-bar layout-row">
           <div className="filter-nav">
             <button
               onClick={() => onHandleChoice('clear')}
@@ -67,7 +67,7 @@ export function GigFilter({
               >
                 {categorySelect.charAt(0).toUpperCase() +
                   categorySelect.slice(1)}
-                  
+
                 <span className="dwn-arr">
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
