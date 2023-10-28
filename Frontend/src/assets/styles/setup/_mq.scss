@@ -396,6 +396,15 @@
     }
 }
 
+.profile-page {
+    .user-profile {
+        @media (max-width: 1240px) {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
+}
+
 .app-footer {
     @media (max-width: 1400px) {
         padding: 1em 2em;
