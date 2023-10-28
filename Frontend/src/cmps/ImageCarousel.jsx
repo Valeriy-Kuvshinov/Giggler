@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import SvgIcon from './SvgIcon'
+import SvgIcon from './SvgIcon.jsx'
 import { Link } from 'react-router-dom'
 
 export function ImageCarousel({
@@ -11,8 +11,7 @@ export function ImageCarousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [parentWidth, setParentWidth] = useState(0)
-  // const [arrowSize, setArrowSize] = useState(0)
-  // const [dotSize, setDotSize] = useState(0)
+
   const carouselRef = useRef()
   const numImages = images.length
   let imageWidth = parentWidth
@@ -20,9 +19,8 @@ export function ImageCarousel({
   useEffect(() => {
     const totalCarouselWidth = imageWidth * numImages
     carouselRef.current.style.width = `${totalCarouselWidth}px`
-    carouselRef.current.style.transform = `translateX(-${
-      imageWidth * currentIndex
-    }px`
+    carouselRef.current.style.transform = `translateX(-${imageWidth * currentIndex
+      }px`
   }, [imageWidth, currentIndex, numImages])
 
   useEffect(() => {
@@ -36,11 +34,6 @@ export function ImageCarousel({
         if (newParentWidth > 0) {
           setParentWidth(newParentWidth)
         }
-
-        // const newArrowSize = newParentWidth * 0.07 // Adjust as needed
-        // const newDotSize = newParentWidth * 0.03
-        // setArrowSize(newArrowSize)
-        // setDotSize(newDotSize)
       }
     }
 
@@ -78,17 +71,16 @@ export function ImageCarousel({
 
   return (
     <div
-    className={`carousel-container`}
-    style={{ borderRadius: isFrom === 'gig-details' ? '0' : '.5em' }}>
+      className={`carousel-container`}
+      style={{ borderRadius: isFrom === 'gig-details' ? '0' : '0.5em' }}>
       <button
-        className={`arrow${
-          isFrom === 'gig-details' ? '-gig-details' : ''
-        } left`}
+        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
+          } left`}
         onClick={(e) => prevImage(e)}
-        // style={{ width: `${arrowSize}px`, height: `${arrowSize}px` }}
       >
         <SvgIcon iconName={'arrowDown'} />
       </button>
+
       <div
         className="carousel"
         ref={carouselRef}
@@ -127,21 +119,19 @@ export function ImageCarousel({
       </div>
 
       <button
-        className={`arrow${
-          isFrom === 'gig-details' ? '-gig-details' : ''
-        } right`}
+        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
+          } right`}
         onClick={(e) => nextImage(e)}
-        // style={{ width: arrowSize, height: arrowSize }}
       >
         <SvgIcon iconName={'arrowDown'} />
       </button>
+
       {isFrom !== 'gig-details' && (
         <ul className="dot-container">
           {images.map((_, index) => (
             <li
               key={index}
               onClick={(e) => handleDotClick(index, e)}
-              // style={{ fontSize: dotSize * 1.3, margin: dotSize * 0.3 }}
               className={`dot ${index === currentIndex ? 'active' : ''}`}
             ></li>
           ))}

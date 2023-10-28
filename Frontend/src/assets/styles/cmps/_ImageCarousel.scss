@@ -4,10 +4,12 @@
   border-radius: 0.5em;
   height: 100%;
   width: 100%;
+
   img {
     aspect-ratio: 5/3;
     border-radius: 0.5em;
   }
+
   .carousel {
     overflow: hidden;
     display: flex;
@@ -20,12 +22,11 @@
       background: linear-gradient(180deg, #fff, #b5b6ba);
       object-fit: contain;
     }
+
     .carousel-item::after {
-      background-image: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.3),
-        hsla(0, 0%, 100%, 0)
-      );
+      background-image: linear-gradient(0deg,
+          rgba(0, 0, 0, 0.3),
+          hsla(0, 0%, 100%, 0));
       border-radius: 0.5em;
       bottom: 0;
       content: '';
@@ -55,6 +56,7 @@
     padding: 0.25em;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
     i {
       display: block;
       width: 100%;
@@ -63,6 +65,7 @@
 
     &.left {
       left: -32px;
+
       // transition: left 0.2s ease-in-out;
       svg {
         position: absolute;
@@ -76,6 +79,7 @@
 
     &.right {
       right: -32px;
+
       // transition: right 0.2s ease-in-out;
       svg {
         position: absolute;
@@ -104,6 +108,7 @@
     padding: 0.25em;
     cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
     i {
       display: block;
       width: 100%;
@@ -112,6 +117,7 @@
 
     &.left {
       left: 24px;
+
       // transition: left 0.2s ease-in-out;
       svg {
         position: absolute;
@@ -125,6 +131,7 @@
 
     &.right {
       right: 24px;
+
       // transition: right 0.2s ease-in-out;
       svg {
         position: absolute;
@@ -144,10 +151,14 @@
   .arrow::before {
     content: '';
     position: absolute;
-    top: -10px; /* Adjust as needed */
-    right: -10px; /* Adjust as needed */
-    bottom: -10px; /* Adjust as needed */
-    left: -10px; /* Adjust as needed */
+    top: -10px;
+    /* Adjust as needed */
+    right: -10px;
+    /* Adjust as needed */
+    bottom: -10px;
+    /* Adjust as needed */
+    left: -10px;
+    /* Adjust as needed */
   }
 
   .dot-container {
@@ -167,6 +178,7 @@
       cursor: pointer;
       transition: 0.3s;
       font-size: 1em;
+
       &:after {
         content: '\25CF';
         color: #fff;
@@ -176,6 +188,7 @@
     .dot:hover {
       transform: translateY(-3px);
       transform: scale(1.2);
+
       &:after {
         color: #fff;
       }
@@ -184,6 +197,7 @@
     .dot.active {
       transform: translateY(-3px);
       transform: scale(1.2);
+
       &:after {
         color: #fff;
       }
@@ -202,6 +216,7 @@
     &.right {
       right: 12px;
     }
+
     &.left {
       left: 12px;
     }

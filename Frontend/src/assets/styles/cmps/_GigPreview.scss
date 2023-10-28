@@ -9,10 +9,11 @@
 
   img {
     aspect-ratio: 5/3;
+    border-radius: 0.5em;
     // object-fit: cover;
   }
 
-  .carousel-container:hover ~ .preview-body .gig-title {
+  .carousel-container:hover~.preview-body .gig-title {
     text-decoration: underline;
   }
 

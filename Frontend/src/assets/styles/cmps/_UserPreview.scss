@@ -27,10 +27,12 @@
     border-radius: 4px;
     margin-inline-start: auto;
   }
+
   .username {
     color: clrPrimary2;
     font-weight: 700;
   }
+
   .avatar-gig-details {
     object-fit: cover;
     width: 4rem;
@@ -38,6 +40,7 @@
     border-radius: 50%;
     border: none;
   }
+
   .user-gig-details-wrapper {
     display: flex;
     flex-direction: column;
@@ -52,11 +55,13 @@
         font-weight: 700;
         margin-inline-end: 0.5em;
       }
+
       .username {
         margin-inline-end: 0.5em;
         color: $clrSecondary5;
       }
     }
+
     .rating-order-wrapper {
       width: 100%;
       display: flex;
@@ -73,6 +78,7 @@
           color: $clrSecondary5;
         }
       }
+
       .active-orders {
         color: $clrSecondary5;
         margin-inline-end: 0.5em;
@@ -88,6 +94,7 @@
     border-radius: 50%;
     // display: block;
   }
+
   .user-gig-details-2-wrapper {
     display: flex;
     flex-direction: column;
@@ -102,11 +109,13 @@
         font-weight: 700;
         margin-inline-end: 0.5em;
       }
+
       .username {
         margin-inline-end: 0.5em;
         color: $clrSecondary5;
       }
     }
+
     .saying {
       color: $clrSecondary6;
       text-align: left;
@@ -128,6 +137,7 @@
           color: $clrSecondary5;
         }
       }
+
       .active-orders {
         color: $clrSecondary5;
         margin-inline-end: 0.5em;

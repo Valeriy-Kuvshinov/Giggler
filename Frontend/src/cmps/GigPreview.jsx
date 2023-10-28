@@ -2,8 +2,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-import heart from '../assets/img/svg/heart.icon.svg'
-import likedHeart from '../assets/img/svg/liked.heart.icon.svg'
 import SvgIcon from './SvgIcon.jsx'
 import { gigService } from '../services/gig.service'
 import { userService } from '../services/user.service.js'

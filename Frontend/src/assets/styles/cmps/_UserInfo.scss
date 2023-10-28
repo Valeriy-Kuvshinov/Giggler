@@ -59,13 +59,15 @@
             }
         }
 
-        &.order-link{
-            height:50px;
+        &.order-link {
+            height: 50px;
             padding: 10px;
-            &:hover{
+
+            &:hover {
                 text-decoration: none;
             }
-            button{
+
+            button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
