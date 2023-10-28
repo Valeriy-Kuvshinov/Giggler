@@ -28,7 +28,6 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
           {(() => {
             switch (renderedChoice) {
               case 'delivery_time':
-                console.log('I AM IN DELIVERY TIME')
                 return (
                   <>
                     <div className="content-scroll">
@@ -46,7 +45,6 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                   </>
                 )
               case 'budget':
-                console.log('I AM IN Budget')
                 return (
                   <form onSubmit={(event) => setMenuFilter(event, selectedFilter)}>
                     <div className="content-scroll">
@@ -77,7 +75,6 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                   </form>
                 )
               case 'seller_level':
-                console.log('I AM IN Seller Level')
                 return (
                   <>
                     <div className="content-scroll">
@@ -95,7 +92,6 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
                   </>
                 )
               case 'category':
-                console.log('I AM IN Category')
                 return (
                   <>
                     <div className="content-scroll">
