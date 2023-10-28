@@ -6,7 +6,7 @@ import { useState } from "react"
 
 export function PaymentDetails({ createOrder }) {
 
-  // const [paymentMethod, setPayment] =useState('credit')
+  const [paymentMethod, setPayment] =useState('credit')
 
   function checkInfo() {
     const crdNum = document.getElementById("crdNum").value
@@ -50,10 +50,11 @@ export function PaymentDetails({ createOrder }) {
   }
 
   function changePayment(method){
-    console.log(method)
+    console.log(method.target.id)
+    setPayment(method.target.id)
   }
 
-  setTimeout(loadDemo, 1)
+  if(paymentMethod==='credit') setTimeout(loadDemo, 1)
 
   return (
     <section className="payment-details">
@@ -62,15 +63,15 @@ export function PaymentDetails({ createOrder }) {
         <span>Payment Options</span>
       </section>
 
-      <section className="details two" onClick={changePayment} id="credit">
-        <div className="credit-type">
+      <section className="details two" onClick={changePayment} >
+        <div className="credit-type" id="credit">
           <input type="radio" id="credit" className="credit"/>
           <span>Credit & Debit Cards</span>
           <img className="visa" src={creditCards} />
         </div>
       </section>
 
-      <section className="details three">
+      {paymentMethod==='credit' && <section className="details three">
         <div className="credit-details">
           <div className="credit-number">
             <span>Card Number</span>
@@ -101,10 +102,10 @@ export function PaymentDetails({ createOrder }) {
           </div>
         </div>
       {/* <button onClick={checkInfo}>check</button> */}
-      </section>
+      </section>}
 
-      <section className="details four" onClick={changePayment} id="paypal">
-        <div className="credit-type">
+      <section className="details four" onClick={changePayment}>
+        <div className="credit-type" id="paypal">
           <input type="radio" id="paypal" className="credit"/>
           <img className="visa" src={paypal} />
         </div>
