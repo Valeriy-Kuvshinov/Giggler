@@ -3,7 +3,7 @@ import SvgIcon from './SvgIcon'
 
 export function CatTagDisplayBar({ category, tag }) {
   return (
-    <section className="explore-category">
+    <section className="explore-category flex">
       <Link to="/">
         <SvgIcon iconName={'homeBlack'} />
       </Link>
