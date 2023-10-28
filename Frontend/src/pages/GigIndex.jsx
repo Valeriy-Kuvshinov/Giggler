@@ -4,7 +4,7 @@ import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { category, gigService } from '../services/gig.service.js'
 
 export function GigIndex() {
@@ -86,7 +86,6 @@ export function GigIndex() {
         break
 
       default:
-        // Handle any other cases or defaults
         break
     }
     setFilter(updatedFilterBy)
