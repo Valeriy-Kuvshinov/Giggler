@@ -50,7 +50,6 @@ export function GigDetails() {
       console.error('Error loading data:', err)
     }
   }
-
   if (!gig || !user) return <h1 className='layout-row'>loading...</h1>
 
   return (

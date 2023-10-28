@@ -15,7 +15,7 @@ export function GigReviews({ reviews, gig }) {
             const fetchedReviews = await Promise.all(reviews.map(reviewId => reviewService.getById(reviewId)))
             const reviewsWithUser = await Promise.all(fetchedReviews.map(async review => {
                 const user = await userService.getById(review.userId)
-                return { ...review, userName: user.username, imgUrl: user.imgUrl, country:user.country  }
+                return { ...review, userName: user.username, imgUrl: user.imgUrl, country: user.country }
             }))
             setFullReviews(reviewsWithUser)
         }
@@ -29,8 +29,8 @@ export function GigReviews({ reviews, gig }) {
     return (
         <section className="gig-reviews">
             <span className="title">Reviews</span>
-            {loggedInUser && loggedInUser._id!==gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
-            
+            {loggedInUser && loggedInUser._id !== gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
+
             {fullReviews.length !== 0 && (
                 <ul className="reviews">
                     {fullReviews.map((review) => (
