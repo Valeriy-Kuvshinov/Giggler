@@ -117,37 +117,4 @@
       margin: 0 16px;
     }
   }
-
-  .radio-btn {
-    display: inline-block;
-    border: 1px solid $clrSecondary4;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 22px;
-    width: 22px;
-    margin: 0;
-    position: relative;
-
-    &::after {
-      content: '';
-      background: transparent;
-      position: absolute;
-      height: 0.5em;
-      width: 0.5em;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      display: inline-block;
-      transition: all 0.15s ease-in-out;
-    }
-
-    &.selected {
-      border: 2px solid $clrPrimary2;
-
-      &::after {
-        background: $clrPrimary2;
-      }
-    }
-  }
 }
