@@ -1,13 +1,11 @@
 .carousel-container {
   overflow: hidden;
   position: relative;
-  border-radius: 0.5em;
   height: 100%;
   width: 100%;
 
   img {
     aspect-ratio: 5/3;
-    border-radius: 0.5em;
   }
 
   .carousel {
@@ -16,7 +14,6 @@
     transition: transform 0.3s ease-in-out;
 
     .carousel-item {
-      border-radius: 0.5em;
       width: 100%;
       position: relative;
       background: linear-gradient(180deg, #fff, #b5b6ba);
@@ -38,7 +35,6 @@
     }
   }
 
-  // transition: all ease-in 0.3s;
   .arrow {
     position: absolute;
     user-select: none;
@@ -66,7 +62,6 @@
     &.left {
       left: -32px;
 
-      // transition: left 0.2s ease-in-out;
       svg {
         position: absolute;
         top: 50%;
@@ -80,7 +75,6 @@
     &.right {
       right: -32px;
 
-      // transition: right 0.2s ease-in-out;
       svg {
         position: absolute;
         top: 50%;
@@ -118,7 +112,6 @@
     &.left {
       left: 24px;
 
-      // transition: left 0.2s ease-in-out;
       svg {
         position: absolute;
         top: 50%;
@@ -132,7 +125,6 @@
     &.right {
       right: 24px;
 
-      // transition: right 0.2s ease-in-out;
       svg {
         position: absolute;
         top: 50%;
@@ -152,13 +144,9 @@
     content: '';
     position: absolute;
     top: -10px;
-    /* Adjust as needed */
     right: -10px;
-    /* Adjust as needed */
     bottom: -10px;
-    /* Adjust as needed */
     left: -10px;
-    /* Adjust as needed */
   }
 
   .dot-container {
@@ -208,7 +196,6 @@
 .gig-preview:hover .carousel-container,
 .carousel-container:hover {
   .arrow {
-    // background-color: #fff;
     opacity: 1;
     background: $clrPrimary1;
     transition: all 0.5s ease-in-out;
@@ -222,41 +209,3 @@
     }
   }
 }
-
-// .gig-preview:hover .carousel-container,
-// .carousel-container:hover {
-//   .arrow-gig-details {
-//     // background-color: #fff;
-//     opacity: 1;
-//     background: rgba(0, 0, 0, 0.2);
-//     transition: all 0.5s ease-in-out;
-
-//     &.right {
-//       right: 12px;
-//     }
-//     &.left {
-//       left: 12px;
-//     }
-//   }
-// }
-
-// .hovered {
-//   .arrow {
-//     // background-color: #fff;
-//     opacity: 1;
-//     background: rgba(0, 0, 0, 0.2);
-//     transition: all 0.5s ease-in-out;
-
-//     &.right {
-//       right: 12px;
-//     }
-//     &.left {
-//       left: 12px;
-//     }
-//   }
-// }
-
-// .gig-preview:hover .carousel-container,
-// .carousel-container:hover {
-//   @extend hovered !optional;
-// }
