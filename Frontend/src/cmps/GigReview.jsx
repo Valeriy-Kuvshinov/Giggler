@@ -71,8 +71,6 @@ export function GigReview({ review }) {
         return stars
     }
 
-    console.log(review.country.replace(' ', ''))
-
     return (
         <section className="gig-review">
             <img src={review.imgUrl} alt={review.userName} className='pfp' />
