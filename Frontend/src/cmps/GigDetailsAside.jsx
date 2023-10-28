@@ -2,8 +2,6 @@ import clock from '../assets/img/svg/clock.icon.svg'
 import refresh from '../assets/img/svg/refresh.icon.svg'
 import checkmark from '../assets/img/svg/checkmark.icon.svg'
 import arrow from '../assets/img/svg/arrow.icon.svg'
-import heart from '../assets/img/svg/heart.icon.svg'
-import likedHeart from '../assets/img/svg/liked.heart.icon.svg'
 import share from '../assets/img/svg/share.icon.svg'
 
 import { useModal } from '../customHooks/ModalContext'
@@ -22,6 +20,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
   const { openLogin } = useModal()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [SelectedPackage ,setSelectedPackage] = useState('basic')
   const [isLiked, setIsLiked] = useState(
     user && gig.likedByUsers.includes(user._id)
   )
@@ -94,6 +93,14 @@ export function GigDetailsAside({ gig, onGigChange }) {
       {isModalOpen && <ShareGigModal onClose={closeModal} />}
 
       <section className="gig-order">
+        <div className="package-tabs">
+          <button className={`package tab-1 ${SelectedPackage === 'basic' ? 'checked' : ''}`} onClick={()=>setSelectedPackage('basic')}>Basic</button>
+          <button className={`package tab-2 ${SelectedPackage === 'standard' ? 'checked' : ''}`} onClick={()=>setSelectedPackage('standard')}>Standard</button>
+          <button className={`package tab-3 ${SelectedPackage === 'premium' ? 'checked' : ''}`} onClick={()=>setSelectedPackage('premium')}>Premium</button>
+        </div>
+
+
+
         <div className="title">
           <span>Order Details</span>
           <span>${gig.price}</span>

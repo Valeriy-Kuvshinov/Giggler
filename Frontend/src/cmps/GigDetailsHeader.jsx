@@ -12,9 +12,6 @@ import { UserPreview } from './UserPreview'
 
 export function GigDetailsHeader({ gig, owner }) {
   const [newImgIndex, setNewImgIndex] = useState(0)
-  // const orders = useSelector((storeState) => storeState.orderModule.orders)
-  // var completedOrders = orders.filter((order) => order.sellerId === owner._id).filter(
-  //   (order) => order.deniedAt || order.acceptedAt)
 
   useEffect(() => {
     loadTheOrders()
