@@ -2,7 +2,12 @@ import SvgIcon from "./SvgIcon"
 import creditCards from "../assets/img/svg/credit.cards.icon.svg"
 import paypal from "../assets/img/svg/paypal.icon.svg"
 
+import { useState } from "react"
+
 export function PaymentDetails({ createOrder }) {
+
+  const [paymentMethod, setPayment] =useState('credit')
+
   function checkInfo() {
     const crdNum = document.getElementById("crdNum").value
     const expDate = document.getElementById("expDate").value
@@ -34,18 +39,22 @@ export function PaymentDetails({ createOrder }) {
 
   function loadDemo() {
     document.getElementById("crdNum").value = 1111222233334444
-    console.log(new Date().getFullYear())
     document.getElementById("expDate").value = new Date().getMonth()+1+'/'+new Date().getFullYear()%100
     document.getElementById("pinCode").value = 123
-    document.getElementById("firstName").value = "poki"
-    document.getElementById("lastName").value = "mon"
+    document.getElementById("firstName").value = "yaron"
+    document.getElementById("lastName").value = "biton"
   }
 
   function createOrder() {
     return checkInfo
   }
 
-  setTimeout(loadDemo, 1)
+  function changePayment(method){
+    console.log(method.target.id)
+    setPayment(method.target.id)
+  }
+
+  if(paymentMethod==='credit') setTimeout(loadDemo, 1)
 
   return (
     <section className="payment-details">
@@ -54,15 +63,15 @@ export function PaymentDetails({ createOrder }) {
         <span>Payment Options</span>
       </section>
 
-      <section className="details two">
-        <div className="credit-type">
+      <section className="details two" onClick={changePayment} >
+        <div className="credit-type" id="credit">
           <input type="radio" id="credit" className="credit"/>
           <span>Credit & Debit Cards</span>
           <img className="visa" src={creditCards} />
         </div>
       </section>
 
-      <section className="details three">
+      {paymentMethod==='credit' && <section className="details three">
         <div className="credit-details">
           <div className="credit-number">
             <span>Card Number</span>
@@ -93,11 +102,11 @@ export function PaymentDetails({ createOrder }) {
           </div>
         </div>
       {/* <button onClick={checkInfo}>check</button> */}
-      </section>
+      </section>}
 
-      <section className="details four">
-        <div className="credit-type">
-          <input type="radio" id="credit" className="credit"/>
+      <section className="details four" onClick={changePayment}>
+        <div className="credit-type" id="paypal">
+          <input type="radio" id="paypal" className="credit"/>
           <img className="visa" src={paypal} />
         </div>
       </section>
