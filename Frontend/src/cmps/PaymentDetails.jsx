@@ -2,7 +2,12 @@ import SvgIcon from "./SvgIcon"
 import creditCards from "../assets/img/svg/credit.cards.icon.svg"
 import paypal from "../assets/img/svg/paypal.icon.svg"
 
+import { useState } from "react"
+
 export function PaymentDetails({ createOrder }) {
+
+  // const [paymentMethod, setPayment] =useState('credit')
+
   function checkInfo() {
     const crdNum = document.getElementById("crdNum").value
     const expDate = document.getElementById("expDate").value
@@ -44,6 +49,10 @@ export function PaymentDetails({ createOrder }) {
     return checkInfo
   }
 
+  function changePayment(method){
+    console.log(method)
+  }
+
   setTimeout(loadDemo, 1)
 
   return (
@@ -53,7 +62,7 @@ export function PaymentDetails({ createOrder }) {
         <span>Payment Options</span>
       </section>
 
-      <section className="details two">
+      <section className="details two" onClick={changePayment} id="credit">
         <div className="credit-type">
           <input type="radio" id="credit" className="credit"/>
           <span>Credit & Debit Cards</span>
@@ -94,9 +103,9 @@ export function PaymentDetails({ createOrder }) {
       {/* <button onClick={checkInfo}>check</button> */}
       </section>
 
-      <section className="details four">
+      <section className="details four" onClick={changePayment} id="paypal">
         <div className="credit-type">
-          <input type="radio" id="credit" className="credit"/>
+          <input type="radio" id="paypal" className="credit"/>
           <img className="visa" src={paypal} />
         </div>
       </section>
