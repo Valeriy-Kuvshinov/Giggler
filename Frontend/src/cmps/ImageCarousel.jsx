@@ -94,15 +94,14 @@ export function ImageCarousel({
             className="carousel-item"
             style={{
               width: `${imageWidth}px`,
+              borderRadius: isFrom === 'gig-details' ? '0' : '0.5em'
             }}
           >
             {isFrom !== 'gig-details' ? (
               <Link to={`/gig/${gigId}`}>
                 <img
                   src={image}
-                  style={{
-                    borderRadius: 0,
-                  }}
+                  style={{ borderRadius: '0.5em' }}
                   alt={`Image ${index}`}
                   className={index === currentIndex ? 'active' : ''}
                 />
@@ -111,6 +110,7 @@ export function ImageCarousel({
               <img
                 src={image}
                 alt={`Image ${index}`}
+                style={{ borderRadius: '0' }}
                 className={index === currentIndex ? 'active' : ''}
               />
             )}
