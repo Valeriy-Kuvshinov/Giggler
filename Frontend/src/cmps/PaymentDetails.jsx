@@ -34,11 +34,10 @@ export function PaymentDetails({ createOrder }) {
 
   function loadDemo() {
     document.getElementById("crdNum").value = 1111222233334444
-    console.log(new Date().getFullYear())
     document.getElementById("expDate").value = new Date().getMonth()+1+'/'+new Date().getFullYear()%100
     document.getElementById("pinCode").value = 123
-    document.getElementById("firstName").value = "poki"
-    document.getElementById("lastName").value = "mon"
+    document.getElementById("firstName").value = "yaron"
+    document.getElementById("lastName").value = "biton"
   }
 
   function createOrder() {
