@@ -5,13 +5,14 @@ import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { useSearchParams } from 'react-router-dom'
-import { category, gigService } from '../services/gig.service.js'
+import { gigService } from '../services/gig.service.js'
 
 export function GigIndex() {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const [searchParams, setSearchparams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
+  
   const currentPage = filterBy.page || 1
   const totalGigsPerPage = 12
   const totalPages = Math.ceil(gigs.length / totalGigsPerPage)
@@ -134,11 +135,6 @@ export function GigIndex() {
   function handlePageChange(newPage) {
     setFilter({ ...filterBy, page: newPage })
   }
-  // function handlePageChange(newPage) {
-  //   setFilter((prevFilter) => {
-  //     return { ...prevFilter, page: newPage }
-  //   })
-  // }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 

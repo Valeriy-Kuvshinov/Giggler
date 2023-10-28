@@ -45,6 +45,7 @@ export function GigFilter({
           <CatTagDisplayBar category={filterBy.cat} tag={filterBy.tag} />
         )}
       </div>
+      
       <main className={`gig-filter layout-row ${isSticky ? 'shadow' : ''}`}>
         <section className="floating-top-bar">
           <div className="filter-nav">
