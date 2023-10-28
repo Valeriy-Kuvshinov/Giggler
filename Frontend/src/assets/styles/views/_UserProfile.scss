@@ -1,4 +1,9 @@
-.user-profile{
-    display: flex;
-    margin-block-start: 32px;
+.profile-page {
+    background: $clrSecondary12;
+
+    .user-profile {
+        padding-top: 32px;
+        padding-bottom: 32px;
+        max-width: 1240px;
+    }
 }

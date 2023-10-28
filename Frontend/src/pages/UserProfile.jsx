@@ -4,7 +4,6 @@ import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
-import { Link } from "react-router-dom"
 
 export function UserProfile() {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -26,12 +25,11 @@ export function UserProfile() {
   if (user === null || gigs === null) return <div>loading...</div>
 
   return (
-    <section className="profile layout-row">
-      <div className="user-profile">
+    <section className="profile-page full">
+      <div className="user-profile flex layout-row">
         <UserInfo user={user} />
         <UserGigs gigs={gigs} user={user} />
       </div>
-      {/* <UserOrders /> */}
     </section>
   )
 }
