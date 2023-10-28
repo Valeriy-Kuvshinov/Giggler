@@ -35,7 +35,7 @@ export function GigPurchase() {
         , gig.title, gig.deliveryTime, gig._id, gig.price)
     saveOrder(orderToSave)
       .then(savedOrder => {
-        showSuccessMsg(`The gig has been ordered, and the owner notified.\n Estimated arrival: ${savedOrder.deliveryTime}.\n Thank you for using Giggler!`)
+        showSuccessMsg(`The gig has been ordered.\n Thank you for using Giggler!`)
       })
       .catch(err => {
         console.log('Cannot add Order', err)
