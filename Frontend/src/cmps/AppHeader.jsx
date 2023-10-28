@@ -110,7 +110,7 @@ export function AppHeader() {
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             onSearchSubmit={handleSearchSubmit}
-            visibility={headerStage === 2 ? 'visible' : 'hidden'}
+            visibility={headerStage >= 1 ? 'visible' : 'hidden'}
           />
           
           <ul className="nav-links flex">

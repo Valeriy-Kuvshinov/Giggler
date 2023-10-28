@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
@@ -56,10 +55,10 @@ export function GigFilter({
             >
               Clear filter
             </button>
+
             <div
-              className={`filter-categories floating-menu ${
-                isRenderedChoice[1] === categorySelect.trim() ? 'open' : ''
-              }`}
+              className={`filter-categories floating-menu ${isRenderedChoice[1] === categorySelect.trim() ? 'open' : ''
+                }`}
             >
               <button
                 onClick={() => onHandleChoice('category')}
@@ -73,16 +72,16 @@ export function GigFilter({
               </button>
               {(isRenderedChoice[1] === 'category' ||
                 isRenderedChoice[1] === categorySelect.trim()) && (
-                <MenuFilterContent
-                  renderedChoice={isRenderedChoice[1]}
-                  setMenuFilter={setMenuFilter}
-                />
-              )}
+                  <MenuFilterContent
+                    renderedChoice={isRenderedChoice[1]}
+                    setMenuFilter={setMenuFilter}
+                  />
+                )}
             </div>
+
             <div
-              className={`filter-seller-level floating-menu ${
-                isRenderedChoice[1] === 'seller_level' ? 'open' : ''
-              }`}
+              className={`filter-seller-level floating-menu ${isRenderedChoice[1] === 'seller_level' ? 'open' : ''
+                }`}
             >
               <button
                 onClick={() => onHandleChoice('seller_level')}
@@ -100,16 +99,15 @@ export function GigFilter({
                 />
               )}
             </div>
+
             <div
-              className={`filter-budget floating-menu ${
-                isRenderedChoice[1] === 'budget' ? 'open' : ''
-              }`}
+              className={`filter-budget floating-menu ${isRenderedChoice[1] === 'budget' ? 'open' : ''
+                }`}
             >
               <button
                 onClick={() => onHandleChoice('budget')}
-                className={`btn filtered-bg ${
-                  filterBy.min || filterBy.max ? 'border' : ''
-                }`}
+                className={`btn filtered-bg ${filterBy.min || filterBy.max ? 'border' : ''
+                  }`}
               >
                 Budget
                 <span className="dwn-arr">
@@ -123,10 +121,10 @@ export function GigFilter({
                 />
               )}
             </div>
+
             <div
-              className={`filter-delivery-time floating-menu ${
-                isRenderedChoice[1] === 'delivery_time' ? 'open' : ''
-              }`}
+              className={`filter-delivery-time floating-menu ${isRenderedChoice[1] === 'delivery_time' ? 'open' : ''
+                }`}
             >
               <button
                 onClick={() => onHandleChoice('delivery_time')}
@@ -137,6 +135,7 @@ export function GigFilter({
                   <SvgIcon iconName={'arrowDown'} />
                 </span>
               </button>
+
               {isRenderedChoice[1] === 'delivery_time' && (
                 <MenuFilterContent
                   renderedChoice={isRenderedChoice[1]}
