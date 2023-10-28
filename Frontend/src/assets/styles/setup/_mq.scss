@@ -67,15 +67,15 @@
     }
 
     .home-companies-section {
-        // .companies {
-        //     @media(max-width: 1200px) {
-        //         gap: 3em;
-        //     }
+        .companies {
+            @media(max-width: 1200px) {
+                gap: 3em;
+            }
 
-        //     @media(min-width: 1200px) {
-        //         gap: 4em;
-        //     }
-        // }
+            @media(min-width: 1200px) {
+                gap: 4em;
+            }
+        }
 
         h4 {
             @media(max-width: 1200px) {
@@ -139,6 +139,14 @@
     }
 
     .home-categories-section {
+        @media(max-width: 1400px) {
+            padding: 6em 2em;
+        }
+
+        @media(min-width: 1400px) {
+            padding: 6em 0em;
+        }
+
         .categories {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -392,6 +400,15 @@
     .gig-aside {
         @media (max-width: 900px) {
             width: 100%;
+        }
+    }
+}
+
+.profile-page {
+    .user-profile {
+        @media (max-width: 1240px) {
+            padding-left: 32px;
+            padding-right: 32px;
         }
     }
 }
