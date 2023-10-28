@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react"
 import { useSelector } from 'react-redux'
-import { Link } from "react-router-dom"
 
 import icon from "../assets/img/svg/user.icon.svg"
 import location from "../assets/img/svg/location.icon.svg"
 
 import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
-import { UserReviews } from "./UserReviews"
-import { loadReviews } from "../store/review.actions"
+import { UserReviews } from "./UserReviews.jsx"
+import { loadReviews } from "../store/review.actions.js"
 
 export function UserInfo({ user }) {
   const [isModal, setModal] = useState(false)
@@ -65,7 +64,7 @@ export function UserInfo({ user }) {
 
   return (
     <section className="user-info">
-      <div className="info-block">
+      <div className="info-block flex column">
         <img src={user.imgUrl} onClick={loadModal} />
 
         <h2>
@@ -82,14 +81,14 @@ export function UserInfo({ user }) {
           )}
         </h2>
 
-        <div className="info-line" onClick={loadModal}>
+        <div className="info-line flex" onClick={loadModal}>
           <span>
             <img src={location} /> Country
           </span>
           <span>Israel</span>
         </div>
 
-        <div className="info-line">
+        <div className="info-line flex">
           <span>
             <img src={icon} /> Member Since
           </span>
@@ -97,7 +96,7 @@ export function UserInfo({ user }) {
         </div>
       </div>
 
-      <div className="info-block">
+      <div className="info-block flex column">
         <h3>Description</h3>
         {isEditing ? (
           <div>

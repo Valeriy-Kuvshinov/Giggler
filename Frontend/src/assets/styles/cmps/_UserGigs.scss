@@ -1,6 +1,4 @@
 .user-gigs {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin-block-end: 20px;
   margin-inline-start: 20px;
@@ -33,7 +31,6 @@
     height: 300px;
 
     &.title {
-      display: flex;
       align-items: center;
       height: 60px;
       padding: 23px;
@@ -41,7 +38,6 @@
     }
 
     &.gig {
-      display: flex;
       justify-content: center;
       align-items: center;
       // margin-top: -2.5em;
