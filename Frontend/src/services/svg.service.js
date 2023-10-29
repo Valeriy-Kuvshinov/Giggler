@@ -199,7 +199,7 @@ const ICONS = {
     <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256 256-114.6 256-256S397.4 0 256 0zM64 256c0-106.1 86-192 192-192 42.1 0 81 13.7 112.6 36.7L100.7 368.6C77.7 337 64 298.1 64 256zm192 192c-42.1 0-81-13.7-112.6-36.7l267.9-267.9c23 31.7 36.7 70.5 36.7 112.6 0 106.1-86 192-192 192z"/>
   </svg>`,
 
-  success: `<svg xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448" fill="green">
+  success: `<svg xmlns="http://www.w3.org/2000/svg" width="448" height="448" viewBox="0 0 448 448" fill="#e0e0e0">
     <g style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;line-height:125%;font-family:Calibri;text-align:start;letter-spacing:0;word-spacing:0;text-anchor:start;fill:#000;fill-opacity:1;stroke:none" transform="translate(-1463.923 -17599.681) scale(22.11728)"/>
     <path style="fill-opacity:1;stroke:none;stroke-opacity:1" d="M224 0A224 224 0 0 0 0 224a224 224 0 0 0 224 224 224 224 0 0 0 224-224A224 224 0 0 0 224 0zm116 80 44 43.428L175 384 32 232l44-43.428 99 97.713L340 80z"/>
   </svg>`
