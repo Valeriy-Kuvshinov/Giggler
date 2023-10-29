@@ -8,7 +8,6 @@ import { useParams } from "react-router"
 import { loadUser } from "../store/user.actions.js"
 
 export function UserProfile() {
-  const user = useSelector((storeState) => storeState.userModule.user)
   const watchedUser= useSelector((storeState) => storeState.userModule.watchedUser)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const params=useParams()
