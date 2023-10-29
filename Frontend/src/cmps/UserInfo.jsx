@@ -93,7 +93,7 @@ export function UserInfo({ user }) {
             <span>
               <img src={location} /> From
             </span>
-            <span>Israel</span>
+            <span>{user.country}</span>
           </div>
 
           <div className="info-line flex">
