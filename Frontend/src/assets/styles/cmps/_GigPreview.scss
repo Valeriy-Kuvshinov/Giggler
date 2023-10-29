@@ -42,12 +42,16 @@
   .user-rating-order {
     padding: 0.5em 0 0;
 
-    .rate {
-      padding: 0 0.25em;
-    }
+    .rating-score {
+      align-items: baseline;
 
-    .rate-count {
-      color: $clrSecondary5;
+      .rate {
+        padding: 0 0.25em;
+      }
+
+      .rate-count {
+        color: $clrSecondary5;
+      }
     }
   }
 

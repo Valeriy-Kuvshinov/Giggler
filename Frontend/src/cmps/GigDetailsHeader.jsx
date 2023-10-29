@@ -1,12 +1,7 @@
-import starIcon from '../assets/img/svg/star.icon.svg'
-import houseIcon from '../assets/img/svg/home.icon.svg'
-
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 
 import { loadOrders } from '../store/order.actions'
 
-import { Link } from 'react-router-dom'
 import { ImageCarousel } from './ImageCarousel'
 import { UserPreview } from './UserPreview'
 

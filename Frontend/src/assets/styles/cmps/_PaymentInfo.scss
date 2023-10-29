@@ -3,15 +3,11 @@
   padding: 0 0;
   max-width: 596.667px;
   color: $clrSecondary6;
-  // border: 1px solid $clrSecondary4;
-  // border-radius: 4px;
 
   .payment {
     padding: 16px 16px;
     background-color: $clrPrimary1;
     border: 1px solid $clrSecondary2;
-    // border-inline-start: 1px solid $clrSecondary4;
-    // border-inline-end: 1px solid $clrSecondary4;
     margin: 0 auto;
     width: 377px;
 
@@ -26,6 +22,7 @@
         margin-inline-end: 1em;
         border-radius: 4px;
       }
+
       p {
         font-weight: bold;
         margin: 0;
@@ -39,6 +36,7 @@
       justify-content: space-between;
       padding-block-start: 20px;
       border-block-start: 1px solid $clrSecondary2;
+
       p {
         font-weight: 600;
       }
@@ -51,6 +49,8 @@
       .gig-quality {
         display: flex;
         align-items: center;
+        gap: 10px;
+
         img {
           width: 14px;
           margin-inline-end: 9px;
@@ -61,13 +61,15 @@
     .paying-fee {
       display: flex;
       justify-content: space-between;
-      // align-items: center;
       margin-block-end: 16px;
       height: 30px;
+
       span {
         display: flex;
         align-items: center;
+        gap: 10px;
       }
+
       img {
         height: 16px;
         width: 16px;

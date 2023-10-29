@@ -3,11 +3,11 @@
   max-width: 833.555px;
   padding: 0 16px;
   color: $clrPrimary2;
-  
+
   input {
     background-color: none;
   }
-  
+
   .details {
     padding: 16px;
     background-color: $clrSecondary0;
@@ -29,11 +29,7 @@
       align-items: center;
       height: 25px;
 
-      .credit{
-        margin: 0;
-      }
-
-      span{
+      .text {
         margin: 0 16px;
       }
 
@@ -63,51 +59,62 @@
     }
   }
 
-  .private{
+  .private {
     display: flex;
+
     .credit-date {
       display: flex;
       flex-direction: column;
       margin-inline-start: 20px;
       width: 50%;
+
       input {
         width: 100%;
       }
-      
+
     }
+
     .buyer-info {
       display: flex;
       flex-direction: column;
       margin-inline-start: 20px;
       width: 50%;
+
       input {
         width: 100%;
       }
     }
   }
 
-  .one{
+  .one {
     border-block-end: 0;
     border-radius: 4px 4px 0 0;
   }
-  .two{
+
+  .two {
     background-color: $clrPrimary1;
     border-block-start: 1px solid $clrSecondary2;
     border-block-end: 1px solid $clrSecondary2;
   }
-  .three{
+
+  .three {
     border-block-start: 0;
     border-block-end: 0;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,.06);
-    input{
-      margin-block-end:16px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, .06);
+
+    input {
+      margin-block-end: 16px;
     }
   }
-  
-  .four{
+
+  .four {
     background-color: $clrPrimary1;
     border-radius: 0 0 4px 4px;
     border-block-start: 1px solid $clrSecondary2;
     border-block-end: 1px solid $clrSecondary2;
+
+    i {
+      margin: 0 16px;
+    }
   }
 }

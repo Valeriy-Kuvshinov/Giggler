@@ -16,7 +16,6 @@ export function GigPurchase() {
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
   const params = useParams()
   const gig = gigs.find((gig) => gig._id === params.id)
-  // console.log(gig)
 
   useEffect(() => {
     loadGig2()
@@ -36,7 +35,7 @@ export function GigPurchase() {
         , gig.title, gig.deliveryTime, gig._id, gig.price)
     saveOrder(orderToSave)
       .then(savedOrder => {
-        showSuccessMsg(`The gig has been ordered, and the owner notified.\n Estimated arrival: ${savedOrder.deliveryTime}.\n Thank you for using Giggler!`)
+        showSuccessMsg(`The gig has been ordered.\n Thank you for using Giggler!`)
       })
       .catch(err => {
         console.log('Cannot add Order', err)
@@ -45,9 +44,6 @@ export function GigPurchase() {
   }
 
   if (gig === undefined || gigs === undefined) return <div>loading...</div>
-
-  // console.log('user : ',user)
-  // console.log('gig : ',gig)
 
   return (
     <section className="gig-purchase layout-row">
