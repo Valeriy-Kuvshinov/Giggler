@@ -10,6 +10,7 @@ import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { loadReviews } from '../store/review.actions.js'
+
 import { gigService } from '../services/gig.service.js'
 
 export function GigDetails() {
