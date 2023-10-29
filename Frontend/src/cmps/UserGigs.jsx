@@ -1,26 +1,43 @@
+import seller from '../assets/img/svg/become.seller.icon.svg'
+
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 import { GigPreview } from './GigPreview.jsx'
 
-import seller from '../assets/img/svg/become.seller.icon.svg'
+import { UserReviews } from './UserReviews.jsx'
+
+import { loadReviews } from '../store/review.actions'
 
 export function UserGigs({ user, gigs }) {
     const is = 'userProfile'
-
+    const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
+    const filteredReviews = user
+      ? reviews.filter((review) => review.sellerId === user._id)
+      : []
+  
     if (!gigs) return <div>No gigs yet, maybe create one ^_^</div>
+
+    useEffect(() => {
+        loadReviews()
+    }, [])
+
+    // gigs=[]
 
     const userGigs = gigs.filter(gig => gig.ownerId === user._id)
 
     return (
         <section className="user-gigs flex column">
-            <div className="info-block title flex">
-                Active Gigs
-            </div>
+            {gigs.length !== 0 && <div className="title flex">
+                Your Gigs
+            </div>}
 
             {(gigs.length === 0) && <div className="info-block gig seller">
                 <Link to="/gig/edit" className="gig-creation-btn">
-                    <img src={seller} />
-                    <span>Become A Seller</span>
+                    <img src={seller} className='seller-img'/>
+                    <span className='ready'>Ready to earn on your own terms?</span>
+                    <span className='become-seller'>Become a seller</span>
                 </Link>
             </div>
             }
@@ -38,6 +55,8 @@ export function UserGigs({ user, gigs }) {
                     </div>
                 )))}
             </div>
+            
+          <UserReviews user={user} reviews={filteredReviews} />
         </section>
     )
 }

@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react"
-import { useSelector } from 'react-redux'
+import { useState } from "react"
 
 import icon from "../assets/img/svg/user.icon.svg"
 import location from "../assets/img/svg/location.icon.svg"
 
 import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
-import { UserReviews } from "./UserReviews.jsx"
-import { loadReviews } from "../store/review.actions.js"
-import { GigReviews } from "./GigReviews"
 
 export function UserInfo({ user }) {
   const [isModal, setModal] = useState(false)
@@ -16,19 +12,24 @@ export function UserInfo({ user }) {
   const [isEditingFullName, setIsEditingFullName] = useState(false)
   const [description, setDescription] = useState(user.description)
   const [fullName, setFullName] = useState(user.fullName)
-  const reviews = useSelector(storeState => storeState.reviewModule.reviews)
-  const filteredReviews = user ? reviews.filter(review => review.sellerId === user._id) : []
 
-  const months = ["January", "February", "March", "April",
-    "May", "June", "July", "August",
-    "September", "October", "November", "December"]
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
   const time = new Date(user.createdAt * 1000)
   let month = months[time.getMonth()]
   let year = time.getFullYear()
-
-  useEffect(() => {
-    loadReviews()
-  }, [])
 
   function loadModal() {
     setModal(true)
@@ -61,8 +62,6 @@ export function UserInfo({ user }) {
     setIsEditingFullName(false)
   }
 
-  if (!reviews) return <div>loading...</div>
-
   return (
     <section className="user-info">
       <div className="info-block flex column">
@@ -72,7 +71,7 @@ export function UserInfo({ user }) {
           {isEditingFullName ? (
             <input
               type="text"
-              style={{ padding: '0', border: 'none', textAlign: 'center' }}
+              style={{ padding: "0", border: "none", textAlign: "center" }}
               value={fullName}
               onChange={handleFullNameChange}
               onBlur={handleConfirmChange}
@@ -82,19 +81,26 @@ export function UserInfo({ user }) {
           )}
         </h2>
 
-        <div className="info-line flex" onClick={loadModal}>
-          <span>
-            <img src={location} /> Country
-          </span>
-          <span>Israel</span>
+        <span className="username">{user.username}</span>
+
+        <div className="location-and-time">
+          <div className="info-line flex" onClick={loadModal}>
+            <span>
+              <img src={location} /> From
+            </span>
+            <span>Israel</span>
+          </div>
+
+          <div className="info-line flex">
+            <span>
+              <img src={icon} /> Member Since
+            </span>
+            <span>
+              {month.slice(0, 3)} {year}
+            </span>
+          </div>
         </div>
 
-        <div className="info-line flex">
-          <span>
-            <img src={icon} /> Member Since
-          </span>
-          <span>{month} {year}</span>
-        </div>
       </div>
 
       <div className="info-block flex column">
@@ -112,10 +118,9 @@ export function UserInfo({ user }) {
           <p onClick={handleEditClick}>{description}</p>
         )}
       </div>
+
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
-      {/* <GigReviews reviews={filteredReviews} /> */}
-      <UserReviews user={user} reviews={filteredReviews} />
     </section>
   )
 }
