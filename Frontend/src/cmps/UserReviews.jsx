@@ -24,7 +24,7 @@ export function UserReviews({ reviews }) {
   }, [reviews])
 
   return (
-    <section>
+    <section className="user-reviews">
       <ul>
         {fullReviews.map((userReview) =>
           <li key={userReview._id}>

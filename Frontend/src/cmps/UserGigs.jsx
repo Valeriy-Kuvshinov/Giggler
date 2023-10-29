@@ -11,6 +11,7 @@ import { UserReviews } from './UserReviews.jsx'
 import { loadReviews } from '../store/review.actions'
 
 export function UserGigs({ user, gigs }) {
+    const loggedinUser = useSelector((storeState) => storeState.userModule.user)
     const is = 'userProfile'
     const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
     const filteredReviews = user
@@ -27,10 +28,13 @@ export function UserGigs({ user, gigs }) {
 
     const userGigs = gigs.filter(gig => gig.ownerId === user._id)
 
+    console.log(loggedinUser)
+    console.log(user)
+
     return (
         <section className="user-gigs flex column">
             {gigs.length !== 0 && <div className="title flex">
-                Your Gigs
+                {(user._id === loggedinUser._id) ? 'Your' : user.fullName } Gigs
             </div>}
 
             {(gigs.length === 0) && <div className="info-block gig seller">

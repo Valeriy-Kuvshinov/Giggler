@@ -1,67 +1,70 @@
-.user-review {
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    border-block-start: 1px solid $clrSecondary2;
-    padding: 40px 0;
-
-    .username {
-      font-weight: bold;
-    }
-
-    .pfp {
-      height: 48px;
-      width: 48px;
-      border-radius: 50%;
-      margin-inline-end: 16px;
-      object-fit: cover;
-      min-width: 48px;
-    }
-
-    .country {
+.user-reviews{
+  width: 100%;
+  .user-review {
       display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: $clrSecondary6;
-
-      img {
-        margin-inline-end: 0.5em;
-        height: 20px;
-        width: 20px;
+      flex-direction: row;
+      background-color: white;
+      border-block-start: 1px solid $clrSecondary2;
+      padding: 40px 0;
+  
+      .username {
+        font-weight: bold;
       }
-    }
-
-    .review-details {
-      display: flex;
-      align-items: center;
-      margin-block-start: 20px;
-
-      .stars {
-        margin: 0;
-
-        .rating {
-          font-weight: 500;
-        }
-
-        img {
-          margin-inline-end: 4px;
-          height: 14px;
-          width: 14px;
-        }
+  
+      .pfp {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        margin-inline-end: 16px;
+        object-fit: cover;
+        min-width: 48px;
       }
-
-      .divider {
-        margin: 0 8px;
-      }
-
-      .time-ago {
+  
+      .country {
+        display: flex;
+        align-items: center;
         font-size: 14px;
-        line-height: 21px;
         color: $clrSecondary6;
+  
+        img {
+          margin-inline-end: 0.5em;
+          height: 20px;
+          width: 20px;
+        }
       }
-    }
-
-    .comment {
-      line-height: 1.5em;
-    }
+  
+      .review-details {
+        display: flex;
+        align-items: center;
+        margin-block-start: 20px;
+  
+        .stars {
+          margin: 0;
+  
+          .rating {
+            font-weight: 500;
+          }
+  
+          img {
+            margin-inline-end: 4px;
+            height: 14px;
+            width: 14px;
+          }
+        }
+  
+        .divider {
+          margin: 0 8px;
+        }
+  
+        .time-ago {
+          font-size: 14px;
+          line-height: 21px;
+          color: $clrSecondary6;
+        }
+      }
+  
+      .comment {
+        line-height: 1.5em;
+      }
+  }
 }
