@@ -28,7 +28,14 @@ export function LoginSignup({ closeModal, mode }) {
 
         try {
             await action(creds)
-            showSuccessMsg(`Welcome ${creds.username}!`)
+            showSuccessMsg(
+                `Welcome ${creds.username}!`,
+                {
+                    userMsgLeft: "65%",
+                    messageAreaPadding: "2em 0.5em 2em 5em",
+                    msgStatusTranslateX: "-10.5em"
+                }
+            )
             closeModal()
         }
         catch {
