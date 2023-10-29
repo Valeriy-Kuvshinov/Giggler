@@ -12,7 +12,6 @@ export function UserProfile() {
   const watchedUser= useSelector((storeState) => storeState.userModule.watchedUser)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const params=useParams()
-  console.log(user,' ',watchedUser)
 
   useEffect(() => {
     loadGigs2()
