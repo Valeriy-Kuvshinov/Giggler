@@ -34,6 +34,9 @@ export function UserInfo({ user }) {
   let year = time.getFullYear()
 
   function loadModal() {
+    if (loggedinUser._id !== user._id) {
+      return 
+    }
     setModal(true)
   }
 
@@ -107,7 +110,7 @@ export function UserInfo({ user }) {
 
       <div className="info-block flex column">
         <h3>Description</h3>
-        {isEditing ? (
+        {(isEditing && loggedinUser._id === user._id) ? (
           <div>
             <textarea
               className="description-area"

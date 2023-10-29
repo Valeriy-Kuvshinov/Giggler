@@ -27,10 +27,7 @@ export function UserGigs({ user, gigs }) {
     // gigs=[]
 
     const userGigs = gigs.filter(gig => gig.ownerId === user._id)
-
-    console.log(loggedinUser)
-    console.log(user)
-
+    
     return (
         <section className="user-gigs flex column">
             {gigs.length !== 0 && <div className="title flex">
@@ -46,7 +43,7 @@ export function UserGigs({ user, gigs }) {
             </div>
             }
             <div className="the-gigs">
-                {(gigs.length !== 0) && <div className="info-block flex gig">
+                {(gigs.length !== 0) && (user._id === loggedinUser._id )&& <div className="info-block flex gig">
                     <Link to="/gig/edit" className="gig-creation-btn">
                         <button>+</button>
                         <span>Create a new Gig</span>
