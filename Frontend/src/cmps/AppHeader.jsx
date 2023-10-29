@@ -2,8 +2,6 @@ import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext'
-import { showErrorMsg } from '../services/event-bus.service.js'
-import { logout } from '../store/user.actions.js'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
@@ -68,15 +66,6 @@ export function AppHeader() {
     }
   }, [isHomePage])
 
-  async function onLogout() {
-    try {
-      navigate('/')
-      await logout()
-    } catch (err) {
-      showErrorMsg('Cannot logout')
-    }
-  }
-
   function handleSearchChange(e) {
     const newSearchQuery = e.target.value
     setSearchQuery(newSearchQuery)
@@ -126,10 +115,6 @@ export function AppHeader() {
                 <li className="user-info flex" onClick={() => setShowDropdown(!showDropdown)} ref={userInfoRef}>
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
                   {showDropdown && <UserDropdown user={user} onClose={() => setShowDropdown(false)} />}
-                </li>
-
-                <li>
-                  <button className="logout" onClick={onLogout} style={{ color: headerStyles.color }}>Logout</button>
                 </li>
               </>
             ) : (
