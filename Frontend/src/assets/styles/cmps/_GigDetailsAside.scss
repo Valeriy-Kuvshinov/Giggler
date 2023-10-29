@@ -16,6 +16,7 @@
 
     .heart {
       user-select: none;
+      cursor: pointer;
       i {
         display: flex;
       }
@@ -81,51 +82,88 @@
     }
   }
 
-  .gig-order {
+  .package-tabs {
+    display: flex;
+    font-family: macan-regular;
+    font-size: 1rem;
+    border: 1px solid $clrSecondary2;
+    margin-block-end: 1rem;
+
+    .btn-package {
+      flex: 1 1;
+      background-color: $clrSecondary0;
+      width: 100%;
+      border: solid $clrSecondary2;
+      border-width: 0 1px 1px 0;
+      color: $clrSecondary5;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: macan-bold;
+      padding: 16px;
+      text-align: center;
+      &.checked {
+        border-bottom: 3px solid #222325;
+        color: $clrPrimary2;
+      }
+    }
+    &:last-child {
+      border-inline-start: none;
+    }
+  }
+
+  .package-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: fit-content;
     border: 1px solid $clrSecondary2;
-    padding: 24px;
+    padding: 0 1.5rem;
 
-    .title {
+    .type-price {
       display: flex;
       justify-content: space-between;
-      margin-block-end: 10px;
+      align-items: center;
+      margin: 2rem 0 1.5rem 0;
+      .type {
+        font-family: macan-bold;
+      }
+      .price {
+        font-size: 1.25rem;
+      }
     }
 
     p {
       color: $clrSecondary6;
     }
 
-    img {
-      width: 13px;
-    }
-
-    .shipping-info {
+    .additional-info {
       display: flex;
-      justify-content: space-between;
       color: $clrSecondary6;
-      font-weight: bold;
-      margin-block-end: 10px;
+      margin-block-end: 0.5rem;
+      font-size: rem(14px);
 
-      .inside-shipping {
+      .delivery-wrapper {
         display: flex;
-
-        span {
-          margin-inline-start: 8px;
+        .delivery {
+          margin-inline-start: 0.5rem;
+        }
+      }
+      .revisions-wrapper {
+        margin-inline-start: 1rem;
+        .revisions {
+          margin-inline-start: 0.5rem;
         }
       }
     }
 
-    ul {
+    .features {
       list-style: none;
       padding: 0;
       color: $clrSecondary6;
-      margin-block-end: 10px;
+      font-size: rem(14px);
+      margin-block-end: rem(20px);
 
-      img {
+      i {
         margin-inline-end: 16px;
       }
     }
@@ -142,6 +180,7 @@
       border: 1px solid $clrPrimary3;
       border-radius: 0.25rem;
       cursor: pointer;
+      margin-block-end: 1.25rem;
 
       span {
         font-family: macan-bold;
@@ -161,6 +200,34 @@
 
       &:hover {
         background-color: $clrSecondary8;
+      }
+    }
+  }
+  .contact-seller-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $clrSecondary0;
+    padding: 1.5rem;
+    margin-block-end: 1rem;
+    .contact-seller {
+      color: $clrSecondary6;
+      width: 100%;
+      border: 1px solid $clrSecondary5;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1rem;
+      // font-weight: 600;
+      line-height: 100%;
+      padding: 0.75rem 1.5rem;
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+      &:hover {
+        background: $clrSecondary5;
+        color: $clrPrimary1;
       }
     }
   }
