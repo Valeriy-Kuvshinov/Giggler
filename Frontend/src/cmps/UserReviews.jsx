@@ -4,7 +4,6 @@ import { reviewService } from "../services/review.service"
 import { UserReview } from "./UserReview"
 
 export function UserReviews({ reviews }) {
-  // console.log(reviews)
   const [fullReviews, setFullReviews] = useState([])
 
   useEffect(() => {
