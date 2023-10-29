@@ -19,8 +19,9 @@ export function ImageCarousel({
   useEffect(() => {
     const totalCarouselWidth = imageWidth * numImages
     carouselRef.current.style.width = `${totalCarouselWidth}px`
-    carouselRef.current.style.transform = `translateX(-${imageWidth * currentIndex
-      }px`
+    carouselRef.current.style.transform = `translateX(-${
+      imageWidth * currentIndex
+    }px`
   }, [imageWidth, currentIndex, numImages])
 
   useEffect(() => {
@@ -72,10 +73,12 @@ export function ImageCarousel({
   return (
     <div
       className={`carousel-container`}
-      style={{ borderRadius: isFrom === 'gig-details' ? '0' : '0.5em' }}>
+      style={{ borderRadius: isFrom === 'gig-details' ? '0' : '0.5em' }}
+    >
       <button
-        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
-          } left`}
+        className={`arrow${
+          isFrom === 'gig-details' ? '-gig-details' : ''
+        } left`}
         onClick={(e) => prevImage(e)}
       >
         <SvgIcon iconName={'arrowDown'} />
@@ -94,7 +97,7 @@ export function ImageCarousel({
             className="carousel-item"
             style={{
               width: `${imageWidth}px`,
-              borderRadius: isFrom === 'gig-details' ? '0' : '0.5em'
+              borderRadius: isFrom === 'gig-details' ? '0' : '0.5em',
             }}
           >
             {isFrom !== 'gig-details' ? (
@@ -119,8 +122,9 @@ export function ImageCarousel({
       </div>
 
       <button
-        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
-          } right`}
+        className={`arrow${
+          isFrom === 'gig-details' ? '-gig-details' : ''
+        } right`}
         onClick={(e) => nextImage(e)}
       >
         <SvgIcon iconName={'arrowDown'} />
