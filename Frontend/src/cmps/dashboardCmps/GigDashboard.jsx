@@ -50,10 +50,10 @@ export function GigDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-gigs-container grid'>
+        <section className="dashboard-gigs-container grid">
             <GigDashboardInfo />
 
-            <main className='grid gigs-charts'>
+            <main className="grid gigs-charts">
                 <div className="chart-section">
                     <Typography variant="h6">New Gigs Over Time</Typography>
                     <Line
