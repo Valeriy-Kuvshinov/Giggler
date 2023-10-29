@@ -69,7 +69,7 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
     }
 
     return (
-        <div className='review-addition'>
+        <div className="review-addition">
             <div className="stars-input flex row">
                 {renderStarsInput()}
             </div>
@@ -80,7 +80,7 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
                 onChange={e => setReviewText(e.target.value)}
                 className='text'
             />
-            <button className='btn-contact'>Submit</button> 
+            <button className="btn-contact">Submit</button> 
             {/* // onClick={submitReview} */}
         </div>
     )

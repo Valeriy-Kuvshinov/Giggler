@@ -13,19 +13,19 @@ export function UserGigs({ user, gigs }) {
 
     return (
         <section className="user-gigs flex column">
-            <div className='info-block title flex'>
+            <div className="info-block title flex">
                 Active Gigs
             </div>
 
-            {(gigs.length === 0) && <div className='info-block gig seller'>
+            {(gigs.length === 0) && <div className="info-block gig seller">
                 <Link to="/gig/edit" className="gig-creation-btn">
                     <img src={seller} />
                     <span>Become A Seller</span>
                 </Link>
             </div>
             }
-            <div className='the-gigs'>
-                {(gigs.length !== 0) && <div className='info-block flex gig'>
+            <div className="the-gigs">
+                {(gigs.length !== 0) && <div className="info-block flex gig">
                     <Link to="/gig/edit" className="gig-creation-btn">
                         <button>+</button>
                         <span>Create a new Gig</span>
@@ -33,7 +33,7 @@ export function UserGigs({ user, gigs }) {
                 </div>}
 
                 {(gigs.length !== 0) && (userGigs.map(gig => (
-                    <div className='info-block flex' key={gig._id}>
+                    <div className="info-block flex" key={gig._id}>
                         <GigPreview is={is} gig={gig} />
                     </div>
                 )))}

@@ -47,12 +47,12 @@ export function ServicesCarousel({onHandleFilter}) {
     const displayItems = getCurrentDisplayItems()
 
     return (
-        <section className='home-services-section'>
+        <section className="home-services-section">
             <h2>Popular services</h2>
             <button className="carousel-btn left-side" onClick={() => scrollServicesCarousel('left')}>
                 <img src={leftArrowSvg} alt="Left Arrow" />
             </button>
-            <div className='services flex row'>
+            <div className="services flex row">
                 {displayItems.map((service, index) => (
                     <div onClick={(e) => onHandleFilter(e, popularService[visibleStartIndex + index])} className="service" key={index}>
                         <img src={service} alt={`Service image ${index}`} />
