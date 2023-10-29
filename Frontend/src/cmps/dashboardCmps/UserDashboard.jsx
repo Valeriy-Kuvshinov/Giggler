@@ -56,10 +56,10 @@ export function UserDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-users-container grid'>
+        <section className="dashboard-users-container grid">
             <UserDashboardInfo />
 
-            <main className='grid users-charts'>
+            <main className="grid users-charts">
                 <div className="chart-section">
                     <Typography variant="h6">New Users Over Time</Typography>
                     <Line

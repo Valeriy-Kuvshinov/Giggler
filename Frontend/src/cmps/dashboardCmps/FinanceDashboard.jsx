@@ -54,10 +54,10 @@ export function FinanceDashboard() {
     }, [])
 
     return (
-        <section className='dashboard-finances-container grid'>
+        <section className="dashboard-finances-container grid">
             <FinanceDashboardInfo />
 
-            <main className='grid finance-charts'>
+            <main className="grid finance-charts">
                 <div className="chart-section">
                     <Typography variant="h6">Weekly profits from orders</Typography>
                     <Line

@@ -34,9 +34,8 @@ export function UserPreview({ is, owner, children }) {
   return (
     <>
       <div
-        className={`user-preview ${
-          is === 'gig-details' ? 'gap12' : is === 'gig-details-2' ? 'gap16' : ''
-        }`}
+        className={`user-preview ${is === 'gig-details' ? 'gap12' : is === 'gig-details-2' ? 'gap16' : ''
+          }`}
       >
         <img
           className={`avatar-${is}`}
@@ -48,9 +47,8 @@ export function UserPreview({ is, owner, children }) {
             {(is === 'gig-details' || is === 'gig-details-2') && (
               <span className="fullname b">{user.fullName}</span>
             )}
-            <span className={`username ${is === 'explore' ? 'b' : ''}`}>{`${
-              is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
-            }${user.username}`}</span>
+            <span className={`username ${is === 'explore' ? 'b' : ''}`}>{`${is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
+              }${user.username}`}</span>
           </span>
           {is === 'gig-details-2' && (
             <span className="saying">{`Work Hard\, Work Fast and Cater Your needs as imagined`}</span>
@@ -63,9 +61,8 @@ export function UserPreview({ is, owner, children }) {
                 <span className="rate-count ">{`(${ratingCount})`}</span>
               </span>
               {is === 'gig-details' && (
-                <span className="active-orders">{`${completedOrders} Order${
-                  completedOrders !== 1 ? 's' : ''
-                } in Queue`}</span>
+                <span className="active-orders">{`${completedOrders} Order${completedOrders !== 1 ? 's' : ''
+                  } in Queue`}</span>
               )}
             </div>
           )}

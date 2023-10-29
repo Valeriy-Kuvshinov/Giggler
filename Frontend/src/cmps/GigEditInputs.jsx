@@ -1,6 +1,6 @@
 export function GigEditInputs({ fields, handleChange, handleCategoryChange, handleTagsChange, category, availableTags, deliveryTime }) {
     return (
-        <div className='form-inputs flex column'>
+        <div className="form-inputs flex column">
             <div className="input-group flex row">
                 <div className="info flex column">
                     <label htmlFor="title">Gig Title</label>
@@ -55,7 +55,7 @@ export function GigEditInputs({ fields, handleChange, handleCategoryChange, hand
                     <select
                         id="tags"
                         name="tags"
-                        className='multi-select'
+                        className="multi-select"
                         multiple
                         value={fields.tags}
                         onChange={handleTagsChange}

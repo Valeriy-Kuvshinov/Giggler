@@ -22,8 +22,6 @@ export function Testing(){
         console.log(selection.target.value)
     }
 
-    console.log(Object.values(subCategories[categories2.index]))
-
     const miniCat=(Object.values(subCategories[categories2.index]))
 
     return (<section>

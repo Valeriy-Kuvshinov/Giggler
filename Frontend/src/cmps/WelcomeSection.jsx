@@ -61,7 +61,7 @@ export function WelcomeSection({ onHandleFilter }) {
             }}>
             </div>
 
-            <section className='welcome-section'>
+            <section className="welcome-section">
                 <div className="welcome-text-search">
                     <h1>Find the right <span>freelance</span> service, right away</h1>
                     <SearchBar
@@ -71,7 +71,7 @@ export function WelcomeSection({ onHandleFilter }) {
                         onSearchSubmit={handleSearchSubmit}
                         controlDimming={false}
                     />
-                    <div className='quick-search flex row'>
+                    <div className="quick-search flex row">
                         <h4>Popular:</h4>
                         <a onClick={(e) => onHandleFilter(e, { cat: 'Graphics & Design', tag: 'Web & App Design', })} href="">Website Design</a>
                         <a onClick={(e) => onHandleFilter(e, { cat: 'Programming & Tech', tag: 'Website Development', })} href="">WordPress</a>
@@ -89,7 +89,7 @@ export function WelcomeSection({ onHandleFilter }) {
                             {personImages[currentImageIndex].title}
                             {personImages[currentImageIndex].star && (
                                 <>
-                                    <span className='flex'>
+                                    <span className="flex">
                                         5
                                         <img src={personImages[currentImageIndex].star} alt="Star Icon" className="star-icon" />
                                     </span>

@@ -5,12 +5,12 @@ export function AppFooter() {
 
     return (
         <footer className="app-footer flex row full">
-            <div className='footer-part flex row'>
+            <div className="footer-part flex row">
                 <h1 className="logo">Giggler</h1>
                 <h2>© Giggler International Ltd. 2023</h2>
             </div>
 
-            <div className='footer-part flex row'>
+            <div className="footer-part flex row">
                 <div className="social-icons flex row">
                     {socialMediaLinks.map((link, idx) => (
                         <div key={idx} className="icon-container">
