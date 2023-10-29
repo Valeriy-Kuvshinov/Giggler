@@ -27,11 +27,11 @@ export function UserGigs({ user, gigs }) {
     // gigs=[]
 
     const userGigs = gigs.filter(gig => gig.ownerId === user._id)
-    
+
     return (
         <section className="user-gigs flex column">
             {gigs.length !== 0 && <div className="title flex">
-                {(user._id === loggedinUser._id) ? 'Your' : user.fullName } Gigs
+                {(user._id === loggedinUser._id) ? 'Your Gigs' : `${user.username}'s Gigs` } 
             </div>}
 
             {(gigs.length === 0) && <div className="info-block gig seller">

@@ -13,8 +13,6 @@ export function UserProfile() {
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const params=useParams()
 
-  console.log(loggedinUser)
-
   useEffect(() => {
     loadGigs2()
     loadUser2()
