@@ -26,10 +26,12 @@ export function GigReviews({ reviews, gig }) {
         setFullReviews(prevReviews => [...prevReviews, newReview])
     }
 
+    // console.log(fullReviews)
+
     return (
         <section className="gig-reviews">
             <span className="title">Reviews</span>
-            {loggedInUser && loggedInUser._id !== gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
+            {gig && loggedInUser && loggedInUser._id !== gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
 
             {fullReviews.length !== 0 && (
                 <ul className="reviews">

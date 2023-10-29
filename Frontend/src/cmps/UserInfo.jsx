@@ -8,6 +8,7 @@ import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
 import { UserReviews } from "./UserReviews.jsx"
 import { loadReviews } from "../store/review.actions.js"
+import { GigReviews } from "./GigReviews"
 
 export function UserInfo({ user }) {
   const [isModal, setModal] = useState(false)
@@ -113,6 +114,7 @@ export function UserInfo({ user }) {
       </div>
       {isModal && <UserEditModal user={user} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
+      {/* <GigReviews reviews={filteredReviews} /> */}
       <UserReviews user={user} reviews={filteredReviews} />
     </section>
   )
