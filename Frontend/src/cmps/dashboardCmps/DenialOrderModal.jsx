@@ -5,8 +5,7 @@ export function DenialOrderModal({ order, denyOrder }) {
     try{
         const reason = document.getElementById("denialReason").value
         const newOrder = { ...order }
-        // console.log("new order : ", newOrder)
-        // console.log("reason added")
+        console.log("reason added")
         denyOrder(newOrder,reason)
     } catch (err) {
         console.log('couldnt deny order : ',err)

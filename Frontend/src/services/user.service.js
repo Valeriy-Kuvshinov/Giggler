@@ -39,7 +39,6 @@ async function update(userId) {
 }
 
 function updateUser(user) {
-  console.log(user)
   if (user._id) {
       console.log('changed user')
       setLoggedinUser(user)
