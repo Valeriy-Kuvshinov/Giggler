@@ -97,7 +97,7 @@ export function AppHeader() {
     <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''} ${showModal ? 'show-modal' : ''}`} style={headerStyles}>
       <nav className="main-nav">
         <div className="container flex row">
-          <div className='logo-dropdown-area flex row'>
+          <div className="logo-dropdown-area flex row">
             <SvgIcon iconName={headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'} />
 
             <Link to="/" style={{ color: headerStyles.color }}>

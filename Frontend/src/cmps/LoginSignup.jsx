@@ -54,19 +54,19 @@ export function LoginSignup({ closeModal, mode }) {
 
     return (
         <main className="user-login-wrapper" ref={wrapperRef}>
-            <section className='login-notes flex column' style={{ backgroundImage: `url("${loginSignupImg}")` }}>
-                <div className='text'>
+            <section className="login-notes flex column" style={{ backgroundImage: `url("${loginSignupImg}")` }}>
+                <div className="text">
                     <h2>Success starts here</h2>
                     <ul>
-                        <li className='flex row'>
+                        <li className="flex row">
                             <img src={checkmarkImg} />
                             <h3>Over 600 categories</h3>
                         </li>
-                        <li className='flex row'>
+                        <li className="flex row">
                             <img src={checkmarkImg} />
                             <h3>Pay per project, not per hour</h3>
                         </li>
-                        <li className='flex row'>
+                        <li className="flex row">
                             <img src={checkmarkImg} />
                             <h3>Access to talent and businesses across the globe</h3>
                         </li>
@@ -74,14 +74,14 @@ export function LoginSignup({ closeModal, mode }) {
                 </div>
             </section>
 
-            <section className='user-interaction flex column'>
+            <section className="user-interaction flex column">
                 <div>
                     <h2>{isSignup ? "Create a new account" : "Sign in to your account"}</h2>
                     <h3>{isSignup ? "Already have an account?" : "Don’t have an account?"} <span onClick={() => setIsSignup(!isSignup)}>{isSignup ? "Sign in" : "Join here"}</span></h3>
                 </div>
-                <form className='flex column' onSubmit={(e) => handleAuth(e, isSignup)}>
+                <form className="flex column" onSubmit={(e) => handleAuth(e, isSignup)}>
                     <div className={isSignup ? "signup-section" : "login-section flex column"}>
-                        <div className='flex column'>
+                        <div className="flex column">
                             <label htmlFor={`${isSignup ? "signup" : "login"}-username`}>Username</label>
                             <input
                                 id={`${isSignup ? "signup" : "login"}-username`}
@@ -94,7 +94,7 @@ export function LoginSignup({ closeModal, mode }) {
                                 autoFocus
                             />
                         </div>
-                        <div className='flex column'>
+                        <div className="flex column">
                             <label htmlFor={`${isSignup ? "signup" : "login"}-password`}>Password</label>
                             <input
                                 id={`${isSignup ? "signup" : "login"}-password`}
@@ -108,7 +108,7 @@ export function LoginSignup({ closeModal, mode }) {
                         </div>
                         {isSignup && (
                             <>
-                                <div className='flex column'>
+                                <div className="flex column">
                                     <label htmlFor="signup-fullName">Full Name</label>
                                     <input
                                         id="signup-fullName"
