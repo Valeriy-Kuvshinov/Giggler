@@ -7,6 +7,7 @@ import { AboutSeller } from '../cmps/AboutSeller.jsx'
 import { GigDetailsAside } from '../cmps/GigDetailsAside.jsx'
 import { GigReviews } from '../cmps/GigReviews.jsx'
 import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
+import { Loader } from '../cmps/Loader.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { loadReviews } from '../store/review.actions.js'
@@ -51,8 +52,7 @@ export function GigDetails() {
       console.error('Error loading data:', err)
     }
   }
-
-  if (!gig || !user) return <h1 className='layout-row'>LOADING...</h1>
+  if (!gig || !user) return <Loader />
 
   return (
     <section className="gig-details layout-row">

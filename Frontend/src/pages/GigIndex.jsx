@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
+
 import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
+import { Loader } from '../cmps/Loader.jsx'
+
 import { loadGigs, setFilter } from '../store/gig.actions.js'
-import { useSearchParams } from 'react-router-dom'
 import { gigService } from '../services/gig.service.js'
 
 export function GigIndex() {
@@ -12,7 +15,7 @@ export function GigIndex() {
   const [searchParams, setSearchparams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
-  
+
   const currentPage = filterBy.page || 1
   const totalGigsPerPage = 12
   const totalPages = Math.ceil(gigs.length / totalGigsPerPage)
@@ -137,6 +140,8 @@ export function GigIndex() {
   }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
+
+  if (!gigs.length) return <Loader />
 
   return (
     <main className="gig-index flex column full">
