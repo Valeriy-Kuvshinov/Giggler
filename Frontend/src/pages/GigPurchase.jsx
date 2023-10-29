@@ -44,7 +44,7 @@ export function GigPurchase() {
         },
         {
           userMsgLeft: "55%",
-          messageAreaPadding: "1.5em 0.5em 1.5em 7em",
+          messageAreaPadding: "2em 1.5em 2em 7em",
           msgStatusTranslateX: "-12em"
         })
     } catch (err) {

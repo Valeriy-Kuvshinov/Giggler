@@ -57,7 +57,7 @@ export function UserMsg() {
         setIsActive(false)
         setIsSlidingOut(true)
         setTimeout(onCloseMsg, 500)
-      }, 600000)
+      }, 8000)
     })
 
     return () => {
