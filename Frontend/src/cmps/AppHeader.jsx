@@ -59,12 +59,14 @@ export function AppHeader() {
       return () => window.removeEventListener('scroll', handleScroll)
     }
     else setHeaderStage(2)
+  }, [isHomePage])
 
+  useEffect(() => {
     window.addEventListener('click', closeDropdown)
     return () => {
       window.removeEventListener('click', closeDropdown)
     }
-  }, [isHomePage])
+  }, [])
 
   function handleSearchChange(e) {
     const newSearchQuery = e.target.value
@@ -101,7 +103,7 @@ export function AppHeader() {
             onSearchSubmit={handleSearchSubmit}
             visibility={headerStage >= 1 ? 'visible' : 'hidden'}
           />
-          
+
           <ul className="nav-links flex">
             <li>
               <Link to="/explore" style={{ color: headerStyles.color }}>Explore</Link>
@@ -112,7 +114,11 @@ export function AppHeader() {
             </li>
             {user ? (
               <>
-                <li className="user-info flex" onClick={() => setShowDropdown(!showDropdown)} ref={userInfoRef}>
+                <li className="user-info flex" onClick={(e) => {
+                  e.stopPropagation()
+                  setShowDropdown(!showDropdown)
+                }} ref={userInfoRef}>
+
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
                   {showDropdown && <UserDropdown user={user} onClose={() => setShowDropdown(false)} />}
                 </li>
@@ -138,6 +144,6 @@ export function AppHeader() {
         setCatFilter={setCatFilter}
         style={navBarStyles}
       />
-    </header>
+    </header >
   )
 }

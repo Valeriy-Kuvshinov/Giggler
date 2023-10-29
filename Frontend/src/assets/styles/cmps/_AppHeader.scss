@@ -107,6 +107,7 @@
           border: 1px solid $clrSecondary2;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           z-index: 10;
+          width: max-content;
 
           &::before {
             content: '';
@@ -137,17 +138,22 @@
           a {
             display: block;
             padding: 10px 15px;
-            color: $clrPrimary4;
+            color: $clrSecondary5;
+            font-weight: 400;
           }
 
           button {
             display: block;
             padding: 10px 15px;
-            color: $clrPrimary4;
+            color: $clrSecondary5;
             background: none;
             font-family: "macan-regular";
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 400;
+            width: 90%;
+            border-top: 1.5px solid $clrSecondary2;
+            text-align: left;
+            margin: auto;
           }
         }
 

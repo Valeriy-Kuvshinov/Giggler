@@ -2,26 +2,32 @@ import { galleryService } from '../services/gallery.service.js'
 import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
+
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
 import infoImg from '../assets/img/fiverr-show.webp'
+
 import { setFilter } from '../store/gig.actions.js'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
+
+import { useModal } from '../customHooks/ModalContext.jsx'
 
 export function HomePage() {
-    const {companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
+    const { companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const navigate = useNavigate()
 
-    function onHandleFilter(e, updateToFilter ) {
-        e.preventDefault()    
+    const { showModal, openSignup } = useModal()
+
+    function onHandleFilter(e, updateToFilter) {
+        e.preventDefault()
         setFilter({ ...filterBy, ...updateToFilter })
         navigate(`/explore`)
     }
     return (
         <section className='home-wrapper full'>
             <WelcomeSection onHandleFilter={onHandleFilter} />
-            
+
             <section className='home-companies-section'>
                 <div className='companies flex row'>
                     <h4>Trusted by: </h4>
@@ -31,7 +37,7 @@ export function HomePage() {
                 </div>
             </section>
 
-            <ServicesCarousel onHandleFilter={onHandleFilter}/>
+            <ServicesCarousel onHandleFilter={onHandleFilter} />
 
             <div className='home-info-wrapper'>
                 <section className='info-section flex row'>
@@ -56,7 +62,7 @@ export function HomePage() {
                 <h2>You need it, we've got it</h2>
                 <div className='categories grid'>
                     {categoryIcons.map((category, index) => (
-                        <div onClick={(e) => onHandleFilter(e, {cat: categoryTexts[index]} )} key={index}>
+                        <div onClick={(e) => onHandleFilter(e, { cat: categoryTexts[index] })} key={index}>
                             <img src={category} alt={`Category icon ${index}`} />
                             <p>{categoryTexts[index]}</p>
                         </div>
@@ -64,10 +70,10 @@ export function HomePage() {
                 </div>
             </section>
 
-            <div className='join-wrapper'>
+            <div className={`join-wrapper ${showModal ? 'show-modal' : ''}`}>
                 <section className='join-section'>
                     <h2>Suddenly it's all so <span>doable</span>.</h2>
-                    <button>Join Giggler</button>
+                    <button onClick={openSignup}>Join Giggler</button>
                 </section>
             </div>
         </section>
