@@ -2,7 +2,6 @@ import { authService } from './auth.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
 export async function login(req, res) {
-    console.log('Login request received with data:', req.body)
     const { username, password } = req.body
     try {
         const user = await authService.login(username, password)
@@ -21,7 +20,6 @@ export async function login(req, res) {
 
 export async function signup(req, res) {
     try {
-        console.log('Signup request received with data:', req.body)
         const { username, password, fullName, description, balance, level, rating, imgUrl, country, isAdmin } = req.body
 
         const account = await authService.signup(username, password, fullName, description, balance, level, rating, imgUrl, country, isAdmin)
