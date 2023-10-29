@@ -8,9 +8,12 @@ import { useParams } from "react-router"
 import { loadUser } from "../store/user.actions.js"
 
 export function UserProfile() {
-  const watchedUser= useSelector((storeState) => storeState.userModule.watchedUser)
+  const watchedUser = useSelector((storeState) => storeState.userModule.watchedUser)
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const params=useParams()
+
+  console.log(loggedinUser)
 
   useEffect(() => {
     loadGigs2()
@@ -38,7 +41,7 @@ export function UserProfile() {
   if (watchedUser === null || gigs === null) return <div>loading...</div>
 
   return (
-    <section className="profile-page full">
+    <section className={`profile-page full ${(loggedinUser._id!==watchedUser._id ? 'visitor' : '')}`}>
       <div className="user-profile flex layout-row">
         <UserInfo user={watchedUser} />
         <UserGigs gigs={gigs} user={watchedUser} />

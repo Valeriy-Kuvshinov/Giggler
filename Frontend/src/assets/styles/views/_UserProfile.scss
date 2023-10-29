@@ -1,8 +1,10 @@
 .profile-page {
-    background-color: $clrPrimary1;
+    background-color: $clrSecondary12;
     padding: 3.125em 0 2.5em;
-
+    
     .user-profile {
+        display: flex;
+        flex-direction: row;
         justify-content: space-between;
         max-width: 1240px;
 
@@ -13,7 +15,8 @@
             .info-block {
                 align-items: center;
                 justify-content: space-between;
-                width: 400px;
+                width:100%;
+                min-width: 400px;
                 height: 360px;
                 padding: 30px;
                 background-color: $clrPrimary1;
@@ -81,6 +84,15 @@
                 }
                 
             }
+            @media (max-width: 900px){
+                width: 100%;
+            }
         }
+        @media (max-width: 900px){
+            flex-direction: column;
+        }
+    }
+    &.visitor{
+        background-color: $clrPrimary1;
     }
 }

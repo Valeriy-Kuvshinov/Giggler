@@ -14,7 +14,7 @@
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 3,
-        "text": "Excellent photos mr Potter, however they arrived late",
+        "text": "Excellent photos mrs Jane, however they arrived late",
         "createdAt": 1697457303713
     },
     {
@@ -445,7 +445,7 @@
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 4,
-        "text": "He answered immediately, it did arrive a bit late",
+        "text": "She answered immediately, it did arrive a bit late",
         "createdAt": 1698311592503
     }
 ]
