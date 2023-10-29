@@ -144,12 +144,15 @@
 
       .delivery-wrapper {
         display: flex;
+        align-items: center;
         .delivery {
           margin-inline-start: 0.5rem;
         }
       }
       .revisions-wrapper {
         margin-inline-start: 1rem;
+        display: flex;
+        align-items: center;
         .revisions {
           margin-inline-start: 0.5rem;
         }
@@ -162,9 +165,13 @@
       color: $clrSecondary6;
       font-size: rem(14px);
       margin-block-end: rem(20px);
-
-      i {
-        margin-inline-end: 16px;
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        i {
+          margin-inline-end: 16px;
+        }
       }
     }
 
