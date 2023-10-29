@@ -1,6 +1,8 @@
 import { eventBusService } from "../services/event-bus.service.js"
 import { useState, useEffect } from 'react'
 
+import SvgIcon from "./SvgIcon.jsx"
+
 // export function UserMsg() {
 //   const [msg, setMsg] = useState(null)
 //   const timeoutIdRef = useRef()
@@ -50,8 +52,8 @@ export function UserMsg() {
       setIsActive(true)
       setTimeout(() => {
         setIsActive(false)
-        setTimeout(onCloseMsg, 40000)
-      }, 50000)
+        setTimeout(onCloseMsg, 4000)
+      }, 5000)
     })
     return () => {
       unsubscribe()
@@ -64,11 +66,17 @@ export function UserMsg() {
 
   if (!msg) return null
 
+  const svgIconName = msg.type === 'success' ? 'success' : 'error'
+
   return (
-    <section className={`user-msg ${isActive ? 'active' : ''}`}>
+    <section className={`user-msg ${isActive ? 'active' : ''} ${msg.type}`}>
       <div className={`message-area flex row  ${msg.type}`}>
-      <p dangerouslySetInnerHTML={{ __html: msg.txt.split('\n').join('<br>') }}></p>
+        <div className={`msg-status flex row  ${msg.type}`}>
+          <SvgIcon iconName={svgIconName} />
+          <p>{`${svgIconName}!`}</p>
+        </div>
+        <p dangerouslySetInnerHTML={{ __html: msg.txt.split('\n').join('<br>') }}></p>
       </div>
-    </section >
+    </section>
   )
 }
