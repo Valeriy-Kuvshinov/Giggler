@@ -29,17 +29,28 @@ export function LoginSignup({ closeModal, mode }) {
         try {
             await action(creds)
             showSuccessMsg(
-                `Welcome ${creds.username}!`,
+                {
+                    title: 'USER LOGGED IN',
+                    body: `Welcome ${creds.username}!`
+                },
                 {
                     userMsgLeft: "65%",
-                    messageAreaPadding: "2em 0.5em 2em 5em",
-                    msgStatusTranslateX: "-10.5em"
-                }
-            )
+                    messageAreaPadding: "2em 1.5em 2em 7em",
+                    msgStatusTranslateX: "-10em"
+                })
             closeModal()
         }
-        catch {
-            showErrorMsg(`Cannot ${isSignUp ? 'signup' : 'login'}`)
+        catch (err) {
+            showErrorMsg(
+                {
+                    title: 'LOGIN FAILED',
+                    body: `Invalid username / password`
+                },
+                {
+                    userMsgLeft: "55%",
+                    messageAreaPadding: "2em 1.5em 2em 7em",
+                    msgStatusTranslateX: "-11.5em"
+                })
         }
 
         clearState()

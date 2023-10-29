@@ -54,10 +54,10 @@ export function showUserMsg(msg, styles = {}) {
     eventBusService.emit('show-user-msg', { ...msg, styles })
 }
 
-export function showSuccessMsg(txt, styles = {}) {
-    showUserMsg({ txt, type: 'success' }, styles)
+export function showSuccessMsg(msg, styles = {}) {
+    showUserMsg({ ...msg, type: 'success' }, styles)
 }
 
-export function showErrorMsg(txt, styles = {}) {
-    showUserMsg({ txt, type: 'error' }, styles)
+export function showErrorMsg(msg, styles = {}) {
+    showUserMsg({ ...msg, type: 'error' }, styles)
 }

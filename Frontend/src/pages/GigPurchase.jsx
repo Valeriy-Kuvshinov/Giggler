@@ -29,28 +29,36 @@ export function GigPurchase() {
     }
   }
 
-  function createOrder() {
-    const orderToSave = orderBackendService.
-      createOrder(user._id, user.fullName, gig.ownerId
-        , gig.title, gig.deliveryTime, gig._id, gig.price)
-    saveOrder(orderToSave)
-      .then(savedOrder => {
-        showSuccessMsg(
-          `Your order has been sent.\n Thank you for using Giggler!`,
-          {
-            userMsgLeft: "55%",
-            messageAreaPadding: "1em 0.5em 1em 5em",
-            msgStatusTranslateX: "-13em"
-          })
-      })
-      .catch(err => {
-        console.log('Cannot add Order', err)
-        showErrorMsg('Cannot add Order', {
-          userMsgLeft: "50%",
-          messageAreaPadding: "1em 0.5em 1em 5em",
+  async function createOrder() {
+    const orderToSave = orderBackendService.createOrder(
+      user._id, user.fullName, gig.ownerId,
+      gig.title, gig.deliveryTime, gig._id, gig.price
+    )
+
+    try {
+      const savedOrder = await saveOrder(orderToSave)
+      showSuccessMsg(
+        {
+          title: 'ORDER ADDED',
+          body: `Thank you for using Giggler!`
+        },
+        {
+          userMsgLeft: "55%",
+          messageAreaPadding: "1.5em 0.5em 1.5em 7em",
+          msgStatusTranslateX: "-12em"
+        })
+    } catch (err) {
+      showErrorMsg(
+        {
+          title: 'FAILED TO ORDER',
+          body: `Please try again later.`
+        },
+        {
+          userMsgLeft: "55%",
+          messageAreaPadding: "1em 0.5em 1em 6em",
           msgStatusTranslateX: "-13em"
         })
-      })
+    }
   }
 
   if (gig === undefined || gigs === undefined) return <div>loading...</div>

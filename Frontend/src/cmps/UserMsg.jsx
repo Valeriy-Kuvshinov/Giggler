@@ -49,15 +49,15 @@ export function UserMsg() {
 
   useEffect(() => {
     const unsubscribe = eventBusService.on('show-user-msg', data => {
-      const { txt, type, styles } = data
-      setMsg({ txt, type, styles })
+      const { title, body, type, styles } = data
+      setMsg({ title, body, type, styles })
 
       setIsActive(true)
       setTimeout(() => {
         setIsActive(false)
         setIsSlidingOut(true)
         setTimeout(onCloseMsg, 500)
-      }, 6000)
+      }, 600000)
     })
 
     return () => {
@@ -72,18 +72,19 @@ export function UserMsg() {
 
   if (!msg) return null
 
-  const { txt, type, styles } = msg
+  const { title, body, type, styles } = msg
   const svgIconName = type === 'success' ? 'success' : 'error'
 
   return (
     <section className={`user-msg ${isActive ? 'slide-in' : ''} ${isSlidingOut ? 'slide-out' : ''} ${type}`}
       style={{ left: styles?.userMsgLeft }}>
-      <div className={`message-area flex row ${type}`} style={{ padding: styles?.messageAreaPadding }}>
+      <div className={`message-area flex column ${type}`} style={{ padding: styles?.messageAreaPadding }}>
         <div className={`msg-status flex row ${type}`} style={{ transform: `translateX(${styles?.msgStatusTranslateX})` }}>
           <SvgIcon iconName={svgIconName} />
           <p>{`${svgIconName}!`}</p>
         </div>
-        <p dangerouslySetInnerHTML={{ __html: txt.split('\n').join('<br>') }}></p>
+        <h3 className={type}>{title}</h3>
+        <p>{body}</p>
       </div>
     </section>
   )
