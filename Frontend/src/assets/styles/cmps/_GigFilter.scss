@@ -4,7 +4,7 @@
   .search-param {
     h1 {
       font-size: rem(28px);
-      font-family: macan-light;
+      font-family: 'macan-light';
       font-weight: 400;
       line-height: 36px;
       color: $clrPrimary1;
@@ -74,8 +74,9 @@
       padding: 0.25em 1em;
       transition: border-color 0.35s ease;
       cursor: pointer;
-      display: inline-block;
-      font-family: macan-bold;
+      font-family: 'macan-bold';
+      width: fit-content;
+      align-items: center;
 
       .remove-icon {
         svg {

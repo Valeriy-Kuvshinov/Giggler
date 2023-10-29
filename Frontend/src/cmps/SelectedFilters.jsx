@@ -3,7 +3,7 @@ import SvgIcon from './SvgIcon'
 export function SelectedFilters({ filterBy , onDeleteFilter}) {
   return (
     <section className="selected-filters-wrapper layout-row">
-      <div className="selected-filters">
+      <div className="selected-filters flex row">
         {Object.keys(filterBy).map((key) => {
           let text
           switch (key) {
@@ -24,7 +24,7 @@ export function SelectedFilters({ filterBy , onDeleteFilter}) {
             <span
               key={key}
               onClick={() => onDeleteFilter(key)}
-              className="select-filter"
+              className="select-filter flex row"
             >
               {text}
               <span className="remove-icon">
