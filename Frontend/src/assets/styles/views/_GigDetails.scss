@@ -1,30 +1,30 @@
 .gig-details {
-  color: $clrPrimary2;
-  max-width: 1304px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   width: 100%;
+  max-width: 1304px;
+  color: $clrPrimary2;
 
   .gig-details-main {
-    background-color: $clrPrimary1;
     grid-column: 1/2;
     max-width: 712px;
+    background-color: $clrPrimary1;
 
     .explore-category {
-      color: $clrPrimary2;
-      margin-block-end: 30px;
-      padding-top: 12px;
-      font-size: 14px;
       align-items: center;
+      font-size: 14px;
+      padding-top: 12px;
+      margin-block-end: 30px;
+      color: $clrPrimary2;
 
       Link {
         padding: rem(9px);
       }
 
       .divider {
-        color: $clrSecondary45;
         margin-inline-start: 5px;
         margin-inline-end: 5px;
+        color: $clrSecondary45;
       }
     }
   }

@@ -397,8 +397,9 @@
         }
     }
 
-    .gig-aside {
+    .gig-details-aside {
         @media (max-width: 900px) {
+            position: static;
             width: 100%;
         }
     }
