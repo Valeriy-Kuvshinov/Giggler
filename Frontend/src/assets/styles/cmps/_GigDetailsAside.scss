@@ -17,6 +17,7 @@
     .heart {
       user-select: none;
       cursor: pointer;
+
       i {
         display: flex;
       }
@@ -101,11 +102,13 @@
       font-family: macan-bold;
       padding: 16px;
       text-align: center;
+
       &.checked {
         border-bottom: 3px solid #222325;
         color: $clrPrimary2;
       }
     }
+
     &:last-child {
       border-inline-start: none;
     }
@@ -124,9 +127,11 @@
       justify-content: space-between;
       align-items: center;
       margin: 2rem 0 1.5rem 0;
+
       .type {
         font-family: macan-bold;
       }
+
       .price {
         font-size: 1.25rem;
       }
@@ -145,14 +150,17 @@
       .delivery-wrapper {
         display: flex;
         align-items: center;
+
         .delivery {
           margin-inline-start: 0.5rem;
         }
       }
+
       .revisions-wrapper {
         margin-inline-start: 1rem;
         display: flex;
         align-items: center;
+
         .revisions {
           margin-inline-start: 0.5rem;
         }
@@ -165,10 +173,12 @@
       color: $clrSecondary6;
       font-size: rem(14px);
       margin-block-end: rem(20px);
+
       li {
         display: flex;
         flex-direction: row;
         align-items: center;
+
         i {
           margin-inline-end: 16px;
         }
@@ -210,6 +220,7 @@
       }
     }
   }
+
   .contact-seller-wrapper {
     display: flex;
     align-items: center;
@@ -217,6 +228,7 @@
     background-color: $clrSecondary0;
     padding: 1.5rem;
     margin-block-end: 1rem;
+
     .contact-seller {
       color: $clrSecondary6;
       width: 100%;
@@ -232,6 +244,7 @@
       text-align: center;
       text-decoration: none;
       transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+
       &:hover {
         background: $clrSecondary5;
         color: $clrPrimary1;
