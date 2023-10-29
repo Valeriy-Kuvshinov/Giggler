@@ -4,13 +4,18 @@ import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
+import { useParams } from "react-router"
+import { loadUser } from "../store/user.actions.js"
 
 export function UserProfile() {
   const user = useSelector((storeState) => storeState.userModule.user)
+  const watchedUser= useSelector((storeState) => storeState.userModule.watchedUser)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+  const params=useParams()
 
   useEffect(() => {
     loadGigs2()
+    loadUser2()
   }, [])
 
   async function loadGigs2() {
@@ -22,13 +27,22 @@ export function UserProfile() {
     }
   }
 
-  if (user === null || gigs === null) return <div>loading...</div>
+  async function loadUser2(){
+    try{
+      await loadUser(params.id)
+    }
+    catch (err) {
+      console.log("couldnt load user : ", err)
+    }
+  }
+
+  if (watchedUser === null || gigs === null) return <div>loading...</div>
 
   return (
     <section className="profile-page full">
       <div className="user-profile flex layout-row">
-        <UserInfo user={user} />
-        <UserGigs gigs={gigs} user={user} />
+        <UserInfo user={watchedUser} />
+        <UserGigs gigs={gigs} user={watchedUser} />
       </div>
     </section>
   )

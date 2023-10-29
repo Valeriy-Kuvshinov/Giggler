@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 
-import { reviewService } from "../services/review.service"
 import { UserReview } from "./UserReview"
+
+import { reviewService } from "../services/review.service"
 
 export function UserReviews({ reviews }) {
   const [fullReviews, setFullReviews] = useState([])

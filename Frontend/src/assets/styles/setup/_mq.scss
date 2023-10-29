@@ -408,8 +408,7 @@
 .profile-page {
     .user-profile {
         @media (max-width: 1240px) {
-            padding-left: 32px;
-            padding-right: 32px;
+            padding: 0 1.25em;
         }
     }
 }

@@ -1,14 +1,14 @@
 .profile-page {
-    background: $clrSecondary12;
+    background-color: $clrPrimary1;
+    padding: 3.125em 0 2.5em;
 
     .user-profile {
-        padding-top: 32px;
-        padding-bottom: 32px;
-        max-width: 1240px;
+        justify-content: space-between;
+        max-width: 988px;
 
         .user-info {
             position: relative;
-            color: $clrPrimary2;
+            color: $clrSecondary6;
 
             .info-block {
                 align-items: center;
@@ -48,21 +48,38 @@
                 h2 {
                     text-align: center;
                     width: 100%;
-                    border-bottom: 1px solid $clrSecondary2;
                     text-transform: capitalize;
                 }
-
-                .info-line {
-                    justify-content: space-between;
+                
+                .username{ 
+                    text-align: center;
                     width: 100%;
+                }
+                .location-and-time{
 
-                    span {
-                        img {
-                            height: 16px;
-                            width: 14px;
+                    width: 100%;
+                    &:first-child{
+                        border-top: 1px solid $clrSecondary2;
+                        margin-block-start: 1.5em;
+                    }
+                    .info-line {
+                        justify-content: space-between;
+                        width: 100%;
+                        
+    
+                        span {
+                            img {
+                                height: 16px;
+                                width: 14px;
+                                margin-inline-end: em(12px);
+                            }
+                            &:nth-child(2){
+                                font-weight: bold;
+                            }
                         }
                     }
                 }
+                
             }
         }
     }

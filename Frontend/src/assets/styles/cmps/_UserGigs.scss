@@ -1,11 +1,12 @@
 .user-gigs {
   align-items: center;
   margin-block-end: 20px;
-  margin-inline-start: 20px;
-  color: $clrPrimary2;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  max-width: 484px;
   gap: 1em;
+  padding-inline-start: 1.25em;
+  color: $clrPrimary2;
 
   .the-gigs {
     display: grid;
@@ -24,18 +25,17 @@
     }
   }
 
+  .title {
+    align-self: start;
+    font-weight: bold;
+    font-size: 1.25em;
+    color: $clrSecondary8;
+  }
+
   .info-block {
     border: 1px solid $clrSecondary2;
     background-color: $clrPrimary1;
-    width: 250px;
-    height: 300px;
 
-    &.title {
-      align-items: center;
-      height: 60px;
-      padding: 23px;
-      margin-block-end: 20px;
-    }
 
     &.gig {
       justify-content: center;
@@ -47,6 +47,9 @@
         flex-direction: column;
         align-items: center;
         color: $clrPrimary2;
+        padding-block-start: 95px;
+        padding-block-end: 120px;
+        font-weight: 600;
 
         &:hover {
           text-decoration: none;
@@ -59,6 +62,25 @@
           font-size: 36px;
           padding: 0;
           background-color: $clr2;
+        }
+
+        .seller-img{
+          width: 250px;
+        }
+
+        .ready{
+          margin: 1.5em 0;
+          color: $clrSecondary8;
+        }
+
+        .become-seller{
+          text-align: center;
+          line-height: 1.5em;
+          padding: 9px 1.5em;
+          color: $clrPrimary1;
+          background-color: $bgColor3;
+          border-radius: 3px;
+          margin-block-end: 0.5em;
         }
       }
     }
