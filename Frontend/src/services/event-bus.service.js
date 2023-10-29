@@ -50,12 +50,14 @@ function createEventEmitter() {
 
 export const eventBusService = createEventEmitter()
 
-export function showUserMsg(msg) {
-    eventBusService.emit('show-user-msg', msg)
+export function showUserMsg(msg, styles = {}) {
+    eventBusService.emit('show-user-msg', { ...msg, styles })
 }
-export function showSuccessMsg(txt) {
-    showUserMsg({ txt, type: 'success' })
+
+export function showSuccessMsg(txt, styles = {}) {
+    showUserMsg({ txt, type: 'success' }, styles)
 }
-export function showErrorMsg(txt) {
-    showUserMsg({ txt, type: 'error' })
+
+export function showErrorMsg(txt, styles = {}) {
+    showUserMsg({ txt, type: 'error' }, styles)
 }

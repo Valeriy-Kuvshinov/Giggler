@@ -1,8 +1,3 @@
-import { eventBusService } from "../services/event-bus.service.js"
-import { useState, useEffect } from 'react'
-
-import SvgIcon from "./SvgIcon.jsx"
-
 // export function UserMsg() {
 //   const [msg, setMsg] = useState(null)
 //   const timeoutIdRef = useRef()
@@ -42,40 +37,53 @@ import SvgIcon from "./SvgIcon.jsx"
 //     </section>
 //   )
 // }
+import { eventBusService } from "../services/event-bus.service.js"
+import { useState, useEffect } from 'react'
+
+import SvgIcon from "./SvgIcon.jsx"
+
 export function UserMsg() {
   const [msg, setMsg] = useState(null)
   const [isActive, setIsActive] = useState(false)
+  const [isSlidingOut, setIsSlidingOut] = useState(false)
 
   useEffect(() => {
-    const unsubscribe = eventBusService.on('show-user-msg', newMsg => {
-      setMsg(newMsg)
+    const unsubscribe = eventBusService.on('show-user-msg', data => {
+      const { txt, type, styles } = data
+      setMsg({ txt, type, styles })
+
       setIsActive(true)
       setTimeout(() => {
         setIsActive(false)
-        setTimeout(onCloseMsg, 4000)
-      }, 5000)
+        setIsSlidingOut(true)
+        setTimeout(onCloseMsg, 500)
+      }, 6000)
     })
+
     return () => {
       unsubscribe()
     }
   }, [])
 
   function onCloseMsg() {
+    setIsSlidingOut(false)
     setMsg(null)
   }
 
   if (!msg) return null
 
-  const svgIconName = msg.type === 'success' ? 'success' : 'error'
+  const { txt, type, styles } = msg
+  const svgIconName = type === 'success' ? 'success' : 'error'
 
   return (
-    <section className={`user-msg ${isActive ? 'active' : ''} ${msg.type}`}>
-      <div className={`message-area flex row  ${msg.type}`}>
-        <div className={`msg-status flex row  ${msg.type}`}>
+    <section className={`user-msg ${isActive ? 'slide-in' : ''} ${isSlidingOut ? 'slide-out' : ''} ${type}`}
+      style={{ left: styles?.userMsgLeft }}>
+      <div className={`message-area flex row ${type}`} style={{ padding: styles?.messageAreaPadding }}>
+        <div className={`msg-status flex row ${type}`} style={{ transform: `translateX(${styles?.msgStatusTranslateX})` }}>
           <SvgIcon iconName={svgIconName} />
           <p>{`${svgIconName}!`}</p>
         </div>
-        <p dangerouslySetInnerHTML={{ __html: msg.txt.split('\n').join('<br>') }}></p>
+        <p dangerouslySetInnerHTML={{ __html: txt.split('\n').join('<br>') }}></p>
       </div>
     </section>
   )

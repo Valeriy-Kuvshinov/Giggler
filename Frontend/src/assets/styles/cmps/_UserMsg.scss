@@ -8,15 +8,23 @@
     }
 }
 
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(200%);
+    }
+}
+
 .user-msg {
     position: fixed;
     right: 0;
-    left: 10%;
-    bottom: 1em;
+    bottom: 2em;
     z-index: 999;
     width: fit-content;
     margin: auto;
-    animation: slideUp 0.5s forwards;
 
     &::before {
         content: '';
@@ -39,12 +47,19 @@
         background: linear-gradient(45deg, $bgColor6, $bgColor7);
     }
 
+    &.slide-in {
+        animation: slideUp 0.5s forwards;
+    }
+
+    &.slide-out {
+        animation: slideDown 0.5s forwards;
+    }
+
     .message-area {
         position: relative;
         width: fit-content;
         max-width: 900px;
         margin: 0 auto;
-        padding: 1em 0.5em;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-top: none;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
@@ -53,25 +68,26 @@
         transition: all 0.3s ease;
         background: $clrSecondary12;
         border-radius: 0.5em 0.5em 0 0;
-        padding-left: 8em;
 
         p {
             margin: 0;
-            font-size: 30px;
-            line-height: 120%;
+            font-size: 19px;
             color: $clrPrimary2;
+            font-family: 'macan-bold';
         }
 
         .msg-status {
-            padding: 0.5em 0.6em;
+            padding: 0.8em;
             border-radius: 50px;
-            gap: 0.3em;
-            transform: translateX(-120%);
+            gap: 0.5em;
             position: absolute;
 
             p {
                 text-transform: uppercase;
-                line-height: 120%;
+                font-size: 18px;
+                align-items: center;
+                display: flex;
+                font-family: 'macan-bold';
             }
 
             &.success {
@@ -92,7 +108,7 @@
         }
 
         i {
-            height: 36px;
+            height: 30px;
 
             svg {
                 width: 100%;
