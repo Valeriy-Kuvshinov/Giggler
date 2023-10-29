@@ -1,64 +1,77 @@
 .home-wrapper {
-    .home-services-section {
-        position: relative;
-        overflow: visible;
-        max-width: 1400px;
-        margin: auto;
-        margin-bottom: 4.5em;
+  .home-services-section {
+    position: relative;
+    overflow: visible;
+    max-width: 1400px;
+    margin: auto;
+    margin-bottom: 4.5em;
+    overflow: hidden;
 
-        h2 {
-            font-size: 32px;
-            line-height: 120%;
-            color: $clrSecondary7;
-            font-family: Arial, Helvetica, sans-serif;
-            margin-bottom: 20px;
-            margin-left: 8px;
-        }
-
-        .services {
-            gap: 2em;
-
-            .service {
-                position: relative;
-                padding: 0em;
-                height: 345px;
-                cursor: pointer;
-
-                img {
-                    border-radius: 5px;
-                }
-
-                .service-text {
-                    position: relative;
-                    bottom: 100%;
-                    left: 10px;
-                    color: $clrPrimary1;
-                    font-size: 24px;
-                    padding: 0px 10px;
-                    line-height: 30px;
-                    font-family: Arial, Helvetica, sans-serif;
-
-                    span {
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            background: $clrPrimary1;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            z-index: 5;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-
-            img {
-                width: 50%;
-                height: 50%;
-            }
-        }
+    h2 {
+      font-size: 32px;
+      line-height: 120%;
+      color: $clrSecondary7;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 20px;
+      margin-left: 8px;
     }
+
+    .services {
+      display: flex;
+      transition: transform 1.2s ease-in-out;
+
+      .service {
+        // position: relative;
+        // border-radius: 4px !important;
+        padding: 0em;
+        height: 345px;
+        cursor: pointer;
+        flex: 0 0 auto;
+        // overflow: hidden;
+
+        img {
+          // width: 100%;
+          // height: 100%;
+          padding: 0 18px;
+          // transition: transform 1.2s ease-in-out;
+        }
+
+        .service-text {
+          position: relative;
+          bottom: 100%;
+          left: 26px;
+          color: $clrPrimary1;
+          font-size: 24px;
+          padding: 0px 10px;
+          line-height: 30px;
+          font-size: 24px;
+          line-height: 130%;
+
+          span {
+            font-size: 14px;
+          }
+        }
+        & img:hover {
+          opacity: 0.85;
+          transition: opacity .3s ease-in-out;
+        }
+      }
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      background: $clrPrimary1;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      z-index: 5;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+      img {
+        width: 50%;
+        height: 50%;
+      }
+    }
+  }
 }
