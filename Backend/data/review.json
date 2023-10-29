@@ -5,7 +5,7 @@
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 3,
-        "text": "test",
+        "text": "Late answers and recieved it late but better then most services",
         "createdAt": 1697456859393
     },
     {
@@ -14,7 +14,7 @@
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 3,
-        "text": "bread",
+        "text": "Excellent photos mr Potter, however they arrived late",
         "createdAt": 1697457303713
     },
     {
@@ -431,15 +431,6 @@
         "createdAt": 1697975430953
     },
     {
-        "_id": "C6SXO4",
-        "userId": "u001",
-        "gigId": "g001",
-        "sellerId": "u001",
-        "rating": 2,
-        "text": "bread",
-        "createdAt": 1697978161796
-    },
-    {
         "_id": "2wvGFH",
         "userId": "u001",
         "gigId": "4uSOYc",
@@ -449,75 +440,12 @@
         "createdAt": 1697978762843
     },
     {
-        "_id": "Adx463",
-        "userId": "u001",
-        "gigId": "g001",
-        "sellerId": "u001",
-        "rating": 1,
-        "text": "bad",
-        "createdAt": 1697990020384
-    },
-    {
-        "_id": "Qspm5x",
-        "userId": "u001",
-        "gigId": "g002",
-        "sellerId": "u002",
-        "rating": 0,
-        "text": "sasas",
-        "createdAt": 1698311562599
-    },
-    {
-        "_id": "bmDdQn",
-        "userId": "u001",
-        "gigId": "g002",
-        "sellerId": "u002",
-        "rating": 0,
-        "text": "dawdawdaw",
-        "createdAt": 1698311587147
-    },
-    {
         "_id": "tQ4awY",
         "userId": "u001",
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 4,
-        "text": "",
+        "text": "He answered immediately, it did arrive a bit late",
         "createdAt": 1698311592503
-    },
-    {
-        "_id": "0p6dkW",
-        "userId": "u001",
-        "gigId": "g002",
-        "sellerId": "u002",
-        "rating": 0,
-        "text": "",
-        "createdAt": 1698311594913
-    },
-    {
-        "_id": "Xzjfde",
-        "userId": "u001",
-        "gigId": "g101",
-        "sellerId": "u101",
-        "rating": 0,
-        "text": "",
-        "createdAt": 1698329976041
-    },
-    {
-        "_id": "NcfnYA",
-        "userId": "u001",
-        "gigId": "g101",
-        "sellerId": "u101",
-        "rating": 0,
-        "text": "",
-        "createdAt": 1698330006479
-    },
-    {
-        "_id": "4mmCJG",
-        "userId": "u001",
-        "gigId": "g101",
-        "sellerId": "u101",
-        "rating": 0,
-        "text": "",
-        "createdAt": 1698330109430
     }
 ]
