@@ -9,8 +9,6 @@ import { category } from '../services/gig.service'
 import { setFilter } from '../store/gig.actions'
 import SvgIcon from './SvgIcon'
 
-import dotIcon from '../assets/img/svg/dot.icon.svg'
-
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerStage, setHeaderStage] = useState(0)
@@ -25,6 +23,8 @@ export function AppHeader() {
   const { showModal, openLogin, openSignup } = useModal()
   const categories = category
   const isHomePage = location.pathname === '/'
+
+  const logoColor = headerStage === 0 ? '#fff' : '#404145'
 
   const headerStyles = {
     backgroundColor: headerStage >= 1 ? '#fff' : 'transparent',
@@ -92,7 +92,12 @@ export function AppHeader() {
             <SvgIcon iconName={headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'} />
 
             <Link to="/" style={{ color: headerStyles.color }}>
-              <h1 className='logo flex'>Giggler<span className='flex'><img src={dotIcon} /></span></h1>
+              <h1 style={{ color: logoColor }} className='logo flex'>
+                Giggler
+                <span className='flex'>
+                  <SvgIcon iconName={'greenDotIcon'} />
+                </span>
+              </h1>
             </Link>
           </div>
 

@@ -244,14 +244,15 @@ const ICONS = {
       </clipPath>
     </defs>
   </svg>`,
+
   user: `<svg width="14" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
-  <path
+    <path
       d="M7 8C9.20938 8 11 6.20937 11 4C11 1.79063 9.20938 0 7 0C4.79063 0 3 1.79063 3 4C3 6.20937 4.79063 8 7 8ZM9.8 9H9.27812C8.58437 9.31875 7.8125 9.5 7 9.5C6.1875 9.5 5.41875 9.31875 4.72188 9H4.2C1.88125 9 0 10.8813 0 13.2V14.5C0 15.3281 0.671875 16 1.5 16H12.5C13.3281 16 14 15.3281 14 14.5V13.2C14 10.8813 12.1187 9 9.8 9Z">
-  </path>
+    </path>
   </svg>` ,
 
   newuser: `<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <g fill="none" fill-rule="evenodd">
+    <g fill="none" fill-rule="evenodd">
       <path d="M32 64C14.327 64 0 49.674 0 32S14.327 0 32 0c17.674 0 32 14.326 32 32S49.673 64 32 64z" fill="#777" />
       <path
           d="M44.179 39.028c0 2.802-1.869 4.48-4.62 4.48H24.44c-2.75 0-4.619-1.678-4.619-4.48 0-3.91.917-9.913 5.986-9.913.536 0 2.802 2.405 6.193 2.405 3.39 0 5.657-2.405 6.193-2.405 5.069 0 5.986 6.003 5.986 9.913zM38.643 23.58c0 3.667-2.976 6.643-6.643 6.643s-6.643-2.976-6.643-6.643c0-3.668 2.976-6.643 6.643-6.643s6.643 2.975 6.643 6.643z"
@@ -259,84 +260,90 @@ const ICONS = {
       <path
           d="M61.583 31.932c0 16.376-13.275 29.651-29.652 29.651-16.375 0-29.65-13.275-29.65-29.651 0-16.376 13.275-29.65 29.65-29.65 16.377 0 29.652 13.274 29.652 29.65z"
           stroke="#FFF" stroke-width=".5" />
-  </g>
+    </g>
   </svg>`,
 
   level1: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <circle fill="#00B0B2" cx="100" cy="100" r="100" />
-  <path fill="#00A6A8" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
-  <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="2" />
-  <text x="100" y="95" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <circle fill="#00B0B2" cx="100" cy="100" r="100" />
+    <path fill="#00A6A8" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
+    <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="2" />
+    <text x="100" y="95" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">LEVEL</text>
-  <text x="100" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <text x="100" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">ONE</text>
   </svg>`,
 
   level2: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <circle fill="#B322FF" cx="100" cy="100" r="100" />
-  <path fill="#9D1FDF" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
-  <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="2" />
-  <text x="100" y="95" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <circle fill="#B322FF" cx="100" cy="100" r="100" />
+    <path fill="#9D1FDF" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
+    <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="2" />
+    <text x="100" y="95" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">LEVEL</text>
-  <text x="105" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <text x="105" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">TWO</text>
   </svg>`,
 
   topuser: `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="200" height="200"
-  viewBox="00 0 200 200" xml:space="preserve">
-  <style>
+    viewBox="00 0 200 200" xml:space="preserve">
+    <style>
       .st10 {
           fill: #fff
       }
-  </style>
-  <path
+    </style>
+    <path
       d="M200 100c0 12.9-12.3 23.2-17 34.4-4.8 11.6-3.5 27.6-12.3 36.3-8.7 8.7-24.7 7.5-36.3 12.3-11.2 4.6-21.5 17-34.4 17s-23.2-12.3-34.4-17c-11.6-4.8-27.6-3.5-36.3-12.3-8.7-8.7-7.5-24.7-12.3-36.3-4.6-11.2-17-21.5-17-34.4s12.3-23.2 17-34.4c4.8-11.6 3.5-27.6 12.3-36.3 8.7-8.7 24.7-7.5 36.3-12.3 11.2-4.6 21.5-17 34.4-17s23.2 12.4 34.4 17c11.6 4.8 27.6 3.5 36.3 12.3 8.7 8.7 7.5 24.7 12.3 36.3 4.6 11.2 17 21.5 17 34.4z"
       fill="#FFC200" />
-  <path
+    <path
       d="M100 0c11.2 0, 21.5 12.4, 34.4 17c11.6 4.8, 27.6 3.5, 36.3 12.3c8.7 8.7, 7.5 24.7, 12.3 36.3c4.6 11.2, 17 21.5, 17 34.4c0 12.9-12.3 23.2-17 34.4c-4.8 11.6-3.5 27.6-12.3 36.3c-8.7 8.7-24.7 7.5-36.3 12.3c-11.2 4.6-21.5 17-34.4 17v-200z"
       fill="#F7BC00" />
-  <path
+    <path
       d="M131.5 175.9c-3.9 1.6-7.7 4.2-11.5 6.8-1.3.9-2.6 1.8-3.9 2.6-5.1 3.4-10.4 6.2-16.1 6.2-5.8 0-11-2.8-16.1-6.1-1.3-.9-2.7-1.8-4-2.7-3.7-2.6-7.5-5.2-11.3-6.8-4.1-1.7-8.7-2.6-13.3-3.4-1.5-.3-3-.6-4.4-.9-6-1.3-11.6-3-15.4-6.9-3.9-3.9-5.6-9.4-6.9-15.4-.3-1.5-.6-2.9-.9-4.4-.9-4.6-1.8-9.3-3.5-13.4-1.6-3.9-4.2-7.7-6.8-11.5-.9-1.3-1.8-2.6-2.6-3.9-3.4-5.1-6.2-10.4-6.2-16.1 0-5.8 2.8-11 6.1-16.1.9-1.3 1.8-2.7 2.7-4 2.6-3.7 5.2-7.5 6.8-11.3 1.7-4.1 2.6-8.7 3.4-13.3.3-1.5.6-3 .9-4.4 1.3-6 3-11.6 6.9-15.4 3.9-3.9 9.4-5.6 15.4-6.9 1.5-.3 2.9-.6 4.4-.9 4.6-.9 9.3-1.8 13.4-3.5 3.9-1.6 7.7-4.2 11.5-6.8 1.3-.9 2.6-1.8 3.9-2.6 5.1-3.4 10.4-6.2 16.1-6.2s11 2.8 16.1 6.2c1.3.8 2.6 1.7 3.9 2.6 3.8 2.6 7.6 5.2 11.5 6.8 4.1 1.7 8.7 2.6 13.3 3.4 1.5.3 3 .6 4.4.9 6 1.3 11.6 3 15.4 6.9 3.9 3.9 5.6 9.4 6.9 15.4.3 1.5.6 2.9.9 4.4.9 4.6 1.8 9.3 3.5 13.4 1.6 3.9 4.2 7.7 6.8 11.5.9 1.3 1.8 2.6 2.6 3.9 3.4 5.1 6.2 10.4 6.2 16.1 0 5.8-2.8 11-6.1 16.1-.9 1.3-1.8 2.7-2.7 4-2.6 3.7-5.2 7.5-6.8 11.3-1.7 4.1-2.6 8.7-3.4 13.3-.3 1.5-.6 3-.9 4.4-1.3 6-3 11.6-6.9 15.4-3.9 3.9-9.4 5.6-15.4 6.9-1.5.3-2.9.6-4.4.9-4.8.9-9.5 1.8-13.5 3.5z"
       style="fill:none;stroke:#fff" />
-  <text x="100" y="90" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <text x="100" y="90" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">TOP</text>
-  <text x="100" y="135" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
+    <text x="100" y="135" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">RATED</text>
   </svg>`,
 
   orderDropdownIcon: `<svg fill="#404145" width="64" height="64" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg">
     <path d="M156,128a28,28,0,1,1-28-28A28.02769,28.02769,0,0,1,156,128ZM128,76a28,28,0,1,0-28-28A28.02769,28.02769,0,0,0,128,76Zm0,104a28,28,0,1,0,28,28A28.02769,28.02769,0,0,0,128,180Z"/>
   </svg>`,
-  pencil:`<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-  <path
+
+  pencil: `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path
       d="M15.3628 2.30102L13.6796 0.618553C12.8553 -0.205791 11.521 -0.205916 10.6965 0.618522L0.778434 10.4718L0.0102775 15.1279C-0.0733163 15.6346 0.365528 16.0736 0.872371 15.99L5.52846 15.2218L15.3824 5.30374C16.2052 4.4809 16.2131 3.15127 15.3628 2.30102ZM6.26384 9.7364C6.39809 9.87065 6.57406 9.93774 6.75 9.93774C6.92593 9.93774 7.1019 9.87065 7.23615 9.7364L10.9558 6.01671L11.8486 6.90949L6.5625 12.2301V10.9377H5.0625V9.43774H3.77012L9.09072 4.15165L9.9835 5.04443L6.26381 8.76408C5.9954 9.03258 5.9954 9.4679 6.26384 9.7364ZM2.56662 14.3169L1.6834 13.4336L2.06278 11.1341L2.63778 10.5627H3.9375V12.0627H5.4375V13.3624L4.86618 13.9375L2.56662 14.3169ZM14.4099 4.33146L14.4083 4.33305L14.4067 4.33465L12.9058 5.8454L10.1548 3.09446L11.6656 1.59352L11.6672 1.59196L11.6687 1.5904C11.9546 1.30458 12.418 1.30105 12.7073 1.59037L14.3903 3.2733C14.699 3.58196 14.7009 4.04046 14.4099 4.33146Z">
-  </path>
+    </path>
   </svg>`,
-  deny:`<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 -256 1792 1792" id="svg3741" version="1.1"
-  inkscape:version="0.48.3.1 r9886" width="100%" height="100%" sodipodi:docname="trash_font_awesome.svg">
-  <metadata id="metadata3751">
-    <rdf:rdf>
-      <cc:work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
-      </cc:work>
-    </rdf:rdf>
-  </metadata>
-  <defs id="defs3749"></defs>
-  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10"
+
+  deny: `<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 -256 1792 1792" id="svg3741" version="1.1"
+    inkscape:version="0.48.3.1 r9886" width="100%" height="100%" sodipodi:docname="trash_font_awesome.svg">
+    <metadata id="metadata3751">
+      <rdf:rdf>
+        <cc:work rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"></dc:type>
+        </cc:work>
+      </rdf:rdf>
+    </metadata>
+    <defs id="defs3749"></defs>
+    <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10"
     gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="640"
     inkscape:window-height="480" id="namedview3747" showgrid="false" inkscape:zoom="0.13169643" inkscape:cx="896"
     inkscape:cy="896" inkscape:window-x="0" inkscape:window-y="25" inkscape:window-maximized="0"
     inkscape:current-layer="svg3741"></sodipodi:namedview>
-  <g transform="matrix(1,0,0,-1,197.42373,1255.0508)" id="g3743">
-    <path
-      d="M 512,800 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z m 256,0 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z m 256,0 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z M 1152,76 v 948 H 256 V 76 Q 256,54 263,35.5 270,17 277.5,8.5 285,0 288,0 h 832 q 3,0 10.5,8.5 7.5,8.5 14.5,27 7,18.5 7,40.5 z M 480,1152 h 448 l -48,117 q -7,9 -17,11 H 546 q -10,-2 -17,-11 z m 928,-32 v -64 q 0,-14 -9,-23 -9,-9 -23,-9 h -96 V 76 q 0,-83 -47,-143.5 -47,-60.5 -113,-60.5 H 288 q -66,0 -113,58.5 Q 128,-11 128,72 v 952 H 32 q -14,0 -23,9 -9,9 -9,23 v 64 q 0,14 9,23 9,9 23,9 h 309 l 70,167 q 15,37 54,63 39,26 79,26 h 320 q 40,0 79,-26 39,-26 54,-63 l 70,-167 h 309 q 14,0 23,-9 9,-9 9,-23 z"
-      id="path3745" inkscape:connector-curvature="0"></path>
-  </g>
-</svg>`
+    <g transform="matrix(1,0,0,-1,197.42373,1255.0508)" id="g3743">
+      <path
+        d="M 512,800 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z m 256,0 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z m 256,0 V 224 q 0,-14 -9,-23 -9,-9 -23,-9 h -64 q -14,0 -23,9 -9,9 -9,23 v 576 q 0,14 9,23 9,9 23,9 h 64 q 14,0 23,-9 9,-9 9,-23 z M 1152,76 v 948 H 256 V 76 Q 256,54 263,35.5 270,17 277.5,8.5 285,0 288,0 h 832 q 3,0 10.5,8.5 7.5,8.5 14.5,27 7,18.5 7,40.5 z M 480,1152 h 448 l -48,117 q -7,9 -17,11 H 546 q -10,-2 -17,-11 z m 928,-32 v -64 q 0,-14 -9,-23 -9,-9 -23,-9 h -96 V 76 q 0,-83 -47,-143.5 -47,-60.5 -113,-60.5 H 288 q -66,0 -113,58.5 Q 128,-11 128,72 v 952 H 32 q -14,0 -23,9 -9,9 -9,23 v 64 q 0,14 9,23 9,9 23,9 h 309 l 70,167 q 15,37 54,63 39,26 79,26 h 320 q 40,0 79,-26 39,-26 54,-63 l 70,-167 h 309 q 14,0 23,-9 9,-9 9,-23 z"
+        id="path3745" inkscape:connector-curvature="0"></path>
+    </g>
+  </svg>`,
+
+  greenDotIcon: `<svg width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="9" cy="9" r="4" fill="#2dd12d" fill-rule="evenodd" />
+  </svg>`
 }
 
 function getIcon(svgName) {
