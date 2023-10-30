@@ -8,6 +8,7 @@ import { gigService } from '../../services/gig.service.js'
 export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
+    const [sellerName, setSellerName] = useState('')
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     useEffect(() => {
@@ -16,6 +17,15 @@ export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             setGigData(fetchedGig)
         })()
     }, [order])
+
+    useEffect(() => {
+        (async () => {
+            const fetchedUser = await userService.getById(order.sellerId)
+            if (fetchedUser) {
+                setSellerName(fetchedUser.fullName || '')
+            }
+        })()
+    }, [order.sellerId])
 
     function getOrderClass(orderState) {
         const orderStateClasses = {
@@ -75,7 +85,7 @@ export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     return (
         <tr className={getOrderClass(order.orderState)}>
-            <td>{order.buyerName}</td>
+            <td>{sellerName}</td>
             <td>{order.title}</td>
             <td>{getActionDate(order)}</td>
 

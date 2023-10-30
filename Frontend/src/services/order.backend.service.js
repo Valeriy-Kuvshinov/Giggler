@@ -1,4 +1,7 @@
 import { httpService } from './http.service.js'
+import { gigService } from './gig.service.js'
+import { userService } from './user.service.js'
+
 const BASE_URL = 'order/'
 
 export const orderBackendService = {
@@ -7,14 +10,35 @@ export const orderBackendService = {
     save,
     createOrder,
     getById,
+    getOrderDetails
+}
+
+async function getOrderDetails(orderId, role = 'buyer') {
+    const order = await getById(orderId)
+    const gigData = await gigService.getById(order.orderedGigId)
+    let userData
+
+    if (role === 'buyer') {
+        userData = await userService.getById(order.buyerId)
+    } else if (role === 'seller') {
+        userData = await userService.getById(order.sellerId)
+    }
+    return {
+        ...order,
+        gigData,
+        name: userData.fullName || '',
+    }
 }
 
 function query(filterBy = {}) {
     return httpService.get(BASE_URL, filterBy)
 }
 
-function getById(orderId) {
-    return httpService.get(BASE_URL + orderId)
+async function getById(orderId) {
+    console.log(orderId)
+    const order = await httpService.get(BASE_URL + orderId)
+    console.log(order)
+    return order
 }
 
 function remove(orderId) {

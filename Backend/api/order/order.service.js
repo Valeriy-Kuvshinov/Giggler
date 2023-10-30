@@ -21,7 +21,7 @@ function query(filterBy) {
 }
 
 function getById(orderId) {
-    var orders = [...orders]
+    let orders = [...orders]
     orders = orders.filter((order) => {
         if (order.sellerId.localeCompare(orderId) === 0) {
             return true
@@ -48,7 +48,6 @@ function save(order) {
         const newOrder = orders.find(currOrder => currOrder._id === order._id)
         // if (orderToUpdate.owner._id !== loggedinUser._id) return Promise.reject('Not your order')
         newOrder.buyerId = order.buyerId
-        newOrder.buyerName = order.buyerName
         newOrder.sellerId = order.sellerId
         newOrder.orderedGigId = order.orderedGigId
         newOrder.price = order.price
