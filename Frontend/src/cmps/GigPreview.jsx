@@ -91,13 +91,15 @@ export function GigPreview({ is, gig }) {
         setNewImgIndex={setNewImgIndex}
       />
 
-      <span className="heart" onClick={(e) => likeGig(e)}>
-        {isLiked ? (
-          <SvgIcon iconName={'heartLiked'} />
-        ) : (
-          <SvgIcon iconName={'heart'} />
-        )}
-      </span>
+      {is !== 'userProfile' && (
+        <span className="heart" onClick={(e) => likeGig(e)}>
+          {isLiked ? (
+            <SvgIcon iconName={'heartLiked'} />
+          ) : (
+            <SvgIcon iconName={'heart'} />
+          )}
+        </span>
+      )}
 
       <div className="preview-body">
         {is === 'explore' && (

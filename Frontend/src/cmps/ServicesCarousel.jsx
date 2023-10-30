@@ -18,7 +18,7 @@ export function ServicesCarousel({ onHandleFilter }) {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [newServiceImages])
 
   useEffect(() => {
     if (windowWidth > 1300) setItemsPerPage(5)
@@ -34,6 +34,7 @@ export function ServicesCarousel({ onHandleFilter }) {
 
     if (direction === 'left') {
       newIndex -= itemsPerPage
+
       if (newIndex < 0) {
         newIndex = serviceImages.length - (serviceImages.length % itemsPerPage)
       }
