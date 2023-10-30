@@ -2,7 +2,6 @@ import { orderService } from './order.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
 export async function getOrder(req, res) {
-    // console.log('asdhasdasdjyasyagsjdaygsduagsuduasdiadasdas',req.params)
     try {
         const order = await orderService.getById(req.params.id)
         res.send(order)
@@ -47,11 +46,8 @@ export async function updateOrder(req, res) {
 }
 
 export async function addOrder(req, res) {
-    // const { loggedinUser } = req
-
     try {
         const order = req.body
-        // order.owner = loggedinUser
         const addedOrder = await orderService.save(order)
         res.json(addedOrder)
     }

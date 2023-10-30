@@ -1,7 +1,6 @@
 [
     {
         "buyerId": "u001",
-        "buyerName": "Peter Parker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -15,7 +14,6 @@
     },
     {
         "buyerId": "u002",
-        "buyerName": "Jane Doe",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -29,7 +27,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Parker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -41,7 +38,6 @@
     },
     {
         "buyerId": "u002",
-        "buyerName": "Jane Doe",
         "sellerId": "u002",
         "title": "I will design your logo",
         "deliveryTime": "1 days",
@@ -54,7 +50,6 @@
     },
     {
         "buyerId": "u101",
-        "buyerName": "Alice Smith",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -67,7 +62,6 @@
     },
     {
         "buyerId": "u101",
-        "buyerName": "Ella Johnson",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -81,7 +75,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Parker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -96,7 +89,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -110,7 +102,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -124,7 +115,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -137,7 +127,6 @@
     },
     {
         "buyerId": "u002",
-        "buyerName": "Jane Doe",
         "sellerId": "u002",
         "title": "I will design your logo",
         "deliveryTime": "2 days",
@@ -150,7 +139,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -163,7 +151,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u113",
         "title": "I will provide hilarious video game 'assistance'",
         "deliveryTime": "2 days",
@@ -176,7 +163,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Porker",
         "sellerId": "u001",
         "title": "I will take unique photos of Spiderman",
         "deliveryTime": "2 days",
@@ -189,7 +175,6 @@
     },
     {
         "buyerId": "u001",
-        "buyerName": "Peter Parker",
         "sellerId": "u110",
         "title": "I will create personalized digital avatars for your social media",
         "deliveryTime": "2 days",

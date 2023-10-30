@@ -1,4 +1,7 @@
 import { httpService } from './http.service.js'
+import { gigService } from './gig.service.js'
+import { userService } from './user.service.js'
+
 const BASE_URL = 'order/'
 
 export const orderBackendService = {
@@ -7,14 +10,33 @@ export const orderBackendService = {
     save,
     createOrder,
     getById,
+    getOrderDetails
+}
+
+async function getOrderDetails(orderId, role = 'buyer') {
+    const order = await getById(orderId)
+    const gigData = await gigService.getById(order.orderedGigId)
+    let userData
+
+    if (role === 'buyer') {
+        userData = await userService.getById(order.buyerId)
+    } else if (role === 'seller') {
+        userData = await userService.getById(order.sellerId)
+    }
+    return {
+        ...order,
+        gigData,
+        name: userData.fullName || '',
+    }
 }
 
 function query(filterBy = {}) {
     return httpService.get(BASE_URL, filterBy)
 }
 
-function getById(orderId) {
-    return httpService.get(BASE_URL + orderId)
+async function getById(orderId) {
+    const order = await httpService.get(BASE_URL + orderId)
+    return order
 }
 
 function remove(orderId) {
@@ -31,17 +53,16 @@ function save(order) {
     }
 }
 
-function createOrder(buyerId = '', buyerName = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
+function createOrder(buyerId = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
     return {
         buyerId: buyerId,
-        buyerName: buyerName,
         sellerId: sellerId,
         title: title,
         deliveryTime: deliveryTime,
         orderedGigId: gigId,
         price: price,
-        createdAt: Date.now(),  
-        reasonForDenial:'',
+        createdAt: Date.now(),
+        reasonForDenial: '',
         orderState: 'pending'
     }
 }

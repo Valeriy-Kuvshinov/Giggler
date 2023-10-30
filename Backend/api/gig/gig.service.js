@@ -13,17 +13,12 @@ export const gigService = {
 
 function query(filterBy) {
   let gigsToDisplay = [...utilService.readJsonFile(GIGS_PATH)]
-  // if (filterBy.search) {
-  //   const regex = new RegExp(filterBy.search, 'i')
-  //   gigsToDisplay = gigsToDisplay.filter(
-  //     (gig) => regex.test(gig.title) || regex.test(gig.description)
-  //   )
-  // }
+
   return Promise.resolve(gigsToDisplay)
 }
 
 function getById(gigId) {
-  let gigs = utilService.readJsonFile(GIGS_PATH)
+  const gigs = utilService.readJsonFile(GIGS_PATH)
   const gig = gigs.find((g) => g._id === gigId)
 
   if (!gig) {
@@ -33,7 +28,7 @@ function getById(gigId) {
   return Promise.resolve(gig)
 }
 
-function remove(gigId) {
+async function remove(gigId) {
   let gigs = utilService.readJsonFile(GIGS_PATH)
   const idx = gigs.findIndex((g) => g._id === gigId)
 
@@ -42,36 +37,45 @@ function remove(gigId) {
     throw new Error(`No gig found with id ${gigId}`)
   }
   gigs.splice(idx, 1)
-  _saveGigs(gigs)
+  await _saveGigs(gigs)
+
   loggerService.info(`Gig with id ${gigId} removed successfully`)
   return Promise.resolve()
 }
 
-function save(gig) {
+async function save(gig) {
   console.log('received gig', gig)
   let gigs = utilService.readJsonFile(GIGS_PATH)
 
   if (gig._id) {
     const idx = gigs.findIndex((g) => g._id === gig._id)
+
     if (idx === -1) {
       loggerService.error(`Failed to update gig with id ${gig._id}`)
       throw new Error(`No gig found with id ${gig._id}`)
     }
     gigs[idx] = { _id: gig._id, ...gig }
-  } else {
+  } 
+  else {
     gig._id = utilService.makeId()
     gigs.push({ _id: gig._id, ...gig })
   }
-  _saveGigs(gigs)
+  await _saveGigs(gigs)
   return Promise.resolve(gig)
 }
 
 function _saveGigs(gigs) {
-  try {
-    console.log('Gigs before saving: ', gigs)
-    fs.writeFileSync(GIGS_PATH, JSON.stringify(gigs, null, 2))
-    loggerService.info('Gigs saved successfully')
-  } catch (err) {
-    loggerService.error('Failed to save gigs', err)
-  }
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log('Gigs before saving: ', gigs)
+      fs.writeFile(GIGS_PATH, JSON.stringify(gigs, null, 2))
+
+      loggerService.info('Gigs saved successfully')
+      resolve()
+    }
+    catch (err) {
+      loggerService.error('Failed to save gigs', err)
+      reject(err)
+    }
+  })
 }

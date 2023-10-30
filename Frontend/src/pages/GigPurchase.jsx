@@ -35,7 +35,6 @@ export function GigPurchase() {
   async function createOrder() {
     const orderToSave = orderBackendService.createOrder(
       user._id,
-      user.fullName,
       gig.ownerId,
       gig.title,
       gig.deliveryTime,
