@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -12,6 +12,8 @@ import { UserPreview } from './UserPreview.jsx'
 import { ImageCarousel } from './ImageCarousel.jsx'
 
 export function GigPreview({ is, gig }) {
+  const params=useParams()
+  const loggedId=params.id
   const user = useSelector((storeState) => storeState.userModule.user)
   const [newImgIndex, setNewImgIndex] = useState(0)
 
@@ -112,15 +114,17 @@ export function GigPreview({ is, gig }) {
 
         {is === 'userProfile' && (
           <>
+          <UserPreview is="userProfile" owner={user}/>
             <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
               {updatedGig.title}
             </Link>
-            <button>
+            {(loggedId===user._id) && <><button>
               <Link className="gig-title" to={`/gig/edit/${updatedGig._id}`}>
                 update
               </Link>
             </button>
             <button onClick={onRemoveGig}>remove</button>
+            </>}
           </>
         )}
         <div className="gig-price">

@@ -9,6 +9,7 @@ import { updateUser } from "../store/user.actions.js"
 import SvgIcon from "./SvgIcon"
 import { loadReviews } from "../store/review.actions"
 import { utilService } from "../services/util.service"
+import { loadOrders } from "../store/order.actions"
 
 export function UserInfo({ user }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -43,6 +44,13 @@ export function UserInfo({ user }) {
   const time = new Date(user.createdAt * 1000)
   let month = months[time.getMonth()]
   let year = time.getFullYear()
+  let deliveredTime
+  if(!user.lastDeliveredAt){
+    deliveredTime=new Date(Date.now())
+  } else {
+    deliveredTime=new Date(user.lastDeliveredAt)
+  }
+  console.log(time)
 
   function loadModal() {
     if (loggedinUser._id !== user._id) {
@@ -161,7 +169,7 @@ export function UserInfo({ user }) {
               <span>Avg. Response Time</span>
             </span>
             <span className="bold">
-              {month.slice(0, 3)} {year}
+              {utilService.getRandomIntInclusive(2,12)} Hours
             </span>
           </div>
 
@@ -171,7 +179,7 @@ export function UserInfo({ user }) {
               <span>Last Delivery</span>
             </span>
             <span className="bold">
-              {month.slice(0, 3)} {year}
+              {months[deliveredTime.getMonth()].slice(0, 3)} {deliveredTime.getFullYear()}
             </span>
           </div>
         </div>
