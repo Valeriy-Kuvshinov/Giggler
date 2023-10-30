@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 import SvgIcon from '../SvgIcon.jsx'
 
-import { gigService } from '../../services/gig.service.js'
+import { orderBackendService } from '../../services/order.backend.service.js'
 
 export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
@@ -13,19 +13,11 @@ export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     useEffect(() => {
         (async () => {
-            const fetchedGig = await gigService.getById(order.orderedGigId)
-            setGigData(fetchedGig)
+            const orderDetails = await orderBackendService.getOrderDetails(order._id, 'seller')
+            setGigData(orderDetails.gigData)
+            setSellerName(orderDetails.name)
         })()
     }, [order])
-
-    useEffect(() => {
-        (async () => {
-            const fetchedUser = await userService.getById(order.sellerId)
-            if (fetchedUser) {
-                setSellerName(fetchedUser.fullName || '')
-            }
-        })()
-    }, [order.sellerId])
 
     function getOrderClass(orderState) {
         const orderStateClasses = {

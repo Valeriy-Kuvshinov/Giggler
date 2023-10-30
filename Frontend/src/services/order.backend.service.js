@@ -35,9 +35,7 @@ function query(filterBy = {}) {
 }
 
 async function getById(orderId) {
-    console.log(orderId)
     const order = await httpService.get(BASE_URL + orderId)
-    console.log(order)
     return order
 }
 
