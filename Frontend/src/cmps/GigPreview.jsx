@@ -1,26 +1,26 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { useState, useEffect, useRef } from "react"
+import { useSelector } from "react-redux"
 
-import SvgIcon from './SvgIcon.jsx'
-import { gigService } from '../services/gig.service'
-import { userService } from '../services/user.service.js'
-import { removeGig } from '../store/gig.actions.js'
+import SvgIcon from "./SvgIcon.jsx"
+import { gigService } from "../services/gig.service"
+import { userService } from "../services/user.service.js"
+import { removeGig } from "../store/gig.actions.js"
 
-import { useModal } from '../customHooks/ModalContext'
-import { UserPreview } from './UserPreview.jsx'
-import { ImageCarousel } from './ImageCarousel.jsx'
-import { loadReviews } from '../store/review.actions.js'
+import { useModal } from "../customHooks/ModalContext"
+import { UserPreview } from "./UserPreview.jsx"
+import { ImageCarousel } from "./ImageCarousel.jsx"
+import { loadReviews } from "../store/review.actions.js"
 
 export function GigPreview({ is, gig }) {
-  const params=useParams()
-  const loggedId=params.id
+  const params = useParams()
+  const loggedId = params.id
   const user = useSelector((storeState) => storeState.userModule.user)
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
   const filteredReviewIds = gig
     ? reviews
-      .filter((review) => review.gigId === gig._id)
-      .map((review) => review._id)
+        .filter((review) => review.gigId === gig._id)
+        .map((review) => review._id)
     : []
   const [newImgIndex, setNewImgIndex] = useState(0)
 
@@ -50,10 +50,10 @@ export function GigPreview({ is, gig }) {
   async function onRemoveGig() {
     try {
       await removeGig(updatedGig._id)
-      console.log('Gig removed successfully:')
+      console.log("Gig removed successfully:")
       navigate(`/user/${owner._id}`)
     } catch (err) {
-      console.error('Failed to save gig:', err)
+      console.error("Failed to save gig:", err)
     }
   }
 
@@ -101,18 +101,18 @@ export function GigPreview({ is, gig }) {
         setNewImgIndex={setNewImgIndex}
       />
 
-      {is !== 'userProfile' && (
+      {is !== "userProfile" && (
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
-            <SvgIcon iconName={'heartLiked'} />
+            <SvgIcon iconName={"heartLiked"} />
           ) : (
-            <SvgIcon iconName={'heart'} />
+            <SvgIcon iconName={"heart"} />
           )}
         </span>
       )}
 
       <div className="preview-body">
-        {is === 'explore' && (
+        {is === "explore" && (
           <UserPreview is={is} owner={owner} gig={updatedGig}>
             <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
               {updatedGig.title}
@@ -120,34 +120,44 @@ export function GigPreview({ is, gig }) {
           </UserPreview>
         )}
 
-        {is === 'userProfile' && (
+        {is === "userProfile" && (
           <>
-          <div className='profile'>
-          <UserPreview is="userProfile" owner={owner}/>
-            <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
-              {updatedGig.title}
-            </Link>
-            <div className='rating'>
-            <SvgIcon iconName={'star'}/>
-            <span>{user.rating}</span>
-            <span className='reviews'>({filteredReviewIds.length})</span>
-            </div>
-           </div>
-           <div className='gig-changes'>
-            {(loggedId===user._id) && <><button>
-              <Link className="gig-title" to={`/gig/edit/${updatedGig._id}`}>
-                <SvgIcon iconName={'pencil'}/>
+            <div className="profile">
+              <UserPreview is="userProfile" owner={owner} />
+              <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
+                {updatedGig.title}
               </Link>
-            </button>
-            <button onClick={onRemoveGig}>remove</button>
-            </>}
-            <span className="price b">{`From $${updatedGig.price}`}</span>
-           </div>
+              <div className="rating">
+                <SvgIcon iconName={"star"} />
+                <span>{user.rating}</span>
+                <span className="reviews">({filteredReviewIds.length})</span>
+              </div>
+            </div>
+            <div className={`gig-changes ${(loggedId !== user._id) ? 'right' : ''}`}>
+              {loggedId === user._id && (
+                <div className="gig-btns">
+                  <button>
+                    <Link to={`/gig/edit/${updatedGig._id}`}>
+                      <SvgIcon iconName={"pencil"} />
+                    </Link>
+                  </button>
+                  <button onClick={onRemoveGig}>
+                    <SvgIcon iconName={"deny"} />
+                  </button>
+                </div>
+              )}
+              <div className='price'>
+                <span className="starting">Starting At</span>
+                <span className="b">{`$${updatedGig.price}`}</span>
+              </div>
+            </div>
           </>
         )}
-        {is !== 'userProfile' && <div className="gig-price">
-          <span className="price b">{`From $${updatedGig.price}`}</span>
-        </div>}
+        {is !== "userProfile" && (
+          <div className="gig-price">
+            <span className="price b">{`From $${updatedGig.price}`}</span>
+          </div>
+        )}
       </div>
     </li>
   )
