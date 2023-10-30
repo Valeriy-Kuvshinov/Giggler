@@ -249,6 +249,7 @@ const ICONS = {
       d="M7 8C9.20938 8 11 6.20937 11 4C11 1.79063 9.20938 0 7 0C4.79063 0 3 1.79063 3 4C3 6.20937 4.79063 8 7 8ZM9.8 9H9.27812C8.58437 9.31875 7.8125 9.5 7 9.5C6.1875 9.5 5.41875 9.31875 4.72188 9H4.2C1.88125 9 0 10.8813 0 13.2V14.5C0 15.3281 0.671875 16 1.5 16H12.5C13.3281 16 14 15.3281 14 14.5V13.2C14 10.8813 12.1187 9 9.8 9Z">
   </path>
   </svg>` ,
+
   newuser: `<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <g fill="none" fill-rule="evenodd">
       <path d="M32 64C14.327 64 0 49.674 0 32S14.327 0 32 0c17.674 0 32 14.326 32 32S49.673 64 32 64z" fill="#777" />
@@ -260,6 +261,7 @@ const ICONS = {
           stroke="#FFF" stroke-width=".5" />
   </g>
   </svg>`,
+
   level1: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <circle fill="#00B0B2" cx="100" cy="100" r="100" />
   <path fill="#00A6A8" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
@@ -269,6 +271,7 @@ const ICONS = {
   <text x="100" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">ONE</text>
   </svg>`,
+
   level2: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
   <circle fill="#B322FF" cx="100" cy="100" r="100" />
   <path fill="#9D1FDF" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
@@ -278,6 +281,7 @@ const ICONS = {
   <text x="105" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">TWO</text>
   </svg>`,
+
   topuser: `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="200" height="200"
   viewBox="00 0 200 200" xml:space="preserve">
   <style>
@@ -299,6 +303,10 @@ const ICONS = {
   <text x="100" y="135" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
       font-weight="bold">RATED</text>
   </svg>`,
+
+  orderDropdownIcon: `<svg fill="#404145" width="64" height="64" viewBox="0 0 256 256" id="Flat" xmlns="http://www.w3.org/2000/svg">
+    <path d="M156,128a28,28,0,1,1-28-28A28.02769,28.02769,0,0,1,156,128ZM128,76a28,28,0,1,0-28-28A28.02769,28.02769,0,0,0,128,76Zm0,104a28,28,0,1,0,28,28A28.02769,28.02769,0,0,0,128,180Z"/>
+  </svg>`
 }
 
 function getIcon(svgName) {

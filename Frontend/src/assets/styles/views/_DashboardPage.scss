@@ -4,52 +4,103 @@
     text-align: center;
     justify-content: center;
 
-    .dashboard-container-header {
-        margin-bottom: 1.5rem;
+    .user-orders {
+        width: 100%;
+        box-sizing: border-box;
+        font-family: 'macan-regular';
 
-        h1 {
-            margin: 0;
-            margin-bottom: 0.5rem;
-            font-size: 2rem;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid $clrSecondary13;
         }
 
-        h2 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-    }
+        th,
+        td {
+            padding: 1em;
+            text-align: center;
+            border: 1px solid $clrSecondary13;
 
-    .chart-section {
-        padding: 0.5em;
-        background: $clrPrimary1;
-        color: $clrSecondary8;
-        opacity: 0.95;
-        height: fit-content;
-        border: 2px solid $clrSecondary8;
-
-        &:not(:last-child) {
-            border-bottom: none;
+            &:not(:last-child),
+            &:not(:first-child) {
+                border-right: none;
+                border-left: none;
+            }
         }
 
-        h6 {
-            border-bottom: 2px solid;
-            width: fit-content;
-            margin: auto;
-            margin-bottom: 1rem;
+        thead tr {
+            background-color: $clrSecondary1;
+        }
+
+        th {
             font-weight: bold;
-            font-size: 1.5em
         }
-    }
 
-    .dashboard-gigs-container {
-        @include container-styles;
-    }
+        td {
+            color: $clrPrimary4;
 
-    .dashboard-users-container {
-        @include container-styles;
-    }
+            img {
+                width: 50%;
+            }
+        }
 
-    .dashboard-finances-container {
-        @include container-styles;
+        span {
+            padding: 0.6em 0.8em;
+            color: $clrSecondary9;
+            border-radius: 5px;
+            display: block;
+            border: 1px solid $clrSecondary6;
+            font-size: 16px;
+            line-height: 100%;
+            font-family: 'macan-bold';
+
+            &.pending {
+                background: $clr5;
+            }
+
+            &.denied {
+                background: $clr4;
+                color: $clrPrimary2;
+            }
+
+            &.accepted {
+                background: $clr6;
+                color: $clrPrimary2;
+            }
+
+            &.completed {
+                background: $clr3;
+            }
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            z-index: 1;
+            min-width: 50px;
+            background: $clrPrimary1;
+            border: 1px solid $clrPrimary2;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+
+            button {
+                background: none;
+                width: 100%;
+                text-align: left;
+                padding: 10px 15px;
+                font-size: 16px;
+                font-family: 'macan-bold';
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: $clrSecondary1;
+                    border-radius: 5px;
+                }
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $clrPrimary2;
+                }
+            }
+        }
     }
 }
