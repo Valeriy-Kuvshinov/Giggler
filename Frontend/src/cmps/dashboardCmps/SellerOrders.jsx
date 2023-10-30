@@ -7,7 +7,7 @@ import { loadOrders } from '../../store/order.actions.js'
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { userService } from '../../services/user.service.js'
 
-export function SellerOrders({ type }) {
+export function SellerOrders() {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const displayedOrders = orders.filter(order => order.sellerId === user._id)
