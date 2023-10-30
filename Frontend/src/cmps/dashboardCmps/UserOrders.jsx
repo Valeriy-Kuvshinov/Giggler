@@ -7,10 +7,13 @@ import { loadOrders } from '../../store/order.actions.js'
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { userService } from '../../services/user.service.js'
 
-export function UserOrders() {
+export function UserOrders({ type }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    const sellerOrders = orders.filter(order => order.sellerId === user._id)
+
+    let displayedOrders = []
+    if (type === 'received') displayedOrders = orders.filter(order => order.sellerId === user._id)
+    else if (type === 'sent') displayedOrders = orders.filter(order => order.buyerId === user._id)
 
     useEffect(() => {
         loadUserOrders()
@@ -86,7 +89,7 @@ export function UserOrders() {
                     </tr>
                 </thead>
                 <tbody>
-                    {sellerOrders.map(order => (
+                    {displayedOrders.map(order => (
                         <UserOrder
                             key={order._id}
                             order={order}

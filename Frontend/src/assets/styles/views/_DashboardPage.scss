@@ -3,6 +3,7 @@
     max-width: 1400px;
     text-align: center;
     justify-content: center;
+    background: $clrSecondary12;
 
     .user-orders {
         width: 100%;
@@ -12,24 +13,21 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid $clrSecondary13;
+            border: 1px solid $clrSecondary4;
         }
 
         th,
         td {
             padding: 1em;
             text-align: center;
-            border: 1px solid $clrSecondary13;
+            border: 1px solid $clrSecondary4;
+            background: $clrPrimary1;
 
             &:not(:last-child),
             &:not(:first-child) {
                 border-right: none;
                 border-left: none;
             }
-        }
-
-        thead tr {
-            background-color: $clrSecondary1;
         }
 
         th {
@@ -39,37 +37,45 @@
         td {
             color: $clrPrimary4;
 
-            img {
-                width: 50%;
+            button {
+                width: 60%;
+                margin: auto;
+                background: none;
+
+                i {
+                    width: 100%;
+                }
             }
         }
 
         span {
-            padding: 0.6em 0.8em;
-            color: $clrSecondary9;
+            padding: 0.95em 0.8em;
             border-radius: 5px;
             display: block;
             border: 1px solid $clrSecondary6;
-            font-size: 16px;
-            line-height: 100%;
-            font-family: 'macan-bold';
+            font-size: 12px;
+            font-family: "macan-bold";
+            text-transform: uppercase;
+            letter-spacing: 1px;
 
             &.pending {
-                background: $clr5;
+                background: rgb(105, 189, 218);
+                color: $clrPrimary1;
             }
 
             &.denied {
-                background: $clr4;
-                color: $clrPrimary2;
+                background: rgb(224, 90, 90);
+                color: $clrPrimary1;
             }
 
             &.accepted {
-                background: $clr6;
-                color: $clrPrimary2;
+                background: rgb(201, 243, 49);
+                color: $clrSecondary6;
             }
 
             &.completed {
-                background: $clr3;
+                background: rgb(87, 190, 87);
+                color: $clrPrimary1;
             }
         }
 
