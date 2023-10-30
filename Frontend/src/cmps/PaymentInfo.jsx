@@ -69,8 +69,8 @@ export function PaymentInfo({ gig, createOrder, packageChoice }) {
             </button>
           </Link>
         </section>
-        <div class="secure-payment">
-          <i class="fa fa-lock"></i>
+        <div className="secure-payment">
+          <span class="lock"></span>
           <span>SSL Secure Payment</span>
         </div>
       </section>

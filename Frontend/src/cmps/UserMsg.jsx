@@ -79,11 +79,17 @@ export function UserMsg() {
     <section className={`user-msg ${isActive ? 'slide-in' : ''} ${isSlidingOut ? 'slide-out' : ''} ${type}`}
       style={{ left: styles?.userMsgLeft }}>
       <div className={`message-area flex column ${type}`} style={{ padding: styles?.messageAreaPadding }}>
+        <button className={type} onClick={onCloseMsg}>
+          <SvgIcon iconName={'remove'} />
+        </button>
+
         <div className={`msg-status flex row ${type}`} style={{ transform: `translateX(${styles?.msgStatusTranslateX})` }}>
           <SvgIcon iconName={svgIconName} />
+
           <p>{`${svgIconName}!`}</p>
         </div>
         <h3 className={type}>{title}</h3>
+
         <p>{body}</p>
       </div>
     </section>
