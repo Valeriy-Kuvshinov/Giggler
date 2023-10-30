@@ -22,16 +22,12 @@ function query(filterBy) {
 
 function getById(orderId) {
     var orders = [...orders]
-    // console.log('orders',orders)
-    console.log('orderId', orderId)
     orders = orders.filter((order) => {
-        console.log(order.sellerId.localeCompare(orderId))
         if (order.sellerId.localeCompare(orderId) === 0) {
             return true
         }
         return false
     })
-    console.log('orders', orders)
     if (!orders) {
         loggerService.error(`No order found with id ${orderId}`)
         throw new Error(`No order found with id ${orderId}`)

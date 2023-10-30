@@ -10,11 +10,18 @@ import { removeGig } from '../store/gig.actions.js'
 import { useModal } from '../customHooks/ModalContext'
 import { UserPreview } from './UserPreview.jsx'
 import { ImageCarousel } from './ImageCarousel.jsx'
+import { loadReviews } from '../store/review.actions.js'
 
 export function GigPreview({ is, gig }) {
   const params=useParams()
   const loggedId=params.id
   const user = useSelector((storeState) => storeState.userModule.user)
+  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
+  const filteredReviewIds = gig
+    ? reviews
+      .filter((review) => review.gigId === gig._id)
+      .map((review) => review._id)
+    : []
   const [newImgIndex, setNewImgIndex] = useState(0)
 
   const [owner, setOwner] = useState(null)
@@ -32,6 +39,7 @@ export function GigPreview({ is, gig }) {
       const ownerData = await userService.getById(updatedGig.ownerId)
       setOwner(ownerData)
     }
+    loadReviews()
     fetchOwnerDetails()
   }, [updatedGig.ownerId])
 
@@ -114,22 +122,32 @@ export function GigPreview({ is, gig }) {
 
         {is === 'userProfile' && (
           <>
-          <UserPreview is="userProfile" owner={user}/>
+          <div className='profile'>
+          <UserPreview is="userProfile" owner={owner}/>
             <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
               {updatedGig.title}
             </Link>
+            <div className='rating'>
+            <SvgIcon iconName={'star'}/>
+            <span>{user.rating}</span>
+            <span className='reviews'>({filteredReviewIds.length})</span>
+            </div>
+           </div>
+           <div className='gig-changes'>
             {(loggedId===user._id) && <><button>
               <Link className="gig-title" to={`/gig/edit/${updatedGig._id}`}>
-                update
+                <SvgIcon iconName={'pencil'}/>
               </Link>
             </button>
             <button onClick={onRemoveGig}>remove</button>
             </>}
+            <span className="price b">{`From $${updatedGig.price}`}</span>
+           </div>
           </>
         )}
-        <div className="gig-price">
+        {is !== 'userProfile' && <div className="gig-price">
           <span className="price b">{`From $${updatedGig.price}`}</span>
-        </div>
+        </div>}
       </div>
     </li>
   )

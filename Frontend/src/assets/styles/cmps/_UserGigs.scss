@@ -13,17 +13,6 @@
     grid-gap: 32px;
     height: 100%;
     
-    .user-preview{
-      height: 58px;
-      padding:0.75em;
-      .avatar-userProfile{
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    }
-
     @media screen and (max-width: 1300px) {
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 32px;
@@ -31,11 +20,64 @@
 
   }
 
-  .title {
-    align-self: start;
-    font-weight: bold;
-    font-size: 1.25em;
-    color: $clrSecondary8;
+  .profile{
+    padding:0.75em;
+    .user-preview{
+      display: flex;
+      align-items: center;
+      height: 58px;
+      padding-block-end:0.75em;
+      .avatar-userProfile{
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .name-wrapper{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 18px;
+        margin-inline-start: 0.5em;
+        .user-level{
+          font-weight: 500;
+          color: $clrSecondary5;
+          &.top{
+            color: $clr7;
+          }
+        }
+      }
+    }
+    .gig-title {
+      align-self: start;
+      overflow: hidden;
+      font-weight: 400;
+      word-wrap: break-word;
+      word-break: break-word;
+      color: $clrPrimary3;
+      margin-inline-end: 5px;
+      margin-block-end: 10px;
+    }
+  
+    .rating{
+      display: flex;
+      align-items: center;
+      svg{
+        margin-inline-end: 5px;
+      }
+      span{
+        height: fit-content;
+        font-weight: bold;
+      }
+      .reviews{
+        color: $clrSecondary4;
+        font-weight: 400;
+        margin: 0;
+        margin-inline-start: 0.125em;
+      }
+    }
   }
 
   .info-block {

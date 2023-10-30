@@ -34,10 +34,7 @@ export async function getUserById(req, res) {
 export async function addUser(req, res) {
     try {
         const user = req.body
-        console.log("Before sending to service:", user)
         const addedUser = await userService.save(user)
-        console.log("After service returned:", addedUser)
-
         res.json(addedUser)
     }
     catch (err) {
