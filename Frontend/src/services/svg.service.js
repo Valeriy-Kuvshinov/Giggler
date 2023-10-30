@@ -177,9 +177,9 @@ const ICONS = {
   </svg>`,
 
   clock: `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
-  <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z">
-  </path>
-  <path d="M9 4H7v5h5V7H9V4z"></path>
+    <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z">
+    </path>
+    <path d="M9 4H7v5h5V7H9V4z"></path>
   </svg>`,
 
   lockIcon: `<svg width="15px" height="15px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,19 +198,19 @@ const ICONS = {
   </svg>`,
 
   refresh: `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
-  <path
+    <path
       d="M4.50001 11.4999C6.40001 13.3999 9.60001 13.3999 11.5 11.4999C12.2 10.7999 12.7 9.7999 12.9 8.7999L14.9 9.0999C14.7 10.5999 14 11.8999 13 12.8999C10.3 15.5999 5.90001 15.5999 3.10001 12.8999L0.900012 15.0999L0.200012 8.6999L6.60001 9.3999L4.50001 11.4999Z">
-  </path>
-  <path
+    </path>
+    <path
       d="M15.8 7.2999L9.40001 6.5999L11.5 4.4999C9.60001 2.5999 6.40001 2.5999 4.50001 4.4999C3.80001 5.1999 3.30001 6.1999 3.10001 7.1999L1.10001 6.8999C1.30001 5.3999 2.00001 4.0999 3.00001 3.0999C4.40001 1.6999 6.10001 1.0999 7.90001 1.0999C9.70001 1.0999 11.5 1.7999 12.8 3.0999L15 0.899902L15.8 7.2999Z">
-  </path>
+    </path>
   </svg>`,
 
   checked: `<svg width="16" height="16" viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg" fill="#222325">
-  <path
+    <path
       d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
-  </path>
-</svg>`,
+    </path>
+  </svg>`,
 
   unchecked: `<svg width="16" height="16" viewBox="0 0 11 9" xmlns="http://www.w3.org/2000/svg" fill="#dadbdd"><path d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"></path></svg>`,
 
@@ -222,22 +222,24 @@ const ICONS = {
     <g style="font-style:normal;font-variant:normal;font-weight:400;font-size:13.8125px;line-height:125%;font-family:Calibri;text-align:start;letter-spacing:0;word-spacing:0;text-anchor:start;fill:#000;fill-opacity:1;stroke:none" transform="translate(-1463.923 -17599.681) scale(22.11728)"/>
     <path style="fill-opacity:1;stroke:none;stroke-opacity:1" d="M224 0A224 224 0 0 0 0 224a224 224 0 0 0 224 224 224 224 0 0 0 224-224A224 224 0 0 0 224 0zm116 80 44 43.428L175 384 32 232l44-43.428 99 97.713L340 80z"/>
   </svg>`,
-  location:`<svg width="12" height="16" viewBox="0 0 12 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
-  <g clip-path="url(#clip0)">
+
+  location: `<svg width="12" height="16" viewBox="0 0 12 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
+    <g clip-path="url(#clip0)">
       <path
           d="M5.38338 15.6772C0.842813 9.09472 0 8.41916 0 6C0 2.68628 2.68628 0 6 0C9.31372 0 12 2.68628 12 6C12 8.41916 11.1572 9.09472 6.61662 15.6772C6.31866 16.1076 5.68131 16.1076 5.38338 15.6772ZM6 8.5C7.38072 8.5 8.5 7.38072 8.5 6C8.5 4.61928 7.38072 3.5 6 3.5C4.61928 3.5 3.5 4.61928 3.5 6C3.5 7.38072 4.61928 8.5 6 8.5Z">
       </path>
-  </g>
-  <defs>
+    </g>
+    <defs>
       <clipPath id="clip0">
           <rect width="12" height="16"></rect>
       </clipPath>
-  </defs>
+    </defs>
   </svg>`,
-  user:`<svg width="14" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
-  <path
+
+  user: `<svg width="14" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
+    <path
       d="M7 8C9.20938 8 11 6.20937 11 4C11 1.79063 9.20938 0 7 0C4.79063 0 3 1.79063 3 4C3 6.20937 4.79063 8 7 8ZM9.8 9H9.27812C8.58437 9.31875 7.8125 9.5 7 9.5C6.1875 9.5 5.41875 9.31875 4.72188 9H4.2C1.88125 9 0 10.8813 0 13.2V14.5C0 15.3281 0.671875 16 1.5 16H12.5C13.3281 16 14 15.3281 14 14.5V13.2C14 10.8813 12.1187 9 9.8 9Z">
-  </path>
+    </path>
   </svg>`
 }
 
