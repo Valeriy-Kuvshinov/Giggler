@@ -8,6 +8,10 @@
     margin-top: 16px;
   }
 
+  .section-header {
+    padding: 1em;
+  }
+
   input[type='text'] {
     display: flex;
     flex-wrap: nowrap;
@@ -19,16 +23,13 @@
     margin-top: 0.625em;
   }
   .payment-methods {
-    // display: flex;
-    // align-items: center;
     flex-wrap: wrap;
     height: 64;
     vertical-align: center;
-    padding-left: 16px;
   }
 
   .details {
-    padding: 16px;
+    // padding: 16px;
     background-color: $clrSecondary0;
     border: 1px solid $clrSecondary2;
 
@@ -51,6 +52,7 @@
       margin-right: 8px;
       cursor: pointer;
       user-select: none;
+      align-self: center;
     }
 
     .credit-details {
@@ -67,7 +69,9 @@
     .credit-type {
       display: inline-flex;
       align-items: center;
-      height: 25px;
+      flex-wrap: wrap;
+      height: 64px;
+      padding-inline-start: 1em;
 
       &:hover .radio-btn {
         border-color: #222325;
@@ -85,7 +89,6 @@
     .credit-number {
       display: flex;
       flex-direction: column;
-      margin-inline-start: 1.25em;
       width: 95.5%;
 
       input {
@@ -117,8 +120,11 @@
     .credit-date {
       display: flex;
       flex-direction: column;
-      margin-inline-start: 20px;
       width: 50%;
+
+      &:nth-child(even){
+        margin-inline-start: 20px;
+      }
 
       input {
         width: 100%;
@@ -128,8 +134,11 @@
     .buyer-info {
       display: flex;
       flex-direction: column;
-      margin-inline-start: 20px;
       width: 50%;
+
+      &:nth-child(even){
+        margin-inline-start: 20px;
+      }
 
       input {
         width: 100%;
@@ -146,12 +155,14 @@
     background-color: $clrPrimary1;
     border-block-start: 1px solid $clrSecondary2;
     border-block-end: 1px solid $clrSecondary2;
+    border-bottom: none;
   }
 
   .credit-info {
     border-block-start: 0;
     border-block-end: 0;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    padding: 24px 18px;
 
     input {
       margin-block-end: 16px;
