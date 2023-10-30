@@ -41,14 +41,16 @@ export function PaymentInfo({ gig, createOrder, packageChoice }) {
         <section className="payment">
           <div className="service-fee">
             <span>
-              Service fee <SvgIcon iconName={'questionMarkIcon'} />
+              Service fee
+               {/* <SvgIcon iconName={'questionMarkIcon'} /> */}
             </span>
             <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
           </div>
 
           <div className="vat-fee">
             <span>
-              VAT <SvgIcon iconName={'questionMarkIcon'} />
+              VAT 
+              {/* <SvgIcon iconName={'questionMarkIcon'} /> */}
             </span>
             <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
           </div>
@@ -70,7 +72,7 @@ export function PaymentInfo({ gig, createOrder, packageChoice }) {
           </Link>
         </section>
         <div className="secure-payment">
-          <span class="lock"></span>
+          <span className="lock"></span>
           <span>SSL Secure Payment</span>
         </div>
       </section>

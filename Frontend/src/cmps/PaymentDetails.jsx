@@ -1,21 +1,21 @@
 import SvgIcon from './SvgIcon.jsx'
 import creditCardImage from '../../src/assets/img/credit.card.png'
 import { useState } from 'react'
-import { useForm } from '../customHooks/useForm.js'
 
 export function PaymentDetails() {
   const [paymentMethod, setPaymentMethod] = useState(true)
 
   const initialState = {
     crdNum: '1111222233334444',
-    expDate: new Date().getMonth() + 1 + '/' + (new Date().getFullYear() % 100),
+    expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
     pinCode: '123',
     firstName: 'Yaron',
     lastName: 'Biton',
   }
 
-  const [fields, , handleChange] = useForm(initialState)
-  const { crdNum, expDate, pinCode, firstName, lastName } = fields
+  const handlePaymentMethodChange = (isCreditCard) => {
+    setPaymentMethod(isCreditCard)
+  }
 
   return (
     <section className="payment-details">
@@ -25,16 +25,15 @@ export function PaymentDetails() {
       <section className="payment-methods">
         <article
           className="details credit-card"
-          onClick={() => setPaymentMethod(true)}
+          onClick={() => handlePaymentMethodChange(true)}
         >
           <label className={`credit-type ${paymentMethod ? 'selected' : ''}`}>
             <input
               type="radio"
               className="credit"
-              defaultChecked={paymentMethod}
-              onChange={() => setPaymentMethod(true)}
+              checked={paymentMethod}
+              onChange={() => handlePaymentMethodChange(true)}
             />
-            {/* checked={paymentMethod} */}
             <span className="radio-btn"></span>
             <span className="text">Credit & Debit Cards</span>
             <SvgIcon iconName={'creditCardsIcon'} />
@@ -51,16 +50,15 @@ export function PaymentDetails() {
                     className="card-logo"
                     style={{
                       backgroundImage: `url(${creditCardImage})`,
-                      width: '2em', // Set the width and height according to your requirements
+                      width: '2em',
                       height: '2em',
                     }}
                   ></span>
                   <input
                     type="text"
                     name="crdNum"
-                    value={crdNum}
-                    onChange={handleChange}
-                    placeholder="0000 0000 0000 0000"
+                    value={initialState.crdNum}
+                    readOnly
                   />
                 </div>
               </div>
@@ -71,9 +69,8 @@ export function PaymentDetails() {
                   <input
                     type="text"
                     name="expDate"
-                    value={expDate}
-                    onChange={handleChange}
-                    placeholder="MM/YY"
+                    value={initialState.expDate}
+                    readOnly
                   />
                 </div>
 
@@ -82,9 +79,8 @@ export function PaymentDetails() {
                   <input
                     type="text"
                     name="pinCode"
-                    value={pinCode}
-                    onChange={handleChange}
-                    placeholder="XXX"
+                    value={initialState.pinCode}
+                    readOnly
                   />
                 </div>
               </div>
@@ -95,8 +91,8 @@ export function PaymentDetails() {
                   <input
                     type="text"
                     name="firstName"
-                    value={firstName}
-                    onChange={handleChange}
+                    value={initialState.firstName}
+                    readOnly
                   />
                 </div>
 
@@ -105,8 +101,8 @@ export function PaymentDetails() {
                   <input
                     type="text"
                     name="lastName"
-                    value={lastName}
-                    onChange={handleChange}
+                    value={initialState.lastName}
+                    readOnly
                   />
                 </div>
               </div>
@@ -115,10 +111,15 @@ export function PaymentDetails() {
         </article>
         <article
           className="details paypal"
-          onClick={() => setPaymentMethod(false)}
+          onClick={() => handlePaymentMethodChange(false)}
         >
           <label className={`credit-type ${!paymentMethod ? 'selected' : ''}`}>
-            <input type="radio" className="credit" checked={paymentMethod} />
+            <input
+              type="radio"
+              className="credit"
+              checked={!paymentMethod}
+              onChange={() => handlePaymentMethodChange(false)}
+            />
             <span className="radio-btn"></span>
             <SvgIcon iconName={'paypalIcon'} />
           </label>
