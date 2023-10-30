@@ -10,12 +10,10 @@ import { userService } from '../../services/user.service.js'
 export function UserOrders({ type }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    const sellerOrders = orders.filter(order => order.sellerId === user._id)
-    const buyerOrders = orders.filter(order => order.buyerId === user._id)
 
     let displayedOrders = []
-    if (type === 'received') displayedOrders = sellerOrders
-    else if (type === 'sent') displayedOrders = buyerOrders
+    if (type === 'received') displayedOrders = orders.filter(order => order.sellerId === user._id)
+    else if (type === 'sent') displayedOrders = orders.filter(order => order.buyerId === user._id)
 
     useEffect(() => {
         loadUserOrders()

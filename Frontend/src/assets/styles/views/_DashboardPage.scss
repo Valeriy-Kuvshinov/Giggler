@@ -3,34 +3,31 @@
     max-width: 1400px;
     text-align: center;
     justify-content: center;
+    background: $clrSecondary12;
 
     .user-orders {
         width: 100%;
         box-sizing: border-box;
         font-family: 'macan-regular';
-        padding: 32px 0 32px 0;
 
         table {
             width: 100%;
             border-collapse: collapse;
-            border: 1px solid $clrSecondary13;
+            border: 1px solid $clrSecondary4;
         }
 
         th,
         td {
             padding: 1em;
             text-align: center;
-            border: 1px solid $clrSecondary13;
+            border: 1px solid $clrSecondary4;
+            background: $clrPrimary1;
 
             &:not(:last-child),
             &:not(:first-child) {
                 border-right: none;
                 border-left: none;
             }
-        }
-
-        thead tr {
-            background-color: $clrSecondary1;
         }
 
         th {
