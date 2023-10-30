@@ -25,8 +25,8 @@ export function DashboardPage() {
             <Box sx={{ margin: 'auto', width: '100%', typography: 'body1', maxWidth: '1400px' }}>
                 <h3>Manage your orders:</h3>
                 <Tabs value={tabValue} onChange={handleTabChange} aria-label="dashboard tabs" centered>
-                    <Tab label="Orders you got" />
-                    <Tab label="Orders you sent" />
+                    <Tab label="Customer orders" />
+                    <Tab label="Purchased orders" />
                 </Tabs>
                 <Box p={4}>
                     {tabValue === 0 && <SellerOrders />}
