@@ -17,7 +17,7 @@
                 justify-content: space-between;
                 width:100%;
                 min-width: 400px;
-                height: 360px;
+                height: fit-content;
                 padding: 30px;
                 background-color: $clrPrimary1;
                 border: 1px solid $clrSecondary2;
@@ -46,6 +46,7 @@
                     width: 150px;
                     height: 150px;
                     border-radius: 50%;
+                    object-fit: cover;
                 }
 
                 h2 {
@@ -57,28 +58,31 @@
                 .username{ 
                     text-align: center;
                     width: 100%;
+                    margin-block-end: 1.25em;
                 }
-                .location-and-time{
 
+                .location-and-time{
                     width: 100%;
-                    &:first-child{
-                        border-top: 1px solid $clrSecondary2;
-                        margin-block-start: 1.5em;
-                    }
+                    padding-block-start: 1.25em;
+                    border-top: 1px solid $clrSecondary2;
                     .info-line {
                         justify-content: space-between;
+                        align-items: center;
                         width: 100%;
+                        margin-block-end: 1em;
                         
-    
-                        span {
-                            img {
-                                height: 16px;
-                                width: 14px;
+                        .data{
+                            display: flex;
+                            align-items: center;
+                            span{
+                                font-weight: 100;
+                            }
+                            svg {
                                 margin-inline-end: em(12px);
                             }
-                            &:nth-child(2){
-                                font-weight: bold;
-                            }
+                        }
+                        &:nth-child(2){
+                            font-weight: bold;
                         }
                     }
                 }
