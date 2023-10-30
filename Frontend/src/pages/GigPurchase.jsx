@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { PaymentDetails } from '../cmps/PaymentDetails.jsx'
-import { PaymentInfo } from '../cmps/PaymentInfo.jsx'
+import { PurchaseMain } from '../cmps/PurchaseMain.jsx'
+import { PurchaseAside } from '../cmps/PurchaseAside.jsx'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
@@ -74,9 +74,9 @@ export function GigPurchase() {
   if (gig === undefined || gigs === undefined) return <div>loading...</div>
 
   return (
-    <section className="gig-purchase layout-row">
-      <PaymentDetails createOrder={createOrder} />
-      <PaymentInfo
+    <section className="gig-purchase layout-row max-width-container">
+      <PurchaseMain createOrder={createOrder} />
+      <PurchaseAside
         gig={gig}
         createOrder={createOrder}
         packageChoice={packageChoice}

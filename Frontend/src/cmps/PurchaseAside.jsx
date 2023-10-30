@@ -2,7 +2,7 @@ import SvgIcon from './SvgIcon.jsx'
 import { packages } from '../services/gig.service.js'
 import { Link } from 'react-router-dom'
 
-export function PaymentInfo({ gig, createOrder, packageChoice }) {
+export function PurchaseAside({ gig, createOrder, packageChoice }) {
   if (gig === null) return <div>loading...</div>
 
   function onConfirmPayment() {
@@ -12,7 +12,7 @@ export function PaymentInfo({ gig, createOrder, packageChoice }) {
   console.log('packageChoice: ', packageChoice)
 
   return (
-    <section className="payment-info">
+    <section className="purchase-aside">
       <section className="payment one">
         <div className="payment-header">
           <img src={gig.imgUrls[0]} alt={gig.title} />

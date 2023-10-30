@@ -2,7 +2,7 @@ import SvgIcon from './SvgIcon.jsx'
 import creditCardImage from '../../src/assets/img/credit.card.png'
 import { useState } from 'react'
 
-export function PaymentDetails() {
+export function PurchaseMain() {
   const [paymentMethod, setPaymentMethod] = useState(true)
 
   const initialState = {
@@ -18,7 +18,7 @@ export function PaymentDetails() {
   }
 
   return (
-    <section className="payment-details">
+    <section className="purchase-main">
       <section className="details section-header">
         <span>Payment Options</span>
       </section>
