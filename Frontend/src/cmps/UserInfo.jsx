@@ -6,6 +6,7 @@ import location from "../assets/img/svg/location.icon.svg"
 
 import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
+import SvgIcon from "./SvgIcon"
 
 export function UserInfo({ user }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -90,19 +91,35 @@ export function UserInfo({ user }) {
 
         <div className="location-and-time">
           <div className="info-line flex" onClick={loadModal}>
-            <span>
-              <img src={location} /> From
+            <span className="data">
+              <SvgIcon iconName={'location'}/> 
+              <span>From</span>
             </span>
             <span>{user.country}</span>
           </div>
 
           <div className="info-line flex">
-            <span>
-              <img src={icon} /> Member Since
+            <span className="data">
+              <SvgIcon iconName={'user'}/> 
+              <span>Member Since</span>
             </span>
-            <span>
-              {month.slice(0, 3)} {year}
+            <span>{month.slice(0, 3)} {year}</span>
+          </div>
+
+          <div className="info-line flex">
+            <span className="data">
+              <SvgIcon iconName={'clock'}/> 
+              <span>Avg. Response Time</span>
             </span>
+            <span>{month.slice(0, 3)} {year}</span>
+          </div>
+
+          <div className="info-line flex">
+            <span className="data">
+              <SvgIcon iconName={'clock'}/> 
+              <span>Last Delivery</span>
+            </span>
+            <span>{month.slice(0, 3)} {year}</span>
           </div>
         </div>
 
