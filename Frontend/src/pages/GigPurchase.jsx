@@ -1,21 +1,24 @@
-import { useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { PaymentDetails } from "../cmps/PaymentDetails.jsx"
-import { PaymentInfo } from "../cmps/PaymentInfo.jsx"
+import { PaymentDetails } from '../cmps/PaymentDetails.jsx'
+import { PaymentInfo } from '../cmps/PaymentInfo.jsx'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { orderBackendService } from "../services/order.backend.service.js"
+import { orderBackendService } from '../services/order.backend.service.js'
 
-import { saveOrder } from "../store/order.actions.js"
-import { loadGigs } from "../store/gig.actions.js"
+import { saveOrder } from '../store/order.actions.js'
+import { loadGigs } from '../store/gig.actions.js'
 
 export function GigPurchase() {
-  const user = useSelector(storeState => storeState.userModule.user)
-  const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const user = useSelector((storeState) => storeState.userModule.user)
+  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const params = useParams()
   const gig = gigs.find((gig) => gig._id === params.id)
+
+  const queryParams = new URLSearchParams(window.location.search)
+  const packageChoice = queryParams.get('package')
 
   useEffect(() => {
     loadGig2()
@@ -31,8 +34,13 @@ export function GigPurchase() {
 
   async function createOrder() {
     const orderToSave = orderBackendService.createOrder(
-      user._id, user.fullName, gig.ownerId,
-      gig.title, gig.deliveryTime, gig._id, gig.price
+      user._id,
+      user.fullName,
+      gig.ownerId,
+      gig.title,
+      gig.deliveryTime,
+      gig._id,
+      gig.price
     )
 
     try {
@@ -40,24 +48,26 @@ export function GigPurchase() {
       showSuccessMsg(
         {
           title: 'ORDER ADDED',
-          body: `Thank you for using Giggler!`
+          body: `Thank you for using Giggler!`,
         },
         {
-          userMsgLeft: "55%",
-          messageAreaPadding: "2em 1.5em 2em 7em",
-          msgStatusTranslateX: "-12em"
-        })
+          userMsgLeft: '55%',
+          messageAreaPadding: '2em 1.5em 2em 7em',
+          msgStatusTranslateX: '-12em',
+        }
+      )
     } catch (err) {
       showErrorMsg(
         {
           title: 'FAILED TO ORDER',
-          body: `Please try again later.`
+          body: `Please try again later.`,
         },
         {
-          userMsgLeft: "55%",
-          messageAreaPadding: "1em 0.5em 1em 6em",
-          msgStatusTranslateX: "-13em"
-        })
+          userMsgLeft: '55%',
+          messageAreaPadding: '1em 0.5em 1em 6em',
+          msgStatusTranslateX: '-13em',
+        }
+      )
     }
   }
 
@@ -66,7 +76,11 @@ export function GigPurchase() {
   return (
     <section className="gig-purchase layout-row">
       <PaymentDetails createOrder={createOrder} />
-      <PaymentInfo gig={gig} createOrder={createOrder} />
+      <PaymentInfo
+        gig={gig}
+        createOrder={createOrder}
+        packageChoice={packageChoice}
+      />
     </section>
   )
 }

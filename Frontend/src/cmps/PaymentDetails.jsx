@@ -1,5 +1,5 @@
 import SvgIcon from './SvgIcon.jsx'
-
+import creditCardImage from '../../src/assets/img/credit.card.png'
 import { useState } from 'react'
 import { useForm } from '../customHooks/useForm.js'
 
@@ -28,7 +28,12 @@ export function PaymentDetails() {
           onClick={() => setPaymentMethod(true)}
         >
           <label className={`credit-type ${paymentMethod ? 'selected' : ''}`}>
-            <input type="radio" className="credit" />
+            <input
+              type="radio"
+              className="credit"
+              defaultChecked={paymentMethod}
+              onChange={() => setPaymentMethod(true)}
+            />
             {/* checked={paymentMethod} */}
             <span className="radio-btn"></span>
             <span className="text">Credit & Debit Cards</span>
@@ -45,11 +50,11 @@ export function PaymentDetails() {
                   <span
                     className="card-logo"
                     style={{
-                      backgroundImage:
-                        'url("https://fiverr-res.cloudinary.com/image/upload/f_png,q_auto/v1/attachments/generic_asset/asset/2496be9dfb5983d9de91630d83bb21e0-1682945799754/generic.svg")',
+                      backgroundImage: `url(${creditCardImage})`,
+                      width: '2em', // Set the width and height according to your requirements
+                      height: '2em',
                     }}
                   ></span>
-
                   <input
                     type="text"
                     name="crdNum"

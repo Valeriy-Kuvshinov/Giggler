@@ -1,78 +1,78 @@
-import SvgIcon from "./SvgIcon.jsx"
+import SvgIcon from './SvgIcon.jsx'
+import { packages } from '../services/gig.service.js'
+import { Link } from 'react-router-dom'
 
-import { Link } from "react-router-dom"
-
-export function PaymentInfo({ gig, createOrder }) {
+export function PaymentInfo({ gig, createOrder, packageChoice }) {
   if (gig === null) return <div>loading...</div>
 
   function onConfirmPayment() {
     createOrder()
   }
-
-  const gigQualities = [
-    { title: "1 concept included" },
-    { title: "Logo transparency" },
-    { title: "Printable file" },
-    { title: "Include 3D mockup" },
-  ]
+  console.log('packages: ', packages)
+  console.log('packageChoice: ', packageChoice)
 
   return (
     <section className="payment-info">
       <section className="payment one">
         <div className="payment-header">
-          <img src={gig.imgUrls[0]} />
-          <p>{gig.description}</p>
+          <img src={gig.imgUrls[0]} alt={gig.title} />
+          <p>{gig.title}</p>
+        </div>
+        <div className="order-details-general">
+          <span className="b">{packages[packageChoice].type}</span>
+          <span>${packages[packageChoice].price * gig.price}</span>
         </div>
 
-        <div className="payment-price">
-          <p>BASIC SPEED OPTIMIZATION</p>
-          <span>${gig.price}</span>
-        </div>
+        <ul className="features">
+          {packages[packageChoice].features.map((feature, idx) => (
+            <li key={idx}>
+              <SvgIcon
+                iconName={
+                  packages[packageChoice].featuresCond[idx]
+                    ? 'checked'
+                    : 'unchecked'
+                }
+              />
+              {feature}
+            </li>
+          ))}
+        </ul>
 
-        <div className="gig-qualities">
-          <div className="gig-quality">
-            <SvgIcon iconName={'checkmarkBlackIcon'} />
-            <span>1 concept included</span>
+        <section className="payment">
+          <div className="service-fee">
+            <span>
+              Service fee <SvgIcon iconName={'questionMarkIcon'} />
+            </span>
+            <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
           </div>
 
-          <div className="gig-quality">
-            <SvgIcon iconName={'checkmarkBlackIcon'} />
-            <span>Logo transparency</span>
+          <div className="vat-fee">
+            <span>
+              VAT <SvgIcon iconName={'questionMarkIcon'} />
+            </span>
+            <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
           </div>
 
-          <div className="gig-quality">
-            <SvgIcon iconName={'checkmarkBlackIcon'} />
-            <span>Printable file</span>
+          <div className="total-fee">
+            <span>Total</span>
+            <span>${parseFloat(gig.price * 1.2).toFixed(2)}</span>
           </div>
-        </div>
-      </section>
 
-      <section className="payment two">
-        <div className="paying-fee">
-          <span>Service fee <SvgIcon iconName={'questionMarkIcon'} /></span>
-          <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
-        </div>
+          <div className="delivery-time">
+            <span>Total Delivery Time</span>
+            <span>{packages[packageChoice].time}</span>
+          </div>
 
-        <div className="paying-fee">
-          <span>VAT <SvgIcon iconName={'questionMarkIcon'} /></span>
-          <span>${parseFloat(gig.price * 0.1).toFixed(2)}</span>
+          <Link to={`/`}>
+            <button className="confirm-btn" onClick={onConfirmPayment}>
+              Confirm And Pay
+            </button>
+          </Link>
+        </section>
+        <div class="secure-payment">
+          <i class="fa fa-lock"></i>
+          <span>SSL Secure Payment</span>
         </div>
-
-        <div className="final paying-fee">
-          <span>Total</span>
-          <span>${parseFloat(gig.price * 1.2).toFixed(2)}</span>
-        </div>
-
-        <div className="not paying-fee">
-          <span>Total Delivery Time</span>
-          <span>{gig.daysToMake}</span>
-        </div>
-
-        <Link to={`/`}>
-          <button className="confirm-btn" onClick={onConfirmPayment}>
-            Confirm And Pay
-          </button>
-        </Link>
       </section>
     </section>
   )
