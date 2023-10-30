@@ -39,8 +39,8 @@ function createOrder(buyerId = '', sellerId = '', title = 'important order', del
         deliveryTime: deliveryTime,
         orderedGigId: gigId,
         price: price,
-        createdAt: Date.now(),  
-        reasonForDenial:'',
+        createdAt: Date.now(),
+        reasonForDenial: '',
         orderState: 'pending'
     }
 }
