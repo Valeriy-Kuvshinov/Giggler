@@ -1,102 +1,130 @@
 .profile-page {
-    background-color: $clrSecondary12;
-    padding: 3.125em 0 2.5em;
-    
-    .user-profile {
-        display: flex;
-        flex-direction: row;
+  background-color: $clrSecondary12;
+  padding: 3.125em 0 2.5em;
+
+  .user-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1240px;
+
+    .user-info {
+      color: $clrSecondary6;
+
+      .info-block {
+        align-items: center;
         justify-content: space-between;
-        max-width: 1240px;
-
-        .user-info {
-            position: relative;
-            color: $clrSecondary6;
-
-            .info-block {
-                align-items: center;
-                justify-content: space-between;
-                width:100%;
-                min-width: 400px;
-                height: fit-content;
-                padding: 30px;
-                background-color: $clrPrimary1;
-                border: 1px solid $clrSecondary2;
-                margin-block-end: 20px;
-
-                &:nth-child(2) {
-                    justify-content: start;
-                    align-items: start;
-
-                    p {
-                        margin: 0.5em 0;
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    .description-area {
-                        width: 22.5em;
-                        height: 260px;
-                        border: none;
-                        margin-left: -12px;
-                        margin-top: 0;
-                    }
-                }
-
-                img {
-                    width: 150px;
-                    height: 150px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                }
-
-                h2 {
-                    text-align: center;
-                    width: 100%;
-                    text-transform: capitalize;
-                }
-                
-                .username{ 
-                    text-align: center;
-                    width: 100%;
-                    margin-block-end: 1.25em;
-                }
-
-                .location-and-time{
-                    width: 100%;
-                    padding-block-start: 1.25em;
-                    border-top: 1px solid $clrSecondary2;
-                    .info-line {
-                        justify-content: space-between;
-                        align-items: center;
-                        width: 100%;
-                        margin-block-end: 1em;
-                        
-                        .data{
-                            display: flex;
-                            align-items: center;
-                            span{
-                                font-weight: 100;
-                            }
-                            svg {
-                                margin-inline-end: em(12px);
-                            }
-                        }
-                        &:nth-child(2){
-                            font-weight: bold;
-                        }
-                    }
-                }
-                
-            }
-            @media (max-width: 900px){
-                width: 100%;
-            }
-        }
-        @media (max-width: 900px){
-            flex-direction: column;
-        }
-    }
-    &.visitor{
+        width: 100%;
+        min-width: 400px;
+        height: fit-content;
+        padding: 30px;
         background-color: $clrPrimary1;
+        border: 1px solid $clrSecondary2;
+        margin-block-end: 1.25em;
+
+        &:nth-child(2) {
+          justify-content: start;
+          align-items: start;
+
+          p {
+            margin: 0.5em 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          .description-area {
+            width: 22.5em;
+            height: fit-content;
+            border: none;
+            margin-left: -0.75em;
+            margin-top: 0;
+          }
+        }
+
+        .profile-picture {
+          position: relative;
+          height: 150px;
+          width: 150px;
+          img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          i {
+            position: absolute;
+            bottom: 0px;
+            left: 96px;
+          }
+          svg {
+            position: relative;
+            width: 54px;
+            height: 54px;
+          }
+        }
+
+        .stars {
+          display: flex;
+          align-items: center;
+          margin-block-end: 1.25em;
+          .rating {
+            padding: 0 0.25em;
+            font-weight: 700;
+          }
+          .review-count {
+            color: $clrSecondary11;
+          }
+        }
+
+        h2 {
+          text-align: center;
+          width: 100%;
+          text-transform: capitalize;
+          color: $clrPrimary2;
+          font-weight: 700;
+        }
+
+        .username {
+          text-align: center;
+          width: 100%;
+          margin-block-end: 1.25em;
+        }
+
+        .location-and-time {
+          width: 100%;
+          padding-block-start: 1.25em;
+          border-top: 1px solid $clrSecondary2;
+          .info-line {
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-block-end: 1em;
+
+            .data {
+              display: flex;
+              align-items: center;
+              span {
+                font-weight: 100;
+              }
+              svg {
+                margin-inline-end: em(12px);
+              }
+            }
+            .bold {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      @media (max-width: 900px) {
+        width: 100%;
+      }
     }
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+  }
+  &.visitor {
+    background-color: $clrPrimary1;
+  }
 }

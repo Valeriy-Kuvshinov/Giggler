@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
+import { Loader } from "../cmps/Loader.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
 import { useParams } from "react-router"
@@ -16,7 +17,7 @@ export function UserProfile() {
   useEffect(() => {
     loadGigs2()
     loadUser2()
-  }, [])
+  }, [params.id])
 
   async function loadGigs2() {
     try {
@@ -36,7 +37,7 @@ export function UserProfile() {
     }
   }
 
-  if (watchedUser === null || gigs === null) return <div>loading...</div>
+  if (watchedUser === null || gigs === null) return <Loader />
 
   return (
     <section className={`profile-page full ${(loggedinUser._id!==watchedUser._id ? 'visitor' : '')}`}>

@@ -109,11 +109,12 @@ export function AppHeader() {
               <Link to="/explore" style={{ color: headerStyles.color }}>Explore</Link>
             </li>
 
-            <li>
-              <Link to="/" style={{ color: headerStyles.color }}>Become a Seller</Link>
-            </li>
             {user ? (
               <>
+                <li>
+                  <Link to="/dashboard" style={{ color: headerStyles.color }}>Orders</Link>
+                </li>
+
                 <li className="user-info flex" onClick={(e) => {
                   e.stopPropagation()
                   setShowDropdown(!showDropdown)
@@ -125,6 +126,10 @@ export function AppHeader() {
               </>
             ) : (
               <>
+                <li>
+                  <Link to="/" style={{ color: headerStyles.color }}>Become a Seller</Link>
+                </li>
+
                 <li>
                   <button className="login" onClick={openLogin} style={{ color: headerStyles.color }}>Sign In</button>
                 </li>

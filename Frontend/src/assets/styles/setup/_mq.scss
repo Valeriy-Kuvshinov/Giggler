@@ -315,15 +315,6 @@
 }
 
 .dashboard-page {
-    @media (max-width: 1400px) {
-        padding: 1em;
-    }
-
-    @media (min-width: 1401px) {
-        margin: auto;
-        margin-top: 1em;
-    }
-
     .info-divs {
         .grid-item {
             @media (max-width: 1400px) {

@@ -54,7 +54,6 @@ function remove(userId) {
 }
 
 function save(user) {
-    console.log('received user', user)
     let users = utilService.readJsonFile(USERS_PATH)
 
     if (user._id) {
@@ -74,7 +73,7 @@ function save(user) {
 
 function _saveUsers(users) {
     try {
-        console.log("Users before saving: ", users)
+        // console.log("Users before saving: ", users)
         fs.writeFileSync(USERS_PATH, JSON.stringify(users, null, 2))
         loggerService.info('Users saved successfully')
     } catch (err) {

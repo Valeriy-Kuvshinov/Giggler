@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
+import SvgIcon from '../SvgIcon.jsx'
 
 import { gigService } from '../../services/gig.service.js'
 
-import dropdownIcon from '../../assets/img/svg/order.dropdown.icon.svg'
-
-export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
+export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
     const [isDropdownVisible, setDropdownVisible] = useState(false)
@@ -86,11 +85,9 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td>
                 {getAvailableActions().length > 0 && (
                     <>
-                        <img
-                            src={dropdownIcon}
-                            alt="Actions"
-                            onClick={() => setDropdownVisible(!isDropdownVisible)}
-                        />
+                        <button onClick={() => setDropdownVisible(!isDropdownVisible)}>
+                            <SvgIcon iconName={'orderDropdownIcon'} />
+                        </button>
                         {isDropdownVisible && (
                             <div className="dropdown-menu">
                                 {getAvailableActions().map((action, idx) => (

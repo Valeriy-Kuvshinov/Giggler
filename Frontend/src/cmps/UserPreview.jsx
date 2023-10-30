@@ -30,7 +30,7 @@ export function UserPreview({ is, owner, children }) {
     setUser(owner)
   }
   if (!user) return null
-
+  
   return (
     <>
       <div
@@ -49,6 +49,7 @@ export function UserPreview({ is, owner, children }) {
             )}
             <span className={`username ${is === 'explore' ? 'b' : ''}`}>{`${is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
               }${user.username}`}</span>
+              {is==='userProfile' && <span className={`user-level ${user.level==='level 3'?'top':''}`}>{user.level}</span>}
           </span>
           {is === 'gig-details-2' && (
             <span className="saying">{`Work Hard\, Work Fast and Cater Your needs as imagined`}</span>
