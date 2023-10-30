@@ -77,7 +77,7 @@ export function BuyerOrders() {
             <table>
                 <thead>
                     <tr>
-                        <th>BUYER</th>
+                        <th>SELLER</th>
                         <th>GIG</th>
                         <th>ACTION DATE</th>
                         <th>DUE ON</th>

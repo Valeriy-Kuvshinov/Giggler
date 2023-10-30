@@ -8,6 +8,7 @@ import { gigService } from '../../services/gig.service.js'
 export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
+    const [buyerName, setBuyerName] = useState('')
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     useEffect(() => {

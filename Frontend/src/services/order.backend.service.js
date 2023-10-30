@@ -31,10 +31,9 @@ function save(order) {
     }
 }
 
-function createOrder(buyerId = '', buyerName = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
+function createOrder(buyerId = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
     return {
         buyerId: buyerId,
-        buyerName: buyerName,
         sellerId: sellerId,
         title: title,
         deliveryTime: deliveryTime,
