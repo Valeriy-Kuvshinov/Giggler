@@ -5,11 +5,22 @@ import { galleryService } from '../services/gallery.service.js'
 
 export function ServicesCarousel({ onHandleFilter }) {
   const { popularService, serviceImages, serviceTexts } = galleryService
-  const [visibleStartIndex, setVisibleStartIndex] = useState(0)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  const [itemsPerPage, setItemsPerPage] = useState(5) // Set the default number of slides per screen width
+  const [itemsPerPage, setItemsPerPage] = useState(0)
+  const [images, setImages] = useState(() => {
+    const halfImagesCount = Math.floor(serviceImages.length / 2)
+    const initialImages = [
+      ...serviceImages.slice(-halfImagesCount),
+      ...serviceImages,
+      ...serviceImages.slice(0, halfImagesCount),
+    ]
+    return initialImages
+  })
+  const [visibleStartIndex, setVisibleStartIndex] = useState(
+    Math.floor(images.length / 4)
+  )
   const carouselRef = useRef()
-  let newServiceImages = [...serviceImages]
+
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth)
@@ -18,7 +29,7 @@ export function ServicesCarousel({ onHandleFilter }) {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [newServiceImages])
+  }, [])
 
   useEffect(() => {
     if (windowWidth > 1300) setItemsPerPage(5)
@@ -34,13 +45,14 @@ export function ServicesCarousel({ onHandleFilter }) {
 
     if (direction === 'left') {
       newIndex -= itemsPerPage
-
       if (newIndex < 0) {
-        newIndex = serviceImages.length - (serviceImages.length % itemsPerPage)
+        // Wrap around to the end
+        newIndex = images.length - itemsPerPage
       }
     } else if (direction === 'right') {
       newIndex += itemsPerPage
-      if (newIndex >= serviceImages.length) {
+      if (newIndex + itemsPerPage > images.length) {
+        // Wrap around to the beginning
         newIndex = 0
       }
     }
@@ -62,25 +74,27 @@ export function ServicesCarousel({ onHandleFilter }) {
       >
         <img src={leftArrowSvg} alt="Left Arrow" />
       </button>
-      <div className="services" ref={carouselRef}>
-        {newServiceImages.map((service, index) => (
-          <div
-            onClick={(e) => onHandleFilter(e, popularService[index])}
-            className="service"
-            key={index}
-            style={{
-              flex: `0 0 calc(${100 / itemsPerPage}%) -36px`,
-              borderRadius: '4px',
-            }}
-          >
-            <img src={service} alt={`Service image ${index}`} />
-            <h4 className="service-text">
-              <span>{serviceTexts[index % serviceTexts.length].title}</span>
-              <br />
-              {serviceTexts[index % serviceTexts.length].subtitle}
-            </h4>
-          </div>
-        ))}
+      <div className="services-carousel-wrapper">
+        <div className="services" ref={carouselRef}>
+          {images.map((service, index) => (
+            <div
+              onClick={(e) => onHandleFilter(e, popularService[index])}
+              className="service"
+              key={index}
+              style={{
+                flex: `0 0 calc(${100 / itemsPerPage}%) -36px`,
+                borderRadius: '4px',
+              }}
+            >
+              <img src={service} alt={`Service image ${index}`} />
+              <h4 className="service-text">
+                <span>{serviceTexts[index % serviceTexts.length].title}</span>
+                <br />
+                {serviceTexts[index % serviceTexts.length].subtitle}
+              </h4>
+            </div>
+          ))}
+        </div>
       </div>
       <button
         className="carousel-btn right-side"
