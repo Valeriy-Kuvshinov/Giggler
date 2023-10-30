@@ -5,7 +5,7 @@ import SvgIcon from '../SvgIcon.jsx'
 
 import { gigService } from '../../services/gig.service.js'
 
-export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
+export function BuyerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
     const [isDropdownVisible, setDropdownVisible] = useState(false)

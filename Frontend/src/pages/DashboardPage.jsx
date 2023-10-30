@@ -10,7 +10,8 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Box from '@mui/material/Box'
 
-import { UserOrders } from '../cmps/dashboardCmps/UserOrders.jsx'
+import { BuyerOrders } from '../cmps/dashboardCmps/BuyerOrders.jsx'
+import { SellerOrders } from '../cmps/dashboardCmps/SellerOrders.jsx'
 
 export function DashboardPage() {
     const [tabValue, setTabValue] = useState(0)
@@ -28,8 +29,8 @@ export function DashboardPage() {
                     <Tab label="Orders you sent" />
                 </Tabs>
                 <Box p={4}>
-                    {tabValue === 0 && <UserOrders type="received" />}
-                    {tabValue === 1 && <UserOrders type="sent" />}
+                    {tabValue === 0 && <SellerOrders />}
+                    {tabValue === 1 && <BuyerOrders />}
                 </Box>
             </Box>
         </main>

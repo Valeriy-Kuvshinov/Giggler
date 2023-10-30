@@ -1,19 +1,16 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { UserOrder } from './UserOrder.jsx'
+import { BuyerOrder } from './BuyerOrder.jsx'
 
 import { loadOrders } from '../../store/order.actions.js'
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { userService } from '../../services/user.service.js'
 
-export function UserOrders({ type }) {
+export function BuyerOrders({ type }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
-
-    let displayedOrders = []
-    if (type === 'received') displayedOrders = orders.filter(order => order.sellerId === user._id)
-    else if (type === 'sent') displayedOrders = orders.filter(order => order.buyerId === user._id)
+    const displayedOrders = orders.filter(order => order.buyerId === user._id)
 
     useEffect(() => {
         loadUserOrders()
@@ -90,7 +87,7 @@ export function UserOrders({ type }) {
                 </thead>
                 <tbody>
                     {displayedOrders.map(order => (
-                        <UserOrder
+                        <BuyerOrder
                             key={order._id}
                             order={order}
                             acceptOrder={acceptOrder}
