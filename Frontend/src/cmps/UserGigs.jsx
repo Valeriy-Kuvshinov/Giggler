@@ -30,8 +30,8 @@ export function UserGigs({ user, gigs }) {
 
     return (
         <section className="user-gigs flex column">
-            {gigs.length !== 0 && <div className="title flex">
-                {(user._id === loggedinUser._id) ? 'Your Gigs' : `${user.username}'s Gigs` } 
+            {gigs.length !== 0 && user._id !== loggedinUser._id && <div className="title flex">
+                {`${user.username}'s Gigs` } 
             </div>}
 
             {(gigs.length === 0) && <div className="info-block gig seller">
@@ -51,9 +51,9 @@ export function UserGigs({ user, gigs }) {
                 </div>}
 
                 {(gigs.length !== 0) && (userGigs.map(gig => (
-                    <div className="info-block flex" key={gig._id}>
+                    // <div className="info-block flex" key={gig._id}>
                         <GigPreview is={is} gig={gig} />
-                    </div>
+                    // </div>
                 )))}
             </div>
             

@@ -50,7 +50,6 @@ export function UserInfo({ user }) {
   } else {
     deliveredTime=new Date(user.lastDeliveredAt)
   }
-  console.log(time)
 
   function loadModal() {
     if (loggedinUser._id !== user._id) {
