@@ -16,7 +16,7 @@ export function UserProfile() {
   useEffect(() => {
     loadGigs2()
     loadUser2()
-  }, [])
+  }, [params.id])
 
   async function loadGigs2() {
     try {
