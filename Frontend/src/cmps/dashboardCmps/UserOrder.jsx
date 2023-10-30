@@ -85,9 +85,9 @@ export function UserOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td>
                 {getAvailableActions().length > 0 && (
                     <>
-                        <SvgIcon iconName={'orderDropdownIcon'}
-                            onClick={() => setDropdownVisible(!isDropdownVisible)}
-                        />
+                        <button onClick={() => setDropdownVisible(!isDropdownVisible)}>
+                            <SvgIcon iconName={'orderDropdownIcon'} />
+                        </button>
                         {isDropdownVisible && (
                             <div className="dropdown-menu">
                                 {getAvailableActions().map((action, idx) => (

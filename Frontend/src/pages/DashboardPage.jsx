@@ -28,8 +28,8 @@ export function DashboardPage() {
                     <Tab label="Orders you sent" />
                 </Tabs>
                 <Box p={0}>
-                    {tabValue === 0 && <UserOrders />}
-                    {tabValue === 1 && <UserOrders />}
+                    {tabValue === 0 && <UserOrders type="received" />}
+                    {tabValue === 1 && <UserOrders type="sent" />}
                 </Box>
             </Box>
         </main>

@@ -8,6 +8,7 @@
         width: 100%;
         box-sizing: border-box;
         font-family: 'macan-regular';
+        padding: 32px 0 32px 0;
 
         table {
             width: 100%;
@@ -39,37 +40,45 @@
         td {
             color: $clrPrimary4;
 
-            img {
-                width: 50%;
+            button {
+                width: 60%;
+                margin: auto;
+                background: none;
+
+                i {
+                    width: 100%;
+                }
             }
         }
 
         span {
-            padding: 0.6em 0.8em;
-            color: $clrSecondary9;
+            padding: 0.95em 0.8em;
             border-radius: 5px;
             display: block;
             border: 1px solid $clrSecondary6;
-            font-size: 16px;
-            line-height: 100%;
-            font-family: 'macan-bold';
+            font-size: 12px;
+            font-family: "macan-bold";
+            text-transform: uppercase;
+            letter-spacing: 1px;
 
             &.pending {
-                background: $clr5;
+                background: rgb(105, 189, 218);
+                color: $clrPrimary1;
             }
 
             &.denied {
-                background: $clr4;
-                color: $clrPrimary2;
+                background: rgb(224, 90, 90);
+                color: $clrPrimary1;
             }
 
             &.accepted {
-                background: $clr6;
-                color: $clrPrimary2;
+                background: rgb(201, 243, 49);
+                color: $clrSecondary6;
             }
 
             &.completed {
-                background: $clr3;
+                background: rgb(87, 190, 87);
+                color: $clrPrimary1;
             }
         }
 
