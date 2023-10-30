@@ -43,7 +43,6 @@ export function GigPurchase() {
     )
 
     try {
-      const savedOrder = await saveOrder(orderToSave)
       showSuccessMsg(
         {
           title: 'ORDER ADDED',
