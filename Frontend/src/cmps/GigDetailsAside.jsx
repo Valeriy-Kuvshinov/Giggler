@@ -19,14 +19,14 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
   const { openLogin } = useModal()
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [SelectedPackage, setSelectedPackage] = useState('basic')
+  const [selectedPackage, setSelectedPackage] = useState('basic')
   const [isLiked, setIsLiked] = useState(
     user && gig.likedByUsers.includes(user._id)
   )
   const packages = {
     basic: {
       type: 'Starter Package',
-      price: 1 * gig.price,
+      price: 1,
       desc: `2 logo concepts, jpg, transparent png`,
       time: gig.daysToMake,
       revisions: '8',
@@ -42,7 +42,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
     },
     standard: {
       type: 'Standard Package',
-      price: 3 * gig.price,
+      price: 3,
       desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
       time: gig.daysToMake,
       revisions: 'Unlimited',
@@ -58,7 +58,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
     },
     premium: {
       type: 'Pro Package',
-      price: 5 * gig.price,
+      price: 5,
       desc: `3 logo concepts+ jpg, png+ all source & vector files + 3D Mockup`,
       time: gig.daysToMake,
       revisions: 'Unlimited',
@@ -83,7 +83,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
       openLogin()
       return
     }
-    navigate(`/purchase/${gig._id}`)
+    navigate(`/purchase/${gig._id}/?package=${selectedPackage}`)
   }
 
   function shareGig() {
@@ -144,7 +144,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
       <div className="package-tabs">
         <button
           className={`btn-package tab-1 ${
-            SelectedPackage === 'basic' ? 'checked' : ''
+            selectedPackage === 'basic' ? 'checked' : ''
           }`}
           onClick={() => setSelectedPackage('basic')}
         >
@@ -152,7 +152,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
         <button
           className={`btn-package tab-2 ${
-            SelectedPackage === 'standard' ? 'checked' : ''
+            selectedPackage === 'standard' ? 'checked' : ''
           }`}
           onClick={() => setSelectedPackage('standard')}
         >
@@ -160,7 +160,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
         <button
           className={`btn-package tab-3 ${
-            SelectedPackage === 'premium' ? 'checked' : ''
+            selectedPackage === 'premium' ? 'checked' : ''
           }`}
           onClick={() => setSelectedPackage('premium')}
         >
@@ -170,29 +170,29 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
       <section className="package-content">
         <div className="type-price">
-          <span className="type">{packages[SelectedPackage].type}</span>
-          <span className="price">${packages[SelectedPackage].price}</span>
+          <span className="type">{packages[selectedPackage].type}</span>
+          <span className="price">${packages[selectedPackage].price*gig.price}</span>
         </div>
-        <p>{packages[SelectedPackage].desc}</p>
+        <p>{packages[selectedPackage].desc}</p>
         <div className="additional-info">
           <div className="delivery-wrapper">
             <SvgIcon iconName={'clock'} />
             <span className="delivery b">
               {' '}
-              {packages[SelectedPackage].time} Delivery
+              {packages[selectedPackage].time} Delivery
             </span>
           </div>
           <div className="revisions-wrapper">
             <SvgIcon iconName={'refresh'} />
-            <span className="revisions b">{`${packages[SelectedPackage].revisions} Revisions`}</span>
+            <span className="revisions b">{`${packages[selectedPackage].revisions} Revisions`}</span>
           </div>
         </div>
         <ul className="features">
-          {packages[SelectedPackage].features.map((feature, idx) => (
+          {packages[selectedPackage].features.map((feature, idx) => (
             <li key={idx}>
               <SvgIcon
                 iconName={`${
-                  packages[SelectedPackage].featuresCond[idx]
+                  packages[selectedPackage].featuresCond[idx]
                     ? 'checked'
                     : 'unchecked'
                 }`}

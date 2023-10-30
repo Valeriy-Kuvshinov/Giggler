@@ -194,11 +194,7 @@ export const subcategories = {
     'Data Collection',
     'Data Management',
   ],
-  Photography: [
-    'Products & Lifestyle',
-    'People & Scenes',
-    'Local Photography'
-  ],
+  Photography: ['Products & Lifestyle', 'People & Scenes', 'Local Photography'],
   AI_Services: [
     'Build your AI app',
     'Refine AI with experts',
@@ -207,6 +203,56 @@ export const subcategories = {
     'Data Science & ML',
     'Get your data right',
   ],
+}
+export const packages = {
+  basic: {
+    type: 'Starter Package',
+    price: 1,
+    desc: `2 logo concepts, jpg, transparent png`,
+    time: 'Up to 3 Days',
+    revisions: '8',
+    features: [
+      '2 concepts included',
+      'Logo transparency',
+      'Vector file',
+      'Printable file',
+      'Include 3D mockup',
+      'Include source file',
+    ],
+    featuresCond: [true, true, false, true, true, false],
+  },
+  standard: {
+    type: 'Standard Package',
+    price: 3,
+    desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
+    time: 'Up to 3 Days',
+    revisions: 'Unlimited',
+    features: [
+      '2 concepts included',
+      'Logo transparency',
+      'Vector file',
+      'Printable file',
+      'Include 3D mockup',
+      'Include source file',
+    ],
+    featuresCond: [true, true, false, true, true, true],
+  },
+  premium: {
+    type: 'Pro Package',
+    price: 5,
+    desc: `3 logo concepts+ jpg, png+ all source & vector files + 3D Mockup`,
+    time: 'Up to 3 Days',
+    revisions: 'Unlimited',
+    features: [
+      '3 concepts included',
+      'Logo transparency',
+      'Vector file',
+      'Printable file',
+      'Include 3D mockup',
+      'Include source file',
+    ],
+    featuresCond: [true, true, true, true, true, true],
+  },
 }
 
 function escapeRegExp(string) {
