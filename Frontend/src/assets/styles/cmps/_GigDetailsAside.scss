@@ -8,7 +8,6 @@
   grid-column: 3/4;
 
   .gig-interactions {
-    display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
@@ -17,10 +16,6 @@
     .heart {
       user-select: none;
       cursor: pointer;
-
-      i {
-        display: flex;
-      }
     }
 
     img {
@@ -30,7 +25,6 @@
 
     .liked-count {
       min-width: 2em;
-      display: flex;
       align-items: center;
       border: 1px solid $clrSecondary2;
       border-radius: 3px;
@@ -67,7 +61,6 @@
     }
 
     .share {
-      display: flex;
       align-items: center;
       justify-content: center;
       width: 48px;
@@ -84,13 +77,11 @@
   }
 
   .package-tabs {
-    display: flex;
     font-size: 1rem;
     border: 1px solid $clrSecondary2;
     border-bottom: none;
 
     .btn-package {
-      flex: 1 1;
       background-color: $clrSecondary0;
       width: 100%;
       border: solid $clrSecondary2;
@@ -114,8 +105,6 @@
   }
 
   .package-content {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     height: fit-content;
     border: 1px solid $clrSecondary2;
@@ -123,7 +112,6 @@
     padding: 0 1.5rem;
 
     .type-price {
-      display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 2rem 0 1.5rem 0;
@@ -142,13 +130,11 @@
     }
 
     .additional-info {
-      display: flex;
       color: $clrSecondary6;
       margin-block-end: 0.5rem;
       font-size: rem(14px);
 
       .delivery-wrapper {
-        display: flex;
         align-items: center;
 
         .delivery {
@@ -158,7 +144,6 @@
 
       .revisions-wrapper {
         margin-inline-start: 1rem;
-        display: flex;
         align-items: center;
 
         .revisions {
@@ -175,8 +160,6 @@
       margin-block-end: rem(20px);
 
       li {
-        display: flex;
-        flex-direction: row;
         align-items: center;
 
         i {
@@ -186,7 +169,6 @@
     }
 
     .btn-continue {
-      display: flex;
       justify-content: center;
       align-items: center;
       padding: 0.75rem 1.5rem;
@@ -205,9 +187,6 @@
       }
 
       i {
-        display: flex;
-        align-items: center;
-
         svg {
           fill: white;
           width: 1rem;
@@ -222,7 +201,6 @@
   }
 
   .contact-seller-wrapper {
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: $clrSecondary0;
@@ -240,7 +218,6 @@
       padding: 0.75rem 1.5rem;
       position: relative;
       text-align: center;
-      text-decoration: none;
       transition: 0.2s cubic-bezier(0.75, 0, 0.25, 1);
 
       &:hover {

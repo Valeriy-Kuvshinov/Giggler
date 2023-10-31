@@ -68,7 +68,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
   return (
     <section className="gig-details-aside">
-      <div className="gig-interactions">
+      <div className="gig-interactions flex">
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
             <SvgIcon iconName={'heartLiked'} />
@@ -77,16 +77,16 @@ export function GigDetailsAside({ gig, onGigChange }) {
           )}
         </span>
 
-        <span className="liked-count">{gig.likedByUsers.length}</span>
+        <span className="liked-count flex">{gig.likedByUsers.length}</span>
 
-        <button onClick={shareGig} className="share" title="share the gig">
+        <button onClick={shareGig} className="share flex" title="share the gig">
           <SvgIcon iconName={'shareSocialMediaIcon'} />
         </button>
       </div>
 
       {isModalOpen && <ShareGigModal onClose={closeModal} />}
 
-      <div className="package-tabs">
+      <div className="package-tabs flex">
         <button
           className={`btn-package tab-1 ${selectedPackage === 'basic' ? 'checked' : ''
             }`}
@@ -102,7 +102,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         >
           Standard
         </button>
-        
+
         <button
           className={`btn-package tab-3 ${selectedPackage === 'premium' ? 'checked' : ''
             }`}
@@ -112,29 +112,29 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
       </div>
 
-      <section className="package-content">
-        <div className="type-price">
+      <section className="package-content flex column">
+        <div className="type-price flex">
           <span className="type">{packages[selectedPackage].type}</span>
           <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
         <p>{packages[selectedPackage].desc}</p>
 
-        <div className="additional-info">
-          <div className="delivery-wrapper">
+        <div className="additional-info flex">
+          <div className="delivery-wrapper flex">
             <SvgIcon iconName={'clock'} />
             <span className="delivery b">
               {' '}
               {packages[selectedPackage].time} Delivery
             </span>
           </div>
-          <div className="revisions-wrapper">
+          <div className="revisions-wrapper flex">
             <SvgIcon iconName={'refresh'} />
             <span className="revisions b">{`${packages[selectedPackage].revisions} Revisions`}</span>
           </div>
         </div>
         <ul className="features">
           {packages[selectedPackage].features.map((feature, idx) => (
-            <li key={idx}>
+            <li className="flex row" key={idx}>
               <SvgIcon
                 iconName={`${packages[selectedPackage].featuresCond[idx]
                   ? 'checked'
@@ -145,11 +145,11 @@ export function GigDetailsAside({ gig, onGigChange }) {
             </li>
           ))}
         </ul>
-        <span className="btn-continue" onClick={onContinue}>
+        <span className="btn-continue flex" onClick={onContinue}>
           <span>Continue</span> <SvgIcon iconName={'pageArrowRight'} />
         </span>
       </section>
-      <div className="contact-seller-wrapper">
+      <div className="contact-seller-wrapper flex">
         <span className="contact-seller b">Contact me</span>
       </div>
     </section>
