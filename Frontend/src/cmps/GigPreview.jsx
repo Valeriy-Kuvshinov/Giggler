@@ -11,6 +11,7 @@ import { useModal } from "../customHooks/ModalContext"
 import { UserPreview } from "./UserPreview.jsx"
 import { ImageCarousel } from "./ImageCarousel.jsx"
 import { loadReviews } from "../store/review.actions.js"
+import { utilService } from "../services/util.service.js"
 
 export function GigPreview({ is, gig }) {
   const params = useParams()
@@ -130,7 +131,10 @@ export function GigPreview({ is, gig }) {
               <div className="rating">
                 <SvgIcon iconName={"star"} />
                 <span>{user.rating}</span>
-                <span className="reviews">({filteredReviewIds.length})</span>
+                <span className="reviews">
+                  {/* ({filteredReviewIds.length}) */}
+                  ({utilService.getRandomIntInclusive(100,999)})
+                  </span>
               </div>
             </div>
             <div className={`gig-changes ${(loggedId !== user._id) ? 'right' : ''}`}>
@@ -148,7 +152,7 @@ export function GigPreview({ is, gig }) {
               )}
               <div className='price'>
                 <span className="starting">Starting At</span>
-                <span className="b">{`$${updatedGig.price}`}</span>
+                <span>{`$${updatedGig.price}`}</span>
               </div>
             </div>
           </>
