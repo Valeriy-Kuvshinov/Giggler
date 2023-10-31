@@ -13,6 +13,11 @@
     grid-gap: 32px;
     height: 100%;
     
+    .carousel-container:hover~.preview-body .gig-title {
+      text-decoration: none;
+      color: $bgColor3;
+    }
+    
     .gig-changes{
       display: flex;
       align-items: center;
