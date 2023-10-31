@@ -369,7 +369,7 @@
 
 .gig-details {
     @media(max-width: 900px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
         grid-template-areas:
             "explore-category explore-category"
@@ -381,29 +381,28 @@
 
         main {
             grid-column: 1/-1;
-            display: grid;
-            max-width: 900px;
+            // display: grid;
+            gap: 1em;
 
-            section {
-                &:nth-child(1) {
-                    grid-area: explore-category;
-                }
+            .explore-category {
+                grid-area: explore-category;
+            }
 
-                &:nth-child(2) {
-                    grid-area: gig-images;
-                }
+            .gig-details-header {
+                grid-area: gig-images;
+                max-width: 900px;
+            }
 
-                &:nth-child(3) {
-                    grid-area: gig-description;
-                }
+            .about-gig {
+                grid-area: gig-description;
+            }
 
-                &:nth-child(4) {
-                    grid-area: gig-seller;
-                }
+            .about-seller {
+                grid-area: gig-seller;
+            }
 
-                &:nth-child(5) {
-                    grid-area: gig-reviews;
-                }
+            .gig-reviews {
+                grid-area: gig-reviews;
             }
         }
 
@@ -422,7 +421,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 2%;
 
-        main{
+        main {
             grid-column: 1/3;
         }
 

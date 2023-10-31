@@ -49,7 +49,7 @@ export function GigDetails() {
 
         <GigDetailsHeader gig={gig} owner={user} />
 
-        <section style={{ overflow: 'hidden' }}>
+        <section className="about-gig" style={{ overflow: 'hidden' }}>
           <h3>About This Gig</h3>
           <p>{gig.description}</p>
         </section>
