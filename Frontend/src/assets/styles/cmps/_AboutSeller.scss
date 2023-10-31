@@ -4,7 +4,7 @@
   .seller-wrapper {
     padding-block-end: 1.25em;
   }
-  
+
   .stats-desc {
     border: 1px solid $clrSecondary2;
     color: $clrSecondary6;
@@ -15,14 +15,16 @@
     margin-block-end: 1em;
 
     .user-stats {
-      display: grid;
       grid-template-columns: 1fr 1fr;
+
       li {
         @media only screen and (min-width: 600px) {
           grid-template-columns: 1fr;
         }
+
         color: $clrSecondary5;
         padding-bottom: 1em;
+
         strong {
           font-weight: 700;
           color: $clrSecondary6;
@@ -30,8 +32,9 @@
           padding-top: 0.25em;
         }
       }
-      
+
     }
+
     .seller-desc {
       border-block-start: 1px solid $clrSecondary2;
       line-height: 150%;
@@ -39,6 +42,5 @@
       padding-block-start: em(15px);
       text-align: left;
     }
-    
   }
 }
