@@ -75,7 +75,7 @@
       "Marketing Design",
       "Packaging & Covers"
     ],
-    "price": 45.99,
+    "price": 46,
     "description": "I will design a unique and eye-catching logo for your brand.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u101",
@@ -110,7 +110,7 @@
       "Product & Gaming",
       "Architecture & Building Design"
     ],
-    "price": 59.99,
+    "price": 60,
     "description": "I specialize in creating beautiful and responsive website templates that will make your website stand out. Whether you need templates for your personal blog or e-commerce site, I've got you covered.",
     "daysToMake": "Up to 7 days",
     "ownerId": "u102",
@@ -137,7 +137,7 @@
       "Content Writing",
       "Editing & Critique"
     ],
-    "price": 29.99,
+    "price": 30,
     "description": "Looking for high-quality blog articles to boost your website's SEO and engage your audience? I'm here to help! I specialize in creating informative and engaging articles tailored to your niche.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u103",
@@ -165,7 +165,7 @@
       "Music Production & Writing",
       "Audio Engineering & Post Production"
     ],
-    "price": 69.99,
+    "price": 70,
     "description": "Celebrate your special moments with a custom song composed just for you. Whether it's a wedding, anniversary, or any significant event, I'll create a musical masterpiece that captures the essence of the occasion.",
     "daysToMake": "Up to 7 days",
     "ownerId": "u104",
@@ -193,7 +193,7 @@
       "Custom Graphics",
       "Visual Effects"
     ],
-    "price": 99.99,
+    "price": 100,
     "description": "Transform your ideas into stunning 3D animations! Whether it's for a marketing video, product presentation, or artistic project, I'll bring your vision to life with custom animations and visual effects.",
     "daysToMake": "Up to 7 days",
     "ownerId": "u105",
@@ -222,7 +222,7 @@
       "Professional Development",
       "Accounting & Finance"
     ],
-    "price": 79.99,
+    "price": 80,
     "description": "Need expert legal advice for your business? I'm a seasoned attorney with years of experience in corporate law. I can help you with contracts, compliance, and business strategy to ensure legal success.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u106",
@@ -250,7 +250,7 @@
       "Business Growth",
       "General & Administrative"
     ],
-    "price": 49.99,
+    "price": 50,
     "description": "Unlock your potential and achieve business growth with my business coaching services. Together, we'll work on setting and achieving your goals, improving your mindset, and living a more fulfilling life.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u107",
@@ -278,7 +278,7 @@
       "Explainer Videos",
       "Product Videos"
     ],
-    "price": 39.99,
+    "price": 40,
     "description": "Achieve your fitness goals with customized workout plans tailored to your needs. Whether you want to lose weight, build muscle, or improve your overall health, I'll help you get there.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u108",
@@ -306,7 +306,7 @@
       "Marketing Design",
       "Fashion & Merchandise"
     ],
-    "price": 34.99,
+    "price": 35,
     "description": "Experience the soothing ambiance of handcrafted artisanal candles. Each candle is meticulously made with love and care, perfect for creating a relaxing atmosphere in your home or as a thoughtful gift.",
     "daysToMake": "Express 24H",
     "ownerId": "u109",
@@ -334,7 +334,7 @@
       "Visual Design",
       "3D Design"
     ],
-    "price": 49.99,
+    "price": 50,
     "description": "Elevate your online presence with custom digital avatars. Whether you're a content creator, gamer, or social media enthusiast, I'll design unique avatars that represent your personality and style.",
     "daysToMake": "Express 24H",
     "ownerId": "u110",
@@ -362,7 +362,7 @@
       "Editing & Critique",
       "Translation & Transcription"
     ],
-    "price": 89.99,
+    "price": 90,
     "description": "Embark on an epic adventure with a custom-written fantasy novel. I'll craft a captivating world filled with magic, mythical creatures, and unforgettable characters. Dive into a story you won't want to put down.",
     "daysToMake": "Up to 7 days",
     "ownerId": "u111",
@@ -389,7 +389,7 @@
       "AI Artists",
       "Creative services"
     ],
-    "price": 59.99,
+    "price": 60,
     "description": "Step back in time and explore historical landmarks like never before with immersive virtual reality tours. I'll take you on a journey through the past, providing interactive experiences and historical insights.",
     "daysToMake": "Up to 3 days",
     "ownerId": "u112",
@@ -417,7 +417,7 @@
       "Gaming Shenanigans",
       "Humor"
     ],
-    "price": 19.99,
+    "price": 20,
     "description": "Are you tired of serious video game help? Look no further! I offer 'assistance' that's guaranteed to make you laugh. Expect unexpected in-game antics, questionable advice, and loads of humor. Let's turn your gaming experience into a comedy show!",
     "daysToMake": "Express 24H",
     "ownerId": "u113",
