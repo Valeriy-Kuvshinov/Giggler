@@ -45,7 +45,7 @@ export function AboutSeller({ owner }) {
         <button className="btn-contact b">Contact Me</button>
       </div>
       <div className="stats-desc">
-        <ul className="user-stats">
+        <ul className="user-stats grid">
           <li>
             From<strong>United States</strong>
           </li>

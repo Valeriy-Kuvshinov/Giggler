@@ -1,15 +1,15 @@
 .gig-details {
-  display: grid;
-  grid-template-columns: 60% 5% 35%;
-  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
   max-width: 1304px;
   color: $clrPrimary2;
   padding: 32px 0px 24px 0px;
+  gap: 9.15%;
 
-  .gig-details-main {
-    grid-column: 1/2;
-    max-width: 712px;
+  main {
     background-color: $clrPrimary1;
+    width: 100%;
+    grid-column: 1/3;
+    max-width: 100%;
 
     .explore-category {
       align-items: center;
@@ -18,14 +18,60 @@
       margin-block-end: 30px;
       color: $clrPrimary2;
 
-      Link {
-        padding: rem(9px);
-      }
-
       .divider {
         margin: 0 5px;
         color: $clrSecondary45;
       }
     }
+
+    .gig-details-header {
+      margin-block-end: 30px;
+      width: 100%;
+
+      .gig-overview {
+        margin-block-end: 1.5em;
+
+        .gig-title {
+          overflow-wrap: break-word;
+          padding-bottom: 16px;
+          color: $clrSecondary8;
+          font-size: 1.75em;
+        }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .gig-thumbnail {
+        width: fit-content;
+
+        img {
+          object-fit: cover;
+          aspect-ratio: 5/3;
+          width: 20%;
+          opacity: 0.6;
+          padding: 1% 1% 1% 0;
+
+          &:last-child {
+            padding-inline-end: 0;
+          }
+        }
+      }
+    }
   }
 }
+
+// @media (min-width: 900px) {
+//   grid-template-columns: 2fr 1fr;
+//   gap: 5.5%;
+//   main {
+//     grid-column: 1;
+//   }
+//   aside {
+//     grid-column: 2;
+//   }
+// }
+// @media (min-width: 1160px) {
+//   gap: 9.15%
+// }

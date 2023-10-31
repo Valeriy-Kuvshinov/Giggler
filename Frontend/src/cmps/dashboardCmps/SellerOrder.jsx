@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 import SvgIcon from '../SvgIcon.jsx'
@@ -11,6 +11,9 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [buyerName, setBuyerName] = useState('')
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
+    const dropdownButtonRef = useRef(null)
+    const dropdownMenuRef = useRef(null)
+
     useEffect(() => {
         (async () => {
             const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
@@ -18,6 +21,21 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             setBuyerName(orderDetails.name)
         })()
     }, [order])
+
+    useEffect(() => {
+        function handleDocumentClick(event) {
+            if (
+                dropdownButtonRef.current && !dropdownButtonRef.current.contains(event.target) &&
+                dropdownMenuRef.current && !dropdownMenuRef.current.contains(event.target)
+            ) {
+                setDropdownVisible(false)
+            }
+        }
+        document.addEventListener('mousedown', handleDocumentClick)
+        return () => {
+            document.removeEventListener('mousedown', handleDocumentClick)
+        }
+    }, [])
 
     function getOrderClass(orderState) {
         const orderStateClasses = {
@@ -87,11 +105,11 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td>
                 {getAvailableActions().length > 0 && (
                     <>
-                        <button onClick={() => setDropdownVisible(!isDropdownVisible)}>
+                        <button ref={dropdownButtonRef} onClick={() => setDropdownVisible(!isDropdownVisible)}>
                             <SvgIcon iconName={'orderDropdownIcon'} />
                         </button>
                         {isDropdownVisible && (
-                            <div className="dropdown-menu">
+                            <div ref={dropdownMenuRef} className="dropdown-menu">
                                 {getAvailableActions().map((action, idx) => (
                                     <button key={idx} onClick={action.action}>
                                         {action.label}

@@ -1,14 +1,13 @@
 .gig-details-aside {
-  position: sticky;
   top: rem(30px);
   height: fit-content;
   margin-block-end: 30px;
   background-color: $clrPrimary1;
   color: $clrPrimary2;
+  width: 100%;
   grid-column: 3/4;
 
   .gig-interactions {
-    display: flex;
     align-items: center;
     justify-content: end;
     width: 100%;
@@ -17,10 +16,6 @@
     .heart {
       user-select: none;
       cursor: pointer;
-
-      i {
-        display: flex;
-      }
     }
 
     img {
@@ -30,7 +25,6 @@
 
     .liked-count {
       min-width: 2em;
-      display: flex;
       align-items: center;
       border: 1px solid $clrSecondary2;
       border-radius: 3px;
@@ -66,8 +60,7 @@
       }
     }
 
-    .share {
-      display: flex;
+    button {
       align-items: center;
       justify-content: center;
       width: 48px;
@@ -84,24 +77,18 @@
   }
 
   .package-tabs {
-    display: flex;
-    font-family: macan-regular;
     font-size: 1rem;
     border: 1px solid $clrSecondary2;
-    margin-block-end: 1rem;
+    border-bottom: none;
 
-    .btn-package {
-      flex: 1 1;
+    button {
       background-color: $clrSecondary0;
       width: 100%;
       border: solid $clrSecondary2;
       border-width: 0 1px 1px 0;
       color: $clrSecondary5;
-      cursor: pointer;
       font-size: 1rem;
-      font-family: macan-bold;
       padding: 16px;
-      text-align: center;
 
       &.checked {
         border-bottom: 3px solid #222325;
@@ -115,22 +102,16 @@
   }
 
   .package-content {
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     height: fit-content;
     border: 1px solid $clrSecondary2;
+    border-top: none;
     padding: 0 1.5rem;
 
     .type-price {
-      display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 2rem 0 1.5rem 0;
-
-      .type {
-        font-family: macan-bold;
-      }
 
       .price {
         font-size: 1.25rem;
@@ -142,13 +123,11 @@
     }
 
     .additional-info {
-      display: flex;
       color: $clrSecondary6;
       margin-block-end: 0.5rem;
       font-size: rem(14px);
 
       .delivery-wrapper {
-        display: flex;
         align-items: center;
 
         .delivery {
@@ -158,7 +137,6 @@
 
       .revisions-wrapper {
         margin-inline-start: 1rem;
-        display: flex;
         align-items: center;
 
         .revisions {
@@ -168,15 +146,12 @@
     }
 
     .features {
-      list-style: none;
       padding: 0;
       color: $clrSecondary6;
       font-size: rem(14px);
       margin-block-end: rem(20px);
 
       li {
-        display: flex;
-        flex-direction: row;
         align-items: center;
 
         i {
@@ -185,8 +160,7 @@
       }
     }
 
-    .btn-continue {
-      display: flex;
+    button {
       justify-content: center;
       align-items: center;
       padding: 0.75rem 1.5rem;
@@ -196,18 +170,14 @@
       color: $clrPrimary1;
       border: 1px solid $clrPrimary3;
       border-radius: 0.25rem;
-      cursor: pointer;
       margin-block-end: 1.25rem;
+      font-size: 16px;
 
       span {
-        font-family: macan-bold;
         margin: auto;
       }
 
       i {
-        display: flex;
-        align-items: center;
-
         svg {
           fill: white;
           width: 1rem;
@@ -221,29 +191,25 @@
     }
   }
 
-  .contact-seller-wrapper {
-    display: flex;
+  .contact-seller {
     align-items: center;
     justify-content: center;
     background-color: $clrSecondary0;
     padding: 1.5rem;
     margin-block-end: 1rem;
 
-    .contact-seller {
+    button {
       color: $clrSecondary6;
       width: 100%;
       border: 1px solid $clrSecondary5;
       border-radius: 4px;
-      cursor: pointer;
-      display: inline-block;
       font-size: 1rem;
-      // font-weight: 600;
       line-height: 100%;
       padding: 0.75rem 1.5rem;
       position: relative;
       text-align: center;
-      text-decoration: none;
-      transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+      transition: 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+      background: none;
 
       &:hover {
         background: $clrSecondary5;

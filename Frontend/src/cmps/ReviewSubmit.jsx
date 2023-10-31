@@ -5,6 +5,7 @@ import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
 import { reviewService } from '../services/review.service.js'
 import { saveGig } from '../store/gig.actions.js'
+import { loadReviews } from '../store/review.actions'
 
 export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
     const [reviewText, setReviewText] = useState('')
@@ -47,12 +48,6 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
                 text: reviewText,
                 createdAt: Date.now()
             }
-            // if (gig) {
-            //     review.gigId = gig._id
-            //     review.sellerId = gig.ownerId
-            // } else {
-            //     review.sellerId = gig.ownerId
-            // }
             const savedReview = await reviewService.save(review)
 
             // Update the gig with the new review ID
@@ -62,6 +57,7 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
             setReviewText('')
             setReviewRating(0)
             onReviewAdded(savedReview)
+            loadReviews()
         }
         catch (err) {
             console.log('Error while submitting the review:', err)
@@ -80,8 +76,8 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
                 onChange={e => setReviewText(e.target.value)}
                 className='text'
             />
-            <button className="btn-contact">Submit</button> 
-            {/* // onClick={submitReview} */}
+            <button className="btn-contact" onClick={submitReview}>Submit</button> 
+            
         </div>
     )
 }

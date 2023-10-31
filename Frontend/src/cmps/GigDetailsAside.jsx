@@ -1,17 +1,12 @@
-import refresh from '../assets/img/svg/refresh.icon.svg'
-import checkmark from '../assets/img/svg/checkmark.icon.svg'
-import arrow from '../assets/img/svg/arrow.icon.svg'
-import share from '../assets/img/svg/share.icon.svg'
-
-import { useModal } from '../customHooks/ModalContext'
+import { useModal } from '../customHooks/ModalContext.jsx'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { gigService } from '../services/gig.service.js'
+import { gigService, packages } from '../services/gig.service.js'
 
-import { ShareGigModal } from './ShareGigModal'
-import SvgIcon from './SvgIcon'
+import { ShareGigModal } from './ShareGigModal.jsx'
+import SvgIcon from './SvgIcon.jsx'
 
 export function GigDetailsAside({ gig, onGigChange }) {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -23,56 +18,6 @@ export function GigDetailsAside({ gig, onGigChange }) {
   const [isLiked, setIsLiked] = useState(
     user && gig.likedByUsers.includes(user._id)
   )
-  const packages = {
-    basic: {
-      type: 'Starter Package',
-      price: 1,
-      desc: `2 logo concepts, jpg, transparent png`,
-      time: gig.daysToMake,
-      revisions: '8',
-      features: [
-        '2 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, false, true, true, false],
-    },
-    standard: {
-      type: 'Standard Package',
-      price: 3,
-      desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
-      time: gig.daysToMake,
-      revisions: 'Unlimited',
-      features: [
-        '2 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, false, true, true, true],
-    },
-    premium: {
-      type: 'Pro Package',
-      price: 5,
-      desc: `3 logo concepts+ jpg, png+ all source & vector files + 3D Mockup`,
-      time: gig.daysToMake,
-      revisions: 'Unlimited',
-      features: [
-        '3 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, true, true, true, true],
-    },
-  }
 
   useEffect(() => {
     setIsLiked(user && gig.likedByUsers.includes(user._id))
@@ -123,7 +68,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
   return (
     <section className="gig-details-aside">
-      <div className="gig-interactions">
+      <div className="gig-interactions flex">
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
             <SvgIcon iconName={'heartLiked'} />
@@ -132,83 +77,81 @@ export function GigDetailsAside({ gig, onGigChange }) {
           )}
         </span>
 
-        <span className="liked-count">{gig.likedByUsers.length}</span>
+        <span className="liked-count flex">{gig.likedByUsers.length}</span>
 
-        <button onClick={shareGig} className="share" title="share the gig">
-          <img src={share} />
+        <button onClick={shareGig} className="flex" title="share the gig">
+          <SvgIcon iconName={'shareSocialMediaIcon'} />
         </button>
       </div>
 
       {isModalOpen && <ShareGigModal onClose={closeModal} />}
 
-      <div className="package-tabs">
+      <div className="package-tabs flex">
         <button
-          className={`btn-package tab-1 ${
-            selectedPackage === 'basic' ? 'checked' : ''
-          }`}
+          className={`b ${selectedPackage === 'basic' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('basic')}
         >
           Basic
         </button>
+
         <button
-          className={`btn-package tab-2 ${
-            selectedPackage === 'standard' ? 'checked' : ''
-          }`}
+          className={`b ${selectedPackage === 'standard' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('standard')}
         >
           Standard
         </button>
+
         <button
-          className={`btn-package tab-3 ${
-            selectedPackage === 'premium' ? 'checked' : ''
-          }`}
+          className={`b ${selectedPackage === 'premium' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('premium')}
         >
           Premium
         </button>
       </div>
 
-      <section className="package-content">
-        <div className="type-price">
-          <span className="type">{packages[selectedPackage].type}</span>
-          <span className="price">${packages[selectedPackage].price*gig.price}</span>
+      <section className="package-content flex column">
+        <div className="type-price flex">
+          <span className="b">{packages[selectedPackage].type}</span>
+          <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
         <p>{packages[selectedPackage].desc}</p>
-        <div className="additional-info">
-          <div className="delivery-wrapper">
+
+        <div className="additional-info flex">
+          <div className="delivery-wrapper flex">
             <SvgIcon iconName={'clock'} />
             <span className="delivery b">
               {' '}
               {packages[selectedPackage].time} Delivery
             </span>
           </div>
-          <div className="revisions-wrapper">
+          <div className="revisions-wrapper flex">
             <SvgIcon iconName={'refresh'} />
             <span className="revisions b">{`${packages[selectedPackage].revisions} Revisions`}</span>
           </div>
         </div>
         <ul className="features">
           {packages[selectedPackage].features.map((feature, idx) => (
-            <li key={idx}>
+            <li className="flex row" key={idx}>
               <SvgIcon
-                iconName={`${
-                  packages[selectedPackage].featuresCond[idx]
-                    ? 'checked'
-                    : 'unchecked'
-                }`}
+                iconName={`${packages[selectedPackage].featuresCond[idx]
+                  ? 'checked'
+                  : 'unchecked'
+                  }`}
               />
               {feature}
             </li>
           ))}
         </ul>
-        <span className="btn-continue" onClick={onContinue}>
-          <span>Continue</span> <SvgIcon iconName={'pageArrowRight'} />
-        </span>
+        <button className="flex" onClick={onContinue}>
+          <span className="b"> Continue </span> <SvgIcon iconName={'pageArrowRight'} />
+        </button>
       </section>
-      <div className="contact-seller-wrapper">
-        <span className="contact-seller b">Contact me</span>
+      <div className="contact-seller flex">
+        <button className="b">Contact me</button>
       </div>
-
     </section>
   )
 }

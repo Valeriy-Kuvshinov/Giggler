@@ -24,18 +24,6 @@ export function GigDetails() {
       .filter((review) => review.gigId === gig._id)
       .map((review) => review._id)
     : []
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   useEffect(() => {
     fetchData()
@@ -55,8 +43,8 @@ export function GigDetails() {
   if (!gig || !user) return <Loader />
 
   return (
-    <section className="gig-details layout-row">
-      <div className="gig-details-main">
+    <section className="gig-details grid layout-row">
+      <main>
         <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
 
         <GigDetailsHeader gig={gig} owner={user} />
@@ -66,20 +54,15 @@ export function GigDetails() {
           <p>{gig.description}</p>
         </section>
 
-        {windowWidth < 900 && (
-          <GigDetailsAside
-            gig={gig}
-            onGigChange={(updatedGig) => setGig(updatedGig)}
-          />
-        )}
-
         <AboutSeller owner={user} />
 
         <GigReviews reviews={filteredReviewIds} gig={gig} />
-      </div>
-      {windowWidth >= 900 && (
-        <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
-      )}
+      </main>
+
+      <GigDetailsAside
+        gig={gig}
+        onGigChange={(updatedGig) => setGig(updatedGig)}
+      />
     </section>
   )
 }

@@ -1,7 +1,7 @@
 [
     {
         "_id": "yMtJq",
-        "userId": "u001",
+        "userId": "u101",
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 3,
@@ -388,16 +388,16 @@
     },
     {
         "_id": "9ADxyF",
-        "userId": "u001",
+        "userId": "u112",
         "gigId": "g101",
         "sellerId": "u101",
         "rating": 5,
-        "text": "best gig ever",
+        "text": "best service ever",
         "createdAt": 1697494314442
     },
     {
         "_id": "XImlYz",
-        "userId": "u001",
+        "userId": "u111",
         "gigId": "g101",
         "sellerId": "u101",
         "rating": 3,
@@ -406,28 +406,29 @@
     },
     {
         "_id": "qxxXJI",
-        "userId": "u001",
+        "userId": "u110",
         "gigId": "g001",
         "sellerId": "u001",
-        "rating": 5,
-        "text": "test",
+        "rating": 3,
+        "text": "seen better costumer service",
         "createdAt": 1697530329899
     },
     {
         "_id": "dURWkm",
-        "userId": "u001",
+        "userId": "u103",
         "gigId": "g001",
+        "sellerId": "u001",
         "rating": 5,
-        "text": "bread",
+        "text": "amazing pictures oh high quality, would order again",
         "createdAt": 1697629480818
     },
     {
         "_id": "tnLrKT",
-        "userId": "u001",
+        "userId": "u107",
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 4,
-        "text": "testing",
+        "text": "excellent service but bad timing, can't blame because of timezones",
         "createdAt": 1697975430953
     },
     {
@@ -441,7 +442,7 @@
     },
     {
         "_id": "tQ4awY",
-        "userId": "u001",
+        "userId": "u106",
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 4,

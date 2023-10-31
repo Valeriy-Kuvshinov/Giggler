@@ -70,6 +70,7 @@ export function GigReview({ review }) {
         }
         return stars
     }
+    if(!review.country || !review.imgUrl)return
 
     return (
         <section className="gig-review">
