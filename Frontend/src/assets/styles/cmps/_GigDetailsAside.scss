@@ -1,12 +1,11 @@
 .gig-details-aside {
-  position: sticky;
   top: rem(30px);
   height: fit-content;
   margin-block-end: 30px;
   background-color: $clrPrimary1;
   color: $clrPrimary2;
   width: 100%;
-  grid-column: 3/-1;
+  grid-column: 3/4;
 
   .gig-interactions {
     align-items: center;

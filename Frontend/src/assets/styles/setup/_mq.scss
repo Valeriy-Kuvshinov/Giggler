@@ -371,17 +371,20 @@
     .gig-details-main {
         @media (max-width: 900px) {
             width: 100%;
-
-            .gig-aside {
-                position: static;
-            }
         }
     }
 
     .gig-details-aside {
         @media (max-width: 900px) {
             position: static;
-            width: 100%;
+
+            .gig-interactions {
+                display: none;
+            }
+        }
+
+        @media (min-width: 900px) {
+            position: sticky;
         }
     }
 }
