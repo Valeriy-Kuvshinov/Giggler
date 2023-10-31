@@ -88,7 +88,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
       <div className="package-tabs flex">
         <button
-          className={`btn-package tab-1 ${selectedPackage === 'basic' ? 'checked' : ''
+          className={`btn-package ${selectedPackage === 'basic' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('basic')}
         >
@@ -96,7 +96,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
 
         <button
-          className={`btn-package tab-2 ${selectedPackage === 'standard' ? 'checked' : ''
+          className={`btn-package ${selectedPackage === 'standard' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('standard')}
         >
@@ -104,7 +104,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
 
         <button
-          className={`btn-package tab-3 ${selectedPackage === 'premium' ? 'checked' : ''
+          className={`btn-package ${selectedPackage === 'premium' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('premium')}
         >
