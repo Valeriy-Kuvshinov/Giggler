@@ -24,18 +24,6 @@ export function GigDetails() {
       .filter((review) => review.gigId === gig._id)
       .map((review) => review._id)
     : []
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   useEffect(() => {
     fetchData()
@@ -66,20 +54,15 @@ export function GigDetails() {
           <p>{gig.description}</p>
         </section>
 
-        {windowWidth < 900 && (
-          <GigDetailsAside
-            gig={gig}
-            onGigChange={(updatedGig) => setGig(updatedGig)}
-          />
-        )}
-
         <AboutSeller owner={user} />
 
         <GigReviews reviews={filteredReviewIds} gig={gig} />
       </div>
-      {windowWidth >= 900 && (
-        <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
-      )}
+
+      <GigDetailsAside
+        gig={gig}
+        onGigChange={(updatedGig) => setGig(updatedGig)}
+      />
     </section>
   )
 }

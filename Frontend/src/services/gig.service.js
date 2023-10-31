@@ -219,7 +219,7 @@ export const packages = {
       'Include 3D mockup',
       'Include source file',
     ],
-    featuresCond: [true, true, false, true, true, false],
+    featuresCond: [false, true, false, true, true, false],
   },
   standard: {
     type: 'Standard Package',

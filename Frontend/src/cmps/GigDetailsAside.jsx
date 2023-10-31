@@ -1,6 +1,3 @@
-import refresh from '../assets/img/svg/refresh.icon.svg'
-import checkmark from '../assets/img/svg/checkmark.icon.svg'
-import arrow from '../assets/img/svg/arrow.icon.svg'
 import share from '../assets/img/svg/share.icon.svg'
 
 import { useModal } from '../customHooks/ModalContext'
@@ -8,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { gigService } from '../services/gig.service.js'
+import { gigService, packages } from '../services/gig.service.js'
 
 import { ShareGigModal } from './ShareGigModal'
 import SvgIcon from './SvgIcon'
@@ -23,56 +20,6 @@ export function GigDetailsAside({ gig, onGigChange }) {
   const [isLiked, setIsLiked] = useState(
     user && gig.likedByUsers.includes(user._id)
   )
-  const packages = {
-    basic: {
-      type: 'Starter Package',
-      price: 1,
-      desc: `2 logo concepts, jpg, transparent png`,
-      time: gig.daysToMake,
-      revisions: '8',
-      features: [
-        '2 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, false, true, true, false],
-    },
-    standard: {
-      type: 'Standard Package',
-      price: 3,
-      desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
-      time: gig.daysToMake,
-      revisions: 'Unlimited',
-      features: [
-        '2 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, false, true, true, true],
-    },
-    premium: {
-      type: 'Pro Package',
-      price: 5,
-      desc: `3 logo concepts+ jpg, png+ all source & vector files + 3D Mockup`,
-      time: gig.daysToMake,
-      revisions: 'Unlimited',
-      features: [
-        '3 concepts included',
-        'Logo transparency',
-        'Vector file',
-        'Printable file',
-        'Include 3D mockup',
-        'Include source file',
-      ],
-      featuresCond: [true, true, true, true, true, true],
-    },
-  }
 
   useEffect(() => {
     setIsLiked(user && gig.likedByUsers.includes(user._id))
@@ -143,25 +90,22 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
       <div className="package-tabs">
         <button
-          className={`btn-package tab-1 ${
-            selectedPackage === 'basic' ? 'checked' : ''
-          }`}
+          className={`btn-package tab-1 ${selectedPackage === 'basic' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('basic')}
         >
           Basic
         </button>
         <button
-          className={`btn-package tab-2 ${
-            selectedPackage === 'standard' ? 'checked' : ''
-          }`}
+          className={`btn-package tab-2 ${selectedPackage === 'standard' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('standard')}
         >
           Standard
         </button>
         <button
-          className={`btn-package tab-3 ${
-            selectedPackage === 'premium' ? 'checked' : ''
-          }`}
+          className={`btn-package tab-3 ${selectedPackage === 'premium' ? 'checked' : ''
+            }`}
           onClick={() => setSelectedPackage('premium')}
         >
           Premium
@@ -171,9 +115,10 @@ export function GigDetailsAside({ gig, onGigChange }) {
       <section className="package-content">
         <div className="type-price">
           <span className="type">{packages[selectedPackage].type}</span>
-          <span className="price">${packages[selectedPackage].price*gig.price}</span>
+          <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
         <p>{packages[selectedPackage].desc}</p>
+        
         <div className="additional-info">
           <div className="delivery-wrapper">
             <SvgIcon iconName={'clock'} />
@@ -191,11 +136,10 @@ export function GigDetailsAside({ gig, onGigChange }) {
           {packages[selectedPackage].features.map((feature, idx) => (
             <li key={idx}>
               <SvgIcon
-                iconName={`${
-                  packages[selectedPackage].featuresCond[idx]
-                    ? 'checked'
-                    : 'unchecked'
-                }`}
+                iconName={`${packages[selectedPackage].featuresCond[idx]
+                  ? 'checked'
+                  : 'unchecked'
+                  }`}
               />
               {feature}
             </li>
@@ -208,7 +152,6 @@ export function GigDetailsAside({ gig, onGigChange }) {
       <div className="contact-seller-wrapper">
         <span className="contact-seller b">Contact me</span>
       </div>
-
     </section>
   )
 }
