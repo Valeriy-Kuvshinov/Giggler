@@ -1,5 +1,3 @@
-import share from '../assets/img/svg/share.icon.svg'
-
 import { useModal } from '../customHooks/ModalContext'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
@@ -82,7 +80,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         <span className="liked-count">{gig.likedByUsers.length}</span>
 
         <button onClick={shareGig} className="share" title="share the gig">
-          <img src={share} />
+          <SvgIcon iconName={'shareSocialMediaIcon'} />
         </button>
       </div>
 
@@ -118,7 +116,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
           <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
         <p>{packages[selectedPackage].desc}</p>
-        
+
         <div className="additional-info">
           <div className="delivery-wrapper">
             <SvgIcon iconName={'clock'} />

@@ -343,6 +343,10 @@ const ICONS = {
 
   greenDotIcon: `<svg width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
     <circle cx="9" cy="9" r="4" fill="#1dbf73" fill-rule="evenodd" />
+  </svg>`,
+
+  shareSocialMediaIcon: `<svg width="16" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
+    <path d="M11 10c-.707 0-1.356.244-1.868.653L5.929 8.651a3.017 3.017 0 0 0 0-1.302l3.203-2.002a3 3 0 1 0-1.06-1.696L4.867 5.653a3 3 0 1 0 0 4.694l3.203 2.002A3 3 0 1 0 11 10Z"/>
   </svg>`
 }
 
