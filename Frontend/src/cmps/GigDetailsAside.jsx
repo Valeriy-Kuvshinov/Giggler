@@ -1,12 +1,12 @@
-import { useModal } from '../customHooks/ModalContext'
+import { useModal } from '../customHooks/ModalContext.jsx'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { gigService, packages } from '../services/gig.service.js'
 
-import { ShareGigModal } from './ShareGigModal'
-import SvgIcon from './SvgIcon'
+import { ShareGigModal } from './ShareGigModal.jsx'
+import SvgIcon from './SvgIcon.jsx'
 
 export function GigDetailsAside({ gig, onGigChange }) {
   const user = useSelector((storeState) => storeState.userModule.user)
@@ -94,6 +94,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         >
           Basic
         </button>
+
         <button
           className={`btn-package tab-2 ${selectedPackage === 'standard' ? 'checked' : ''
             }`}
@@ -101,6 +102,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         >
           Standard
         </button>
+        
         <button
           className={`btn-package tab-3 ${selectedPackage === 'premium' ? 'checked' : ''
             }`}
