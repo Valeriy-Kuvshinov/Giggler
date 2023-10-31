@@ -275,11 +275,9 @@
         }
 
         .container {
-            .logo-dropdown-area {
-                i {
-                    @media(min-width: 1151px) {
-                        display: none;
-                    }
+            .logo-dropdown-area> :nth-child(1) {
+                @media(min-width: 1151px) {
+                    display: none;
                 }
             }
         }

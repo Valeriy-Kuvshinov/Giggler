@@ -51,9 +51,9 @@ export function UserGigs({ user, gigs }) {
                 </div>}
 
                 {(gigs.length !== 0) && (userGigs.map(gig => (
-                    // <div className="info-block flex" key={gig._id}>
+                    <div key={gig._id}>
                         <GigPreview is={is} gig={gig} />
-                    // </div>
+                    </div>
                 )))}
             </div>
             

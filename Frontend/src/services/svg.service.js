@@ -342,7 +342,7 @@ const ICONS = {
   </svg>`,
 
   greenDotIcon: `<svg width="18px" height="18px" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="9" cy="9" r="4" fill="#2dd12d" fill-rule="evenodd" />
+    <circle cx="9" cy="9" r="4" fill="#1dbf73" fill-rule="evenodd" />
   </svg>`
 }
 
