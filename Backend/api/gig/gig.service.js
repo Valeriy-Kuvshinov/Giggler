@@ -54,11 +54,11 @@ async function save(gig) {
       loggerService.error(`Failed to update gig with id ${gig._id}`)
       throw new Error(`No gig found with id ${gig._id}`)
     }
-    gigs[idx] = { _id: gig._id, ...gig }
+    gigs[idx] = { ...gigs[idx], ...gig }
   } 
   else {
     gig._id = utilService.makeId()
-    gigs.push({ _id: gig._id, ...gig })
+    gigs.push(gig)
   }
   await _saveGigs(gigs)
   return Promise.resolve(gig)
@@ -68,8 +68,18 @@ function _saveGigs(gigs) {
   return new Promise(async (resolve, reject) => {
     try {
       console.log('Gigs before saving: ', gigs)
-      fs.writeFile(GIGS_PATH, JSON.stringify(gigs, null, 2))
-
+      const gigsStr = JSON.stringify(gigs, null, 4)
+      // fs.writeFileSync(GIGS_PATH, JSON.stringify(gigs, null, 2))
+      fs.writeFile(GIGS_PATH, gigsStr, (err) => {
+        if (err) {
+            loggerService.error('Failed to save gigs', err)
+            reject(err)
+        }
+        else {
+            loggerService.info('The gigs were saved!')
+            resolve()
+        }
+    })
       loggerService.info('Gigs saved successfully')
       resolve()
     }

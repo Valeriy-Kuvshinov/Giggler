@@ -5,6 +5,7 @@ import { userService } from '../services/user.service.js'
 import { reviewService } from '../services/review.service.js'
 
 import { ReviewSubmit } from './ReviewSubmit.jsx'
+import { gigService } from '../services/gig.service.js'
 
 export function GigReviews({ reviews, gig }) {
     const [fullReviews, setFullReviews] = useState([])
