@@ -1,14 +1,15 @@
 .gig-details {
-  grid-template-columns: 60% 5% 35%;
+  grid-template-columns: 2fr 1fr;
   width: 100%;
   max-width: 1304px;
   color: $clrPrimary2;
   padding: 32px 0px 24px 0px;
+  gap: 9.15%;
 
   main {
-    grid-column: 1/2;
-    max-width: 712px;
     background-color: $clrPrimary1;
+    width: 100%;
+    grid-column: 1/3;
 
     .explore-category {
       align-items: center;
@@ -25,6 +26,7 @@
 
     .gig-details-header {
       margin-block-end: 30px;
+      width: 100%;
 
       .gig-overview {
         margin-block-end: 1.5em;
@@ -59,3 +61,17 @@
     }
   }
 }
+
+// @media (min-width: 900px) {
+//   grid-template-columns: 2fr 1fr;
+//   gap: 5.5%;
+//   main {
+//     grid-column: 1;
+//   }
+//   aside {
+//     grid-column: 2;
+//   }
+// }
+// @media (min-width: 1160px) {
+//   gap: 9.15%
+// }
