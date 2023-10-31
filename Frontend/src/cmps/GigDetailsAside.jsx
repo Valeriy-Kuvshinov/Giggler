@@ -79,7 +79,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
         <span className="liked-count flex">{gig.likedByUsers.length}</span>
 
-        <button onClick={shareGig} className="share flex" title="share the gig">
+        <button onClick={shareGig} className="flex" title="share the gig">
           <SvgIcon iconName={'shareSocialMediaIcon'} />
         </button>
       </div>
@@ -88,7 +88,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
       <div className="package-tabs flex">
         <button
-          className={`btn-package ${selectedPackage === 'basic' ? 'checked' : ''
+          className={`b ${selectedPackage === 'basic' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('basic')}
         >
@@ -96,7 +96,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
 
         <button
-          className={`btn-package ${selectedPackage === 'standard' ? 'checked' : ''
+          className={`b ${selectedPackage === 'standard' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('standard')}
         >
@@ -104,7 +104,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
 
         <button
-          className={`btn-package ${selectedPackage === 'premium' ? 'checked' : ''
+          className={`b ${selectedPackage === 'premium' ? 'checked' : ''
             }`}
           onClick={() => setSelectedPackage('premium')}
         >
@@ -114,7 +114,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
 
       <section className="package-content flex column">
         <div className="type-price flex">
-          <span className="type">{packages[selectedPackage].type}</span>
+          <span className="b">{packages[selectedPackage].type}</span>
           <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
         <p>{packages[selectedPackage].desc}</p>
@@ -145,12 +145,12 @@ export function GigDetailsAside({ gig, onGigChange }) {
             </li>
           ))}
         </ul>
-        <span className="btn-continue flex" onClick={onContinue}>
-          <span>Continue</span> <SvgIcon iconName={'pageArrowRight'} />
-        </span>
+        <button className="flex" onClick={onContinue}>
+          <span className="b"> Continue </span> <SvgIcon iconName={'pageArrowRight'} />
+        </button>
       </section>
-      <div className="contact-seller-wrapper flex">
-        <span className="contact-seller b">Contact me</span>
+      <div className="contact-seller flex">
+        <button className="b">Contact me</button>
       </div>
     </section>
   )
