@@ -4,16 +4,25 @@
   margin-top: 2em;
   margin-bottom: 2em;
   max-width: 1432px;
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    gap: 1.5em;
+
+    > * {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+  }
 }
 
 .max-width-container {
-//   margin: 0;
+  //   margin: 0;
   padding: 24px 24px 48px;
   width: 100%;
   box-sizing: border-box;
-  
-  @media only screen and (min-width: 600px)  {
+
+  @media only screen and (min-width: 600px) {
     //   margin: 0;
-      padding: 32px 0 64px;
+    padding: 32px 0 64px;
   }
 }
