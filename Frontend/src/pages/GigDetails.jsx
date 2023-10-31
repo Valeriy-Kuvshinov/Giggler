@@ -43,8 +43,8 @@ export function GigDetails() {
   if (!gig || !user) return <Loader />
 
   return (
-    <section className="gig-details layout-row">
-      <div className="gig-details-main">
+    <section className="gig-details grid layout-row">
+      <main>
         <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
 
         <GigDetailsHeader gig={gig} owner={user} />
@@ -57,7 +57,7 @@ export function GigDetails() {
         <AboutSeller owner={user} />
 
         <GigReviews reviews={filteredReviewIds} gig={gig} />
-      </div>
+      </main>
 
       <GigDetailsAside
         gig={gig}

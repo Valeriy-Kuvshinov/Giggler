@@ -1,31 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { loadOrders } from '../store/order.actions'
-
-import { ImageCarousel } from './ImageCarousel'
-import { UserPreview } from './UserPreview'
+import { ImageCarousel } from './ImageCarousel.jsx'
+import { UserPreview } from './UserPreview.jsx'
 
 export function GigDetailsHeader({ gig, owner }) {
   const [newImgIndex, setNewImgIndex] = useState(0)
 
-  useEffect(() => {
-    loadTheOrders()
-  }, [])
-
-  async function loadTheOrders() {
-    try {
-      await loadOrders()
-    } catch (err) {
-      console.log('couldnt load orders : ', err)
-    }
-  }
-
   return (
-    <section style={{ overflow: 'hidden' }} className="gig-details-header">
+    <section className="gig-details-header flex column">
       <div className="gig-overview">
         <h2 className="gig-title">{gig.title}</h2>
         <UserPreview is={'gig-details'} owner={owner} />
       </div>
+
       <ImageCarousel
         isFrom={'gig-details'}
         images={gig.imgUrls}
