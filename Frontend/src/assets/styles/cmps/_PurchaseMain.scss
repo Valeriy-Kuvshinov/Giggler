@@ -10,28 +10,41 @@
 
   .section-header {
     padding: 1em;
-  }
-
-  input[type='text'] {
-    display: flex;
-    flex-wrap: nowrap;
-    border: 1px solid #c5c6c9;
-    border-radius: 0.25em;
-    flex-basis: 100%;
-    align-items: center;
-    height: 2.625em;
-    margin-top: 0.625em;
+    border: 1px solid #efeff0;
+    border-top-left-radius: 0.25em;
+    border-top-right-radius: 0.25em;
+    color: $clrSecondary8;
+    font-weight: 700;
   }
   .payment-methods {
     flex-wrap: wrap;
-    height: 64;
-    vertical-align: center;
-  }
 
-  .details {
-    // padding: 16px;
-    background-color: $clrSecondary0;
-    border: 1px solid $clrSecondary2;
+    input[type='text'] {
+      display: flex;
+      flex-wrap: nowrap;
+      border: 1px solid #c5c6c9;
+      border-radius: 0.25em;
+      flex-basis: 100%;
+      align-items: center;
+      height: 2.625em;
+      margin-top: 0.625em;
+    }
+
+    .radio-btn {
+      display: inline-block;
+      position: relative;
+      width: 1.25em;
+      height: 1.25em;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-block-end: 3px;
+      border: 1px solid #dadbdd;
+      border-radius: 50%;
+      margin-inline-end: 0.5em;
+      cursor: pointer;
+      user-select: none;
+      align-self: center;
+    }
 
     .selected {
       .radio-btn {
@@ -39,38 +52,11 @@
         border-width: 5px;
       }
     }
-    .radio-btn {
-      display: inline-block;
-      position: relative;
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      align-self: flex-start;
-      margin-top: 1px;
-      border: 1px solid #dadbdd;
-      border-radius: 50%;
-      margin-right: 8px;
-      cursor: pointer;
-      user-select: none;
-      align-self: center;
-    }
-
-    .credit-details {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 80%;
-
-      span {
-        font-weight: 700;
-      }
-    }
-
     .credit-type {
       display: inline-flex;
       align-items: center;
       flex-wrap: wrap;
-      height: 64px;
+      height: 4em;
       padding-inline-start: 1em;
 
       &:hover .radio-btn {
@@ -86,97 +72,84 @@
       }
     }
 
-    .credit-number {
-      display: flex;
-      flex-direction: column;
-      width: 95.5%;
+    .credit-card {
+      cursor: pointer;
+      border-bottom: 1px solid #efeff0;
 
-      input {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        border: 1px solid clrSecondary45;
-        border-radius: 0.25em;
-        flex-basis: 100%;
-        align-items: center;
-        height: 2.625em;
-        margin-top: 0.625em;
+      .credit-card-container {
+        padding: 1.5em em(18px);
+        border-top: 1px solid #efeff0;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+        .credit-card-form {
+          @media only screen and (min-width: 900px) {
+            max-width: 520px;
+          }
+          display: grid;
+          grid-template-areas:
+            'number number'
+            'date code'
+            'first last';
+          > * {
+            input {
+              width: 100%;
+            }
+          }
+          gap: 1em;
+
+          span {
+            font-weight: 700;
+          }
+
+          .card-number {
+            grid-area: number;
+            display: flex;
+            flex-direction: column;
+
+            input {
+              width: 100%;
+              display: flex;
+              flex-wrap: nowrap;
+              border: 1px solid clrSecondary45;
+              border-radius: 0.25em;
+              flex-basis: 100%;
+              align-items: center;
+              height: 2.625em;
+              margin-top: 0.625em;
+            }
+          }
+          .expiration-date {
+            grid-area: date;
+            display: flex;
+            flex-direction: column;
+          }
+          .security-code {
+            grid-area: code;
+          }
+          .first-name {
+            grid-area: first;
+          }
+          .last-name {
+            grid-area: last;
+          }
+        }
       }
     }
 
-    .credit-date {
-      display: flex;
-      flex-direction: column;
-
-      input {
-        width: 80%;
-      }
-    }
-  }
-
-  .private {
-    display: flex;
-
-    .credit-date {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-
-      &:nth-child(even){
-        margin-inline-start: 20px;
-      }
-
-      input {
-        width: 100%;
-      }
+    .paypal {
+      cursor: pointer;
+      background-color: $clrPrimary1;
+      border-radius: 0 0 4px 4px;
+      border-block-start: 1px solid $clrSecondary2;
+      border-block-end: 1px solid $clrSecondary2;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
     }
 
-    .buyer-info {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-
-      &:nth-child(even){
-        margin-inline-start: 20px;
-      }
-
-      input {
-        width: 100%;
-      }
-    }
-  }
-
-  .section-header {
-    border-block-end: 0;
-    border-radius: 4px 4px 0 0;
-  }
-
-  .credit-card {
-    background-color: $clrPrimary1;
-    border-block-start: 1px solid $clrSecondary2;
-    border-block-end: 1px solid $clrSecondary2;
-    border-bottom: none;
-  }
-
-  .credit-info {
-    border-block-start: 0;
-    border-block-end: 0;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
-    padding: 24px 18px;
-
-    input {
-      margin-block-end: 16px;
-    }
-  }
-
-  .paypal {
-    background-color: $clrPrimary1;
-    border-radius: 0 0 4px 4px;
-    border-block-start: 1px solid $clrSecondary2;
-    border-block-end: 1px solid $clrSecondary2;
-
-    i {
-      margin-inline-end: 16px;
-    }
+    // .credit-card {
+    //   background-color: $clrPrimary1;
+    //   border-block-start: 1px solid $clrSecondary2;
+    //   border-block-end: 1px solid $clrSecondary2;
+    //   border-bottom: none;
+    // }
   }
 }

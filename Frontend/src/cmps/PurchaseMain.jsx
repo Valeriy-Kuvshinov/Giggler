@@ -1,10 +1,12 @@
 import SvgIcon from './SvgIcon.jsx'
 import creditCardImage from '../../src/assets/img/credit.card.png'
-import { useState } from 'react'
 
-export function PurchaseMain() {
-  const [paymentMethod, setPaymentMethod] = useState(true)
-
+export function PurchaseMain({
+  paymentMethod,
+  handlePaymentMethod,
+  formData,
+  setFormData,
+}) {
   const initialState = {
     crdNum: '1111222233334444',
     expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
@@ -13,26 +15,28 @@ export function PurchaseMain() {
     lastName: 'Biton',
   }
 
-  const handlePaymentMethodChange = (isCreditCard) => {
-    setPaymentMethod(isCreditCard)
+  function handleInputChange(e) {
+    e.preventDefault()
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
   }
 
   return (
-    <section className="purchase-main">
-      <section className="details section-header">
+    <main className="purchase-main">
+      <section className="section-header">
         <span>Payment Options</span>
       </section>
       <section className="payment-methods">
         <article
-          className="details credit-card"
-          onClick={() => handlePaymentMethodChange(true)}
+          className="credit-card"
+          onClick={() => handlePaymentMethod(true)}
         >
           <label className={`credit-type ${paymentMethod ? 'selected' : ''}`}>
             <input
               type="radio"
               className="credit"
               checked={paymentMethod}
-              onChange={() => handlePaymentMethodChange(true)}
+              onChange={() => handlePaymentMethod(true)}
             />
             <span className="radio-btn"></span>
             <span className="text">Credit & Debit Cards</span>
@@ -40,10 +44,10 @@ export function PurchaseMain() {
           </label>
 
           <div
-            className={`details credit-info ${paymentMethod ? '' : 'hidden'}`}
+            className={`credit-card-container ${paymentMethod ? '' : 'hidden'}`}
           >
-            <div className="credit-details">
-              <div className="credit-number">
+            <form className="credit-card-form">
+              <label className="card-number">
                 <span>Card Number</span>
                 <div className="card-number-input">
                   <span
@@ -57,74 +61,69 @@ export function PurchaseMain() {
                   <input
                     type="text"
                     name="crdNum"
-                    value={initialState.crdNum}
-                    readOnly
+                    value={formData.crdNum || initialState.crdNum}
+                    placeholder="0000 0000 0000 0000"
+                    onChange={handleInputChange}
                   />
                 </div>
-              </div>
+              </label>
 
-              <div className="private">
-                <div className="credit-date">
-                  <span>Expiration Date</span>
-                  <input
-                    type="text"
-                    name="expDate"
-                    value={initialState.expDate}
-                    readOnly
-                  />
-                </div>
+              <label className="expiration-date">
+                <span>Expiration Date</span>
+                <input
+                  type="text"
+                  name="expDate"
+                  value={formData.expDate || initialState.expDate}
+                  placeholder="MM / YY"
+                  onChange={handleInputChange}
+                />
+              </label>
 
-                <div className="credit-date">
-                  <span>Security Code</span>
-                  <input
-                    type="text"
-                    name="pinCode"
-                    value={initialState.pinCode}
-                    readOnly
-                  />
-                </div>
-              </div>
+              <label className="security-code">
+                <span>Security Code</span>
+                <input
+                  type="text"
+                  name="pinCode"
+                  value={formData.pinCode || initialState.pinCode}
+                  onChange={handleInputChange}
+                />
+              </label>
 
-              <div className="private">
-                <div className="buyer-info">
-                  <span>First Name</span>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={initialState.firstName}
-                    readOnly
-                  />
-                </div>
+              <label className="first-name">
+                <span>First Name</span>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName || initialState.firstName}
+                  onChange={handleInputChange}
+                />
+              </label>
 
-                <div className="buyer-info">
-                  <span>Last Name</span>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={initialState.lastName}
-                    readOnly
-                  />
-                </div>
-              </div>
-            </div>
+              <label className="last-name">
+                <span>Last Name</span>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName || initialState.lastName}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </form>
           </div>
         </article>
-        <article
-          className="details paypal"
-          onClick={() => handlePaymentMethodChange(false)}
-        >
+        <article className="paypal" onClick={() => handlePaymentMethod(false)}>
           <label className={`credit-type ${!paymentMethod ? 'selected' : ''}`}>
             <input
               type="radio"
               className="credit"
               checked={!paymentMethod}
-              onChange={() => handlePaymentMethodChange(false)}
+              onChange={() => handlePaymentMethod(false)}
             />
             <span className="radio-btn"></span>
             <SvgIcon iconName={'paypalIcon'} />
           </label>
         </article>
       </section>
-    </section>
+    </main>
   )
 }

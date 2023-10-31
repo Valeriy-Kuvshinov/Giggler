@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -14,6 +14,9 @@ import { loadGigs } from '../store/gig.actions.js'
 export function GigPurchase() {
   const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+  const [paymentMethod, setPaymentMethod] = useState(true)
+  const [formData, setFormData] = useState({})
+
   const params = useParams()
   const gig = gigs.find((gig) => gig._id === params.id)
 
@@ -69,15 +72,30 @@ export function GigPurchase() {
     }
   }
 
+  function handlePaymentMethod(state) {
+    setPaymentMethod(state)
+  }
+  function handleSubmit() {
+    // Process the payment using formData
+    console.log('Form data submitted:', formData)
+  }
+
   if (gig === undefined || gigs === undefined) return <div>loading...</div>
 
   return (
     <section className="gig-purchase layout-row max-width-container">
-      <PurchaseMain createOrder={createOrder} />
+      <PurchaseMain
+        paymentMethod={paymentMethod}
+        handlePaymentMethod={handlePaymentMethod}
+        formData={formData}
+        setFormData={setFormData}
+      />
       <PurchaseAside
         gig={gig}
         createOrder={createOrder}
         packageChoice={packageChoice}
+        handleSubmit={handleSubmit}
+        paymentMethod={paymentMethod}
       />
     </section>
   )
