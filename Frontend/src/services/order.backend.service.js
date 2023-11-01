@@ -27,6 +27,7 @@ async function getOrderDetails(orderId, role = 'buyer') {
         ...order,
         gigData,
         name: userData.fullName || '',
+        avatar: userData.imgUrl || ''
     }
 }
 

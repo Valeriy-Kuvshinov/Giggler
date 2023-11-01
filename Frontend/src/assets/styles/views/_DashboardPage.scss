@@ -30,6 +30,10 @@
             }
         }
 
+        tr {
+            border: 1px solid $clrSecondary4;
+        }
+
         th {
             font-weight: bold;
         }
@@ -38,7 +42,6 @@
             color: $clrPrimary4;
 
             button {
-                width: 60%;
                 margin: auto;
                 background: none;
 
@@ -46,36 +49,61 @@
                     width: 100%;
                 }
             }
-        }
 
-        span {
-            padding: 0.95em 0.8em;
-            border-radius: 5px;
-            display: block;
-            border: 1px solid $clrSecondary6;
-            font-size: 12px;
-            font-family: "macan-bold";
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            &.user-details {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                align-items: center;
+                text-align: left;
+                border: none;
+                min-height: 81px;
 
-            &.pending {
-                background: rgb(105, 189, 218);
-                color: $clrPrimary1;
+                img {
+                    grid-row: span 2;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                }
+
+                span {
+                    padding: 0;
+                }
             }
 
-            &.denied {
-                background: rgb(224, 90, 90);
-                color: $clrPrimary1;
-            }
+            &:nth-child(5) {
+                span {
+                    padding: 0.95em 0.8em;
+                    border-radius: 5px;
+                    display: block;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font-family: 'macan-bold';
 
-            &.accepted {
-                background: rgb(201, 243, 49);
-                color: $clrSecondary6;
-            }
+                    &.pending {
+                        background: #60abc4;
+                        color: $clrPrimary1;
+                    }
 
-            &.completed {
-                background: rgb(87, 190, 87);
-                color: $clrPrimary1;
+                    &.denied {
+                        background: #db9b9b;
+                        color: $clrSecondary6;
+                    }
+
+                    &.accepted {
+                        background: #8cff8c;
+                        color: $clrSecondary6;
+                    }
+
+                    &.completed {
+                        background: $bgColor3;
+                        color: $clrPrimary1;
+                    }
+
+                    &:hover {
+                        opacity: 0.85;
+                    }
+                }
+
             }
         }
 

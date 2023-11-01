@@ -8,7 +8,9 @@ import { orderBackendService } from '../../services/order.backend.service.js'
 export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
-    const [buyerName, setBuyerName] = useState('')
+    const [buyerFirstName, setBuyerFirstName] = useState('')
+    const [buyerLastName, setBuyerLastName] = useState('')
+    const [buyerAvatar, setBuyerAvatar] = useState('')
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     const dropdownButtonRef = useRef(null)
@@ -18,7 +20,12 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         (async () => {
             const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
             setGigData(orderDetails.gigData)
-            setBuyerName(orderDetails.name)
+
+            const nameParts = orderDetails.name.split(' ')
+            setBuyerFirstName(nameParts[0])
+            setBuyerLastName(nameParts[1] || '')
+
+            setBuyerAvatar(orderDetails.avatar)
         })()
     }, [order])
 
@@ -95,7 +102,11 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     return (
         <tr className={getOrderClass(order.orderState)}>
-            <td>{buyerName}</td>
+            <td className="user-details grid">
+                <img src={buyerAvatar} alt="buyer" />
+                <span>{buyerFirstName}</span>
+                <span>{buyerLastName}</span>
+            </td>
             <td>{order.title}</td>
             <td>{getActionDate(order)}</td>
 

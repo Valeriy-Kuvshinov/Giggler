@@ -4,13 +4,20 @@ import { orderBackendService } from '../../services/order.backend.service.js'
 
 export function BuyerOrder({ order }) {
     const [gigData, setGigData] = useState(null)
-    const [sellerName, setSellerName] = useState('')
+    const [sellerFirstName, setSellerFirstName] = useState('')
+    const [sellerLastName, setSellerLastName] = useState('')
+    const [sellerAvatar, setSellerAvatar] = useState('')
 
     useEffect(() => {
         (async () => {
             const orderDetails = await orderBackendService.getOrderDetails(order._id, 'seller')
             setGigData(orderDetails.gigData)
-            setSellerName(orderDetails.name)
+
+            const nameParts = orderDetails.name.split(' ')
+            setSellerFirstName(nameParts[0])
+            setSellerLastName(nameParts[1] || '')
+
+            setSellerAvatar(orderDetails.avatar)
         })()
     }, [order])
 
@@ -57,7 +64,11 @@ export function BuyerOrder({ order }) {
 
     return (
         <tr className={getOrderClass(order.orderState)}>
-            <td>{sellerName}</td>
+            <td className="user-details grid">
+                <img src={sellerAvatar} alt="seller" />
+                <span>{sellerFirstName}</span>
+                <span>{sellerLastName}</span>
+            </td>
             <td>{order.title}</td>
             <td>{getActionDate(order)}</td>
 
