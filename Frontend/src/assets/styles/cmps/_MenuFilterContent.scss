@@ -96,6 +96,9 @@
       position: relative;
 
       .input-wrapper {
+        label {
+          color: $clrSecondary11;
+        }
         input[type='number'] {
           border: 1px solid $clrSecondary2;
           appearance: textfield;
@@ -113,10 +116,10 @@
           color: $clrSecondary4;
           font-style: normal;
           position: absolute;
-          right: 0.5em;
+          right: 2.7%;
 
           &.min {
-            right: rem(132px);
+            right: 2.7%;
           }
 
           top: 31.5px;

@@ -21,11 +21,7 @@ export function GigDetails() {
 
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  const filteredReviewIds = gig
-    ? reviews
-      .filter((review) => review.gigId === gig._id)
-      .map((review) => review._id)
-    : []
+
 
   useEffect(() => {
     fetchData()
@@ -82,7 +78,7 @@ export function GigDetails() {
               <p>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
-            <GigReviews reviews={filteredReviewIds} gig={gig} />
+            <GigReviews reviews={reviews} gig={gig} />
           </main>
           <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
         </>

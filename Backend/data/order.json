@@ -59,10 +59,11 @@
         "orderedGigId": "g001",
         "price": 99,
         "createdAt": 1696368000000,
-        "orderState": "accepted",
+        "orderState": "completed",
         "reasonForDenial": "",
         "_id": "d1ycv",
-        "acceptedAt": 1698772268205
+        "acceptedAt": 1698772268205,
+        "completedAt": 1698836401336
     },
     {
         "buyerId": "u101",

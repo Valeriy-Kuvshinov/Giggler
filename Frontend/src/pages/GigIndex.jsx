@@ -5,7 +5,6 @@ import { useSearchParams } from 'react-router-dom'
 import { Pagination } from '../cmps/Pagination.jsx'
 import { GigList } from '../cmps/GigList.jsx'
 import { GigFilter } from '../cmps/GigFilter.jsx'
-import { Loader } from '../cmps/Loader.jsx'
 
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.js'
@@ -140,8 +139,6 @@ export function GigIndex() {
   }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
-
-  if (!gigs.length) return <Loader />
 
   return (
     <main className="gig-index flex column full">
