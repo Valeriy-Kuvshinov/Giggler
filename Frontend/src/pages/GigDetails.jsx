@@ -17,6 +17,8 @@ import { gigService } from '../services/gig.service.js'
 export function GigDetails() {
   const params = useParams()
   const [gig, setGig] = useState(null)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
+
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
   const filteredReviewIds = gig
@@ -40,29 +42,51 @@ export function GigDetails() {
       console.error('Error loading data:', err)
     }
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900)
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   if (!gig || !user) return <Loader />
 
   return (
     <section className="gig-details grid layout-row">
-      <main>
-        <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
-
-        <GigDetailsHeader gig={gig} owner={user} />
-
-        <section className="about-gig" style={{ overflow: 'hidden' }}>
-          <h3>About This Gig</h3>
-          <p>{gig.description}</p>
-        </section>
-
-        <AboutSeller owner={user} />
-
-        <GigReviews reviews={filteredReviewIds} gig={gig} />
-      </main>
-
-      <GigDetailsAside
-        gig={gig}
-        onGigChange={(updatedGig) => setGig(updatedGig)}
-      />
+      {isMobile ? (
+        <>
+          <main>
+            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
+            <GigDetailsHeader gig={gig} owner={user} />
+            <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+            <section className="about-gig" style={{ overflow: 'hidden' }}>
+              <h3>About This Gig</h3>
+              <p>{gig.description}</p>
+            </section>
+            <AboutSeller owner={user} />
+            <GigReviews reviews={filteredReviewIds} gig={gig} />
+          </main>
+        </>
+      ) : (
+        <>
+          <main>
+            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
+            <GigDetailsHeader gig={gig} owner={user} />
+            <section className="about-gig" style={{ overflow: 'hidden' }}>
+              <h3>About This Gig</h3>
+              <p>{gig.description}</p>
+            </section>
+            <AboutSeller owner={user} />
+            <GigReviews reviews={filteredReviewIds} gig={gig} />
+          </main>
+          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+        </>
+      )}
     </section>
   )
 }
