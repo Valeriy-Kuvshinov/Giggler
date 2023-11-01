@@ -52,16 +52,9 @@ export function GigDetails() {
       {isMobile ? (
         <>
           <main>
-            <CatTagDisplayBar
-              isFrom={'gigDetails'}
-              category={gig.category}
-              tag={gig.tags[1]}
-            />
+            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
             <GigDetailsHeader gig={gig} owner={user} />
-            <GigDetailsAside
-              gig={gig}
-              onGigChange={(updatedGig) => setGig(updatedGig)}
-            />
+            <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
             <section className="about-gig" style={{ overflow: 'hidden' }}>
               <h3>About This Gig</h3>
               <p className='gig-description'>{gig.description}</p>
@@ -82,10 +75,7 @@ export function GigDetails() {
             <AboutSeller owner={user} />
             <GigReviews gig={gig} />
           </main>
-          <GigDetailsAside
-            gig={gig}
-            onGigChange={(updatedGig) => setGig(updatedGig)}
-          />
+          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
         </>
       )}
     </section>
