@@ -61,7 +61,11 @@ export function BuyerOrder({ order }) {
             <td>{order.title}</td>
             <td>{getActionDate(order)}</td>
 
-            <td>{order.orderState === 'accepted' && gigData ? getDueDate(new Date(order.acceptedAt), gigData.daysToMake) : ''}</td>
+            <td>
+                {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
+                    ? getDueDate(new Date(order.acceptedAt), gigData.daysToMake)
+                    : ''}
+            </td>
             <td><span className={order.orderState}>{order.orderState}</span></td>
         </tr>
     )
