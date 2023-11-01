@@ -12,11 +12,11 @@ export function GigReviews({ reviews, gig, user }) {
     const [fullReviews, setFullReviews] = useState([])
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
-    const filteredReviewIds = gig
-    ? reviews
-      .filter((review) => review.gigId === gig._id)
-      .map((review) => review._id)
-    : []
+    // const filteredReviewIds = gig
+    // ? reviews
+    //   .filter((review) => review.gigId === gig._id)
+    //   .map((review) => review._id)
+    // : []
 
     useEffect(() => {
         async function fetchFullReviews() {
@@ -28,7 +28,7 @@ export function GigReviews({ reviews, gig, user }) {
             setFullReviews(reviewsWithUser)
         }
         fetchFullReviews()
-    }, [filteredReviewIds])
+    }, [reviews])
 
     const handleReviewAdded = (newReview) => {
         setFullReviews(prevReviews => [...prevReviews, newReview])
