@@ -66,7 +66,7 @@ export function GigDetails() {
             <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
             <section className="about-gig" style={{ overflow: 'hidden' }}>
               <h3>About This Gig</h3>
-              <p>{gig.description}</p>
+              <p className='gig-description'>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
             <GigReviews reviews={filteredReviewIds} gig={gig} />

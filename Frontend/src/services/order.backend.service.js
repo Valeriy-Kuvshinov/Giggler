@@ -13,27 +13,11 @@ export const orderBackendService = {
     getOrderDetails
 }
 
-async function getOrderDetails(orderId, role = 'buyer') {
-    const order = await getById(orderId)
-    const gigData = await gigService.getById(order.orderedGigId)
-    let userData
-
-    if (role === 'buyer') {
-        userData = await userService.getById(order.buyerId)
-    } else if (role === 'seller') {
-        userData = await userService.getById(order.sellerId)
-    }
-    return {
-        ...order,
-        gigData,
-        name: userData.fullName || '',
-        avatar: userData.imgUrl || ''
-    }
+async function query(filterBy = {}) {
+    const orders = await httpService.get(BASE_URL, filterBy)
+    return orders
 }
 
-function query(filterBy = {}) {
-    return httpService.get(BASE_URL, filterBy)
-}
 
 async function getById(orderId) {
     const order = await httpService.get(BASE_URL + orderId)
@@ -65,5 +49,23 @@ function createOrder(buyerId = '', sellerId = '', title = 'important order', del
         createdAt: Date.now(),
         reasonForDenial: '',
         orderState: 'pending'
+    }
+}
+
+async function getOrderDetails(orderId, role = 'buyer') {
+    const order = await getById(orderId)
+    const gigData = await gigService.getById(order.orderedGigId)
+    let userData
+
+    if (role === 'buyer') {
+        userData = await userService.getById(order.buyerId)
+    } else if (role === 'seller') {
+        userData = await userService.getById(order.sellerId)
+    }
+    return {
+        ...order,
+        gigData,
+        name: userData.fullName || '',
+        avatar: userData.imgUrl || ''
     }
 }

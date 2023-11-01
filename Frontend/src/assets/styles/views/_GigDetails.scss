@@ -35,9 +35,7 @@
         }
       }
 
-      p {
-        margin: 0;
-      }
+      
 
       .gig-thumbnail {
         width: fit-content;
@@ -53,6 +51,12 @@
             padding-inline-end: 0;
           }
         }
+      }
+    }
+    .about-gig{
+      margin: 1em 0;
+      .gig-description {
+        margin: 1em 0;
       }
     }
   }

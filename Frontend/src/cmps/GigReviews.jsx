@@ -6,6 +6,7 @@ import { reviewService } from '../services/review.service.js'
 
 import { ReviewSubmit } from './ReviewSubmit.jsx'
 import { gigService } from '../services/gig.service.js'
+import { orderBackendService } from '../services/order.backend.service.js'
 
 export function GigReviews({ reviews, gig, user }) {
     const [fullReviews, setFullReviews] = useState([])
@@ -27,12 +28,20 @@ export function GigReviews({ reviews, gig, user }) {
         setFullReviews(prevReviews => [...prevReviews, newReview])
     }
 
-    // console.log(fullReviews)
+    let isReviewedAlready=false
+    fullReviews.map((review)=>{
+        if(review.userId===loggedInUser._id){
+            isReviewedAlready=true
+        }
+    })
+    let isAllowedToReview=false
+    let orders=orderBackendService.query()
+    console.log(orders)
 
     return (
         <section className="gig-reviews">
             <span className="title">Reviews</span>
-            {gig && loggedInUser && loggedInUser._id !== gig.ownerId && <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
+            {gig && loggedInUser && loggedInUser._id !== gig.ownerId && (!isReviewedAlready) &&<ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
 
             {fullReviews.length !== 0 && (
                 <ul className="reviews">
