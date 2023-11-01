@@ -7,31 +7,34 @@
   img {
     aspect-ratio: 5/3;
   }
-
-  .carousel {
+  .carousel-wrapper {
     overflow: hidden;
-    display: flex;
-    transition: transform 0.3s ease-in-out;
+    .carousel {
+      display: flex;
+      transition: transform 0.3s ease-in-out;
 
-    .carousel-item {
-      width: 100%;
-      position: relative;
-      background: linear-gradient(180deg, $clrPrimary1, $clrSecondary4);
-      object-fit: contain;
-    }
+      .carousel-item {
+        width: 100%;
+        position: relative;
+        background: linear-gradient(180deg, $clrPrimary1, $clrSecondary4);
+        object-fit: contain;
+      }
 
-    .carousel-item::after {
-      background-image: linear-gradient(0deg,
+      .carousel-item::after {
+        background-image: linear-gradient(
+          0deg,
           rgba(0, 0, 0, 0.3),
-          hsla(0, 0%, 100%, 0));
-      border-radius: 0.5em;
-      bottom: 0;
-      content: '';
-      height: 40%;
-      left: 0;
-      position: absolute;
-      width: 100%;
-      z-index: 1;
+          hsla(0, 0%, 100%, 0)
+        );
+        border-radius: 0.5em;
+        bottom: 0;
+        content: '';
+        height: 40%;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+      }
     }
   }
 

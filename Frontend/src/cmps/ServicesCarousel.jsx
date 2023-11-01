@@ -46,20 +46,17 @@ export function ServicesCarousel({ onHandleFilter }) {
     if (direction === 'left') {
       newIndex -= itemsPerPage
       if (newIndex < 0) {
-        // Wrap around to the end
         newIndex = images.length - itemsPerPage
       }
     } else if (direction === 'right') {
       newIndex += itemsPerPage
       if (newIndex + itemsPerPage > images.length) {
-        // Wrap around to the beginning
         newIndex = 0
       }
     }
 
     setVisibleStartIndex(newIndex)
 
-    // Use translateX to move the slides
     carouselRef.current.style.transform = `translateX(-${
       newIndex * slideWidth
     }px)`
