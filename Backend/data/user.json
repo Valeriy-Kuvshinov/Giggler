@@ -10,6 +10,36 @@
     "rating": 4.9,
     "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
     "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      },
+      {
+        "language": "Spanish",
+        "fluency": "Business"
+      },
+      {
+        "language": "French",
+        "fluency": "Basic"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "Bachelor's in Journalism",
+        "educationPlace": "New York University",
+        "graduationTime": "2012"
+      },
+      {
+        "certificate": "Master's in Photography",
+        "educationPlace": "Columbia University",
+        "graduationTime": "2015"
+      }
+    ],
+    "skills": [
+      "Photography",
+      "Journalism"
+    ],
     "createdAt": 1664477416,
     "isAdmin": true,
     "lastDelivery": 1698836401336
@@ -158,7 +188,7 @@
     "_id": "u110",
     "username": "evylife1991",
     "password": "123",
-    "fullName": "Evelyn DigitalArt",
+    "fullName": "Evelyn Muller",
     "description": "",
     "balance": 0,
     "level": "level 3",

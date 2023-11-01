@@ -10,8 +10,6 @@ import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 import { Loader } from '../cmps/Loader.jsx'
 
 import { loadUser } from '../store/user.actions.js'
-import { loadReviews } from '../store/review.actions.js'
-
 import { gigService } from '../services/gig.service.js'
 
 export function GigDetails() {
@@ -20,8 +18,6 @@ export function GigDetails() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
 
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
-  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-
 
   useEffect(() => {
     fetchData()
@@ -31,7 +27,6 @@ export function GigDetails() {
     try {
       const fetchedGig = await gigService.getById(params.id)
       setGig(fetchedGig)
-      await loadReviews()
 
       if (fetchedGig) await loadUser(fetchedGig.ownerId)
     } catch (err) {
@@ -65,7 +60,7 @@ export function GigDetails() {
               <p className='gig-description'>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
-            <GigReviews reviews={filteredReviewIds} gig={gig} />
+            <GigReviews gig={gig} />
           </main>
         </>
       ) : (
@@ -78,7 +73,7 @@ export function GigDetails() {
               <p>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
-            <GigReviews reviews={reviews} gig={gig} />
+            <GigReviews gig={gig} />
           </main>
           <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
         </>
