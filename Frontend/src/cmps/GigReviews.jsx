@@ -7,7 +7,7 @@ import { reviewService } from '../services/review.service.js'
 import { ReviewSubmit } from './ReviewSubmit.jsx'
 import { gigService } from '../services/gig.service.js'
 
-export function GigReviews({ reviews, gig }) {
+export function GigReviews({ reviews, gig, user }) {
     const [fullReviews, setFullReviews] = useState([])
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
