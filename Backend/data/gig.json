@@ -4,10 +4,9 @@
         "title": "I will take unique photos of Spiderman",
         "category": "Photography",
         "tags": [
-            "logo-design",
-            "artistic",
-            "professional",
-            "accessible"
+            "Products & Lifestyle",
+            "People & Scenes",
+            "Local Photography"
         ],
         "price": 99,
         "description": "I am actually the real Spiderman...",
@@ -35,12 +34,11 @@
     {
         "_id": "g002",
         "title": "I will design your logo",
-        "category": "Design",
+        "category": "Graphics & Design",
         "tags": [
-            "logo-design",
-            "artistic",
-            "professional",
-            "accessible"
+            "3D Design",
+            "Visual Design",
+            "Art & Illustration"
         ],
         "price": 49,
         "description": "I will design your robot logo in 24 hours or less...",
@@ -66,7 +64,6 @@
         "category": "Graphics & Design",
         "tags": [
             "Logo & Brand Identity",
-            "Art & Illustration",
             "Marketing Design",
             "Packaging & Covers"
         ],
@@ -429,41 +426,13 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "4uSOYc",
-        "title": "Another one",
-        "category": "Photography",
-        "tags": [
-            "logo-design",
-            "artisitic",
-            "proffesional",
-            "accessible"
-        ],
-        "price": 203,
-        "description": "idk",
-        "daysToMake": "Up to 3 days",
-        "ownerId": "u001",
-        "imgUrls": [
-            "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
-            "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
-            "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
-        ],
-        "likedByUsers": [],
-        "reviews": [
-            "2wvGFH"
-        ],
-        "createdAt": 1697457962581
-    },
-    {
         "_id": "AhNAiy",
         "title": "I am using this gig as an example that you can surpass two whole lines in the gig preview and then it uses a three dot indicator to click if you wish to find out more",
-        "category": "Lifestyle",
+        "category": "Programming & Tech",
         "tags": [
-            "logo-design",
-            "artisitic",
-            "proffesional",
-            "accessible"
+            "Website Development",
+            "Website Platforms",
+            "Website Maintenance"
         ],
         "price": 101,
         "description": "bread",
@@ -477,9 +446,7 @@
             "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
         ],
         "likedByUsers": [],
-        "reviews": [
-            "zteBv9"
-        ],
+        "reviews": [],
         "createdAt": 1697543272000
     },
     {
@@ -496,11 +463,11 @@
         "daysToMake": "Up to 3 days",
         "ownerId": "u001",
         "imgUrls": [
-            "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
-            "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
-            "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
+            "https://www.classical-music.uk/media/210527/adobestock_133816186.jpeg?&width=780&quality=60",
+            "https://www.careersinmusic.com/wp-content/uploads/2015/05/composer.jpg",
+            "https://www.careersinmusic.com/wp-content/uploads/2023/03/make-music-online-free-1024x683.jpg",
+            "https://t4.ftcdn.net/jpg/06/23/40/77/240_F_623407783_fttTA4xS771ajMoMRXcGjGg8NoohsAbD.jpg",
+            "https://www.tracksandfields.com/blog/wp-content/webpc-passthru.php?src=https://www.tracksandfields.com/blog/wp-content/uploads/2016/02/sheetmusic_header.jpg&nocache=1"
         ],
         "likedByUsers": [],
         "reviews": [
@@ -513,18 +480,20 @@
         "title": "I will create a beautiful video!",
         "category": "Video & Animation",
         "tags": [
-            "Social & Marketing Videos"
+            "Social & Marketing Videos",
+            "Animation",
+            "Filmed Video Production"
         ],
-        "price": 55,
+        "price": 75,
         "description": "blah blah blah",
         "daysToMake": "Up to 7 days",
         "ownerId": "u001",
         "imgUrls": [
-            "https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg",
-            "https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg",
-            "https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais",
-            "https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais"
+            "https://www.pcworld.com/wp-content/uploads/2023/06/puff-Daniel-Lez%CC%87uch-Unsplash.jpg?resize=1024%2C576&quality=50&strip=all",
+            "https://i.pcmag.com/imagery/roundups/07zK5ZMCRXxdm3S7ZnlT3Xw-10.fit_lim.size_768x.jpg",
+            "https://i.pcmag.com/imagery/roundups/05ndzgdtChn6KbVqVnZdaJf-3.fit_lim.size_768x.png",
+            "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_600,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png",
+            "https://fiverr-res.cloudinary.com/q_auto,f_auto,w_450,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173396/testimonial-video-still-lavender.jpg"
         ],
         "likedByUsers": [],
         "reviews": [],
