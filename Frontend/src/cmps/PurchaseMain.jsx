@@ -5,15 +5,8 @@ export function PurchaseMain({
   paymentMethod,
   handlePaymentMethod,
   formData,
-  setFormData,
+  setFormData
 }) {
-  const initialState = {
-    crdNum: '1111222233334444',
-    expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
-    pinCode: '123',
-    firstName: 'Yaron',
-    lastName: 'Biton',
-  }
 
   function handleInputChange(e) {
     e.preventDefault()
@@ -50,20 +43,18 @@ export function PurchaseMain({
               <label className="card-number">
                 <span>Card Number</span>
                 <div className="card-number-input">
-                  <span
-                    className="card-logo"
-                    style={{
-                      backgroundImage: `url(${creditCardImage})`,
-                      width: '2em',
-                      height: '2em',
-                    }}
-                  ></span>
                   <input
                     type="text"
                     name="crdNum"
-                    value={formData.crdNum || initialState.crdNum}
+                    value={formData.crdNum}
                     placeholder="0000 0000 0000 0000"
                     onChange={handleInputChange}
+                    style={{
+                      backgroundImage: `url("${creditCardImage}")`,
+                      backgroundPosition: '10px center',
+                      backgroundRepeat: 'no-repeat',
+                      paddingLeft: '2.5em'
+                    }}
                   />
                 </div>
               </label>
@@ -73,7 +64,7 @@ export function PurchaseMain({
                 <input
                   type="text"
                   name="expDate"
-                  value={formData.expDate || initialState.expDate}
+                  value={formData.expDate}
                   placeholder="MM / YY"
                   onChange={handleInputChange}
                 />
@@ -84,7 +75,7 @@ export function PurchaseMain({
                 <input
                   type="text"
                   name="pinCode"
-                  value={formData.pinCode || initialState.pinCode}
+                  value={formData.pinCode}
                   onChange={handleInputChange}
                 />
               </label>
@@ -94,7 +85,7 @@ export function PurchaseMain({
                 <input
                   type="text"
                   name="firstName"
-                  value={formData.firstName || initialState.firstName}
+                  value={formData.firstName}
                   onChange={handleInputChange}
                 />
               </label>
@@ -104,7 +95,7 @@ export function PurchaseMain({
                 <input
                   type="text"
                   name="lastName"
-                  value={formData.lastName || initialState.lastName}
+                  value={formData.lastName}
                   onChange={handleInputChange}
                 />
               </label>
