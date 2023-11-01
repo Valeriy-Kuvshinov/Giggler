@@ -1,10 +1,12 @@
+import { reviewService } from "../services/review.service"
+
 export const SET_REVIEWS = 'SET_REVIEWS'
 export const ADD_REVIEW = 'ADD_REVIEW'
 export const REMOVE_REVIEW = 'REMOVE_REVIEW'
 // export const UPDATE_REVIEW = 'UPDATE_REVIEW'
 
 const initialState = {
-  reviews: [],
+  reviews: await reviewService.query()
 }
 
 export function reviewReducer(state = initialState, action = {}) {
