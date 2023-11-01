@@ -140,12 +140,12 @@ export function GigPreview({ is, gig }) {
             <div className={`gig-changes ${(loggedId !== user._id) ? 'right' : ''}`}>
               {loggedId === user._id && (
                 <div className="gig-btns">
-                  <button>
+                  <button className="gig-btn">
                     <Link to={`/gig/edit/${updatedGig._id}`}>
                       <SvgIcon iconName={"pencil"} />
                     </Link>
                   </button>
-                  <button onClick={onRemoveGig}>
+                  <button onClick={onRemoveGig} className="gig-btn">
                     <SvgIcon iconName={"deny"} />
                   </button>
                 </div>

@@ -28,14 +28,17 @@
         display: flex;
         align-items: center;
         height: 100%;
-        button{
+        .gig-btn{
           background-color: $clrPrimary1;
-        }
-        svg{
-          width: 16px;
-          height: 16px;
-          background-color: $clrPrimary1;
-          fill: $clrSecondary4;
+          svg{
+            width: 16px;
+            height: 16px;
+            background-color: $clrPrimary1;
+            fill: $clrSecondary4;
+          }
+          :hover svg{
+            fill: $bgColor3;
+          }
         }
       }
       .price{
