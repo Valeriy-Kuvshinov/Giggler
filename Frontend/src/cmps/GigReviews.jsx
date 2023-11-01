@@ -11,12 +11,11 @@ export function GigReviews({ gig }) {
 
     useEffect(() => {
         async function fetchFullReviews() {
-            if (!gig || !gig.reviews) return
+            if (!gig || gig.reviews.length === 0) return
 
             const fetchedReviews = await Promise.all(
                 gig.reviews.map(reviewId => reviewService.getById(reviewId))
             )
-
             const reviewsWithUser = await Promise.all(
                 fetchedReviews.map(async review => {
                     const user = await userService.getById(review.userId)
