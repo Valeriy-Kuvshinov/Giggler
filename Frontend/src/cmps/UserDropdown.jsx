@@ -18,6 +18,7 @@ export function UserDropdown({ user, onClose }) {
     return (
         <div className="user-dropdown" onClick={onClose}>
             <Link to={`/user/${user._id}`}>Profile</Link>
+            <Link to="/dashboard">Dashboard</Link>
             <Link to="/">Become a Seller</Link>
             <button onClick={onLogout}>Logout</button>
         </div>

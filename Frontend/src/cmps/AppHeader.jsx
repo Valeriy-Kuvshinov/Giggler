@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useModal } from '../customHooks/ModalContext'
+
+import { useModal } from '../customHooks/ModalContext.jsx'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
-import { category } from '../services/gig.service'
-import { setFilter } from '../store/gig.actions'
-import SvgIcon from './SvgIcon'
+import SvgIcon from './SvgIcon.jsx'
+
+import { category } from '../services/gig.service.js'
+import { setFilter } from '../store/gig.actions.js'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')

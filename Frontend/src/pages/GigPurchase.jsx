@@ -8,14 +8,21 @@ import { PurchaseAside } from '../cmps/PurchaseAside.jsx'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
 
-import { saveOrder } from '../store/order.actions.js'
 import { loadGigs } from '../store/gig.actions.js'
 
 export function GigPurchase() {
+  const initialState = {
+    crdNum: '1111222233334444',
+    expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
+    pinCode: '123',
+    firstName: 'Yaron',
+    lastName: 'Biton',
+  }
+
   const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
   const [paymentMethod, setPaymentMethod] = useState(true)
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState(initialState)
 
   const params = useParams()
   const gig = gigs.find((gig) => gig._id === params.id)
@@ -36,7 +43,7 @@ export function GigPurchase() {
   }
 
   async function createOrder() {
-    const orderToSave = orderBackendService.createOrder(
+    orderBackendService.createOrder(
       user._id,
       gig.ownerId,
       gig.title,
@@ -76,7 +83,6 @@ export function GigPurchase() {
     setPaymentMethod(state)
   }
   function handleSubmit() {
-    // Process the payment using formData
     console.log('Form data submitted:', formData)
   }
 
@@ -89,6 +95,7 @@ export function GigPurchase() {
         handlePaymentMethod={handlePaymentMethod}
         formData={formData}
         setFormData={setFormData}
+        initialState={initialState}
       />
       <PurchaseAside
         gig={gig}
