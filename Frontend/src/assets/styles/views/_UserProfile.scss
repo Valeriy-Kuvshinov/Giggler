@@ -2,6 +2,10 @@
   background-color: $clrSecondary12;
   padding: 3.125em 0 2.5em;
 
+  @media screen and (max-width: 900px){
+    padding: 0;
+  }
+
   .user-profile {
     display: flex;
     flex-direction: row;
@@ -21,7 +25,9 @@
         background-color: $clrPrimary1;
         border: 1px solid $clrSecondary2;
         margin-block-end: 1.25em;
-
+        @media screen and (max-width: 900px){
+          border: 0;
+        }
         &:nth-child(2) {
           justify-content: start;
           align-items: start;

@@ -124,7 +124,7 @@ export function GigPreview({ is, gig }) {
         {is === "userProfile" && (
           <>
             <div className="profile">
-              <UserPreview is="userProfile" owner={owner} />
+              {(loggedId !== user._id) && <UserPreview is="userProfile" owner={owner} />}
               <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
                 {updatedGig.title}
               </Link>
