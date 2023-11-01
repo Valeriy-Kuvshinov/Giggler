@@ -83,7 +83,7 @@ export function SellerOrders() {
                         <th>ACTION DATE</th>
                         <th>DUE ON</th>
                         <th>STATUS</th>
-                        <th>SET</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

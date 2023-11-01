@@ -12,13 +12,13 @@
       color: $clrSecondary7;
       font-family: Arial, Helvetica, sans-serif;
       margin-bottom: 20px;
-      margin-left: 8px;
     }
     .services-carousel-wrapper {
       overflow: hidden;
       .services {
         display: flex;
         flex-direction: row;
+        margin: 0 -18px;
         transition: transform 1.2s ease-in-out;
 
         .service {
@@ -66,8 +66,8 @@
       box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 
       img {
-        width: 50%;
-        height: 50%;
+        width: 35%;
+        height: 35%;
       }
     }
   }
