@@ -20,7 +20,6 @@ export function GigDetails() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
 
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
-  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
 
 
   useEffect(() => {
@@ -31,7 +30,6 @@ export function GigDetails() {
     try {
       const fetchedGig = await gigService.getById(params.id)
       setGig(fetchedGig)
-      await loadReviews()
 
       if (fetchedGig) await loadUser(fetchedGig.ownerId)
     } catch (err) {
@@ -57,15 +55,22 @@ export function GigDetails() {
       {isMobile ? (
         <>
           <main>
-            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
+            <CatTagDisplayBar
+              isFrom={'gigDetails'}
+              category={gig.category}
+              tag={gig.tags[1]}
+            />
             <GigDetailsHeader gig={gig} owner={user} />
-            <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+            <GigDetailsAside
+              gig={gig}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+            />
             <section className="about-gig" style={{ overflow: 'hidden' }}>
               <h3>About This Gig</h3>
               <p>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
-            <GigReviews reviews={filteredReviewIds} gig={gig} />
+            <GigReviews gig={gig} />
           </main>
         </>
       ) : (
@@ -78,9 +83,12 @@ export function GigDetails() {
               <p>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
-            <GigReviews reviews={reviews} gig={gig} />
+            <GigReviews gig={gig} />
           </main>
-          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+          <GigDetailsAside
+            gig={gig}
+            onGigChange={(updatedGig) => setGig(updatedGig)}
+          />
         </>
       )}
     </section>

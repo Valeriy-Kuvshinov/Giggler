@@ -42,11 +42,11 @@ export function GigFilter({
           </section>
         )}
         {filterBy.cat && (
-          <CatTagDisplayBar category={filterBy.cat} tag={filterBy.tag} />
+          <CatTagDisplayBar isFrom='explore' category={filterBy.cat} tag={filterBy.tag} />
         )}
       </div>
 
-      <main className={`gig-filter full ${isSticky ? 'shadow' : ''}`}>
+      <main className={`gig-filter ${isSticky ? 'shadow' : ''}`}>
         <section className="floating-top-bar layout-row">
           <div className="filter-nav">
             {(filterBy.cat ||
