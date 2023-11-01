@@ -1,4 +1,3 @@
-import { orderService } from "../services/order.service.local.js"
 import { orderBackendService } from "../services/order.backend.service.js"
 import { store } from '../store/store.js'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from "./order.reducer.js"

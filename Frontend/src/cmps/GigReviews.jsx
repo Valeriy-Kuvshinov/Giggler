@@ -16,7 +16,6 @@ export function GigReviews({ gig }) {
             const fetchedReviews = await Promise.all(
                 gig.reviews.map(reviewId => reviewService.getById(reviewId))
             )
-            console.log(fetchedReviews)
 
             const reviewsWithUser = await Promise.all(
                 fetchedReviews.map(async review => {
@@ -34,26 +33,11 @@ export function GigReviews({ gig }) {
         fetchFullReviews()
     }, [gig])
 
-    // const handleReviewAdded = (newReview) => {
-    //     setFullReviews((prevReviews) => [...prevReviews, newReview])
-    // }
-
-    // let isReviewedAlready = false
-    // fullReviews.forEach((review) => {
-    //     if (review.userId === loggedInUser._id) {
-    //         isReviewedAlready = true
-    //     }
-    // })
-
     return (
         <section className="gig-reviews">
             <span className="title">Reviews</span>
 
             <ReviewBreakdown reviews={fullReviews} />
-
-            {/* {gig && loggedInUser && loggedInUser._id !== gig.ownerId && !isReviewedAlready && (
-                <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />
-            )} */}
 
             {fullReviews.length !== 0 && (
                 <ul className="reviews">
@@ -67,3 +51,19 @@ export function GigReviews({ gig }) {
         </section>
     )
 }
+
+
+// const handleReviewAdded = (newReview) => {
+//     setFullReviews((prevReviews) => [...prevReviews, newReview])
+// }
+
+// let isReviewedAlready = false
+// fullReviews.forEach((review) => {
+//     if (review.userId === loggedInUser._id) {
+//         isReviewedAlready = true
+//     }
+// })
+
+{/* {gig && loggedInUser && loggedInUser._id !== gig.ownerId && !isReviewedAlready && (
+                <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />
+            )} */}
