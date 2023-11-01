@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SellerOrder } from './SellerOrder.jsx'
+import { Loader } from '../Loader.jsx'
 
 import { loadOrders } from '../../store/order.actions.js'
 import { orderBackendService } from '../../services/order.backend.service.js'
@@ -70,7 +71,7 @@ export function SellerOrders() {
         }
     }
 
-    if (orders.length === 0) return <div>Loading...</div>
+    if (orders.length === 0) return <Loader />
 
     return (
         <section className="user-orders">
