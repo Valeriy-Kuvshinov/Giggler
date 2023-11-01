@@ -27,6 +27,7 @@
         margin-block-end: 1.25em;
         @media screen and (max-width: 900px){
           border: 0;
+          padding: 2em 0.75em 4em;
         }
         &:nth-child(2) {
           justify-content: start;

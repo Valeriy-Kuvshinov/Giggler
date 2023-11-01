@@ -21,7 +21,6 @@ export function GigDetails() {
 
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
 
-
   useEffect(() => {
     fetchData()
   }, [params.id])
@@ -67,7 +66,7 @@ export function GigDetails() {
             />
             <section className="about-gig" style={{ overflow: 'hidden' }}>
               <h3>About This Gig</h3>
-              <p>{gig.description}</p>
+              <p className='gig-description'>{gig.description}</p>
             </section>
             <AboutSeller owner={user} />
             <GigReviews gig={gig} />

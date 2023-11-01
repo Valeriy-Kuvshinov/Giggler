@@ -13,6 +13,7 @@ export function GigReviews({ gig }) {
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
 console.log('reviews from the store: ', reviews )
 
+<<<<<<< HEAD
   const filteredReviews = reviews.filter((review) => {
     return gig.reviews.some((gigReview) => {
       return review._id === gigReview
@@ -39,6 +40,56 @@ console.log('reviews from the store: ', reviews )
           country: user.country,
         }
       })
+=======
+    // const filteredReviewIds = gig
+    // ? reviews
+    //   .filter((review) => review.gigId === gig._id)
+    //   .map((review) => review._id)
+    // : []
+
+    useEffect(() => {
+        async function fetchFullReviews() {
+            const fetchedReviews = await Promise.all(reviews.map(reviewId => reviewService.getById(reviewId)))
+            const reviewsWithUser = await Promise.all(fetchedReviews.map(async review => {
+                const user = await userService.getById(review.userId)
+                return { ...review, userName: user.username, imgUrl: user.imgUrl, country: user.country }
+            }))
+            setFullReviews(reviewsWithUser)
+        }
+        fetchFullReviews()
+    }, [reviews])
+
+    const handleReviewAdded = (newReview) => {
+        setFullReviews(prevReviews => [...prevReviews, newReview])
+    }
+
+    let isReviewedAlready=false
+    fullReviews.map((review)=>{
+        if(review.userId===loggedInUser._id){
+            isReviewedAlready=true
+        }
+    })
+    let isAllowedToReview=false
+
+    return (
+        <section className="gig-reviews">
+            <span className="title">Reviews</span>
+
+            <ReviewBreakdown reviews={reviews} />
+            
+            {gig && loggedInUser && loggedInUser._id !== gig.ownerId && (!isReviewedAlready) &&<ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />}
+
+            {fullReviews.length !== 0 && (
+                <ul className="reviews">
+                    {fullReviews.map((review) => (
+                        <li key={review._id}>
+                            <GigReview review={review} />
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </section>
+>>>>>>> 276429e35bc948f2bbe1c2a76fcf9f39935d271f
     )
   }
 
