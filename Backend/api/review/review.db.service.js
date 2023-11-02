@@ -16,7 +16,6 @@ async function query(filterBy = {}) {
         const criteria = _buildCriteria(filterBy)
         const collection = await dbService.getCollection('review')
         // const reviews = await collection.find(criteria).toArray()
-        // console.log(reviews)
         var reviews = await collection.aggregate([
             {
                 $match: criteria
@@ -35,14 +34,15 @@ async function query(filterBy = {}) {
             }
         ]).toArray()
         reviews = reviews.map(review => {
-            review.byUser = { _id: review.byUser._id, username: review.byUser.username
-                , country: review.byUser.country, imgUrl: review.byUser.imgUrl }
-            return review
-        })
-
-        return reviews
-    } catch (err) {
-        loggerService.error('cannot find reviews', err)
+            review.byUser = { username: review.byUser.username, country: review.byUser.country,
+                imgUrl: review.byUser.imgUrl }
+                return review
+            })
+            
+            // console.log('review : ',reviews)
+            return reviews
+        } catch (err) {
+            loggerService.error('cannot find reviews', err)
         throw err
     }
 
@@ -55,7 +55,7 @@ async function remove(reviewId) {
         const collection = await dbService.getCollection('review')
         // remove only if user is owner/admin
         const criteria = { _id: ObjectId(reviewId) }
-        if (!loggedinUser.isAdmin) criteria.byUserId = ObjectId(loggedinUser._id)
+        if (!loggedinUser.isAdmin) criteria.userId = ObjectId(loggedinUser._id)
         const {deletedCount} = await collection.deleteOne(criteria)
         return deletedCount
     } catch (err) {

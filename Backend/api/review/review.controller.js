@@ -25,14 +25,15 @@ export async function getReviews(req, res) {
     }
 }
 
-export async function deleteReview(req, res) {
+export async function addReview(req, res) {
     try {
-        await reviewService.remove(req.params.id)
-        res.send({ msg: 'Deleted successfully' })
+        const review = req.body
+        const addedReview = await reviewService.save(review)
+        res.json(addedReview)
     }
     catch (err) {
-        loggerService.error('Failed to delete review', err)
-        res.status(500).send({ err: 'Failed to delete review' })
+        loggerService.error('Failed to add review', err)
+        res.status(500).send({ err: 'Failed to add review' })
     }
 }
 
@@ -48,14 +49,13 @@ export async function updateReview(req, res) {
     }
 }
 
-export async function addReview(req, res) {
+export async function deleteReview(req, res) {
     try {
-        const review = req.body
-        const addedReview = await reviewService.save(review)
-        res.json(addedReview)
+        await reviewService.remove(req.params.id)
+        res.send({ msg: 'Deleted successfully' })
     }
     catch (err) {
-        loggerService.error('Failed to add review', err)
-        res.status(500).send({ err: 'Failed to add review' })
+        loggerService.error('Failed to delete review', err)
+        res.status(500).send({ err: 'Failed to delete review' })
     }
 }
