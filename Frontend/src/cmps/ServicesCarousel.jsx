@@ -4,21 +4,16 @@ import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 import { galleryService } from '../services/gallery.service.js'
 
 export function ServicesCarousel({ onHandleFilter }) {
-  const { popularService, serviceImages, serviceTexts } = galleryService
+  const { services } = galleryService
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [itemsPerPage, setItemsPerPage] = useState(0)
-  const [images, setImages] = useState(() => {
-    const halfImagesCount = Math.floor(serviceImages.length / 2)
-    const initialImages = [
-      ...serviceImages.slice(-halfImagesCount),
-      ...serviceImages,
-      ...serviceImages.slice(0, halfImagesCount),
-    ]
-    return initialImages
-  })
-  const [visibleStartIndex, setVisibleStartIndex] = useState(
-    Math.floor(images.length / 4)
-  )
+  const halfImagesCount = Math.floor(services.length / 2)
+  const [images, setImages] = useState(() => [
+    ...services.slice(-halfImagesCount),
+    ...services,
+    ...services.slice(0, halfImagesCount),
+  ])
+  const [visibleStartIndex, setVisibleStartIndex] = useState(halfImagesCount)
   const carouselRef = useRef()
 
   useEffect(() => {
@@ -27,39 +22,48 @@ export function ServicesCarousel({ onHandleFilter }) {
     }
 
     window.addEventListener('resize', handleResize)
-
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   useEffect(() => {
     if (windowWidth > 1300) setItemsPerPage(5)
-    if (windowWidth < 1300) setItemsPerPage(4)
-    if (windowWidth < 1100) setItemsPerPage(3)
-    if (windowWidth < 800) setItemsPerPage(2)
-    if (windowWidth < 600) setItemsPerPage(1)
+    else if (windowWidth >= 1100) setItemsPerPage(4)
+    else if (windowWidth >= 800) setItemsPerPage(3)
+    else if (windowWidth >= 600) setItemsPerPage(2)
+    else setItemsPerPage(1)
   }, [windowWidth])
 
-  function scrollServicesCarousel(direction) {
+  const scrollServicesCarousel = (direction) => {
     const slideWidth = carouselRef.current.clientWidth / itemsPerPage
     let newIndex = visibleStartIndex
 
+    const resetTransition = () => {
+      carouselRef.current.style.transition = 'none'
+      const middleSectionIndex = direction === 'left' ? images.length - itemsPerPage * 2 : halfImagesCount
+      newIndex = middleSectionIndex
+      carouselRef.current.style.transform = `translateX(-${newIndex * slideWidth}px)`
+
+      carouselRef.current.offsetWidth
+
+      carouselRef.current.style.transition = 'transform 0.5s ease-in-out'
+
+      carouselRef.current.removeEventListener('transitionend', resetTransition)
+
+      setVisibleStartIndex(newIndex)
+    }
     if (direction === 'left') {
       newIndex -= itemsPerPage
-      if (newIndex < 0) {
-        newIndex = images.length - itemsPerPage
+      if (newIndex < halfImagesCount) {
+        carouselRef.current.addEventListener('transitionend', resetTransition)
       }
     } else if (direction === 'right') {
       newIndex += itemsPerPage
-      if (newIndex + itemsPerPage > images.length) {
-        newIndex = 0
+      if (newIndex >= halfImagesCount + services.length) {
+        carouselRef.current.addEventListener('transitionend', resetTransition)
       }
     }
-
     setVisibleStartIndex(newIndex)
-
-    carouselRef.current.style.transform = `translateX(-${
-      newIndex * slideWidth
-    }px)`
+    carouselRef.current.style.transform = `translateX(-${newIndex * slideWidth}px)`
   }
 
   return (
@@ -75,7 +79,10 @@ export function ServicesCarousel({ onHandleFilter }) {
         <div className="services" ref={carouselRef}>
           {images.map((service, index) => (
             <div
-              onClick={(e) => onHandleFilter(e, popularService[index])}
+              onClick={(e) => onHandleFilter(e, {
+                cat: services[index % services.length].cat,
+                tag: services[index % services.length].tag,
+              })}
               className="service"
               key={index}
               style={{
@@ -83,11 +90,11 @@ export function ServicesCarousel({ onHandleFilter }) {
                 borderRadius: '4px',
               }}
             >
-              <img src={service} alt={`Service image ${index}`} />
+              <img src={service.img} alt={`Service image ${index}`} />
               <h4 className="service-text">
-                <span>{serviceTexts[index % serviceTexts.length].title}</span>
+                <span>{services[index % services.length].title}</span>
                 <br />
-                {serviceTexts[index % serviceTexts.length].subtitle}
+                {services[index % services.length].subtitle}
               </h4>
             </div>
           ))}
