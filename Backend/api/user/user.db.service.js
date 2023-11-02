@@ -18,29 +18,6 @@ async function query(filterBy = {}) {
         const collection = await dbService.getCollection('user')
         const users = await collection.find(criteria).toArray()
         // console.log(users)
-        // var users = await collection.aggregate([
-        //     {
-        //         $match: criteria
-        //     },
-        //     {
-        //         $lookup:
-        //         {
-        //             localField: 'userId',
-        //             from: 'user',
-        //             foreignField: '_id',
-        //             as: 'byUser'
-        //         }
-        //     },
-        //     {
-        //         $unwind: '$byUser'
-        //     }
-        // ]).toArray()
-        // users = users.map(user => {
-        //     user.byUser = { _id: user.byUser._id, username: user.byUser.username
-        //         , country: user.byUser.country, imgUrl: user.byUser.imgUrl }
-        //     return user
-        // })
-
         return users
     } catch (err) {
         loggerService.error('cannot find users', err)
@@ -56,7 +33,7 @@ async function remove(userId) {
         const collection = await dbService.getCollection('user')
         // remove only if user is owner/admin
         const criteria = { _id: ObjectId(userId) }
-        if (!loggedinUser.isAdmin) criteria.byUserId = ObjectId(loggedinUser._id)
+        if (!loggedinUser.isAdmin) criteria.userId = ObjectId(loggedinUser._id)
         const {deletedCount} = await collection.deleteOne(criteria)
         return deletedCount
     } catch (err) {
@@ -128,5 +105,25 @@ function _buildCriteria(filterBy) {
     return criteria
 }
 
-
-
+// var users = await collection.aggregate([
+        //     {
+        //         $match: criteria
+        //     },
+        //     {
+        //         $lookup:
+        //         {
+        //             localField: 'userId',
+        //             from: 'user',
+        //             foreignField: '_id',
+        //             as: 'byUser'
+        //         }
+        //     },
+        //     {
+        //         $unwind: '$byUser'
+        //     }
+        // ]).toArray()
+        // users = users.map(user => {
+        //     user.byUser = { _id: user.byUser._id, username: user.byUser.username
+        //         , country: user.byUser.country, imgUrl: user.byUser.imgUrl }
+        //     return user
+        // })

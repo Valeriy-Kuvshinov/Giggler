@@ -1,6 +1,6 @@
 import express from 'express'
-import { requireAuth, requireAdmin } from '../../middlewares/requireAuth.middleware.js'
 import { getUsers, getUserById, removeUser, updateUser, addUser } from './user.controller.js'
+// import { getUsers, getUserById, removeUser, updateUser, addUser } from './user.db.controller.js'
 
 export const userRoutes = express.Router()
 
