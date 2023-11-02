@@ -13,7 +13,7 @@ async function query(filterBy = {}) {
 
   try {
     if (filterBy.user) {
-      return await getGigsByOwner(filterBy.user)
+      return await _getGigsByOwner(filterBy.user)
     }
     if (filterBy.search) {
       criteria.push({
@@ -33,7 +33,7 @@ async function query(filterBy = {}) {
       criteria.push({ time: { $in: filterBy.time } })
     }
     if (filterBy.level) {
-      const matchingUsers = await findUsersWithLevel(filterBy.level)
+      const matchingUsers = await _findUsersWithLevel(filterBy.level)
       criteria.push({ ownerId: { $in: matchingUsers } })
     }
 
@@ -53,7 +53,7 @@ async function query(filterBy = {}) {
   }
 }
 
-async function getGigsByOwner(ownerId) {
+async function _getGigsByOwner(ownerId) {
   const criteria = { ownerId: { $in: ownerId } }
   const collection = await dbService.getCollection('gig')
   const gigs = await collection.find(criteria).toArray()
@@ -61,7 +61,7 @@ async function getGigsByOwner(ownerId) {
   return gigs
 }
 
-async function findUsersWithLevel(level) {
+async function _findUsersWithLevel(level) {
   const userCollection = await dbService.getCollection('user')
   const matchingUsers = await userCollection.find({ level: level }).toArray()
   return matchingUsers.map((user) => user._id)

@@ -1,6 +1,5 @@
 [
     {
-        "_id": "g001",
         "title": "I will take unique photos of Spiderman",
         "category": "Photography",
         "tags": [
@@ -32,7 +31,6 @@
         "createdAt": 1695643112145
     },
     {
-        "_id": "g002",
         "title": "I will design your logo",
         "category": "Graphics & Design",
         "tags": [
@@ -59,7 +57,6 @@
         "createdAt": 1695643112145
     },
     {
-        "_id": "g101",
         "title": "I will create logos for your company",
         "category": "Graphics & Design",
         "tags": [
@@ -91,7 +88,6 @@
         "createdAt": 1695643112145
     },
     {
-        "_id": "g102",
         "title": "I will design stunning website templates",
         "category": "Graphics & Design",
         "tags": [
@@ -119,7 +115,6 @@
         "createdAt": 1695643112145
     },
     {
-        "_id": "g103",
         "title": "I will write engaging blog articles for your niche",
         "category": "Writing & Translation",
         "tags": [
@@ -146,7 +141,6 @@
         "createdAt": 1696247912145
     },
     {
-        "_id": "g104",
         "title": "I will compose a personalized song for your special occasion",
         "category": "Music & Audio",
         "tags": [
@@ -174,7 +168,6 @@
         "createdAt": 1696247912145
     },
     {
-        "_id": "g105",
         "title": "I will create custom 3D animations for your project",
         "category": "Video & Animation",
         "tags": [
@@ -202,7 +195,6 @@
         "createdAt": 1696247912145
     },
     {
-        "_id": "g106",
         "title": "I will offer professional legal consultation for your business",
         "category": "Business",
         "tags": [
@@ -231,7 +223,6 @@
         "createdAt": 1696247912145
     },
     {
-        "_id": "g107",
         "title": "I will provide coaching for your business growth",
         "category": "Business",
         "tags": [
@@ -259,7 +250,6 @@
         "createdAt": 1696247912145
     },
     {
-        "_id": "g108",
         "title": "I will create personalized workout planed videos for your fitness journey",
         "category": "Video & Animation",
         "tags": [
@@ -287,7 +277,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "g109",
         "title": "I will create handcrafted artisanal candles for your relaxation",
         "category": "Graphics & Design",
         "tags": [
@@ -315,7 +304,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "g110",
         "title": "I will create personalized digital avatars for your social media",
         "category": "Graphics & Design",
         "tags": [
@@ -343,7 +331,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "g111",
         "title": "I will write a captivating fantasy novel for your reading pleasure",
         "category": "Writing & Translation",
         "tags": [
@@ -371,7 +358,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "g112",
         "title": "I will provide virtual reality tours of historical landmarks",
         "category": "AI Services",
         "tags": [
@@ -398,7 +384,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "g113",
         "title": "I will provide hilarious video game 'assistance'",
         "category": "Video & Animation",
         "tags": [
@@ -426,7 +411,6 @@
         "createdAt": 1696852712145
     },
     {
-        "_id": "AhNAiy",
         "title": "I am using this gig as an example that you can surpass two whole lines in the gig preview and then it uses a three dot indicator to click if you wish to find out more",
         "category": "Programming & Tech",
         "tags": [
@@ -450,7 +434,6 @@
         "createdAt": 1697543272000
     },
     {
-        "_id": "GI2X2r",
         "title": "I will write you a soundtrack",
         "category": "Music & Audio",
         "tags": [
@@ -476,7 +459,6 @@
         "createdAt": 1697919013048
     },
     {
-        "_id": "yRHJqL",
         "title": "I will create a beautiful video!",
         "category": "Video & Animation",
         "tags": [
