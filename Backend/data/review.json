@@ -5,7 +5,7 @@
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 3,
-        "text": "Late answers and recieved it late but better then most services",
+        "text": "Late answers and recieved it late but better then most services.",
         "createdAt": 1697456859393
     },
     {
@@ -13,8 +13,8 @@
         "userId": "u001",
         "gigId": "g002",
         "sellerId": "u002",
-        "rating": 3,
-        "text": "Excellent photos mrs Jane, however they arrived late",
+        "rating": 4,
+        "text": "Excellent logs and photos mrs Jane, however they arrived late.",
         "createdAt": 1697457303713
     },
     {
@@ -31,7 +31,7 @@
         "userId": "u102",
         "gigId": "g101",
         "sellerId": "u101",
-        "rating": 4.5,
+        "rating": 4,
         "text": "Alice delivered a fantastic logo for my startup. The design process was smooth, and Alice was responsive to my feedback. The end result exceeded my expectations. I'll definitely return for future design needs.",
         "createdAt": 1697456859393
     },
@@ -49,7 +49,7 @@
         "userId": "u104",
         "gigId": "g101",
         "sellerId": "u101",
-        "rating": 4.7,
+        "rating": 5,
         "text": "Working with Alice was a great experience. She took my vague ideas and turned them into a stunning logo that represents my brand perfectly. While there were minor hiccups along the way, the end product speaks for itself. I'm a satisfied customer.",
         "createdAt": 1697457303713
     },
@@ -58,7 +58,7 @@
         "userId": "u105",
         "gigId": "g101",
         "sellerId": "u101",
-        "rating": 4.8,
+        "rating": 5,
         "text": "Alice's logo design skills are top-notch. She was receptive to my vision and incorporated my ideas seamlessly into the final product. The communication was excellent, and I appreciate the effort she put into my project.",
         "createdAt": 1697457303713
     },
@@ -67,7 +67,7 @@
         "userId": "u001",
         "gigId": "g102",
         "sellerId": "u102",
-        "rating": 4.5,
+        "rating": 4,
         "text": "Ella's templates are top-notch. I purchased a template for my online store, and it has significantly improved the look and feel of my website. She was responsive to my customization requests, and I'm very satisfied with the result.",
         "createdAt": 1697456859373
     },
@@ -94,7 +94,7 @@
         "userId": "u001",
         "gigId": "g103",
         "sellerId": "u103",
-        "rating": 4,
+        "rating": 3,
         "text": "David delivered well-researched articles that fit my niche. They were informative and SEO-friendly. However, there were some minor grammar issues that needed editing.",
         "createdAt": 1697456859373
     },
@@ -103,7 +103,7 @@
         "userId": "u002",
         "gigId": "g103",
         "sellerId": "u103",
-        "rating": 4.5,
+        "rating": 4,
         "text": "I hired David to write articles for my blog, and he did a commendable job. The content was engaging, and he met the deadline. I appreciate his effort and will consider working with him again.",
         "createdAt": 1697456859393
     },
@@ -112,7 +112,7 @@
         "userId": "u101",
         "gigId": "g103",
         "sellerId": "u103",
-        "rating": 3.8,
+        "rating": 4,
         "text": "While David's articles were decent, there were a few factual inaccuracies that needed correction. Communication was also somewhat delayed. Overall, the service was satisfactory.",
         "createdAt": 1697457303713
     },
@@ -130,7 +130,7 @@
         "userId": "u102",
         "gigId": "g104",
         "sellerId": "u104",
-        "rating": 4.8,
+        "rating": 5,
         "text": "We hired Sophia to create a song for our anniversary celebration, and it was a hit! The melody and lyrics were exquisite. Sophia's talent shines through in her work, and we highly recommend her.",
         "createdAt": 1697456859393
     },
@@ -139,7 +139,7 @@
         "userId": "u103",
         "gigId": "g104",
         "sellerId": "u104",
-        "rating": 4.5,
+        "rating": 4,
         "text": "Sophia's songwriting skills are impressive. She composed a theme song for our corporate event that left a lasting impression on our guests. However, there were minor delays in delivery.",
         "createdAt": 1697457303713
     },
@@ -157,7 +157,7 @@
         "userId": "u102",
         "gigId": "g105",
         "sellerId": "u105",
-        "rating": 4.7,
+        "rating": 5,
         "text": "I commissioned Lucas to create a custom 3D animation for my art project, and the results exceeded my expectations. His creativity and technical skills are impressive. A great collaborator!",
         "createdAt": 1697456859393
     },
@@ -166,7 +166,7 @@
         "userId": "u103",
         "gigId": "g105",
         "sellerId": "u105",
-        "rating": 4.5,
+        "rating": 4,
         "text": "Lucas did an excellent job with our product presentation animation. It helped us showcase our product's features effectively. While there were minor delays, the quality made up for it.",
         "createdAt": 1697457303713
     },
@@ -184,7 +184,7 @@
         "userId": "u102",
         "gigId": "g106",
         "sellerId": "u106",
-        "rating": 4.8,
+        "rating": 5,
         "text": "I hired Olivia for legal consultation, and I'm impressed by her expertise. She helped me understand the legal aspects of my business, and her advice was practical and actionable.",
         "createdAt": 1697456859393
     },
@@ -193,7 +193,7 @@
         "userId": "u103",
         "gigId": "g106",
         "sellerId": "u106",
-        "rating": 4.7,
+        "rating": 5,
         "text": "Olivia's legal services were a game-changer for our company. She assisted us in resolving a complex legal matter efficiently. Her professionalism and dedication were commendable.",
         "createdAt": 1697457303713
     },
@@ -211,7 +211,7 @@
         "userId": "u102",
         "gigId": "g107",
         "sellerId": "u107",
-        "rating": 4.7,
+        "rating": 5,
         "text": "I've been working with Sophie for business development, and I'm impressed by her expertise. Her coaching has helped me overcome obstacles and gain clarity on my life path.",
         "createdAt": 1697456859393
     },
@@ -220,7 +220,7 @@
         "userId": "u103",
         "gigId": "g107",
         "sellerId": "u107",
-        "rating": 4.9,
+        "rating": 5,
         "text": "Sophie's business coaching services have been invaluable. Her approach is practical and results-driven. She helped me achieve my goals and develop a more positive mindset.",
         "createdAt": 1697457303713
     },
@@ -238,7 +238,7 @@
         "userId": "u102",
         "gigId": "g108",
         "sellerId": "u108",
-        "rating": 4.9,
+        "rating": 5,
         "text": "I reached out to Max to help me with weight loss, and I couldn't be happier. His plans are challenging yet achievable. He's been a motivating force in my fitness transformation.",
         "createdAt": 1697456859393
     },
@@ -247,7 +247,7 @@
         "userId": "u103",
         "gigId": "g108",
         "sellerId": "u108",
-        "rating": 4.5,
+        "rating": 4,
         "text": "Max's workout plans are effective, and he provides great support throughout the journey. While there were minor delays in communication, the results were worth it.",
         "createdAt": 1697457303713
     },
@@ -265,7 +265,7 @@
         "userId": "u102",
         "gigId": "g109",
         "sellerId": "u109",
-        "rating": 4.6,
+        "rating": 5,
         "text": "I purchased Ava's candles as gifts, and they were a hit! The recipients loved the unique scents and packaging. Ava's dedication to her craft shines through in every candle.",
         "createdAt": 1697456859393
     },
@@ -274,7 +274,7 @@
         "userId": "u103",
         "gigId": "g109",
         "sellerId": "u109",
-        "rating": 4.8,
+        "rating": 5,
         "text": "Ava's artisanal candles are a must-try. They add a special touch to any room. While there were slight delays in delivery, the quality of the candles exceeded my expectations.",
         "createdAt": 1697457303713
     },
@@ -292,7 +292,7 @@
         "userId": "u102",
         "gigId": "g110",
         "sellerId": "u110",
-        "rating": 4.7,
+        "rating": 5,
         "text": "I commissioned Evelyn for gaming avatars, and I'm impressed by her creativity. The avatars are visually appealing and unique. She's a talented artist.",
         "createdAt": 1697456859393
     },
@@ -301,7 +301,7 @@
         "userId": "u103",
         "gigId": "g110",
         "sellerId": "u110",
-        "rating": 4.8,
+        "rating": 5,
         "text": "Evelyn's avatars have enhanced my social media presence. Her communication and delivery were prompt. She's a professional in the digital art world.",
         "createdAt": 1697457303713
     },
@@ -319,7 +319,7 @@
         "userId": "u102",
         "gigId": "g111",
         "sellerId": "u111",
-        "rating": 4.8,
+        "rating": 5,
         "text": "I commissioned Luna to write a fantasy novel, and I was captivated from the first page. Her writing style is enchanting, and her world-building is exceptional. A must-read!",
         "createdAt": 1697456859393
     },
@@ -328,7 +328,7 @@
         "userId": "u103",
         "gigId": "g111",
         "sellerId": "u111",
-        "rating": 4.9,
+        "rating": 5,
         "text": "Luna's fantasy novels are a treasure. Her attention to detail and character development make her books a joy to read. While the delivery was a bit delayed, the quality made up for it.",
         "createdAt": 1697457303713
     },
@@ -346,7 +346,7 @@
         "userId": "u102",
         "gigId": "g112",
         "sellerId": "u112",
-        "rating": 4.6,
+        "rating": 4,
         "text": "I took Alex's virtual tour of historical landmarks, and it was an incredible experience. The interactivity and storytelling make history come alive. Highly recommended!",
         "createdAt": 1697456859393
     },
@@ -355,7 +355,7 @@
         "userId": "u103",
         "gigId": "g112",
         "sellerId": "u112",
-        "rating": 4.8,
+        "rating": 5,
         "text": "Alex's VR tours are a unique way to explore history. Although there was a slight delay in communication, the tours themselves are worth every penny. I learned so much!",
         "createdAt": 1697457303713
     },
@@ -382,7 +382,7 @@
         "userId": "u103",
         "gigId": "g113",
         "sellerId": "u113",
-        "rating": 1,
+        "rating": 2,
         "text": "GamerGuffaw's 'assistance' is a disaster in the best way possible. It's so bad that it's good. My character glitched into walls, and I laughed so hard I cried. A must-try for a good time!",
         "createdAt": 1697457303713
     },
@@ -392,7 +392,7 @@
         "gigId": "g101",
         "sellerId": "u101",
         "rating": 5,
-        "text": "best service ever",
+        "text": "The logs we got from Alice were amazing!",
         "createdAt": 1697494314442
     },
     {
@@ -400,8 +400,8 @@
         "userId": "u111",
         "gigId": "g101",
         "sellerId": "u101",
-        "rating": 3,
-        "text": "Idk, kinda mid",
+        "rating": 4,
+        "text": "While the product I recieved was fine, I expected higher quality.",
         "createdAt": 1697494430594
     },
     {
@@ -410,7 +410,7 @@
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 3,
-        "text": "seen better costumer service",
+        "text": "The seller did not deliver the product on time. Although the photos were nice, it was not worth the wait.",
         "createdAt": 1697530329899
     },
     {
@@ -419,7 +419,7 @@
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 5,
-        "text": "amazing pictures oh high quality, would order again",
+        "text": "amazing pictures oh high quality, would order again.",
         "createdAt": 1697629480818
     },
     {
@@ -428,17 +428,8 @@
         "gigId": "g001",
         "sellerId": "u001",
         "rating": 4,
-        "text": "excellent service but bad timing, can't blame because of timezones",
+        "text": "excellent service but bad timing, can't blame because of timezones.",
         "createdAt": 1697975430953
-    },
-    {
-        "_id": "2wvGFH",
-        "userId": "u001",
-        "gigId": "4uSOYc",
-        "sellerId": "u001",
-        "rating": 1,
-        "text": "bad, dont buy",
-        "createdAt": 1697978762843
     },
     {
         "_id": "tQ4awY",
@@ -446,7 +437,7 @@
         "gigId": "g002",
         "sellerId": "u002",
         "rating": 4,
-        "text": "She answered immediately, it did arrive a bit late",
+        "text": "She answered immediately, it did arrive a bit late.",
         "createdAt": 1698311592503
     }
 ]
