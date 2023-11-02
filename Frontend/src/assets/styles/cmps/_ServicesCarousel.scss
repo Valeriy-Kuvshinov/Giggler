@@ -13,8 +13,10 @@
       font-family: Arial, Helvetica, sans-serif;
       margin-bottom: 20px;
     }
+
     .services-carousel-wrapper {
       overflow: hidden;
+
       .services {
         display: flex;
         flex-direction: row;
@@ -36,7 +38,7 @@
           .service-text {
             position: relative;
             bottom: 100%;
-            left: 26px;
+            left: 6px;
             color: $clrPrimary1;
             font-size: 24px;
             padding: 0px 10px;
@@ -46,8 +48,10 @@
 
             span {
               font-size: 14px;
+              font-weight: 100;
             }
           }
+
           & img:hover {
             opacity: 0.85;
             transition: opacity 0.3s ease-in-out;
@@ -55,6 +59,7 @@
         }
       }
     }
+
     .carousel-btn {
       position: absolute;
       top: 50%;

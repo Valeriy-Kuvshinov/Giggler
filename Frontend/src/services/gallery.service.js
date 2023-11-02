@@ -56,23 +56,18 @@ import socialMediaFacebook from '../assets/img/svg/social.media.facebook.svg'
 import socialMediaPinterest from '../assets/img/svg/social.media.pinterest.svg'
 import socialMediaTwitter from '../assets/img/svg/social.media.twitter.svg'
 
-import userLevelZero from '../assets/img/svg/user.level.zero.icon.svg'
-import userLevelOne from '../assets/img/svg/user.level.one.icon.svg'
-import userLevelTwo from '../assets/img/svg/user.level.two.icon.svg'
-import userLevelThree from '../assets/img/svg/user.level.three.icon.svg'
-
-const serviceTexts = [
-    { title: "Add talent to AI", subtitle: "AI Artists" },
-    { title: "Build your brand", subtitle: "Logo Design" },
-    { title: "Customize your site", subtitle: "Wordpress" },
-    { title: "Share your message", subtitle: "Voice Over" },
-    { title: "Engage your audience", subtitle: "Video Explainer" },
-    { title: "Reach more customers", subtitle: "Social Media" },
-    { title: "Unlock growth online", subtitle: "SEO" },
-    { title: "Color your dreams", subtitle: "Illustration" },
-    { title: "Go global", subtitle: "Translation" },
-    { title: "Learn your business", subtitle: "Data Entry" },
-    { title: "Showcase your story", subtitle: "Book Covers" }
+const services = [
+    { title: "Add talent to AI", subtitle: "AI Artists", img: serviceOne, cat: 'AI Services', tag: 'AI Artists' },
+    { title: "Build your brand", subtitle: "Logo Design", img: serviceTwo, cat: 'Graphics & Design', tag: 'Logo & Brand Identity' },
+    { title: "Customize your site", subtitle: "Wordpress", img: serviceThree, cat: 'Programming & Tech', tag: 'Website Development' },
+    { title: "Share your message", subtitle: "Voice Over", img: serviceFour, cat: 'Music & Audio', tag: 'Voice Over & Narration' },
+    { title: "Engage your audience", subtitle: "Video Explainer", img: serviceFive, cat: 'Video & Animation', tag: 'Explainer Videos' },
+    { title: "Reach more customers", subtitle: "Social Media", img: serviceSix, cat: 'Digital Marketing', tag: 'Social Marketing' },
+    { title: "Unlock growth online", subtitle: "SEO", img: serviceSeven, cat: 'Digital Marketing', tag: 'Search Marketing' },
+    { title: "Color your dreams", subtitle: "Illustration", img: serviceEight, cat: 'Graphics & Design', tag: 'Art & Illustration' },
+    { title: "Go global", subtitle: "Translation", img: serviceNine, cat: 'Writing & Translation', tag: 'Translation & Transcription' },
+    { title: "Learn your business", subtitle: "Data Entry", img: serviceTen, cat: 'Data', tag: 'Data Collection' },
+    { title: "Showcase your story", subtitle: "Book Covers", img: serviceEleven, cat: 'Graphic & Design', tag: 'Print Design' }
 ]
 
 const personImages = [
@@ -112,21 +107,7 @@ export const defaultImgUrls = [
 
 export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
-    serviceImages: [serviceOne, serviceTwo, serviceThree, serviceFour, serviceFive, serviceSix, serviceSeven, serviceEight, serviceNine, serviceTen, serviceEleven],
-    serviceTexts: serviceTexts,
-    popularService: [
-        { cat: 'AI Services', tag: 'AI Artists', },
-        { cat: 'Graphics & Design', tag: 'Logo & Brand Identity', },
-        { cat: 'Programming & Tech', tag: 'Website Development', },
-        { cat: 'Music & Audio', tag: 'Voice Over & Narration', },
-        { cat: 'Video & Animation', tag: 'Explainer Videos', },
-        { cat: 'Digital Marketing', tag: 'Social Marketing', },
-        { cat: 'Digital Marketing', tag: 'Search Marketing', },
-        { cat: 'Graphics & Design', tag: 'Art & Illustration', },
-        { cat: 'Writing & Translation', tag: 'Translation & Transcription', },
-        { cat: 'Data', tag: 'Data Collection', },
-        { cat: 'Graphic & Design', tag: 'Print Design', }
-    ],
+    services: services,
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     socialMediaLinks: [
@@ -137,7 +118,6 @@ export const galleryService = {
         { img: socialMediaPinterest, url: 'https://www.pinterest.com/fiverr/' },
         { img: socialMediaTwitter, url: 'https://twitter.com/fiverr' },
     ],
-    levelImages: [userLevelZero, userLevelOne, userLevelTwo, userLevelThree],
     personImages: personImages,
     infoListData: infoListData,
 }

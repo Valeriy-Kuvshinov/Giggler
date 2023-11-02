@@ -118,21 +118,21 @@
     .carousel-btn {
       @media (max-width: 1400px) {
         &.left-side {
-          left: 1%;
+          left: 1.5%;
         }
 
         &.right-side {
-          right: 1%;
+          right: 1.5%;
         }
       }
 
       @media (min-width: 1401px) {
         &.left-side {
-          left: -2%;
+          left: -1.25%;
         }
 
         &.right-side {
-          right: -2%;
+          right: -1.25%;
         }
       }
     }
