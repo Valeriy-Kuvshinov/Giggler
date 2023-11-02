@@ -1,8 +1,7 @@
 import express from 'express'
-import { requireAuth, requireAdmin } from '../../middlewares/requireAuth.middleware.js'
 import { log } from '../../middlewares/logger.middleware.js'
 import { getGigs, getGigById, addGig, updateGig, removeGig } from './gig.controller.js'
-
+// import { getGigs, getGigById, addGig, updateGig, removeGig } from './gig.db.controller.js'
 export const gigRoutes = express.Router()
 
 // middleware that is specific to this router

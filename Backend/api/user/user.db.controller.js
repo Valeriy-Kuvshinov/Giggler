@@ -1,8 +1,7 @@
 import { loggerService } from '../../services/logger.service.js'
 import { socketService } from '../../services/socket.service.js'
-import { userService } from '../user/user.service.js'
+import { userService } from '../user/user.db.service.js'
 import { authService } from '../auth/auth.service.js'
-import { userService } from './user.db.service.js'
 
 export async function getUser(req, res) {
     try {
