@@ -1,22 +1,22 @@
-import personOne from '../assets/img/jenny.jpg'
-import mediumPersonOne from '../assets/img/medium-jenny.jpg'
-import miniPersonOne from '../assets/img/mini-jenny.webp'
+const personOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/i8ujgpqo9x3laxhkfhse.jpg'
+const mediumPersonOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/yoi5gelmuyyuk0zyueon.webp'
+const miniPersonOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920850/Giggler/home-page-people/o21gbkoemsio4cv6gnlx.webp'
 
-import personTwo from '../assets/img/colin.jpg'
-import mediumPersonTwo from '../assets/img/medium-colin.jpg'
-import miniPersonTwo from '../assets/img/mini-colin.webp'
+const personTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/boecqj6ruxdhiktlzkyw.jpg'
+const mediumPersonTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/zpstamm9ynuamoxyylku.webp'
+const miniPersonTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/i4vj2gqof3dso1vxmbqm.webp'
 
-import personThree from '../assets/img/scarlett.jpg'
-import mediumPersonThree from '../assets/img/medium-scarlett.jpg'
-import miniPersonThree from '../assets/img/mini-scarlett.webp'
+const personThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920851/Giggler/home-page-people/xne4zzeij9uxihnncrhv.jpg'
+const mediumPersonThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/btutwi3w3vbggzhjvant.webp'
+const miniPersonThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920851/Giggler/home-page-people/evbxzeijdxq48vxdf77k.webp'
 
-import personFour from '../assets/img/jordan.jpg'
-import mediumPersonFour from '../assets/img/medium-jordan.jpg'
-import miniPersonFour from '../assets/img/mini-jordan.webp'
+const personFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/aggzjurxmkayczoawnoq.webp'
+const mediumPersonFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/l88qnf9cux1wmpwb2nmv.webp'
+const miniPersonFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920850/Giggler/home-page-people/emie44qpu0oxq0yfatca.webp'
 
-import personFive from '../assets/img/christina.jpg'
-import mediumPersonFive from '../assets/img/medium-christina.jpg'
-import miniPersonFive from '../assets/img/mini-christina.webp'
+const personFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/xmye97re4afosi3wywyl.webp'
+const mediumPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/srhesrvbpmvgwne7hatq.webp'
+const miniPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/t1irgj9gtzpadutsyp14.webp'
 
 import starIcon from '../assets/img/svg/white.star.icon.svg'
 
