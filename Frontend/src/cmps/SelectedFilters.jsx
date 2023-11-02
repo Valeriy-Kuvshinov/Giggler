@@ -20,7 +20,7 @@ export function SelectedFilters({ filterBy , onDeleteFilter}) {
               text = filterBy[key]
           }
 
-          return (key !== 'page' && key !== 'cat' && key !== 'tag' ) && filterBy[key] ? (
+          return (key !== 'page' && key !== 'cat' && key !== 'tag' && key !== 'package') && filterBy[key] ? (
             <span
               key={key}
               onClick={() => onDeleteFilter(key)}

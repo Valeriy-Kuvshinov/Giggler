@@ -11,11 +11,14 @@ import { Loader } from '../cmps/Loader.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
+import { UserChat } from '../cmps/UserChat.jsx'
 
 export function GigDetails() {
   const params = useParams()
   const [gig, setGig] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
+  const [chatState, setChatState] = useState(false)
+
 
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
 
@@ -48,6 +51,7 @@ export function GigDetails() {
   if (!gig || !user) return <Loader />
 
   return (
+    <>
     <section className="gig-details grid layout-row">
       {isMobile ? (
         <>
@@ -75,9 +79,11 @@ export function GigDetails() {
             <AboutSeller owner={user} />
             <GigReviews gig={gig} />
           </main>
-          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
+          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} setChatState={setChatState}/>
         </>
       )}
     </section>
+    <UserChat  owner={user} window={isMobile} chatState={chatState} setChatState={setChatState}/>
+    </>
   )
 }

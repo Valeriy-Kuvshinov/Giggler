@@ -8,7 +8,7 @@ import { gigService, packages } from '../services/gig.service.js'
 import { ShareGigModal } from './ShareGigModal.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-export function GigDetailsAside({ gig, onGigChange }) {
+export function GigDetailsAside({ gig, onGigChange, setChatState }) {
   const user = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
 
@@ -150,7 +150,7 @@ export function GigDetailsAside({ gig, onGigChange }) {
         </button>
       </section>
       <div className="contact-seller flex">
-        <button className="b">Contact me</button>
+        <button onClick={() => setChatState(true)} className="b">Contact me</button>
       </div>
     </section>
   )
