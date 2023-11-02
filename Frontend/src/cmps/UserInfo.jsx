@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 
-import icon from "../assets/img/svg/user.icon.svg"
-import location from "../assets/img/svg/location.icon.svg"
-
 import { UserEditModal } from "./UserEditModal.jsx"
 import { updateUser } from "../store/user.actions.js"
 import SvgIcon from "./SvgIcon"
 import { loadReviews } from "../store/review.actions"
 import { utilService } from "../services/util.service"
-import { loadOrders } from "../store/order.actions"
 
 export function UserInfo({ user }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
