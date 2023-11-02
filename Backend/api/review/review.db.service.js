@@ -8,7 +8,8 @@ const {ObjectId} = mongodb
 export const reviewService = {
     query,
     remove,
-    add
+    add,
+    getById
 }
 
 async function query(filterBy = {}) {
@@ -46,7 +47,18 @@ async function query(filterBy = {}) {
         throw err
     }
 
-}
+}async function getById(reviewId) {
+    try {
+      const collection = await dbService.getCollection('review')
+      const review = collection.findOne({ _id: new ObjectId(reviewId) })
+      return review
+    } catch (err) {
+      loggerService.error(`while finding review ${reviewId}`, err)
+      throw err
+    }
+  }
+
+
 
 async function remove(reviewId) {
     try {
@@ -83,6 +95,8 @@ async function add(review) {
         throw err
     }
 }
+
+
 
 function _buildCriteria(filterBy) {
     const criteria = {}
