@@ -116,7 +116,7 @@ async function update(gig) {
   }
 }
 
-export const gigDbService = {
+export const gigService = {
   remove,
   query,
   getById,
