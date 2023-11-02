@@ -1,22 +1,22 @@
-import personOne from '../assets/img/jenny.jpg'
-import mediumPersonOne from '../assets/img/medium-jenny.jpg'
-import miniPersonOne from '../assets/img/mini-jenny.webp'
+const personOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/i8ujgpqo9x3laxhkfhse.jpg'
+const mediumPersonOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/yoi5gelmuyyuk0zyueon.webp'
+const miniPersonOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920850/Giggler/home-page-people/o21gbkoemsio4cv6gnlx.webp'
 
-import personTwo from '../assets/img/colin.jpg'
-import mediumPersonTwo from '../assets/img/medium-colin.jpg'
-import miniPersonTwo from '../assets/img/mini-colin.webp'
+const personTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/boecqj6ruxdhiktlzkyw.jpg'
+const mediumPersonTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/zpstamm9ynuamoxyylku.webp'
+const miniPersonTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/i4vj2gqof3dso1vxmbqm.webp'
 
-import personThree from '../assets/img/scarlett.jpg'
-import mediumPersonThree from '../assets/img/medium-scarlett.jpg'
-import miniPersonThree from '../assets/img/mini-scarlett.webp'
+const personThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920851/Giggler/home-page-people/xne4zzeij9uxihnncrhv.jpg'
+const mediumPersonThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/btutwi3w3vbggzhjvant.webp'
+const miniPersonThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920851/Giggler/home-page-people/evbxzeijdxq48vxdf77k.webp'
 
-import personFour from '../assets/img/jordan.jpg'
-import mediumPersonFour from '../assets/img/medium-jordan.jpg'
-import miniPersonFour from '../assets/img/mini-jordan.webp'
+const personFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/aggzjurxmkayczoawnoq.webp'
+const mediumPersonFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/l88qnf9cux1wmpwb2nmv.webp'
+const miniPersonFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920850/Giggler/home-page-people/emie44qpu0oxq0yfatca.webp'
 
-import personFive from '../assets/img/christina.jpg'
-import mediumPersonFive from '../assets/img/medium-christina.jpg'
-import miniPersonFive from '../assets/img/mini-christina.webp'
+const personFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920852/Giggler/home-page-people/xmye97re4afosi3wywyl.webp'
+const mediumPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/srhesrvbpmvgwne7hatq.webp'
+const miniPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/t1irgj9gtzpadutsyp14.webp'
 
 import starIcon from '../assets/img/svg/white.star.icon.svg'
 
@@ -26,17 +26,17 @@ import googleImg from '../assets/img/google.logo.png'
 import pandgImg from '../assets/img/pandg.logo.png'
 import paypalImg from '../assets/img/paypal.logo.png'
 
-import serviceOneImg from '../assets/img/ai.art.webp'
-import serviceTwoImg from '../assets/img/logo.design.webp'
-import serviceThreeImg from '../assets/img/wordpress.webp'
-import serviceFourImg from '../assets/img/voice.over.webp'
-import serviceFiveImg from '../assets/img/video.explainer.webp'
-import serviceSixImg from '../assets/img/social.media.webp'
-import serviceSevenImg from '../assets/img/seo.webp'
-import serviceEightImg from '../assets/img/illustration.webp'
-import serviceNineImg from '../assets/img/translation.webp'
-import serviceTenImg from '../assets/img/data.entry.webp'
-import serviceElevenImg from '../assets/img/book.covers.webp'
+const serviceOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923983/Giggler/home-page-services/ydj62q0ba8wahxmzcsop.webp'
+const serviceTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/x6n9hjoaqnilcvcszg7t.webp'
+const serviceThree = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923983/Giggler/home-page-services/opwsfc98unoesoj9ywtr.webp'
+const serviceFour = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923983/Giggler/home-page-services/ud576rdpjn4ukvakiij4.webp'
+const serviceFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923982/Giggler/home-page-services/kfvcgzbhrag6ecf6a4cb.webp'
+const serviceSix = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923982/Giggler/home-page-services/fkcz8gynzenefcejlfhx.webp'
+const serviceSeven = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923982/Giggler/home-page-services/xt6oacf19tyyh5og4hc5.webp'
+const serviceEight = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/qzw17gfcs0x9hpfcbkx8.webp'
+const serviceNine = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923982/Giggler/home-page-services/yifn4yvrfge3jxviu2yn.webp'
+const serviceTen = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/a2rfk7akvuzje29lmovz.webp'
+const serviceEleven = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/qqk1dd1q6w434s7gmc4r.webp'
 
 import categoryOneSvg from '../assets/img/svg/graphics.design.icon.svg'
 import categoryTwoSvg from '../assets/img/svg/digital.marketing.icon.svg'
@@ -112,8 +112,21 @@ export const defaultImgUrls = [
 
 export const galleryService = {
     companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
-    serviceImages: [serviceOneImg, serviceTwoImg, serviceThreeImg, serviceFourImg, serviceFiveImg, serviceSixImg, serviceSevenImg, serviceEightImg, serviceNineImg, serviceTenImg, serviceElevenImg],
-    popularService: [{ cat: 'AI Services', tag: 'AI Artists', }, { cat: 'Graphics & Design', tag: 'Logo & Brand Identity', }, { cat: 'Programming & Tech', tag: 'Website Development', }, { cat: 'Music & Audio', tag: 'Voice Over & Narration', }, { cat: 'Video & Animation', tag: 'Explainer Videos', }, { cat: 'Digital Marketing', tag: 'Social Marketing', }, { cat: 'Digital Marketing', tag: 'Search Marketing', }, { cat: 'Graphics & Design', tag: 'Art & Illustration', }, { cat: 'Writing & Translation', tag: 'Translation & Transcription', }, { cat: 'Data', tag: 'Data Collection', }, { cat: 'Graphic & Design', tag: 'Print Design', }],
+    serviceImages: [serviceOne, serviceTwo, serviceThree, serviceFour, serviceFive, serviceSix, serviceSeven, serviceEight, serviceNine, serviceTen, serviceEleven],
+    serviceTexts: serviceTexts,
+    popularService: [
+        { cat: 'AI Services', tag: 'AI Artists', },
+        { cat: 'Graphics & Design', tag: 'Logo & Brand Identity', },
+        { cat: 'Programming & Tech', tag: 'Website Development', },
+        { cat: 'Music & Audio', tag: 'Voice Over & Narration', },
+        { cat: 'Video & Animation', tag: 'Explainer Videos', },
+        { cat: 'Digital Marketing', tag: 'Social Marketing', },
+        { cat: 'Digital Marketing', tag: 'Search Marketing', },
+        { cat: 'Graphics & Design', tag: 'Art & Illustration', },
+        { cat: 'Writing & Translation', tag: 'Translation & Transcription', },
+        { cat: 'Data', tag: 'Data Collection', },
+        { cat: 'Graphic & Design', tag: 'Print Design', }
+    ],
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
     socialMediaLinks: [
@@ -125,7 +138,6 @@ export const galleryService = {
         { img: socialMediaTwitter, url: 'https://twitter.com/fiverr' },
     ],
     levelImages: [userLevelZero, userLevelOne, userLevelTwo, userLevelThree],
-    serviceTexts: serviceTexts,
     personImages: personImages,
     infoListData: infoListData,
 }

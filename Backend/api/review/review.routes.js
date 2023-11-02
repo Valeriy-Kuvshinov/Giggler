@@ -2,6 +2,7 @@ import express from 'express'
 
 import { requireAuth, requireAdmin } from '../../middlewares/requireAuth.middleware.js'
 import { getReview, getReviews, deleteReview, updateReview, addReview } from './review.controller.js'
+// import { getReview, getReviews, deleteReview, updateReview, addReview } from './review.db.controller.js'
 
 export const reviewRoutes = express.Router()
 
