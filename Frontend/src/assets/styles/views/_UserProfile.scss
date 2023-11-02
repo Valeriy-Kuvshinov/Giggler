@@ -2,7 +2,7 @@
   background-color: $clrSecondary12;
   padding: 3.125em 0 2.5em;
 
-  @media screen and (max-width: 900px){
+  @media screen and (max-width: 900px) {
     padding: 0;
   }
 
@@ -25,27 +25,9 @@
         background-color: $clrPrimary1;
         border: 1px solid $clrSecondary2;
         margin-block-end: 1.25em;
-        @media screen and (max-width: 900px){
+        @media screen and (max-width: 900px) {
           border: 0;
           padding: 2em 0.75em 4em;
-        }
-        &:nth-child(2) {
-          justify-content: start;
-          align-items: start;
-
-          p {
-            margin: 0.5em 0;
-            width: 100%;
-            height: 100%;
-          }
-
-          .description-area {
-            width: 22.5em;
-            height: fit-content;
-            border: none;
-            margin-left: -0.75em;
-            margin-top: 0;
-          }
         }
 
         .profile-picture {
@@ -125,6 +107,103 @@
       }
       @media (max-width: 900px) {
         width: 100%;
+      }
+    }
+    .description {
+      text-align: start;
+      justify-content: start;
+      align-items: start;
+      color: $clrSecondary8;
+      padding: 1.875em;
+
+      .description-title {
+        width: 100%;
+        font-weight: 700;
+        margin-block-end: 1em;
+      }
+
+      .description-box {
+        margin-block-end: 1.875em;
+        color: $clrSecondary6;
+        .description-area {
+          width: 22.5em;
+          height: fit-content;
+          border: none;
+          margin-left: -0.75em;
+          margin-top: 0;
+        }
+      }
+
+      .languages {
+        width: 100%;
+        padding-block-start: 30px;
+        padding-block-end: 30px;
+        border-block-start: 1px solid $clrSecondary2;
+        border-block-end: 1px solid $clrSecondary2;
+        .title {
+          font-weight: 700;
+          margin-block-end: 1em;
+        }
+        .the-languages {
+          color: $clrSecondary6;
+          margin-block-start: 1em;
+          .language {
+            margin-block-end: 0.625em;
+            :nth-child(3) {
+              color: $clrSecondary4;
+            }
+          }
+        }
+      }
+      .skills {
+        width: 100%;
+        padding-block-start: 1.875em;
+        padding-block-end: 1.875em;
+        border-block-start: 1px solid $clrSecondary2;
+        border-block-end: 1px solid $clrSecondary2;
+        .title {
+          font-weight: 700;
+          margin-block-end: 1em;
+        }
+        .the-skills {
+          display: flex;
+          color: $clrSecondary6;
+          margin-block-start: 1em;
+          .skill {
+            min-width: 2.5em;
+            margin-inline-end: 0.625em;
+            margin-block-end: 0.625em;
+            border: 1px solid $clrSecondary10;
+            border-radius: 15px;
+            padding: 5px 0.75em;
+          }
+        }
+      }
+      .educations {
+        width: 100%;
+        padding-block-start: 30px;
+        // padding-block-end: 30px;
+        border-block-start: 1px solid $clrSecondary2;
+        // border-block-end: 1px solid $clrSecondary2;
+        .title {
+          font-weight: 700;
+          margin-block-end: 1em;
+        }
+        .the-educations {
+          display: flex;
+          flex-direction: column;
+          color: $clrSecondary6;
+          margin-block-start: 1em;
+          .education {
+            display: flex;
+            flex-direction: column;
+            margin-block-end: 0.625em;
+            :nth-child(2) {
+              margin-block-start: 5px;
+              color: $clrSecondary4;
+            }
+          }
+        }
       }
     }
     @media (max-width: 900px) {
