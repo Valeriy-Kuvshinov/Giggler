@@ -4,7 +4,6 @@ import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
 
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
-import infoImg from '../assets/img/fiverr-show.webp'
 
 import { setFilter } from '../store/gig.actions.js'
 import { useSelector } from 'react-redux'
@@ -54,7 +53,7 @@ export function HomePage() {
                             ))}
                         </ul>
                     </section>
-                    <img className='info-img' src={infoImg} />
+                    <img className='info-img' src={'https://res.cloudinary.com/digrqdbso/image/upload/v1698938879/Giggler/home-page-other/jqz3ilgiaklmxo69cm71.webp'} />
                 </section>
             </div>
 

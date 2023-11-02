@@ -118,11 +118,11 @@
     .carousel-btn {
       @media (max-width: 1400px) {
         &.left-side {
-          left: 1.5%;
+          left: 1%;
         }
 
         &.right-side {
-          right: 1.5%;
+          right: 1%;
         }
       }
 
@@ -236,14 +236,14 @@
       }
 
       @media (min-width: 900px) {
-        background-image: url('../src/assets/img/bg-mini-signup.webp');
+        background-image: url('https://res.cloudinary.com/digrqdbso/image/upload/v1698938893/Giggler/home-page-other/gwrhqjr4tkp5dzkkndwp.webp');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
       }
 
       @media (min-width: 1160px) {
-        background-image: url('../src/assets/img/bg-signup.webp');
+        background-image: url('https://res.cloudinary.com/digrqdbso/image/upload/v1698938886/Giggler/home-page-other/wocbiehbbwhdx1truwed.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

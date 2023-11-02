@@ -20,11 +20,11 @@ const miniPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v16989
 
 import starIcon from '../assets/img/svg/white.star.icon.svg'
 
-import metaImg from '../assets/img/meta.logo.png'
-import netflixImg from '../assets/img/netflix.logo.png'
-import googleImg from '../assets/img/google.logo.png'
-import pandgImg from '../assets/img/pandg.logo.png'
-import paypalImg from '../assets/img/paypal.logo.png'
+const companyMeta = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938873/Giggler/home-page-other/qof1foweuofaopytnkht.png'
+const companyNetflix = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938872/Giggler/home-page-other/llkwvmn7tk1pi3rkfjma.png'
+const companyGoogle = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938873/Giggler/home-page-other/bcllml7mezhfkeckuuyq.png'
+const companyPandg = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938872/Giggler/home-page-other/qmidr4wzg6a88vgonpms.png'
+const companyPaylpal = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938873/Giggler/home-page-other/wjf7ezulstixdxfvmtwa.png'
 
 const serviceOne = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923983/Giggler/home-page-services/ydj62q0ba8wahxmzcsop.webp'
 const serviceTwo = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/x6n9hjoaqnilcvcszg7t.webp'
@@ -106,7 +106,7 @@ export const defaultImgUrls = [
 ]
 
 export const galleryService = {
-    companyImages: [metaImg, googleImg, netflixImg, pandgImg, paypalImg],
+    companyImages: [companyMeta, companyGoogle, companyNetflix, companyPandg, companyPaylpal],
     services: services,
     categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
     categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"],
