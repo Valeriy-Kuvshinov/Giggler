@@ -80,6 +80,7 @@ export function AppHeader() {
     if (!searchQuery) return
     setFilter({ ...filterBy, search: searchQuery })
     navigate(`/explore`)
+    setSearchQuery('')
   }
 
   function setCatFilter(category) {
