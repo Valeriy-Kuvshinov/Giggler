@@ -5,136 +5,136 @@
     background: $clrSecondary12;
     padding: 1em 0 1em 0;
 
-    .user-orders {
-        width: 100%;
-        box-sizing: border-box;
-        font-family: 'macan-regular';
-        max-width: 900px;
-        margin: auto;
+    .dashboard-container {
+        margin-bottom: 2em;
 
-        table {
+        h3 {
+            margin-bottom: 1em;
+        }
+
+        .user-orders {
             width: 100%;
-            border-collapse: collapse;
-            border: 1px solid $clrSecondary4;
-        }
+            box-sizing: border-box;
+            font-family: 'macan-regular';
+            max-width: 900px;
+            margin: auto;
 
-        th,
-        td {
-            padding: 1em;
-            text-align: center;
-            border: 1px solid $clrSecondary4;
-            background: $clrPrimary1;
-
-            &:not(:last-child),
-            &:not(:first-child) {
-                border-right: none;
-                border-left: none;
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid $clrSecondary4;
             }
-        }
 
-        tr {
-            border: 1px solid $clrSecondary4;
-        }
+            th,
+            td {
+                padding: 1em;
+                text-align: left;
+                border: 1px solid $clrSecondary4;
+                background: $clrPrimary1;
 
-        th {
-            font-weight: bold;
-        }
-
-        td {
-            color: $clrPrimary4;
-
-            button {
-                margin: auto;
-                background: none;
-
-                i {
-                    width: 100%;
+                &:not(:last-child),
+                &:not(:first-child) {
+                    border-right: none;
+                    border-left: none;
                 }
             }
 
-            &.user-details {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-                align-items: center;
-                text-align: left;
-                border: none;
-                min-height: 81px;
+            tr {
+                border: 1px solid $clrSecondary4;
+            }
+
+            th {
+                font-weight: bold;
+            }
+
+            td {
+                color: $clrPrimary4;
+
+                button {
+                    margin: auto;
+                    background: none;
+
+                    i {
+                        width: 100%;
+                    }
+                }
 
                 img {
-                    grid-row: span 2;
-                    width: 32px;
-                    height: 32px;
+                    width: 38px;
+                    height: 38px;
+                    object-fit: fill;
                     border-radius: 50%;
                 }
 
-                span {
-                    padding: 0;
+                &:nth-child(2) {
+                    border: none;
+                }
+
+                &:nth-child(6) {
+                    span {
+                        padding: 0.95em 0.8em;
+                        border-radius: 5px;
+                        display: block;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        font-family: 'macan-bold';
+                        text-align: center;
+
+                        &.pending {
+                            background: #FFC107;
+                            color: $clrSecondary6;
+                        }
+
+                        &.denied {
+                            background: #FF5E5E;
+                            color: $clrSecondary6;
+                        }
+
+                        &.accepted {
+                            background: #19a463;
+                            color: $clrPrimary1;
+                        }
+
+                        &.completed {
+                            background: #29A2C6;
+                            color: $clrPrimary1;
+                        }
+
+                        &:hover {
+                            opacity: 0.85;
+                        }
+                    }
+
                 }
             }
 
-            &:nth-child(5) {
-                span {
-                    padding: 0.95em 0.8em;
-                    border-radius: 5px;
-                    display: block;
-                    font-size: 12px;
-                    text-transform: uppercase;
+            .dropdown-menu {
+                position: absolute;
+                z-index: 1;
+                min-width: 50px;
+                background: $clrPrimary1;
+                border: 1px solid $clrPrimary2;
+                border-radius: 5px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                margin: -15px 35px 0px -10px;
+
+                button {
+                    background: none;
+                    width: 100%;
+                    text-align: left;
+                    padding: 10px 15px;
+                    font-size: 16px;
                     font-family: 'macan-bold';
-
-                    &.pending {
-                        background: #FFC107;
-                        color: $clrSecondary6;
-                    }
-
-                    &.denied {
-                        background: #FF5E5E;
-                        color: $clrSecondary6;
-                    }
-
-                    &.accepted {
-                        background: #19a463;
-                        color: $clrPrimary1;
-                    }
-
-                    &.completed {
-                        background: #29A2C6;
-                        color: $clrPrimary1;
-                    }
+                    transition: background-color 0.2s;
 
                     &:hover {
-                        opacity: 0.85;
+                        background-color: $clrSecondary1;
+                        border-radius: 5px;
                     }
-                }
 
-            }
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            z-index: 1;
-            min-width: 50px;
-            background: $clrPrimary1;
-            border: 1px solid $clrPrimary2;
-            border-radius: 5px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin: -15px 35px 0px -10px;
-
-            button {
-                background: none;
-                width: 100%;
-                text-align: left;
-                padding: 10px 15px;
-                font-size: 16px;
-                font-family: 'macan-bold';
-                transition: background-color 0.2s;
-
-                &:hover {
-                    background-color: $clrSecondary1;
-                    border-radius: 5px;
-                }
-
-                &:not(:last-child) {
-                    border-bottom: 1px solid $clrPrimary2;
+                    &:not(:last-child) {
+                        border-bottom: 1px solid $clrPrimary2;
+                    }
                 }
             }
         }

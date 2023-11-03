@@ -78,6 +78,7 @@ export function SellerOrders() {
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>BUYER</th>
                         <th>GIG</th>
                         <th>ACTION DATE</th>

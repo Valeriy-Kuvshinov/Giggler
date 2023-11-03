@@ -102,8 +102,8 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     return (
         <tr className={getOrderClass(order.orderState)}>
-            <td className="user-details grid">
-                <img src={buyerAvatar} alt="buyer" />
+            <td><img src={buyerAvatar} alt="buyer" /></td>
+            <td className="flex column">
                 <span>{buyerFirstName}</span>
                 <span>{buyerLastName}</span>
             </td>
