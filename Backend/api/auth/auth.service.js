@@ -10,7 +10,7 @@ export const authService = {
     getLoginToken,
     validateToken
 }
-const cryptr = new Cryptr(process.env.SECRET1 || 'Secret-Puk-1234')
+const cryptr = new Cryptr(process.env.SECRET || 'Very-Secret')
 
 async function login(username, password) {
     console.log(`Attempting to login user: ${username}`)
@@ -27,14 +27,16 @@ async function login(username, password) {
     return user
 }
 
-async function signup(username, password, fullName, description = ''
-    , balance = 0, level = 'level 0', rating = 0, imgUrl
-    , country = 'United States', isAdmin = false) {
-
+async function signup(username, password, fullName, description = '', balance = 0,
+    level = 'level 0', rating = 0, imgUrl, country = 'United States', languages = [],
+    education = [], skills = [], lastDelivery = null, isAdmin = false
+) {
     console.log(`Attempting to signup user: ${username}`)
     const saltRounds = 10
 
-    if (!username || !password || !fullName || !imgUrl) throw new Error('Missing details')
+    if (!username || !password || !fullName || !imgUrl) {
+        throw new Error('Missing required details')
+    }
 
     const hash = await bcrypt.hash(password, saltRounds)
     return userService.save({
@@ -47,7 +49,11 @@ async function signup(username, password, fullName, description = ''
         rating,
         imgUrl,
         country,
+        languages,
+        education,
+        skills,
         createdAt: Date.now(),
+        lastDelivery,
         isAdmin
     })
 }

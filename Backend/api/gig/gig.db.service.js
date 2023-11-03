@@ -97,7 +97,8 @@ async function remove(gigId) {
       throw new Error(`Gig with id ${gigId} was not found`)
     }
     return deletedCount
-  } catch (err) {
+  } 
+  catch (err) {
     loggerService.error(`cannot remove gig ${gigId}`, err)
     throw err
   }
@@ -120,7 +121,8 @@ async function save(gig) {
         throw new Error(`Gig with id ${id} was not found`)
       }
       return { _id: id, ...gigToSave }
-    } catch (err) {
+    } 
+    catch (err) {
       loggerService.error(`cannot update gig ${gig._id}`, err)
       throw err
     }
@@ -129,7 +131,8 @@ async function save(gig) {
     try {
       const response = await collection.insertOne(gig)
       return { ...gig, _id: response.insertedId }
-    } catch (err) {
+    } 
+    catch (err) {
       loggerService.error('cannot insert gig', err)
       throw err
     }
