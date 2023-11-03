@@ -111,7 +111,6 @@ async function update(gig) {
     const gigToSave = {
       name: gig.name,
       price: gig.price,
-      inStock: gig.inStock,
       review: gig.review,
     }
     const collection = await dbService.getCollection('gig')

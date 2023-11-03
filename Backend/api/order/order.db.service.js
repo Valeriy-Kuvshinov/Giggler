@@ -20,12 +20,11 @@ async function query(filterBy = {}) {
 
         console.log('order : ', orders)
         return orders
-
-    } catch (err) {
+    } 
+    catch (err) {
         loggerService.error('cannot find orders', err)
         throw err
     }
-
 }
 
 async function remove(orderId) {
@@ -43,7 +42,6 @@ async function remove(orderId) {
         throw err
     }
 }
-
 
 async function add(order) {
     try {
@@ -86,7 +84,7 @@ async function save(user) {
             acceptedAt: order.acceptedAt || '',
             completedAt: order.completedAt || ''
         }
-        const collection = await dbService.getCollection('gigglerDB')
+        const collection = await dbService.getCollection('order')
         await collection.updateOne({ _id: new ObjectId(user._id) }, { $set: userToSave })
         return user
     } catch (err) {
@@ -100,6 +98,3 @@ function _buildCriteria(filterBy) {
     if (filterBy.userId) criteria.userId = filterBy.userId
     return criteria
 }
-
-
-

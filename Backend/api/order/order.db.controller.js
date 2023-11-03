@@ -26,7 +26,7 @@ export async function getOrders(req, res) {
 }
 
 export async function deleteOrder(req, res) {
-    var { loggedinUser } = req
+    let { loggedinUser } = req
 
     try {
         const deletedCount = await orderService.remove(req.params.id)
@@ -41,7 +41,6 @@ export async function deleteOrder(req, res) {
         res.status(500).send({ err: 'Failed to delete order' })
     }
 }
-
 
 export async function addOrder(req, res) {
 
@@ -68,7 +67,7 @@ export async function addOrder(req, res) {
 
         // socketService.broadcast({ type: 'order-added', data: order, userId: loggedinUser._id })
         // socketService.emitToUser({ type: 'order-about-you', data: order, userId: order.aboutUser._id })
-        
+
         // socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
 
         res.send(order)
@@ -78,4 +77,3 @@ export async function addOrder(req, res) {
         res.status(500).send({ err: 'Failed to add order' })
     }
 }
-
