@@ -82,22 +82,22 @@
                     font-family: 'macan-bold';
 
                     &.pending {
-                        background: #60abc4;
-                        color: $clrPrimary1;
+                        background: #FFC107;
+                        color: $clrSecondary6;
                     }
 
                     &.denied {
-                        background: #db9b9b;
+                        background: #FF5E5E;
                         color: $clrSecondary6;
                     }
 
                     &.accepted {
-                        background: #8cff8c;
-                        color: $clrSecondary6;
+                        background: #19a463;
+                        color: $clrPrimary1;
                     }
 
                     &.completed {
-                        background: $bgColor3;
+                        background: #29A2C6;
                         color: $clrPrimary1;
                     }
 
