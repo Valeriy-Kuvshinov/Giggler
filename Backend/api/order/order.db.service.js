@@ -9,7 +9,8 @@ export const orderService = {
     query,
     remove,
     add,
-    save
+    save,
+    getById
 }
 
 async function query(filterBy = {}) {
@@ -20,9 +21,21 @@ async function query(filterBy = {}) {
 
         console.log('order : ', orders)
         return orders
-    } 
+    }
     catch (err) {
         loggerService.error('cannot find orders', err)
+        throw err
+    }
+}
+
+async function getById(orderId) {
+    try {
+        const collection = await dbService.getCollection('order')
+        const order = collection.findOne({ _id: new ObjectId(orderId) })
+        console.log('I AM HERE IN GET BY ID DB backend: ', order)
+        return order
+    } catch (err) {
+        loggerService.error(`while finding order ${orderId}`, err)
         throw err
     }
 }
@@ -95,6 +108,6 @@ async function save(user) {
 
 function _buildCriteria(filterBy) {
     const criteria = {}
-    if (filterBy.userId) criteria.userId = filterBy.userId
+    if (filterBy._id) criteria._id = filterBy._id
     return criteria
 }
