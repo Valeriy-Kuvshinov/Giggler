@@ -23,7 +23,7 @@ export async function getUsers(req, res) {
   }
 }
 
-export async function deleteUser(req, res) {
+export async function removeUser(req, res) {
   try {
     await userService.remove(req.params.id)
     res.send({ msg: 'Deleted successfully' })

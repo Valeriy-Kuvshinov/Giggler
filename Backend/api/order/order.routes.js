@@ -2,7 +2,7 @@ import express from 'express'
 
 import { requireAuth, requireAdmin } from '../../middlewares/requireAuth.middleware.js'
 // import { getOrder, getOrders, deleteOrder, updateOrder, addOrder } from './order.controller.js'
-import { getOrder, getOrders, deleteOrder, updateOrder, addOrder } from './order.db.controller.js'
+import { getOrder, getOrders, removeOrder, updateOrder, addOrder } from './order.db.controller.js'
 
 export const orderRoutes = express.Router()
 
@@ -15,4 +15,4 @@ orderRoutes.put('/', updateOrder)
 orderRoutes.post('/', addOrder)
 
 // orderRoutes.put('/:id',  requireAuth, updateOrder)
-orderRoutes.delete('/:id', requireAuth, requireAdmin, deleteOrder)
+orderRoutes.delete('/:id', requireAuth, requireAdmin, removeOrder)
