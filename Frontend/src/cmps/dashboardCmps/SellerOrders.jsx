@@ -1,23 +1,12 @@
-import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { SellerOrder } from './SellerOrder.jsx'
 
-import { loadOrders } from '../../store/order.actions.js'
-import { orderBackendService } from '../../services/order.backend.service.js'
+import { saveOrder } from '../../store/order.actions.js'
 import { userService } from '../../services/user.service.js'
 
 export function SellerOrders({ user, displayedOrders }) {
-    useEffect(() => {
-        loadUserOrders()
-    }, [])
-
-    async function loadUserOrders() {
-        try {
-            await loadOrders()
-        } catch (err) {
-            console.error('Could not load orders:', err)
-        }
-    }
+    const dispatch = useDispatch()
 
     function updateLastDeliveryForUser() {
         const updatedUser = { ...user, lastDelivery: Date.now() }
@@ -26,11 +15,13 @@ export function SellerOrders({ user, displayedOrders }) {
 
     async function acceptOrder(order) {
         try {
-            const updatedOrder = { ...order, orderState: 'accepted', acceptedAt: Date.now() }
-            updateLastDeliveryForUser()
-            await orderBackendService.save(updatedOrder)
+            const updatedOrder = {
+                ...order,
+                orderState: 'accepted',
+                acceptedAt: Date.now()
+            }
+            dispatch(saveOrder(updatedOrder))
 
-            loadUserOrders()
         } catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
         }
@@ -44,10 +35,8 @@ export function SellerOrders({ user, displayedOrders }) {
                 deniedAt: Date.now(),
                 reasonForDenial: reason
             }
-            updateLastDeliveryForUser()
-            await orderBackendService.save(updatedOrder)
+            dispatch(saveOrder(updatedOrder))
 
-            loadUserOrders()
         } catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
         }
@@ -55,11 +44,15 @@ export function SellerOrders({ user, displayedOrders }) {
 
     async function completeOrder(order) {
         try {
-            const updatedOrder = { ...order, orderState: 'completed', completedAt: Date.now() }
+            const updatedOrder = {
+                ...order,
+                orderState: 'completed',
+                completedAt: Date.now()
+            }
             updateLastDeliveryForUser()
-            await orderBackendService.save(updatedOrder)
 
-            loadUserOrders()
+            dispatch(saveOrder(updatedOrder))
+
         } catch (err) {
             console.error(`Error completing order ${order._id}:`, err)
         }

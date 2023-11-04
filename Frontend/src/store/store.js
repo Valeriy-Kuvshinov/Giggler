@@ -1,4 +1,5 @@
-import { legacy_createStore as createStore , combineReducers } from 'redux'
+import { legacy_createStore as createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import thunk from 'redux-thunk'
 
 import { gigReducer } from './gig.reducer'
 import { userReducer } from './user.reducer'
@@ -14,8 +15,13 @@ const rootReducer = combineReducers({
     orderModule: orderReducer
 })
 
-const middleware = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : undefined
-export const store = createStore(rootReducer, middleware)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const enhancer = composeEnhancers(
+    applyMiddleware(thunk)
+)
+
+// Create the store with the rootReducer and the enhancer
+export const store = createStore(rootReducer, enhancer)
 
 store.subscribe(() => {
     store.getState()

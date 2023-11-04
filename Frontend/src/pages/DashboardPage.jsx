@@ -5,17 +5,32 @@ import {
 ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
     , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 import { Loader } from '../cmps/Loader.jsx'
 import { SellerOrders } from '../cmps/dashboardCmps/SellerOrders.jsx'
 
+import { loadOrders } from '../store/order.actions.js'
+
 export function DashboardPage() {
+    const dispatch = useDispatch()
+
     const user = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
+
+    useEffect(() => {
+        if (user) {
+            dispatch(loadOrders({ sellerId: user._id }))
+        }
+    }, [user, dispatch])
+
     const displayedOrders = orders.filter(order => order.sellerId === user._id)
 
-    if (displayedOrders.length === 0) return <Loader />
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <main className="dashboard-page full flex column">

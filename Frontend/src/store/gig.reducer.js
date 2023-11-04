@@ -19,6 +19,9 @@ export function gigReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_GIGS:
       return { ...state, gigs: action.gigs }
+    case GET_GIG:
+      const currentGig = state.gigs.find((gig) => gig._id === action.gigId)
+      return { ...state, currentGig }
     case REMOVE_GIG:
       gigs = state.gigs.filter((gig) => gig._id !== action.gigId)
       return { ...state, gigs }
@@ -30,10 +33,10 @@ export function gigReducer(state = initialState, action = {}) {
         gig._id === action.gig._id ? action.gig : gig
       )
       return { ...state, gigs }
-    case GET_GIG:
-      return state.gigs.find((gig) => gig._id === action.gigId)
+
     case SET_IS_LOADING:
       return { ...state, isLoading: action.isLoading }
+      
     //Filter
     case SET_FILTER:
       return { ...state, filterBy: action.filterBy }
@@ -47,11 +50,3 @@ export function gigReducer(state = initialState, action = {}) {
       return state
   }
 }
-
-// export const UNDO_REMOVE_GIG = 'UNDO_REMOVE_GIG'
-
-// case UNDO_REMOVE_GIG:
-//     if (state.lastRemovedGig) {
-//         newState = { ...state, gigs: [...state.gigs, state.lastRemovedGig], lastRemovedGig: null }
-//     }
-//     break
