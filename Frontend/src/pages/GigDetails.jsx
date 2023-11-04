@@ -19,7 +19,6 @@ export function GigDetails() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
 
-
   const user = useSelector((storeState) => storeState.userModule.watchedUser)
 
   useEffect(() => {
@@ -52,38 +51,54 @@ export function GigDetails() {
 
   return (
     <>
-    <section className="gig-details grid layout-row">
-      {isMobile ? (
-        <>
-          <main>
-            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
-            <GigDetailsHeader gig={gig} owner={user} />
-            <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} />
-            <section className="about-gig" style={{ overflow: 'hidden' }}>
-              <h3>About This Gig</h3>
-              <p className='gig-description'>{gig.description}</p>
-            </section>
-            <AboutSeller owner={user} />
-            <GigReviews gig={gig} />
-          </main>
-        </>
-      ) : (
-        <>
-          <main>
-            <CatTagDisplayBar category={gig.category} tag={gig.tags[1]} />
-            <GigDetailsHeader gig={gig} owner={user} />
-            <section className="about-gig" style={{ overflow: 'hidden' }}>
-              <h3>About This Gig</h3>
-              <p>{gig.description}</p>
-            </section>
-            <AboutSeller owner={user} />
-            <GigReviews gig={gig} />
-          </main>
-          <GigDetailsAside gig={gig} onGigChange={(updatedGig) => setGig(updatedGig)} setChatState={setChatState}/>
-        </>
-      )}
-    </section>
-    <UserChat  owner={user} window={isMobile} chatState={chatState} setChatState={setChatState}/>
+      <section className="gig-details grid layout-row">
+        {isMobile ? (
+          <>
+            <main>
+              <CatTagDisplayBar
+                isFrom={'gigDetails'}
+                category={gig.category}
+                tag={gig.tags[1]}
+              />
+              <GigDetailsHeader gig={gig} owner={user} />
+              <GigDetailsAside
+                gig={gig}
+                onGigChange={(updatedGig) => setGig(updatedGig)}
+              />
+              <section className="about-gig" style={{ overflow: 'hidden' }}>
+                <h3>About This Gig</h3>
+                <p className="gig-description">{gig.description}</p>
+              </section>
+              <AboutSeller owner={user} />
+              <GigReviews gig={gig} />
+            </main>
+          </>
+        ) : (
+          <>
+            <main>
+              <CatTagDisplayBar isFrom={'gigDetails'} category={gig.category} tag={gig.tags[1]} />
+              <GigDetailsHeader gig={gig} owner={user} />
+              <section className="about-gig" style={{ overflow: 'hidden' }}>
+                <h3>About This Gig</h3>
+                <p>{gig.description}</p>
+              </section>
+              <AboutSeller owner={user} />
+              <GigReviews gig={gig} />
+            </main>
+            <GigDetailsAside
+              gig={gig}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+              setChatState={setChatState}
+            />
+          </>
+        )}
+      </section>
+      <UserChat
+        owner={user}
+        window={isMobile}
+        chatState={chatState}
+        setChatState={setChatState}
+      />
     </>
   )
 }
