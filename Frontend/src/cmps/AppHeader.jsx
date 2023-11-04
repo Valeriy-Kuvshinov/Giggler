@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { socket } from '../services/sockets.service.js'
 
 import { useModal } from '../customHooks/ModalContext.jsx'
 import { SearchBar } from './SearchBar.jsx'
@@ -10,18 +11,24 @@ import SvgIcon from './SvgIcon.jsx'
 
 import { category } from '../services/gig.service.js'
 import { setFilter } from '../store/gig.actions.js'
+import { UserChat } from './UserChat.jsx'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerStage, setHeaderStage] = useState(0)
   const [showDropdown, setShowDropdown] = useState(false)
+  const [chatRoom, setChatRoom] = useState('')
+  const [chatState, setChatState] = useState(false)
+console.log('chatRoom in Appheader: ', chatRoom)
+  let buyer
 
   const userInfoRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
 
-  const user = useSelector(storeState => storeState.userModule.user)
-  const filterBy = useSelector(storeState => storeState.gigModule.filterBy)
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const user = useSelector((storeState) => storeState.userModule.user)
+  const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const { showModal, openLogin, openSignup } = useModal()
   const categories = category
   const isHomePage = location.pathname === '/'
@@ -50,6 +57,15 @@ export function AppHeader() {
   }
 
   useEffect(() => {
+    socket.on('chat_request', (data) => {
+      if (data.sellerId === loggedinUser._id) {
+        setChatRoom(data.room)
+        buyer = data.buyer
+      }
+    })
+  }, [socket])
+
+  useEffect(() => {
     if (isHomePage) {
       const handleScroll = () => {
         if (window.scrollY < 50) setHeaderStage(0)
@@ -59,8 +75,7 @@ export function AppHeader() {
       window.addEventListener('scroll', handleScroll)
       setHeaderStage(0)
       return () => window.removeEventListener('scroll', handleScroll)
-    }
-    else setHeaderStage(2)
+    } else setHeaderStage(2)
   }, [isHomePage])
 
   useEffect(() => {
@@ -88,16 +103,25 @@ export function AppHeader() {
   }
 
   return (
-    <header className={`app-header flex column full ${isHomePage ? 'home-page' : ''} ${showModal ? 'show-modal' : ''}`} style={headerStyles}>
+    <header
+      className={`app-header flex column full ${
+        isHomePage ? 'home-page' : ''
+      } ${showModal ? 'show-modal' : ''}`}
+      style={headerStyles}
+    >
       <nav className="main-nav">
         <div className="container flex row">
           <div className="logo-dropdown-area flex row">
-            <SvgIcon iconName={headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'} />
+            <SvgIcon
+              iconName={
+                headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
+              }
+            />
 
             <Link to="/" style={{ color: headerStyles.color }}>
-              <h1 style={{ color: logoColor }} className='logo flex'>
+              <h1 style={{ color: logoColor }} className="logo flex">
                 Giggler
-                <span className='flex'>
+                <span className="flex">
                   <SvgIcon iconName={'greenDotIcon'} />
                 </span>
               </h1>
@@ -114,36 +138,66 @@ export function AppHeader() {
 
           <ul className="nav-links flex">
             <li>
-              <Link to="/explore" style={{ color: headerStyles.color }}>Explore</Link>
+              <Link to="/explore" style={{ color: headerStyles.color }}>
+                Explore
+              </Link>
             </li>
-
+            {/* {chatRoom && ( */}
+              <li onClick={() => setChatState(true)}>
+                <SvgIcon iconName={'chat'} />
+              </li>
+             {/* )} */}
             {user ? (
               <>
                 <li>
-                  <Link to="/dashboard" style={{ color: headerStyles.color }}>Orders</Link>
+                  <Link to="/dashboard" style={{ color: headerStyles.color }}>
+                    Orders
+                  </Link>
                 </li>
 
-                <li className="user-info flex" onClick={(e) => {
-                  e.stopPropagation()
-                  setShowDropdown(!showDropdown)
-                }} ref={userInfoRef}>
-
+                <li
+                  className="user-info flex"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowDropdown(!showDropdown)
+                  }}
+                  ref={userInfoRef}
+                >
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
-                  {showDropdown && <UserDropdown user={user} onClose={() => setShowDropdown(false)} />}
+                  {showDropdown && (
+                    <UserDropdown
+                      user={user}
+                      onClose={() => setShowDropdown(false)}
+                    />
+                  )}
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <Link to="/" style={{ color: headerStyles.color }}>Become a Seller</Link>
+                  <Link to="/" style={{ color: headerStyles.color }}>
+                    Become a Seller
+                  </Link>
                 </li>
 
                 <li>
-                  <button className="login" onClick={openLogin} style={{ color: headerStyles.color }}>Sign In</button>
+                  <button
+                    className="login"
+                    onClick={openLogin}
+                    style={{ color: headerStyles.color }}
+                  >
+                    Sign In
+                  </button>
                 </li>
 
                 <li>
-                  <button className="join" onClick={openSignup} style={joinButtonStyles}>Join</button>
+                  <button
+                    className="join"
+                    onClick={openSignup}
+                    style={joinButtonStyles}
+                  >
+                    Join
+                  </button>
                 </li>
               </>
             )}
@@ -157,6 +211,17 @@ export function AppHeader() {
         setCatFilter={setCatFilter}
         style={navBarStyles}
       />
-    </header >
+
+      {chatState && (
+        <UserChat
+          owner={loggedinUser}
+          window={null}
+          chatState={chatState}
+          setChatState={setChatState}
+          chatRoom={chatRoom}
+          buyer={buyer}
+        />
+      )}
+    </header>
   )
 }
