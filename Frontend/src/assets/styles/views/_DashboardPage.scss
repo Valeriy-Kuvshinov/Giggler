@@ -122,6 +122,10 @@
                 }
 
                 &:nth-child(7) {
+                    text-align: center;
+                }
+
+                &:nth-child(8) {
                     span {
                         padding: 0.95em 0.8em;
                         border-radius: 5px;
@@ -179,8 +183,15 @@
                     transition: background-color 0.2s;
 
                     &:hover {
-                        background-color: $clrSecondary1;
-                        border-radius: 5px;
+                        background-color: $clrSecondary3;
+
+                        &:first-of-type {
+                            border-radius: 5px 5px 0px 0px;
+                        }
+
+                        &:last-of-type {
+                            border-radius: 0px 0px 5px 5px;
+                        }
                     }
 
                     &:not(:last-child) {

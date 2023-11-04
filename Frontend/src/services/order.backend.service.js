@@ -18,7 +18,6 @@ async function query(filterBy = {}) {
     return orders
 }
 
-
 async function getById(orderId) {
     const order = await httpService.get(BASE_URL + orderId)
     return order
@@ -29,13 +28,8 @@ function remove(orderId) {
 }
 
 function save(order) {
-    if (order._id) {
-        console.log('changed order')
-        return httpService.put(BASE_URL, order)
-    } else {
-        console.log('created order')
-        return httpService.post(BASE_URL, order)
-    }
+    if (order._id) return httpService.put(BASE_URL, order)
+    else return httpService.post(BASE_URL, order)
 }
 
 function createOrder(buyerId = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {

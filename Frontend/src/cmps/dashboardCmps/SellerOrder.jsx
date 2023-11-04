@@ -91,7 +91,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
     }
 
-    const getAvailableActions = () => {
+    function getAvailableActions() {
         let actions = []
         if (order.orderState === 'pending') {
             actions = [
@@ -121,12 +121,12 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                 <span>{buyerLastName}</span>
             </td>
             <td>{getActionDate(order)}</td>
-
             <td>
                 {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
                     ? getDueDate(new Date(order.acceptedAt), gigData.daysToMake)
                     : ''}
             </td>
+            <td>{`${order.price}$`}</td>
             <td><span className={order.orderState}>{order.orderState}</span></td>
 
             <td>
