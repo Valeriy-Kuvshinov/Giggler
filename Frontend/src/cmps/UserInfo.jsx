@@ -215,7 +215,6 @@ export function UserInfo({ user }) {
             ))}
           </div>}
         </div>
-<<<<<<< HEAD
         <div className="skills">
           <span className="title">Skills</span>
           {user.skills && <div className="the-skills">
@@ -234,33 +233,6 @@ export function UserInfo({ user }) {
                 <span>{education.educationPlace}, Graduated {education.graduationTime}</span>
               </div>)}
           </div>}
-=======
-        {user.skills && (
-          <div className="skills">
-            <span className="title">Skills</span>
-            <div className="the-skills">
-              {user.skills.map((skill, idx) => (
-                <div key={idx} className="skill">
-                  <span>{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        <div className="educations">
-          <span className="title">Education</span>
-          <div className="the-educations">
-            {user.education.map((education, idx) => (
-              <div key={idx} className="education">
-                <span>{education.certificate}</span>
-                <span>
-                  {education.educationPlace}, Graduated{' '}
-                  {education.graduationTime}
-                </span>
-              </div>
-            ))}
-          </div>
->>>>>>> 634ad666df69eb151ff0614ee93c47dda7baadb0
         </div>
       </div>
 
