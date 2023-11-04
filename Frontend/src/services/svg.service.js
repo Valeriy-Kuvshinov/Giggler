@@ -227,6 +227,12 @@ const ICONS = {
     </defs>
   </svg>`,
 
+  smiley: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 12a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm9 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#74767E"/><path d="M9 15a3 3 0 006 0" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+
+  loadingFiles: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 4V16.5C18.5 20.1 15.6 23 12 23C8.4 23 5.5 20.1 5.5 16.5V5.5C5.5 3 7.5 1 10 1C12.5 1 14.5 3 14.5 5.5V15.5C14.5 16.9 13.4 18 12 18C10.6 18 9.5 16.9 9.5 15.5V7" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`,
+
+  send: `<svg width="16" height="16" viewBox="0 0 16 16" fill="#fff" xmlns="http://www.w3.org/2000/svg" role="img"><path clip-rule="evenodd" d="M15.48.423a.75.75 0 0 1 .255.724l-2.8 14a.75.75 0 0 1-1.186.453l-3.982-2.987-2.465 2.875A.75.75 0 0 1 3.982 15l.005-5.598a.75.75 0 0 1 .333-.623l4.196-2.803a.75.75 0 1 1 .833 1.248L6.034 9.438l5.663 4.248 2.296-11.475L2.517 6.8l.801.6a.75.75 0 1 1-.9 1.2L.55 7.201A.75.75 0 0 1 .72 5.903l14-5.6a.75.75 0 0 1 .758.12Zm-9.994 10.48-.002 2.068 1.08-1.26-1.078-.809Z"></path></svg>`,
+
   refresh: `<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#62646a">
     <path
       d="M4.50001 11.4999C6.40001 13.3999 9.60001 13.3999 11.5 11.4999C12.2 10.7999 12.7 9.7999 12.9 8.7999L14.9 9.0999C14.7 10.5999 14 11.8999 13 12.8999C10.3 15.5999 5.90001 15.5999 3.10001 12.8999L0.900012 15.0999L0.200012 8.6999L6.60001 9.3999L4.50001 11.4999Z">
@@ -368,7 +374,7 @@ const ICONS = {
 
   shareSocialMediaIcon: `<svg width="16" height="16" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" fill="currentFill">
     <path d="M11 10c-.707 0-1.356.244-1.868.653L5.929 8.651a3.017 3.017 0 0 0 0-1.302l3.203-2.002a3 3 0 1 0-1.06-1.696L4.867 5.653a3 3 0 1 0 0 4.694l3.203 2.002A3 3 0 1 0 11 10Z"/>
-  </svg>`
+  </svg>`,
 }
 
 function getIcon(svgName) {

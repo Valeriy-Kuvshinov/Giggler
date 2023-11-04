@@ -97,7 +97,7 @@ export function ImageCarousel({
               className="carousel-item"
               style={{
                 width: `${imageWidth}px`,
-                borderRadius: isFrom === 'gig-details' ? '0' : '0.5em',
+                borderRadius: isFrom === 'gig-details' ? '0 !important' : '0.5em',
               }}
             >
               {isFrom !== 'gig-details' ? (
