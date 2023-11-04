@@ -10,7 +10,9 @@ export const orderBackendService = {
     save,
     createOrder,
     getById,
-    getOrderDetails
+    getOrderDetails,
+    getActionDate,
+    getDueDate
 }
 
 async function query(filterBy = {}) {
@@ -62,4 +64,35 @@ async function getOrderDetails(orderId, role = 'buyer') {
         name: userData.fullName || '',
         avatar: userData.imgUrl || ''
     }
+}
+
+function getActionDate(order) {
+    let prefix = ''
+    let dateStr = ''
+
+    if (order.orderState === 'completed') {
+        prefix = 'completed at '
+        dateStr = new Date(order.completedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'denied') {
+        prefix = 'rejected at '
+        dateStr = new Date(order.deniedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'accepted') {
+        prefix = 'accepted at '
+        dateStr = new Date(order.acceptedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'pending') {
+        prefix = 'received at '
+        dateStr = new Date(order.createdAt).toLocaleDateString()
+    }
+    return prefix + dateStr
+}
+
+function getDueDate(acceptedDate, daysToMake) {
+    let days = 0
+    if (daysToMake === 'Express 24H') days = 1
+    else if (daysToMake === 'Up to 3 days') days = 3
+    else if (daysToMake === 'Up to 7 days') days = 7
+    return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
 }

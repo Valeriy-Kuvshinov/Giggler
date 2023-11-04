@@ -60,37 +60,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         return orderStateClasses[orderState] || ''
     }
 
-    function getActionDate(order) {
-        let prefix = ''
-        let dateStr = ''
-
-        if (order.orderState === 'completed') {
-            prefix = 'completed at '
-            dateStr = new Date(order.completedAt).toLocaleDateString()
-        }
-        if (order.orderState === 'denied') {
-            prefix = 'rejected at '
-            dateStr = new Date(order.deniedAt).toLocaleDateString()
-        }
-        if (order.orderState === 'accepted') {
-            prefix = 'accepted at '
-            dateStr = new Date(order.acceptedAt).toLocaleDateString()
-        }
-        if (order.orderState === 'pending') {
-            prefix = 'received at '
-            dateStr = new Date(order.createdAt).toLocaleDateString()
-        }
-        return prefix + dateStr
-    }
-
-    function getDueDate(acceptedDate, daysToMake) {
-        let days = 0
-        if (daysToMake === 'Express 24H') days = 1
-        else if (daysToMake === 'Up to 3 days') days = 3
-        else if (daysToMake === 'Up to 7 days') days = 7
-        return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
-    }
-
     function getAvailableActions() {
         let actions = []
         if (order.orderState === 'pending') {
@@ -120,10 +89,10 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                 <span>{buyerFirstName}</span>
                 <span>{buyerLastName}</span>
             </td>
-            <td>{getActionDate(order)}</td>
+            <td>{orderBackendService.getActionDate(order)}</td>
             <td>
                 {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
-                    ? getDueDate(new Date(order.acceptedAt), gigData.daysToMake)
+                    ? orderBackendService.getDueDate(new Date(order.acceptedAt), gigData.daysToMake)
                     : ''}
             </td>
             <td>{`${order.price}$`}</td>
