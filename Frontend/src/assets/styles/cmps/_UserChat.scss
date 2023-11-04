@@ -4,6 +4,7 @@
   margin-left: 2em;
   position: sticky;
   z-index: 10;
+  width: fit-content;
 
   .mini-message-bar-container {
     display: grid;
@@ -25,10 +26,12 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
+
       img {
         border-radius: 50%;
         object-fit: cover;
       }
+
       .status-dot {
         position: absolute;
         bottom: em(-2px);
@@ -42,18 +45,22 @@
         border-style: solid;
       }
     }
+
     .owner-info {
       display: grid;
       justify-content: space-between;
       padding-inline-start: em(16px);
+
       .message {
         font-weight: 600;
         color: $clrSecondary8;
       }
+
       .response-time {
         display: flex;
         font-size: 0.75em;
         color: $clrSecondary6;
+
         .dot {
           display: flex;
           align-self: center;
@@ -135,10 +142,12 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
+
         img {
           border-radius: 50%;
           object-fit: cover;
         }
+
         .status-dot {
           position: absolute;
           bottom: em(-2px);
@@ -152,21 +161,25 @@
           border-style: solid;
         }
       }
+
       .owner-info {
         display: flex;
         width: 100%;
 
         justify-content: space-between;
         padding-inline-start: em(16px);
+
         .message {
           font-weight: 600;
           color: $clrSecondary8;
           font-size: em(18px);
         }
+
         .response-time {
           display: flex;
           font-size: 0.75em;
           color: $clrSecondary6;
+
           .dot {
             display: flex;
             align-self: center;
@@ -177,9 +190,11 @@
             background-color: $clrSecondary6;
           }
         }
+
         .remove {
           align-self: flex-start;
           cursor: pointer;
+
           svg {
             fill: $clrSecondary6;
             width: 1em;
@@ -188,6 +203,7 @@
         }
       }
     }
+
     .chat-container {
       display: grid;
       grid-template-rows: 1fr auto;
@@ -197,6 +213,7 @@
         height: 100%;
         display: grid;
         grid-template-rows: 1fr auto;
+
         .input-container {
           textarea {
             flex-grow: 1;
@@ -206,15 +223,18 @@
             outline: none;
             border-radius: 0;
             border-block-start: 1px solid $clrSecondary2;
+
             &:focus {
               outline: none;
               border-block-start: 1px solid $clrPrimary2;
             }
           }
         }
+
         .message-footer-wrapper {
           .quick-question-container {
             padding: 1.5em 1.5em 0 1.5em;
+
             .quick-question-btn {
               border-color: #e4e5e7;
 
@@ -240,6 +260,7 @@
           }
         }
       }
+
       .message-options {
         background-color: $clrPrimary1;
         font-family: macan;
@@ -247,12 +268,15 @@
         align-items: center;
         justify-content: space-between;
         padding: 0.75em 0 1.5em;
+
         .addition-btn {
           display: flex;
+
           .file-upload-button {
             margin-inline-start: 0.5em;
           }
         }
+
         .send-message-button {
           font-family: macan-bold;
           display: grid;
@@ -264,9 +288,11 @@
           color: #fff;
           border-radius: 0.5rem;
           font-size: 1em;
+
           i {
             align-self: center;
           }
+
           &:hover {
             background-color: $clrSecondary8;
             transition: background-color 0.3s ease-in-out;
