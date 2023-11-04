@@ -32,10 +32,10 @@ export async function loadWatchedUser(userId) {
     }
 }
 
-export const updateUser = (updatedUser) => async (dispatch) => {
+export async function updateUser(updatedUser) {
     try {
         const user = await userService.update(updatedUser)
-        dispatch({ type: SET_USER, user })
+        store.dispatch({ type: SET_USER, user })
     } catch (err) {
         console.error('UserActions: err in updateUser', err)
     }
