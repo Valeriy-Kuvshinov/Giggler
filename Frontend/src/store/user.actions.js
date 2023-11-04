@@ -1,17 +1,16 @@
 import { userService } from "../services/user.service.js"
 import { store } from '../store/store.js'
-import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js"
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, SET_IS_LOADING } from "./user.reducer.js"
 
 export async function loadUsers() {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
-        store.dispatch({ type: LOADING_START })
         const users = await userService.getUsers()
-        store.dispatch({ type: SET_USERS, users })
+        store.dispatch({ type: SET_USERS, users: users })
     } catch (err) {
-        console.log('UserActions: err in loadUsers', err)
+        console.log('cannot load users, heres why:', err)
     } finally {
-        store.dispatch({ type: LOADING_DONE })
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 
@@ -33,12 +32,12 @@ export async function loadWatchedUser(userId) {
     }
 }
 
-export async function updateUser(updatedUser) {
+export const updateUser = (updatedUser) => async (dispatch) => {
     try {
-        const user = await userService.updateUser(updatedUser)
-        store.dispatch({ type: SET_USER, user })
+        const user = await userService.update(updatedUser)
+        dispatch({ type: SET_USER, user })
     } catch (err) {
-        console.log('UserActions: err in updateUser', err)
+        console.error('UserActions: err in updateUser', err)
     }
 }
 

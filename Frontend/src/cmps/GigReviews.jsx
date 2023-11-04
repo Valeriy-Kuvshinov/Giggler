@@ -10,27 +10,28 @@ export function GigReviews({ gig }) {
     const [fullReviews, setFullReviews] = useState([])
 
     useEffect(() => {
-        async function fetchFullReviews() {
-            if (!gig || gig.reviews.length === 0) return
-
-            const fetchedReviews = await Promise.all(
-                gig.reviews.map(reviewId => reviewService.getById(reviewId))
-            )
-            const reviewsWithUser = await Promise.all(
-                fetchedReviews.map(async review => {
-                    const user = await userService.getById(review.userId)
-                    return {
-                        ...review,
-                        userName: user.username,
-                        imgUrl: user.imgUrl,
-                        country: user.country,
-                    }
-                })
-            )
-            setFullReviews(reviewsWithUser)
-        }
         fetchFullReviews()
     }, [gig])
+    
+    async function fetchFullReviews() {
+        if (!gig || gig.reviews.length === 0) return
+
+        const fetchedReviews = await Promise.all(
+            gig.reviews.map(reviewId => reviewService.getById(reviewId))
+        )
+        const reviewsWithUser = await Promise.all(
+            fetchedReviews.map(async review => {
+                const user = await userService.getById(review.userId)
+                return {
+                    ...review,
+                    userName: user.username,
+                    imgUrl: user.imgUrl,
+                    country: user.country,
+                }
+            })
+        )
+        setFullReviews(reviewsWithUser)
+    }
 
     return (
         <section className="gig-reviews">

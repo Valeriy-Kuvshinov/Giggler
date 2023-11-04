@@ -9,7 +9,6 @@
         "createdAt": 1697798400000,
         "orderState": "denied",
         "reasonForDenial": "didnt want to",
-        "_id": "y1ycv",
         "deniedAt": 1698145145928
     },
     {
@@ -22,7 +21,6 @@
         "createdAt": 1697798400000,
         "orderState": "completed",
         "reasonForDenial": "",
-        "_id": "a1ycv",
         "acceptedAt": 1698772371173,
         "completedAt": 1698144290433
     },
@@ -35,7 +33,6 @@
         "price": 99,
         "createdAt": 1697452800000,
         "orderState": "completed",
-        "_id": "b1ycv",
         "acceptedAt": 1698772375173,
         "completedAt": 1698772411565
     },
@@ -48,8 +45,7 @@
         "price": 49,
         "createdAt": 1697452800000,
         "orderState": "accepted",
-        "reasonForDenial": "",
-        "_id": "c1ycv"
+        "reasonForDenial": ""
     },
     {
         "buyerId": "u101",
@@ -61,7 +57,6 @@
         "createdAt": 1696368000000,
         "orderState": "completed",
         "reasonForDenial": "",
-        "_id": "d1ycv",
         "acceptedAt": 1698772268205,
         "completedAt": 1698836401336
     },
@@ -75,7 +70,6 @@
         "createdAt": 1696368000000,
         "orderState": "denied",
         "reasonForDenial": "missing credit card",
-        "_id": "e1ycv",
         "deniedAt": 1698145145928
     },
     {
@@ -88,7 +82,6 @@
         "createdAt": 1697967141088,
         "reasonForDenial": "",
         "orderState": "completed",
-        "_id": "AWvpL",
         "acceptedAt": 1698043774547,
         "completedAt": 1698152044746
     },
@@ -102,7 +95,6 @@
         "createdAt": 1698043423353,
         "reasonForDenial": "",
         "orderState": "accepted",
-        "_id": "QGKks",
         "acceptedAt": 1698043774947
     },
     {
@@ -115,7 +107,6 @@
         "createdAt": 1698043512834,
         "reasonForDenial": "don't want to",
         "orderState": "denied",
-        "_id": "uonLD",
         "deniedAt": 1698145179223
     },
     {
@@ -127,8 +118,7 @@
         "price": 99,
         "createdAt": 1698323372371,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "tv1G5"
+        "orderState": "pending"
     },
     {
         "buyerId": "u002",
@@ -139,8 +129,7 @@
         "price": 49,
         "createdAt": 1698330453371,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "MrYFw"
+        "orderState": "pending"
     },
     {
         "buyerId": "u001",
@@ -151,8 +140,7 @@
         "price": 99,
         "createdAt": 1698331819970,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "KnvuP"
+        "orderState": "pending"
     },
     {
         "buyerId": "u001",
@@ -163,8 +151,7 @@
         "price": 19.99,
         "createdAt": 1698334449545,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "IZH5g"
+        "orderState": "pending"
     },
     {
         "buyerId": "u001",
@@ -175,8 +162,7 @@
         "price": 99,
         "createdAt": 1698515384155,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "S9Kgq"
+        "orderState": "pending"
     },
     {
         "buyerId": "u001",
@@ -187,7 +173,6 @@
         "price": 49.99,
         "createdAt": 1698629704793,
         "reasonForDenial": "",
-        "orderState": "pending",
-        "_id": "HRDnv"
+        "orderState": "pending"
     }
 ]

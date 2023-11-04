@@ -1,84 +1,68 @@
-import {dbService} from '../../services/db.service.js'
-import {loggerService} from '../../services/logger.service.js'
-import {asyncLocalStorage} from '../../services/als.service.js'
-
 import mongodb from 'mongodb'
-const {ObjectId} = mongodb
+const { ObjectId } = mongodb
+
+import { dbService } from '../../services/db.service.js'
+import { loggerService } from '../../services/logger.service.js'
+
+const REVIEWS_COLLECTION = 'review'
 
 export const reviewService = {
     query,
     remove,
-    add
+    save,
+    getById
 }
 
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
-        const collection = await dbService.getCollection('review')
-        // const reviews = await collection.find(criteria).toArray()
-        var reviews = await collection.aggregate([
-            {
-                $match: criteria
-            },
-            {
-                $lookup:
-                {
-                    localField: 'userId',
-                    from: 'user',
-                    foreignField: '_id',
-                    as: 'byUser'
-                }
-            },
-            {
-                $unwind: '$byUser'
-            }
-        ]).toArray()
-        reviews = reviews.map(review => {
-            review.byUser = { username: review.byUser.username, country: review.byUser.country,
-                imgUrl: review.byUser.imgUrl }
-                return review
-            })
-            
-            // console.log('review : ',reviews)
-            return reviews
-        } catch (err) {
-            loggerService.error('cannot find reviews', err)
+        const collection = await dbService.getCollection(REVIEWS_COLLECTION)
+        const reviews = await collection.find(criteria).toArray()
+
+        console.log('review : ', reviews)
+        return reviews
+    }
+    catch (err) {
+        loggerService.error('cannot find reviews', err)
         throw err
     }
+}
 
+async function getById(reviewId) {
+    try {
+        const collection = await dbService.getCollection(REVIEWS_COLLECTION)
+        const review = collection.findOne({ _id: new ObjectId(reviewId) })
+        console.log('I AM HERE IN GET BY ID DB backend: ', review)
+        return review
+    } catch (err) {
+        loggerService.error(`while finding review ${reviewId}`, err)
+        throw err
+    }
 }
 
 async function remove(reviewId) {
     try {
-        const store = asyncLocalStorage.getStore()
-        const { loggedinUser } = store
-        const collection = await dbService.getCollection('review')
-        // remove only if user is owner/admin
-        const criteria = { _id: ObjectId(reviewId) }
-        if (!loggedinUser.isAdmin) criteria.userId = ObjectId(loggedinUser._id)
-        const {deletedCount} = await collection.deleteOne(criteria)
+        const collection = await dbService.getCollection(REVIEWS_COLLECTION)
+        const { deletedCount } = await collection.deleteOne({ _id: new ObjectId(reviewId) })
+        if (deletedCount === 0) {
+            throw new Error(`Review with id ${reviewId} was not found`)
+        }
         return deletedCount
-    } catch (err) {
+    }
+    catch (err) {
         loggerService.error(`cannot remove review ${reviewId}`, err)
         throw err
     }
 }
 
+async function save(review) {
+    const collection = await dbService.getCollection(REVIEWS_COLLECTION)
 
-async function add(review) {
     try {
-        const reviewToAdd = {
-            userId: new ObjectId(review.userId),
-            gigId: new ObjectId(review.gigId),
-            sellerId: new ObjectId(review.sellerId),
-            rating: review.rating,
-            text: review.text,
-            createdAt: review.createdAt
-        }
-        const collection = await dbService.getCollection('review')
-        await collection.insertOne(reviewToAdd)
-        return reviewToAdd
-    } catch (err) {
+        const response = await collection.insertOne(review)
+        return { ...review, _id: response.insertedId }
+    }
+    catch (err) {
         loggerService.error('cannot insert review', err)
         throw err
     }
@@ -86,9 +70,6 @@ async function add(review) {
 
 function _buildCriteria(filterBy) {
     const criteria = {}
-    if (filterBy.userId) criteria.userId = filterBy.userId
+    if (filterBy._id) criteria._id = filterBy._id
     return criteria
 }
-
-
-

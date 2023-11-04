@@ -3,59 +3,24 @@
     "_id": "u001",
     "username": "peter123",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
-    "fullName": "Peter Parker",
-    "description": "a worker of the daily beagle and totally not spider man",
+    "fullName": "Peter Porker",
+    "description": "smelly bread",
     "balance": 0,
     "level": "level 2",
     "rating": 4.9,
     "imgUrl": "https://qph.cf2.quoracdn.net/main-qimg-9fde28d147c243b690bdf975f8474145-lq",
-    "country": "United States",
-    "languages": [
-      {
-        "language": "English",
-        "fluency": "Fluent"
-      },
-      {
-        "language": "Spanish",
-        "fluency": "Business"
-      },
-      {
-        "language": "French",
-        "fluency": "Basic"
-      }
-    ],
-    "education": [
-      {
-        "certificate": "Bachelor's in Journalism",
-        "educationPlace": "New York University",
-        "graduationTime": "2012"
-      },
-      {
-        "certificate": "Master's in Photography",
-        "educationPlace": "Columbia University",
-        "graduationTime": "2015"
-      }
-    ],
-    "skills": [
-      "Photography",
-      "Journalism"
-    ],
-    "createdAt": 1664477416,
-    "isAdmin": true,
-    "lastDelivery": 1698836401336
+    "isAdmin": true
   },
   {
     "_id": "u002",
     "username": "jane123",
     "password": "$2b$10$Vat9eTitM6m/MyiasMmPFu6jJTjws0hxZ9ca2tu7h6Ako9od8XsxG",
     "fullName": "Jane Doe",
-    "description": "A big fan of robots and machines, and a graphics expert",
+    "description": "",
     "balance": 250,
     "level": "level 1",
-    "rating": 4.7,
+    "rating": 4.9,
     "imgUrl": "https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000",
-    "country": "Canada",
-    "createdAt": 1614734460,
     "isAdmin": true
   },
   {
@@ -68,8 +33,6 @@
     "level": "level 1",
     "rating": 4.9,
     "imgUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=1961&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "India",
-    "createdAt": 1614189159,
     "isAdmin": false
   },
   {
@@ -82,8 +45,6 @@
     "level": "level 2",
     "rating": 4.7,
     "imgUrl": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Spain",
-    "createdAt": 1635263153,
     "isAdmin": false
   },
   {
@@ -96,8 +57,6 @@
     "level": "level 1",
     "rating": 4.4,
     "imgUrl": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=2080&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Germany",
-    "createdAt": 1673227153,
     "isAdmin": false
   },
   {
@@ -110,8 +69,6 @@
     "level": "level 2",
     "rating": 4.9,
     "imgUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Hungary",
-    "createdAt": 1617204929,
     "isAdmin": false
   },
   {
@@ -124,8 +81,6 @@
     "level": "level 3",
     "rating": 4.8,
     "imgUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Australia",
-    "createdAt": 1667833653,
     "isAdmin": false
   },
   {
@@ -138,8 +93,6 @@
     "level": "level 2",
     "rating": 4.9,
     "imgUrl": "https://plus.unsplash.com/premium_photo-1675034377239-a839117fe934?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Austria",
-    "createdAt": 1615865876,
     "isAdmin": false
   },
   {
@@ -152,8 +105,6 @@
     "level": "level 3",
     "rating": 4.8,
     "imgUrl": "https://images.unsplash.com/photo-1558898479-33c0057a5d12?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Turkey",
-    "createdAt": 1647577044,
     "isAdmin": false
   },
   {
@@ -166,8 +117,6 @@
     "level": "level 3",
     "rating": 4.6,
     "imgUrl": "https://images.unsplash.com/photo-1581009137042-c552e485697a?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Poland",
-    "createdAt": 1608463213,
     "isAdmin": false
   },
   {
@@ -180,22 +129,18 @@
     "level": "level 2",
     "rating": 4.7,
     "imgUrl": "https://plus.unsplash.com/premium_photo-1664541336816-2a2987114ca4?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Norway",
-    "createdAt": 1662477192,
     "isAdmin": false
   },
   {
     "_id": "u110",
     "username": "evylife1991",
     "password": "123",
-    "fullName": "Evelyn Muller",
+    "fullName": "Evelyn DigitalArt",
     "description": "",
     "balance": 0,
     "level": "level 3",
     "rating": 4.9,
     "imgUrl": "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?auto=format&fit=crop&q=80&w=2080&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Switzerland",
-    "createdAt": 1601197648,
     "isAdmin": false
   },
   {
@@ -208,8 +153,6 @@
     "level": "level 1",
     "rating": 4.9,
     "imgUrl": "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&q=80&w=2067&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Netherlands",
-    "createdAt": 1625986953,
     "isAdmin": true
   },
   {
@@ -222,8 +165,6 @@
     "level": "level 2",
     "rating": 4.7,
     "imgUrl": "https://plus.unsplash.com/premium_photo-1663091701962-2ae72a2ad2ac?auto=format&fit=crop&q=80&w=2087&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "United Kingdom",
-    "createdAt": 1616054543,
     "isAdmin": false
   },
   {
@@ -236,8 +177,6 @@
     "level": "level 1",
     "rating": 3.2,
     "imgUrl": "https://images.unsplash.com/photo-1508186225823-0963cf9ab0de?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "country": "Czech Republic",
-    "createdAt": 1654394258,
     "isAdmin": false
   }
 ]

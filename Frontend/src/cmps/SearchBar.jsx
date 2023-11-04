@@ -7,8 +7,13 @@ export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSu
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
+      setIsDimmed(false)
       onSearchSubmit(e)
     }
+  }
+  const handleSubmit = (e) => {
+    setIsDimmed(false)
+    onSearchSubmit(e)
   }
 
   return (
@@ -23,7 +28,7 @@ export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSu
           onFocus={() => controlDimming && setIsDimmed(true)}
           onBlur={() => controlDimming && setIsDimmed(false)}
         />
-        <button type="submit" onClick={onSearchSubmit} className="flex">
+        <button type="submit" onClick={handleSubmit} className="flex">
           <img src={searchIconSvg} alt="Search" />
         </button>
       </div>

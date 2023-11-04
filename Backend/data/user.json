@@ -1,6 +1,5 @@
 [
   {
-    "_id": "u001",
     "username": "peter123",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "Peter Parker",
@@ -45,7 +44,6 @@
     "lastDelivery": 1698836401336
   },
   {
-    "_id": "u002",
     "username": "jane123",
     "password": "$2b$10$Vat9eTitM6m/MyiasMmPFu6jJTjws0hxZ9ca2tu7h6Ako9od8XsxG",
     "fullName": "Jane Doe",
@@ -59,7 +57,6 @@
     "isAdmin": true
   },
   {
-    "_id": "u101",
     "username": "alice123",
     "password": "123",
     "fullName": "Alice Smith",
@@ -73,7 +70,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u102",
     "username": "ejhonsontemp",
     "password": "123",
     "fullName": "Ella Johnson",
@@ -87,7 +83,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u103",
     "username": "dave1973",
     "password": "123",
     "fullName": "David Turner",
@@ -101,7 +96,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u104",
     "username": "songrite109",
     "password": "123",
     "fullName": "Sophia Anderson",
@@ -115,7 +109,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u105",
     "username": "eviluca3d4",
     "password": "123",
     "fullName": "Lucas Johnson",
@@ -129,7 +122,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u106",
     "username": "legalser911",
     "password": "123",
     "fullName": "Olivia Adams",
@@ -143,7 +135,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u107",
     "username": "buswomansj",
     "password": "123",
     "fullName": "Sophie Johnson",
@@ -157,7 +148,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u108",
     "username": "tothemaxxx",
     "password": "123",
     "fullName": "Max Trainer",
@@ -171,7 +161,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u109",
     "username": "artcraftava123",
     "password": "123",
     "fullName": "Ava Crafters",
@@ -185,7 +174,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u110",
     "username": "evylife1991",
     "password": "123",
     "fullName": "Evelyn Muller",
@@ -199,7 +187,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u111",
     "username": "novelist642",
     "password": "123",
     "fullName": "Luna Wordsmith",
@@ -213,7 +200,6 @@
     "isAdmin": true
   },
   {
-    "_id": "u112",
     "username": "alex1993",
     "password": "123",
     "fullName": "Alex VR",
@@ -227,7 +213,6 @@
     "isAdmin": false
   },
   {
-    "_id": "u113",
     "username": "gamerguffaw",
     "password": "123",
     "fullName": "Geraldin Winston",

@@ -1,8 +1,8 @@
 import express from 'express'
 
 import { requireAuth, requireAdmin } from '../../middlewares/requireAuth.middleware.js'
-import { getReview, getReviews, deleteReview, updateReview, addReview } from './review.controller.js'
-// import { getReview, getReviews, deleteReview, updateReview, addReview } from './review.db.controller.js'
+// import { getReview, getReviews, deleteReview, updateReview, addReview } from './review.controller.js'
+import { getReviewById, getReviews, removeReview, addReview } from './review.db.controller.js'
 
 export const reviewRoutes = express.Router()
 
@@ -10,9 +10,8 @@ export const reviewRoutes = express.Router()
 // reviewRoutes.use(requireAuth)
 
 reviewRoutes.get('/', getReviews)
-reviewRoutes.get('/:id', getReview)
-reviewRoutes.put('/',  updateReview)
+reviewRoutes.get('/:id', getReviewById)
 reviewRoutes.post('/', addReview)
 
 // reviewRoutes.put('/:id',  requireAuth, updateReview)
-reviewRoutes.delete('/:id',  requireAuth, requireAdmin, deleteReview)
+reviewRoutes.delete('/:id',  requireAuth, requireAdmin, removeReview)

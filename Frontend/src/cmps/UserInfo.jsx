@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
-import icon from "../assets/img/svg/user.icon.svg"
-import location from "../assets/img/svg/location.icon.svg"
+import icon from '../assets/img/svg/user.icon.svg'
+import location from '../assets/img/svg/location.icon.svg'
 
-import { UserEditModal } from "./UserEditModal.jsx"
-import { updateUser } from "../store/user.actions.js"
-import SvgIcon from "./SvgIcon"
-import { loadReviews } from "../store/review.actions"
-import { utilService } from "../services/util.service"
-import { loadOrders } from "../store/order.actions"
+import { UserEditModal } from './UserEditModal.jsx'
+import { updateUser } from '../store/user.actions.js'
+import SvgIcon from './SvgIcon'
+import { loadReviews } from '../store/review.actions'
+import { utilService } from '../services/util.service'
+import { loadOrders } from '../store/order.actions'
 
 export function UserInfo({ user }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -28,18 +28,18 @@ export function UserInfo({ user }) {
   }, [])
 
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ]
   const time = new Date(user.createdAt * 1000)
   let month = months[time.getMonth()]
@@ -90,26 +90,26 @@ export function UserInfo({ user }) {
     const isHalfStar = user.rating % 1 >= 0.5
 
     const stars = [...Array(fullStarsCount)].map((_, idx) => (
-      <SvgIcon iconName={"star"} key={utilService.makeId()} />
+      <SvgIcon iconName={'star'} key={utilService.makeId()} />
     ))
 
     if (isHalfStar) {
-      stars.push(<SvgIcon iconName={"halfstar"} key={utilService.makeId()} />)
+      stars.push(<SvgIcon iconName={'halfstar'} key={utilService.makeId()} />)
       fullStarsCount += 1
     }
 
     const emptyStarsCount = 5 - fullStarsCount
     for (let i = 0; i < emptyStarsCount; i++) {
-      stars.push(<SvgIcon iconName={"emptystar"} key={utilService.makeId()} />)
+      stars.push(<SvgIcon iconName={'emptystar'} key={utilService.makeId()} />)
     }
     return stars
   }
 
-  let userLevel = ""
-  if (user.level === "level 0") userLevel = "newuser"
-  if (user.level === "level 1") userLevel = "level1"
-  if (user.level === "level 2") userLevel = "level2"
-  if (user.level === "level 3") userLevel = "topuser"
+  let userLevel = ''
+  if (user.level === 'level 0') userLevel = 'newuser'
+  if (user.level === 'level 1') userLevel = 'level1'
+  if (user.level === 'level 2') userLevel = 'level2'
+  if (user.level === 'level 3') userLevel = 'topuser'
 
   return (
     <section className="user-info">
@@ -123,7 +123,7 @@ export function UserInfo({ user }) {
           {isEditingFullName && loggedinUser._id === user._id ? (
             <input
               type="text"
-              style={{ padding: "0", border: "none", textAlign: "center" }}
+              style={{ padding: '0', border: 'none', textAlign: 'center' }}
               value={fullName}
               onChange={handleFullNameChange}
               onBlur={handleConfirmChange}
@@ -146,7 +146,7 @@ export function UserInfo({ user }) {
         <div className="location-and-time">
           <div className="info-line flex" onClick={loadModal}>
             <span className="data">
-              <SvgIcon iconName={"location"} />
+              <SvgIcon iconName={'location'} />
               <span>From</span>
             </span>
             <span className="bold">{user.country}</span>
@@ -154,7 +154,7 @@ export function UserInfo({ user }) {
 
           <div className="info-line flex">
             <span className="data">
-              <SvgIcon iconName={"user"} />
+              <SvgIcon iconName={'user'} />
               <span>Member Since</span>
             </span>
             <span className="bold">
@@ -164,7 +164,7 @@ export function UserInfo({ user }) {
 
           <div className="info-line flex">
             <span className="data">
-              <SvgIcon iconName={"clock"} />
+              <SvgIcon iconName={'clock'} />
               <span>Avg. Response Time</span>
             </span>
             <span className="bold">
@@ -174,11 +174,11 @@ export function UserInfo({ user }) {
 
           <div className="info-line flex">
             <span className="data">
-              <SvgIcon iconName={"airplaneIcon"} />
+              <SvgIcon iconName={'airplaneIcon'} />
               <span>Last Delivery</span>
             </span>
             <span className="bold">
-              {months[deliveredTime.getMonth()].slice(0, 3)}{" "}
+              {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
               {deliveredTime.getFullYear()}
             </span>
           </div>
@@ -215,6 +215,7 @@ export function UserInfo({ user }) {
             ))}
           </div>}
         </div>
+<<<<<<< HEAD
         <div className="skills">
           <span className="title">Skills</span>
           {user.skills && <div className="the-skills">
@@ -233,6 +234,33 @@ export function UserInfo({ user }) {
                 <span>{education.educationPlace}, Graduated {education.graduationTime}</span>
               </div>)}
           </div>}
+=======
+        {user.skills && (
+          <div className="skills">
+            <span className="title">Skills</span>
+            <div className="the-skills">
+              {user.skills.map((skill, idx) => (
+                <div key={idx} className="skill">
+                  <span>{skill}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        <div className="educations">
+          <span className="title">Education</span>
+          <div className="the-educations">
+            {user.education.map((education, idx) => (
+              <div key={idx} className="education">
+                <span>{education.certificate}</span>
+                <span>
+                  {education.educationPlace}, Graduated{' '}
+                  {education.graduationTime}
+                </span>
+              </div>
+            ))}
+          </div>
+>>>>>>> 634ad666df69eb151ff0614ee93c47dda7baadb0
         </div>
       </div>
 

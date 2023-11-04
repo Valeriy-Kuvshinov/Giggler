@@ -15,7 +15,6 @@ export const userService = {
   remove,
   update,
   getUserRatingCount,
-  updateUser
 }
 window.userService = userService
 
@@ -36,17 +35,6 @@ async function update(userId) {
   const user = await httpService.put(BASE_URL, userId)
   if (getLoggedinUser()._id === userId) setLoggedinUser(user)
   return user
-}
-
-function updateUser(user) {
-  if (user._id) {
-      console.log('changed user')
-      setLoggedinUser(user)
-      return httpService.put(BASE_URL, user)
-  } else {
-      console.log('created user')
-      // return httpService.post(BASE_URL, user)
-  }
 }
 
 async function login(userCred) {

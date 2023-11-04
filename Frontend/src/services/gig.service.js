@@ -24,45 +24,7 @@ function getFilterFromParams(searchParams) {
 
 async function query(filterBy = {}) {
   try {
-    let gigsToDisplay = await httpService.get(BASE_URL, filterBy)
-    if (filterBy.search) {
-      const escapedSearch = escapeRegExp(filterBy.search)
-      const regex = new RegExp(escapedSearch, 'i')
-
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return regex.test(gig.title) || regex.test(gig.description)
-      })
-    }
-    if (filterBy.cat) {
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return gig.category === filterBy.cat
-      })
-    }
-    if (filterBy.tag) {
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return gig.tags.includes(filterBy.tag)
-      })
-    }
-    if (filterBy.time) {
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return gig.daysToMake === filterBy.time
-      })
-    }
-    if (filterBy.level) {
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return gig.level === filterBy.level
-      })
-    }
-    if (filterBy.min || filterBy.max) {
-      gigsToDisplay = gigsToDisplay.filter((gig) => {
-        return (
-          (!filterBy.min || gig.price >= filterBy.min) &&
-          (!filterBy.max || gig.price <= filterBy.max)
-        )
-      })
-    }
-
-    return gigsToDisplay
+    return await httpService.get(BASE_URL, filterBy)
   } catch (error) {
     console.error('Error querying gigs:', error)
     throw error // Rethrow the error for handling at a higher level
@@ -82,13 +44,13 @@ function save(gig) {
     ? httpService.put(`${BASE_URL}${gig._id}`, gig)
     : httpService.post(BASE_URL, gig)
   return savedGig
-//   if (gig._id) {
-//     console.log('changed gig')
-//     return httpService.put(BASE_URL, gig)
-// } else {
-//     console.log('created gig')
-//     return httpService.post(BASE_URL, gig)
-// }
+  //   if (gig._id) {
+  //     console.log('changed gig')
+  //     return httpService.put(BASE_URL, gig)
+  // } else {
+  //     console.log('created gig')
+  //     return httpService.post(BASE_URL, gig)
+  // }
 }
 
 function getDefaultFilter() {

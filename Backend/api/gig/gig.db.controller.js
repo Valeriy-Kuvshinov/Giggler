@@ -1,21 +1,24 @@
 import { gigService } from './gig.db.service.js'
-import { logger } from '../../services/logger.service.js'
+import { loggerService } from '../../services/logger.service.js'
 
 export async function getGigs(req, res) {
   try {
-    const filterBy = {}
+    console.log(req.query)
+    let filterBy = {}
     const { user } = req.query
-    if (user) {
-      filterBy = { user }
-    } else {
+    
+    if (user) filterBy = { user }
+
+    else {
       const { search, cat, tag, time, level, min, max, page } = req.query
       filterBy = { search, cat, tag, time, level, min, max, page }
     }
-    logger.debug('Getting Gigs', filterBy)
+    loggerService.debug('Getting Gigs', filterBy)
     const gigs = await gigService.query(filterBy)
     res.json(gigs)
-  } catch (err) {
-    logger.error('Failed to get gigs', err)
+  }
+  catch (err) {
+    loggerService.error('Failed to get gigs', err)
     res.status(500).send({ err: 'Failed to get gigs' })
   }
 }
@@ -25,8 +28,9 @@ export async function getGigById(req, res) {
     const gigId = req.params.id
     const gig = await gigService.getById(gigId)
     res.json(gig)
-  } catch (err) {
-    logger.error('Failed to get gig', err)
+  }
+  catch (err) {
+    loggerService.error('Failed to get gig', err)
     res.status(500).send({ err: 'Failed to get gig' })
   }
 }
@@ -37,10 +41,11 @@ export async function addGig(req, res) {
   try {
     const gig = req.body
     gig.ownerId = loggedinUser
-    const addedGig = await gigService.add(gig)
+    const addedGig = await gigService.save(gig)
     res.json(addedGig)
-  } catch (err) {
-    logger.error('Failed to add gig', err)
+  }
+  catch (err) {
+    loggerService.error('Failed to add gig', err)
     res.status(500).send({ err: 'Failed to add gig' })
   }
 }
@@ -48,10 +53,11 @@ export async function addGig(req, res) {
 export async function updateGig(req, res) {
   try {
     const gig = req.body
-    const updatedGig = await gigService.update(gig)
+    const updatedGig = await gigService.save(gig)
     res.json(updatedGig)
-  } catch (err) {
-    logger.error('Failed to update gig', err)
+  }
+  catch (err) {
+    loggerService.error('Failed to update gig', err)
     res.status(500).send({ err: 'Failed to update gig' })
   }
 }
@@ -61,8 +67,9 @@ export async function removeGig(req, res) {
     const gigId = req.params.id
     await gigService.remove(gigId)
     res.send()
-  } catch (err) {
-    logger.error('Failed to remove gig', err)
+  }
+  catch (err) {
+    loggerService.error('Failed to remove gig', err)
     res.status(500).send({ err: 'Failed to remove gig' })
   }
 }

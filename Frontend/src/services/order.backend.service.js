@@ -10,14 +10,15 @@ export const orderBackendService = {
     save,
     createOrder,
     getById,
-    getOrderDetails
+    getOrderDetails,
+    getActionDate,
+    getDueDate
 }
 
 async function query(filterBy = {}) {
     const orders = await httpService.get(BASE_URL, filterBy)
     return orders
 }
-
 
 async function getById(orderId) {
     const order = await httpService.get(BASE_URL + orderId)
@@ -29,13 +30,8 @@ function remove(orderId) {
 }
 
 function save(order) {
-    if (order._id) {
-        console.log('changed order')
-        return httpService.put(BASE_URL, order)
-    } else {
-        console.log('created order')
-        return httpService.post(BASE_URL, order)
-    }
+    if (order._id) return httpService.put(BASE_URL, order)
+    else return httpService.post(BASE_URL, order)
 }
 
 function createOrder(buyerId = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
@@ -68,4 +64,35 @@ async function getOrderDetails(orderId, role = 'buyer') {
         name: userData.fullName || '',
         avatar: userData.imgUrl || ''
     }
+}
+
+function getActionDate(order) {
+    let prefix = ''
+    let dateStr = ''
+
+    if (order.orderState === 'completed') {
+        prefix = 'completed at '
+        dateStr = new Date(order.completedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'denied') {
+        prefix = 'rejected at '
+        dateStr = new Date(order.deniedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'accepted') {
+        prefix = 'accepted at '
+        dateStr = new Date(order.acceptedAt).toLocaleDateString()
+    }
+    if (order.orderState === 'pending') {
+        prefix = 'received at '
+        dateStr = new Date(order.createdAt).toLocaleDateString()
+    }
+    return prefix + dateStr
+}
+
+function getDueDate(acceptedDate, daysToMake) {
+    let days = 0
+    if (daysToMake === 'Express 24H') days = 1
+    else if (daysToMake === 'Up to 3 days') days = 3
+    else if (daysToMake === 'Up to 7 days') days = 7
+    return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
 }
