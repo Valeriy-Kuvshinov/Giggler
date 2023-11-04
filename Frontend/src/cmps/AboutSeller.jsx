@@ -1,7 +1,23 @@
-import { utilService } from '../services/util.service'
-import { UserPreview } from './UserPreview'
+import { useModal } from '../customHooks/ModalContext.jsx'
+import { useSelector } from 'react-redux'
+
+import { UserPreview } from './UserPreview.jsx'
+
+import { utilService } from '../services/util.service.js'
 
 export function AboutSeller({ owner }) {
+  const user = useSelector((storeState) => storeState.userModule.user)
+
+  const { openLogin } = useModal()
+
+  function onContactOwner() {
+    if (!user) {
+      openLogin()
+      return
+    }
+    console.log('user logged in')
+  }
+
   const average = utilService.getRandomIntInclusive(1, 24)
 
   const months = [
@@ -42,7 +58,7 @@ export function AboutSeller({ owner }) {
         <h3>About The Seller</h3>
         <UserPreview is={'gig-details-2'} owner={owner} />
 
-        <button className="btn-contact b">Contact Me</button>
+        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>Contact Me</button>
       </div>
       <div className="stats-desc">
         <ul className="user-stats grid">

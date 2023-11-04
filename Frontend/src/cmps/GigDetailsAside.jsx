@@ -150,7 +150,15 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
         </button>
       </section>
       <div className="contact-seller flex">
-        <button onClick={() => setChatState(true)} className="b">Contact me</button>
+        <button
+          onClick={() => {
+            if (user) setChatState(true)
+            else openLogin()
+          }}
+          className="b"
+        >
+          Contact me
+        </button>
       </div>
     </section>
   )

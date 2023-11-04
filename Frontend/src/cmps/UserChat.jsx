@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import SvgIcon from './SvgIcon'
 import { useSelector } from 'react-redux'
-import { socket } from '../services/sockets.service'
+import { useModal } from '../customHooks/ModalContext.jsx'
+
+import SvgIcon from './SvgIcon.jsx'
+import { socket } from '../services/sockets.service.js'
 
 export function UserChat({
   owner,
@@ -12,6 +14,8 @@ export function UserChat({
   buyer,
 }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const { openLogin } = useModal()
+
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
@@ -19,7 +23,7 @@ export function UserChat({
     chatRoom ? chatRoom : ''
   })
 
-  console.log( `this is ${owner.username} with the buyer: ${buyer}`)
+  console.log(`this is ${owner.username} with the buyer: ${buyer}`)
 
   useEffect(() => {
     if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
@@ -84,7 +88,10 @@ export function UserChat({
     <>
       {!chatState && (
         <section
-          onClick={() => setChatState(true)}
+          onClick={() => {
+            if (loggedinUser) setChatState(true)
+            else openLogin()
+          }}
           className="mini-message-bar"
         >
           <div className="mini-message-bar-container">
@@ -105,9 +112,8 @@ export function UserChat({
               ></span>
             </div>
             <div className="owner-info">
-              <span className="message">{`Message${
-                window ? '' : ` ${owner.fullName}`
-              }`}</span>
+              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
+                }`}</span>
               {!window && (
                 <span className="response-time">
                   <span>Online</span>
