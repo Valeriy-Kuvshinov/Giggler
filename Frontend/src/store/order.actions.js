@@ -5,7 +5,7 @@ export const loadOrders = (filterBy = {}) => async (dispatch) => {
     dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
         const orders = await orderBackendService.query(filterBy)
-        dispatch({ type: SET_ORDERS, orders });
+        dispatch({ type: SET_ORDERS, orders })
     } catch (err) {
         console.error('Cannot load orders, here is why: ', err)
     } finally {

@@ -28,9 +28,7 @@ export function DashboardPage() {
 
     const displayedOrders = orders.filter(order => order.sellerId === user._id)
 
-    if (isLoading) {
-        return <Loader />
-    }
+    if (isLoading) return <Loader />
 
     return (
         <main className="dashboard-page full flex column">

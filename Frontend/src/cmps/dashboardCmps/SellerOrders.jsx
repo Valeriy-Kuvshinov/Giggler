@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux'
 import { SellerOrder } from './SellerOrder.jsx'
 
 import { saveOrder } from '../../store/order.actions.js'
-import { userService } from '../../services/user.service.js'
+import { updateUser } from '../../store/user.actions.js'
 
 export function SellerOrders({ user, displayedOrders }) {
     const dispatch = useDispatch()
 
     function updateLastDeliveryForUser() {
         const updatedUser = { ...user, lastDelivery: Date.now() }
-        userService.update(updatedUser)
+        dispatch(updateUser(updatedUser))
     }
 
     async function acceptOrder(order) {
