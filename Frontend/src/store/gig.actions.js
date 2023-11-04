@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux"
 import { gigService } from "../services/gig.service.js"
 import { store } from '../store/store.js'
 import { ADD_GIG, GET_GIG, REMOVE_GIG, SET_GIGS, UPDATE_GIG, SET_IS_LOADING, SET_FILTER } from "./gig.reducer.js"

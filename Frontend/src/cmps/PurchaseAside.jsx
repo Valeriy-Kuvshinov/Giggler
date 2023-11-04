@@ -9,11 +9,10 @@ export function PurchaseAside({
   handleSubmit,
   paymentMethod,
 }) {
-  if (gig === null) return <div>loading...</div>
-
   function onConfirmPayment() {
     createOrder()
   }
+
   console.log('packages: ', packages)
   console.log('packageChoice: ', packageChoice)
 

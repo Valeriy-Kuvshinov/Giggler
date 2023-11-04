@@ -205,41 +205,34 @@ export function UserInfo({ user }) {
         )}
         <div className="languages">
           <span className="title">Languages</span>
-          <div className="the-languages">
-            {user.languages.map((language, idx) => (
-              <div key={idx} className="language">
+          {user.languages && <div className="the-languages">
+            {user.languages.map((language) => (
+              <div className="language" key={language.language}>
                 <span>{language.language}</span>
                 <span> - </span>
                 <span>{language.fluency}</span>
               </div>
             ))}
-          </div>
+          </div>}
         </div>
-        {user.skills && (
-          <div className="skills">
-            <span className="title">Skills</span>
-            <div className="the-skills">
-              {user.skills.map((skill, idx) => (
-                <div key={idx} className="skill">
-                  <span>{skill}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="skills">
+          <span className="title">Skills</span>
+          {user.skills && <div className="the-skills">
+            {user.skills.map(skill => 
+              <div className="skill" key={skill}>
+                <span>{skill}</span>
+              </div>)}
+          </div>}
+        </div>
         <div className="educations">
           <span className="title">Education</span>
-          <div className="the-educations">
-            {user.education.map((education, idx) => (
-              <div key={idx} className="education">
+          {user.education && <div className="the-educations">
+            {user.education.map(education => 
+              <div className="education" key={education.graduationTime}>
                 <span>{education.certificate}</span>
-                <span>
-                  {education.educationPlace}, Graduated{' '}
-                  {education.graduationTime}
-                </span>
-              </div>
-            ))}
-          </div>
+                <span>{education.educationPlace}, Graduated {education.graduationTime}</span>
+              </div>)}
+          </div>}
         </div>
       </div>
 

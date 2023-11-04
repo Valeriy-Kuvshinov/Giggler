@@ -5,8 +5,9 @@ import { ReviewBreakdown } from './ReviewBreakdown.jsx'
 
 import { userService } from '../services/user.service.js'
 import { reviewService } from '../services/review.service.js'
+import { gigService } from '../services/gig.service.js'
 
-export function GigReviews({ gig }) {
+export function GigReviews({ gig , userId}) {
     const [fullReviews, setFullReviews] = useState([])
 
     useEffect(() => {
@@ -14,6 +15,7 @@ export function GigReviews({ gig }) {
     }, [gig])
     
     async function fetchFullReviews() {
+
         if (!gig || gig.reviews.length === 0) return
 
         const fetchedReviews = await Promise.all(

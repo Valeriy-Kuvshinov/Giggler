@@ -28,7 +28,7 @@
 
         @media screen and (max-width: 900px) {
           border: 0;
-          padding: 2em 0.75em 4em;
+          padding: 2em 0.5em 4em;
         }
 
         .profile-picture {
@@ -136,6 +136,7 @@
 
       .description-box {
         margin-block-end: 1.875em;
+        width: 100%;
         color: $clrSecondary6;
 
         .description-area {

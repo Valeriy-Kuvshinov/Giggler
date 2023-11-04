@@ -18,9 +18,9 @@ export function GigPurchase() {
     firstName: 'Yaron',
     lastName: 'Biton',
   }
-
   const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+
   const [paymentMethod, setPaymentMethod] = useState(true)
   const [formData, setFormData] = useState(initialState)
 
@@ -43,7 +43,7 @@ export function GigPurchase() {
   }
 
   async function createOrder() {
-    orderBackendService.createOrder(
+    const newOrder = orderBackendService.createOrder(
       user._id,
       gig.ownerId,
       gig.title,
@@ -51,8 +51,8 @@ export function GigPurchase() {
       gig._id,
       gig.price
     )
-
     try {
+      await orderBackendService.save(newOrder)
       showSuccessMsg(
         {
           title: 'ORDER ADDED',
