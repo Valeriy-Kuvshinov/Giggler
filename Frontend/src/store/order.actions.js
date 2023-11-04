@@ -1,16 +1,16 @@
 import { orderBackendService } from "../services/order.backend.service.js"
 import { store } from '../store/store.js'
-import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS } from "./order.reducer.js"
+import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_IS_LOADING } from "./order.reducer.js"
 
 export async function loadOrders(filterBy = {}) {
-    // store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
         const orders = await orderBackendService.query(filterBy)
         store.dispatch({ type: SET_ORDERS, orders })
     } catch (err) {
         console.log('cannot load orders, heres why:', err)
     } finally {
-        // store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
     }
 }
 
@@ -35,7 +35,6 @@ export async function saveOrder(order) {
     //     console.log('Cannot save order', err)
     //     throw err
     // }
-    // const type = toy._id ? UPDATE_TOY : ADD_TOY
     return orderBackendService.save(order)
         .then(orderToSave => {
             store.dispatch({ type, order: orderToSave })
@@ -46,6 +45,7 @@ export async function saveOrder(order) {
             throw err
         })
 }
+
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
 // export function onRemoveorderOptimistic(orderId) {

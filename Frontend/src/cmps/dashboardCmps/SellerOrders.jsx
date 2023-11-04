@@ -1,18 +1,12 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 
 import { SellerOrder } from './SellerOrder.jsx'
-import { Loader } from '../Loader.jsx'
 
 import { loadOrders } from '../../store/order.actions.js'
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { userService } from '../../services/user.service.js'
 
-export function SellerOrders() {
-    const user = useSelector(storeState => storeState.userModule.user)
-    const orders = useSelector(storeState => storeState.orderModule.orders)
-    const displayedOrders = orders.filter(order => order.sellerId === user._id)
-
+export function SellerOrders({ user, displayedOrders }) {
     useEffect(() => {
         loadUserOrders()
     }, [])
@@ -70,8 +64,6 @@ export function SellerOrders() {
             console.error(`Error completing order ${order._id}:`, err)
         }
     }
-
-    if (orders.length === 0) return <Loader />
 
     return (
         <section className="user-orders">
