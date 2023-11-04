@@ -14,6 +14,7 @@ export function PurchaseAside({
   function onConfirmPayment() {
     createOrder()
   }
+  
   console.log('packages: ', packages)
   console.log('packageChoice: ', packageChoice)
 

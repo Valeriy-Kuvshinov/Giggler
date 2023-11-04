@@ -4,6 +4,7 @@ import { DenialOrderModal } from "./DenialOrderModal.jsx"
 import SvgIcon from '../SvgIcon.jsx'
 
 import { orderBackendService } from '../../services/order.backend.service.js'
+import { gigService } from '../../services/gig.service.js'
 
 export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
@@ -18,19 +19,24 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     useEffect(() => {
         (async () => {
-            const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
-            setGigData(orderDetails.gigData)
+            try {
+                const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
+                setBuyerFirstName(orderDetails.name.split(' ')[0])
+                setBuyerLastName(orderDetails.name.split(' ')[1] || '')
+                setBuyerAvatar(orderDetails.avatar)
 
-            const nameParts = orderDetails.name.split(' ')
-            setBuyerFirstName(nameParts[0])
-            setBuyerLastName(nameParts[1] || '')
+                const gig = await gigService.getById(order.orderedGigId)
+                const firstImgUrl = gig.imgUrls[0]
 
-            setBuyerAvatar(orderDetails.avatar)
+                setGigData({ ...gig, firstImgUrl })
+            } catch (err) {
+                console.error('Failed to fetch order or gig details:', err)
+            }
         })()
     }, [order])
 
     useEffect(() => {
-        function handleDocumentClick(event) {
+        function handleDropdownClick(event) {
             if (
                 dropdownButtonRef.current && !dropdownButtonRef.current.contains(event.target) &&
                 dropdownMenuRef.current && !dropdownMenuRef.current.contains(event.target)
@@ -38,9 +44,9 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                 setDropdownVisible(false)
             }
         }
-        document.addEventListener('mousedown', handleDocumentClick)
+        document.addEventListener('mousedown', handleDropdownClick)
         return () => {
-            document.removeEventListener('mousedown', handleDocumentClick)
+            document.removeEventListener('mousedown', handleDropdownClick)
         }
     }, [])
 
@@ -102,12 +108,18 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
 
     return (
         <tr className={getOrderClass(order.orderState)}>
+            <td>
+                {gigData && gigData.firstImgUrl && (
+                    <img src={gigData.firstImgUrl} alt="gig" />
+                )}
+            </td>
+            <td>{order.title}</td>
+
             <td><img src={buyerAvatar} alt="buyer" /></td>
             <td className="flex column">
                 <span>{buyerFirstName}</span>
                 <span>{buyerLastName}</span>
             </td>
-            <td>{order.title}</td>
             <td>{getActionDate(order)}</td>
 
             <td>

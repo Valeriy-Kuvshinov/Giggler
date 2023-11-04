@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { ImgUploader } from './ImgUploader.jsx'
 import { login, signup } from '../store/user.actions.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import loginSignupImg from '../assets/img/login-signup.png'
+const loginSignupImg = 'https://res.cloudinary.com/digrqdbso/image/upload/v1699099670/Giggler/home-page-other/w9peebtuzesqc71ppcd5.png'
 import checkmarkImg from '../assets/img/svg/checkmark.white.icon.svg'
 
 export function LoginSignup({ closeModal, mode }) {

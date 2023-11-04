@@ -64,8 +64,9 @@ export function SellerOrders({ user, displayedOrders }) {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>BUYER</th>
                         <th>GIG</th>
+                        <th></th>
+                        <th>BUYER</th>
                         <th>ACTION DATE</th>
                         <th>DUE ON</th>
                         <th>STATUS</th>
