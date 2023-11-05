@@ -12,14 +12,6 @@ import { GigReviews } from "./GigReviews"
 export function UserGigs({ user, gigs }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const is = "userProfile"
-  // const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  // const filteredReviews = user
-  //   ? reviews.filter((review) => review.sellerId === user._id)
-  //   : []
-  // const filteredReviewIds = user ? reviews
-  //   .filter((review) => review.sellerId === user._id)
-  //   .map((review) => review._id)
-  //   : []
 
   useEffect(() => {
     loadReviews()
@@ -59,14 +51,6 @@ export function UserGigs({ user, gigs }) {
           userGigs.map((gig) => (
             <div key={gig._id}>
               <GigPreview is={is} gig={gig} />
-            </div>
-          ))}
-      </div>
-      <div className="user-reviews">
-        {gigs.length !== 0 &&
-          userGigs.map((gig) => (
-            <div key={gig._id}>
-              <GigReviews gig={gig} />
             </div>
           ))}
       </div>
