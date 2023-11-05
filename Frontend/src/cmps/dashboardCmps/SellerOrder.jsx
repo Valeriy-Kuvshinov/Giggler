@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 import SvgIcon from '../SvgIcon.jsx'
@@ -9,9 +10,7 @@ import { gigService } from '../../services/gig.service.js'
 export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
-    const [buyerFirstName, setBuyerFirstName] = useState('')
-    const [buyerLastName, setBuyerLastName] = useState('')
-    const [buyerAvatar, setBuyerAvatar] = useState('')
+    const [userData, setUserData] = useState(null)
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     const dropdownButtonRef = useRef(null)
@@ -21,10 +20,13 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         (async () => {
             try {
                 const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
-                setBuyerFirstName(orderDetails.name.split(' ')[0])
-                setBuyerLastName(orderDetails.name.split(' ')[1] || '')
-                setBuyerAvatar(orderDetails.avatar)
 
+                setUserData({
+                    firstName: orderDetails.userData.fullName.split(' ')[0],
+                    lastName: orderDetails.userData.fullName.split(' ')[1] || '',
+                    avatar: orderDetails.userData.imgUrl,
+                    _id: orderDetails.userData._id
+                })
                 const gig = await gigService.getById(order.orderedGigId)
                 const firstImgUrl = gig.imgUrls[0]
 
@@ -50,44 +52,30 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         }
     }, [])
 
-    function getOrderClass(orderState) {
-        const orderStateClasses = {
-            'pending': 'pending user-order',
-            'accepted': 'accepted user-order',
-            'denied': 'denied user-order',
-            'completed': 'completed user-order'
-        }
-        return orderStateClasses[orderState] || ''
-    }
-
-    function getAvailableActions() {
-        let actions = []
-        if (order.orderState === 'pending') {
-            actions = [
-                { label: 'Accept', action: () => acceptOrder(order) },
-                { label: 'Deny', action: () => setDenial(true) }
-            ]
-        } else if (order.orderState === 'accepted') {
-            actions = [
-                { label: 'Complete', action: () => completeOrder(order) }
-            ]
-        }
-        return actions
-    }
-
     return (
-        <tr className={getOrderClass(order.orderState)}>
+        <tr className={orderBackendService.getOrderClass(order.orderState)}>
             <td>
                 {gigData && gigData.firstImgUrl && (
                     <img src={gigData.firstImgUrl} alt="gig" />
                 )}
             </td>
-            <td>{order.title}</td>
+            <td>
+                {gigData ? (
+                    <Link to={`/gig/${gigData._id}`}>
+                        {gigData.title}
+                    </Link>
+                ) : null}
+            </td>
 
-            <td><img src={buyerAvatar} alt="buyer" /></td>
+            <td><img src={userData && userData.avatar} alt="buyer" /></td>
+
             <td className="flex column">
-                <span>{buyerFirstName}</span>
-                <span>{buyerLastName}</span>
+                {userData && (
+                    <Link to={`/user/${userData._id}`}>
+                        <span>{userData.firstName}</span>
+                        <span>{userData.lastName}</span>
+                    </Link>
+                )}
             </td>
             <td>{orderBackendService.getActionDate(order)}</td>
             <td>
@@ -99,14 +87,14 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td><span className={order.orderState}>{order.orderState}</span></td>
 
             <td>
-                {getAvailableActions().length > 0 && (
+                {orderBackendService.getAvailableActions(order).length > 0 && (
                     <>
                         <button ref={dropdownButtonRef} onClick={() => setDropdownVisible(!isDropdownVisible)}>
                             <SvgIcon iconName={'orderDropdownIcon'} />
                         </button>
                         {isDropdownVisible && (
                             <div ref={dropdownMenuRef} className="dropdown-menu">
-                                {getAvailableActions().map((action, idx) => (
+                                {orderBackendService.getAvailableActions(order).map((action, idx) => (
                                     <button key={idx} onClick={action.action}>
                                         {action.label}
                                     </button>

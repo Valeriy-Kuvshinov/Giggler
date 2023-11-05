@@ -31,8 +31,9 @@ async function query(filterBy = {}) {
   }
 }
 
-function getById(gigId) {
-  return httpService.get(BASE_URL + gigId)
+async function getById(gigId) {
+  const gig = await httpService.get(BASE_URL + gigId)
+  return gig
 }
 
 function remove(gigId) {

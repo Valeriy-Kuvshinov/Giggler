@@ -12,7 +12,9 @@ export const orderBackendService = {
     getById,
     getOrderDetails,
     getActionDate,
-    getDueDate
+    getDueDate,
+    getAvailableActions,
+    getOrderClass
 }
 
 async function query(filterBy = {}) {
@@ -61,8 +63,7 @@ async function getOrderDetails(orderId, role = 'buyer') {
     return {
         ...order,
         gigData,
-        name: userData.fullName || '',
-        avatar: userData.imgUrl || ''
+        userData
     }
 }
 
@@ -95,4 +96,29 @@ function getDueDate(acceptedDate, daysToMake) {
     else if (daysToMake === 'Up to 3 days') days = 3
     else if (daysToMake === 'Up to 7 days') days = 7
     return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
+}
+
+function getOrderClass(orderState) {
+    const orderStateClasses = {
+        'pending': 'pending user-order',
+        'accepted': 'accepted user-order',
+        'denied': 'denied user-order',
+        'completed': 'completed user-order'
+    }
+    return orderStateClasses[orderState] || ''
+}
+
+function getAvailableActions(order) {
+    let actions = []
+    if (order.orderState === 'pending') {
+        actions = [
+            { label: 'Accept', action: () => acceptOrder(order) },
+            { label: 'Deny', action: () => setDenial(true) }
+        ]
+    } else if (order.orderState === 'accepted') {
+        actions = [
+            { label: 'Complete', action: () => completeOrder(order) }
+        ]
+    }
+    return actions
 }

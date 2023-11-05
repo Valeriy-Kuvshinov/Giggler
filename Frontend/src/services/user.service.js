@@ -18,7 +18,7 @@ export const userService = {
 }
 window.userService = userService
 
-function getUsers() {
+async function getUsers() {
   return httpService.get(BASE_URL)
 }
 
