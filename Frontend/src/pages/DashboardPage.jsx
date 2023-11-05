@@ -29,7 +29,7 @@ export function DashboardPage() {
     }, [user, dispatch])
 
     const displayedOrders = orders.filter(order => order.sellerId === user._id)
-
+    
     if (isLoading) return <Loader />
 
     if (displayedOrders.length === 0) {
