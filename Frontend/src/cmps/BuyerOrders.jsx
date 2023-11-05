@@ -28,7 +28,6 @@ export function BuyerOrders({ user }) {
                         ...prevDetails,
                         [order._id]: { isLoading: true },
                     }))
-
                     try {
                         const details = await orderBackendService.getOrderDetails(order._id, 'seller')
                         setOrderDetails((prevDetails) => ({
