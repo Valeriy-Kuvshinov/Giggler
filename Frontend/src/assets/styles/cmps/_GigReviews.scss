@@ -1,4 +1,5 @@
-.gig-reviews {
+.gig-reviews,
+.user-reviews {
   color: $clrPrimary2;
   width: 100%;
 
@@ -35,10 +36,6 @@
       margin: auto;
     }
   }
-
-  // @media (max-width: 600px) {
-  //   display: none;
-  // }
 }
 
 .reviews {
@@ -47,7 +44,6 @@
   .gig-review {
     display: flex;
     flex-direction: row;
-    background-color: white;
     border-block-start: 1px solid $clrSecondary2;
     padding: 40px 0;
 
