@@ -68,12 +68,12 @@
 
   .home-companies-section {
     .companies {
-      @media (max-width: 1200px) {
-        gap: 3em;
+      @media (max-width: 900px) {
+        gap: 1.5em;
       }
 
-      @media (min-width: 1200px) {
-        gap: 4em;
+      @media (min-width: 900px) {
+        gap: 3.75em;
       }
     }
 
@@ -150,7 +150,7 @@
     .categories {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1em;
+      // gap: 1em;
 
       @media (max-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
@@ -227,7 +227,7 @@
     .join-section {
       @media (min-width: 300px) {
         background-color: $bgColor4;
-        padding: 5em 2em;
+        padding: 4em 2em;
 
         h2 {
           font-size: 40px;

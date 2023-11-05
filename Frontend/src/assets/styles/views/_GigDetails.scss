@@ -35,8 +35,6 @@
         }
       }
 
-      
-
       .gig-thumbnail {
         width: fit-content;
 
@@ -53,8 +51,14 @@
         }
       }
     }
-    .about-gig{
+
+    .about-gig {
       margin: 1em 0;
+
+      h3 {
+        font-weight: 700;
+      }
+
       .gig-description {
         margin: 1em 0;
       }

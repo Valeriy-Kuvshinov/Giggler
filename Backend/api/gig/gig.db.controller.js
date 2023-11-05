@@ -53,8 +53,9 @@ export async function addGig(req, res) {
 export async function updateGig(req, res) {
   try {
     const gig = req.body
+    console.log(gig)
     const updatedGig = await gigService.save(gig)
-    res.json(updatedGig)
+    res.send(updatedGig)
   }
   catch (err) {
     loggerService.error('Failed to update gig', err)

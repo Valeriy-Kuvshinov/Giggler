@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import SvgIcon from './SvgIcon'
 import { useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
+import { useModal } from '../customHooks/ModalContext.jsx'
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const { openLogin } = useModal()
+
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
@@ -104,7 +106,10 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     <>
       {!chatState && (
         <section
-          onClick={() => setChatState(true)}
+          onClick={() => {
+            if (loggedinUser) setChatState(true)
+            else openLogin()
+          }}
           className="mini-message-bar"
         >
           <div className="mini-message-bar-container">
@@ -125,9 +130,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               ></span>
             </div>
             <div className="owner-info">
-              <span className="message">{`Message${
-                window ? '' : ` ${owner.fullName}`
-              }`}</span>
+              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
+                }`}</span>
               {!window && (
                 <span className="response-time">
                   <span>Online</span>

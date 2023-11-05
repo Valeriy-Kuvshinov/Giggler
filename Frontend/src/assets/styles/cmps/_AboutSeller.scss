@@ -1,6 +1,10 @@
 .about-seller {
   color: $clrPrimary2;
 
+  h3{
+    font-weight: 700;
+  }
+  
   .seller-wrapper {
     padding-block-end: 1.25em;
   }
@@ -33,6 +37,15 @@
         }
       }
 
+      .language{
+        display: flex;
+        flex-direction: column;
+        span{
+          font-weight: 700;
+          color: $clrSecondary6;
+          padding-top: 0.25em;
+        }
+      }
     }
 
     .seller-desc {

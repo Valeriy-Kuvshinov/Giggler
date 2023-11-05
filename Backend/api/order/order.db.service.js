@@ -34,7 +34,7 @@ async function getById(orderId) {
         const order = collection.findOne({ _id: new ObjectId(orderId) })
         console.log('I AM HERE IN GET BY ID DB backend: ', order)
         return order
-    } 
+    }
     catch (err) {
         loggerService.error(`while finding order ${orderId}`, err)
         throw err
@@ -59,36 +59,37 @@ async function remove(orderId) {
 async function save(order) {
     const collection = await dbService.getCollection(ORDERS_COLLECTION)
 
-    if (order._id) {
-        try {
-            const orderToSave = { ...order }
-            const id = order._id
+    try {
+        const orderToSave = { ...order }
+
+        if (order._id) {
+            const id = new ObjectId(order._id)
             delete orderToSave._id
 
-            const response = await collection.updateOne(
-                { _id: new ObjectId(id) },
-                { $set: orderToSave }
-            )
+            _convertIdsToObjectIds(orderToSave)
+
+            const response = await collection.updateOne({ _id: id }, { $set: orderToSave })
             if (response.matchedCount === 0) {
-                throw new Error(`Order with id ${id} was not found`)
+                throw new Error(`Order with id ${id.toHexString()} was not found`)
             }
             return { _id: id, ...orderToSave }
+        } else {
+            _convertIdsToObjectIds(orderToSave)
+
+            const response = await collection.insertOne(orderToSave)
+            return { ...orderToSave, _id: response.insertedId }
         }
-        catch (err) {
-            loggerService.error(`cannot update order ${order._id}`, err)
-            throw err
-        }
+    } catch (err) {
+        loggerService.error(`cannot save order ${order._id}`, err)
+        throw err
     }
-    else {
-        try {
-            const response = await collection.insertOne(order)
-            return { ...order, _id: response.insertedId }
+}
+function _convertIdsToObjectIds(orderData) {
+    ['buyerId', 'sellerId', 'orderedGigId'].forEach(field => {
+        if (orderData[field] && typeof orderData[field] === 'string') {
+            orderData[field] = new ObjectId(orderData[field])
         }
-        catch (err) {
-            loggerService.error('cannot insert order', err)
-            throw err
-        }
-    }
+    })
 }
 
 function _buildCriteria(filterBy) {

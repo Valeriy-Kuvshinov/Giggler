@@ -83,12 +83,105 @@
         }
       }
 
-      .login {
+      .login,
+      .orders {
         background: none;
         font-size: 16px;
         font-weight: bold;
         padding: 0;
         font-family: 'macan-regular';
+      }
+
+      .buyer-orders-dropdown {
+        position: absolute;
+        top: 72px;
+        right: 7.5%;
+        z-index: 10;
+        background-color: $clrPrimary1;
+        color: $clrSecondary6;
+        border: 1px solid $clrSecondary2;
+        border-radius: 10px 0 0 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        max-width: 400px;
+        max-height: 225px;
+
+        .buyer-orders {
+          overflow-y: scroll;
+          padding: 0.75em 0.75em 0em 0.75em;
+
+          .buyer-order {
+            grid-template-columns: auto 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-weight: 100;
+            border-bottom: 1px solid $clrSecondary2;
+
+            &:last-child {
+              border: none;
+            }
+
+            &:not(:last-child):hover {
+              border-bottom: 1px solid $bgColor3;
+            }
+
+            .order-image {
+              grid-column: 1 / 2;
+              grid-row: 1 / 3;
+
+              img {
+                margin-block-start: 0.375em;
+                width: 80px;
+                height: 60px;
+                object-fit: cover;
+              }
+            }
+
+            .order-title {
+              grid-column: 2 / 4;
+              grid-row: 1 / 2;
+            }
+
+            .seller-name {
+              grid-column: 2 / 3;
+              grid-row: 2 / 3;
+              font-size: 14px;
+            }
+
+            .order-status {
+              grid-column: 3 / 4;
+              grid-row: 2 / 3;
+              text-align: right;
+            }
+          }
+        }
+
+        &::before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 5px 17px 17px 17px;
+          border-color: transparent transparent $clrSecondary2 transparent;
+          position: absolute;
+          top: -22px;
+          right: 32px;
+          z-index: -1;
+        }
+
+        &::after {
+          content: '';
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 4px 16px 16px 16px;
+          border-color: transparent transparent $clrPrimary1 transparent;
+          position: absolute;
+          top: -20px;
+          right: 33px;
+          z-index: 0;
+        }
       }
 
       .user-info {

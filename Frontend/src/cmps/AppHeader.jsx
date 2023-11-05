@@ -6,6 +6,7 @@ import { useModal } from '../customHooks/ModalContext.jsx'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
+import { BuyerOrders } from './BuyerOrders.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 import { category } from '../services/gig.service.js'
@@ -16,9 +17,11 @@ import { socketService } from '../services/socket.service.js'
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerStage, setHeaderStage] = useState(0)
-  const [showDropdown, setShowDropdown] = useState(false)
-  const [chatState, setChatState] = useState(false)
+  const [showUserDropdown, setShowUserDropdown] = useState(false)
+  const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
+  const [chatState, setChatState] = useState(false)
+ 
 
   const userInfoRef = useRef(null)
   const location = useLocation()
@@ -27,7 +30,9 @@ export function AppHeader() {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const user = useSelector((storeState) => storeState.userModule.user)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
+
   const { showModal, openLogin, openSignup } = useModal()
+
   const categories = category
   const isHomePage = location.pathname === '/'
 
@@ -39,7 +44,7 @@ export function AppHeader() {
   }
 
   const navBarStyles = {
-    borderBottom: headerStage >= 2 ? '2px solid #e4e5e7' : 'none',
+    borderBottom: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
     borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
   }
 
@@ -50,7 +55,8 @@ export function AppHeader() {
 
   const closeDropdown = (e) => {
     if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
-      setShowDropdown(false)
+      setShowUserDropdown(false)
+      setShowOrdersDropdown(false)
     }
   }
 
@@ -108,9 +114,8 @@ export function AppHeader() {
 
   return (
     <header
-      className={`app-header flex column full ${
-        isHomePage ? 'home-page' : ''
-      } ${showModal ? 'show-modal' : ''}`}
+      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
+        } ${showModal ? 'show-modal' : ''}`}
       style={headerStyles}
     >
       <nav className="main-nav">
@@ -153,25 +158,35 @@ export function AppHeader() {
             </li>
             {user ? (
               <>
-                <li>
-                  <Link to="/dashboard" style={{ color: headerStyles.color }}>
-                    Orders
-                  </Link>
+                <li
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setShowOrdersDropdown(!showOrdersDropdown)
+                  }}
+                  ref={userInfoRef}
+                >
+                  <button className='orders' style={{ color: headerStyles.color }}>Orders</button>
+                  {showOrdersDropdown && (
+                    <BuyerOrders
+                      user={user}
+                      onClose={() => setShowOrdersDropdown(false)}
+                    />
+                  )}
                 </li>
 
                 <li
                   className="user-info flex"
                   onClick={(e) => {
                     e.stopPropagation()
-                    setShowDropdown(!showDropdown)
+                    setShowUserDropdown(!showUserDropdown)
                   }}
                   ref={userInfoRef}
                 >
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
-                  {showDropdown && (
+                  {showUserDropdown && (
                     <UserDropdown
                       user={user}
-                      onClose={() => setShowDropdown(false)}
+                      onClose={() => setShowUserDropdown(false)}
                     />
                   )}
                 </li>

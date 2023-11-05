@@ -21,7 +21,6 @@
             img {
                 width: auto;
                 height: auto;
-                padding-right: 60px;
 
                 &:first-child {
                     padding-left: 20px;
@@ -43,7 +42,7 @@
                 font-size: 32px;
                 line-height: 120%;
                 max-width: 75%;
-                margin-bottom: 1em;
+                margin-bottom: 20px;
                 font-family: 'macan-bold';
             }
 
@@ -54,8 +53,9 @@
 
                     h3 {
                         font-size: 18px;
-                        color: $clrSecondary8;
                         line-height: 140%;
+                        font-weight: 700;
+                        color: $clrSecondary8;
                     }
 
                     img {
@@ -95,13 +95,14 @@
         div {
             position: relative;
             text-align: center;
+            padding: 0 10px 55px;
             cursor: pointer;
 
             img {
                 max-width: 48px;
                 height: 48px;
                 display: block;
-                margin: 0 auto;
+                margin: 0 auto 1em;
             }
 
             ::after {

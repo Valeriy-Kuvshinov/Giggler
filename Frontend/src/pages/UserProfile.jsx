@@ -12,7 +12,7 @@ export function UserProfile() {
   const watchedUser = useSelector((storeState) => storeState.userModule.watchedUser)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
-  const params=useParams()
+  const params = useParams()
 
   useEffect(() => {
     loadGigs2()
@@ -28,8 +28,8 @@ export function UserProfile() {
     }
   }
 
-  async function loadUser2(){
-    try{
+  async function loadUser2() {
+    try {
       await loadUser(params.id)
     }
     catch (err) {
@@ -40,7 +40,7 @@ export function UserProfile() {
   if (watchedUser === null || gigs === null) return <Loader />
 
   return (
-    <section className={`profile-page full ${(loggedinUser._id!==watchedUser._id ? 'visitor' : '')}`}>
+    <section className={`profile-page full ${(loggedinUser._id !== watchedUser._id ? 'visitor' : '')}`}>
       <div className="user-profile flex layout-row">
         <UserInfo user={watchedUser} />
         <UserGigs gigs={gigs} user={watchedUser} />

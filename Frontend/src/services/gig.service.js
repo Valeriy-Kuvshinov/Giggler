@@ -31,8 +31,9 @@ async function query(filterBy = {}) {
   }
 }
 
-function getById(gigId) {
-  return httpService.get(BASE_URL + gigId)
+async function getById(gigId) {
+  const gig = await httpService.get(BASE_URL + gigId)
+  return gig
 }
 
 function remove(gigId) {
@@ -44,13 +45,6 @@ function save(gig) {
     ? httpService.put(`${BASE_URL}${gig._id}`, gig)
     : httpService.post(BASE_URL, gig)
   return savedGig
-  //   if (gig._id) {
-  //     console.log('changed gig')
-  //     return httpService.put(BASE_URL, gig)
-  // } else {
-  //     console.log('created gig')
-  //     return httpService.post(BASE_URL, gig)
-  // }
 }
 
 function getDefaultFilter() {
@@ -195,7 +189,7 @@ export const packages = {
     price: 3,
     desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
     time: 'Up to 3 Days',
-    revisions: 'Unlimited',
+    revisions: '16',
     features: [
       '2 concepts included',
       'Logo transparency',
@@ -209,7 +203,7 @@ export const packages = {
   premium: {
     type: 'Pro Package',
     price: 5,
-    desc: `3 logo concepts+ jpg, png+ all source & vector files + 3D Mockup`,
+    desc: `3 logo concepts + jpg file, png + all source & vector files + 3D Mockup`,
     time: 'Up to 3 Days',
     revisions: 'Unlimited',
     features: [

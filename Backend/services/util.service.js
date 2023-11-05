@@ -1,8 +1,10 @@
 import fs from 'fs'
+import { ObjectId } from 'mongodb'
 
 export const utilService = {
     readJsonFile,
-    makeId
+    makeId,
+    idToObjectId
 }
 
 function readJsonFile(path) {
@@ -18,4 +20,18 @@ function makeId(length = 6) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length))
     }
     return txt
+}
+
+function idToObjectId(oldId){
+    let newId=oldId
+    if(typeOf(newId)==='object'){
+        if(newId.length!==0){
+            newId=newId.map((aId)=>aId=new ObjectId(aId))
+        } else {
+            newId._id=ObjectId(newId._id)
+        }
+    } else {
+        newId=ObjectId(newId)
+    }
+    return newId
 }

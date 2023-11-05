@@ -27,9 +27,10 @@ async function login(username, password) {
     return user
 }
 
-async function signup(username, password, fullName, description = '', balance = 0,
-    level = 'level 0', rating = 0, imgUrl, country = 'United States', languages = [],
-    education = [], skills = [], lastDelivery = null, isAdmin = false
+async function signup(username, password, fullName, description = '',
+    level = 'level 0', rating = 0, imgUrl, country = 'United States',
+    languages = [], education = [], skills = [], lastDelivery = null,
+    balance = 0, isAdmin = false
 ) {
     console.log(`Attempting to signup user: ${username}`)
     const saltRounds = 10

@@ -5,32 +5,21 @@ import { useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import { GigPreview } from "./GigPreview.jsx"
+import { UserReviews } from "./UserReviews.jsx"
 
-import { loadReviews } from "../store/review.actions"
-import { GigReviews } from "./GigReviews"
+import { loadReviews } from "../store/review.actions.js"
 
 export function UserGigs({ user, gigs }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const is = "userProfile"
-  // const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  // const filteredReviews = user
-  //   ? reviews.filter((review) => review.sellerId === user._id)
-  //   : []
-  // const filteredReviewIds = user ? reviews
-  //       .filter((review) => review.sellerId === user._id)
-  //       .map((review) => review._id)
-  //   : []
 
-  if (!gigs) return <div>No gigs yet, maybe create one ^_^</div>
-
-  // useEffect(() => {
-  //   loadReviews()
-  // }, [])
-
-  // gigs=[]
-
+  useEffect(() => {
+    loadReviews()
+  }, [])
 
   const userGigs = gigs.filter((gig) => gig.ownerId === user._id)
+
+  if (!userGigs) return <div>No gigs yet, maybe create one ^_^</div>
 
   return (
     <section className="user-gigs flex column">
@@ -47,7 +36,7 @@ export function UserGigs({ user, gigs }) {
             <img src={seller} className="seller-img" />
             <span className="ready">
               {gigs.length !== 0
-                ? "Ready to make more gigs?"
+                ? "Ready to expand your customer base?"
                 : "Ready to earn on your own terms?"}
             </span>
             <span className="become-seller">
@@ -56,7 +45,6 @@ export function UserGigs({ user, gigs }) {
           </Link>
         </div>
       )}
-
       <div className="the-gigs">
         {gigs.length !== 0 &&
           userGigs.map((gig) => (
@@ -65,7 +53,7 @@ export function UserGigs({ user, gigs }) {
             </div>
           ))}
       </div>
-      <GigReviews  userId={user._id}/>
+      <UserReviews gigs={userGigs} />
     </section>
   )
 }
