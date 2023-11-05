@@ -29,6 +29,7 @@
         }
         .rate-level {
             display: flex;
+            padding: 0.5em;
         }
         .counter {
           width: 75%;
@@ -37,7 +38,7 @@
           border-radius: 999px;
         }
         &.no-count .counter{
-            background-color: $clrPrimary2;
+            background-color: $clrSecondary10;
         }
       }
     }
