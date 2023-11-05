@@ -1,77 +1,97 @@
 import React, { useState, useEffect } from 'react'
 import SvgIcon from './SvgIcon'
 import { useSelector } from 'react-redux'
-import { socket } from '../services/sockets.service'
-
-export function UserChat({
-  owner,
-  window,
-  chatState,
-  setChatState,
-  newRoom: chatRoom,
-  buyer,
-}) {
+import { socketService } from '../services/socket.service'
+export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const [room, setRoom] = useState(() => {
-    chatRoom ? chatRoom : ''
-  })
 
-  console.log( `this is ${owner.username} with the buyer: ${buyer}`)
+  // console.log(
+  //   `this is owner.username: ${owner.username} with the buyer: ${buyer}`
+  // )
+
+  // console.log(`this is Messages in userChat ${messages}`)
 
   useEffect(() => {
-    if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
-    else openChatWithBuyer()
+    if (chatState) {
+      if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
+      // else openChatWithBuyer()
+
+      socketService.on('chat_add_msg', addMessage)
+      socketService.on('chat_add_typing', addTypingUser)
+      socketService.on('chat_remove_typing', removeTypingUser)
+    }
 
     return () => {
-      socket.disconnect()
+      socketService.off('chat_add_msg', addMessage)
+      socketService.off('chat_add_typing', addTypingUser)
+      socketService.off('chat_remove_typing', removeTypingUser)
+      // clearTimeout(timeoutId.current)
     }
-  }, [])
+  }, [chatState])
 
   function openChatWithSeller() {
-    const theRoom = `${loggedinUser._id}-${owner._id}`
-    setRoom(theRoom)
-    socket.emit('chat_request', {
+    console.log('im in openChatWithSeller ')
+    socketService.emit('chat_open', {
       sellerId: owner._id,
       buyer: loggedinUser,
-      room: theRoom,
     })
   }
 
-  function openChatWithBuyer() {
-    if (!room) {
-      console.log('Room in userChat is messed up!: ', room)
-      return
-    }
-    socket.emit('chat_request', {
-      sellerId: owner._id,
-      buyerId: loggedinUser._id,
-      room,
-    })
+  // function openChatWithBuyer() {
+
+  //   socket.emit('chat_seller_enter', {
+  //     room,
+  //   })
+  //   // console.log('im in openChatWithbuyer ')
+  //   // socket.emit('chat-set-room', {
+  //   //   sellerId: owner._id,
+  //   //   buyer: loggedinUser,
+  //   //   room,
+  //   // })
+  // }
+
+  // useEffect(() => {
+  //   if (socket) {
+  //     socket.on('new_message', (data) => {
+  //       setMessages((prevMessages) => [...prevMessages, data.message])
+  //     })
+  //   }
+  // }, [socket])
+  function addMessage(msg) {
+    const { newMessage } = msg
+    console.log('new msg', newMessage)
+    setMessages((prevMessage) => [...prevMessage, newMessage])
   }
 
-  useEffect(() => {
-    if (socket) {
-      socket.on('new_message', (data) => {
-        setMessages((prevMessages) => [...prevMessages, data.message])
-      })
-    }
-  }, [socket])
+  function addTypingUser(user) {
+    setTypingUser(user)
+  }
+
+  function removeTypingUser() {
+    setTypingUser(null)
+  }
+  // setMessages((prevMessages) => [...prevMessages, newMessage])
 
   function handleSendMessage() {
-    if (socket && message.trim() !== '') {
-      socket.emit('send_message', { room, message })
-      setMessage('')
-
-      const newMessage = {
-        message: message,
-        time: new Date(),
-        username: loggedinUser.username,
-      }
-      setMessages((prevMessages) => [...prevMessages, newMessage])
+    const newMessage = {
+      message: message,
+      time: new Date(),
+      username: loggedinUser.username,
     }
+    if (loggedinUser && owner._id !== loggedinUser._id) {
+      socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
+      // socketService.emit('chat_stop_typing', {userId: owner._id})
+    } else {
+      socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
+      // socketService.emit('chat_stop_typing', {userId: buyer._id})
+    }
+
+    // clearTimeout(timeoutId.current)
+    // timeoutId.current = null
+    setMessage('')
   }
 
   function onChangeMessage(event) {
@@ -127,7 +147,7 @@ export function UserChat({
           <div className="chat-box-container">
             <section className="user-info-bar">
               <div className="avatar">
-                {owner._id === loggedinUser ? (
+                {buyer ? (
                   <img src={buyer.imgUrl} alt={buyer.username} />
                 ) : (
                   <img src={owner.imgUrl} alt={owner.username} />

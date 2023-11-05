@@ -19,15 +19,13 @@ async function query(filterBy = {}) {
     const itemsPerPage = 12
     const skipCount = (page - 1) * itemsPerPage
 
-    const criteria = _buildCriteria(filterBy)
-
+    const pipeline = _buildCriteria(filterBy)
+    // console.log('Filter Criteria:', criteria)
     const collection = await dbService.getCollection(GIGS_COLLECTION)
-    let gigs = await collection.find(criteria)
-      .toArray()
+    let gigs = await collection.find(pipeline).toArray()
 
     return gigs
-  }
-  catch (err) {
+  } catch (err) {
     loggerService.error('cannot find gigs', err)
     throw err
   }
@@ -42,8 +40,7 @@ async function getById(gigId) {
       throw new Error(`Gig not found with id: ${gigId}`)
     }
     return gig
-  }
-  catch (err) {
+  } catch (err) {
     loggerService.error(`while finding gig ${gigId}`, err)
     throw err
   }
@@ -52,13 +49,14 @@ async function getById(gigId) {
 async function remove(gigId) {
   try {
     const collection = await dbService.getCollection(GIGS_COLLECTION)
-    const { deletedCount } = await collection.deleteOne({ _id: new ObjectId(gigId) })
+    const { deletedCount } = await collection.deleteOne({
+      _id: new ObjectId(gigId),
+    })
     if (deletedCount === 0) {
       throw new Error(`Gig with id ${gigId} was not found`)
     }
     return deletedCount
-  }
-  catch (err) {
+  } catch (err) {
     loggerService.error(`cannot remove gig ${gigId}`, err)
     throw err
   }
@@ -81,18 +79,15 @@ async function save(gig) {
         throw new Error(`Gig with id ${id} was not found`)
       }
       return { _id: id, ...gigToSave }
-    }
-    catch (err) {
+    } catch (err) {
       loggerService.error(`cannot update gig ${gig._id}`, err)
       throw err
     }
-  }
-  else {
+  } else {
     try {
       const response = await collection.insertOne(gig)
       return { ...gig, _id: response.insertedId }
-    }
-    catch (err) {
+    } catch (err) {
       loggerService.error('cannot insert gig', err)
       throw err
     }
@@ -129,7 +124,7 @@ function _buildCriteria(filterBy) {
       $lte: parseInt(filterBy.max)
     }
   }
-  // Uncomment and implement the logic for 'level' if needed
+  // // Uncomment and implement the logic for 'level' if needed
   // if (filterBy.level) {
   //   // You will need to ensure that _findUsersWithLevel is defined and available to use here.
   //   // This function must return an array of user IDs that match the level.
@@ -138,3 +133,4 @@ function _buildCriteria(filterBy) {
   // }
   return criteria
 }
+

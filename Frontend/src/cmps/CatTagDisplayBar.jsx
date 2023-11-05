@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import SvgIcon from './SvgIcon.jsx'
 
 export function CatTagDisplayBar({ isFrom, category, tag }) {
-  console.log('this is isFrom: ', isFrom)
   return (
     <section className="explore-category flex">
       <Link to="/">

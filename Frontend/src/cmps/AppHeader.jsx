@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { socket } from '../services/sockets.service.js'
 
 import { useModal } from '../customHooks/ModalContext.jsx'
 import { SearchBar } from './SearchBar.jsx'
@@ -12,15 +11,14 @@ import SvgIcon from './SvgIcon.jsx'
 import { category } from '../services/gig.service.js'
 import { setFilter } from '../store/gig.actions.js'
 import { UserChat } from './UserChat.jsx'
+import { socketService } from '../services/socket.service.js'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
   const [headerStage, setHeaderStage] = useState(0)
   const [showDropdown, setShowDropdown] = useState(false)
-  const [chatRoom, setChatRoom] = useState('')
   const [chatState, setChatState] = useState(false)
-console.log('chatRoom in Appheader: ', chatRoom)
-  let buyer
+  const [theBuyer, setTheBuyer] = useState('')
 
   const userInfoRef = useRef(null)
   const location = useLocation()
@@ -57,13 +55,19 @@ console.log('chatRoom in Appheader: ', chatRoom)
   }
 
   useEffect(() => {
-    socket.on('chat_request', (data) => {
-      if (data.sellerId === loggedinUser._id) {
-        setChatRoom(data.room)
-        buyer = data.buyer
-      }
-    })
-  }, [socket])
+    socketService.on('chat_seller_prompt', promptSellerChat)
+
+    return () => {
+      socketService.off('chat_seller_prompt', promptSellerChat)
+    }
+  }, [])
+
+  function promptSellerChat(data) {
+    const { buyer } = data
+    console.log('data: ', data)
+    console.log('buyer: ', buyer)
+    setTheBuyer(buyer)
+  }
 
   useEffect(() => {
     if (isHomePage) {
@@ -137,16 +141,16 @@ console.log('chatRoom in Appheader: ', chatRoom)
           />
 
           <ul className="nav-links flex">
+            {theBuyer && (
+              <li onClick={() => setChatState(true)}>
+                <SvgIcon iconName={'chat'} />
+              </li>
+            )}
             <li>
               <Link to="/explore" style={{ color: headerStyles.color }}>
                 Explore
               </Link>
             </li>
-            {/* {chatRoom && ( */}
-              <li onClick={() => setChatState(true)}>
-                <SvgIcon iconName={'chat'} />
-              </li>
-             {/* )} */}
             {user ? (
               <>
                 <li>
@@ -218,8 +222,7 @@ console.log('chatRoom in Appheader: ', chatRoom)
           window={null}
           chatState={chatState}
           setChatState={setChatState}
-          chatRoom={chatRoom}
-          buyer={buyer}
+          buyer={theBuyer}
         />
       )}
     </header>

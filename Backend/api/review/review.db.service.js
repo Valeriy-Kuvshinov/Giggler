@@ -19,7 +19,6 @@ async function query(filterBy = {}) {
         const collection = await dbService.getCollection(REVIEWS_COLLECTION)
         const reviews = await collection.find(criteria).toArray()
 
-        console.log('review : ', reviews)
         return reviews
     }
     catch (err) {
@@ -32,7 +31,6 @@ async function getById(reviewId) {
     try {
         const collection = await dbService.getCollection(REVIEWS_COLLECTION)
         const review = collection.findOne({ _id: new ObjectId(reviewId) })
-        console.log('I AM HERE IN GET BY ID DB backend: ', review)
         return review
     } catch (err) {
         loggerService.error(`while finding review ${reviewId}`, err)

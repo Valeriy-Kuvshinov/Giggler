@@ -36,6 +36,7 @@ import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { orderRoutes } from './api/order/order.routes.js'
 import { reviewRoutes } from './api/review/review.routes.js'
+import { setupSocketAPI } from './services/socket.service.js'
 
 app.use('/api/gig', gigRoutes)
 app.use('/api/user', userRoutes)
@@ -45,10 +46,10 @@ app.use('/api/review', reviewRoutes)
 
 const port = process.env.PORT || 3030
 
+
 const server = http.createServer(app)
+setupSocketAPI(server)
 
-io.attach(server)
-
-app.listen(port, () => {
+server.listen(port, () => {
   loggerService.info(`Server listening on port http://127.0.0.1:${port}/`)
 })

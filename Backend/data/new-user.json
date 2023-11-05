@@ -1,0 +1,132 @@
+[
+  {
+    "userId": "nu001",
+    "username": "logo_king",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Shlomo Shleime",
+    "description": "Design is the secret to great business. I'm working on fiverr from 2015. We provide Professional Logo Design, Business cards, Email Signature, Website Development, Website Design.
+    We provide 100% happiness Otherwise 100% MONEY REFUND.
+    Thanks",
+    "balance": 0,
+    "level": "level 2",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United Kingdom",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1431964643,
+    "isAdmin": false,
+    "lastDelivery": 1667955600
+  },
+  {
+    "userId": "nr101",
+    "username": "appsgalore",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Michelle Galore",
+    "description": "User Just for Review",
+    "balance": 0,
+    "level": "level 1",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ]
+  },
+  {
+    "userId": "nr102",
+    "username": "appsgalore",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Michelle Galore",
+    "description": "User Just for Review",
+    "balance": 0,
+    "level": "level 1",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ]
+  },
+  {
+    "userId": "nr103",
+    "username": "appsgalore",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Michelle Galore",
+    "description": "User Just for Review",
+    "balance": 0,
+    "level": "level 1",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ]
+  },
+  {
+    "userId": "nr104",
+    "username": "appsgalore",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Michelle Galore",
+    "description": "User Just for Review",
+    "balance": 0,
+    "level": "level 1",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ]
+  },
+  {
+    "userId": "nr105",
+    "username": "appsgalore",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Michelle Galore",
+    "description": "User Just for Review",
+    "balance": 0,
+    "level": "level 1",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/1ac47e17fe087ed4c26ecd9cc76fa610-1540164169333/7b9bde04-bdce-4954-a4c6-5e20fd4a4652.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ]
+  },
+
+]
+
+
