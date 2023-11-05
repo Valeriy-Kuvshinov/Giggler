@@ -58,12 +58,12 @@ export function AboutSeller({ owner }) {
         <h3>About The Seller</h3>
         <UserPreview is={'gig-details-2'} owner={owner} />
 
-        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>Contact Me</button>
+        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>Contact me</button>
       </div>
       <div className="stats-desc">
         <ul className="user-stats grid">
           <li>
-            From<strong>United States</strong>
+            From<strong>{owner.country}</strong>
           </li>
           <li>
             Member since
@@ -84,7 +84,7 @@ export function AboutSeller({ owner }) {
           <li className="language">
             Languages
             <span className="lang-type">
-              <strong>English</strong>
+              {owner.languages.map((lang=><span>{lang.language}, </span>))}
             </span>
           </li>
         </ul>

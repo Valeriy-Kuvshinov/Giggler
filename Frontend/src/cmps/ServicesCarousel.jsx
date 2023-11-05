@@ -94,7 +94,7 @@ export function ServicesCarousel({ onHandleFilter }) {
               <h4 className="service-text">
                 <span>{services[index % services.length].title}</span>
                 <br />
-                {services[index % services.length].subtitle}
+                <span className='subtitle'>{services[index % services.length].subtitle}</span>
               </h4>
             </div>
           ))}
