@@ -10,11 +10,23 @@ import { gigService } from '../services/gig.service.js'
 export function GigReviews({ gig , userId}) {
     const [fullReviews, setFullReviews] = useState([])
 
+    // console.log(gig)
+
     useEffect(() => {
         fetchFullReviews()
     }, [gig])
     
     async function fetchFullReviews() {
+        // let gigsOfUser = await gigService.query()
+        // gigsOfUser=gigsOfUser.filter(gig=>gig.ownerId===userId)
+        // console.log(gigsOfUser)
+        // let totalReviews=[]
+        // gigsOfUser.map((gig)=>gig.reviews.map(review=>{
+        //     const theReview=reviewService.getById(review)
+        //     totalReviews.push(theReview)
+        // }))
+        // console.log(totalReviews)
+        
 
         if (!gig || gig.reviews.length === 0) return
 

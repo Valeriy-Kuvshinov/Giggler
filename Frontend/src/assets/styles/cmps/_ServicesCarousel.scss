@@ -29,7 +29,7 @@
           height: 345px;
           cursor: pointer;
           flex: 0 0 auto;
-          padding: 0 18px;
+          padding: 0 9px;
 
           img {
             border-radius: 0.25em;
@@ -49,6 +49,10 @@
             span {
               font-size: 14px;
               font-weight: 100;
+            }
+            .subtitle{
+              font-size: 24px;
+              font-weight: 700;
             }
           }
 
