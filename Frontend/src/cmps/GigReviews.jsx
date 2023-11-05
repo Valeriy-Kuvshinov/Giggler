@@ -5,29 +5,15 @@ import { ReviewBreakdown } from './ReviewBreakdown.jsx'
 
 import { userService } from '../services/user.service.js'
 import { reviewService } from '../services/review.service.js'
-import { gigService } from '../services/gig.service.js'
 
-export function GigReviews({ gig , userId}) {
+export function GigReviews({ gig }) {
     const [fullReviews, setFullReviews] = useState([])
-
-    // console.log(gig)
 
     useEffect(() => {
         fetchFullReviews()
     }, [gig])
-    
-    async function fetchFullReviews() {
-        // let gigsOfUser = await gigService.query()
-        // gigsOfUser=gigsOfUser.filter(gig=>gig.ownerId===userId)
-        // console.log(gigsOfUser)
-        // let totalReviews=[]
-        // gigsOfUser.map((gig)=>gig.reviews.map(review=>{
-        //     const theReview=reviewService.getById(review)
-        //     totalReviews.push(theReview)
-        // }))
-        // console.log(totalReviews)
-        
 
+    async function fetchFullReviews() {
         if (!gig || gig.reviews.length === 0) return
 
         const fetchedReviews = await Promise.all(

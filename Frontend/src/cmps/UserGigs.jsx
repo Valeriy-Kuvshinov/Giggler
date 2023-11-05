@@ -17,20 +17,17 @@ export function UserGigs({ user, gigs }) {
   //   ? reviews.filter((review) => review.sellerId === user._id)
   //   : []
   // const filteredReviewIds = user ? reviews
-  //       .filter((review) => review.sellerId === user._id)
-  //       .map((review) => review._id)
+  //   .filter((review) => review.sellerId === user._id)
+  //   .map((review) => review._id)
   //   : []
 
-  if (!gigs) return <div>No gigs yet, maybe create one ^_^</div>
-
-  // useEffect(() => {
-  //   loadReviews()
-  // }, [])
-
-  // gigs=[]
-
+  useEffect(() => {
+    loadReviews()
+  }, [])
 
   const userGigs = gigs.filter((gig) => gig.ownerId === user._id)
+
+  if (!userGigs) return <div>No gigs yet, maybe create one ^_^</div>
 
   return (
     <section className="user-gigs flex column">
@@ -47,7 +44,7 @@ export function UserGigs({ user, gigs }) {
             <img src={seller} className="seller-img" />
             <span className="ready">
               {gigs.length !== 0
-                ? "Ready to make more gigs?"
+                ? "Ready to expand your customer base?"
                 : "Ready to earn on your own terms?"}
             </span>
             <span className="become-seller">
@@ -65,7 +62,14 @@ export function UserGigs({ user, gigs }) {
             </div>
           ))}
       </div>
-      <GigReviews  userId={user._id}/>
+      <div className="user-reviews">
+        {gigs.length !== 0 &&
+          userGigs.map((gig) => (
+            <div key={gig._id}>
+              <GigReviews gig={gig} />
+            </div>
+          ))}
+      </div>
     </section>
   )
 }
