@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import SvgIcon from '../cmps/SvgIcon'
 import { userService } from '../services/user.service.js'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 export function UserPreview({ is, owner, children }) {
   const orders = useSelector((storeState) => storeState.orderModule.orders)
@@ -47,8 +48,8 @@ export function UserPreview({ is, owner, children }) {
             {(is === 'gig-details' || is === 'gig-details-2') && (
               <span className="fullname b">{user.fullName}</span>
             )}
-            <span className={`username ${is === 'explore' ? 'b' : ''}`}>{`${is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
-              }${user.username}`}</span>
+          <Link to={`/user/${user._id}`} className={`username ${is === 'explore' ? 'b' : ''}`}>{`${is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
+              }${user.username}`}</Link>
               {is==='userProfile' && <span className={`user-level ${user.level==='level 3'?'top':''}`}>{user.level}</span>}
           </span>
           {is === 'gig-details-2' && (
