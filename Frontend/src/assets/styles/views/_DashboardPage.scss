@@ -119,6 +119,11 @@
                 &:nth-child(4) {
                     border: none;
                     padding: 1.25em 1em;
+
+                    a {
+                        display: flex;
+                        flex-direction: column;
+                    }
                 }
 
                 &:nth-child(7) {
