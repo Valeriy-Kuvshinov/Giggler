@@ -110,7 +110,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                                 <button
                                     key={idx}
                                     onClick={action.action}
-                                    className={`dropdown-action ${action.label.toLowerCase()}`}
+                                    className={`dropdown-action ${action.label}`}
                                 >
                                     {action.label}
                                 </button>

@@ -181,17 +181,17 @@
                                 text-transform: uppercase;
                                 font-size: 11.5px;
 
-                                &.deny {
+                                &.Deny {
                                     background: #FF5E5E;
                                     color: $clrSecondary6;
                                 }
 
-                                &.accept {
+                                &.Accept {
                                     background: #19a463;
                                     color: $clrPrimary1;
                                 }
 
-                                &.complete {
+                                &.Complete {
                                     background: #29A2C6;
                                     color: $clrPrimary1;
                                 }
