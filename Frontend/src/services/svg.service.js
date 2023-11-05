@@ -227,6 +227,8 @@ const ICONS = {
     </defs>
   </svg>`,
 
+  chat: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>`,
+  
   smiley: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 12a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm9 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#74767E"/><path d="M9 15a3 3 0 006 0" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
 
   loadingFiles: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 4V16.5C18.5 20.1 15.6 23 12 23C8.4 23 5.5 20.1 5.5 16.5V5.5C5.5 3 7.5 1 10 1C12.5 1 14.5 3 14.5 5.5V15.5C14.5 16.9 13.4 18 12 18C10.6 18 9.5 16.9 9.5 15.5V7" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`,

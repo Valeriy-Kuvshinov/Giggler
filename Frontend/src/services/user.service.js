@@ -31,14 +31,13 @@ function remove(userId) {
   return httpService.delete(BASE_URL, userId)
 }
 
-async function update(userId) {
-  const user = await httpService.put(BASE_URL, userId)
-  if (getLoggedinUser()._id === userId) setLoggedinUser(user)
-  return user
+async function update(user) {
+  const savedUser = await httpService.put(`${BASE_URL}${user._id}`, user)
+  if (getLoggedinUser()._id === user._id) setLoggedinUser(user)
+  return savedUser
 }
 
 async function login(userCred) {
-  console.log('Attempting login with credentials:', userCred)
   const user = await httpService.post('auth/login', userCred)
   console.log('Logged in user:', user)
   if (user) {

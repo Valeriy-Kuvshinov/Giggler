@@ -4,6 +4,8 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 // Sup Giggler
 import { loggerService } from './services/logger.service.js'
+import { io } from './services/socket.js'
+import http from 'http'
 
 const app = express()
 
@@ -12,16 +14,21 @@ app.use(express.json()) // for req.body
 app.use(express.static('public'))
 
 if (process.env.NODE_ENV === 'production') {
-    // Express serve static files on production environment
-    app.use(express.static(path.resolve(__dirname, 'public')))
+  // Express serve static files on production environment
+  app.use(express.static(path.resolve(__dirname, 'public')))
 } else {
-    // Configuring CORS
-    const corsOptions = {
-        // Make sure origin contains the url your frontend is running on
-        origin: ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:3030', 'http://localhost:3030'],
-        credentials: true
-    }
-    app.use(cors(corsOptions))
+  // Configuring CORS
+  const corsOptions = {
+    // Make sure origin contains the url your frontend is running on
+    origin: [
+      'http://127.0.0.1:5173',
+      'http://localhost:5173',
+      'http://127.0.0.1:3030',
+      'http://localhost:3030',
+    ],
+    credentials: true,
+  }
+  app.use(cors(corsOptions))
 }
 
 import { gigRoutes } from './api/gig/gig.routes.js'
@@ -38,6 +45,10 @@ app.use('/api/review', reviewRoutes)
 
 const port = process.env.PORT || 3030
 
+const server = http.createServer(app)
+
+io.attach(server)
+
 app.listen(port, () => {
-    loggerService.info(`Server listening on port http://127.0.0.1:${port}/`)
+  loggerService.info(`Server listening on port http://127.0.0.1:${port}/`)
 })

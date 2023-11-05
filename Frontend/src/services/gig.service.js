@@ -44,13 +44,6 @@ function save(gig) {
     ? httpService.put(`${BASE_URL}${gig._id}`, gig)
     : httpService.post(BASE_URL, gig)
   return savedGig
-  //   if (gig._id) {
-  //     console.log('changed gig')
-  //     return httpService.put(BASE_URL, gig)
-  // } else {
-  //     console.log('created gig')
-  //     return httpService.post(BASE_URL, gig)
-  // }
 }
 
 function getDefaultFilter() {

@@ -1,6 +1,6 @@
 import { userService } from "../services/user.service.js"
 import { store } from '../store/store.js'
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, SET_IS_LOADING } from "./user.reducer.js"
+import { REMOVE_USER, SET_USER, SET_USERS, UPDATE_USER, SET_WATCHED_USER, SET_IS_LOADING } from "./user.reducer.js"
 
 export async function loadUsers() {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
@@ -32,10 +32,10 @@ export async function loadWatchedUser(userId) {
     }
 }
 
-export const updateUser = (updatedUser) => async (dispatch) => {
+export async function updateUser(updatedUser) {
     try {
         const user = await userService.update(updatedUser)
-        dispatch({ type: SET_USER, user })
+        store.dispatch({ type: UPDATE_USER, user })
     } catch (err) {
         console.error('UserActions: err in updateUser', err)
     }

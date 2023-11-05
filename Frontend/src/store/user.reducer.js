@@ -1,6 +1,7 @@
 import { userService } from '../services/user.service.js'
 
 export const SET_USER = 'SET_USER'
+export const UPDATE_USER = 'UPDATE_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
@@ -15,6 +16,7 @@ const initialState = {
 
 export function userReducer(state = initialState, action) {
     let newState = state
+    let users
     switch (action.type) {
         case SET_USERS:
             newState = { ...state, users: action.users }
@@ -22,6 +24,11 @@ export function userReducer(state = initialState, action) {
         case SET_USER:
             newState = { ...state, user: action.user }
             break
+        case UPDATE_USER:
+            users = state.users.map((user) =>
+                user._id === action.user._id ? action.user : user
+            )
+            return { ...state, users }
         case SET_WATCHED_USER:
             newState = { ...state, watchedUser: action.user }
             break
@@ -32,7 +39,7 @@ export function userReducer(state = initialState, action) {
             break
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }
-            
+
         default:
             return state
     }

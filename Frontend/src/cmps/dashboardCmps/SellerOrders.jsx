@@ -10,7 +10,7 @@ export function SellerOrders({ user, displayedOrders }) {
 
     function updateLastDeliveryForUser() {
         const updatedUser = { ...user, lastDelivery: Date.now() }
-        dispatch(updateUser(updatedUser))
+        updateUser(updatedUser)
     }
 
     async function acceptOrder(order) {

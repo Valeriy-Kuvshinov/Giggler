@@ -1,43 +1,78 @@
 import React, { useState, useEffect } from 'react'
-import io from 'socket.io-client'
-import SvgIcon from './SvgIcon'
+import { useSelector } from 'react-redux'
+import { useModal } from '../customHooks/ModalContext.jsx'
 
-export function UserChat({ owner, window, chatState, setChatState }) {
+import SvgIcon from './SvgIcon.jsx'
+import { socket } from '../services/sockets.service.js'
+
+export function UserChat({
+  owner,
+  window,
+  chatState,
+  setChatState,
+  newRoom: chatRoom,
+  buyer,
+}) {
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const { openLogin } = useModal()
+
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
-  const [socket, setSocket] = useState(null)
+  const [room, setRoom] = useState(() => {
+    chatRoom ? chatRoom : ''
+  })
+
+  console.log(`this is ${owner.username} with the buyer: ${buyer}`)
 
   useEffect(() => {
-    const socket = io('http://localhost:5173/') // Replace with your server URL
-    setSocket(socket)
-
-    socket.on('message', (message) => {
-      setMessages((prevMessages) => [...prevMessages, message])
-    })
+    if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
+    else openChatWithBuyer()
 
     return () => {
       socket.disconnect()
     }
   }, [])
 
+  function openChatWithSeller() {
+    const theRoom = `${loggedinUser._id}-${owner._id}`
+    setRoom(theRoom)
+    socket.emit('chat_request', {
+      sellerId: owner._id,
+      buyer: loggedinUser,
+      room: theRoom,
+    })
+  }
+
+  function openChatWithBuyer() {
+    if (!room) {
+      console.log('Room in userChat is messed up!: ', room)
+      return
+    }
+    socket.emit('chat_request', {
+      sellerId: owner._id,
+      buyerId: loggedinUser._id,
+      room,
+    })
+  }
+
   useEffect(() => {
     if (socket) {
-      socket.on('message', (message) => {
-        setMessages((prevMessages) => [...prevMessages, message])
+      socket.on('new_message', (data) => {
+        setMessages((prevMessages) => [...prevMessages, data.message])
       })
     }
   }, [socket])
 
   function handleSendMessage() {
     if (socket && message.trim() !== '') {
-      socket.emit('message', { username: owner.username, text: message })
+      socket.emit('send_message', { room, message })
       setMessage('')
 
       const newMessage = {
         message: message,
         time: new Date(),
-        username: owner.username,
+        username: loggedinUser.username,
       }
       setMessages((prevMessages) => [...prevMessages, newMessage])
     }
@@ -48,57 +83,70 @@ export function UserChat({ owner, window, chatState, setChatState }) {
     setCharacterCount(messageText.length)
     setMessage(messageText)
   }
-  console.log('window: ', window)
-  console.log('owner: ', owner)
-  console.log('owner.imgUrl:', owner.imgUrl)
+
   return (
     <>
-      <section onClick={() => setChatState(true)} className="mini-message-bar">
-        <div className="mini-message-bar-container">
-          <div
-            style={{
-              height: window ? '32px' : '48px',
-              width: window ? '32px' : '48px',
-            }}
-            className="avatar"
-          >
-            <img src={owner.imgUrl} alt={owner.username} />
-            <span
+      {!chatState && (
+        <section
+          onClick={() => {
+            if (loggedinUser) setChatState(true)
+            else openLogin()
+          }}
+          className="mini-message-bar"
+        >
+          <div className="mini-message-bar-container">
+            <div
               style={{
-                height: window ? '.65em' : '1em',
-                width: window ? '.65em' : '1em',
+                height: window ? '32px' : '48px',
+                width: window ? '32px' : '48px',
               }}
-              className="status-dot"
-            ></span>
-          </div>
-          <div className="owner-info">
-            <span className="message">{`Message${
-              window ? '' : ` ${owner.fullName}`
-            }`}</span>
-            {!window && (
-              <span className="response-time">
-                <span>Online</span>
-                <span className="dot"></span>
-                <span>
-                  Avg. response time: <span className="b">1 Hour</span>
+              className="avatar"
+            >
+              <img src={owner.imgUrl} alt={owner.username} />
+              <span
+                style={{
+                  height: window ? '.65em' : '1em',
+                  width: window ? '.65em' : '1em',
+                }}
+                className="status-dot"
+              ></span>
+            </div>
+            <div className="owner-info">
+              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
+                }`}</span>
+              {!window && (
+                <span className="response-time">
+                  <span>Online</span>
+                  <span className="dot"></span>
+                  <span>
+                    Avg. response time: <span className="b">1 Hour</span>
+                  </span>
                 </span>
-              </span>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {chatState && (
         <aside className="chat-box">
           <div className="chat-box-container">
             <section className="user-info-bar">
               <div className="avatar">
-                <img src={owner.imgUrl} alt={owner.username} />
+                {owner._id === loggedinUser ? (
+                  <img src={buyer.imgUrl} alt={buyer.username} />
+                ) : (
+                  <img src={owner.imgUrl} alt={owner.username} />
+                )}
                 <span className="status-dot"></span>
               </div>
               <div className="owner-info">
                 <span>
-                  <span className="message">{`Message ${owner.fullName}`}</span>
+                  {owner._id === loggedinUser ? (
+                    <span className="message">{`Message ${buyer.fullName}`}</span>
+                  ) : (
+                    <span className="message">{`Message ${owner.fullName}`}</span>
+                  )}
                   <span className="response-time">
                     <span>Online</span>
                     <span className="dot"></span>
@@ -115,6 +163,26 @@ export function UserChat({ owner, window, chatState, setChatState }) {
 
             <section className="chat-container">
               <div className="message-form" data-testid="send-message-form">
+                {messages.map((message, index) => (
+                  <div
+                    key={index}
+                    className={
+                      message.username === owner.username
+                        ? 'message outgoing'
+                        : 'message incoming'
+                    }
+                  >
+                    <div className="message-text">{message.message}</div>
+                    <div className="message-info">
+                      <span className="message-username">
+                        {message.username}
+                      </span>
+                      <span className="message-timestamp">
+                        {new Date(message.time).toLocaleTimeString()}
+                      </span>
+                    </div>
+                  </div>
+                ))}
                 <div className="input-container">
                   <textarea
                     maxLength="2500"
@@ -125,46 +193,51 @@ export function UserChat({ owner, window, chatState, setChatState }) {
                   ></textarea>
                 </div>
 
-                <div className="message-footer-wrapper" data-testid="message-wrapper">
-                  <section
-                    className="quick-question-container"
-                    data-testid="quick-questions-list"
-                  >
-                    <button
-                      className="quick-question-btn"
-                      onClick={() =>
-                        setMessage(
-                          `Hey ${owner.username}, can you help me with...`
-                        )
-                      }
+                <div
+                  className="message-footer-wrapper"
+                  data-testid="message-wrapper"
+                >
+                  {!message && !buyer && (
+                    <section
+                      className="quick-question-container"
+                      data-testid="quick-questions-list"
                     >
-                      👋 Hey {owner.username}, can you help me with...
-                    </button>
-                    <button
-                      className="quick-question-btn"
-                      onClick={() =>
-                        setMessage(
-                          'Would it be possible to get a custom offer for...'
-                        )
-                      }
-                    >
-                      Would it be possible to get a custom offer for...
-                    </button>
-                    <button
-                      className="quick-question-btn"
-                      onClick={() =>
-                        setMessage(
-                          'Do you think you can deliver an order by...'
-                        )
-                      }
-                    >
-                      Do you think you can deliver an order by...
-                    </button>
-                  </section>
-                  {/* </div> */}
+                      <button
+                        className="quick-question-btn"
+                        onClick={() =>
+                          setMessage(
+                            `Hey ${owner.username}, can you help me with...`
+                          )
+                        }
+                      >
+                        👋 Hey {owner.username}, can you help me with...
+                      </button>
+                      <button
+                        className="quick-question-btn"
+                        onClick={() =>
+                          setMessage(
+                            'Would it be possible to get a custom offer for...'
+                          )
+                        }
+                      >
+                        Would it be possible to get a custom offer for...
+                      </button>
+                      <button
+                        className="quick-question-btn"
+                        onClick={() =>
+                          setMessage(
+                            'Do you think you can deliver an order by...'
+                          )
+                        }
+                      >
+                        Do you think you can deliver an order by...
+                      </button>
+                    </section>
+                  )}
+
                   <footer className="message-footer">
                     <section className="character-count">
-                      <span classNamwe="count">{characterCount}/2500</span>
+                      <span className="count">{characterCount}/2500</span>
                     </section>
                   </footer>
                 </div>
