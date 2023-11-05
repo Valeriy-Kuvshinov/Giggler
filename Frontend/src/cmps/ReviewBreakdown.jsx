@@ -45,7 +45,7 @@ export function ReviewBreakdown({ reviews }) {
       return <div className={`stat-line ${(!count) ? 'no-count' : ''}`} key={utilService.makeId()}>
         <span className="rate-level">{i + 1} Stars </span>
         <div className="counter"><span className="counter-meter" style={{ width: `${(100 * count / reviews.length)}%` }}></span></div>
-        (<span className="rate-count">{count}</span>)
+        <span className="rate-count">({count})</span>
       </div>
     })
     return stats
