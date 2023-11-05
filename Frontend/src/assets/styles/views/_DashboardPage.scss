@@ -86,15 +86,6 @@
             td {
                 color: $clrPrimary4;
 
-                button {
-                    margin: auto;
-                    background: none;
-
-                    i {
-                        width: 100%;
-                    }
-                }
-
                 &:nth-child(1) {
                     padding: 0 0 0 0.75em;
 
@@ -131,76 +122,97 @@
                 }
 
                 &:nth-child(8) {
-                    span {
-                        padding: 0.95em 0.8em;
-                        border-radius: 5px;
+                    .order-state-dropdown {
+                        position: relative;
                         display: block;
-                        font-size: 12px;
-                        text-transform: uppercase;
-                        font-family: 'macan-bold';
-                        text-align: center;
 
-                        &.pending {
-                            background: #FFC107;
-                            color: $clrSecondary6;
+                        .order-state-label {
+                            cursor: pointer;
+                            padding: 0.95em 0.8em;
+                            border-radius: 5px;
+                            display: block;
+                            font-size: 12px;
+                            text-transform: uppercase;
+                            font-family: 'macan-bold';
+                            text-align: center;
+
+                            &.pending {
+                                background: #FFC107;
+                                color: $clrSecondary6;
+                            }
+
+                            &.denied {
+                                background: #FF5E5E;
+                                color: $clrSecondary6;
+                                cursor: default;
+                            }
+
+                            &.accepted {
+                                background: #19a463;
+                                color: $clrPrimary1;
+                            }
+
+                            &.completed {
+                                background: #29A2C6;
+                                color: $clrPrimary1;
+                                cursor: default;
+                            }
+
+                            &:hover {
+                                opacity: 0.85;
+                            }
                         }
 
-                        &.denied {
-                            background: #FF5E5E;
-                            color: $clrSecondary6;
+                        .dropdown-menu {
+                            position: absolute;
+                            z-index: 1;
+                            top: 100%;
+                            left: 0;
+                            background: $clrPrimary1;
+                            border: 1px solid $clrSecondary4;
+                            border-radius: 5px;
+                            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                            width: 100%;
+
+                            button {
+                                padding: 10px 15px;
+                                font-family: 'macan-bold';
+                                transition: background-color 0.2s;
+                                text-transform: uppercase;
+                                font-size: 11.5px;
+
+                                &.deny {
+                                    background: #FF5E5E;
+                                    color: $clrSecondary6;
+                                }
+
+                                &.accept {
+                                    background: #19a463;
+                                    color: $clrPrimary1;
+                                }
+
+                                &.complete {
+                                    background: #29A2C6;
+                                    color: $clrPrimary1;
+                                }
+
+                                &:hover {
+                                    opacity: 0.5;
+                                }
+
+                                &:first-child {
+                                    border-radius: 5px 5px 0 0;
+                                }
+
+                                &:last-child {
+                                    border-radius: 0 0 5px 5px;
+                                }
+
+                                &:not(:last-child) {
+                                    border-bottom: 1px solid $clrSecondary4;
+                                }
+                            }
                         }
-
-                        &.accepted {
-                            background: #19a463;
-                            color: $clrPrimary1;
-                        }
-
-                        &.completed {
-                            background: #29A2C6;
-                            color: $clrPrimary1;
-                        }
-
-                        &:hover {
-                            opacity: 0.85;
-                        }
-                    }
-
-                }
-            }
-
-            .dropdown-menu {
-                position: absolute;
-                z-index: 1;
-                min-width: 50px;
-                background: $clrPrimary1;
-                border: 1px solid $clrPrimary2;
-                border-radius: 5px;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                margin: -37.5px 30px 0px -60px;
-
-                button {
-                    background: none;
-                    width: 100%;
-                    text-align: left;
-                    padding: 10px 15px;
-                    font-size: 16px;
-                    font-family: 'macan-bold';
-                    transition: background-color 0.2s;
-
-                    &:hover {
-                        background-color: $clrSecondary3;
-
-                        &:first-of-type {
-                            border-radius: 5px 5px 0px 0px;
-                        }
-
-                        &:last-of-type {
-                            border-radius: 0px 0px 5px 5px;
-                        }
-                    }
-
-                    &:not(:last-child) {
-                        border-bottom: 1px solid $clrPrimary2;
                     }
                 }
             }

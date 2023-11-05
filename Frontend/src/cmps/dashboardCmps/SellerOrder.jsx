@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
-import SvgIcon from '../SvgIcon.jsx'
 
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { gigService } from '../../services/gig.service.js'
@@ -13,7 +12,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     const [userData, setUserData] = useState(null)
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
-    const dropdownButtonRef = useRef(null)
     const dropdownMenuRef = useRef(null)
 
     useEffect(() => {
@@ -40,7 +38,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
     useEffect(() => {
         function handleDropdownClick(event) {
             if (
-                dropdownButtonRef.current && !dropdownButtonRef.current.contains(event.target) &&
                 dropdownMenuRef.current && !dropdownMenuRef.current.contains(event.target)
             ) {
                 setDropdownVisible(false)
@@ -99,35 +96,38 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
                     : ''}
             </td>
             <td>{`${order.price}$`}</td>
-            <td><span className={order.orderState}>{order.orderState}</span></td>
-
             <td>
-                {getAvailableActions(order).length > 0 && (
-                    <>
-                        <button ref={dropdownButtonRef} onClick={() => setDropdownVisible(!isDropdownVisible)}>
-                            <SvgIcon iconName={'orderDropdownIcon'} />
-                        </button>
-                        {isDropdownVisible && (
-                            <div ref={dropdownMenuRef} className="dropdown-menu">
-                                {getAvailableActions(order).map((action, idx) => (
-                                    <button key={idx} onClick={action.action}>
-                                        {action.label}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
-                    </>
-                )}
-                {isDenied && (
-                    <DenialOrderModal
-                        order={order}
-                        denyOrder={(order, reason) => {
-                            if (order) denyOrder(order, reason)
-                            setDenial(false)
-                        }}
-                    />
-                )}
+                <div className="order-state-dropdown">
+                    <span
+                        className={`order-state-label ${order.orderState}`}
+                        onClick={() => setDropdownVisible(!isDropdownVisible)}
+                    >
+                        {order.orderState}
+                    </span>
+                    {isDropdownVisible && (
+                        <div ref={dropdownMenuRef} className="dropdown-menu flex column">
+                            {getAvailableActions(order).map((action, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={action.action}
+                                    className={`dropdown-action ${action.label.toLowerCase()}`}
+                                >
+                                    {action.label}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </td>
+            {isDenied && (
+                <DenialOrderModal
+                    order={order}
+                    denyOrder={(order, reason) => {
+                        if (order) denyOrder(order, reason)
+                        setDenial(false)
+                    }}
+                />
+            )}
         </tr>
     )
 }
