@@ -3,6 +3,7 @@ const { ObjectId } = mongodb
 
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
+import { utilService } from '../../services/util.service.js'
 
 const GIGS_COLLECTION = 'gig'
 
@@ -79,7 +80,9 @@ async function save(gig) {
       let reviews=[...gigToSave.reviews]
       reviews=reviews.map(reviewId=>reviewId=new ObjectId(reviewId))
       gigToSave.reviews=[...reviews]
-      
+
+      // console.log(utilService.idToObjectId())
+
       const id = gig._id
       delete gigToSave._id
 
