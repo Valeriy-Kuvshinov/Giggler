@@ -1,5 +1,6 @@
 .review-breakdown {
   color: $clrSecondary8;
+  margin-block-start: 1em;
   .review-count {
     display: flex;
     gap: 0.75em;
@@ -9,6 +10,7 @@
       align-items: center;
       svg {
         margin-inline-end: 0.25em;
+        fill: $clrSecondary8;
       }
     }
   }
@@ -23,22 +25,43 @@
       .stat-line {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         height: 2em;
+
         &.no-count {
           color: $clrSecondary10;
         }
+
         .rate-level {
-            display: flex;
-            padding: 0.5em;
-        }
-        .counter {
-          width: 75%;
-          height: 0.5em;
-          background-color: $clrPrimary2;
-          border-radius: 999px;
-        }
-        &.no-count .counter{
+          display: flex;
+          padding: 0.5em;
+          font-weight: bold;
+          &:hover {
             background-color: $clrSecondary10;
+          }
+        }
+
+        .counter {
+          width: 60%;
+          height: 0.5em;
+          background-color: $clrSecondary10;
+          border-radius: 999px;
+          .counter-meter {
+            display: block;
+            width: 50%;
+            height: 100%;
+            border-radius: 999px;
+            background-color: $clrPrimary2;
+          }
+        }
+        &.no-count .counter-meter {
+          background-color: $clrSecondary10;
+          opacity: 0.7;
+        }
+
+        .rate-count{
+            margin-inline-start: 0.625em;
+            font-weight: 400;
         }
       }
     }

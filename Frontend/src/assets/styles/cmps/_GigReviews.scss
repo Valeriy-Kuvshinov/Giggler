@@ -4,9 +4,8 @@
 
   .title {
     font-size: 20px;
+    line-height: 1.4em;
     font-weight: 700;
-    // margin: 1em 0;
-    margin-block-end: 1em;
   }
 
   .review-addition {
@@ -35,6 +34,10 @@
     button {
       margin: auto;
     }
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 }
 

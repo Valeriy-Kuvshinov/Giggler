@@ -1,3 +1,5 @@
+import { width } from "@mui/system"
+import { utilService } from "../services/util.service"
 import SvgIcon from "./SvgIcon"
 
 export function ReviewBreakdown({ reviews }) {
@@ -18,12 +20,14 @@ export function ReviewBreakdown({ reviews }) {
     const isHalfStar = averageRating % 1 >= 0.5
 
     const stars = [...Array(fullStarsCount)].map((_, idx) => (
+      <>
       <SvgIcon iconName="star" />
+      </>
     ))
 
     if (isHalfStar) {
       stars.push(<SvgIcon iconName="half-star" />)
-      fullStarsCount += 1
+      fullStarsCount++
     }
 
     const emptyStarsCount = 5 - fullStarsCount
@@ -40,8 +44,11 @@ export function ReviewBreakdown({ reviews }) {
       reviews.map((review)=>{
         if(review.rating===i+1) count++
       })
-      return <div className={`stat-line ${(!count)?'no-count':''}`}><span className="rate-level">{i+1} Stars </span>
-      <div className={`counter ${i+1}`}><span></span></div><span>({count})</span></div>
+      return <div className={`stat-line ${(!count)?'no-count':''}`} key={utilService.makeId()}>
+      <span className="rate-level">{i+1} Stars </span>
+      <div className="counter"><span className="counter-meter" style={{width:`${(100*count/reviews.length)}%`}}></span></div>
+      <span className="rate-count">({count})</span>
+      </div>
     })
 
     return stats
