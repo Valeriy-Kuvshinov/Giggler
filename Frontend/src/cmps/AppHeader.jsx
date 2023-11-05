@@ -180,6 +180,7 @@ export function AppHeader() {
                   {user.imgUrl && <img src={user.imgUrl} alt="User" />}
                   {showUserDropdown && (
                     <UserDropdown
+                      user={user}
                       onClose={() => setShowUserDropdown(false)}
                     />
                   )}

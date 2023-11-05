@@ -7,10 +7,9 @@ import { Loader } from './Loader.jsx'
 import { orderBackendService } from '../services/order.backend.service.js'
 import { loadOrders } from '../store/order.actions.js'
 
-export function BuyerOrders() {
+export function BuyerOrders({ user }) {
     const dispatch = useDispatch()
 
-    const user = useSelector(storeState => storeState.userModule.user)
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
     const orders = useSelector(storeState => storeState.orderModule.orders)
 
