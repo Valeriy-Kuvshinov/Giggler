@@ -1,16 +1,22 @@
-import { utilService } from "../services/util.service"
-import SvgIcon from "./SvgIcon"
+import SvgIcon from "./SvgIcon.jsx"
 
-export function ReviewBreakdown({ reviews }) {
+import { utilService } from "../services/util.service.js"
+
+export function ReviewBreakdown({ reviews, context }) {
+  let reviewCountText
+  if (context === 'gig') reviewCountText = `${reviews.length} reviews for this Gig`
+  else reviewCountText = `${reviews.length} reviews for this seller`
+
   let sum = 0
   let averageRating = 0
+
   reviews.map((review) => (sum += review.rating))
   averageRating = sum / reviews.length
+
   if (parseInt(averageRating) === averageRating) {
     parseInt(averageRating)
-  } else {
-    averageRating = averageRating.toFixed(1)
-  }
+  } else averageRating = averageRating.toFixed(1)
+
   if (reviews.length === 0) return
 
   const renderStars = () => {
@@ -42,9 +48,9 @@ export function ReviewBreakdown({ reviews }) {
       reviews.map((review) => {
         if (review.rating === i + 1) count++
       })
-      return <div className={`stat-line ${(!count) ? 'no-count' : ''}`} key={utilService.makeId()}>
+      return <div className={`stat-line ${(!count) ? 'no-count' : ''} `} key={utilService.makeId()}>
         <span className="rate-level">{i + 1} Stars </span>
-        <div className="counter"><span className="counter-meter" style={{ width: `${(100 * count / reviews.length)}%` }}></span></div>
+        <div className="counter"><span className="counter-meter" style={{ width: `${(100 * count / reviews.length)}% ` }}></span></div>
         (<span className="rate-count">{count}</span>)
       </div>
     })
@@ -54,7 +60,7 @@ export function ReviewBreakdown({ reviews }) {
   return (
     <section className="review-breakdown">
       <div className="review-count">
-        <span>{reviews.length} reviews for this Gig</span>
+        <span>{reviewCountText}</span>
         <div className="stars">
           {renderStars()}
           <span className="rating">{averageRating}</span>
@@ -74,7 +80,6 @@ export function ReviewBreakdown({ reviews }) {
             <div className="star"><SvgIcon iconName={'star'} />{averageRating}</div></div>
         </div>
       </div>
-
     </section>
   )
 }

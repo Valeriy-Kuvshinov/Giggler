@@ -5,9 +5,9 @@ import { useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import { GigPreview } from "./GigPreview.jsx"
+import { UserReviews } from "./UserReviews.jsx"
 
-import { loadReviews } from "../store/review.actions"
-import { GigReviews } from "./GigReviews"
+import { loadReviews } from "../store/review.actions.js"
 
 export function UserGigs({ user, gigs }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -45,7 +45,6 @@ export function UserGigs({ user, gigs }) {
           </Link>
         </div>
       )}
-
       <div className="the-gigs">
         {gigs.length !== 0 &&
           userGigs.map((gig) => (
@@ -54,6 +53,7 @@ export function UserGigs({ user, gigs }) {
             </div>
           ))}
       </div>
+      <UserReviews gigs={userGigs} />
     </section>
   )
 }

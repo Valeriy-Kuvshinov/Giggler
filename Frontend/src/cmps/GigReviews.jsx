@@ -37,7 +37,7 @@ export function GigReviews({ gig }) {
         <section className="gig-reviews">
             <span className="title">Reviews</span>
 
-            <ReviewBreakdown reviews={fullReviews} />
+            <ReviewBreakdown reviews={fullReviews} context='gig' />
 
             {fullReviews.length !== 0 && (
                 <ul className="reviews">
