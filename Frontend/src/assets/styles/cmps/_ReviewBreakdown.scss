@@ -101,8 +101,12 @@
           align-items: center;
           font-weight: 400;
 
-          svg {
-            margin-inline-end: 0.25em;
+          i {
+            display: block;
+
+            svg {
+              margin-inline-end: 0.25em;
+            }
           }
         }
       }
