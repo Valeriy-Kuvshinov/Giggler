@@ -10,8 +10,7 @@ import { loadOrders } from '../store/order.actions.js'
 export function BuyerOrders({ user }) {
     const dispatch = useDispatch()
 
-    const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
-    const orders = useSelector(storeState => storeState.orderModule.orders)
+    const orders = useSelector((storeState) => storeState.orderModule.orders)
 
     const [orderDetails, setOrderDetails] = useState({})
 
@@ -21,58 +20,82 @@ export function BuyerOrders({ user }) {
         }
     }, [user, dispatch])
 
-    const displayedOrders = orders.filter(order => order.buyerId === user._id)
-
     useEffect(() => {
         const fetchOrderDetails = async () => {
-            for (const order of displayedOrders) {
-                try {
-                    const details = await orderBackendService.getOrderDetails(order._id, 'seller')
+            for (const order of orders) {
+                if (order.buyerId === user._id) {
                     setOrderDetails((prevDetails) => ({
                         ...prevDetails,
-                        [order._id]: {
-                            gigData: details.gigData,
-                            userData: details.userData,
-                        },
+                        [order._id]: { isLoading: true },
                     }))
-                } catch (err) {
-                    console.error('Failed to fetch order or gig details:', err)
+
+                    try {
+                        const details = await orderBackendService.getOrderDetails(order._id, 'seller')
+                        setOrderDetails((prevDetails) => ({
+                            ...prevDetails,
+                            [order._id]: {
+                                isLoading: false,
+                                gigData: details.gigData,
+                                userData: details.userData,
+                            },
+                        }))
+                    } catch (err) {
+                        console.error('Failed to fetch order or gig details:', err)
+                        setOrderDetails((prevDetails) => ({
+                            ...prevDetails,
+                            [order._id]: { isLoading: false, error: err },
+                        }))
+                    }
                 }
             }
         }
-        if (displayedOrders.length > 0) fetchOrderDetails()
-    }, [displayedOrders])
+        if (orders.some((order) => order.buyerId === user._id)) {
+            fetchOrderDetails()
+        }
+    }, [orders, user, dispatch])
 
-    if (isLoading) return (
-        <section className='buyer-orders-dropdown flex column'>
-            <Loader />
-        </section>
+    // Check if all the relevant orders have their details loaded
+    const allDetailsLoaded = orders.every(
+        (order) => order.buyerId !== user._id || (orderDetails[order._id] && !orderDetails[order._id].isLoading)
     )
 
+    if (!allDetailsLoaded) {
+        return (
+            <section className="buyer-orders-dropdown flex column">
+                <Loader />
+            </section>
+        )
+    }
+
     return (
-        <section className='buyer-orders-dropdown flex column'>
-            {displayedOrders.length > 0 ? (
-                displayedOrders.map((order) => (
-                    <div key={order._id} className="buyer-order grid">
-                        <div className="order-image">
-                            <img src={orderDetails[order._id]?.gigData?.imgUrls?.[0]} alt="Gig" />
-                        </div>
-                        <div className="order-title">
-                            {orderDetails[order._id]?.gigData?.title}
-                        </div>
-                        <div className="seller-name">
-                            {`By ${orderDetails[order._id]?.userData?.username}`}
-                        </div>
-                        <div className="order-status">
-                            {order.orderState}
-                        </div>
-                    </div>
-                ))
-            ) : (
-                <section className='buyer-orders-dropdown flex column'>
-                    <Loader />
-                </section>
-            )}
+        <section className="buyer-orders-dropdown flex column">
+            {orders
+                .filter((order) => order.buyerId === user._id)
+                .map((order) => {
+                    const details = orderDetails[order._id]
+                    if (details && !details.isLoading) {
+                        return (
+                            <div key={order._id} className="buyer-order grid">
+                                <div className="order-image">
+                                    <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+                                </div>
+                                <div className="order-title">
+                                    {details.gigData.title}
+                                </div>
+                                <div className="seller-name">
+                                    {`By ${details.userData.username}`}
+                                </div>
+                                <div className="order-status">
+                                    {order.orderState}
+                                </div>
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <p>No orders yet, go & explore the place!</p>
+                        )
+                    }
+                })}
         </section>
     )
 }
