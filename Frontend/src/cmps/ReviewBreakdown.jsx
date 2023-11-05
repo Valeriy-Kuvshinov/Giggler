@@ -1,4 +1,3 @@
-import { width } from "@mui/system"
 import { utilService } from "../services/util.service"
 import SvgIcon from "./SvgIcon"
 
@@ -20,7 +19,7 @@ export function ReviewBreakdown({ reviews }) {
 
     const stars = [...Array(fullStarsCount)].map((_, idx) => (
       <>
-      <SvgIcon iconName="star" />
+        <SvgIcon iconName="star" />
       </>
     ))
 
@@ -35,21 +34,20 @@ export function ReviewBreakdown({ reviews }) {
     }
     return stars
   }
-  let i=5
+  let i = 5
   const renderStarStats = () => {
     const stats = [...Array(5)].map((_, idx) => {
       i--
-      let count=0
-      reviews.map((review)=>{
-        if(review.rating===i+1) count++
+      let count = 0
+      reviews.map((review) => {
+        if (review.rating === i + 1) count++
       })
-      return <div className={`stat-line ${(!count)?'no-count':''}`} key={utilService.makeId()}>
-      <span className="rate-level">{i+1} Stars </span>
-      <div className="counter"><span className="counter-meter" style={{width:`${(100*count/reviews.length)}%`}}></span></div>
-      (<span className="rate-count">{count}</span>)
+      return <div className={`stat-line ${(!count) ? 'no-count' : ''}`} key={utilService.makeId()}>
+        <span className="rate-level">{i + 1} Stars </span>
+        <div className="counter"><span className="counter-meter" style={{ width: `${(100 * count / reviews.length)}%` }}></span></div>
+        (<span className="rate-count">{count}</span>)
       </div>
     })
-
     return stats
   }
 
@@ -69,11 +67,11 @@ export function ReviewBreakdown({ reviews }) {
         <div className="rating-breakdown">
           <span className="title">Rating Breakdown</span>
           <div className="rating-stat"><span>Seller communication level</span>
-          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+            <div className="star"><SvgIcon iconName={'star'} />{averageRating}</div></div>
           <div className="rating-stat"><span>Recommend to a friend</span>
-          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+            <div className="star"><SvgIcon iconName={'star'} />{averageRating}</div></div>
           <div className="rating-stat"><span>Service as described</span>
-          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+            <div className="star"><SvgIcon iconName={'star'} />{averageRating}</div></div>
         </div>
       </div>
 
