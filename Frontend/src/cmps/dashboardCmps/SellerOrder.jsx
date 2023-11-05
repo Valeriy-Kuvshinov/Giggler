@@ -52,6 +52,21 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
         }
     }, [])
 
+    function getAvailableActions(order) {
+        let actions = []
+        if (order.orderState === 'pending') {
+            actions = [
+                { label: 'Accept', action: () => acceptOrder(order) },
+                { label: 'Deny', action: () => setDenial(true) }
+            ]
+        } else if (order.orderState === 'accepted') {
+            actions = [
+                { label: 'Complete', action: () => completeOrder(order) }
+            ]
+        }
+        return actions
+    }
+
     return (
         <tr className={orderBackendService.getOrderClass(order.orderState)}>
             <td>
@@ -87,14 +102,14 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder }) {
             <td><span className={order.orderState}>{order.orderState}</span></td>
 
             <td>
-                {orderBackendService.getAvailableActions(order).length > 0 && (
+                {getAvailableActions(order).length > 0 && (
                     <>
                         <button ref={dropdownButtonRef} onClick={() => setDropdownVisible(!isDropdownVisible)}>
                             <SvgIcon iconName={'orderDropdownIcon'} />
                         </button>
                         {isDropdownVisible && (
                             <div ref={dropdownMenuRef} className="dropdown-menu">
-                                {orderBackendService.getAvailableActions(order).map((action, idx) => (
+                                {getAvailableActions(order).map((action, idx) => (
                                     <button key={idx} onClick={action.action}>
                                         {action.label}
                                     </button>

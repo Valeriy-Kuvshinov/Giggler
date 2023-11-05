@@ -13,7 +13,6 @@ export const orderBackendService = {
     getOrderDetails,
     getActionDate,
     getDueDate,
-    getAvailableActions,
     getOrderClass
 }
 
@@ -106,19 +105,4 @@ function getOrderClass(orderState) {
         'completed': 'completed user-order'
     }
     return orderStateClasses[orderState] || ''
-}
-
-function getAvailableActions(order) {
-    let actions = []
-    if (order.orderState === 'pending') {
-        actions = [
-            { label: 'Accept', action: () => acceptOrder(order) },
-            { label: 'Deny', action: () => setDenial(true) }
-        ]
-    } else if (order.orderState === 'accepted') {
-        actions = [
-            { label: 'Complete', action: () => completeOrder(order) }
-        ]
-    }
-    return actions
 }
