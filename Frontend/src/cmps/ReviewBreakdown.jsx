@@ -67,7 +67,17 @@ export function ReviewBreakdown({ reviews }) {
         <div className="star-counts">
           {renderStarStats()}
         </div>
+        <div className="rating-breakdown">
+          <span className="title">Rating Breakdown</span>
+          <div className="rating-stat"><span>Seller communication level</span>
+          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+          <div className="rating-stat"><span>Recommend to a friend</span>
+          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+          <div className="rating-stat"><span>Service as described</span>
+          <div className="star"><SvgIcon iconName={'star'}/>{averageRating}</div></div>
+        </div>
       </div>
+
     </section>
   )
 }
