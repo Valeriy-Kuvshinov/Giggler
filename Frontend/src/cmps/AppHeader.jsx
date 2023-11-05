@@ -41,7 +41,7 @@ console.log('chatRoom in Appheader: ', chatRoom)
   }
 
   const navBarStyles = {
-    borderBottom: headerStage >= 2 ? '2px solid #e4e5e7' : 'none',
+    borderBottom: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
     borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
   }
 
