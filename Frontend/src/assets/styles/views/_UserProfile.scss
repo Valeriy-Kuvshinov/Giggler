@@ -54,6 +54,21 @@
             width: 54px;
             height: 54px;
           }
+
+          .background {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -105%;
+            left: 0%;
+            svg{
+              position: relative;
+            }
+            display: none;
+          }
         }
 
         .stars {

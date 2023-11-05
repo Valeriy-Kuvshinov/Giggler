@@ -116,6 +116,7 @@ export function UserInfo({ user }) {
       <div className="info-block flex column">
         <div className="profile-picture">
           <img src={user.imgUrl} onClick={loadModal} />
+          <div className='background'><SvgIcon iconName={'user'}/></div>
           <SvgIcon iconName={userLevel} />
         </div>
 
