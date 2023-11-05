@@ -69,33 +69,39 @@ export function BuyerOrders({ user }) {
 
     return (
         <section className="buyer-orders-dropdown flex column">
-            {orders
-                .filter((order) => order.buyerId === user._id)
-                .map((order) => {
-                    const details = orderDetails[order._id]
-                    if (details && !details.isLoading) {
-                        return (
-                            <div key={order._id} className="buyer-order grid">
-                                <div className="order-image">
-                                    <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+            <div className='buyer-orders'>
+                {orders
+                    .filter((order) => order.buyerId === user._id)
+                    .map((order) => {
+                        const details = orderDetails[order._id]
+                        if (details && !details.isLoading) {
+                            return (
+                                <div key={order._id} className="buyer-order grid">
+                                    <div className="order-image">
+                                        <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+                                    </div>
+                                    <div className="order-title">
+                                        {details ? (
+                                            <Link to={`/gig/${details.gigData._id}`}>
+                                                {details.gigData.title}
+                                            </Link>
+                                        ) : null}
+                                    </div>
+                                    <div className="seller-name">
+                                        {`By ${details.userData.username}`}
+                                    </div>
+                                    <div className="order-status">
+                                        {order.orderState}
+                                    </div>
                                 </div>
-                                <div className="order-title">
-                                    {details.gigData.title}
-                                </div>
-                                <div className="seller-name">
-                                    {`By ${details.userData.username}`}
-                                </div>
-                                <div className="order-status">
-                                    {order.orderState}
-                                </div>
-                            </div>
-                        )
-                    } else {
-                        return (
-                            <p>No orders yet, go & explore the place!</p>
-                        )
-                    }
-                })}
+                            )
+                        } else {
+                            return (
+                                <p>No orders yet, go & explore the place!</p>
+                            )
+                        }
+                    })}
+            </div>
         </section>
     )
 }
