@@ -21,7 +21,9 @@ export function AppHeader() {
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
   const [chatState, setChatState] = useState(false)
- 
+  const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
+    window.innerWidth <= 500 ? 'Find services...' : 'What service are you looking for today?'
+  )
 
   const userInfoRef = useRef(null)
   const location = useLocation()
@@ -93,6 +95,19 @@ export function AppHeader() {
     }
   }, [])
 
+  useEffect(() => {
+    const updatePlaceholder = () => {
+      if (window.innerWidth <= 500) setHeaderPlaceholderText('Find services...')
+      else setHeaderPlaceholderText('What service are you looking for today?')
+    }
+    window.addEventListener('resize', updatePlaceholder)
+    updatePlaceholder()
+
+    return () => {
+      window.removeEventListener('resize', updatePlaceholder)
+    }
+  }, [])
+
   function handleSearchChange(e) {
     const newSearchQuery = e.target.value
     setSearchQuery(newSearchQuery)
@@ -118,25 +133,24 @@ export function AppHeader() {
     >
       <nav className="main-nav">
         <div className="container flex row">
-          <div className="logo-dropdown-area flex row">
+          <div className='dropdown flex'>
             <SvgIcon
               iconName={
                 headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
               }
             />
-
-            <Link to="/" style={{ color: headerStyles.color }}>
-              <h1 style={{ color: logoColor }} className="logo flex">
-                Giggler
-                <span className="flex">
-                  <SvgIcon iconName={'greenDotIcon'} />
-                </span>
-              </h1>
-            </Link>
           </div>
+          <Link to="/" style={{ color: headerStyles.color }}>
+            <h1 style={{ color: logoColor }} className="logo flex">
+              Giggler
+              <span className="flex">
+                <SvgIcon iconName={'greenDotIcon'} />
+              </span>
+            </h1>
+          </Link>
 
           <SearchBar
-            placeholder="What service are you looking for today?"
+            placeholder={headerPlaceholderText}
             searchQuery={searchQuery}
             onSearchChange={handleSearchChange}
             onSearchSubmit={handleSearchSubmit}

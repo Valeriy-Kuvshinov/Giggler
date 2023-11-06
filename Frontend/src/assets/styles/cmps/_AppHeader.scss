@@ -21,30 +21,34 @@
       flex-shrink: 0;
     }
 
-    .logo-dropdown-area {
-      align-items: center;
-      gap: 10px;
+    align-items: center;
+    gap: 10px;
+
+    .dropdown {
+      margin-right: 10px;
+      height: 100%;
+      align-self: center;
+      padding-bottom: 3px;
+      width: fit-content;
 
       i {
-        width: fit-content;
         align-self: center;
-        display: flex;
         cursor: pointer;
       }
+    }
 
-      h1 {
-        font-family: arial;
-        font-size: 30.5px;
-        letter-spacing: -2.5px;
+    h1 {
+      font-family: arial;
+      font-size: 30.5px;
+      letter-spacing: -2.5px;
 
-        span {
-          margin-bottom: 8px;
-          margin-left: -2px;
+      span {
+        margin-bottom: 8px;
+        margin-left: -2px;
 
-          i {
-            padding: 0;
-            align-self: flex-end;
-          }
+        i {
+          padding: 0;
+          align-self: flex-end;
         }
       }
     }

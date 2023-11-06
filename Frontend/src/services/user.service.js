@@ -40,7 +40,7 @@ async function update(user) {
 
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
-  console.log('Logged in user:', user)
+  console.log('Logged in user:', user.fullName)
   if (user) {
     return setLoggedinUser(user)
   }
