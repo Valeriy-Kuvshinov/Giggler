@@ -71,6 +71,7 @@ export function BuyerOrders({ user }) {
     )
   }
 
+  
   return (
     <section className="buyer-orders-dropdown flex column">
       <div className="buyer-orders">
