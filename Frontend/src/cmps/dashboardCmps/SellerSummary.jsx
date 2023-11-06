@@ -64,10 +64,6 @@ export function SellerSummary({ user, displayedOrders }) {
             <section className="general-area flex column">
                 <h3>General Info</h3>
                 <div className="info-area grid">
-                    <div className="user-info">
-                        <img src={user.imgUrl} alt="user" />
-                        <h4>{`@${user.username}`}</h4>
-                    </div>
                     <div className="user-progress-one flex column">
                         <label>Pending Orders: {pendingOrdersPercentage.toFixed(2)}%</label>
                         <div className="progress-bar">
@@ -86,7 +82,7 @@ export function SellerSummary({ user, displayedOrders }) {
                             <div className="progress" style={{ width: `${overdueOrdersPercentage}%` }}>
                             </div>
                         </div>
-                        <label>Orders Completed on Time: {completedOnTimeOrdersPercentage.toFixed(2)}%</label>
+                        <label>Completed on Time: {completedOnTimeOrdersPercentage.toFixed(2)}%</label>
                         <div className="progress-bar">
                             <div className="progress" style={{ width: `${completedOnTimeOrdersPercentage}%` }}>
                             </div>
