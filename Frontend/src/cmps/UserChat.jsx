@@ -79,6 +79,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     clearTimeout(timeoutId.current)
     timeoutId.current = null
     setMessage('')
+    socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
   }
 
   function onChangeMessage(event) {
@@ -201,9 +202,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             ? 'You'
                             : message.user.username}
                         </span>
-                        <span className="message-timestamp">
+                        {/* <span className="message-timestamp">
                           {utilService.timeAgoString(message.time)}
-                        </span>
+                        </span> */}
                       </div>
                       <div className="message-text">{message.message}</div>
                     </div>
@@ -227,7 +228,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             />
                           </span>
                           <span className="message-username">
-                            {loggedinUser._id === owner._id
+                            {loggedinUser._id !== owner._id
                               ? owner.username
                               : loggedinUser.username}
                           </span>
