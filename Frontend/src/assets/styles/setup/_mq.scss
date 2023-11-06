@@ -510,6 +510,20 @@
     @media (max-width: 1240px) {
       padding: 0 1.25em;
     }
+
+    .profile-content {
+      .user-gigs {
+        @media (max-width: 1300px) {
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 32px;
+        }
+
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+          grid-gap: 32px;
+        }
+      }
+    }
   }
 }
 
