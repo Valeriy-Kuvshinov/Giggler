@@ -34,9 +34,21 @@ export function AsideMenu({ user, onClose }) {
             ) : (
                 <>
                     <button className="join"
-                        onClick={() => { onClose(); openSignup(); }}>Join Giggler</button>
+                        onClick={() => {
+                            onClose()
+                            openSignup()
+                        }}
+                    >
+                        Join Giggler
+                    </button>
                     <button className="login"
-                        onClick={() => { onClose(); openLogin(); }}>Sign In</button>
+                        onClick={() => {
+                            onClose()
+                            openLogin()
+                        }}
+                    >
+                        Sign In
+                    </button>
                     <Link to="/explore"> Explore </Link>
                     <Link to="/">Become a Seller</Link>
                 </>
