@@ -11,6 +11,40 @@
     z-index: 15;
     padding: 1em;
 
+    .top-icons {
+        justify-content: space-between;
+
+        .user-info {
+            gap: 0.55em;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+
+            img {
+                grid-column: 1;
+                grid-row: 1 / -1;
+            }
+
+            span {
+                &:first-child {
+                    grid-column: 2;
+                    grid-row: 1;
+                }
+
+                &:last-child {
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+            }
+        }
+
+        img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
     a,
     button {
         color: $clrSecondary6;
