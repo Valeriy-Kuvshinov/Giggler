@@ -21,7 +21,7 @@ export function AppHeader() {
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
   const [chatState, setChatState] = useState(false)
- 
+
 
   const userInfoRef = useRef(null)
   const location = useLocation()
@@ -118,22 +118,19 @@ export function AppHeader() {
     >
       <nav className="main-nav">
         <div className="container flex row">
-          <div className="logo-dropdown-area flex row">
-            <SvgIcon
-              iconName={
-                headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
-              }
-            />
-
-            <Link to="/" style={{ color: headerStyles.color }}>
-              <h1 style={{ color: logoColor }} className="logo flex">
-                Giggler
-                <span className="flex">
-                  <SvgIcon iconName={'greenDotIcon'} />
-                </span>
-              </h1>
-            </Link>
-          </div>
+          <SvgIcon
+            iconName={
+              headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
+            }
+          />
+          <Link to="/" style={{ color: headerStyles.color }}>
+            <h1 style={{ color: logoColor }} className="logo flex">
+              Giggler
+              <span className="flex">
+                <SvgIcon iconName={'greenDotIcon'} />
+              </span>
+            </h1>
+          </Link>
 
           <SearchBar
             placeholder="What service are you looking for today?"
