@@ -1,5 +1,5 @@
 .aside-menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -37,8 +37,7 @@
         }
     }
 
-    .login,
-    .orders {
+    .login {
         background: none;
         font-size: 16px;
         padding: 0;
@@ -57,5 +56,44 @@
         width: 100%;
         border-top: 1.5px solid $clrSecondary2;
         text-align: left;
+    }
+
+    .MuiPaper-root {
+        box-shadow: none;
+
+        #panel1bh-header {
+            padding: 0;
+        }
+
+        .MuiCollapse-root {
+            .MuiCollapse-wrapper {
+                .MuiCollapse-wrapperInner {
+                    #panel1bh-content {
+                        max-height: 220px;
+                        overflow-y: scroll;
+
+                        .MuiAccordionDetails-root {
+                            padding: 0;
+
+                            .buyer-orders-dropdown {
+                                .buyer-orders {
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    .buyer-order {
+                                        margin-bottom: 1em;
+                                        padding-bottom: 1em;
+
+                                        &:not(:last-child) {
+                                            border-bottom: 1px solid $clrSecondary4;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

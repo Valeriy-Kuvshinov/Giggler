@@ -311,6 +311,12 @@
           margin: auto;
         }
 
+        .aside-menu {
+          a {
+            margin: 0;
+          }
+        }
+
         .nav-links {
           grid-column: 3;
           grid-row: 1;
