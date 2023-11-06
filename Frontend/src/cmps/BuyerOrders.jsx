@@ -71,6 +71,7 @@ export function BuyerOrders({ user, onClose }) {
     )
   }
 
+  
   return (
     <section className="buyer-orders-dropdown flex column" onClick={onClose}>
       <div className="buyer-orders">
