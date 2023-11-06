@@ -7,7 +7,7 @@ import { Loader } from "./Loader.jsx"
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
-export function BuyerOrders({ user }) {
+export function BuyerOrders({ user, onClose }) {
   const dispatch = useDispatch()
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
@@ -70,10 +70,9 @@ export function BuyerOrders({ user }) {
       </section>
     )
   }
-
   
   return (
-    <section className="buyer-orders-dropdown flex column">
+    <section className="buyer-orders-dropdown flex column" onClick={onClose}>
       <div className="buyer-orders">
         {orders
           .filter((order) => order.buyerId === user._id)

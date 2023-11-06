@@ -1,0 +1,61 @@
+.aside-menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: white;
+    max-width: 275px;
+    height: 100vh;
+    gap: 1em;
+    z-index: 15;
+    padding: 1em;
+
+    a,
+    button {
+        color: $clrSecondary6;
+        transition: color 0.3s, background-color 0.3s, border 0.3s;
+
+        &:hover {
+            color: $bgColor3 !important;
+        }
+    }
+
+    .join {
+        padding: 9px 16px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-family: 'macan-bold';
+        background: $bgColor3;
+        border: 1px solid $bgColor3;
+        color: $clrPrimary1;
+
+        &:hover {
+            background-color: $bgColor5;
+            border: 1px solid $bgColor5;
+            color: $clrPrimary1 !important;
+        }
+    }
+
+    .login,
+    .orders {
+        background: none;
+        font-size: 16px;
+        padding: 0;
+        font-family: 'macan-regular';
+        text-align: left;
+    }
+
+    .logout {
+        display: block;
+        padding: 12px 0;
+        color: $clrSecondary5;
+        background: none;
+        font-family: "macan-regular";
+        font-size: 16px;
+        font-weight: 400;
+        width: 100%;
+        border-top: 1.5px solid $clrSecondary2;
+        text-align: left;
+    }
+}
