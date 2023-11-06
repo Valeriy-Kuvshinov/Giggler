@@ -68,9 +68,7 @@ export function AppHeader() {
     }
   }, [])
 
-  function promptSellerChat(data) {
-    const { buyer } = data
-    console.log('data: ', data)
+  function promptSellerChat(buyer) {
     console.log('buyer: ', buyer)
     setTheBuyer(buyer)
   }

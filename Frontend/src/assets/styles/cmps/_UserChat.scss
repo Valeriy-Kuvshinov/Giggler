@@ -84,7 +84,7 @@
   box-shadow: 0 0 2.17382px rgba(0, 0, 0, 0.049),
     0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
     0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
-  
+
   @media only screen and (max-width: 599px) {
     border-radius: 0;
     bottom: 0;
@@ -210,6 +210,67 @@
         display: grid;
         grid-template-rows: 1fr auto;
 
+        .message-container {
+          height: 50vh;
+          overflow-y: auto;
+          padding: 0.625em;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .message {
+            font-family: macan;
+            width: fit-content;
+            max-width: 60%;
+            display: grid;
+            padding: 1.5em;
+            max-width: 5em;
+            &.seller {
+              align-self: flex-end;
+            }
+
+            .message-info {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-right: 0.625em;
+
+              .avatar {
+                width: 1em;
+                height: 1em;
+                border-radius: 50%;
+
+                img {
+                  object-fit: cover;
+                }
+              }
+
+              .message-username {
+                font-size: 0.5em;
+                font-weight: bold;
+                margin-inline-start: 0.5em;
+              }
+
+              .message-timestamp {
+                color: #95979d;
+                font-size: 0.5em;
+                margin-inline-start: 0.5em;
+              }
+            }
+
+            .message-text {
+              border: 1px solid $clrPrimary5;
+              align-self: center;
+              border-radius: 10%;
+              background-color: #f0f0f0;
+              padding: 0.625em;
+              font-size: 0.75em;
+              box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
+            }
+          }
+        }
+
         .input-container {
           textarea {
             flex-grow: 1;
@@ -297,21 +358,21 @@
       }
     }
   }
-
-  // border-radius: .25em;
-  // position: absolute;
-  // overflow: visible;
-  // max-height: 90vh;
-  // max-width: 450px;
-  // width: 544px;
-  // min-width: 450px;
-  // left: 0px;
-  // top: -608.75px;
-  // padding-bottom: 8px;
-  // margin-top: 80px;
-  // background-color: $clrPrimary1;
-  // border: 1px solid #e4e5e7;
-  // border-radius: 4px;
-  // box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.05);
-  // z-index: 20;
 }
+
+// border-radius: .25em;
+// position: absolute;
+// overflow: visible;
+// max-height: 90vh;
+// max-width: 450px;
+// width: 544px;
+// min-width: 450px;
+// left: 0px;
+// top: -608.75px;
+// padding-bottom: 8px;
+// margin-top: 80px;
+// background-color: $clrPrimary1;
+// border: 1px solid #e4e5e7;
+// border-radius: 4px;
+// box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.05);
+// z-index: 20;

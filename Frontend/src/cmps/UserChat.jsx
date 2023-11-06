@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
 import { useModal } from '../customHooks/ModalContext.jsx'
+import SvgIcon from './SvgIcon.jsx'
+import { utilService } from '../services/util.service.js'
+
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
@@ -10,16 +13,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
 
-  // console.log(
-  //   `this is owner.username: ${owner.username} with the buyer: ${buyer}`
-  // )
-
-  // console.log(`this is Messages in userChat ${messages}`)
-
   useEffect(() => {
     if (chatState) {
       if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
-      // else openChatWithBuyer()
 
       socketService.on('chat_add_msg', addMessage)
       socketService.on('chat_add_typing', addTypingUser)
@@ -42,30 +38,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     })
   }
 
-  // function openChatWithBuyer() {
-
-  //   socket.emit('chat_seller_enter', {
-  //     room,
-  //   })
-  //   // console.log('im in openChatWithbuyer ')
-  //   // socket.emit('chat-set-room', {
-  //   //   sellerId: owner._id,
-  //   //   buyer: loggedinUser,
-  //   //   room,
-  //   // })
-  // }
-
-  // useEffect(() => {
-  //   if (socket) {
-  //     socket.on('new_message', (data) => {
-  //       setMessages((prevMessages) => [...prevMessages, data.message])
-  //     })
-  //   }
-  // }, [socket])
   function addMessage(msg) {
-    const { newMessage } = msg
-    console.log('new msg', newMessage)
-    setMessages((prevMessage) => [...prevMessage, newMessage])
+    console.log('msg: ', msg)
+    setMessages((prevMessage) => [...prevMessage, msg])
   }
 
   function addTypingUser(user) {
@@ -75,7 +50,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   function removeTypingUser() {
     setTypingUser(null)
   }
-  // setMessages((prevMessages) => [...prevMessages, newMessage])
 
   function handleSendMessage() {
     const newMessage = {
@@ -83,6 +57,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       time: new Date(),
       username: loggedinUser.username,
     }
+    setMessages((prevMessage) => [...prevMessage, newMessage])
     if (loggedinUser && owner._id !== loggedinUser._id) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
       // socketService.emit('chat_stop_typing', {userId: owner._id})
@@ -130,8 +105,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               ></span>
             </div>
             <div className="owner-info">
-              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
-                }`}</span>
+              <span className="message">{`Message${
+                window ? '' : ` ${owner.fullName}`
+              }`}</span>
               {!window && (
                 <span className="response-time">
                   <span>Online</span>
@@ -160,10 +136,10 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               </div>
               <div className="owner-info">
                 <span>
-                  {owner._id === loggedinUser ? (
-                    <span className="message">{`Message ${buyer.fullName}`}</span>
+                  {buyer ? (
+                    <span className="message">{`Message ${buyer.username}`}</span>
                   ) : (
-                    <span className="message">{`Message ${owner.fullName}`}</span>
+                    <span className="message">{`Message ${owner.username}`}</span>
                   )}
                   <span className="response-time">
                     <span>Online</span>
@@ -181,26 +157,31 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
 
             <section className="chat-container">
               <div className="message-form" data-testid="send-message-form">
-                {messages.map((message, index) => (
-                  <div
-                    key={index}
-                    className={
-                      message.username === owner.username
-                        ? 'message outgoing'
-                        : 'message incoming'
-                    }
-                  >
-                    <div className="message-text">{message.message}</div>
-                    <div className="message-info">
-                      <span className="message-username">
-                        {message.username}
-                      </span>
-                      <span className="message-timestamp">
-                        {new Date(message.time).toLocaleTimeString()}
-                      </span>
+                <div className="message-container">
+                  {messages.map((message, index) => (
+                    <div
+                      key={index}
+                      className={owner ? 'buyer message' : 'seller message'}
+                    >
+                      <div className="message-info">
+                        <span className="avatar">
+                          <img
+                            src={loggedinUser.imgUrl}
+                            alt={loggedinUser.username}
+                          />
+                        </span>
+                        <span className="message-username">
+                          {message.username}
+                        </span>
+                        <span className="message-timestamp">
+                          {utilService.timeAgoString(message.time)}
+                        </span>
+                      </div>
+                      <div className="message-text">{message.message}</div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
                 <div className="input-container">
                   <textarea
                     maxLength="2500"
