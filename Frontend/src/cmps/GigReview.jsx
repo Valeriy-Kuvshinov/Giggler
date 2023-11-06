@@ -73,7 +73,7 @@ export function GigReview({ review }) {
     if(!review.country || !review.imgUrl)return
 
     return (
-        <section className="gig-review">
+        <section className="gig-review" key={review._id}>
             <img src={review.imgUrl} alt={review.userName} className='pfp' />
             <div>
                 <span className='username'>{review.userName}</span>
