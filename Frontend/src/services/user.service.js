@@ -1,4 +1,5 @@
 import { httpService } from './http.service.js'
+import { socketService } from './socket.service.js'
 import { utilService } from './util.service.js'
 
 const SESSION_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -51,6 +52,8 @@ async function signup(userCred) {
 }
 
 async function logout() {
+  //socket tag
+  socketService.emit('unset-user-socket')
   try {
     await httpService.post('auth/logout')
     sessionStorage.removeItem(SESSION_KEY_LOGGEDIN_USER)
@@ -61,12 +64,16 @@ async function logout() {
 }
 
 function setLoggedinUser(user) {
+  //socket tag
+  socketService.emit('set-user-socket', user._id)
   sessionStorage.setItem(SESSION_KEY_LOGGEDIN_USER, JSON.stringify(user))
   return user
 }
 
 function getLoggedinUser() {
-  return JSON.parse(sessionStorage.getItem(SESSION_KEY_LOGGEDIN_USER))
+  const user = JSON.parse(sessionStorage.getItem(SESSION_KEY_LOGGEDIN_USER))
+  if (user) socketService.emit('set-user-socket', user._id)
+  return user
 }
 
 function getUserRatingCount(user) {

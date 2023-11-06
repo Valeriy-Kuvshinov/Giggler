@@ -19,7 +19,6 @@ async function query(filterBy = {}) {
         const collection = await dbService.getCollection(ORDERS_COLLECTION)
         const orders = await collection.find(criteria).toArray()
 
-        console.log('order : ', orders)
         return orders
     }
     catch (err) {
@@ -32,7 +31,6 @@ async function getById(orderId) {
     try {
         const collection = await dbService.getCollection(ORDERS_COLLECTION)
         const order = collection.findOne({ _id: new ObjectId(orderId) })
-        console.log('I AM HERE IN GET BY ID DB backend: ', order)
         return order
     }
     catch (err) {
