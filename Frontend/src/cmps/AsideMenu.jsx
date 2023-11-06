@@ -9,8 +9,9 @@ import { BuyerOrders } from './BuyerOrders.jsx'
 
 import { logout } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
+import SvgIcon from './SvgIcon.jsx'
 
-export function AsideMenu({ user, onClose }) {
+export function AsideMenu({ user, onClose , theBuyer, onChatState}) {
     let fullName
     let firstName
     let lastName
@@ -47,6 +48,11 @@ export function AsideMenu({ user, onClose }) {
                             <span>{firstName}</span>
                             <span>{lastName}</span>
                         </div>
+                        {theBuyer && (
+                        <span onClick={(e) => onChatState(e)}>
+                          <SvgIcon iconName={'chat'} />
+                        </span>
+                          )}
                     </div>
                     <Link to="/explore" onClick={onClose}> Explore </Link>
                     <Link to="/" onClick={onClose}>Become a Seller</Link>

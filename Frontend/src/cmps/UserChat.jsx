@@ -228,9 +228,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             />
                           </span>
                           <span className="message-username">
-                            {loggedinUser._id !== owner._id
+                            {isBuyer
                               ? owner.username
-                              : loggedinUser.username}
+                              : buyer.username}
                           </span>
                         </div>
                         <div className="message-text">
