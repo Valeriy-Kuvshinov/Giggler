@@ -118,11 +118,13 @@ export function AppHeader() {
     >
       <nav className="main-nav">
         <div className="container flex row">
-          <SvgIcon
-            iconName={
-              headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
-            }
-          />
+          <div className='dropdown flex'>
+            <SvgIcon
+              iconName={
+                headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
+              }
+            />
+          </div>
           <Link to="/" style={{ color: headerStyles.color }}>
             <h1 style={{ color: logoColor }} className="logo flex">
               Giggler

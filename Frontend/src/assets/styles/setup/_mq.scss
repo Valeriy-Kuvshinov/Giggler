@@ -284,7 +284,7 @@
     }
 
     .container {
-      .logo-dropdown-area> :nth-child(1) {
+      .dropdown {
         @media (min-width: 1151px) {
           display: none;
         }
