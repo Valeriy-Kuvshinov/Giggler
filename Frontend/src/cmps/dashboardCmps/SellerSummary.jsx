@@ -55,35 +55,33 @@ export function SellerSummary({ user, displayedOrders }) {
         <main className="seller-summary">
             <section className="general-area flex column">
                 <h3>Orders Info</h3>
-                <div className="info-area">
-                    <div className="user-progress grid">
-                        <div className="info-cell flex column">
-                            <label>Pending</label>
-                            <ProgressCircle percentage={pendingOrdersPercentage} />
-                        </div>
-                        <div className="info-cell flex column">
-                            <label>In progress</label>
-                            <ProgressCircle percentage={10} />
-                        </div>
-                        <div className="info-cell flex column">
-                            <label>Completed overall</label>
-                            <ProgressCircle percentage={90} />
-                        </div>
-                        <div className="info-cell flex column">
-                            <label>Completed on time</label>
-                            <ProgressCircle percentage={90} />
-                        </div>
-                        <div className="info-cell flex column">
-                            <label>Reviewed</label>
-                            <ProgressCircle percentage={85} />
-                        </div>
+                <div className="info-area grid">
+                    <div className="info-cell flex column">
+                        <label>Pending</label>
+                        <ProgressCircle percentage={pendingOrdersPercentage} />
+                    </div>
+                    <div className="info-cell flex column">
+                        <label>In progress</label>
+                        <ProgressCircle percentage={10} />
+                    </div>
+                    <div className="info-cell flex column">
+                        <label>Completed overall</label>
+                        <ProgressCircle percentage={90} />
+                    </div>
+                    <div className="info-cell flex column">
+                        <label>Completed on time</label>
+                        <ProgressCircle percentage={90} />
+                    </div>
+                    <div className="info-cell flex column">
+                        <label>Reviewed</label>
+                        <ProgressCircle percentage={85} />
                     </div>
                 </div>
             </section>
 
             <section className="financial-area flex column">
                 <h3>Earnings</h3>
-                <div className="info-area flex row">
+                <div className="info-area grid">
                     <div className="info-cell flex column">
                         <h4>Net income</h4>
                         <p>{`${user.balance} $`}</p>

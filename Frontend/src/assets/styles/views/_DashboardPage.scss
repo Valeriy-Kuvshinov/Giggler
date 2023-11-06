@@ -58,48 +58,19 @@
 
             .general-area {
                 .info-area {
-                    padding: 1em 0em;
+                    padding: 1em 1em;
                     margin-block-end: 1.25em;
                     border: 1px solid $clrSecondary4;
                     border-radius: 5px;
+                    max-height: 400px;
+                    max-width: 92vw;
 
-                    .user-progress {
-                        grid-template-columns: repeat(5, 1fr);
-                        grid-template-rows: 1fr;
-                        padding: 0em 1em;
+                    .info-cell {
+                        justify-content: space-between;
+                        align-items: center;
 
-                        .info-cell {
-                            justify-content: space-between;
-                            align-items: center;
-
-                            label {
-                                color: $clrSecondary6;
-                            }
-
-                            &:nth-of-type(1) {
-                                grid-column: 1;
-                                grid-row: 1;
-                            }
-
-                            &:nth-of-type(2) {
-                                grid-column: 2;
-                                grid-row: 1;
-                            }
-
-                            &:nth-of-type(3) {
-                                grid-column: 3;
-                                grid-row: 1;
-                            }
-
-                            &:nth-of-type(4) {
-                                grid-column: 4;
-                                grid-row: 1;
-                            }
-
-                            &:nth-of-type(5) {
-                                grid-column: 5;
-                                grid-row: 1;
-                            }
+                        label {
+                            color: $clrSecondary6;
                         }
                     }
 
@@ -111,12 +82,12 @@
                         height: 80px;
                         margin: 10px;
                         position: relative;
-                    }
 
-                    .progress-circle svg {
-                        transform: rotate(-90deg);
-                        width: 80px;
-                        height: 80px;
+                        svg {
+                            transform: rotate(-90deg);
+                            width: 80px;
+                            height: 80px;
+                        }
                     }
 
                     .progress-background {
@@ -149,16 +120,13 @@
                     border-radius: 5px;
                     padding: 1em 0em;
                     justify-content: space-around;
+                    max-width: 92vw;
 
                     .info-cell {
                         padding: 0em 1em;
                         justify-content: space-between;
                         min-width: 172px;
                         gap: 0.5em;
-
-                        &:not(:last-child) {
-                            border-right: 1px solid $clrSecondary4;
-                        }
 
                         h4 {
                             color: #19a463;
