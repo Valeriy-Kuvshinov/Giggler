@@ -34,11 +34,15 @@
         }
 
         @media (max-width: 400px) {
-          padding: 48px 0;
+          padding: 48px 16px;
 
           h1 {
             font-size: 32px;
             line-height: 40px;
+          }
+
+          .search-bar {
+            width: 90%;
           }
         }
 
@@ -159,7 +163,6 @@
     .categories {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      // gap: 1em;
 
       @media (max-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
@@ -311,15 +314,15 @@
         .nav-links {
           grid-column: 3;
           grid-row: 1;
+          justify-self: end;
 
           li {
             display: none;
 
             &:last-child {
               display: flex;
-              margin: auto 0 auto 57%;
 
-              .user-info {
+              &.user-info {
                 display: none;
               }
             }
@@ -330,6 +333,24 @@
           grid-column: 1 / -1;
           grid-row: 2;
           margin: 0;
+
+          input {
+            width: 100%;
+            border-radius: 5px;
+          }
+
+          button {
+            display: none;
+          }
+        }
+      }
+
+      @media (min-width: 501px) {
+        .search-bar {
+          input {
+            width: calc(100% - 49px);
+            border-radius: 5px 0px 0px 5px;
+          }
         }
       }
     }
