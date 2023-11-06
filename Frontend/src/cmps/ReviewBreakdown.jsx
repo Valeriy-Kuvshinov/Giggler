@@ -41,18 +41,18 @@ export function ReviewBreakdown({ reviews, context }) {
 
   return (
     <section className="review-breakdown">
-      <div className="review-count">
+      <div className="review-count flex">
         <span>{reviewCountText}</span>
         <div className="stars">
           {renderStars()}
-          <span className="rating">{averageRating}</span>
+          <span>{averageRating}</span>
         </div>
       </div>
-      <div className="breakdown-wrapper">
+      <div className="breakdown-wrapper flex">
         <div className="star-counts">
           {renderStarStats()}
         </div>
-        <div className="rating-breakdown">
+        <div className="rating-breakdown flex column">
           <span className="title">Rating Breakdown</span>
           <div className="rating-stat">
             <span>Seller communication level</span>
