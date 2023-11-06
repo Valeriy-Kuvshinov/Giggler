@@ -15,7 +15,6 @@ export function RootCmp() {
     transition: 'background-color 0.3s',
     visibility: isDimmed ? 'visible' : 'hidden',
     position: 'fixed',
-    top: '80px',
     left: 0,
     right: 0,
     bottom: 0,
