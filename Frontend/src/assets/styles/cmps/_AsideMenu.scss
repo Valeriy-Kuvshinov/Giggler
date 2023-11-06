@@ -159,6 +159,23 @@
                                             grid-column: 2;
                                             grid-row: -1;
                                             text-align: center;
+                                            text-transform: uppercase;
+
+                                            &.pending {
+                                                color: #FFC107;
+                                            }
+
+                                            &.denied {
+                                                color: #FF5E5E;
+                                            }
+
+                                            &.accepted {
+                                                color: #19a463;
+                                            }
+
+                                            &.completed {
+                                                color: #29A2C6;
+                                            }
                                         }
                                     }
                                 }
