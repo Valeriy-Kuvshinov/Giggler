@@ -54,16 +54,17 @@
         }
 
         .seller-summary {
-            margin-bottom: 1em;
+            margin-bottom: 1.25em;
 
             .general-area {
                 .info-area {
                     grid-template-columns: 1fr 1fr 1fr;
                     grid-template-rows: 1fr 1fr;
+                    justify-content: space-around;
+                    padding: 1em 0em;
+                    margin-block-end: 1.25em;
                     border: 1px solid $clrSecondary4;
                     border-radius: 5px;
-                    padding: 1em 0em;
-                    justify-content: space-around;
 
                     .user-info {
                         grid-column: 1;
