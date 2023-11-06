@@ -4,6 +4,7 @@ import { SellerOrder } from './SellerOrder.jsx'
 
 import { saveOrder } from '../../store/order.actions.js'
 import { updateUser } from '../../store/user.actions.js'
+import { socketService } from '../../services/socket.service.js'
 
 export function SellerOrders({ user, displayedOrders }) {
     const dispatch = useDispatch()
@@ -21,7 +22,8 @@ export function SellerOrders({ user, displayedOrders }) {
                 acceptedAt: Date.now()
             }
             dispatch(saveOrder(updatedOrder))
-
+            socketService.emit('notify_buyer_accepted', {userId: updatedOrder.buyerId , user}) 
+            
         } catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
         }
@@ -36,6 +38,7 @@ export function SellerOrders({ user, displayedOrders }) {
                 reasonForDenial: reason
             }
             dispatch(saveOrder(updatedOrder))
+            socketService.emit('notify_buyer_denied', {userId: updatedOrder.buyerId , user})
 
         } catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
@@ -52,6 +55,7 @@ export function SellerOrders({ user, displayedOrders }) {
             updateLastDeliveryForUser()
 
             dispatch(saveOrder(updatedOrder))
+            socketService.emit('notify_buyer_completed', {userId: updatedOrder.buyerId , user})
 
         } catch (err) {
             console.error(`Error completing order ${order._id}:`, err)

@@ -24,24 +24,25 @@ export function setupSocketAPI(http) {
       })
     })
 
-    socket.on('chat-user-typing', data => {
+    socket.on('chat-user-typing', (data) => {
       loggerService.info(`User is typing from socket [id: ${socket.id}]`)
       emitToUser({
         type: 'chat_add_typing',
         data: data,
         userId: data._id,
       })
-  })
-
-  socket.on('chat-stop-typing', data => {
-    loggerService.info(`User has stopped typing from socket [id: ${socket.id}]`)
-    emitToUser({
-      type: 'chat_remove_typing',
-      data: data,
-      userId: data._id,
     })
-  })
 
+    socket.on('chat-stop-typing', (data) => {
+      loggerService.info(
+        `User has stopped typing from socket [id: ${socket.id}]`
+      )
+      emitToUser({
+        type: 'chat_remove_typing',
+        data: data,
+        userId: data._id,
+      })
+    })
 
     socket.on('chat-send-msg', (data) => {
       const { userId, newMessage } = data
@@ -59,6 +60,54 @@ export function setupSocketAPI(http) {
         `user-watch from socket [id: ${socket.id}], on user ${userId}`
       )
       socket.join('watching:' + userId)
+    })
+
+    socket.on('notify_buyer_accepted', (data) => {
+      const { userId, user } = data
+      loggerService.info(
+        `notify_buyer_accepted from socket [id: ${socket.id}], on user ${userId}`
+      )
+      emitToUser({
+        type: 'notify-buyer-accepted',
+        data: user,
+        userId,
+      })
+    })
+
+    socket.on('notify_buyer_denied', (data) => {
+      const { userId, user } = data
+      loggerService.info(
+        `notify_buyer_denied from socket [id: ${socket.id}], on user ${userId}`
+      )
+      emitToUser({
+        type: 'notify-buyer-denied',
+        data: user,
+        userId,
+      })
+    })
+
+    socket.on('notify_buyer_completed', (data) => {
+      const { userId, user } = data
+      loggerService.info(
+        `notify_buyer_completed from socket [id: ${socket.id}], on user ${userId}`
+      )
+      emitToUser({
+        type: 'notify-buyer-completed',
+        data: user,
+        userId,
+      })
+    })
+
+    socket.on('notify_seller_new_order', (data) => {
+      const { userId, user } = data
+      loggerService.info(
+        `notify_seller_new_order from socket [id: ${socket.id}], on user ${userId}`
+      )
+      emitToUser({
+        type: 'notify-seller-new-order',
+        data: user,
+        userId,
+      })
     })
 
     // Auth

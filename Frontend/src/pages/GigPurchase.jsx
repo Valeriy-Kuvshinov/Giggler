@@ -53,6 +53,7 @@ export function GigPurchase() {
     )
     try {
       await orderBackendService.save(newOrder)
+      socketService.emit('notify_seller_new_order', {userId: newOrder.sellerId , user})
       showSuccessMsg(
         {
           title: 'ORDER ADDED',

@@ -17,21 +17,21 @@ function _buildPipeline(filterBy) {
   if (cat) {
     match.$match.category = { $regex: cat, $options: 'i' }
   }
-
+  
+  if (tag) {
+    match.$match.tags = { $regex: tag, $options: 'i' }
+  }
+  
+  if (time) {
+    match.$match.daysToMake = { $regex: time, $options: 'i' }
+  }
+  
   if (min) {
     match.$match.price.$gte = parseInt(min)
   }
 
   if (max) {
     match.$match.price.$lte = parseInt(max)
-  }
-
-  if (tag) {
-    match.$match.tags = { $regex: tag, $options: 'i' }
-  }
-
-  if (time) {
-    match.$match.daysToMake = { $regex: time, $options: 'i' }
   }
 
   if (level) {
