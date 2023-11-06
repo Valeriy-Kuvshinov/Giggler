@@ -523,6 +523,26 @@
           grid-gap: 32px;
         }
       }
+
+      .user-reviews {
+        .review-breakdown {
+          .breakdown-wrapper {
+            @media (max-width: 600px) {
+              flex-direction: column;
+              gap: 1em;
+
+              .star-counts,
+              .rating-breakdown {
+                width: 100%;
+
+                .rating-stat {
+                  width: 95%;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

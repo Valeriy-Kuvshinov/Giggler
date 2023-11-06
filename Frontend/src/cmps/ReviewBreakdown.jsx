@@ -45,7 +45,7 @@ export function ReviewBreakdown({ reviews, context }) {
         <span>{reviewCountText}</span>
         <div className="stars">
           {renderStars()}
-          <span className="rating">{averageRating}</span>
+          <span>{averageRating}</span>
         </div>
       </div>
       <div className="breakdown-wrapper flex">
