@@ -57,42 +57,88 @@
             margin-bottom: 1.25em;
 
             .general-area {
-                max-width: 600px;
-
                 .info-area {
-                    grid-template-columns: 1fr 1fr;
-                    grid-template-rows: 1fr 1fr;
-                    justify-content: space-around;
                     padding: 1em 0em;
                     margin-block-end: 1.25em;
                     border: 1px solid $clrSecondary4;
                     border-radius: 5px;
 
-                    .user-progress-one {
-                        grid-column: 1;
-                        grid-row: 1 / -1;
+                    .user-progress {
+                        grid-template-columns: repeat(5, 1fr);
+                        grid-template-rows: 1fr;
                         padding: 0em 1em;
-                        justify-content: space-between;
+
+                        .info-cell {
+                            justify-content: space-between;
+                            align-items: center;
+
+                            label {
+                                color: $clrSecondary6;
+                            }
+
+                            &:nth-of-type(1) {
+                                grid-column: 1;
+                                grid-row: 1;
+                            }
+
+                            &:nth-of-type(2) {
+                                grid-column: 2;
+                                grid-row: 1;
+                            }
+
+                            &:nth-of-type(3) {
+                                grid-column: 3;
+                                grid-row: 1;
+                            }
+
+                            &:nth-of-type(4) {
+                                grid-column: 4;
+                                grid-row: 1;
+                            }
+
+                            &:nth-of-type(5) {
+                                grid-column: 5;
+                                grid-row: 1;
+                            }
+                        }
                     }
 
-                    .user-progress-two {
-                        grid-column: 2;
-                        grid-row: 1 / -1;
-                        padding: 0em 1em;
-                        justify-content: space-between;
+                    .progress-circle {
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 80px;
+                        margin: 10px;
+                        position: relative;
+                    }
+
+                    .progress-circle svg {
+                        transform: rotate(-90deg);
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    .progress-background {
+                        fill: none;
+                        stroke-width: 5;
+                        stroke: $clrSecondary3;
                     }
 
                     .progress-bar {
-                        background-color: $clrSecondary6;
-                        border-radius: 4px;
-                        overflow: hidden;
+                        fill: none;
+                        stroke-width: 5;
+                        stroke: #19a463;
+                        transition: stroke-dashoffset 0.3s ease-in-out;
                     }
 
-                    .progress {
-                        background-color: #4caf50;
-                        height: 20px;
-                        border-radius: 4px;
-                        transition: width 0.3s ease-in-out;
+                    .number {
+                        position: absolute;
+                        line-height: 80px;
+                        width: 80px;
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 0.8em;
                     }
                 }
             }
@@ -107,7 +153,7 @@
                     .info-cell {
                         padding: 0em 1em;
                         justify-content: space-between;
-                        max-width: 200px;
+                        min-width: 172px;
                         gap: 0.5em;
 
                         &:not(:last-child) {
@@ -168,9 +214,10 @@
                     padding: 0 0 0 0.75em;
 
                     img {
-                        width: 50px;
+                        width: 60px;
                         height: 60px;
                         object-fit: cover;
+                        border-radius: 10px;
                     }
                 }
 
@@ -178,7 +225,7 @@
                     padding: 0;
 
                     img {
-                        width: 50px;
+                        width: 60px;
                         height: 60px;
                         object-fit: cover;
                         border-radius: 50%;

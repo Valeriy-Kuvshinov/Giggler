@@ -1,3 +1,4 @@
+import { ProgressCircle } from "./ProgressCircle.jsx"
 
 export function SellerSummary({ user, displayedOrders }) {
     const parseDeliveryTime = (deliveryTimeString) => {
@@ -30,17 +31,8 @@ export function SellerSummary({ user, displayedOrders }) {
         return completedAt <= new Date(acceptedAt.getTime() + deliveryDuration)
     }).length
 
-    const overdueOrdersCount = displayedOrders.filter(order => {
-        if (order.orderState !== 'completed') return false
-        const acceptedAt = new Date(order.acceptedAt)
-        const completedAt = new Date(order.completedAt)
-        const deliveryDuration = parseDeliveryTime(order.deliveryTime)
-        return completedAt > new Date(acceptedAt.getTime() + deliveryDuration)
-    }).length
-
     const pendingOrdersPercentage = (pendingOrdersCount / totalOrders) * 100
     const inProgressOrdersPercentage = (inProgressOrdersCount / totalOrders) * 100
-    const overdueOrdersPercentage = (overdueOrdersCount / totalOrders) * 100
     const completedOnTimeOrdersPercentage = (completedOnTimeOrdersCount / totalOrders) * 100
 
     const thisYearIncome = displayedOrders
@@ -62,30 +54,28 @@ export function SellerSummary({ user, displayedOrders }) {
     return (
         <main className="seller-summary">
             <section className="general-area flex column">
-                <h3>General Info</h3>
-                <div className="info-area grid">
-                    <div className="user-progress-one flex column">
-                        <label>Pending Orders: {pendingOrdersPercentage.toFixed(2)}%</label>
-                        <div className="progress-bar">
-                            <div className="progress" style={{ width: `${pendingOrdersPercentage}%` }}>
-                            </div>
+                <h3>Orders Info</h3>
+                <div className="info-area">
+                    <div className="user-progress grid">
+                        <div className="info-cell flex column">
+                            <label>Pending</label>
+                            <ProgressCircle percentage={pendingOrdersPercentage} />
                         </div>
-                        <label>Orders in Progress: {inProgressOrdersPercentage.toFixed(2)}%</label>
-                        <div className="progress-bar">
-                            <div className="progress" style={{ width: `${inProgressOrdersPercentage}%` }}>
-                            </div>
+                        <div className="info-cell flex column">
+                            <label>In progress</label>
+                            <ProgressCircle percentage={10} />
                         </div>
-                    </div>
-                    <div className="user-progress-two flex column">
-                        <label>Orders Overdue: {overdueOrdersPercentage.toFixed(2)}%</label>
-                        <div className="progress-bar">
-                            <div className="progress" style={{ width: `${overdueOrdersPercentage}%` }}>
-                            </div>
+                        <div className="info-cell flex column">
+                            <label>Completed overall</label>
+                            <ProgressCircle percentage={90} />
                         </div>
-                        <label>Completed on Time: {completedOnTimeOrdersPercentage.toFixed(2)}%</label>
-                        <div className="progress-bar">
-                            <div className="progress" style={{ width: `${completedOnTimeOrdersPercentage}%` }}>
-                            </div>
+                        <div className="info-cell flex column">
+                            <label>Completed on time</label>
+                            <ProgressCircle percentage={90} />
+                        </div>
+                        <div className="info-cell flex column">
+                            <label>Reviewed</label>
+                            <ProgressCircle percentage={85} />
                         </div>
                     </div>
                 </div>
@@ -95,23 +85,23 @@ export function SellerSummary({ user, displayedOrders }) {
                 <h3>Earnings</h3>
                 <div className="info-area flex row">
                     <div className="info-cell flex column">
-                        <h4>Net Income</h4>
+                        <h4>Net income</h4>
                         <p>{`${user.balance} $`}</p>
                     </div>
                     <div className="info-cell flex column">
-                        <h4>Yearly Revenue</h4>
+                        <h4>Yearly revenue</h4>
                         <p>{`${thisYearIncome} $`}</p>
                     </div>
                     <div className="info-cell flex column">
-                        <h4>Monthly Revenue</h4>
+                        <h4>Monthly revenue</h4>
                         <p>{`${thisMonthIncome} $`}</p>
                     </div>
                     <div className="info-cell flex column">
-                        <h4>Orders Completed This Year</h4>
+                        <h4>Orders completed this year</h4>
                         <p>{ordersCompletedThisYear}</p>
                     </div>
                     <div className="info-cell flex column">
-                        <h4>Orders Completed This Month</h4>
+                        <h4>Orders completed this month</h4>
                         <p>{ordersCompletedThisMonth}</p>
                     </div>
                 </div>
