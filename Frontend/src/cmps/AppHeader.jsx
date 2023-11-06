@@ -7,6 +7,7 @@ import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
 import { BuyerOrders } from './BuyerOrders.jsx'
+import { AsideMenu } from './AsideMenu.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 import { category } from '../services/gig.service.js'
