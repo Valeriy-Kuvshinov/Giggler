@@ -287,13 +287,7 @@
     }
 
     .container {
-      .dropdown {
-        @media (min-width: 601px) {
-          display: none;
-        }
-      }
-
-      @media(max-width: 500px) {
+      @media(max-width: 600px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -351,12 +345,16 @@
         }
       }
 
-      @media (min-width: 501px) {
+      @media (min-width: 601px) {
         .search-bar {
           input {
             width: calc(100% - 49px);
             border-radius: 5px 0px 0px 5px;
           }
+        }
+
+        .dropdown {
+          display: none;
         }
       }
     }
