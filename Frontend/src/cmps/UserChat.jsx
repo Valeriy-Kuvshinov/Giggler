@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
 import { utilService } from '../services/util.service.js'
+import { TypingLoader } from './TypingLoader.jsx'
 
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
-
+  const [typingUser, setTypingUser] = useState('')
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
+  const timeoutId = useRef(null)
+  let isBuyer = loggedinUser && owner._id !== loggedinUser._id
 
   useEffect(() => {
     if (chatState) {
@@ -26,7 +29,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       socketService.off('chat_add_msg', addMessage)
       socketService.off('chat_add_typing', addTypingUser)
       socketService.off('chat_remove_typing', removeTypingUser)
-      // clearTimeout(timeoutId.current)
+      clearTimeout(timeoutId.current)
     }
   }, [chatState])
 
@@ -51,14 +54,20 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     setTypingUser(null)
   }
 
+  function handleKeyPress(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault()
+      handleSendMessage()
+    }
+  }
   function handleSendMessage() {
     const newMessage = {
       message: message,
       time: new Date(),
-      username: loggedinUser.username,
+      user: loggedinUser,
     }
-    setMessages((prevMessage) => [...prevMessage, newMessage])
-    if (loggedinUser && owner._id !== loggedinUser._id) {
+    isBuyer = loggedinUser && owner._id !== loggedinUser._id
+    if (isBuyer) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
       // socketService.emit('chat_stop_typing', {userId: owner._id})
     } else {
@@ -66,8 +75,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       // socketService.emit('chat_stop_typing', {userId: buyer._id})
     }
 
-    // clearTimeout(timeoutId.current)
-    // timeoutId.current = null
+    setMessages((prevMessage) => [...prevMessage, newMessage])
+    clearTimeout(timeoutId.current)
+    timeoutId.current = null
     setMessage('')
   }
 
@@ -75,6 +85,18 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     const messageText = event.target.value
     setCharacterCount(messageText.length)
     setMessage(messageText)
+
+    isBuyer = loggedinUser && owner._id !== loggedinUser._id
+    // If there is no timeout yet - emit typing! - will happen only once!
+    if (!timeoutId.current)
+      socketService.emit('chat-user-typing', isBuyer ? owner : buyer)
+    // If there is a timeout - clear it!
+    if (timeoutId.current) clearTimeout(timeoutId.current)
+    // reactivate the timeout - when calling the CB - stop typing + clear timeoutId
+    timeoutId.current = setTimeout(() => {
+      socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
+      timeoutId.current = null
+    }, 2000)
   }
 
   return (
@@ -161,17 +183,23 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                   {messages.map((message, index) => (
                     <div
                       key={index}
-                      className={owner ? 'buyer message' : 'seller message'}
+                      className={
+                        message.user._id === loggedinUser._id
+                          ? 'you message'
+                          : 'other message'
+                      }
                     >
                       <div className="message-info">
                         <span className="avatar">
                           <img
-                            src={loggedinUser.imgUrl}
-                            alt={loggedinUser.username}
+                            src={message.user.imgUrl}
+                            alt={message.user.username}
                           />
                         </span>
                         <span className="message-username">
-                          {message.username}
+                          {message.user._id === loggedinUser._id
+                            ? 'You'
+                            : message.user.username}
                         </span>
                         <span className="message-timestamp">
                           {utilService.timeAgoString(message.time)}
@@ -180,13 +208,47 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                       <div className="message-text">{message.message}</div>
                     </div>
                   ))}
+                  {typingUser && (
+                    <>
+                      <div className="other message">
+                        <div className="message-info">
+                          <span className="avatar">
+                            <img
+                              src={
+                                loggedinUser._id === owner._id
+                                  ? owner.imgUrl
+                                  : loggedinUser.imgUrl
+                              }
+                              alt={
+                                loggedinUser._id === owner._id
+                                  ? owner.imgUrl
+                                  : loggedinUser.imgUrl
+                              }
+                            />
+                          </span>
+                          <span className="message-username">
+                            {loggedinUser._id === owner._id
+                              ? owner.username
+                              : loggedinUser.username}
+                          </span>
+                        </div>
+                        <div className="message-text">
+                          <TypingLoader />
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <div className="input-container">
                   <textarea
                     maxLength="2500"
                     data-testid="message-box"
-                    placeholder={`Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`}
+                    placeholder={
+                      isBuyer
+                        ? `Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`
+                        : `Sell you gig...`
+                    }
                     value={message}
                     onChange={(e) => onChangeMessage(e)}
                   ></textarea>
@@ -257,6 +319,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                   className="send-message-button"
                   disabled={!message}
                   onClick={handleSendMessage}
+                  onKeyPress={handleKeyPress}
                 >
                   <SvgIcon iconName={'send'} />
                   <span>Send message</span>

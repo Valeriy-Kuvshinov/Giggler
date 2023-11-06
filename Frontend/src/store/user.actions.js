@@ -55,8 +55,8 @@ export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
         store.dispatch({ type: SET_USER, user })
-        //socket tag
-        socketService.emit('set-user-socket', user._id)
+        // //socket tag
+        // socketService.emit('set-user-socket', user._id)
         return user
     } catch (err) {
         console.log('user actions -> Cannot login', err)
@@ -68,8 +68,8 @@ export async function signup(credentials) {
     try {
         const user = await userService.signup(credentials)
         store.dispatch({ type: SET_USER, user })
-         //socket tag
-         socketService.emit('set-user-socket', user._id)
+        //  //socket tag
+        //  socketService.emit('set-user-socket', user._id)
         return user
     } catch (err) {
         console.log('user actions -> Cannot signup', err)
@@ -80,8 +80,8 @@ export async function signup(credentials) {
 export async function logout() {
     try {
         await userService.logout()
-         //socket tag
-         socketService.emit('unset-user-socket')
+        //  //socket tag
+        //  socketService.emit('unset-user-socket')
         store.dispatch({ type: SET_USER, user: null })
     } catch (err) {
         console.error('user actions -> Cannot logout:', err)

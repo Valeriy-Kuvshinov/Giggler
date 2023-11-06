@@ -14,16 +14,34 @@ export function setupSocketAPI(http) {
     socket.on('disconnect', (socket) => {
       loggerService.info(`Socket disconnected [id: ${socket.id}]`)
     })
+
     socket.on('chat_open', (data) => {
       const { sellerId, buyer } = data
-      // socket.join(room)
-      console.log('HI I AM IN LINE 26')
       emitToUser({
         type: 'chat_seller_prompt',
         data: buyer,
         userId: sellerId,
       })
     })
+
+    socket.on('chat-user-typing', data => {
+      loggerService.info(`User is typing from socket [id: ${socket.id}]`)
+      emitToUser({
+        type: 'chat_add_typing',
+        data: data,
+        userId: data._id,
+      })
+  })
+
+  socket.on('chat-stop-typing', data => {
+    loggerService.info(`User has stopped typing from socket [id: ${socket.id}]`)
+    emitToUser({
+      type: 'chat_remove_typing',
+      data: data,
+      userId: data._id,
+    })
+  })
+
 
     socket.on('chat-send-msg', (data) => {
       const { userId, newMessage } = data

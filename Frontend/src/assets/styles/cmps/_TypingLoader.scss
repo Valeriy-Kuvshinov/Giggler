@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+.typing-loader {
+  display: flex;
+  gap: .5em;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // translate: -50% -50%;
+  .dot {
+    translate: -50%, -50%;
+    width: .75em;
+    height: .75em;
+    background-color: black;
+    border-radius: 50%;
+    animation: grow 0.7s infinite alternate;
+  }
+
+  @keyframes grow {
+    to {
+      scale: 1.5 1.5;
+    }
+  }
+
+  &:nth-of-type(1) {
+    animation-delay: 100ms;
+  }
+  &:nth-of-type(2) {
+    animation-delay: 200ms;
+  }
+  &:nth-of-type(3) {
+    animation-delay: 300ms;
+  }
+}
