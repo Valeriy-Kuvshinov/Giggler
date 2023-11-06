@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom'
 
 import { Loader } from '../cmps/Loader.jsx'
 import { SellerOrders } from '../cmps/dashboardCmps/SellerOrders.jsx'
+import { SellerSummary } from '../cmps/dashboardCmps/SellerSummary.jsx'
 
 import { loadOrders } from '../store/order.actions.js'
 
@@ -29,7 +30,7 @@ export function DashboardPage() {
     }, [user, dispatch])
 
     const displayedOrders = orders.filter(order => order.sellerId === user._id)
-    
+
     if (isLoading) return <Loader />
 
     if (displayedOrders.length === 0) {
@@ -49,7 +50,12 @@ export function DashboardPage() {
     return (
         <main className="dashboard-page full flex column">
             <section className='dashboard-container'>
-                <h3>Your Orders</h3>
+                <SellerSummary
+                    user={user}
+                    displayedOrders={displayedOrders}
+                />
+
+                <h3>Manage Your Orders</h3>
                 <SellerOrders
                     user={user}
                     displayedOrders={displayedOrders}
