@@ -214,7 +214,6 @@
         .message-container {
           height: 50vh;
           overflow-y: auto;
-          padding: 0.625em;
 
           display: flex;
           flex-direction: column;
@@ -226,12 +225,14 @@
             flex-direction: column;
             font-family: macan;
             width: fit-content;
-            max-width: 60%;
+            word-wrap: break-word;
+            max-width: 80%;
             padding: 0.5em 0;
-            // max-width: 5em;
             &.other {
               align-self: flex-end;
-              // margin-inline-end: 1em;
+              .message-text {
+                align-self: end;
+              }
             }
 
             .message-info {
@@ -254,7 +255,6 @@
               .message-username {
                 font-size: 1em;
                 font-weight: bold;
-                margin-inline-start: 0.5em;
               }
 
               .message-timestamp {
@@ -270,8 +270,7 @@
 
             .message-text {
               border: 1px solid $clrPrimary5;
-              align-self: center;
-              border-radius: 10%;
+              border-radius: .5em;
               background-color: $bgColor2;
               padding: 0.625em;
               font-size: 0.75em;
@@ -344,6 +343,7 @@
 
           .file-upload-button {
             margin-inline-start: 0.5em;
+            background-color: $clrPrimary1;
           }
         }
 
