@@ -20,6 +20,7 @@ export function AppHeader() {
   const [headerStage, setHeaderStage] = useState(0)
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
+  const [showAsideMenu, setshowAsideMenu] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
@@ -27,11 +28,11 @@ export function AppHeader() {
   )
 
   const userInfoRef = useRef(null)
+  const asideMenuRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const user = useSelector((storeState) => storeState.userModule.user)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
 
   const { showModal, openLogin, openSignup } = useModal()
@@ -57,9 +58,13 @@ export function AppHeader() {
   }
 
   const closeDropdown = (e) => {
-    if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
+    if (
+      (userInfoRef.current && !userInfoRef.current.contains(e.target)) &&
+      (asideMenuRef.current && !asideMenuRef.current.contains(e.target))
+    ) {
       setShowUserDropdown(false)
       setShowOrdersDropdown(false)
+      setshowAsideMenu(false)
     }
   }
 
@@ -134,12 +139,24 @@ export function AppHeader() {
     >
       <nav className="main-nav">
         <div className="container flex row">
-          <div className='dropdown flex'>
+          <div className='dropdown flex'
+            onClick={(e) => {
+              e.stopPropagation()
+              setshowAsideMenu(!showAsideMenu)
+            }}
+            ref={asideMenuRef}
+          >
             <SvgIcon
               iconName={
                 headerStage === 0 ? 'headerDropdownWhite' : 'headerDropdownGray'
               }
             />
+            {showAsideMenu && (
+              <AsideMenu
+                user={loggedinUser}
+                onClose={() => setshowAsideMenu(false)}
+              />
+            )}
           </div>
           <Link to="/" style={{ color: headerStyles.color }}>
             <h1 style={{ color: logoColor }} className="logo flex">
@@ -169,7 +186,7 @@ export function AppHeader() {
                 Explore
               </Link>
             </li>
-            {user ? (
+            {loggedinUser ? (
               <>
                 <li
                   onClick={(e) => {
@@ -181,7 +198,7 @@ export function AppHeader() {
                   <button className='orders' style={{ color: headerStyles.color }}>Orders</button>
                   {showOrdersDropdown && (
                     <BuyerOrders
-                      user={user}
+                      user={loggedinUser}
                       onClose={() => setShowOrdersDropdown(false)}
                     />
                   )}
@@ -195,10 +212,10 @@ export function AppHeader() {
                   }}
                   ref={userInfoRef}
                 >
-                  {user.imgUrl && <img src={user.imgUrl} alt="User" />}
+                  {loggedinUser.imgUrl && <img src={loggedinUser.imgUrl} alt="User" />}
                   {showUserDropdown && (
                     <UserDropdown
-                      user={user}
+                      user={loggedinUser}
                       onClose={() => setShowUserDropdown(false)}
                     />
                   )}
