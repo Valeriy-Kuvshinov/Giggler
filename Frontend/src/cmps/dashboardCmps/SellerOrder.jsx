@@ -20,6 +20,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
 
                 setUserData({
+                    username:orderDetails.userData.username,
                     firstName: orderDetails.userData.fullName.split(' ')[0],
                     lastName: orderDetails.userData.fullName.split(' ')[1] || '',
                     avatar: orderDetails.userData.imgUrl,
@@ -132,30 +133,30 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
         ) : (
             <div className={`user-order grid ${orderBackendService.getOrderClass(order.orderState)}`}>
                 <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
+                <div className="order-price">
+                    {`$${order.price}`}
+                </div>
                 <div className="order-title">
                     {gigData ? (
                         <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
                     ) : null}
                 </div>
-                <div className="order-date flex row">
-                    {orderBackendService.getActionDate(order)}
-                </div>
                 <div className="order-buyer flex row">
                     <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
                     {userData && (
                         <Link to={`/user/${userData._id}`} className="buyer-name flex row">
-                            {`${userData.firstName} ${userData.lastName}`}
+                            {`${userData.username}`}
                         </Link>
                     )}
                 </div>
-                <div className="order-due flex row">
+                <div className="order-date flex row">
+                    {orderBackendService.getActionDate(order)}
+                </div>
+                {/* <div className="order-due flex row">
                     {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
                         ? `Due: ${orderBackendService.getDueDate(new Date(order.acceptedAt), gigData.daysToMake)}`
                         : ''}
-                </div>
-                <div className="order-price">
-                    {`${order.price}$`}
-                </div>
+                </div> */}
                 <div className="order-state-dropdown flex column">
                     <span
                         className={order.orderState}

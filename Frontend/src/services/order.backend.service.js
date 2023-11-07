@@ -69,22 +69,35 @@ async function getOrderDetails(orderId, role = 'buyer') {
 function getActionDate(order) {
     let prefix = ''
     let dateStr = ''
+    const months=['January','February','March','April',
+                  'May','June','July','August',
+                  'September','October','November','December']
 
     if (order.orderState === 'completed') {
-        prefix = 'completed at '
+        // prefix = 'completed at '
         dateStr = new Date(order.completedAt).toLocaleDateString()
     }
     if (order.orderState === 'denied') {
-        prefix = 'rejected at '
+        // prefix = 'rejected at '
         dateStr = new Date(order.deniedAt).toLocaleDateString()
     }
     if (order.orderState === 'accepted') {
-        prefix = 'accepted at '
+        // prefix = 'accepted at '
         dateStr = new Date(order.acceptedAt).toLocaleDateString()
     }
     if (order.orderState === 'pending') {
-        prefix = 'received at '
+        // prefix = 'received at '
         dateStr = new Date(order.createdAt).toLocaleDateString()
+    }
+    dateStr=months[new Date(order.createdAt).getMonth()]+' '+(new Date(order.createdAt).getDay()+1)
+    if((new Date(order.createdAt).getDay()+1)===3 || (new Date(order.createdAt).getDay()+1)===23){
+        dateStr+='rd'
+    } else if((new Date(order.createdAt).getDay()+1)===2 || (new Date(order.createdAt).getDay()+1)===22){
+        dateStr+='nd'
+    } else if((new Date(order.createdAt).getDay()+1)===1 || (new Date(order.createdAt).getDay()+1)===21 || (new Date(order.createdAt).getDay()+1)===31){
+        dateStr+='st'
+    } else {
+        dateStr+='th'
     }
     return prefix + dateStr
 }
