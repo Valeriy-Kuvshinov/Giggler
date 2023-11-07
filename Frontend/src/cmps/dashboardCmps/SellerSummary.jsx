@@ -55,7 +55,7 @@ export function SellerSummary({ user, displayedOrders }) {
         <main className="seller-summary">
             <section className="general-area flex column">
                 <h3>Orders Info</h3>
-                <div className="info-area grid">
+                <div className="info-area flex">
                     <div className="info-cell flex column">
                         <label>Pending</label>
                         <ProgressCircle percentage={pendingOrdersPercentage} />
@@ -81,18 +81,18 @@ export function SellerSummary({ user, displayedOrders }) {
 
             <section className="financial-area flex column">
                 <h3>Earnings</h3>
-                <div className="info-area grid">
+                <div className="info-area flex">
                     <div className="info-cell flex column">
                         <h4>Net income</h4>
-                        <p>{`${user.balance} $`}</p>
+                        <p>{`$${user.balance}`}</p>
                     </div>
                     <div className="info-cell flex column">
                         <h4>Yearly revenue</h4>
-                        <p>{`${thisYearIncome} $`}</p>
+                        <p>{`$${thisYearIncome}`}</p>
                     </div>
                     <div className="info-cell flex column">
                         <h4>Monthly revenue</h4>
-                        <p>{`${thisMonthIncome} $`}</p>
+                        <p>{`$${thisMonthIncome}`}</p>
                     </div>
                     <div className="info-cell flex column">
                         <h4>Orders completed this year</h4>

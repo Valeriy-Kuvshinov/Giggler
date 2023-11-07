@@ -6,10 +6,10 @@ export function ProgressCircle({ percentage }) {
     return (
         <div className="progress-circle">
             <svg>
-                <circle cx="40" cy="40" r={radius} className="progress-background" />
+                <circle cx="50" cy="50" r={radius} className="progress-background" />
                 <circle
-                    cx="40"
-                    cy="40"
+                    cx="50"
+                    cy="50"
                     r={radius}
                     className="progress-bar"
                     strokeDasharray={circumference}

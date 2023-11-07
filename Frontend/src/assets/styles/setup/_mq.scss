@@ -411,8 +411,7 @@
       .financial-area {
         .info-area {
           @media(max-width: 600px) {
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(5, 1fr);
+            flex-direction: column;
             height: fit-content;
 
             .info-cell {
@@ -446,8 +445,7 @@
           }
 
           @media(min-width: 601px) {
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: 1fr;
+            flex-direction: row;
 
             .info-cell {
               &:nth-of-type(1) {
