@@ -74,6 +74,16 @@
     }
   }
 }
+.chat-box-wrapper {
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s;
+  visibility: visible;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
 
 .chat-box {
   color: $clrPrimary2;

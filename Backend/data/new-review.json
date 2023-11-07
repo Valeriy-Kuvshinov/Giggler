@@ -13,30 +13,126 @@
         "sellerId": "nu001",
         "rating": 5,
         "text": "The seller was very professional and made me a stellar logo. I'm satisfied with the time, communication, and logo design. I definitely recommend for your logo design needs.",
-        "createdAt": 1645926351
+        "createdAt": 1646293700
     },
     {
         "userId": "nr103",
         "gigId": "ng001",
         "sellerId": "nu001",
         "rating": 5,
-        "text": "Fast delivery, great price, and all they put together a creative design on the very little information i gave them. Great job",
-        "createdAt": 1645926351
+        "text": "Very quick turn-around. I actually lost track of time and the 3 days went by quickly. On the morning of the fourth day and I saw they \"picked\" one for me. I just asked if they could send me my preferred version. They responded within 5 minutes with a \"sending your files ASAP\". Great service.",
+        "createdAt": 1646036100
     },
     {
         "userId": "nr104",
         "gigId": "ng001",
         "sellerId": "nu001",
         "rating": 5,
-        "text": "Fast delivery, great price, and all they put together a creative design on the very little information i gave them. Great job",
-        "createdAt": 1645926351
+        "text": "Excellent job! I have found a new gig on Giggler that can deliver quality work. Thank you, I will be back for sure",
+        "createdAt": 1643484100
     },
     {
         "userId": "nr105",
         "gigId": "ng001",
         "sellerId": "nu001",
         "rating": 5,
-        "text": "Fast delivery, great price, and all they put together a creative design on the very little information i gave them. Great job",
-        "createdAt": 1645926351
+        "text": "Very easy to work with and provided a very fast turn around time! I definitely recommend their services and will be using again.",
+        "createdAt": 1646172100
     },
+    {
+        "userId": "nr106",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Once again,! Fantastic, fantastic fantastic delivery. Highly recommend this logo designer. Perfection.",
+        "createdAt": 1646338500
+    },
+    {
+        "userId": "nr107",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "The seller is so patient, did it like I suggested and used my suggestion properly. Good job!!!",
+        "createdAt": 1646072900
+    },
+    {
+        "userId": "nr108",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 4,
+        "text": "Had a few revision requests and designer adjusted every time, thank you!",
+        "createdAt": 1646247300
+    },
+    {
+        "userId": "nr109",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "It was a good experience, great work. Fast delivery",
+        "createdAt": 1646168900
+    },
+    {
+        "userId": "nr110",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Good revisions, communication difficulties were there (on my part) but dealt with well. Quality is exceptional for the price.",
+        "createdAt": 1646168900
+    },
+    {
+        "userId": "nr111",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Phenomenal seller. Was always willing to make the changes I needed. Super helpful and knowledgeable. Highly recommend.",
+        "createdAt": 1644858500
+    },
+    {
+        "userId": "nr112",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Did a fantastic Job with a difficult brief! Well done.",
+        "createdAt": 1643588500
+    },
+    {
+        "userId": "nr113",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Very happy with the logo from logo_kings! Great customer service and fast turn-around. Highly recommend!",
+        "createdAt": 1645703300
+    },
+    {
+        "userId": "nr114",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "Sehr passend zu der Anforderung, schnelle Auftragserledigung und sehr nette Kommunikation. Vielen Dank!",
+        "createdAt": 1661002100
+    },
+    {
+        "userId": "nr115",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 5,
+        "text": "very good and fast",
+        "createdAt": 1659877500
+    },
+    {
+        "userId": "nr116",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 3,
+        "text": "The designs were not super creative or unique, but good for the price being charged. They also helped with revisions until I was satisfied with the design.",
+        "createdAt": 1658115100
+    },
+    {
+        "userId": "nr117",
+        "gigId": "ng001",
+        "sellerId": "nu001",
+        "rating": 4,
+        "text": "decent work, great for the price, done on time",
+        "createdAt": 1656764700
+    }
 ]

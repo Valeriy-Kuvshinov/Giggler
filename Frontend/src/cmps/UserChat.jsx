@@ -88,12 +88,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     setMessage(messageText)
 
     isBuyer = loggedinUser && owner._id !== loggedinUser._id
-    // If there is no timeout yet - emit typing! - will happen only once!
     if (!timeoutId.current)
       socketService.emit('chat-user-typing', isBuyer ? owner : buyer)
-    // If there is a timeout - clear it!
     if (timeoutId.current) clearTimeout(timeoutId.current)
-    // reactivate the timeout - when calling the CB - stop typing + clear timeoutId
     timeoutId.current = setTimeout(() => {
       socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
       timeoutId.current = null
@@ -146,189 +143,189 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       )}
 
       {chatState && (
-        <aside className="chat-box">
-          <div className="chat-box-container">
-            <section className="user-info-bar">
-              <div className="avatar">
-                {buyer ? (
-                  <img src={buyer.imgUrl} alt={buyer.username} />
-                ) : (
-                  <img src={owner.imgUrl} alt={owner.username} />
-                )}
-                <span className="status-dot"></span>
-              </div>
-              <div className="owner-info">
-                <span>
+        <div className="chat-box-wrapper">
+          <aside className="chat-box">
+            <div className="chat-box-container">
+              <section className="user-info-bar">
+                <div className="avatar">
                   {buyer ? (
-                    <span className="message">{`Message ${buyer.username}`}</span>
+                    <img src={buyer.imgUrl} alt={buyer.username} />
                   ) : (
-                    <span className="message">{`Message ${owner.username}`}</span>
+                    <img src={owner.imgUrl} alt={owner.username} />
                   )}
-                  <span className="response-time">
-                    <span>Online</span>
-                    <span className="dot"></span>
-                    <span>
-                      Avg. response time: <span className="b">1 Hour</span>
+                  <span className="status-dot"></span>
+                </div>
+                <div className="owner-info">
+                  <span>
+                    {buyer ? (
+                      <span className="message">{`Message ${buyer.username}`}</span>
+                    ) : (
+                      <span className="message">{`Message ${owner.username}`}</span>
+                    )}
+                    <span className="response-time">
+                      <span>Online</span>
+                      <span className="dot"></span>
+                      <span>
+                        Avg. response time: <span className="b">1 Hour</span>
+                      </span>
                     </span>
                   </span>
-                </span>
-                <span className="remove" onClick={() => setChatState(false)}>
-                  <SvgIcon iconName={'remove'} />
-                </span>
-              </div>
-            </section>
+                  <span className="remove" onClick={() => setChatState(false)}>
+                    <SvgIcon iconName={'remove'} />
+                  </span>
+                </div>
+              </section>
 
-            <section className="chat-container">
-              <div className="message-form" data-testid="send-message-form">
-                <div className="message-container">
-                  {messages.map((message, index) => (
-                    <div
-                      key={index}
-                      className={
-                        message.user._id === loggedinUser._id
-                          ? 'you message'
-                          : 'other message'
-                      }
-                    >
-                      <div className="message-info">
-                        <span className="avatar">
-                          <img
-                            src={message.user.imgUrl}
-                            alt={message.user.username}
-                          />
-                        </span>
-                        <span className="message-username">
-                          {message.user._id === loggedinUser._id
-                            ? 'You'
-                            : message.user.username}
-                        </span>
-                        {/* <span className="message-timestamp">
-                          {utilService.timeAgoString(message.time)}
-                        </span> */}
-                      </div>
-                      <div className="message-text">{message.message}</div>
-                    </div>
-                  ))}
-                  {typingUser && (
-                    <>
-                      <div className="other message">
+              <section className="chat-container">
+                <div className="message-form" data-testid="send-message-form">
+                  <div className="message-container">
+                    {messages.map((message, index) => (
+                      <div
+                        key={index}
+                        className={
+                          message.user._id === loggedinUser._id
+                            ? 'you message'
+                            : 'other message'
+                        }
+                      >
                         <div className="message-info">
                           <span className="avatar">
                             <img
-                              src={
-                                loggedinUser._id === owner._id
-                                  ? owner.imgUrl
-                                  : loggedinUser.imgUrl
-                              }
-                              alt={
-                                loggedinUser._id === owner._id
-                                  ? owner.imgUrl
-                                  : loggedinUser.imgUrl
-                              }
+                              src={message.user.imgUrl}
+                              alt={message.user.username}
                             />
                           </span>
                           <span className="message-username">
-                            {isBuyer
-                              ? owner.username
-                              : buyer.username}
+                            {message.user._id === loggedinUser._id
+                              ? 'You'
+                              : message.user.username}
                           </span>
+                          {/* <span className="message-timestamp">
+                          {utilService.timeAgoString(message.time)}
+                        </span> */}
                         </div>
-                        <div className="message-text">
-                          <TypingLoader />
-                        </div>
+                        <div className="message-text">{message.message}</div>
                       </div>
-                    </>
-                  )}
-                </div>
+                    ))}
+                    {typingUser && (
+                      <>
+                        <div className="other message">
+                          <div className="message-info">
+                            <span className="avatar">
+                              <img
+                                src={
+                                  loggedinUser._id === owner._id
+                                    ? owner.imgUrl
+                                    : loggedinUser.imgUrl
+                                }
+                                alt={
+                                  loggedinUser._id === owner._id
+                                    ? owner.imgUrl
+                                    : loggedinUser.imgUrl
+                                }
+                              />
+                            </span>
+                            <span className="message-username">
+                              {isBuyer ? owner.username : buyer.username}
+                            </span>
+                          </div>
+                          <div className="message-text">
+                            <TypingLoader />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
 
-                <div className="input-container">
-                  <textarea
-                    maxLength="2500"
-                    data-testid="message-box"
-                    placeholder={
-                      isBuyer
-                        ? `Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`
-                        : `Sell you gig...`
-                    }
-                    value={message}
-                    onChange={(e) => onChangeMessage(e)}
-                  ></textarea>
-                </div>
+                  <div className="input-container">
+                    <textarea
+                      maxLength="2500"
+                      data-testid="message-box"
+                      placeholder={
+                        isBuyer
+                          ? `Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`
+                          : `Sell you gig...`
+                      }
+                      value={message}
+                      onChange={(e) => onChangeMessage(e)}
+                    ></textarea>
+                  </div>
 
-                <div
-                  className="message-footer-wrapper"
-                  data-testid="message-wrapper"
-                >
-                  {!message && !buyer && (
-                    <section
-                      className="quick-question-container"
-                      data-testid="quick-questions-list"
-                    >
-                      <button
-                        className="quick-question-btn"
-                        onClick={() =>
-                          setMessage(
-                            `Hey ${owner.username}, can you help me with...`
-                          )
-                        }
+                  <div
+                    className="message-footer-wrapper"
+                    data-testid="message-wrapper"
+                  >
+                    {!message && !buyer && (
+                      <section
+                        className="quick-question-container"
+                        data-testid="quick-questions-list"
                       >
-                        👋 Hey {owner.username}, can you help me with...
-                      </button>
-                      <button
-                        className="quick-question-btn"
-                        onClick={() =>
-                          setMessage(
-                            'Would it be possible to get a custom offer for...'
-                          )
-                        }
-                      >
-                        Would it be possible to get a custom offer for...
-                      </button>
-                      <button
-                        className="quick-question-btn"
-                        onClick={() =>
-                          setMessage(
-                            'Do you think you can deliver an order by...'
-                          )
-                        }
-                      >
-                        Do you think you can deliver an order by...
-                      </button>
-                    </section>
-                  )}
+                        <button
+                          className="quick-question-btn"
+                          onClick={() =>
+                            setMessage(
+                              `Hey ${owner.username}, can you help me with...`
+                            )
+                          }
+                        >
+                          👋 Hey {owner.username}, can you help me with...
+                        </button>
+                        <button
+                          className="quick-question-btn"
+                          onClick={() =>
+                            setMessage(
+                              'Would it be possible to get a custom offer for...'
+                            )
+                          }
+                        >
+                          Would it be possible to get a custom offer for...
+                        </button>
+                        <button
+                          className="quick-question-btn"
+                          onClick={() =>
+                            setMessage(
+                              'Do you think you can deliver an order by...'
+                            )
+                          }
+                        >
+                          Do you think you can deliver an order by...
+                        </button>
+                      </section>
+                    )}
 
-                  <footer className="message-footer">
-                    <section className="character-count">
-                      <span className="count">{characterCount}/2500</span>
-                    </section>
-                  </footer>
+                    <footer className="message-footer">
+                      <section className="character-count">
+                        <span className="count">{characterCount}/2500</span>
+                      </section>
+                    </footer>
+                  </div>
                 </div>
-              </div>
-              <div className="message-options">
-                <span className="addition-btn">
-                  <span className="emoji-picker-icon">
-                    <SvgIcon iconName={'smiley'} />
-                    <div className="emoji-picker-container"></div>
+                <div className="message-options">
+                  <span className="addition-btn">
+                    <span className="emoji-picker-icon">
+                      <SvgIcon iconName={'smiley'} />
+                      <div className="emoji-picker-container"></div>
+                    </span>
+
+                    <button className="file-upload-button">
+                      <SvgIcon iconName={'loadingFiles'} />
+                    </button>
                   </span>
 
-                  <button className="file-upload-button">
-                    <SvgIcon iconName={'loadingFiles'} />
+                  <button
+                    className="send-message-button"
+                    disabled={!message}
+                    onClick={handleSendMessage}
+                    onKeyPress={handleKeyPress}
+                  >
+                    <SvgIcon iconName={'send'} />
+                    <span>Send message</span>
                   </button>
-                </span>
-
-                <button
-                  className="send-message-button"
-                  disabled={!message}
-                  onClick={handleSendMessage}
-                  onKeyPress={handleKeyPress}
-                >
-                  <SvgIcon iconName={'send'} />
-                  <span>Send message</span>
-                </button>
-              </div>
-            </section>
-          </div>
-        </aside>
+                </div>
+              </section>
+            </div>
+          </aside>
+        </div>
       )}
     </>
   )
