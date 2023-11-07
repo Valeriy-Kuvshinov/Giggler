@@ -1,4 +1,4 @@
-.user-gigs {
+.profile-content {
   align-items: center;
   margin-block-end: 20px;
   height: 100%;
@@ -7,45 +7,50 @@
   padding-inline-start: 1.25em;
   color: $clrPrimary2;
 
-  .title{
+  .title {
     width: 100%;
   }
 
-  .the-gigs {
+  .user-gigs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 32px;
     height: 100%;
-    
+
     .carousel-container:hover~.preview-body .gig-title {
       text-decoration: none;
       color: $bgColor3;
     }
-    
-    .gig-changes{
+
+    .gig-changes {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.625em 0.75em;
       border-block-start: 1px solid #efeff0;
-      .gig-btns{
+
+      .gig-btns {
         display: flex;
         align-items: center;
         height: 100%;
-        .gig-btn{
+
+        .gig-btn {
           background-color: $clrPrimary1;
-          svg{
+
+          svg {
             width: 16px;
             height: 16px;
             background-color: $clrPrimary1;
             fill: $clrSecondary4;
           }
-          :hover svg{
+
+          :hover svg {
             fill: $bgColor3;
           }
         }
       }
-      .price{
+
+      .price {
         display: flex;
         flex-direction: column;
         align-items: end;
@@ -53,41 +58,39 @@
         font-size: 18px;
         height: 100%;
         color: $clrSecondary8;
-        .starting{
+
+        .starting {
           font-size: 10px;
           font-weight: 700;
           color: $clrSecondary5;
           text-transform: uppercase;
         }
       }
-      &.right{
+
+      &.right {
         justify-content: end;
       }
     }
-
-    @media screen and (max-width: 1300px) {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 32px;
-    }
-
   }
 
-  .profile{
-    padding:0.75em;
-    
-    .user-preview{
+  .profile {
+    padding: 0.75em;
+
+    .user-preview {
       display: flex;
       align-items: center;
       height: 58px;
-      padding-block-end:0.75em;
+      padding-block-end: 0.75em;
       margin: 0;
-      .avatar-userProfile{
+
+      .avatar-userProfile {
         width: 1.5em;
         height: 1.5em;
         border-radius: 50%;
         object-fit: cover;
       }
-      .name-wrapper{
+
+      .name-wrapper {
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -95,15 +98,18 @@
         font-weight: bold;
         line-height: 18px;
         margin-inline-start: 0.5em;
-        .user-level{
+
+        .user-level {
           font-weight: 500;
           color: $clrSecondary5;
-          &.top{
+
+          &.top {
             color: $clr7;
           }
         }
       }
     }
+
     .gig-title {
       overflow: hidden;
       font-weight: 400;
@@ -112,24 +118,28 @@
       color: $clrPrimary2;
       margin-inline-end: 5px;
       margin-block-end: 10px;
-      &:hover{
+
+      &:hover {
         color: $bgColor3;
         text-decoration: none;
       }
     }
-    
-    .rating{
+
+    .rating {
       display: flex;
       align-items: center;
       color: $clrSecondary8;
-      svg{
+
+      svg {
         margin-inline-end: 5px;
       }
-      span{
+
+      span {
         height: fit-content;
         font-weight: bold;
       }
-      .reviews{
+
+      .reviews {
         color: $clrSecondary4;
         font-weight: 400;
         margin: 0;
@@ -141,7 +151,8 @@
   .info-block {
     border: 1px solid $clrSecondary14;
     background-color: $clrPrimary1;
-    @media screen and (max-width: 900px){
+
+    @media screen and (max-width: 900px) {
       border: 0;
     }
 
@@ -160,9 +171,10 @@
         padding-block-end: 120px;
         font-weight: 600;
 
-        &.old{
+        &.old {
           padding: 1em 0;
         }
+
         &:hover {
           text-decoration: none;
         }
@@ -176,16 +188,16 @@
           background-color: $clr2;
         }
 
-        .seller-img{
+        .seller-img {
           width: 250px;
         }
 
-        .ready{
+        .ready {
           margin: 1.5em 0;
           color: $clrSecondary8;
         }
 
-        .become-seller{
+        .become-seller {
           text-align: center;
           line-height: 1.5em;
           padding: 9px 1.5em;
@@ -201,7 +213,8 @@
       width: 100%;
     }
   }
-  @media (max-width:900px){
+
+  @media (max-width:900px) {
     padding: 0;
   }
 }

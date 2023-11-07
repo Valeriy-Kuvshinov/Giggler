@@ -77,6 +77,7 @@
 
 .chat-box {
   color: $clrPrimary2;
+  font-family: macan;
   display: grid;
   position: fixed;
   overflow: auto;
@@ -86,7 +87,16 @@
     0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
     0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
-  @media only screen and (max-width: 599px) {
+  @media only screen and (max-width: 450px) {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    max-width: 356px;
+    max-height: 632px;
+  }
+
+  @media only screen and (min-width: 451px) {
     border-radius: 0;
     bottom: 0;
     left: 0;
@@ -96,9 +106,10 @@
     right: 0;
     top: 0;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
   }
-
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 601px) {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -212,13 +223,13 @@
         grid-template-rows: 1fr auto;
 
         .message-container {
-          height: 50vh;
+          height: 100%;
           overflow-y: auto;
 
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-      
+          margin-block-end: 0.5em;
 
           .message {
             display: flex;
@@ -227,6 +238,7 @@
             width: fit-content;
             word-wrap: break-word;
             max-width: 80%;
+
             padding: 0.5em 0;
             &.other {
               align-self: flex-end;
@@ -264,20 +276,20 @@
               }
             }
 
-            &.other .message-info{
+            &.other .message-info {
               flex-direction: row-reverse;
             }
 
             .message-text {
               border: 1px solid $clrPrimary5;
-              border-radius: .5em;
+              border-radius: 0.5em;
               background-color: $bgColor2;
               padding: 0.625em;
               font-size: 0.75em;
               box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
             }
 
-            &.other .message-text{
+            &.other .message-text {
               background-color: #f0f0f0;
             }
           }

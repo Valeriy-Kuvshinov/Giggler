@@ -1,12 +1,16 @@
 import { useDispatch } from 'react-redux'
+import { useState, useEffect } from 'react'
 
 import { SellerOrder } from './SellerOrder.jsx'
 
 import { saveOrder } from '../../store/order.actions.js'
 import { updateUser } from '../../store/user.actions.js'
+import { socketService } from '../../services/socket.service.js'
 
 export function SellerOrders({ user, displayedOrders }) {
     const dispatch = useDispatch()
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     function updateLastDeliveryForUser() {
         const updatedUser = { ...user, lastDelivery: Date.now() }
@@ -21,6 +25,7 @@ export function SellerOrders({ user, displayedOrders }) {
                 acceptedAt: Date.now()
             }
             dispatch(saveOrder(updatedOrder))
+            socketService.emit('notify_buyer_accepted', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
@@ -36,6 +41,7 @@ export function SellerOrders({ user, displayedOrders }) {
                 reasonForDenial: reason
             }
             dispatch(saveOrder(updatedOrder))
+            socketService.emit('notify_buyer_denied', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
@@ -52,39 +58,67 @@ export function SellerOrders({ user, displayedOrders }) {
             updateLastDeliveryForUser()
 
             dispatch(saveOrder(updatedOrder))
+            socketService.emit('notify_buyer_completed', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
             console.error(`Error completing order ${order._id}:`, err)
         }
     }
 
+    useEffect(() => {
+        function handleResize() {
+            setWindowWidth(window.innerWidth)
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
     return (
         <section className="user-orders">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>GIG</th>
-                        <th></th>
-                        <th>BUYER</th>
-                        <th>ACTION DATE</th>
-                        <th>DUE ON</th>
-                        <th>TOTAL</th>
-                        <th>STATUS</th>
-                    </tr>
-                </thead>
-                <tbody>
+            {windowWidth > 600 ? (
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>GIG</th>
+                            <th></th>
+                            <th>BUYER</th>
+                            <th>ACTION DATE</th>
+                            <th>DUE ON</th>
+                            <th>TOTAL</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {displayedOrders.map(order => (
+                            <SellerOrder
+                                key={order._id}
+                                order={order}
+                                acceptOrder={acceptOrder}
+                                denyOrder={denyOrder}
+                                completeOrder={completeOrder}
+                                windowWidth={windowWidth}
+                            />
+                        ))}
+                    </tbody>
+                </table>
+            ) : (
+                <section className="mobile-order-view flex column">
                     {displayedOrders.map(order => (
-                        <SellerOrder
-                            key={order._id}
-                            order={order}
-                            acceptOrder={acceptOrder}
-                            denyOrder={denyOrder}
-                            completeOrder={completeOrder}
-                        />
+                        <div className="user-orders" key={order._id}>
+                            <SellerOrder
+                                order={order}
+                                acceptOrder={acceptOrder}
+                                denyOrder={denyOrder}
+                                completeOrder={completeOrder}
+                                windowWidth={windowWidth}
+                            />
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </section>
+            )}
         </section>
     )
 }

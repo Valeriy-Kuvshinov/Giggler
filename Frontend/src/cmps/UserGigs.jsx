@@ -22,7 +22,7 @@ export function UserGigs({ user, gigs }) {
   if (!userGigs) return <div>No gigs yet, maybe create one ^_^</div>
 
   return (
-    <section className="user-gigs flex column">
+    <section className="profile-content flex column">
       {gigs.length !== 0 && user._id !== loggedinUser._id && (
         <div className="title flex">{`${user.username}'s Gigs`}</div>
       )}
@@ -45,7 +45,7 @@ export function UserGigs({ user, gigs }) {
           </Link>
         </div>
       )}
-      <div className="the-gigs">
+      <div className="user-gigs">
         {gigs.length !== 0 &&
           userGigs.map((gig) => (
             <div key={gig._id}>

@@ -70,7 +70,7 @@ export function BuyerOrders({ user, onClose }) {
       </section>
     )
   }
-  
+
   return (
     <section className="buyer-orders-dropdown flex column" onClick={onClose}>
       <div className="buyer-orders">
@@ -97,7 +97,7 @@ export function BuyerOrders({ user, onClose }) {
                   <div className="seller-name">
                     {`By ${details.userData.username}`}
                   </div>
-                  <div className="order-status">{order.orderState}</div>
+                  <div className={`order-status ${order.orderState}`}>{order.orderState}</div>
                 </div>
               )
             } else {

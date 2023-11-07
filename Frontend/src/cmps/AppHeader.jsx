@@ -24,7 +24,9 @@ export function AppHeader() {
   const [theBuyer, setTheBuyer] = useState('')
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
-    window.innerWidth <= 500 ? 'Find services...' : 'What service are you looking for today?'
+    window.innerWidth <= 500
+      ? 'Find services...'
+      : 'What service are you looking for today?'
   )
 
   const userInfoRef = useRef(null)
@@ -59,8 +61,10 @@ export function AppHeader() {
 
   const closeDropdown = (e) => {
     if (
-      (userInfoRef.current && !userInfoRef.current.contains(e.target)) &&
-      (asideMenuRef.current && !asideMenuRef.current.contains(e.target))
+      userInfoRef.current &&
+      !userInfoRef.current.contains(e.target) &&
+      asideMenuRef.current &&
+      !asideMenuRef.current.contains(e.target)
     ) {
       setShowUserDropdown(false)
       setShowOrdersDropdown(false)
@@ -130,16 +134,22 @@ export function AppHeader() {
   function setCatFilter(category) {
     setFilter({ ...filterBy, cat: category })
   }
+  function onChatState(e) {
+    e.preventDefault()
+    setChatState(true)
+  }
 
   return (
     <header
-      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
-        } ${showModal ? 'show-modal' : ''}`}
+      className={`app-header flex column full ${
+        isHomePage ? 'home-page' : ''
+      } ${showModal ? 'show-modal' : ''}`}
       style={headerStyles}
     >
       <nav className="main-nav">
         <div className="container flex row">
-          <div className='dropdown flex'
+          <div
+            className="dropdown flex notification"
             onClick={(e) => {
               e.stopPropagation()
               setshowAsideMenu(!showAsideMenu)
@@ -155,6 +165,8 @@ export function AppHeader() {
               <AsideMenu
                 user={loggedinUser}
                 onClose={() => setshowAsideMenu(false)}
+                theBuyer={theBuyer}
+                onChatState={onChatState}  
               />
             )}
           </div>
@@ -177,7 +189,7 @@ export function AppHeader() {
 
           <ul className="nav-links flex">
             {theBuyer && (
-              <li onClick={() => setChatState(true)}>
+              <li onClick={(e) => onChatState(e)}>
                 <SvgIcon iconName={'chat'} />
               </li>
             )}
@@ -195,7 +207,12 @@ export function AppHeader() {
                   }}
                   ref={userInfoRef}
                 >
-                  <button className='orders' style={{ color: headerStyles.color }}>Orders</button>
+                  <button
+                    className="orders"
+                    style={{ color: headerStyles.color }}
+                  >
+                    Orders
+                  </button>
                   {showOrdersDropdown && (
                     <BuyerOrders
                       user={loggedinUser}
@@ -212,7 +229,9 @@ export function AppHeader() {
                   }}
                   ref={userInfoRef}
                 >
-                  {loggedinUser.imgUrl && <img src={loggedinUser.imgUrl} alt="User" />}
+                  {loggedinUser.imgUrl && (
+                    <img src={loggedinUser.imgUrl} alt="User" />
+                  )}
                   {showUserDropdown && (
                     <UserDropdown
                       user={loggedinUser}
