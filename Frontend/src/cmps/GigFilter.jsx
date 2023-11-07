@@ -29,7 +29,7 @@ export function GigFilter({
     if (window.scrollY >= shadowStart) setIsSticky(true)
     else setIsSticky(false)
   }
-
+  console.log('filterby.search', filterBy.search)
   return (
     <>
       <div className="gig-results-title layout-row">
@@ -42,7 +42,11 @@ export function GigFilter({
           </section>
         )}
         {filterBy.cat && (
-          <CatTagDisplayBar isFrom='explore' category={filterBy.cat} tag={filterBy.tag} />
+          <CatTagDisplayBar
+            isFrom="explore"
+            category={filterBy.cat}
+            tag={filterBy.tag}
+          />
         )}
       </div>
 
