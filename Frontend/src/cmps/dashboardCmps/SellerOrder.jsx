@@ -152,11 +152,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 <div className="order-date flex row">
                     {orderBackendService.getActionDate(order)}
                 </div>
-                {/* <div className="order-due flex row">
-                    {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
-                        ? `Due: ${orderBackendService.getDueDate(new Date(order.acceptedAt), gigData.daysToMake)}`
-                        : ''}
-                </div> */}
                 <div className="order-state-dropdown flex column">
                     <span
                         className={order.orderState}
