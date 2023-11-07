@@ -22,6 +22,7 @@ export function AppHeader() {
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
+  const [notification, setNotification] = useState(false)
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
     window.innerWidth <= 500
@@ -74,6 +75,7 @@ export function AppHeader() {
 
   useEffect(() => {
     socketService.on('chat_seller_prompt', promptSellerChat)
+    socketService.on('notify-seller-new-order', newOrderNotification )
 
     return () => {
       socketService.off('chat_seller_prompt', promptSellerChat)
@@ -81,8 +83,12 @@ export function AppHeader() {
   }, [])
 
   function promptSellerChat(buyer) {
+    setNotification(true)
     console.log('buyer: ', buyer)
     setTheBuyer(buyer)
+  }
+  function newOrderNotification(){
+    setNotification(true)
   }
 
   useEffect(() => {
@@ -149,10 +155,11 @@ export function AppHeader() {
       <nav className="main-nav">
         <div className="container flex row">
           <div
-            className="dropdown flex notification"
+            className={`dropdown flex ${ notification ? 'notification' : ''}`}
             onClick={(e) => {
               e.stopPropagation()
               setshowAsideMenu(!showAsideMenu)
+              setNotification(false)
             }}
             ref={asideMenuRef}
           >
