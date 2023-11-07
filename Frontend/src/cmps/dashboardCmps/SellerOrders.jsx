@@ -107,7 +107,7 @@ export function SellerOrders({ user, displayedOrders }) {
             ) : (
                 <section className="mobile-order-view flex column">
                     {displayedOrders.map(order => (
-                        <div className="user-orders" key={order._id}>
+                        <div className="user-order" key={order._id}>
                             <SellerOrder
                                 order={order}
                                 acceptOrder={acceptOrder}

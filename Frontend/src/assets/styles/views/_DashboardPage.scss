@@ -63,7 +63,7 @@
                     border: 1px solid $clrSecondary4;
                     border-radius: 0.5em;
                     max-height: 400px;
-                    box-shadow: -0.1em 0.15em $clrSecondary4;
+                    box-shadow: 0.075em 0.125em 0.5em 0.125em $clrSecondary3;
                     justify-content: space-between;
 
                     .info-cell {
@@ -130,7 +130,7 @@
                     border-radius: 0.5em;
                     padding: 1em 0em;
                     max-height: 280px;
-                    box-shadow: -0.1em 0.15em $clrSecondary4;
+                    box-shadow: 0.075em 0.125em 0.5em 0.125em $clrSecondary3;
                     justify-content: space-between;
 
                     .info-cell {
@@ -236,7 +236,7 @@
                         position: relative;
                         display: block;
 
-                        .order-state-label {
+                        span {
                             cursor: pointer;
                             padding: 0.95em 0.8em;
                             border-radius: 5px;
@@ -326,14 +326,14 @@
             .mobile-order-view {
                 gap: 1em;
 
-                .user-orders {
-                    .user-order {
+                .user-order {
+                    .user-order-contents {
                         grid-template-columns: 1.5fr 1fr 1fr 1fr;
                         grid-template-rows: repeat(3, 1fr);
                         border: 1px solid $clrSecondary2;
                         border-radius: 0.5em;
                         padding: 1em;
-                        box-shadow: -0.1em 0.15em $clrSecondary4;
+                        box-shadow: 0.075em 0.125em 0.5em 0.125em $clrSecondary3;
 
                         .order-image {
                             grid-column: 1;
@@ -404,7 +404,7 @@
                             justify-self: end;
                             position: relative;
                             padding-block-start: 1em;
-                            margin-right: 0.5;
+                            margin-right: 0.5em;
 
                             span {
                                 display: block;
@@ -436,57 +436,48 @@
                                     background: $clr12;
                                 }
                             }
+                        }
+                    }
+                }
 
-                            .dropdown-menu {
-                                position: absolute;
-                                z-index: 1;
-                                top: 90%;
-                                left: 0;
-                                background: $clrPrimary1;
-                                border-radius: 5px;
-                                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                                width: 100%;
+                .dropdown-menu {
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background: $clrSecondary5;
+                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    padding: 1em;
+                    justify-content: space-between;
 
-                                button {
-                                    padding: 1.2em 0.8em;
-                                    font-family: "macan-bold";
-                                    transition: background-color 0.2s;
-                                    text-transform: uppercase;
-                                    font-size: 11.5px;
-                                    width: 100%;
+                    button {
+                        padding: 1.2em 0.8em;
+                        font-family: "macan-bold";
+                        transition: background-color 0.2s;
+                        text-transform: uppercase;
+                        font-size: 11.5px;
+                        margin: auto;
+                        border-radius: 0.5em;
+                        width: 100%;
+                        max-width: 150px;
+                        color: $clrPrimary1;
 
-                                    &.Deny {
-                                        background: $clr8;
-                                        color: $clr9;
-                                    }
+                        &.Deny {
+                            background: $clr16;
+                        }
 
-                                    &.Accept {
-                                        background: $clr10;
-                                        color: $clr11;
-                                    }
+                        &.Accept {
+                            background: $clr10;
+                        }
 
-                                    &.Complete {
-                                        background: $clr12;
-                                        color: $clr13;
-                                    }
+                        &.Complete {
+                            background: $clr12;
+                        }
 
-                                    &:hover {
-                                        opacity: 0.5;
-                                    }
-
-                                    &:first-child {
-                                        border-radius: 5px 5px 0 0;
-                                    }
-
-                                    &:last-child {
-                                        border-radius: 0 0 5px 5px;
-                                    }
-
-                                    &:not(:last-child) {
-                                        border-bottom: 1px solid $clrSecondary4;
-                                    }
-                                }
-                            }
+                        &:hover {
+                            opacity: 0.5;
                         }
                     }
                 }

@@ -20,7 +20,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
 
                 setUserData({
-                    username:orderDetails.userData.username,
+                    username: orderDetails.userData.username,
                     firstName: orderDetails.userData.fullName.split(' ')[0],
                     lastName: orderDetails.userData.fullName.split(' ')[1] || '',
                     avatar: orderDetails.userData.imgUrl,
@@ -57,7 +57,8 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 { label: 'Accept', action: () => acceptOrder(order) },
                 { label: 'Deny', action: () => setDenial(true) }
             ]
-        } else if (order.orderState === 'accepted') {
+        }
+        if (order.orderState === 'accepted') {
             actions = [
                 { label: 'Complete', action: () => completeOrder(order) }
             ]
@@ -100,7 +101,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 <td>
                     <div className="order-state-dropdown">
                         <span
-                            className={`order-state-label ${order.orderState}`}
+                            className={order.orderState}
                             onClick={() => setDropdownVisible(!isDropdownVisible)}
                         >
                             {order.orderState}
@@ -131,7 +132,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 )}
             </tr>
         ) : (
-            <div className={`user-order grid ${orderBackendService.getOrderClass(order.orderState)}`}>
+            <div className={`user-order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
                 <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
                 <div className="order-price">
                     {`$${order.price}`}
@@ -155,12 +156,16 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 <div className="order-state-dropdown flex column">
                     <span
                         className={order.orderState}
-                        onClick={() => setDropdownVisible(!isDropdownVisible)}
+                        onClick={() => {
+                            if (getAvailableActions(order).length > 0) {
+                                setDropdownVisible(!isDropdownVisible)
+                            }
+                        }}
                     >
                         {order.orderState}
                     </span>
-                    {isDropdownVisible && (
-                        <div ref={dropdownMenuRef} className="dropdown-menu">
+                    {isDropdownVisible && getAvailableActions(order).length > 0 && (
+                        <div ref={dropdownMenuRef} className="dropdown-menu flex row">
                             {getAvailableActions(order).map((action, idx) => (
                                 <button
                                     key={idx}
