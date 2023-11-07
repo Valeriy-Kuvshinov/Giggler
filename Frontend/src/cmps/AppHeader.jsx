@@ -22,6 +22,7 @@ export function AppHeader() {
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
+  const [asideChatNotification, setAsideChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
@@ -84,8 +85,10 @@ export function AppHeader() {
 
   function promptSellerChat(buyer) {
     setNotification(true)
+    setAsideChatNotification(true)
     console.log('buyer: ', buyer)
     setTheBuyer(buyer)
+
   }
   function newOrderNotification(){
     setNotification(true)
@@ -174,6 +177,8 @@ export function AppHeader() {
                 onClose={() => setshowAsideMenu(false)}
                 theBuyer={theBuyer}
                 onChatState={onChatState}  
+                asideChatNotification={asideChatNotification}
+                setAsideChatNotification={setAsideChatNotification}
               />
             )}
           </div>
