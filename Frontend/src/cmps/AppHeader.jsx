@@ -25,7 +25,7 @@ export function AppHeader() {
   const [notification, setNotification] = useState(false)
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
-    window.innerWidth <= 500
+    window.innerWidth <= 600
       ? 'Find services...'
       : 'What service are you looking for today?'
   )
@@ -113,7 +113,7 @@ export function AppHeader() {
 
   useEffect(() => {
     const updatePlaceholder = () => {
-      if (window.innerWidth <= 500) setHeaderPlaceholderText('Find services...')
+      if (window.innerWidth <= 600) setHeaderPlaceholderText('Find services...')
       else setHeaderPlaceholderText('What service are you looking for today?')
     }
     window.addEventListener('resize', updatePlaceholder)
