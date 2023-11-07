@@ -24,6 +24,7 @@ export function GigReview({ review }) {
         Germany, Germany, India, Netherlands, Norway, Poland,
         Spain, Switzerland, Turkey, UnitedKingdom, UnitedStates, Hungary
     }
+    
     const dateOfReview = review.createdAt
     let timeDelay = (Date.now() - dateOfReview) / 1000 / 60 / 60 / 24
     timeDelay = Math.floor(timeDelay)
