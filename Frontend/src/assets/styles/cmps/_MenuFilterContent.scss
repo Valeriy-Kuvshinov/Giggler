@@ -16,8 +16,9 @@
   z-index: 3;
 
   .content-scroll {
-    max-height: 25vh;
-    width: rem(350px);
+    height: fit-content;
+    max-height: 26vh;
+    width: fit-content;
     overflow-y: scroll;
     padding: 24px;
     top: -8px;
@@ -116,10 +117,10 @@
           color: $clrSecondary4;
           font-style: normal;
           position: absolute;
-          right: 2.7%;
+          right: 65.7%;
 
           &.min {
-            right: 2.7%;
+            right: 15.5%;
           }
 
           top: 31.5px;
