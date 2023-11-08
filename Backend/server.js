@@ -2,10 +2,12 @@ import path, { dirname } from 'path'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
 // Sup Giggler
 import { loggerService } from './services/logger.service.js'
 import http from 'http'
 
+dotenv.config()
 const app = express()
 
 app.use(cookieParser()) // for res.cookies

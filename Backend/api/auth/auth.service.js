@@ -1,5 +1,6 @@
 import Cryptr from 'cryptr'
 import bcrypt from 'bcrypt'
+import dotenv from 'dotenv'
 
 import { userService } from '../user/user.db.service.js'
 import { loggerService } from '../../services/logger.service.js'
@@ -10,7 +11,8 @@ export const authService = {
     getLoginToken,
     validateToken
 }
-const cryptr = new Cryptr(process.env.SECRET || 'Very-Secret')
+dotenv.config()
+const cryptr = new Cryptr(process.env.DECRYPTION)
 
 async function login(username, password) {
     console.log(`Attempting to login user: ${username}`)
@@ -20,7 +22,6 @@ async function login(username, password) {
     if (!user) throw new Error('Invalid username or password')
 
     const match = await bcrypt.compare(password, user.password)
-    console.log("bcrypt comparison result:", match)
     if (!match) throw new Error('Invalid username or password')
 
     // delete user.password

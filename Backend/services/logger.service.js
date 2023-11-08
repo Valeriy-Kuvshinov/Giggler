@@ -15,7 +15,6 @@ export const loggerService = {
     }
 }
 
-
 const logsDir = './logs'
 if (!fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir)
@@ -42,4 +41,3 @@ function doLog(level, ...args) {
         if (err) console.log('FATAL: cannot write to log file')
     })
 }
-

@@ -22,16 +22,16 @@ function makeId(length = 6) {
     return txt
 }
 
-function idToObjectId(oldId){
-    let newId=oldId
-    if(typeOf(newId)==='object'){
-        if(newId.length!==0){
-            newId=newId.map((aId)=>aId=new ObjectId(aId))
+function idToObjectId(oldId) {
+    let newId = oldId
+    if (typeOf(newId) === 'object') {
+        if (newId.length !== 0) {
+            newId = newId.map((aId) => aId = new ObjectId(aId))
         } else {
-            newId._id=ObjectId(newId._id)
+            newId._id = ObjectId(newId._id)
         }
     } else {
-        newId=ObjectId(newId)
+        newId = ObjectId(newId)
     }
     return newId
 }
