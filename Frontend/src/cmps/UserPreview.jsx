@@ -69,7 +69,7 @@ export function UserPreview({ is, owner, children }) {
             </div>
           )}
         </div>
-        {is === 'explore' && <span className="level">{user.level}</span>}
+        {is === 'explore' && <span className={`level ${user.level==='Pro Talent'?'pro':''}`}>{user.level}</span>}
       </div>
       {is === 'explore' && children}
       {is === 'explore' && (
