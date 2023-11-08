@@ -4,9 +4,7 @@
     "username": "logo_king",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "Roei King",
-    "description": "Design is the secret to great business. I'm working on Giggler from 2015. We provide Professional Logo Design, Business cards, Email Signature, Website Development, Website Design.
-    We provide 100% happiness Otherwise 100% MONEY REFUND.
-    Thanks",
+    "description": "",
     "balance": 0,
     "level": "level 2",
     "rating": 4.9,
@@ -41,8 +39,7 @@
     "username": "elmidale85",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "Elmer Glomdale",
-    "description": "I Am a Professional Graphic Artist with over 10 Years Experience. You Can See My Professionalism From my Feedbacks. I Can Make a Creative Designs for you, that Will Suit Your needs. Contact me if You Have Any Questions.
-    Thank you",
+    "description": "",
     "balance": 0,
     "level": "Pro Talent",
     "rating": 4.9,
@@ -80,6 +77,74 @@
     "description": "",
     "balance": 0,
     "level": "Pro Talent",
+    "rating": 4.7,
+    "imgUrl": "",
+    "country": "United Kingdom",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu003",
+    "username": "liondesign",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Lion Design",
+    "description": "I have more than 6 years of experience as a professional graphic designer. I have a lot of experience designing flyers, letterheads, logos, and business cards. I create the graphics for you using Adobe Illustrator and Photoshop. In addition, I promise to deliver excellent work that will satisfy each and every one of my customers. Additionally, I offer source and vector files. I'll finish a lot of projects to the satisfaction of my clients. I also finished my two-year graphic design diploma. Please get in touch with me if your project requires my expertise.",
+    "balance": 0,
+    "level": "level 2",
+    "rating": 4.8,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/22f08dfbaf47e57403f63b2b4907f823-1664365762969/fc9a7ca8-9d41-40d1-93b4-3f5bc9590756.jpg",
+    "country": "Germany",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      },
+      {
+        "language": "Germany",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "M.A. - English Literature",
+        "educationPlace": "karachi university, Pakistan",
+        "graduationTime": "2014"
+      }
+    ],
+    "skills": ["Logo design", "Branding"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu004",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
     "rating": 4.9,
     "imgUrl": "",
     "country": "United States",
@@ -108,7 +173,42 @@
     "lastDelivery": 11678007738000
   },
   {
-    "userId": "nu002",
+    "userId": "nu005",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu006",
     "username": "",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "",
@@ -214,7 +314,7 @@
   },
   {
     "userId": "nu002",
-    "username": "",
+    "username": "tomi123",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "",
     "description": "",
@@ -227,127 +327,21 @@
       {
         "language": "English",
         "fluency": "Fluent"
-      }
-    ],
-    "education": [
-      {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
       },
-      
       {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
-      }
-    ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
-    "createdAt": 1636191847000,
-    "isAdmin": false,
-    "lastDelivery": 11678007738000
-  },
-  {
-    "userId": "nu002",
-    "username": "",
-    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
-    "fullName": "",
-    "description": "",
-    "balance": 0,
-    "level": "Pro Talent",
-    "rating": 4.9,
-    "imgUrl": "",
-    "country": "United States",
-    "languages": [
-      {
-        "language": "English",
+        "language": "Hebrew",
         "fluency": "Fluent"
       }
     ],
     "education": [
       {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
-      },
-      
-      {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
+        "certificate": "Full Stack Developer",
+        "educationPlace": "Coding Academy Israel",
+        "graduationTime": "2023"
       }
+ 
     ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
-    "createdAt": 1636191847000,
-    "isAdmin": false,
-    "lastDelivery": 11678007738000
-  },
-  {
-    "userId": "nu002",
-    "username": "",
-    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
-    "fullName": "",
-    "description": "",
-    "balance": 0,
-    "level": "Pro Talent",
-    "rating": 4.9,
-    "imgUrl": "",
-    "country": "United States",
-    "languages": [
-      {
-        "language": "English",
-        "fluency": "Fluent"
-      }
-    ],
-    "education": [
-      {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
-      },
-      
-      {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
-      }
-    ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
-    "createdAt": 1636191847000,
-    "isAdmin": false,
-    "lastDelivery": 11678007738000
-  },
-  {
-    "userId": "nu002",
-    "username": "",
-    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
-    "fullName": "",
-    "description": "",
-    "balance": 0,
-    "level": "Pro Talent",
-    "rating": 4.9,
-    "imgUrl": "",
-    "country": "United States",
-    "languages": [
-      {
-        "language": "English",
-        "fluency": "Fluent"
-      }
-    ],
-    "education": [
-      {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
-      },
-      
-      {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
-      }
-    ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "skills": ["Web Designer", "Full Stack Developer"],
     "createdAt": 1636191847000,
     "isAdmin": false,
     "lastDelivery": 11678007738000
