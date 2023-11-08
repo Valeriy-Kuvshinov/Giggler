@@ -358,7 +358,10 @@
                             grid-column: 2 / -1;
                             grid-row: 2;
                             text-align: left;
-                            padding: 0em 0.5em 1em 0.5em;
+                            padding: 0em 0.5em 0.5em 0.5em;
+                            text-overflow: ellipsis;
+                            max-height: 55px;
+                            overflow: hidden;
 
                             a {
                                 color: $clrSecondary5;
