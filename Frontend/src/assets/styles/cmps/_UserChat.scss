@@ -102,46 +102,6 @@
     0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
     0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
-<<<<<<< HEAD
-    @media only screen and (max-width: 450px) {
-      width: 100vw;
-      height: 100vh;
-      left: 0;
-      top: 0;
-    }
-    
-    @media only screen and (min-width: 451px) {
-      border-radius: 0;
-      bottom: 0;
-      left: 0;
-      max-height: none;
-      max-width: none;
-      position: fixed;
-      right: 0;
-      top: 0;
-      overflow: hidden;
-      height: 100%;
-      width: 100%;
-    }
-    @media only screen and (min-width: 601px) {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      
-      width: 544px;
-      max-width: 450px;
-      border-radius: 4px;
-      border: 1px solid #e4e5e7;
-      z-index: 20;
-    }
-    
-    .chat-box-container {
-      background-color: $clrPrimary1;
-      font-family: macan;
-      padding: 0 1.5em;
-      height: 100%;
-=======
   @media only screen and (max-width: 450px) {
     width: 100vw;
     height: 100vh;
@@ -180,7 +140,6 @@
     font-family: macan;
     padding: 0 1.5em;
     height: 100%;
->>>>>>> 11cb760fc1f4ca4878e837b3476205359ea31168
     // min-height: 0;
     // position: relative;
     display: grid;
@@ -371,13 +330,8 @@
             padding: 1.5em 1.5em 0 1.5em;
             
             .quick-question-btn {
-<<<<<<< HEAD
-              border-color: #e4e5e7;
-              
-=======
               border-color: $clrSecondary10;
 
->>>>>>> 11cb760fc1f4ca4878e837b3476205359ea31168
               background: none;
               border-color: currentColor;
               font-family: macan;
