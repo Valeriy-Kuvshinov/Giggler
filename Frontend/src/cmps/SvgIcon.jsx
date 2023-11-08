@@ -1,5 +1,5 @@
 import React from 'react'
-import { svgService } from '../services/svg.service.js'
+import { svgService } from '../services/svg.service.jsx'
 
 const SvgIcon = ({ iconName }) => {
  const svg = svgService.getIcon(iconName)

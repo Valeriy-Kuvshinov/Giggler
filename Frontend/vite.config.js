@@ -10,8 +10,31 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  esbuild: {
+    loader: 'jsx',
+    include: /src\/.*\.jsx?$/,
+    exclude: [],
+  },
   build: {
     outDir: '../Backend/public',
     emptyOutDir: true
-  }
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [
+        {
+          name: 'load-js-files-as-jsx',
+          setup(build) {
+            build.onLoad(
+              { filter: /src\\.*\.js$/ },
+              async (args) => ({
+                loader: 'jsx',
+                contents: await fs.readFile(args.path, 'utf8'),
+              })
+            );
+          },
+        },
+      ],
+    },
+  },
 })
