@@ -1,4 +1,3 @@
-// import MongoClient from 'mongodb'
 import mongoDB from 'mongodb'
 const { MongoClient } = mongoDB
 
