@@ -1,42 +1,3 @@
-// export function UserMsg() {
-//   const [msg, setMsg] = useState(null)
-//   const timeoutIdRef = useRef()
-
-//   useEffect(() => {
-//     const unsubscribe = eventBus.on('show-msg', (msg) => {
-//       setMsg(msg)
-//       window.scrollTo({ top: 0, behavior: 'smooth' })
-
-//       if (timeoutIdRef.current) {
-//         timeoutIdRef.current = null
-//         clearTimeout(timeoutIdRef.current)
-//       }
-//       timeoutIdRef.current = setTimeout(closeMsg, 3000)
-//     })
-
-//     socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
-//       showSuccessMsg(`New review about me ${review.txt}`)
-//     })
-
-//     return () => {
-//       unsubscribe()
-//       socketService.off(SOCKET_EVENT_REVIEW_ABOUT_YOU)
-//     }
-//   }, [])
-
-//   function closeMsg() {
-//     setMsg(null)
-//   }
-
-//   if (!msg) return <span></span>
-
-//   return (
-//     <section className={`user-msg ${msg.type}`}>
-//       <button onClick={closeMsg}>x</button>
-//       {msg.txt}
-//     </section>
-//   )
-// }
 import {
   eventBusService,
   showErrorMsg,
@@ -62,7 +23,7 @@ export function UserMsg() {
         setIsActive(false)
         setIsSlidingOut(true)
         setTimeout(onCloseMsg, 500)
-      }, 8000)
+      }, 5000)
     })
 
     return () => {
@@ -90,9 +51,9 @@ export function UserMsg() {
         body: `${user.username} has accepted your order!`,
       },
       {
-        userMsgLeft: '55%',
+        userMsgLeft: '50%',
         messageAreaPadding: '2em 1.5em 2em 7em',
-        msgStatusTranslateX: '-12em',
+        msgStatusTranslateX: '-14em',
       }
     )
   }
@@ -103,9 +64,9 @@ export function UserMsg() {
         body: `${user.username} has rejected your order!`,
       },
       {
-        userMsgLeft: '55%',
+        userMsgLeft: '50%',
         messageAreaPadding: '2em 1.5em 2em 7em',
-        msgStatusTranslateX: '-12em',
+        msgStatusTranslateX: '-14em',
       }
     )
   }
@@ -116,9 +77,9 @@ export function UserMsg() {
         body: `${user.username} has completed your order!`,
       },
       {
-        userMsgLeft: '55%',
+        userMsgLeft: '50%',
         messageAreaPadding: '2em 1.5em 2em 7em',
-        msgStatusTranslateX: '-12em',
+        msgStatusTranslateX: '-14em',
       }
     )
   }
@@ -129,18 +90,16 @@ export function UserMsg() {
         body: `${user.username} just purchased a gig from you!`,
       },
       {
-        userMsgLeft: '55%',
+        userMsgLeft: '50%',
         messageAreaPadding: '2em 1.5em 2em 7em',
-        msgStatusTranslateX: '-12em',
+        msgStatusTranslateX: '-15em',
       }
     )
   }
-
   function onCloseMsg() {
     setIsSlidingOut(false)
     setMsg(null)
   }
-
   if (!msg) return null
 
   const { title, body, type, styles } = msg
@@ -148,9 +107,8 @@ export function UserMsg() {
 
   return (
     <section
-      className={`user-msg ${isActive ? 'slide-in' : ''} ${
-        isSlidingOut ? 'slide-out' : ''
-      } ${type}`}
+      className={`user-msg ${isActive ? 'slide-in' : ''} ${isSlidingOut ? 'slide-out' : ''
+        } ${type}`}
       style={{ left: styles?.userMsgLeft }}
     >
       <div
