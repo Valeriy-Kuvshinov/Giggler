@@ -17,7 +17,7 @@
     @media only screen and (min-width: 900px) {
       margin: 0 auto;
       width: 377px;
-      border-color: #f4f4f4 #e4e5e7;
+      border-color: $clrSecondary1 $clrSecondary10;
       border-style: solid;
       border-width: 1px;
       border-radius: 0.25em;
@@ -25,7 +25,7 @@
 
     .gig {
       @media only screen and (min-width: 900px) {
-        border-block-end: 1px solid #f4f4f4;
+        border-block-end: 1px solid $clrSecondary1;
       }
       padding: 1em;
 
@@ -82,7 +82,7 @@
       padding: 1em;
 
       .summary-table {
-        border-bottom: 1px solid #f4f4f4;
+        border-bottom: 1px solid $clrSecondary1;
         padding: 0 0 1em;
         margin-bottom: 1em;
 
@@ -148,7 +148,7 @@
           background-color: $clrSecondary8;
         }
         &.paypal {
-          background-color: #0070ba;
+          background-color: $clr5;
           position: relative;
           display: flex;
           justify-content: center;

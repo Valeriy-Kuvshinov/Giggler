@@ -10,7 +10,7 @@
 
   .section-header {
     padding: 1em;
-    border: 1px solid #efeff0;
+    border: 1px solid $clrSecondary14;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
     color: $clrSecondary8;
@@ -22,7 +22,7 @@
     input[type='text'] {
       display: flex;
       flex-wrap: nowrap;
-      border: 1px solid #c5c6c9;
+      border: 1px solid $clrSecondary45;
       border-radius: 0.25em;
       flex-basis: 100%;
       align-items: center;
@@ -38,7 +38,7 @@
       flex-shrink: 0;
       align-self: flex-start;
       margin-block-end: 3px;
-      border: 1px solid #dadbdd;
+      border: 1px solid $clrSecondary2;
       border-radius: 50%;
       margin-inline-end: 0.5em;
       cursor: pointer;
@@ -48,7 +48,7 @@
 
     .selected {
       .radio-btn {
-        border-color: #222325;
+        border-color: $clrPrimary2;
         border-width: 5px;
       }
     }
@@ -60,7 +60,7 @@
       padding-inline-start: 1em;
 
       &:hover .radio-btn {
-        border-color: #222325;
+        border-color: $clrPrimary2;
       }
 
       .text {
@@ -74,11 +74,11 @@
 
     .credit-card {
       cursor: pointer;
-      border-bottom: 1px solid #efeff0;
+      border-bottom: 1px solid $clrSecondary14;
 
       .credit-card-container {
         padding: 1.5em em(18px);
-        border-top: 1px solid #efeff0;
+        border-top: 1px solid $clrSecondary14;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
 
         .credit-card-form {

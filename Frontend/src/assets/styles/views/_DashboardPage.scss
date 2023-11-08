@@ -23,7 +23,7 @@
             margin-bottom: 0.25em;
             padding: 0.75em 1em;
             background: $bgColor3;
-            color: #fff;
+            color: $clrPrimary1;
             border-radius: 5px;
             text-transform: uppercase;
             font-family: "macan-bold";
@@ -104,7 +104,7 @@
                     .progress-bar {
                         fill: none;
                         stroke-width: 5;
-                        stroke: #19a463;
+                        stroke: $bgColor5;
                         transition: stroke-dashoffset 0.3s ease-in-out;
                     }
 

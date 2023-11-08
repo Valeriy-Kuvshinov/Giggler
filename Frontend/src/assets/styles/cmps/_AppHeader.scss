@@ -177,19 +177,19 @@
               text-transform: uppercase;
 
               &.pending {
-                color: #FFC107;
+                color: $clr15;
               }
 
               &.denied {
-                color: #FF5E5E;
+                color: $clr9;
               }
 
               &.accepted {
-                color: #19a463;
+                color: $clr11;
               }
 
               &.completed {
-                color: #29A2C6;
+                color: $clr13;
               }
             }
           }

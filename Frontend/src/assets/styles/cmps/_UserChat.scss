@@ -11,7 +11,7 @@
     grid-auto-flow: column;
     align-items: center;
     position: relative;
-    background-color: #fff;
+    background-color: $clrPrimary1;
     border-radius: 4.25em;
     cursor: pointer;
     padding: 0.5em 1.5em 0.5em 0.5em;
@@ -21,7 +21,7 @@
       0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
     .avatar {
-      background-color: #b5b6ba;
+      background-color: $clrSecondary4;
       position: relative;
       width: 32px;
       height: 32px;
@@ -39,7 +39,7 @@
         border-width: em(2px);
         width: 0.65em;
         height: 0.65em;
-        background-color: #1dbf73;
+        background-color: $bgColor3;
         border-color: $clrPrimary1;
         border-radius: 50%;
         border-style: solid;
@@ -126,7 +126,7 @@
     width: 544px;
     max-width: 450px;
     border-radius: 4px;
-    border: 1px solid #e4e5e7;
+    border: 1px solid $clrSecondary10;
     z-index: 20;
   }
 
@@ -148,12 +148,12 @@
       padding: 1.5em 0;
       height: fit-content;
       position: relative;
-      background-color: #fff;
+      background-color: $clrPrimary1;
       cursor: pointer;
       // width: fit-content;
 
       .avatar {
-        background-color: #b5b6ba;
+        background-color: $clrSecondary4;
         position: relative;
         width: 48px;
         height: 48px;
@@ -171,7 +171,7 @@
           border-width: em(2px);
           width: 1em;
           height: 1em;
-          background-color: #1dbf73;
+          background-color: $bgColor3;
           border-color: $clrPrimary1;
           border-radius: 50%;
           border-style: solid;
@@ -278,7 +278,7 @@
               }
 
               .message-timestamp {
-                color: #95979d;
+                color: $clrSecondary11;
                 font-size: 0.5em;
                 margin-inline-start: 0.5em;
               }
@@ -298,7 +298,7 @@
             }
 
             &.other .message-text {
-              background-color: #f0f0f0;
+              background-color: $clrSecondary14;
             }
           }
         }
@@ -325,7 +325,7 @@
             padding: 1.5em 1.5em 0 1.5em;
 
             .quick-question-btn {
-              border-color: #e4e5e7;
+              border-color: $clrSecondary10;
 
               background: none;
               border-color: currentColor;
@@ -375,7 +375,7 @@
           padding: em(9px) 1em;
           line-height: 1.5em;
           background-color: $clrPrimary2;
-          color: #fff;
+          color: $clrPrimary1;
           border-radius: 0.5rem;
           font-size: 1em;
 
