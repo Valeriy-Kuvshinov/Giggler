@@ -208,7 +208,162 @@
     "lastDelivery": 11678007738000
   },
   {
-    "userId": "nu006",
+    "userId": "nu007",
+    "username": "kylelogo92",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Kile Broflovski",
+    "description": "You should be thankful to this day as you are lucky enough to find the BEST DESIGNER here on Giggler. I am an experienced PRO DESIGNER with more than 1000+ satisfied clients worldwide.",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 5,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/5654d3568f8747212dd091b08fe74c0e-1647431958963/990b0a86-6471-411d-924d-3dc8e36edd84.jpg",
+    "country": "Turkey",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.A. - Design",
+        "educationPlace": "NCA, Turkey, Graduated 2011",
+        "graduationTime": "2011"
+      }
+    ],
+    "skills": ["Graphics Designing", "Logo design"],
+    "createdAt": 1546300800000,
+    "isAdmin": false,
+    "lastDelivery": 1673502005883
+  },
+  {
+    "userId": "nu008",
+    "username": "artina654",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Tina Art",
+    "description": "I am Tina for more than 8 years of experience in graphic design I hope you will get the best design service. You can see my client's reviews every 5*. Every job complete within 24h. The source file (AI, EPS, PDF, PSD, JPG, PNG). If you feel better you can hire me. Best Regards I'm a fun loving guy who loves nature, pets and dressing up! I'm also a bit of a perfectionist! I freelance exclusively on Giggler!",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/8913b197898f6443fb35e0cd6898230f-1613146479456/5423fb73-15e1-4c63-97c9-0d7af939dfdc.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "Certificate - Grahpic Design",
+        "educationPlace": "NSBM, Sri Lanka, Graduated 2018",
+        "graduationTime": "2015"
+      } 
+    ],
+    "skills": ["Graphics Designing", "Adobe Illustrator"],
+    "createdAt": 1612137600000,
+    "isAdmin": false,
+    "lastDelivery": 1673502005883
+  },
+  {
+    "userId": "nu009",
+    "username": "corrygraphics",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Corry Kelner",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/d44a344958bb975172d4d25a5a6f4297-1553885193551/51d9b6b8-b9be-410c-9e5c-84ad1fe3349a.jpg",
+    "country": "Netherlands",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.A. - Art & Design",
+        "educationPlace": "Mimron University of Arts",
+        "graduationTime": "2017"
+      }
+    ],
+    "skills": ["Graphics Designing", "Logo design"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 1673502005883
+  },
+  {
+    "userId": "nu010",
+    "username": "nadiaspain",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Nadia Esponansa",
+    "description": "Hi! I'm Nadia, and I'm a graphic designer :) I have been working on this platform for several years mainly as a logo designer, so that is my specialty, but I also have experience and ability to create any type of graphic design work, so I will be happy to help and guide you in your projects. Feedback is the most important thing for me, and I'm always open to new proposals and visions, so for me collaboration between client and me in the project is the key to success! If you have any questions or would like to make a request, feel free to do it!",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 5,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/b9737760536c1617444b46f4bd5910fe-1682597654920/64fc2890-f9eb-40e7-a755-0915f18e398a.jpg",
+    "country": "Spain",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      },
+      {
+        "language": "Spanish",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "Diseño Y Edición De Publicaciones Impresas Y Multimedia",
+        "educationPlace": "IES Virgen de la paloma Spain",
+        "graduationTime": "2020"
+      }
+ 
+    ],
+    "skills": ["Logo design", "Illustration"],
+    "createdAt": 1604582400000,
+    "isAdmin": false,
+    "lastDelivery": 1659621200000
+  },
+  {
+    "userId": "nu011",
+    "username": "lopertist",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Rodríguez López",
+    "description": "I’m Rodríguez López, a Graphic Designer based out of Florida, US that loves to focus on the great aspects of design. I do and work on all adobe suite programs. My work consists of clean and minimal. My goal is always to make the client happy.",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 5,
+    "imgUrl": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/profile/photos/65078729/original/12688102_10153577812667655_6605637105269429636_n.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      },
+      {
+        "language": "Spanish",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.A. - Graphic Designer",
+        "educationPlace": "The art institutes, United States",
+        "graduationTime": "2020"
+      }
+ 
+    ],
+    "skills": ["Logo design", "Graphic design"],
+    "createdAt": 1598832000000,
+    "isAdmin": false,
+    "lastDelivery": 1667855600000
+  },
+  {
+    "userId": "nu012",
     "username": "",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "",
@@ -222,28 +377,27 @@
       {
         "language": "English",
         "fluency": "Fluent"
+      },
+      {
+        "language": "Hebrew",
+        "fluency": "Fluent"
       }
     ],
     "education": [
       {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
-      },
-      
-      {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
+        "certificate": "Full Stack Developer",
+        "educationPlace": "Coding Academy Israel",
+        "graduationTime": "2023"
       }
+ 
     ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "skills": ["Web Designer", "Full Stack Developer"],
     "createdAt": 1636191847000,
     "isAdmin": false,
     "lastDelivery": 11678007738000
   },
   {
-    "userId": "nu002",
+    "userId": "nu013",
     "username": "",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
     "fullName": "",
@@ -257,57 +411,21 @@
       {
         "language": "English",
         "fluency": "Fluent"
-      }
-    ],
-    "education": [
-      {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
       },
-      
       {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
-      }
-    ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
-    "createdAt": 1636191847000,
-    "isAdmin": false,
-    "lastDelivery": 11678007738000
-  },
-  {
-    "userId": "nu002",
-    "username": "",
-    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
-    "fullName": "",
-    "description": "",
-    "balance": 0,
-    "level": "Pro Talent",
-    "rating": 4.9,
-    "imgUrl": "",
-    "country": "United States",
-    "languages": [
-      {
-        "language": "English",
+        "language": "Hebrew",
         "fluency": "Fluent"
       }
     ],
     "education": [
       {
-        "certificate": "B.Sc. - Software Engineer",
-        "educationPlace": "Mirpur University of Science and Technology",
-        "graduationTime": "2013"
-      },
-      
-      {
-        "certificate": "M.Sc. - Information Technology",
-        "educationPlace": "Charles Sturt University",
-        "graduationTime": "2019"
+        "certificate": "Full Stack Developer",
+        "educationPlace": "Coding Academy Israel",
+        "graduationTime": "2023"
       }
+ 
     ],
-    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "skills": ["Web Designer", "Full Stack Developer"],
     "createdAt": 1636191847000,
     "isAdmin": false,
     "lastDelivery": 11678007738000

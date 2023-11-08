@@ -175,8 +175,8 @@
         "createdAt": 1604563200000
     },
     {
-        "gigId": "ng002",
-        "title": "",
+        "gigId": "ng007",
+        "title": "I will create minimalist and luxury logo design for your business",
         "category": "Graphics & Design",
         "tags": [
             "Logo & Brand Identity",
@@ -184,24 +184,99 @@
             "Marketing Design",
             "3D Design"
         ],
-        "price": 25,
+        "price": 65,
         "description": "",
-        "daysToMake": "",
-        "ownerId": "nu002",
+        "daysToMake": "Up to 7 days",
+        "ownerId": "nu007",
         "imgUrls": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/187680580/original/e03cbfb4c19b84d78b748678e1a917758d58b81a/create-modern-minimalist-and-luxury-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/187680580/original/d17bb5c50baf944330ab7a59825a5218bc23915b/create-modern-minimalist-and-luxury-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/187680580/original/2ef5bae3d7e8488ce96e63e95790ade8a96a4f25/create-modern-minimalist-and-luxury-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/3b16af75702ae664d483d73099015365-1698916040/1/create-modern-minimalist-and-luxury-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/aaa31a5f641cc1f140261a7597707c92-1698631640/3/create-modern-minimalist-and-luxury-logo-design.jpg"
+        ],
+        "likedByUsers": [],
+        "reviews": [],
+        "createdAt": 1546300800000
+    },
+    {
+        "gigId": "ng008",
+        "title": "I will do modern minimalist unique timeless business logo design",
+        "category": "Graphics & Design",
+        "tags": [
+            "Logo & Brand Identity",
+            "Art & Illustration",
+            "Marketing Design",
+            "3D Design"
+        ],
+        "price": 45,
+        "description": "",
+        "daysToMake": "Up to 7 days",
+        "ownerId": "nu008",
+        "imgUrls": [
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/311320257/original/161ca42610f90a9a20c277dfe7f06b12f2222476/do-modern-minimalist-unique-timeless-business-logo-design.png",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/311320257/original/a74c62ac1f62d377072693f7e4b5bb43e2c60117/do-modern-minimalist-unique-timeless-business-logo-design.png",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/311320257/original/656a5d462f7547c67ec98c48f9d60a6605f0fa6b/do-modern-minimalist-unique-timeless-business-logo-design.png",
+            "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20230409/4%20(2)_bsiz5u.jpg",
+            "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20230409/5_cocqsw.jpg"
+        ],
+        "likedByUsers": [],
+        "reviews": [],
+        "createdAt": 1514764800000
+    },
+    {
+        "gigId": "ng009",
+        "title": "I will design 2 modern minimalist logo for your business",
+        "category": "Graphics & Design",
+        "tags": [
+            "Logo & Brand Identity",
+            "Art & Illustration",
+            "Marketing Design",
+            "3D Design"
+        ],
+        "price": 15,
+        "description": "",
+        "daysToMake": "Up to 3 days",
+        "ownerId": "nu009",
+        "imgUrls": [
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/115285458/original/a05727920329ff7a405ba1e463a5e010e8ca5dfe/do-minimalist-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/115285458/original/f51850d23265d0f38e9357cc8afd2034709f42ac/do-minimalist-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/115285458/original/8dc434c217a0b7448a35e8ae7e2c18a2134adc62/do-minimalist-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/107992015/original/b9517d0a5369337db2777e71b981f1e05658cd77/create-awesome-vintage-outdoor-design-logo-or-tshirt.png",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/107992015/original/e14d7a54b8090e4ee44238950f9e85ca84878cd3/create-awesome-vintage-outdoor-design-logo-or-tshirt.png"
+        ],
+        "likedByUsers": [],
+        "reviews": [],
+        "createdAt": 1604582400000
+    },
+    {
+        "gigId": "ng010",
+        "title": "I will create minimalist and modern logo design",
+        "category": "Graphics & Design",
+        "tags": [
+            "Logo & Brand Identity",
+            "Art & Illustration",
+            "Marketing Design",
+            "3D Design"
+        ],
+        "price": 85,
+        "description": "",
+        "daysToMake": "Up to 3 days",
+        "ownerId": "nu010",
+        "imgUrls": [
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/175346331/original/aeea6eb8970a3dd6d31d76ba349e6e3aaa99580a/do-a-minimalist-and-modern-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/175346331/original/a7115600ca5f61de93eb1656bc5e9c50412526b7/do-a-minimalist-and-modern-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/175346331/original/18e3e02f7a37c41ea88a017f90f50f472d34f238/do-a-minimalist-and-modern-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/129661626/original/33f58a4613160c1517b62c2cfb9a0b262213a4b7/design-professional-minimalist-logo-design.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/129661626/original/ba73119c317db50550243e773e2b04f64d34ce93/design-professional-minimalist-logo-design.jpg"
         ],
         "likedByUsers": [],
         "reviews": [],
         "createdAt": 1442024647000
     },
     {
-        "gigId": "ng002",
-        "title": "",
+        "gigId": "ng011",
+        "title": "I will design, redesign, vectorize any logo or graphic",
         "category": "Graphics & Design",
         "tags": [
             "Logo & Brand Identity",
@@ -209,23 +284,23 @@
             "Marketing Design",
             "3D Design"
         ],
-        "price": 25,
-        "description": "",
-        "daysToMake": "",
-        "ownerId": "nu002",
+        "price": 30,
+        "description": "Logo design is crucial for any business, as it can greatly impact your brand image and recognition. As a graphic designer with 15 years of experience, I understand the importance of creating a strong and memorable logo for both large corporations and small one-person home businesses. I specialize in custom logo creation, using design aesthetics, color psychology, and typography to convey brand messaging and enhance visual communication. With expertise in vector graphics software, I create high-resolution and scalable logos in various file formats suitable for printing, animation, and digital media. Let me help you design a professional and unique logo that represents your brand and attracts customers!",
+        "daysToMake": "Express 24H",
+        "ownerId": "nu011",
         "imgUrls": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/187873293/original/52adab31b0893b62261744881afaeb4d4f46a7c7/flat-unique-minimal-logo-in-24hrs.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/187873293/original/1205bc17c7ac83d02ad9476d145ce12c8e172d74/flat-unique-minimal-logo-in-24hrs.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/187873293/original/0c4223f29955c574f09b1d27bfac1a932842928b/flat-unique-minimal-logo-in-24hrs.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/271130288/original/cd072cf5121dee97bbc34192a9875e8e71a7c56b/design-redesign-vectorize-any-logo-or-graphic.png",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/271130288/original/85928e32dbcb8cb4f7e2058e256ac7c7800fae4d/design-redesign-vectorize-any-logo-or-graphic.png"
         ],
         "likedByUsers": [],
         "reviews": [],
-        "createdAt": 1442024647000
+        "createdAt": 1514764800000
     },
     {
-        "gigId": "ng002",
+        "gigId": "ng012",
         "title": "",
         "category": "Graphics & Design",
         "tags": [
@@ -234,24 +309,24 @@
             "Marketing Design",
             "3D Design"
         ],
-        "price": 25,
+        "price": 35,
         "description": "",
-        "daysToMake": "",
-        "ownerId": "nu002",
+        "daysToMake": "Up to 3 days",
+        "ownerId": "Choose a User",
         "imgUrls": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/15069289/original/b0d86abe88ba68236f39ba27d372063563ab4e84/design-3-customized-and-creative-logo-concepts.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/15069289/original/8c5566312e981f93e0bee4dd2801daf1aee1c9e9/design-3-customized-and-creative-logo-concepts.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/15069289/original/eece99dbdacb4d6753549e33b2d0975e0a880c8f/design-3-customized-and-creative-logo-concepts.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/203580910/original/f829cb30fa43cc11f36b1c61f1a853cb3ac5691b/design-a-circular-round-logo-badge-label-patch-emblem-and-stamp.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/203580910/original/b78f12d4aee9ea3e617b479374cd32f983d7a628/design-a-circular-round-logo-badge-label-patch-emblem-and-stamp.jpg"
         ],
         "likedByUsers": [],
         "reviews": [],
-        "createdAt": 1442024647000
+        "createdAt": 1604563200000
     },
     {
-        "gigId": "ng002",
-        "title": "",
+        "gigId": "ng013",
+        "title": "I will create a custom logo illustration in my style",
         "category": "Graphics & Design",
         "tags": [
             "Logo & Brand Identity",
@@ -259,23 +334,48 @@
             "Marketing Design",
             "3D Design"
         ],
-        "price": 25,
+        "price": 95,
         "description": "",
-        "daysToMake": "",
-        "ownerId": "nu002",
+        "daysToMake": "Up to 3 days",
+        "ownerId": "Choose a User",
         "imgUrls": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/244121728/original/d50cbd525d7a7d703f08905e04636d9a653f27a0/hand-drawn-mascot-logo-artwork-sticker-cartoon-lowbrow.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/244121728/original/44e4fbb6e4e587da89622d5336a7ff5f1ceb0838/hand-drawn-mascot-logo-artwork-sticker-cartoon-lowbrow.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/244121728/original/8a67083b0207d140be9a2651e64f241f13b6eb21/hand-drawn-mascot-logo-artwork-sticker-cartoon-lowbrow.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/252360587/original/b755921f463379812097dc3a8bf9893e5571a054/create-a-custom-logo-illustration.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/252360587/original/1b535992f26aa2337570cf8c93bba1c46917fd95/create-a-custom-logo-illustration.jpg"
         ],
         "likedByUsers": [],
         "reviews": [],
-        "createdAt": 1442024647000
+        "createdAt": 1636191847000
     },
     {
-        "gigId": "ng002",
+        "gigId": "ng014",
+        "title": "I will create cute and funny logo or mascot",
+        "category": "Graphics & Design",
+        "tags": [
+            "Logo & Brand Identity",
+            "Art & Illustration",
+            "Marketing Design",
+            "3D Design"
+        ],
+        "price": 19,
+        "description": "",
+        "daysToMake": "Up to 3 days",
+        "ownerId": "Choose a User",
+        "imgUrls": [
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/137547257/original/a24038e1aa47c654702c0dbe3e8cbffaf498d10f/create-cute-and-funny-mascot-sticker-or-emote.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/137547257/original/0f3d0db361dcda3ebc975815bca4544b362e904b/create-cute-and-funny-mascot-sticker-or-emote.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/137547257/original/935758747498f9ded325a67594164a5fa3264a5e/create-cute-and-funny-mascot-sticker-or-emote.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/bcbfb0cf77752b08233ddcd58c66ffb0-1583374826/4/create-cute-and-funny-mascot-sticker-or-emote.jpg",
+            "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/291325620/original/e3218c6572a1549393ce5831ffe43fc0b7f29032/create-your-creative-cute-funny-cartoon-logo-within-12-hours.jpg"
+        ],
+        "likedByUsers": [],
+        "reviews": [],
+        "createdAt": 1665138486000
+    },
+    {
+        "gigId": "ng000",
         "title": "",
         "category": "Graphics & Design",
         "tags": [
@@ -287,7 +387,7 @@
         "price": 25,
         "description": "",
         "daysToMake": "",
-        "ownerId": "nu002",
+        "ownerId": "nu000",
         "imgUrls": [
             "",
             "",
