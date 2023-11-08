@@ -37,6 +37,323 @@
     "lastDelivery": 1667955600
   },
   {
+    "userId": "nu002",
+    "username": "elmidale85",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "Elmer Glomdale",
+    "description": "I Am a Professional Graphic Artist with over 10 Years Experience. You Can See My Professionalism From my Feedbacks. I Can Make a Creative Designs for you, that Will Suit Your needs. Contact me if You Have Any Questions.
+    Thank you",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/92ac15d229eed1f1268a9e4386ab9737-1698169005889/f9e22136-fc15-4815-a21a-1c8888c143b8.jpg",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "M.A. - Multimedia",
+        "educationPlace": "NSBM, Sri Lanka, Graduated 2015",
+        "graduationTime": "2015"
+      },
+      
+      {
+        "certificate": "B.A. - Business Management",
+        "educationPlace": "NSBM, Sri Lanka",
+        "graduationTime": "2016"
+      }
+    ],
+    "skills": ["Graphics Design", "Cartoon drawing"],
+    "createdAt": 1427846400000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+  {
+    "userId": "nu002",
+    "username": "",
+    "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",
+    "fullName": "",
+    "description": "",
+    "balance": 0,
+    "level": "Pro Talent",
+    "rating": 4.9,
+    "imgUrl": "",
+    "country": "United States",
+    "languages": [
+      {
+        "language": "English",
+        "fluency": "Fluent"
+      }
+    ],
+    "education": [
+      {
+        "certificate": "B.Sc. - Software Engineer",
+        "educationPlace": "Mirpur University of Science and Technology",
+        "graduationTime": "2013"
+      },
+      
+      {
+        "certificate": "M.Sc. - Information Technology",
+        "educationPlace": "Charles Sturt University",
+        "graduationTime": "2019"
+      }
+    ],
+    "skills": ["Graphics Designing", "Animation And Web Development"],
+    "createdAt": 1636191847000,
+    "isAdmin": false,
+    "lastDelivery": 11678007738000
+  },
+
+  {
     "userId": "nr101",
     "username": "jesseq0070",
     "password": "$2b$10$UMRtGW/3Qd24lyzWINrBTeaXJ8OJBk1V3zPYtYLl3mv7Z1NmyPlPe",

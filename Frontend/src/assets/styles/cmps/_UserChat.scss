@@ -11,7 +11,7 @@
     grid-auto-flow: column;
     align-items: center;
     position: relative;
-    background-color: #fff;
+    background-color: $clrPrimary1;
     border-radius: 4.25em;
     cursor: pointer;
     padding: 0.5em 1.5em 0.5em 0.5em;
@@ -21,7 +21,7 @@
       0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
     .avatar {
-      background-color: #b5b6ba;
+      background-color: $clrSecondary4;
       position: relative;
       width: 32px;
       height: 32px;
@@ -39,7 +39,7 @@
         border-width: em(2px);
         width: 0.65em;
         height: 0.65em;
-        background-color: #1dbf73;
+        background-color: $bgColor3;
         border-color: $clrPrimary1;
         border-radius: 50%;
         border-style: solid;
@@ -102,6 +102,7 @@
     0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
     0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
+<<<<<<< HEAD
     @media only screen and (max-width: 450px) {
       width: 100vw;
       height: 100vh;
@@ -140,6 +141,46 @@
       font-family: macan;
       padding: 0 1.5em;
       height: 100%;
+=======
+  @media only screen and (max-width: 450px) {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+  }
+
+  @media only screen and (min-width: 451px) {
+    border-radius: 0;
+    bottom: 0;
+    left: 0;
+    max-height: none;
+    max-width: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+  @media only screen and (min-width: 601px) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 544px;
+    max-width: 450px;
+    border-radius: 4px;
+    border: 1px solid $clrSecondary10;
+    z-index: 20;
+  }
+
+  .chat-box-container {
+    background-color: $clrPrimary1;
+    font-family: macan;
+    padding: 0 1.5em;
+    height: 100%;
+>>>>>>> 11cb760fc1f4ca4878e837b3476205359ea31168
     // min-height: 0;
     // position: relative;
     display: grid;
@@ -153,12 +194,12 @@
       padding: 1.5em 0;
       height: fit-content;
       position: relative;
-      background-color: #fff;
+      background-color: $clrPrimary1;
       cursor: pointer;
       // width: fit-content;
       
       .avatar {
-        background-color: #b5b6ba;
+        background-color: $clrSecondary4;
         position: relative;
         width: 48px;
         height: 48px;
@@ -176,7 +217,7 @@
           border-width: em(2px);
           width: 1em;
           height: 1em;
-          background-color: #1dbf73;
+          background-color: $bgColor3;
           border-color: $clrPrimary1;
           border-radius: 50%;
           border-style: solid;
@@ -283,7 +324,7 @@
               }
               
               .message-timestamp {
-                color: #95979d;
+                color: $clrSecondary11;
                 font-size: 0.5em;
                 margin-inline-start: 0.5em;
               }
@@ -303,7 +344,7 @@
             }
             
             &.other .message-text {
-              background-color: #f0f0f0;
+              background-color: $clrSecondary14;
             }
           }
         }
@@ -330,8 +371,13 @@
             padding: 1.5em 1.5em 0 1.5em;
             
             .quick-question-btn {
+<<<<<<< HEAD
               border-color: #e4e5e7;
               
+=======
+              border-color: $clrSecondary10;
+
+>>>>>>> 11cb760fc1f4ca4878e837b3476205359ea31168
               background: none;
               border-color: currentColor;
               font-family: macan;
@@ -380,7 +426,7 @@
           padding: em(9px) 1em;
           line-height: 1.5em;
           background-color: $clrPrimary2;
-          color: #fff;
+          color: $clrPrimary1;
           border-radius: 0.5rem;
           font-size: 1em;
           
