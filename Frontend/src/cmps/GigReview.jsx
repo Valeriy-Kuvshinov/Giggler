@@ -21,7 +21,7 @@ import UnitedStates from '../assets/img/countryFlags/UnitedStates.png'
 export function GigReview({ review }) {
     const flags = {
         Australia, Austria, Canada, CzechRepublic,
-        Germany, Germany, India, Netherlands, Norway, Poland,
+        Germany, India, Netherlands, Norway, Poland,
         Spain, Switzerland, Turkey, UnitedKingdom, UnitedStates, Hungary
     }
     
