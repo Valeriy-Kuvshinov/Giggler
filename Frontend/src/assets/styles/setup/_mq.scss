@@ -641,22 +641,22 @@
         .message-form {
           .message-container {
             @media (max-width: 600px) {
-              max-height: 550px;
+              max-height: 620px;
 
               .message {
                 .message-text {
                   font-size: 1em;
 
-                  &::after {
-                    bottom: 29.5px;
-                  }
+                  // &::after {
+                  //   bottom: 29.5px;
+                  // }
                 }
 
-                &.other .message-text {
-                  &::after {
-                    bottom: 37.5px;
-                  }
-                }
+                // &.other .message-text {
+                //   &::after {
+                //     bottom: 37.5px;
+                //   }
+                // }
               }
             }
 
@@ -665,18 +665,18 @@
 
               .message {
                 .message-text {
-                  font-size: 0.8em;
+                  font-size: 0.85em;
 
-                  &::after {
-                    bottom: 20px;
-                  }
+                  // &::after {
+                  //   bottom: 20px;
+                  // }
                 }
 
-                &.other .message-text {
-                  &::after {
-                    bottom: 28px;
-                  }
-                }
+                // &.other .message-text {
+                //   &::after {
+                //     bottom: 28px;
+                //   }
+                // }
               }
             }
           }

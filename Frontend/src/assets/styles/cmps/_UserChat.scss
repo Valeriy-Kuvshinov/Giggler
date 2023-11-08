@@ -232,31 +232,31 @@
                 color: $clrSecondary8;
                 position: relative;
 
-                &::after {
-                  content: '';
-                  position: absolute;
-                  right: -5px;
-                  width: 0;
-                  height: 0;
-                  border: 12px solid transparent;
-                  border-top-color: #d8fcd2;
-                  border-bottom: 0;
-                  border-right: 0;
-                  transform: translate(30%, 30%);
-                  rotate: 270deg;
-                }
+                // &::after {
+                //   content: '';
+                //   position: absolute;
+                //   right: -5px;
+                //   width: 0;
+                //   height: 0;
+                //   border: 12px solid transparent;
+                //   border-top-color: #d8fcd2;
+                //   border-bottom: 0;
+                //   border-right: 0;
+                //   transform: translate(30%, 30%);
+                //   rotate: 270deg;
+                // }
               }
 
               &.other .message-text {
                 background-color: $clrSecondary14;
                 border-radius: 0 0.5em 0.5em 0.5em;
 
-                &::after {
-                  rotate: 0deg;
-                  left: -15px;
-                  right: 0;
-                  border-top-color: $clrSecondary14;
-                }
+                // &::after {
+                //   rotate: 0deg;
+                //   left: -15px;
+                //   right: 0;
+                //   border-top-color: $clrSecondary14;
+                // }
               }
             }
           }
