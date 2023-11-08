@@ -1,4 +1,5 @@
 import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
@@ -6,6 +7,9 @@ import dotenv from 'dotenv'
 // Sup Giggler
 import { loggerService } from './services/logger.service.js'
 import http from 'http'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 dotenv.config()
 const app = express()
