@@ -69,10 +69,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     isBuyer = loggedinUser && owner._id !== loggedinUser._id
     if (isBuyer) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
-      // socketService.emit('chat_stop_typing', {userId: owner._id})
     } else {
       socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
-      // socketService.emit('chat_stop_typing', {userId: buyer._id})
     }
 
     setMessages((prevMessage) => [...prevMessage, newMessage])
@@ -107,7 +105,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
           }}
           className="mini-message-bar"
         >
-          <div className="mini-message-bar-container">
+          <div className="mini-message-bar-container grid">
             <div
               style={{
                 height: window ? '32px' : '48px',
@@ -124,14 +122,13 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                 className="status-dot"
               ></span>
             </div>
-            <div className="owner-info">
-              <span className="message">{`Message${
-                window ? '' : ` ${owner.fullName}`
-              }`}</span>
+            <div className="owner-info flex column">
+              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
+                }`}</span>
               {!window && (
-                <span className="response-time">
+                <span className="response-time flex">
                   <span>Online</span>
-                  <span className="dot"></span>
+                  <span className="dot flex"></span>
                   <span>
                     Avg. response time: <span className="b">1 Hour</span>
                   </span>
@@ -145,8 +142,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       {chatState && (
         <div className="chat-box-wrapper">
           <aside className="chat-box">
-            <div className="chat-box-container">
-              <section className="user-info-bar">
+            <div className="chat-box-container grid">
+              <section className="user-info-bar flex row">
                 <div className="avatar">
                   {buyer ? (
                     <img src={buyer.imgUrl} alt={buyer.username} />
@@ -155,16 +152,16 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                   )}
                   <span className="status-dot"></span>
                 </div>
-                <div className="owner-info">
+                <div className="owner-info flex">
                   <span>
                     {buyer ? (
-                      <span className="message">{`Message ${buyer.username}`}</span>
+                      <span className="message flex row">{`Message ${buyer.username}`}</span>
                     ) : (
-                      <span className="message">{`Message ${owner.username}`}</span>
+                      <span className="message flex row">{`Message ${owner.username}`}</span>
                     )}
-                    <span className="response-time">
+                    <span className="response-time flex">
                       <span>Online</span>
-                      <span className="dot"></span>
+                      <span className="dot flex"></span>
                       <span>
                         Avg. response time: <span className="b">1 Hour</span>
                       </span>
@@ -176,19 +173,19 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                 </div>
               </section>
 
-              <section className="chat-container">
-                <div className="message-form" data-testid="send-message-form">
-                  <div className="message-container">
+              <section className="chat-container grid">
+                <div className="message-form grid">
+                  <div className="message-container flex column">
                     {messages.map((message, index) => (
                       <div
                         key={index}
                         className={
                           message.user._id === loggedinUser._id
-                            ? 'you message'
-                            : 'other message'
+                            ? 'you message flex column'
+                            : 'other message flex column'
                         }
                       >
-                        <div className="message-info">
+                        <div className="message-info flex">
                           <span className="avatar">
                             <img
                               src={message.user.imgUrl}
@@ -200,9 +197,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                               ? 'You'
                               : message.user.username}
                           </span>
-                          {/* <span className="message-timestamp">
-                          {utilService.timeAgoString(message.time)}
-                        </span> */}
                         </div>
                         <div className="message-text">{message.message}</div>
                       </div>
@@ -229,7 +223,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                               {isBuyer ? owner.username : buyer.username}
                             </span>
                           </div>
-                          <div className="message-text" style={{ border: 0 , margin: '0 .5em'}}>
+                          <div className="message-text" style={{ border: 0, margin: '0 .5em' }}>
                             <TypingLoader />
                           </div>
                         </div>
@@ -257,11 +251,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                   >
                     {!message && !buyer && (
                       <section
-                        className="quick-question-container"
-                        data-testid="quick-questions-list"
+                        className="quick-question-container flex column"
                       >
                         <button
-                          className="quick-question-btn"
                           onClick={() =>
                             setMessage(
                               `👋 Hey ${owner.username}, can you help me with...`
@@ -271,7 +263,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                           👋 Hey {owner.username}, can you help me with...
                         </button>
                         <button
-                          className="quick-question-btn"
                           onClick={() =>
                             setMessage(
                               'Would it be possible to get a custom offer for...'
@@ -281,40 +272,38 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                           Would it be possible to get a custom offer for...
                         </button>
                         <button
-                          className="quick-question-btn"
                           onClick={() =>
                             setMessage(
                               'Do you think you can deliver an order by...tomorrow at 10pm'
                             )
                           }
                         >
-                          Do you think you can deliver an order by...tomorrow at
-                          10pm
+                          Do you think you can deliver an order by...
                         </button>
                       </section>
                     )}
 
-                    <footer className="message-footer">
+                    <footer className="message-footer flex">
                       <section className="character-count">
                         <span className="count">{characterCount}/2500</span>
                       </section>
                     </footer>
                   </div>
                 </div>
-                <div className="message-options">
-                  <span className="addition-btn">
+                <div className="message-options flex row">
+                  <span className="addition flex">
                     <span className="emoji-picker-icon">
                       <SvgIcon iconName={'smiley'} />
                       <div className="emoji-picker-container"></div>
                     </span>
 
-                    <button className="file-upload-button">
+                    <button>
                       <SvgIcon iconName={'loadingFiles'} />
                     </button>
                   </span>
 
                   <button
-                    className="send-message-button"
+                    className="send-message-button flex row"
                     disabled={!message}
                     onClick={handleSendMessage}
                     onKeyPress={handleKeyPress}

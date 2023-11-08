@@ -1,72 +1,47 @@
-* {
-  box-sizing: border-box;
-}
-
 .typing-loader {
   display: flex;
   gap: .5em;
-  // position: absolute;
-  // top: 50%;
-  // left: 50%;
-  // translate: -50% -50%;
+
   .dot {
     translate: -50%, -50%;
-    width: .75em;
-    height: .75em;
+    width: 1.55em;
+    height: 1.55em;
     background-color: $clrSecondary45;
     border-radius: 50%;
-    // animation: grow 0.7s infinite alternate;
     animation: typing 2s infinite alternate;
+
     &:nth-of-type(1) {
       animation-delay: 0;
-     
+
     }
+
     &:nth-of-type(2) {
       animation-delay: 500ms;
-     
+
     }
+
     &:nth-of-type(3) {
       animation-delay: 1000ms;
-  
+
     }
   }
-  
+
   @keyframes typing {
     0% {
       transform: translateY(0px);
       background-color: $clrPrimary2;
     }
+
     33% {
       transform: translateY(5px);
     }
+
     66% {
       transform: translateY(-5px);
     }
+
     100% {
       transform: translateY(0px);
     }
-
   }
-  // @keyframes grow {
-  //   to {
-  //     scale: 1.5 1.5;
-  //   }
-  // }
-
 }
-    
-.jump1 {
-  animation: typing 4s infinite;
-  animation-delay: 0s;
-}
-
-.jump2 {
-  animation: typing 4s infinite;
-  animation-delay: .2s;
-}
-
-.jump3 {
-  animation: typing 4s infinite;
-  animation-delay: .4s;
-}
-
