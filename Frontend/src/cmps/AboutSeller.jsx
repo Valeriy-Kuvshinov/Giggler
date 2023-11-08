@@ -58,7 +58,9 @@ export function AboutSeller({ owner }) {
         <h3>About The Seller</h3>
         <UserPreview is={'gig-details-2'} owner={owner} />
 
-        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>Contact me</button>
+        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>
+          Contact me
+        </button>
       </div>
       <div className="stats-desc">
         <ul className="user-stats grid">
@@ -84,7 +86,9 @@ export function AboutSeller({ owner }) {
           <li className="language">
             Languages
             <span className="lang-type">
-              {owner.languages.map((lang=><span>{lang.language}, </span>))}
+              {owner.languages.map((lang, idx) => (
+                <span key={idx}>{lang.language}, </span>
+              ))}
             </span>
           </li>
         </ul>

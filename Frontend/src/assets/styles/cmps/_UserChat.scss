@@ -296,9 +296,8 @@
             }
             
             .message-text {
-              border: 1px solid $clrPrimary5;
               border-radius: 0.5em;
-              background-color: $bgColor2;
+              background-color: #d8fcd2; 
               padding: 0.625em;
               font-size: 0.75em;
               box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.1);
@@ -338,13 +337,13 @@
               border-color: currentColor;
               // font-family: macan;
               font-size: em(14px);
-              padding: 10px 16px;
+              padding: em(10px) 1em;
               
-              border-radius: 60px;
+              border-radius: 3.75em;
               height: fit-content;
               width: fit-content;
-              min-height: 36px;
-              padding: 7px 16px 3px;
+              min-height: 2.25em;
+              padding: em(7px) 1em em(3px);
               text-align: start;
             }
           }
