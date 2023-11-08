@@ -264,7 +264,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                           className="quick-question-btn"
                           onClick={() =>
                             setMessage(
-                              `Hey ${owner.username}, can you help me with...`
+                              `👋 Hey ${owner.username}, can you help me with...`
                             )
                           }
                         >
@@ -284,7 +284,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                           className="quick-question-btn"
                           onClick={() =>
                             setMessage(
-                              'Do you think you can deliver an order by...'
+                              'Do you think you can deliver an order by...tomorrow at 10pm'
                             )
                           }
                         >
