@@ -229,7 +229,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                               {isBuyer ? owner.username : buyer.username}
                             </span>
                           </div>
-                          <div className="message-text">
+                          <div className="message-text" style={{ border: 0 , margin: '0 .5em'}}>
                             <TypingLoader />
                           </div>
                         </div>
@@ -288,7 +288,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             )
                           }
                         >
-                          Do you think you can deliver an order by...
+                          Do you think you can deliver an order by...tomorrow at
+                          10pm
                         </button>
                       </section>
                     )}
