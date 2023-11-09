@@ -80,6 +80,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     timeoutId.current = null
     setMessage('')
     socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
+    setCharacterCount(0)
   }
 
   function onChangeMessage(event) {
@@ -125,9 +126,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               ></span>
             </div>
             <div className="owner-info flex column">
-              <span className="message">{`Message${
-                window ? '' : ` ${owner.fullName}`
-              }`}</span>
+              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
+                }`}</span>
               {!window && (
                 <span className="response-time flex">
                   <span>Online</span>
@@ -189,19 +189,27 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                         }
                       >
                         <div className="message-info flex">
-                          <span className="avatar">
+                          {/* <span className="avatar">
                             <img
                               src={message.user.imgUrl}
                               alt={message.user.username}
                             />
-                          </span>
-                          <span className="message-username">
+                          </span> */}
+                          {/* <span className="message-username">
                             {message.user._id === loggedinUser._id
                               ? 'You'
                               : message.user.username}
-                          </span>
+                          </span> */}
                         </div>
-                        <div className="message-text">{message.message}</div>
+                        <div className="message-body grid">
+                          <span className='text'>
+                            {message.message}
+                          </span>
+                          <img className='avatar'
+                            src={message.user.imgUrl}
+                            alt={message.user.username}
+                          />
+                        </div>
                       </div>
                     ))}
                     {typingUser && (
@@ -227,7 +235,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             </span>
                           </div>
                           <div
-                            className="message-text"
+                            className="message-body"
                             style={{ border: 0, margin: '0 .5em' }}
                           >
                             <TypingLoader />
@@ -248,6 +256,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                       }
                       value={message}
                       onChange={(e) => onChangeMessage(e)}
+                      onKeyPress={handleKeyPress}
                     ></textarea>
                   </div>
 
@@ -289,7 +298,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
 
                     <footer className="message-footer flex">
                       <section className="character-count">
-                        <span className="count">{characterCount}/2500</span>
+                        <span>{characterCount}/2500</span>
                       </section>
                     </footer>
                   </div>
@@ -300,9 +309,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                       <span className="smiley-container">
                         <SvgIcon iconName={'smiley'} />
                         <span
-                          className={`smiley-selection ${
-                            smileyChoice ? '' : 'hidden'
-                          }`}
+                          className={`smiley-selection ${smileyChoice ? '' : 'hidden'
+                            }`}
                           onClick={() =>
                             setSmileyChoice((prevState) => !prevState)
                           }
@@ -322,7 +330,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                     className="send-message-button flex row"
                     disabled={!message}
                     onClick={handleSendMessage}
-                    onKeyPress={handleKeyPress}
                   >
                     <SvgIcon iconName={'send'} />
                     <span>Send message</span>
