@@ -5,6 +5,7 @@ import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
 import { utilService } from '../services/util.service.js'
 import { TypingLoader } from './TypingLoader.jsx'
+import { SmileyChoice } from './SmileyChoice.jsx'
 
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -13,9 +14,10 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
+  const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
-
+  console.log('smiley state', smileyChoice)
   useEffect(() => {
     if (chatState) {
       if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
@@ -123,8 +125,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               ></span>
             </div>
             <div className="owner-info flex column">
-              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
-                }`}</span>
+              <span className="message">{`Message${
+                window ? '' : ` ${owner.fullName}`
+              }`}</span>
               {!window && (
                 <span className="response-time flex">
                   <span>Online</span>
@@ -223,7 +226,10 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                               {isBuyer ? owner.username : buyer.username}
                             </span>
                           </div>
-                          <div className="message-text" style={{ border: 0, margin: '0 .5em' }}>
+                          <div
+                            className="message-text"
+                            style={{ border: 0, margin: '0 .5em' }}
+                          >
                             <TypingLoader />
                           </div>
                         </div>
@@ -250,9 +256,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                     data-testid="message-wrapper"
                   >
                     {!message && !buyer && (
-                      <section
-                        className="quick-question-container flex column"
-                      >
+                      <section className="quick-question-container flex column">
                         <button
                           onClick={() =>
                             setMessage(
@@ -293,7 +297,19 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                 <div className="message-options flex row">
                   <span className="addition flex">
                     <span className="emoji-picker-icon">
-                      <SvgIcon iconName={'smiley'} />
+                      <span className="smiley-container">
+                        <SvgIcon iconName={'smiley'} />
+                        <span
+                          className={`smiley-selection ${
+                            smileyChoice ? '' : 'hidden'
+                          }`}
+                          onClick={() =>
+                            setSmileyChoice((prevState) => !prevState)
+                          }
+                        >
+                          <SmileyChoice setMessage={setMessage} />
+                        </span>
+                      </span>
                       <div className="emoji-picker-container"></div>
                     </span>
 
