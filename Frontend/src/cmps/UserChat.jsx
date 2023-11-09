@@ -238,7 +238,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                       placeholder={
                         isBuyer
                           ? `Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`
-                          : `Sell you gig...`
+                          : `Sell your gig...`
                       }
                       value={message}
                       onChange={(e) => onChangeMessage(e)}
