@@ -1,37 +1,37 @@
 function _buildPipeline(filterBy) {
   const pipeline = []
 
-  const match = {
+  const criteria = {
     $match: {},
   }
 
   const { search, cat, level, min, max, tag, time } = filterBy
 
   if (search) {
-    match.$match.$or = [
+    criteria.$match.$or = [
       { title: { $regex: search, $options: 'i' } },
       { description: { $regex: search, $options: 'i' } },
     ]
   }
 
   if (cat) {
-    match.$match.category = { $regex: cat, $options: 'i' }
+    criteria.$match.category = { $regex: cat, $options: 'i' }
   }
   
   if (tag) {
-    match.$match.tags = { $regex: tag, $options: 'i' }
+    criteria.$match.tags = { $regex: tag, $options: 'i' }
   }
   
   if (time) {
-    match.$match.daysToMake = { $regex: time, $options: 'i' }
+    criteria.$match.daysToMake = { $regex: time, $options: 'i' }
   }
   
   if (min) {
-    match.$match.price.$gte = parseInt(min)
+    criteria.$match.price.$gte = parseInt(min)
   }
 
   if (max) {
-    match.$match.price.$lte = parseInt(max)
+    criteria.$match.price.$lte = parseInt(max)
   }
 
   if (level) {
@@ -60,8 +60,8 @@ function _buildPipeline(filterBy) {
     $limit: itemsPerPage,
   })
 
-  if (Object.keys(match.$match).length > 0) {
-    pipeline.push(match)
+  if (Object.keys(criteria.$match).length > 0) {
+    pipeline.push(criteria)
   }
 
   return pipeline
