@@ -95,7 +95,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     timeoutId.current = setTimeout(() => {
       socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
       timeoutId.current = null
-    }, 200000)
+    }, 2000)
   }
 
   return (
