@@ -95,7 +95,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
     timeoutId.current = setTimeout(() => {
       socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
       timeoutId.current = null
-    }, 2000)
+    }, 200000)
   }
 
   return (
@@ -188,19 +188,19 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             : 'other message flex column'
                         }
                       >
-                        <div className="message-info flex">
-                          {/* <span className="avatar">
+                        {/* <div className="message-info flex">
+                          <span className="avatar">
                             <img
                               src={message.user.imgUrl}
                               alt={message.user.username}
                             />
-                          </span> */}
-                          {/* <span className="message-username">
+                          </span>
+                          <span className="message-username">
                             {message.user._id === loggedinUser._id
                               ? 'You'
                               : message.user.username}
-                          </span> */}
-                        </div>
+                          </span>
+                        </div> */}
                         <div className="message-body grid">
                           <span className='text'>
                             {message.message}
@@ -215,14 +215,13 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                     {typingUser && (
                       <>
                         <div className="other message">
-                          <div className="message-info">
+                          <div className="message-body grid">
                             <span className="avatar">
                               <img
                                 src={
-                                  loggedinUser._id === owner._id
-                                    ? owner.imgUrl
-                                    : loggedinUser.imgUrl
+                                 isBuyer ? owner.imgUrl : buyer.imgUrl
                                 }
+                                style={{ maxHeight: '32px', maxWidth: '32px' }}
                                 alt={
                                   loggedinUser._id === owner._id
                                     ? owner.imgUrl
@@ -230,15 +229,12 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                                 }
                               />
                             </span>
-                            <span className="message-username">
-                              {isBuyer ? owner.username : buyer.username}
-                            </span>
-                          </div>
-                          <div
-                            className="message-body"
-                            style={{ border: 0, margin: '0 .5em' }}
-                          >
-                            <TypingLoader />
+                            <div
+                              className="text"
+                              style={{ border: 0, margin: '0 .5em' }}
+                            >
+                              <TypingLoader />
+                            </div>
                           </div>
                         </div>
                       </>
