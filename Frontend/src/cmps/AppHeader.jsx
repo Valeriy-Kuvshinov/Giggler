@@ -173,8 +173,8 @@ export function AppHeader() {
                 onClose={() => setshowAsideMenu(false)}
                 theBuyer={theBuyer}
                 onChatState={onChatState}
-                asideChatNotification={chatNotification}
-                setAsideChatNotification={setChatNotification}
+                chatNotification={chatNotification}
+                setChatNotification={setChatNotification}
               />
             )}
           </div>

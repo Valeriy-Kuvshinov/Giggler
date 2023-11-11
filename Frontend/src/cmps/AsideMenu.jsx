@@ -45,8 +45,10 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
               <span
                 className={`chat-icon ${chatNotification ? 'notification' : ''}`}
                 onClick={(e) => {
+                  e.stopPropagation()
                   setChatNotification(false)
                   onChatState(e)
+                  onClose()
                 }}
               >
                 <SvgIcon iconName={'chat'} />
