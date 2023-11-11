@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { socketService } from '../services/socket.service'
+import { socketService } from '../services/socket.service.js'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
-import { utilService } from '../services/util.service.js'
+
 import { TypingLoader } from './TypingLoader.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 
@@ -16,6 +16,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
+
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
   console.log('smiley state', smileyChoice)
   useEffect(() => {
@@ -26,7 +27,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
       socketService.on('chat_add_typing', addTypingUser)
       socketService.on('chat_remove_typing', removeTypingUser)
     }
-
     return () => {
       socketService.off('chat_add_msg', addMessage)
       socketService.off('chat_add_typing', addTypingUser)
@@ -188,19 +188,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                             : 'other message flex column'
                         }
                       >
-                        {/* <div className="message-info flex">
-                          <span className="avatar">
-                            <img
-                              src={message.user.imgUrl}
-                              alt={message.user.username}
-                            />
-                          </span>
-                          <span className="message-username">
-                            {message.user._id === loggedinUser._id
-                              ? 'You'
-                              : message.user.username}
-                          </span>
-                        </div> */}
                         <div className="message-body grid">
                           <span className='text'>
                             {message.message}
@@ -218,15 +205,9 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                           <div className="message-body grid">
                             <span className="avatar">
                               <img
-                                src={
-                                 isBuyer ? owner.imgUrl : buyer.imgUrl
-                                }
+                                src={isBuyer ? owner.imgUrl : buyer.imgUrl}
+                                alt={isBuyer ? owner.imgUrl : buyer.imgUrl}
                                 style={{ maxHeight: '32px', maxWidth: '32px' }}
-                                alt={
-                                  loggedinUser._id === owner._id
-                                    ? owner.imgUrl
-                                    : loggedinUser.imgUrl
-                                }
                               />
                             </span>
                             <div

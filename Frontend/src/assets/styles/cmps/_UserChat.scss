@@ -103,7 +103,7 @@
         .avatar {
           background-color: $clrSecondary4;
           position: relative;
-          width: 48px;
+          min-width: 48px;
           height: 48px;
           border-radius: 50%;
 
@@ -198,31 +198,6 @@
                 }
               }
 
-              // .message-info {
-              //   align-items: center;
-              //   margin-block-end: 0.25em;
-
-              //   .avatar {
-              //     // display: none;
-              //     width: 1em;
-              //     height: 1em;
-              //     border-radius: 50%;
-
-              //     img {
-              //       object-fit: cover;
-              //     }
-              //   }
-
-              //   .message-username {
-              //     font-size: 1em;
-              //     font-weight: bold;
-              //   }
-              // }
-
-              // &.you .message-info {
-              //   flex-direction: row-reverse;
-              // }
-
               .message-body {
                 grid-template-columns: 1fr 24px;
                 grid-template-rows: 1fr;
@@ -249,20 +224,6 @@
                   margin-top: 5px;
                   grid-row: 1;
                 }
-
-                // &::after {
-                //   content: '';
-                //   position: absolute;
-                //   right: -5px;
-                //   width: 0;
-                //   height: 0;
-                //   border: 12px solid transparent;
-                //   border-top-color: #d8fcd2;
-                //   border-bottom: 0;
-                //   border-right: 0;
-                //   transform: translate(30%, 30%);
-                //   rotate: 270deg;
-                // }
               }
 
               &.other .message-body {
@@ -276,13 +237,6 @@
                 img {
                   grid-column: 1;
                 }
-
-                // &::after {
-                //   rotate: 0deg;
-                //   left: -15px;
-                //   right: 0;
-                //   border-top-color: $clrSecondary14;
-                // }
               }
             }
           }
