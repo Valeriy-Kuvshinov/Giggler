@@ -14,12 +14,12 @@ import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
 
 export function GigDetails() {
-  const params = useParams()
   const [gig, setGig] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
 
-  const user = useSelector((storeState) => storeState.userModule.watchedUser)
+  const params = useParams()
+  const gigOwner = useSelector((storeState) => storeState.userModule.watchedUser)
 
   useEffect(() => {
     fetchData()
@@ -47,7 +47,7 @@ export function GigDetails() {
     }
   }, [])
 
-  if (!gig || !user) return <Loader />
+  if (!gig || !gigOwner) return <Loader />
 
   return (
     <>
@@ -60,7 +60,7 @@ export function GigDetails() {
                 category={gig.category}
                 tag={gig.tags[1]}
               />
-              <GigDetailsHeader gig={gig} owner={user} />
+              <GigDetailsHeader gig={gig} owner={gigOwner} />
               <GigDetailsAside
                 gig={gig}
                 onGigChange={(updatedGig) => setGig(updatedGig)}
@@ -69,7 +69,7 @@ export function GigDetails() {
                 <h3>About This Gig</h3>
                 <p className="gig-description">{gig.description}</p>
               </section>
-              <AboutSeller owner={user} />
+              <AboutSeller owner={gigOwner} />
               <GigReviews gig={gig} />
             </main>
           </>
@@ -77,12 +77,12 @@ export function GigDetails() {
           <>
             <main>
               <CatTagDisplayBar isFrom={'gigDetails'} category={gig.category} tag={gig.tags[1]} />
-              <GigDetailsHeader gig={gig} owner={user} />
+              <GigDetailsHeader gig={gig} owner={gigOwner} />
               <section className="about-gig" style={{ overflow: 'hidden' }}>
                 <h3>About This Gig</h3>
                 <p>{gig.description}</p>
               </section>
-              <AboutSeller owner={user} />
+              <AboutSeller owner={gigOwner} />
               <GigReviews gig={gig} />
             </main>
             <GigDetailsAside
@@ -94,7 +94,7 @@ export function GigDetails() {
         )}
       </section>
       <UserChat
-        owner={user}
+        owner={gigOwner}
         window={isMobile}
         chatState={chatState}
         setChatState={setChatState}
