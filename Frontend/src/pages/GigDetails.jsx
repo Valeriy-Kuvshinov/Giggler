@@ -8,10 +8,10 @@ import { GigDetailsAside } from '../cmps/GigDetailsAside.jsx'
 import { GigReviews } from '../cmps/GigReviews.jsx'
 import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 import { Loader } from '../cmps/Loader.jsx'
+import { UserChat } from '../cmps/UserChat.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
-import { UserChat } from '../cmps/UserChat.jsx'
 
 export function GigDetails() {
   const params = useParams()
