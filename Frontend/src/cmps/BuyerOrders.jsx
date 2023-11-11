@@ -8,11 +8,11 @@ import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
 export function BuyerOrders({ user, onClose }) {
+  const [orderDetails, setOrderDetails] = useState({})
+
   const dispatch = useDispatch()
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
-
-  const [orderDetails, setOrderDetails] = useState({})
 
   useEffect(() => {
     if (user) {

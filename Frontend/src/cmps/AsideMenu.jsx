@@ -2,36 +2,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useModal } from '../customHooks/ModalContext.jsx'
 
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from '@mui/material'
+import { Accordion, AccordionSummary, AccordionDetails, Typography, } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import { BuyerOrders } from './BuyerOrders.jsx'
+import SvgIcon from './SvgIcon.jsx'
 
 import { logout } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
-import SvgIcon from './SvgIcon.jsx'
 
-export function AsideMenu({
-  user,
-  onClose,
-  theBuyer,
-  onChatState,
-  asideChatNotification,
-  setAsideChatNotification,
+export function AsideMenu({ user, onClose, theBuyer, onChatState,
+  chatNotification, setChatNotification,
 }) {
-  let fullName
-  let firstName
-  let lastName
-  if (user) {
-    fullName = user.fullName.split(' ')
-    firstName = fullName[0]
-    lastName = fullName[fullName.length - 1]
-  }
   const navigate = useNavigate()
   const { openLogin, openSignup } = useModal()
 
@@ -43,28 +25,27 @@ export function AsideMenu({
 
   async function onLogout() {
     try {
-      await logout()
       navigate('/')
+      await logout()
     } catch (err) {
       showErrorMsg('Cannot logout')
     }
   }
 
   return (
-    <div className="aside-menu flex column">
+    <div className="aside-menu flex column" onClick={(e) => e.stopPropagation()}>
       {user ? (
         <>
           <div className="top-icons flex row">
-            <div className="user-info grid">
+            <div className="user-info flex row">
               <img src={user.imgUrl} alt="user" />
-              <span>{firstName}</span>
-              <span>{lastName}</span>
+              <span>{`@${user.username}`}</span>
             </div>
             {theBuyer && (
               <span
-                className={`chat-icon ${asideChatNotification ? 'notification' : ''}`}
+                className={`chat-icon ${chatNotification ? 'notification' : ''}`}
                 onClick={(e) => {
-                  setAsideChatNotification(false)
+                  setChatNotification(false)
                   onChatState(e)
                 }}
               >
@@ -72,16 +53,19 @@ export function AsideMenu({
               </span>
             )}
           </div>
+          <Link to={`/user/${user._id}`} onClick={onClose}>
+            Profile
+          </Link>
+
           <Link to="/explore" onClick={onClose}>
             {' '}
             Explore{' '}
           </Link>
+
           <Link to="/" onClick={onClose}>
             Become a Seller
           </Link>
-          <Link to={`/user/${user._id}`} onClick={onClose}>
-            Profile
-          </Link>
+
           <Link to="/dashboard" onClick={onClose}>
             Dashboard
           </Link>
@@ -98,7 +82,6 @@ export function AsideMenu({
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1bh-content"
               id="panel1bh-header"
-              onClick={(e) => e.stopPropagation()}
             >
               <Typography
                 style={{ color: '#62646a', fontFamily: 'macan-regular' }}
@@ -106,7 +89,8 @@ export function AsideMenu({
                 Orders
               </Typography>
             </AccordionSummary>
-            <AccordionDetails onClick={(e) => e.stopPropagation()}>
+
+            <AccordionDetails>
               <BuyerOrders user={user} onClose={onClose} />
             </AccordionDetails>
           </Accordion>

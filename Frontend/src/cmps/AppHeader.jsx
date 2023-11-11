@@ -1,18 +1,18 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
 import { useModal } from '../customHooks/ModalContext.jsx'
+
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
 import { BuyerOrders } from './BuyerOrders.jsx'
 import { AsideMenu } from './AsideMenu.jsx'
 import SvgIcon from './SvgIcon.jsx'
+import { UserChat } from './UserChat.jsx'
 
 import { category } from '../services/gig.service.js'
 import { setFilter } from '../store/gig.actions.js'
-import { UserChat } from './UserChat.jsx'
 import { socketService } from '../services/socket.service.js'
 
 export function AppHeader() {
@@ -22,7 +22,7 @@ export function AppHeader() {
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
   const [theBuyer, setTheBuyer] = useState('')
-  const [asideChatNotification, setAsideChatNotification] = useState(false)
+  const [chatNotification, setChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
   const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
@@ -45,54 +45,49 @@ export function AppHeader() {
   const isHomePage = location.pathname === '/'
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
-
   const headerStyles = {
     backgroundColor: headerStage >= 1 ? '#fff' : 'transparent',
     color: isHomePage && headerStage === 0 ? '#fff' : '#62646a',
   }
-
   const navBarStyles = {
     borderBottom: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
     borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
   }
-
   const joinButtonStyles = {
     color: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
     borderColor: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
   }
 
+  function promptSellerChat(buyer) {
+    setNotification(true)
+    setChatNotification(true)
+    setTheBuyer(buyer)
+  }
+
+  function newOrderNotification() {
+    setNotification(true)
+  }
+
   const closeDropdown = (e) => {
-    if (
-      userInfoRef.current &&
-      !userInfoRef.current.contains(e.target) &&
-      asideMenuRef.current &&
-      !asideMenuRef.current.contains(e.target)
-    ) {
+    if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
       setShowUserDropdown(false)
       setShowOrdersDropdown(false)
+    }
+  }
+
+  const closeAsideMenu = (e) => {
+    if (asideMenuRef.current && !asideMenuRef.current.contains(e.target)) {
       setshowAsideMenu(false)
     }
   }
 
   useEffect(() => {
     socketService.on('chat_seller_prompt', promptSellerChat)
-    socketService.on('notify-seller-new-order', newOrderNotification )
-
+    socketService.on('notify-seller-new-order', newOrderNotification)
     return () => {
       socketService.off('chat_seller_prompt', promptSellerChat)
     }
   }, [])
-
-  function promptSellerChat(buyer) {
-    setNotification(true)
-    setAsideChatNotification(true)
-    console.log('buyer: ', buyer)
-    setTheBuyer(buyer)
-
-  }
-  function newOrderNotification(){
-    setNotification(true)
-  }
 
   useEffect(() => {
     if (isHomePage) {
@@ -109,8 +104,10 @@ export function AppHeader() {
 
   useEffect(() => {
     window.addEventListener('click', closeDropdown)
+    window.addEventListener('click', closeAsideMenu)
     return () => {
       window.removeEventListener('click', closeDropdown)
+      window.removeEventListener('click', closeAsideMenu)
     }
   }, [])
 
@@ -121,7 +118,6 @@ export function AppHeader() {
     }
     window.addEventListener('resize', updatePlaceholder)
     updatePlaceholder()
-
     return () => {
       window.removeEventListener('resize', updatePlaceholder)
     }
@@ -143,6 +139,7 @@ export function AppHeader() {
   function setCatFilter(category) {
     setFilter({ ...filterBy, cat: category })
   }
+
   function onChatState(e) {
     e.preventDefault()
     setChatState(true)
@@ -150,15 +147,14 @@ export function AppHeader() {
 
   return (
     <header
-      className={`app-header flex column full ${
-        isHomePage ? 'home-page' : ''
-      } ${showModal ? 'show-modal' : ''}`}
+      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
+        } ${showModal ? 'show-modal' : ''}`}
       style={headerStyles}
     >
       <nav className="main-nav">
         <div className="container flex row">
           <div
-            className={`dropdown flex ${ notification ? 'notification' : ''}`}
+            className={`dropdown flex ${notification ? 'notification' : ''}`}
             onClick={(e) => {
               e.stopPropagation()
               setshowAsideMenu(!showAsideMenu)
@@ -176,9 +172,9 @@ export function AppHeader() {
                 user={loggedinUser}
                 onClose={() => setshowAsideMenu(false)}
                 theBuyer={theBuyer}
-                onChatState={onChatState}  
-                asideChatNotification={asideChatNotification}
-                setAsideChatNotification={setAsideChatNotification}
+                onChatState={onChatState}
+                asideChatNotification={chatNotification}
+                setAsideChatNotification={setChatNotification}
               />
             )}
           </div>
@@ -291,7 +287,6 @@ export function AppHeader() {
         setCatFilter={setCatFilter}
         style={navBarStyles}
       />
-
       {chatState && (
         <UserChat
           owner={loggedinUser}

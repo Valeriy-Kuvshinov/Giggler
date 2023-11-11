@@ -13,17 +13,21 @@
 
   .top-icons {
     justify-content: space-between;
+
     .chat-icon {
       position: relative;
+
       i {
         position: relative;
         z-index: 5;
+
         svg {
           fill: $clrSecondary8;
           width: 36px;
           height: 36px;
         }
       }
+
       &.notification::before {
         content: '';
         position: absolute;
@@ -46,26 +50,7 @@
     }
 
     .user-info {
-      gap: 0.55em;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-
-      img {
-        grid-column: 1;
-        grid-row: 1 / -1;
-      }
-
-      span {
-        &:first-child {
-          grid-column: 2;
-          grid-row: 1;
-        }
-
-        &:last-child {
-          grid-column: 2;
-          grid-row: 2;
-        }
-      }
+      gap: 0.5em;
     }
 
     img {
@@ -128,13 +113,21 @@
 
     #panel1bh-header {
       padding: 0;
+
+      .MuiAccordionSummary-content {
+        p {
+          &:hover {
+            color: $bgColor3 !important;
+          }
+        }
+      }
     }
 
     .MuiCollapse-root {
       .MuiCollapse-wrapper {
         .MuiCollapse-wrapperInner {
           #panel1bh-content {
-            max-height: 280px;
+            max-height: 270px;
             overflow-y: scroll;
 
             .MuiAccordionDetails-root {
@@ -195,15 +188,15 @@
                       &.pending {
                         color: $clr15;
                       }
-        
+
                       &.denied {
                         color: $clr9;
                       }
-        
+
                       &.accepted {
                         color: $clr11;
                       }
-        
+
                       &.completed {
                         color: $clr13;
                       }
