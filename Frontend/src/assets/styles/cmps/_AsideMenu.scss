@@ -51,6 +51,12 @@
 
     .user-info {
       gap: 0.5em;
+
+      span {
+        color: $clrSecondary8;
+        align-self: center;
+        font-family: 'macan-bold';
+      }
     }
 
     img {
@@ -98,7 +104,7 @@
   .logout {
     display: block;
     padding: 12px 0;
-    color: $clrSecondary5;
+    color: $clrSecondary6;
     background: none;
     font-family: 'macan-regular';
     font-size: 16px;
@@ -111,11 +117,28 @@
   .MuiPaper-root {
     box-shadow: none;
 
+    &.Mui-expanded {
+      margin: 0;
+    }
+
+    &::before {
+      display: none;
+    }
+
     #panel1bh-header {
       padding: 0;
+      min-height: 0;
+      max-height: 26px;
 
       .MuiAccordionSummary-content {
-        p {
+        &.Mui-expanded {
+          margin: 0;
+        }
+
+        .MuiTypography-root {
+          color: $clrSecondary6;
+          font-family: 'macan-regular';
+
           &:hover {
             color: $bgColor3 !important;
           }
@@ -126,8 +149,8 @@
     .MuiCollapse-root {
       .MuiCollapse-wrapper {
         .MuiCollapse-wrapperInner {
-          #panel1bh-content {
-            max-height: 270px;
+          .MuiAccordion-region {
+            max-height: 275px;
             overflow-y: scroll;
 
             .MuiAccordionDetails-root {
@@ -135,8 +158,6 @@
 
               .buyer-orders-dropdown {
                 .buyer-orders {
-                  display: flex;
-                  flex-direction: column;
 
                   .buyer-order {
                     margin-bottom: 1em;

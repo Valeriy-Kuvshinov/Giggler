@@ -39,7 +39,7 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
           <div className="top-icons flex row">
             <div className="user-info flex row">
               <img src={user.imgUrl} alt="user" />
-              <span>{`@${user.username}`}</span>
+              <span>{user.username}</span>
             </div>
             {theBuyer && (
               <span
@@ -70,11 +70,6 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
             Dashboard
           </Link>
           <Accordion
-            sx={{
-              '&::before': {
-                display: 'none',
-              },
-            }}
             expanded={expanded === 'panel1'}
             onChange={handleChange('panel1')}
           >
@@ -83,14 +78,12 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
               aria-controls="panel1bh-content"
               id="panel1bh-header"
             >
-              <Typography
-                style={{ color: '#62646a', fontFamily: 'macan-regular' }}
-              >
+              <Typography>
                 Orders
               </Typography>
             </AccordionSummary>
 
-            <AccordionDetails>
+            <AccordionDetails id="panel1bh-content">
               <BuyerOrders user={user} onClose={onClose} />
             </AccordionDetails>
           </Accordion>

@@ -55,14 +55,12 @@ export function BuyerOrders({ user, onClose }) {
       fetchOrderDetails()
     }
   }, [orders, user, dispatch])
-
   // Check if all the relevant orders have their details loaded
   const allDetailsLoaded = orders.every(
     (order) =>
       order.buyerId !== user._id ||
       (orderDetails[order._id] && !orderDetails[order._id].isLoading)
   )
-
   if (!allDetailsLoaded) {
     return (
       <section className="buyer-orders-dropdown flex column">
@@ -73,7 +71,7 @@ export function BuyerOrders({ user, onClose }) {
 
   return (
     <section className="buyer-orders-dropdown flex column" onClick={onClose}>
-      <div className="buyer-orders">
+      <div className="buyer-orders flex column">
         {orders
           .filter((order) => order.buyerId === user._id)
           .map((order) => {
