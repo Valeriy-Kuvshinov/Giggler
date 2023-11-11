@@ -8,13 +8,14 @@ import { TypingLoader } from './TypingLoader.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const { openLogin } = useModal()
   const [typingUser, setTypingUser] = useState('')
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
+  
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const { openLogin } = useModal()
   const timeoutId = useRef(null)
 
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
