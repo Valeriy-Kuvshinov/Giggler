@@ -16,7 +16,7 @@ import { utilService } from "../services/util.service.js"
 export function GigPreview({ is, gig }) {
   const navigate = useNavigate()
   const params = useParams()
-  const loggedId = params.id
+  const loggedInUserId = params.id
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
 
@@ -116,7 +116,7 @@ export function GigPreview({ is, gig }) {
         {is === "userProfile" && (
           <>
             <div className="profile">
-              {(loggedId !== loggedInUser._id) && <UserPreview is="userProfile" owner={owner} />}
+              {(loggedInUserId !== loggedInUser._id) && <UserPreview is="userProfile" owner={owner} />}
               <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
                 {updatedGig.title}
               </Link>
@@ -128,8 +128,8 @@ export function GigPreview({ is, gig }) {
                 </span>
               </div>
             </div>
-            <div className={`gig-changes ${(loggedId !== loggedInUser._id) ? 'right' : ''}`}>
-              {loggedId === loggedInUser._id && (
+            <div className={`gig-changes ${(loggedInUserId !== loggedInUser._id) ? 'right' : ''}`}>
+              {loggedInUserId === loggedInUser._id && (
                 <div className="gig-btns">
                   <button className="gig-btn">
                     <Link to={`/gig/edit/${updatedGig._id}`}>

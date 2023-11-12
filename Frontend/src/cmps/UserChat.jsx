@@ -13,13 +13,12 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
-  
+
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
   const timeoutId = useRef(null)
 
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
-  console.log('smiley state', smileyChoice)
   useEffect(() => {
     if (chatState) {
       if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
@@ -37,7 +36,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   }, [chatState])
 
   function openChatWithSeller() {
-    console.log('im in openChatWithSeller ')
     socketService.emit('chat_open', {
       sellerId: owner._id,
       buyer: loggedinUser,
@@ -45,7 +43,6 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   }
 
   function addMessage(msg) {
-    console.log('msg: ', msg)
     setMessages((prevMessage) => [...prevMessage, msg])
   }
 
@@ -185,8 +182,8 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                         key={index}
                         className={
                           message.user._id === loggedinUser._id
-                            ? 'you message flex column'
-                            : 'other message flex column'
+                            ? 'user-one message flex column'
+                            : 'user-two message flex column'
                         }
                       >
                         <div className="message-body grid">
@@ -202,7 +199,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                     ))}
                     {typingUser && (
                       <>
-                        <div className="other message">
+                        <div className="user-two message">
                           <div className="message-body grid">
                             <span className="avatar">
                               <img

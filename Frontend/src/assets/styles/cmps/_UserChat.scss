@@ -181,6 +181,7 @@
               word-wrap: break-word;
               max-width: 80%;
               padding: 0 0.5em 0.5em 0.5em;
+              align-self: flex-end;
 
               &:first-child {
                 margin-top: 0.5em;
@@ -190,19 +191,12 @@
                 margin-bottom: 0.5em;
               }
 
-              &.you {
-                align-self: flex-end;
-
-                .message-body {
-                  align-self: end;
-                }
-              }
-
               .message-body {
                 grid-template-columns: 1fr 24px;
                 grid-template-rows: 1fr;
                 gap: 0.25em;
                 margin-bottom: 0.5em;
+                align-self: end;
 
                 .text {
                   border-radius: 0.5em 0.5em 0.5em 0.5em;
@@ -226,16 +220,21 @@
                 }
               }
 
-              &.other .message-body {
-                grid-template-columns: 24px 1fr;
+              &.user-two {
+                align-self: flex-start;
 
-                .text {
-                  background-color: $clrSecondary14;
-                  grid-column: 2;
-                }
+                .message-body {
+                  grid-template-columns: 24px 1fr;
+                  align-self: start;
 
-                img {
-                  grid-column: 1;
+                  .text {
+                    background-color: $clrSecondary14;
+                    grid-column: 2;
+                  }
+
+                  img {
+                    grid-column: 1;
+                  }
                 }
               }
             }

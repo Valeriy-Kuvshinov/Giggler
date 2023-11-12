@@ -13,12 +13,12 @@ import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
 
 export function GigDetails() {
-  const params = useParams()
-
   const [gig, setGig] = useState(null)
   const [gigOwner, setGigOwner] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
+
+  const params = useParams()
 
   async function fetchData() {
     try {
@@ -43,7 +43,6 @@ export function GigDetails() {
       setIsMobile(window.innerWidth <= 900)
     }
     window.addEventListener('resize', handleResize)
-
     return () => {
       window.removeEventListener('resize', handleResize)
     }
