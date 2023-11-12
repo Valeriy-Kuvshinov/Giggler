@@ -1,19 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service.js'
-import { useModal } from '../customHooks/ModalContext.jsx'
-import SvgIcon from './SvgIcon.jsx'
 
+import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 
-export function UserChat({ owner, window, chatState, setChatState, buyer }) {
+export function UserChat({ owner, chatState, setChatState, buyer }) {
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const { openLogin } = useModal()
   const timeoutId = useRef(null)
 
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
@@ -92,58 +90,19 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
 
     isBuyer = loggedinUser && owner._id !== loggedinUser._id
     if (!timeoutId.current)
-      socketService.emit('chat-user-typing', isBuyer ? owner : buyer)
+      socketService.emit('chat-user-typing'
+        , { typingUser: loggedinUser, receiverId: isBuyer ? owner._id : buyer._id })
+
     if (timeoutId.current) clearTimeout(timeoutId.current)
     timeoutId.current = setTimeout(() => {
-      socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
+      socketService.emit('chat-stop-typing',
+        { typingUser: loggedinUser, receiverId: isBuyer ? owner._id : buyer._id })
       timeoutId.current = null
     }, 2000)
   }
 
   return (
     <>
-      {!chatState && (
-        <section
-          onClick={() => {
-            if (loggedinUser) setChatState(true)
-            else openLogin()
-          }}
-          className="mini-message-bar"
-        >
-          <div className="mini-message-bar-container grid">
-            <div
-              style={{
-                height: window ? '32px' : '48px',
-                width: window ? '32px' : '48px',
-              }}
-              className="avatar"
-            >
-              <img src={owner.imgUrl} alt={owner.username} />
-              <span
-                style={{
-                  height: window ? '.65em' : '1em',
-                  width: window ? '.65em' : '1em',
-                }}
-                className="status-dot"
-              ></span>
-            </div>
-            <div className="owner-info flex column">
-              <span className="message">{`Message${window ? '' : ` ${owner.fullName}`
-                }`}</span>
-              {!window && (
-                <span className="response-time flex">
-                  <span>Online</span>
-                  <span className="dot flex"></span>
-                  <span>
-                    Avg. response time: <span className="b">1 Hour</span>
-                  </span>
-                </span>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
       {chatState && (
         <div className="chat-box-wrapper">
           <aside className="chat-box">
@@ -184,7 +143,7 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
                     {messages.map((message, index) => {
                       if (message.type === 'typing') {
                         return (
-                          <div key={index} className="message typing-indicator">
+                          <div key={index} className="message user-two typing-indicator">
                             <div className="message-body grid">
                               <span className="text">
                                 <span className="typing-loader">

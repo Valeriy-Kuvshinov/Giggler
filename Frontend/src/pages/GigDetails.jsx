@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useModal } from '../customHooks/ModalContext.jsx'
 
 import { GigDetailsHeader } from '../cmps/GigDetailsHeader.jsx'
 import { AboutSeller } from '../cmps/AboutSeller.jsx'
@@ -18,7 +20,9 @@ export function GigDetails() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
 
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const params = useParams()
+  const { openLogin } = useModal()
 
   async function fetchData() {
     try {
@@ -47,6 +51,11 @@ export function GigDetails() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+
+  const handleOpenChat = () => {
+    if (loggedinUser) setChatState(true)
+    else openLogin()
+  }
 
   if (!gig || !gigOwner) return <Loader />
 
@@ -94,12 +103,49 @@ export function GigDetails() {
           </>
         )}
       </section>
-      <UserChat
-        owner={gigOwner}
-        window={isMobile}
-        chatState={chatState}
-        setChatState={setChatState}
-      />
+      <section
+        onClick={handleOpenChat}
+        className="mini-message-bar"
+      >
+        <div className="mini-message-bar-container grid">
+          <div
+            style={{
+              height: isMobile ? '32px' : '48px',
+              width: isMobile ? '32px' : '48px',
+            }}
+            className="avatar"
+          >
+            <img src={gigOwner.imgUrl} alt={gigOwner.username} />
+            <span
+              style={{
+                height: isMobile ? '.65em' : '1em',
+                width: isMobile ? '.65em' : '1em',
+              }}
+              className="status-dot"
+            ></span>
+          </div>
+          <div className="owner-info flex column">
+            <span className="message">{`Message${isMobile ? '' : ` ${gigOwner.fullName}`
+              }`}</span>
+            {!isMobile && (
+              <span className="response-time flex">
+                <span>Online</span>
+                <span className="dot flex"></span>
+                <span>
+                  Avg. response time: <span className="b">1 Hour</span>
+                </span>
+              </span>
+            )}
+          </div>
+        </div>
+      </section>
+      {chatState && (
+        <UserChat
+          owner={gigOwner}
+          chatState={chatState}
+          setChatState={setChatState}
+        />
+      )}
     </>
   )
 }

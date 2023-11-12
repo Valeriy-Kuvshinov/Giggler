@@ -4,7 +4,6 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
-// Sup Giggler
 import { loggerService } from './services/logger.service.js'
 import http from 'http'
 

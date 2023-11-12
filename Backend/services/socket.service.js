@@ -1,7 +1,7 @@
 import { loggerService } from './logger.service.js'
 import { Server } from 'socket.io'
 
-var gIo = null
+let gIo = null
 
 export function setupSocketAPI(http) {
   gIo = new Server(http, {
@@ -25,22 +25,22 @@ export function setupSocketAPI(http) {
     })
 
     socket.on('chat-user-typing', (data) => {
+      const { typingUser, receiverId } = data
       loggerService.info(`User is typing from socket [id: ${socket.id}]`)
       emitToUser({
         type: 'chat_add_typing',
-        data: data,
-        userId: data._id,
+        data: typingUser,
+        userId: receiverId
       })
     })
 
     socket.on('chat-stop-typing', (data) => {
-      loggerService.info(
-        `User has stopped typing from socket [id: ${socket.id}]`
-      )
+      const { typingUser, receiverId } = data
+      loggerService.info(`User has stopped typing from socket [id: ${socket.id}]`)
       emitToUser({
         type: 'chat_remove_typing',
-        data: data,
-        userId: data._id,
+        data: typingUser,
+        userId: receiverId
       })
     })
 
@@ -55,6 +55,7 @@ export function setupSocketAPI(http) {
         userId,
       })
     })
+
     socket.on('user-watch', (userId) => {
       loggerService.info(
         `user-watch from socket [id: ${socket.id}], on user ${userId}`
@@ -130,13 +131,15 @@ function emitTo({ type, data, label }) {
 }
 
 async function emitToUser({ type, data, userId }) {
+  if (!userId) {
+    loggerService.info(`emitToUser called with undefined userId for event: ${type}`)
+    return
+  }
   userId = userId.toString()
   const socket = await _getUserSocket(userId)
 
   if (socket) {
-    loggerService.info(
-      `Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`
-    )
+    loggerService.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
     socket.emit(type, data)
   } else {
     loggerService.info(`No active socket for user: ${userId}`)
