@@ -14,26 +14,27 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
 
     const dropdownMenuRef = useRef(null)
 
+    async function fetchOrderDetails() {
+        try {
+            const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
+            setUserData({
+                username: orderDetails.userData.username,
+                firstName: orderDetails.userData.fullName.split(' ')[0],
+                lastName: orderDetails.userData.fullName.split(' ')[1] || '',
+                avatar: orderDetails.userData.imgUrl,
+                _id: orderDetails.userData._id
+            })
+            const gig = await gigService.getById(order.orderedGigId)
+            const firstImgUrl = gig.imgUrls[0]
+
+            setGigData({ ...gig, firstImgUrl })
+        } catch (err) {
+            console.error('Failed to fetch order or gig details:', err)
+        }
+    }
+
     useEffect(() => {
-        (async () => {
-            try {
-                const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
-
-                setUserData({
-                    username: orderDetails.userData.username,
-                    firstName: orderDetails.userData.fullName.split(' ')[0],
-                    lastName: orderDetails.userData.fullName.split(' ')[1] || '',
-                    avatar: orderDetails.userData.imgUrl,
-                    _id: orderDetails.userData._id
-                })
-                const gig = await gigService.getById(order.orderedGigId)
-                const firstImgUrl = gig.imgUrls[0]
-
-                setGigData({ ...gig, firstImgUrl })
-            } catch (err) {
-                console.error('Failed to fetch order or gig details:', err)
-            }
-        })()
+        fetchOrderDetails()
     }, [order])
 
     useEffect(() => {
