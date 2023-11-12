@@ -23,15 +23,6 @@ export async function loadUser(userId) {
     }
 }
 
-export async function loadWatchedUser(userId) {
-    try {
-        const watchedUser = await userService.getById(userId)
-        store.dispatch({ type: SET_WATCHED_USER, watchedUser })
-    } catch (err) {
-        console.log('Cannot load user', err)
-    }
-}
-
 export async function updateUser(updatedUser) {
     try {
         const user = await userService.update(updatedUser)
