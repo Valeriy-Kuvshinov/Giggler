@@ -93,11 +93,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                     )}
                 </td>
                 <td>{orderBackendService.getActionDate(order)}</td>
-                <td>
-                    {(order.orderState === 'accepted' || order.orderState === 'completed') && gigData
-                        ? orderBackendService.getDueDate(new Date(order.acceptedAt), gigData.daysToMake)
-                        : ''}
-                </td>
                 <td>{`${order.price}$`}</td>
                 <td>
                     <div className="order-state-dropdown">
