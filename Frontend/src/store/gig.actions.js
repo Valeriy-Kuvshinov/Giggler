@@ -6,7 +6,6 @@ export async function loadGigs(filterBy = {}) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
         const gigs = await gigService.query(filterBy)
-        // console.log('filterBy in action: ',filterBy)
         store.dispatch({ type: SET_GIGS, gigs })
     } catch (err) {
         console.log('cannot load gigs, heres why:', err)
@@ -49,28 +48,5 @@ export async function saveGig(gig) {
 }
 
 export function setFilter(newFilterBy) {
-    // if(!newFilterBy){
-        store.dispatch({ type: SET_FILTER, filterBy: newFilterBy })
-    // }
+    store.dispatch({ type: SET_FILTER, filterBy: newFilterBy })
 }
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemovegigOptimistic(gigId) {
-//     store.dispatch({
-//         type: REMOVE_GIG,
-//         gigId
-//     })
-//     showSuccessMsg('gig removed')
-
-//     gigService.remove(gigId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove gig')
-//             console.log('Cannot load gigs', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_GIG
-//             })
-//         })
-// }

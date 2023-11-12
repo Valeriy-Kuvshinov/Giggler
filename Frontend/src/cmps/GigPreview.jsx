@@ -1,39 +1,31 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
+import { useModal } from "../customHooks/ModalContext.jsx"
 
-import SvgIcon from "./SvgIcon.jsx"
 import { gigService } from "../services/gig.service"
 import { userService } from "../services/user.service.js"
 import { removeGig } from "../store/gig.actions.js"
 
-import { useModal } from "../customHooks/ModalContext"
+import SvgIcon from "./SvgIcon.jsx"
 import { UserPreview } from "./UserPreview.jsx"
 import { ImageCarousel } from "./ImageCarousel.jsx"
 import { loadReviews } from "../store/review.actions.js"
 import { utilService } from "../services/util.service.js"
 
 export function GigPreview({ is, gig }) {
+  const navigate = useNavigate()
   const params = useParams()
   const loggedId = params.id
-  const user = useSelector((storeState) => storeState.userModule.user)
-  const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  const filteredReviewIds = gig
-    ? reviews
-        .filter((review) => review.gigId === gig._id)
-        .map((review) => review._id)
-    : []
-  const [newImgIndex, setNewImgIndex] = useState(0)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const { openLogin } = useModal()
 
+  const [newImgIndex, setNewImgIndex] = useState(0)
   const [owner, setOwner] = useState(null)
   const [updatedGig, setUpdatedGig] = useState(gig)
-
   const [isLiked, setIsLiked] = useState(
-    user && updatedGig.likedByUsers.includes(user._id)
+    loggedInUser && updatedGig.likedByUsers.includes(loggedInUser._id)
   )
-
-  const navigate = useNavigate()
-  const { openLogin } = useModal()
 
   useEffect(() => {
     async function fetchOwnerDetails() {
@@ -45,8 +37,8 @@ export function GigPreview({ is, gig }) {
   }, [updatedGig.ownerId])
 
   useEffect(() => {
-    setIsLiked(user && gig.likedByUsers.includes(user._id))
-  }, [user, gig])
+    setIsLiked(loggedInUser && gig.likedByUsers.includes(loggedInUser._id))
+  }, [loggedInUser, gig])
 
   async function onRemoveGig() {
     try {
@@ -60,15 +52,15 @@ export function GigPreview({ is, gig }) {
 
   async function likeGig(e) {
     e.preventDefault()
-    if (!user) {
+    if (!loggedInUser) {
       openLogin()
       return
     }
     const gigToSave = { ...updatedGig }
 
-    if (gigToSave.likedByUsers.includes(user._id)) {
+    if (gigToSave.likedByUsers.includes(loggedInUser._id)) {
       gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
-        (liker) => liker !== user._id
+        (liker) => liker !== loggedInUser._id
       )
       setIsLiked(false)
       try {
@@ -78,7 +70,7 @@ export function GigPreview({ is, gig }) {
       }
       setUpdatedGig(gigToSave)
     } else {
-      gigToSave.likedByUsers.push(user._id)
+      gigToSave.likedByUsers.push(loggedInUser._id)
 
       setIsLiked(true)
       try {
@@ -124,21 +116,20 @@ export function GigPreview({ is, gig }) {
         {is === "userProfile" && (
           <>
             <div className="profile">
-              {(loggedId !== user._id) && <UserPreview is="userProfile" owner={owner} />}
+              {(loggedId !== loggedInUser._id) && <UserPreview is="userProfile" owner={owner} />}
               <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
                 {updatedGig.title}
               </Link>
               <div className="rating">
                 <SvgIcon iconName={"star"} />
-                <span>{user.rating}</span>
+                <span>{loggedInUser.rating}</span>
                 <span className="reviews">
-                  {/* ({filteredReviewIds.length}) */}
-                  ({utilService.getRandomIntInclusive(100,999)})
-                  </span>
+                  ({utilService.getRandomIntInclusive(100, 999)})
+                </span>
               </div>
             </div>
-            <div className={`gig-changes ${(loggedId !== user._id) ? 'right' : ''}`}>
-              {loggedId === user._id && (
+            <div className={`gig-changes ${(loggedId !== loggedInUser._id) ? 'right' : ''}`}>
+              {loggedId === loggedInUser._id && (
                 <div className="gig-btns">
                   <button className="gig-btn">
                     <Link to={`/gig/edit/${updatedGig._id}`}>

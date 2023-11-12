@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 
 import { GigDetailsHeader } from '../cmps/GigDetailsHeader.jsx'
 import { AboutSeller } from '../cmps/AboutSeller.jsx'
@@ -14,27 +13,30 @@ import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
 
 export function GigDetails() {
+  const params = useParams()
+
   const [gig, setGig] = useState(null)
+  const [gigOwner, setGigOwner] = useState(null)
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
-
-  const params = useParams()
-  const gigOwner = useSelector((storeState) => storeState.userModule.watchedUser)
-
-  useEffect(() => {
-    fetchData()
-  }, [params.id])
 
   async function fetchData() {
     try {
       const fetchedGig = await gigService.getById(params.id)
       setGig(fetchedGig)
 
-      if (fetchedGig) await loadUser(fetchedGig.ownerId)
+      if (fetchedGig) {
+        const owner = await loadUser(fetchedGig.ownerId)
+        setGigOwner(owner)
+      }
     } catch (err) {
       console.error('Error loading data:', err)
     }
   }
+
+  useEffect(() => {
+    fetchData()
+  }, [params.id])
 
   useEffect(() => {
     const handleResize = () => {
