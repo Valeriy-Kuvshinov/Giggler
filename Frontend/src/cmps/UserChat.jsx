@@ -4,11 +4,9 @@ import { socketService } from '../services/socket.service.js'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-import { TypingLoader } from './TypingLoader.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 
 export function UserChat({ owner, window, chatState, setChatState, buyer }) {
-  const [typingUser, setTypingUser] = useState('')
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
@@ -43,15 +41,21 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
   }
 
   function addMessage(msg) {
-    setMessages((prevMessage) => [...prevMessage, msg])
+    setMessages((prevMessages) => [
+      ...prevMessages.filter(m => m.type !== 'typing'),
+      msg
+    ])
   }
 
   function addTypingUser(user) {
-    setTypingUser(user)
+    setMessages((prevMessages) => [
+      ...prevMessages.filter(m => m.type !== 'typing'),
+      { type: 'typing', user: user }
+    ])
   }
 
   function removeTypingUser() {
-    setTypingUser(null)
+    setMessages((prevMessages) => prevMessages.filter(m => m.type !== 'typing'))
   }
 
   function handleKeyPress(event) {
@@ -177,47 +181,38 @@ export function UserChat({ owner, window, chatState, setChatState, buyer }) {
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div className="message-container flex column">
-                    {messages.map((message, index) => (
-                      <div
-                        key={index}
-                        className={
-                          message.user._id === loggedinUser._id
-                            ? 'user-one message flex column'
-                            : 'user-two message flex column'
-                        }
-                      >
-                        <div className="message-body grid">
-                          <span className='text'>
-                            {message.message}
-                          </span>
-                          <img className='avatar'
-                            src={message.user.imgUrl}
-                            alt={message.user.username}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    {typingUser && (
-                      <>
-                        <div className="user-two message">
-                          <div className="message-body grid">
-                            <span className="avatar">
-                              <img
-                                src={isBuyer ? owner.imgUrl : buyer.imgUrl}
-                                alt={isBuyer ? owner.imgUrl : buyer.imgUrl}
-                                style={{ maxHeight: '32px', maxWidth: '32px' }}
-                              />
-                            </span>
-                            <div
-                              className="text"
-                              style={{ border: 0, margin: '0 .5em' }}
-                            >
-                              <TypingLoader />
+                    {messages.map((message, index) => {
+                      if (message.type === 'typing') {
+                        return (
+                          <div key={index} className="message typing-indicator">
+                            <div className="message-body grid">
+                              <span className="text">
+                                <span className="typing-loader">
+                                  <span className="dot"></span>
+                                  <span className="dot"></span>
+                                  <span className="dot"></span>
+                                </span>
+                              </span>
+                              <img className="avatar" src={message.user.imgUrl} alt={message.user.username} />
                             </div>
                           </div>
-                        </div>
-                      </>
-                    )}
+                        )
+                      } else {
+                        return (
+                          <div
+                            key={index}
+                            className={`message 
+                            ${message.user._id === loggedinUser._id
+                                ? 'user-one' : 'user-two'} flex column`}
+                          >
+                            <div className="message-body grid">
+                              <span className='text'>{message.message}</span>
+                              <img className='avatar' src={message.user.imgUrl} alt={message.user.username} />
+                            </div>
+                          </div>
+                        )
+                      }
+                    })}
                   </div>
 
                   <div className="input-container">
