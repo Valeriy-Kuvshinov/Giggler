@@ -1,5 +1,13 @@
 .home-wrapper {
   .welcome-wrapper {
+    @media(max-width: 899px) {
+      height: 495px;
+    }
+
+    @media(min-width: 900px) {
+      height: 760px;
+    }
+
     .welcome-section {
       @media (max-width: 1400px) {
         padding: 1em;
@@ -19,6 +27,7 @@
           margin: auto;
           width: 100%;
           padding: 32px 64px;
+          left: 0;
 
           h1 {
             max-width: 100%;
@@ -35,6 +44,7 @@
 
         @media (max-width: 400px) {
           padding: 48px 16px;
+          left: 0.2em;
 
           h1 {
             font-size: 32px;
@@ -42,7 +52,7 @@
           }
 
           .search-bar {
-            width: 90%;
+            width: 95%;
           }
         }
 
@@ -85,7 +95,7 @@
         }
       }
 
-      @media (min-width: 900px) {
+      @media (min-width: 901px) {
         gap: 3.75em;
       }
     }
@@ -100,6 +110,10 @@
   .home-services-section {
     @media (max-width: 1400px) {
       padding: 1em 2em;
+    }
+
+    @media(max-width: 600px) {
+      padding: 1em 1.5em;
     }
 
     @media (min-width: 1401px) {
@@ -156,6 +170,16 @@
       padding: 6em 2em;
     }
 
+    @media(max-width: 600px) {
+      padding: 3em 1.5em;
+
+      .categories {
+        .category {
+          padding: 0 10px 0px;
+        }
+      }
+    }
+
     @media (min-width: 1400px) {
       padding: 6em 0em;
     }
@@ -209,6 +233,10 @@
         }
       }
 
+      @media(max-width: 600px) {
+        padding: 3.5em 1.5em;
+      }
+
       @media (min-width: 1401px) {
         padding: 6em 0em;
 
@@ -230,6 +258,10 @@
   .join-wrapper {
     @media (max-width: 1400px) {
       padding: 1em 2em;
+    }
+
+    @media(max-width: 600px) {
+      padding: 1em 1.5em;
     }
 
     @media (min-width: 1401px) {

@@ -92,41 +92,43 @@
             font-weight: 100;
         }
 
-        div {
-            position: relative;
-            text-align: center;
-            padding: 0 10px 55px;
-            cursor: pointer;
+        .categories {
+            .category {
+                position: relative;
+                text-align: center;
+                padding: 0 10px 55px;
+                cursor: pointer;
 
-            img {
-                max-width: 48px;
-                height: 48px;
-                display: block;
-                margin: 0 auto 1em;
-            }
+                img {
+                    max-width: 48px;
+                    height: 48px;
+                    display: block;
+                    margin: 0 auto 1em;
+                }
 
-            ::after {
-                content: "";
-                display: block;
-                width: 48px;
-                height: 2px;
-                background-color: $clrSecondary4;
-                position: absolute;
-                top: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-                transition: all 0.3s;
-            }
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 48px;
+                    height: 2px;
+                    background-color: $clrSecondary4;
+                    position: absolute;
+                    top: 50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: all 0.3s;
+                }
 
-            &:hover::after {
-                width: 98px;
-                background-color: $bgColor2;
-            }
+                &:hover::after {
+                    width: 98px;
+                    background-color: $bgColor2;
+                }
 
-            p {
-                margin-top: 0.5em;
-                font-family: 'macan-regular';
-                color: $clrPrimary2;
+                p {
+                    margin-top: 0.5em;
+                    font-family: 'macan-regular';
+                    color: $clrPrimary2;
+                }
             }
         }
     }

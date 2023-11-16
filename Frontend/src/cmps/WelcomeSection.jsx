@@ -82,7 +82,7 @@ export function WelcomeSection({ onHandleFilter }) {
             </section>
 
             {windowWidth >= 900 && (
-                <div className="person-info" style={{ opacity: showImage ? '1' : '0' }}>
+                <div className="person-info flex" style={{ opacity: showImage ? '1' : '0' }}>
                     <img src={personImages[currentImageIndex].small} alt="Small Person" className="small-img" />
                     <div className="text-content">
                         <div className="title flex">

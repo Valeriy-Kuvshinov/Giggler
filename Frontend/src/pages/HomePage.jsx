@@ -1,4 +1,7 @@
-import { galleryService } from '../services/gallery.service.js'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useModal } from '../customHooks/ModalContext.jsx'
+
 import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
@@ -6,10 +9,7 @@ import { InfoListItem } from '../cmps/InfoListItem.jsx'
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
 
 import { setFilter } from '../store/gig.actions.js'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-
-import { useModal } from '../customHooks/ModalContext.jsx'
+import { galleryService } from '../services/gallery.service.js'
 
 export function HomePage() {
     const { companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
@@ -61,7 +61,7 @@ export function HomePage() {
                 <h2>You need it, we've got it</h2>
                 <div className='categories grid'>
                     {categoryIcons.map((category, index) => (
-                        <div onClick={(e) => onHandleFilter(e, { cat: categoryTexts[index] })} key={index}>
+                        <div className='category' onClick={(e) => onHandleFilter(e, { cat: categoryTexts[index] })} key={index}>
                             <img src={category} alt={`Category icon ${index}`} />
                             <p>{categoryTexts[index]}</p>
                         </div>
