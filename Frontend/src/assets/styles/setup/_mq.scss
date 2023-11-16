@@ -282,6 +282,10 @@
       padding: 1em 2em;
     }
 
+    @media(max-width: 600px) {
+      padding: 1em 1.5em;
+    }
+
     @media (min-width: 1401px) {
       padding: 1em 0em;
     }
@@ -321,6 +325,18 @@
 
             &:last-child {
               display: flex;
+
+              .join {
+                border: none;
+                padding: 0px 0px;
+                font-size: 16px;
+                color: $clrSecondary6 !important;
+
+                &:hover {
+                  background: none;
+                  color: $clrSecondary11 !important;
+                }
+              }
 
               &.user-info {
                 display: none;
@@ -646,17 +662,7 @@
               .message {
                 .message-text {
                   font-size: 1em;
-
-                  // &::after {
-                  //   bottom: 29.5px;
-                  // }
                 }
-
-                // &.other .message-text {
-                //   &::after {
-                //     bottom: 37.5px;
-                //   }
-                // }
               }
             }
 
@@ -666,17 +672,7 @@
               .message {
                 .message-text {
                   font-size: 0.85em;
-
-                  // &::after {
-                  //   bottom: 20px;
-                  // }
                 }
-
-                // &.other .message-text {
-                //   &::after {
-                //     bottom: 28px;
-                //   }
-                // }
               }
             }
           }

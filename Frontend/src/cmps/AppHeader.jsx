@@ -95,9 +95,13 @@ export function AppHeader() {
         if (window.scrollY < 50) setHeaderStage(0)
         else if (window.scrollY < 150) setHeaderStage(1)
         else setHeaderStage(2)
+
+        if (window.innerWidth <= 600) setHeaderStage(2)
       }
       window.addEventListener('scroll', handleScroll)
       setHeaderStage(0)
+      if (window.innerWidth <= 600) setHeaderStage(2)
+
       return () => window.removeEventListener('scroll', handleScroll)
     } else setHeaderStage(2)
   }, [isHomePage])
