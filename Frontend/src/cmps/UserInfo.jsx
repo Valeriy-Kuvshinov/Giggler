@@ -45,16 +45,12 @@ export function UserInfo({ user }) {
   let month = months[time.getMonth()]
   let year = time.getFullYear()
   let deliveredTime
-  if (!user.lastDeliveredAt) {
-    deliveredTime = new Date(Date.now())
-  } else {
-    deliveredTime = new Date(user.lastDeliveredAt)
-  }
+
+  if (!user.lastDeliveredAt) deliveredTime = new Date(Date.now())
+  else deliveredTime = new Date(user.lastDeliveredAt)
 
   function loadModal() {
-    if (loggedinUser._id !== user._id) {
-      return
-    }
+    if (loggedinUser._id !== user._id) return
     setModal(true)
   }
 
@@ -116,7 +112,7 @@ export function UserInfo({ user }) {
       <div className="info-block flex column">
         <div className="profile-picture">
           <img src={user.imgUrl} onClick={loadModal} />
-          <div className='background'><SvgIcon iconName={'user'}/></div>
+          <div className='background'><SvgIcon iconName={'user'} /></div>
           <SvgIcon iconName={userLevel} />
         </div>
 
@@ -136,7 +132,7 @@ export function UserInfo({ user }) {
 
         <span className="username">@{user.username}</span>
 
-        <div className="stars">
+        <div className="stars flex">
           {renderStars()}
           <span className="rating">{user.rating}</span>
           <span className="review-count">
@@ -146,7 +142,7 @@ export function UserInfo({ user }) {
 
         <div className="location-and-time">
           <div className="info-line flex" onClick={loadModal}>
-            <span className="data">
+            <span className="data flex">
               <SvgIcon iconName={'location'} />
               <span>From</span>
             </span>
@@ -154,7 +150,7 @@ export function UserInfo({ user }) {
           </div>
 
           <div className="info-line flex">
-            <span className="data">
+            <span className="data flex">
               <SvgIcon iconName={'user'} />
               <span>Member Since</span>
             </span>
@@ -164,7 +160,7 @@ export function UserInfo({ user }) {
           </div>
 
           <div className="info-line flex">
-            <span className="data">
+            <span className="data flex">
               <SvgIcon iconName={'clock'} />
               <span>Avg. Response Time</span>
             </span>
@@ -174,7 +170,7 @@ export function UserInfo({ user }) {
           </div>
 
           <div className="info-line flex">
-            <span className="data">
+            <span className="data flex">
               <SvgIcon iconName={'airplaneIcon'} />
               <span>Last Delivery</span>
             </span>
@@ -218,8 +214,8 @@ export function UserInfo({ user }) {
         </div>
         <div className="skills">
           <span className="title">Skills</span>
-          {user.skills && <div className="the-skills">
-            {user.skills.map(skill => 
+          {user.skills && <div className="the-skills flex">
+            {user.skills.map(skill =>
               <div className="skill" key={skill}>
                 <span>{skill}</span>
               </div>)}
@@ -228,8 +224,8 @@ export function UserInfo({ user }) {
         <div className="educations">
           <span className="title">Education</span>
           {user.education && <div className="the-educations">
-            {user.education.map(education => 
-              <div className="education" key={education.graduationTime}>
+            {user.education.map(education =>
+              <div className="education flex column" key={education.graduationTime}>
                 <span>{education.certificate}</span>
                 <span>{education.educationPlace}, Graduated {education.graduationTime}</span>
               </div>)}

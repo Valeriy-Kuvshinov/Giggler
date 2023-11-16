@@ -41,7 +41,7 @@ export function UserProfile() {
 
   return (
     <section className={`profile-page full ${(loggedinUser._id !== watchedUser._id ? 'visitor' : '')}`}>
-      <div className="user-profile flex layout-row">
+      <div className="user-profile flex row layout-row">
         <UserInfo user={watchedUser} />
         <UserGigs gigs={gigs} user={watchedUser} />
       </div>
