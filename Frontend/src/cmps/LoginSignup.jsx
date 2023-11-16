@@ -4,6 +4,7 @@ import { login, signup } from '../store/user.actions.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 const loginSignupImg = 'https://res.cloudinary.com/digrqdbso/image/upload/v1699099670/Giggler/home-page-other/w9peebtuzesqc71ppcd5.png'
 import checkmarkImg from '../assets/img/svg/checkmark.white.icon.svg'
+import { utilService } from '../services/util.service.js'
 
 export function LoginSignup({ closeModal, mode }) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullName: '', imgUrl: '' })
@@ -21,9 +22,9 @@ export function LoginSignup({ closeModal, mode }) {
 
         const action = isSignUp ? signup : login
         const creds = { ...credentials }
-
         if (isSignUp && !creds.imgUrl) {
-            creds.imgUrl = 'https://img.freepik.com/premium-photo/robot-face-with-green-eyes-black-face_14865-1671.jpg?w=2000'
+            const randColor = utilService.getRandomMidColor().substring(1)
+            creds.imgUrl = `https://placehold.co/${100}/${randColor}/ffffff?text=${creds.fullName[0].toUpperCase()}`
         }
 
         try {

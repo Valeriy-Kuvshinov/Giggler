@@ -8,6 +8,8 @@ export const utilService = {
   loadFromStorage,
   getAssetSrc,
   timeAgoString,
+  getRandomColor,
+  getRandomMidColor
 }
 
 function makeId(length = 6) {
@@ -126,4 +128,23 @@ function timeAgoString(timestamp) {
   } else {
     return 'a few seconds ago'
   }
+}
+
+function getRandomMidColor() {
+  const letters = '3456789ABC'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 10)]
+  }
+  return color
+}
+
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
 }
