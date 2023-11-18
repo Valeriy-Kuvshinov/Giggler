@@ -13,11 +13,11 @@ export function ReviewBreakdown({ reviews, context }) {
     const isHalfStar = averageRating % 1 >= 0.25
     const stars = Array.from({ length: fullStarsCount }, (_, idx) => <SvgIcon key={idx} iconName="star" />)
 
-    if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName="halfStar" />)
+    if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName='halfStar' />)
 
     const emptyStarsCount = 5 - stars.length
     for (let i = 0; i < emptyStarsCount; i++) {
-      stars.push(<SvgIcon key={`empty-star-${i}`} iconName="emptyStar" />)
+      stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
     }
     return stars
   }
@@ -28,8 +28,8 @@ export function ReviewBreakdown({ reviews, context }) {
       const count = reviews.filter(review => review.rating === ratingValue).length
 
       return (
-        <div className={`stat-line ${!count ? 'no-count' : ''}`} key={utilService.makeId()}>
-          <span className="rate-level">{ratingValue} Stars</span>
+        <div className={`stat-line flex ${!count ? 'no-count' : ''}`} key={utilService.makeId()}>
+          <span className="rate-level flex">{ratingValue} Stars</span>
           <div className="counter">
             <span className="counter-meter" style={{ width: `${(100 * count / reviews.length)}%` }}></span>
           </div>
@@ -43,7 +43,7 @@ export function ReviewBreakdown({ reviews, context }) {
     <section className="review-breakdown">
       <div className="review-count flex">
         <span>{reviewCountText}</span>
-        <div className="stars">
+        <div className="stars flex">
           {renderStars()}
           <span>{averageRating}</span>
         </div>
@@ -54,20 +54,22 @@ export function ReviewBreakdown({ reviews, context }) {
         </div>
         <div className="rating-breakdown flex column">
           <span className="title">Rating Breakdown</span>
-          <div className="rating-stat">
+          <div className="rating-stat flex">
             <span>Seller communication level</span>
-            <div className="star">
+            <div className="star flex">
               <SvgIcon iconName={'star'} />{averageRating}</div>
           </div>
-          <div className="rating-stat">
+          <div className="rating-stat flex">
             <span>Recommend to a friend</span>
-            <div className="star">
+            <div className="star flex">
               <SvgIcon iconName={'star'} />{averageRating}
             </div>
           </div>
-          <div className="rating-stat">
+          <div className="rating-stat flex">
             <span>Service as described</span>
-            <div className="star"><SvgIcon iconName={'star'} />{averageRating}</div>
+            <div className="star flex">
+              <SvgIcon iconName={'star'} />{averageRating}
+            </div>
           </div>
         </div>
       </div>
