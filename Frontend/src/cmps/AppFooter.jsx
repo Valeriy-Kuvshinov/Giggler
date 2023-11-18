@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 import { galleryService } from '../services/gallery.service.js'
@@ -10,10 +11,11 @@ import { MobileFilter } from './MobileFilter.jsx'
 export function AppFooter() {
   const [isMobile, setIsMobile] = useState(
     window.innerWidth <= 480 ? true : false)
-  const [navState, setNavState] = useState('home')
   const [search, setSearch] = useState(false)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+
+  const { openLogin } = useModal()
 
   const { socialMediaLinks } = galleryService
 
@@ -61,40 +63,52 @@ export function AppFooter() {
     <footer className="mobile-footer grid">
       <NavLink
         to="/"
-        className={navState === 'home' ? 'selected' : ''}
-        onClick={() => setNavState('home')}
       >
         <SvgIcon iconName="appHomeIcon" />
       </NavLink>
+
       <NavLink
-        to={window.location.pathname}
-        className={navState === 'chat' ? 'selected' : ''}
-        onClick={() => setNavState('chat')}
+        to='inbox'
+        onClick={(e) => {
+          if (!loggedinUser) {
+            e.preventDefault()
+            openLogin()
+          } 
+        }}
       >
         <SvgIcon iconName="appEnvelopeIcon" />
       </NavLink>
+
       <NavLink
-        to={window.location.pathname}
-        className={navState === 'search' ? 'selected' : ''}
+        to='/explore'
         onClick={(e) => {
-          setNavState('search')
           onOpenSearch(e)
         }}
       >
         {search && <MobileFilter />}
         <SvgIcon iconName="appMagnifyingGlassIcon" />
       </NavLink>
+
       <NavLink
-        to={window.location.pathname}
-        className={navState === 'order' ? 'selected' : ''}
-        onClick={() => setNavState('order')}
+        to='orders'
+        onClick={(e) => {
+          if (!loggedinUser) {
+            e.preventDefault()
+            openLogin()
+          } 
+        }}
       >
         <SvgIcon iconName="appOrdersIcon" />
       </NavLink>
+
       <NavLink
-        to={window.location.pathname}
-        className={navState === 'profile' ? 'selected' : ''}
-        onClick={() => setNavState('profile')}
+        to={loggedinUser ? `/user/${loggedinUser._id}` : '/void'}
+        onClick={(e) => {
+          if (!loggedinUser) {
+            e.preventDefault()
+            openLogin()
+          } 
+        }}
       >
         <SvgIcon iconName="appProfileIcon" />
       </NavLink>
