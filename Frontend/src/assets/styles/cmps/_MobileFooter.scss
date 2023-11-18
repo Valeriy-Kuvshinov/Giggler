@@ -1,0 +1,27 @@
+.mobile-nav {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-auto-flow: column;
+  // grid-template-columns: repeat(5, 1fr);
+  // justify-content: center;
+  // align-items: center;
+  background-color: $clrPrimary1;
+  padding: 1em 0;
+
+  a {
+    display: flex;
+    justify-content: center;
+    &.active {
+      svg {
+        fill: $bgColor3;
+      }
+    }
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+}
