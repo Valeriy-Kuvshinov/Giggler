@@ -17,7 +17,8 @@ import { socketService } from '../services/socket.service.js'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [headerStage, setHeaderStage] = useState(0)
+  const [headerStage, setHeaderStage] = useState(
+    window.innerWidth <= 600 ? 2 : 0)
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
@@ -91,29 +92,24 @@ export function AppHeader() {
 
   useEffect(() => {
     if (isHomePage) {
-      const handleScroll = () => {
-        if (window.scrollY < 50) setHeaderStage(0)
-        else if (window.scrollY < 150) setHeaderStage(1)
-        else setHeaderStage(2)
-
-        if (window.innerWidth <= 600) setHeaderStage(2)
+      const handleScrollResize = () => {
+        if (window.innerWidth > 600) {
+          if (window.scrollY < 50) setHeaderStage(0)
+          else if (window.scrollY < 150) setHeaderStage(1)
+          else setHeaderStage(2)
+        }
+        else setHeaderStage(window.innerWidth <= 600 ? 2 : 0)
       }
-      window.addEventListener('scroll', handleScroll)
-      setHeaderStage(0)
-      if (window.innerWidth <= 600) setHeaderStage(2)
+      window.addEventListener('scroll', handleScrollResize)
+      window.addEventListener('resize', handleScrollResize)
 
-      return () => window.removeEventListener('scroll', handleScroll)
-    } else setHeaderStage(2)
-  }, [isHomePage])
-
-  useEffect(() => {
-    window.addEventListener('click', closeDropdown)
-    window.addEventListener('click', closeAsideMenu)
-    return () => {
-      window.removeEventListener('click', closeDropdown)
-      window.removeEventListener('click', closeAsideMenu)
+      return () => {
+        window.removeEventListener('scroll', handleScrollResize)
+        window.removeEventListener('resize', handleScrollResize)
+      }
     }
-  }, [])
+    else setHeaderStage(2)
+  }, [isHomePage])
 
   useEffect(() => {
     const updatePlaceholder = () => {
@@ -122,8 +118,15 @@ export function AppHeader() {
     }
     window.addEventListener('resize', updatePlaceholder)
     updatePlaceholder()
+    return () => window.removeEventListener('resize', updatePlaceholder)
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('click', closeDropdown)
+    window.addEventListener('click', closeAsideMenu)
     return () => {
-      window.removeEventListener('resize', updatePlaceholder)
+      window.removeEventListener('click', closeDropdown)
+      window.removeEventListener('click', closeAsideMenu)
     }
   }, [])
 
