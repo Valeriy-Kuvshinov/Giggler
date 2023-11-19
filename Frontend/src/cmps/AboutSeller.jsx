@@ -56,7 +56,7 @@ export function AboutSeller({ owner }) {
     <section className="about-seller">
       <div className="seller-wrapper">
         <h3>About The Seller</h3>
-        <UserPreview is={'gig-details-2'} owner={owner} />
+        <UserPreview isFrom={'gig-details-2'} owner={owner} />
 
         <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>
           Contact me

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
@@ -20,27 +20,31 @@ export function GigDetails() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
   const [chatState, setChatState] = useState(false)
 
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const params = useParams()
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const navigate = useNavigate()
+  const { id } = useParams()
   const { openLogin } = useModal()
 
-  async function fetchData() {
-    try {
-      const fetchedGig = await gigService.getById(params.id)
-      setGig(fetchedGig)
-
-      if (fetchedGig) {
-        const owner = await loadUser(fetchedGig.ownerId)
-        setGigOwner(owner)
-      }
-    } catch (err) {
-      console.error('Error loading data:', err)
-    }
-  }
-
   useEffect(() => {
-    fetchData()
-  }, [params.id])
+    if (!id || id.length !== 24) {
+      navigate('/explore')
+      return
+    }
+    const loadData = async () => {
+      try {
+        const fetchedGig = await gigService.getById(id)
+        setGig(fetchedGig)
+
+        if (fetchedGig) {
+          const owner = await loadUser(fetchedGig.ownerId)
+          setGigOwner(owner)
+        }
+      } catch (err) {
+        console.error("Error loading gig: ", err)
+      }
+    }
+    loadData()
+  }, [id, navigate])
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,7 +57,7 @@ export function GigDetails() {
   }, [])
 
   const handleOpenChat = () => {
-    if (loggedinUser) setChatState(true)
+    if (loggedInUser) setChatState(true)
     else openLogin()
   }
 

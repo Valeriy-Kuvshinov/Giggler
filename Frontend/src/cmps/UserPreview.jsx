@@ -4,12 +4,12 @@ import { userService } from '../services/user.service.js'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-export function UserPreview({ is, owner, children }) {
+export function UserPreview({ isFrom, owner, children }) {
   const orders = useSelector((storeState) => storeState.orderModule.orders)
   const [user, setUser] = useState(null)
   const [ratingCount, setRatingCount] = useState(null)
   let completedOrders = []
-  if (is === 'gigDetailsTop' || is === 'gigDetailsBottom') {
+  if (isFrom === 'gigDetailsTop' || isFrom === 'gigDetailsBottom') {
     completedOrders = orders
       .filter((order) => order.sellerId === owner._id)
       .filter((order) => order.deniedAt || order.acceptedAt)
@@ -35,44 +35,44 @@ export function UserPreview({ is, owner, children }) {
   return (
     <>
       <div
-        className={`user-preview ${is === 'gig-details' ? 'gap12' : is === 'gig-details-2' ? 'gap16' : ''
+        className={`user-preview ${isFrom === 'gig-details' ? 'gap12' : isFrom === 'gig-details-2' ? 'gap16' : ''
           }`}
       >
         <img
-          className={`avatar-${is}`}
+          className={`avatar-${isFrom}`}
           src={user.imgUrl}
           alt={`${user.fullName} gig avatar`}
         />
-        <div className={`user-${is}-wrapper`}>
+        <div className={`user-${isFrom}-wrapper`}>
           <span className="name-wrapper">
-            {(is === 'gig-details' || is === 'gig-details-2') && (
+            {(isFrom === 'gig-details' || isFrom === 'gig-details-2') && (
               <span className="fullname b">{user.fullName}</span>
             )}
-          <Link to={`/user/${user._id}`} className={`username ${is === 'explore' ? 'b' : ''}`}>{`${is === 'gig-details' ? '@' : is === 'gig-details-2' ? '@' : ''
+          <Link to={`/user/${user._id}`} className={`username ${isFrom === 'explore' ? 'b' : ''}`}>{`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''
               }${user.username}`}</Link>
-              {is==='userProfile' && <span className={`user-level ${user.level==='level 3'?'top':''}`}>{user.level}</span>}
+              {isFrom==='userProfile' && <span className={`user-level ${user.level==='level 3'?'top':''}`}>{user.level}</span>}
           </span>
-          {is === 'gig-details-2' && (
+          {isFrom === 'gig-details-2' && (
             <span className="saying">{`Work Hard\, Work Fast and Cater Your needs as imagined`}</span>
           )}
-          {(is === 'gig-details' || is === 'gig-details-2') && (
+          {(isFrom === 'gig-details' || isFrom === 'gig-details-2') && (
             <div className="rating-order-wrapper">
               <span className="rating-score flex">
                 <SvgIcon iconName="star" />
                 <span className="rate b">{user.rating}</span>
                 <span className="rate-count ">{`(${ratingCount})`}</span>
               </span>
-              {is === 'gig-details' && (
+              {isFrom === 'gig-details' && (
                 <span className="active-orders">{`${completedOrders} Order${completedOrders !== 1 ? 's' : ''
                   } in Queue`}</span>
               )}
             </div>
           )}
         </div>
-        {is === 'explore' && <span className={`level ${user.level==='Pro Talent'?'pro':''}`}>{user.level}</span>}
+        {isFrom === 'explore' && <span className={`level ${user.level==='Pro Talent'?'pro':''}`}>{user.level}</span>}
       </div>
-      {is === 'explore' && children}
-      {is === 'explore' && (
+      {isFrom === 'explore' && children}
+      {isFrom === 'explore' && (
         <div className="user-rating-order">
           <span className="rating-score flex">
             <SvgIcon iconName={'star'} tag={'span'} />

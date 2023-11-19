@@ -13,7 +13,7 @@ import { ImageCarousel } from "./ImageCarousel.jsx"
 import { loadReviews } from "../store/review.actions.js"
 import { utilService } from "../services/util.service.js"
 
-export function GigPreview({ is, gig }) {
+export function GigPreview({ isFrom, gig }) {
   const navigate = useNavigate()
   const params = useParams()
   const loggedInUserId = params.id
@@ -87,14 +87,14 @@ export function GigPreview({ is, gig }) {
   return (
     <li className="gig-preview">
       <ImageCarousel
-        isFrom={is}
+        isFrom={isFrom}
         images={updatedGig.imgUrls}
         gigId={updatedGig._id}
         newImgIndex={newImgIndex}
         setNewImgIndex={setNewImgIndex}
       />
 
-      {is !== "userProfile" && (
+      {isFrom !== "userProfile" && (
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
             <SvgIcon iconName={"heartLiked"} />
@@ -105,31 +105,31 @@ export function GigPreview({ is, gig }) {
       )}
 
       <div className="preview-body">
-        {is === "explore" && (
-          <UserPreview is={is} owner={owner} gig={updatedGig}>
+        {isFrom === "explore" && (
+          <UserPreview isFrom={isFrom} owner={owner} gig={updatedGig}>
             <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
               {updatedGig.title}
             </Link>
           </UserPreview>
         )}
 
-        {is === "userProfile" && (
+        {isFrom === "userProfile" && (
           <>
             <div className="profile">
-              {(loggedInUserId !== loggedInUser._id) && <UserPreview is="userProfile" owner={owner} />}
+              {(loggedInUserId !== loggedInUser?._id) && <UserPreview isFrom="userProfile" owner={owner} />}
               <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
                 {updatedGig.title}
               </Link>
               <div className="rating">
                 <SvgIcon iconName={"star"} />
-                <span>{loggedInUser.rating}</span>
+                <span>{loggedInUser?.rating}</span>
                 <span className="reviews">
                   ({utilService.getRandomIntInclusive(100, 999)})
                 </span>
               </div>
             </div>
-            <div className={`gig-changes ${(loggedInUserId !== loggedInUser._id) ? 'right' : ''}`}>
-              {loggedInUserId === loggedInUser._id && (
+            <div className={`gig-changes ${(loggedInUserId !== loggedInUser?._id) ? 'right' : ''}`}>
+              {loggedInUserId === loggedInUser?._id && (
                 <div className="gig-btns">
                   <button className="gig-btn">
                     <Link to={`/gig/edit/${updatedGig._id}`}>
@@ -148,7 +148,7 @@ export function GigPreview({ is, gig }) {
             </div>
           </>
         )}
-        {is !== "userProfile" && (
+        {isFrom !== "userProfile" && (
           <div className="gig-price">
             <span className="price b">{`From $${updatedGig.price}`}</span>
           </div>

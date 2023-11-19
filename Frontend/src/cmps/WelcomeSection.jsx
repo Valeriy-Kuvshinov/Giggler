@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { galleryService } from '../services/gallery.service.js'
 import { SearchBar } from './SearchBar.jsx'
-import { setFilter } from '../store/gig.actions.js'
 
 export function WelcomeSection({ onHandleFilter }) {
     const { personImages } = galleryService

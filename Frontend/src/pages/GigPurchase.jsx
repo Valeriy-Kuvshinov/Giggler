@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { PurchaseMain } from '../cmps/PurchaseMain.jsx'
 import { PurchaseAside } from '../cmps/PurchaseAside.jsx'
+import { Loader } from "../cmps/Loader.jsx"
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { orderBackendService } from '../services/order.backend.service.js'
@@ -18,33 +19,37 @@ export function GigPurchase() {
     firstName: 'Yaron',
     lastName: 'Biton',
   }
-  const user = useSelector((storeState) => storeState.userModule.user)
-  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
-
   const [paymentMethod, setPaymentMethod] = useState(true)
   const [formData, setFormData] = useState(initialState)
 
-  const params = useParams()
-  const gig = gigs.find((gig) => gig._id === params.id)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
+  const gigs = useSelector((storeState) => storeState.gigModule.gigs)
+
+  const navigate = useNavigate()
+  const { id } = useParams()
+  const gig = gigs.find((gig) => gig._id === id)
 
   const queryParams = new URLSearchParams(window.location.search)
   const packageChoice = queryParams.get('package')
 
   useEffect(() => {
-    loadGig2()
-  }, [])
-
-  async function loadGig2() {
-    try {
-      await loadGigs()
-    } catch (err) {
-      console.log('couldnt load gig : ', err)
+    if (!id || id.length !== 24 || !loggedInUser) {      
+      navigate('/explore')
+      return
     }
-  }
+    const loadData = async () => {
+      try {
+        await loadGigs()
+      } catch (err) {
+        console.error("Error loading gig: ", err)
+      }
+    }
+    loadData()
+  }, [id, navigate])
 
   async function createOrder() {
     const newOrder = orderBackendService.createOrder(
-      user._id,
+      loggedInUser._id,
       gig.ownerId,
       gig.title,
       gig.deliveryTime,
@@ -53,7 +58,7 @@ export function GigPurchase() {
     )
     try {
       await orderBackendService.save(newOrder)
-      socketService.emit('notify_seller_new_order', {userId: newOrder.sellerId , user})
+      socketService.emit('notify_seller_new_order', {userId: newOrder.sellerId , user: loggedInUser})
       showSuccessMsg(
         {
           title: 'ORDER ADDED',
@@ -87,7 +92,7 @@ export function GigPurchase() {
     console.log('Form data submitted:', formData)
   }
 
-  if (gig === undefined || gigs === undefined) return <div>loading...</div>
+  if (!gigs || !gig) return <Loader />
 
   return (
     <section className="gig-purchase layout-row max-width-container">

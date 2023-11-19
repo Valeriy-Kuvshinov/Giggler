@@ -19,17 +19,17 @@ import { loadOrders } from '../store/order.actions.js'
 export function DashboardPage() {
     const dispatch = useDispatch()
 
-    const user = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
 
     useEffect(() => {
-        if (user) {
-            dispatch(loadOrders({ sellerId: user._id }))
+        if (loggedInUser) {
+            dispatch(loadOrders({ sellerId: loggedInUser._id }))
         }
-    }, [user, dispatch])
+    }, [loggedInUser, dispatch])
 
-    const displayedOrders = orders.filter(order => order.sellerId === user._id)
+    const displayedOrders = orders.filter(order => order.sellerId === loggedInUser._id)
 
     if (isLoading) return <Loader />
 
@@ -41,7 +41,7 @@ export function DashboardPage() {
                     <p>Please check again once your gigs gain traction.</p>
                     <img src={noResultsImg} alt="no results" />
                     <p>At the meantime, why not refine your profile or check out tips for success?</p>
-                    <Link to={`/user/${user._id}`}>Go to Profile</Link>
+                    <Link to={`/user/${loggedInUser._id}`}>Go to Profile</Link>
                 </div>
             </main>
         )
@@ -51,13 +51,13 @@ export function DashboardPage() {
         <main className="dashboard-page full flex column">
             <section className='dashboard-container'>
                 <SellerSummary
-                    user={user}
+                    user={loggedInUser}
                     displayedOrders={displayedOrders}
                 />
 
                 <h3>Manage Your Orders</h3>
                 <SellerOrders
-                    user={user}
+                    user={loggedInUser}
                     displayedOrders={displayedOrders}
                 />
             </section>

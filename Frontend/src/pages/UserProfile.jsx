@@ -1,49 +1,45 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
+import { useParams, useNavigate } from "react-router-dom"
+
 import { UserGigs } from "../cmps/UserGigs.jsx"
 import { UserInfo } from "../cmps/UserInfo.jsx"
 import { Loader } from "../cmps/Loader.jsx"
 
 import { loadGigs } from "../store/gig.actions.js"
-import { useParams } from "react-router"
 import { loadUser } from "../store/user.actions.js"
 
 export function UserProfile() {
+  const navigate = useNavigate()
+  const { id } = useParams()
+
   const watchedUser = useSelector((storeState) => storeState.userModule.watchedUser)
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
-  const params = useParams()
 
   useEffect(() => {
-    loadGigs2()
-    loadUser2()
-  }, [params.id])
+    if (!id || id.length !== 24) {      
+      navigate('/explore')
+      return
+    }
+    const loadData = async () => {
+      try {
+        await loadGigs()
+        await loadUser(id)
+      } catch (err) {
+        console.error("Error loading data: ", err)
+      }
+    }
+    loadData()
+  }, [id, navigate])
 
-  async function loadGigs2() {
-    try {
-      await loadGigs()
-    }
-    catch (err) {
-      console.log("couldnt load gigs : ", err)
-    }
-  }
-
-  async function loadUser2() {
-    try {
-      await loadUser(params.id)
-    }
-    catch (err) {
-      console.log("couldnt load user : ", err)
-    }
-  }
-
-  if (watchedUser === null || gigs === null) return <Loader />
+  if (!gigs || !watchedUser) return <Loader />
 
   return (
-    <section className={`profile-page full ${(loggedinUser._id !== watchedUser._id ? 'visitor' : '')}`}>
+    <section className={`profile-page full ${loggedInUser?._id !== watchedUser?._id ? 'visitor' : ''}`}>
       <div className="user-profile flex row layout-row">
-        <UserInfo user={watchedUser} />
-        <UserGigs gigs={gigs} user={watchedUser} />
+        <UserInfo watchedUser={watchedUser} loggedinUser={loggedInUser} />
+        <UserGigs watchedUser={watchedUser} loggedinUser={loggedInUser} gigs={gigs} />
       </div>
     </section>
   )
