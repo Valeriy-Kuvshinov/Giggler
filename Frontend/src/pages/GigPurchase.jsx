@@ -17,7 +17,7 @@ export function GigPurchase() {
     expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
     pinCode: '123',
     firstName: 'Yaron',
-    lastName: 'Biton',
+    lastName: 'Biton'
   }
   const [paymentMethod, setPaymentMethod] = useState(true)
   const [formData, setFormData] = useState(initialState)
