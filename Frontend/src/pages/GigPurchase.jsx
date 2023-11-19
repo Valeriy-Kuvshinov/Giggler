@@ -16,7 +16,7 @@ export function GigPurchase() {
     expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
     pinCode: '123',
     firstName: 'Yaron',
-    lastName: 'Biton',
+    lastName: 'Biton'
   }
   const user = useSelector((storeState) => storeState.userModule.user)
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
