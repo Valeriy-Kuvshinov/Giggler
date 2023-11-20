@@ -66,57 +66,59 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
         }
         return actions
     }
+    const { prefix, dateStr } = orderBackendService.getActionDate(order)
 
     return (
         windowWidth > 600 ? (
-            <tr className={orderBackendService.getOrderClass(order.orderState)}>
-                <td>
-                    {gigData && gigData.firstImgUrl && (
-                        <img src={gigData.firstImgUrl} alt="gig" />
-                    )}
-                </td>
-                <td>
+            <div className={`user-order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
+                <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
+                <div className="order-price">
+                    {`$${order.price}`}
+                </div>
+                <div className="order-title">
                     {gigData ? (
-                        <Link to={`/gig/${gigData._id}`}>
-                            {gigData.title}
-                        </Link>
+                        <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
                     ) : null}
-                </td>
-                <td><img src={userData && userData.avatar} alt="buyer" /></td>
-
-                <td className="flex column">
+                </div>
+                <div className="order-buyer flex row">
+                    <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
                     {userData && (
-                        <Link to={`/user/${userData._id}`}>
-                            <span>{userData.firstName}</span>
-                            <span>{userData.lastName}</span>
+                        <Link to={`/user/${userData._id}`} className="buyer-name flex row">
+                            {`${userData.username}`}
                         </Link>
                     )}
-                </td>
-                <td>{orderBackendService.getActionDate(order)}</td>
-                <td>{`${order.price}$`}</td>
-                <td>
-                    <div className="order-state-dropdown">
-                        <span
-                            className={order.orderState}
-                            onClick={() => setDropdownVisible(!isDropdownVisible)}
-                        >
-                            {order.orderState}
-                        </span>
-                        {isDropdownVisible && (
-                            <div ref={dropdownMenuRef} className="dropdown-menu flex column">
-                                {getAvailableActions(order).map((action, idx) => (
-                                    <button
-                                        key={idx}
-                                        onClick={action.action}
-                                        className={`dropdown-action ${action.label}`}
-                                    >
-                                        {action.label}
-                                    </button>
-                                ))}
-                            </div>
-                        )}
+                </div>
+                <div className="order-date flex row">
+                    <div className='text flex column'>
+                        <span className="prefix">{prefix}</span>
+                        <span className="date">{dateStr}</span>
                     </div>
-                </td>
+                </div>
+                <div className="order-state-dropdown flex column">
+                    <span
+                        className={order.orderState}
+                        onClick={() => {
+                            if (getAvailableActions(order).length > 0) {
+                                setDropdownVisible(!isDropdownVisible)
+                            }
+                        }}
+                    >
+                        {order.orderState}
+                    </span>
+                    {isDropdownVisible && getAvailableActions(order).length > 0 && (
+                        <div ref={dropdownMenuRef} className="dropdown-menu flex row">
+                            {getAvailableActions(order).map((action, idx) => (
+                                <button
+                                    key={idx}
+                                    onClick={action.action}
+                                    className={`dropdown-action ${action.label}`}
+                                >
+                                    {action.label}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
                 {isDenied && (
                     <DenialOrderModal
                         order={order}
@@ -126,7 +128,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                         }}
                     />
                 )}
-            </tr>
+            </div>
         ) : (
             <div className={`user-order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
                 <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
@@ -147,7 +149,10 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                     )}
                 </div>
                 <div className="order-date flex row">
-                    {orderBackendService.getActionDate(order)}
+                    <div className='text flex column'>
+                        <span className="prefix">{prefix}</span>
+                        <span className="date">{dateStr}</span>
+                    </div>
                 </div>
                 <div className="order-state-dropdown flex column">
                     <span

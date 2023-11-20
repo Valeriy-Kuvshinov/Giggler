@@ -318,7 +318,7 @@
                 }
             }
 
-            .mobile-order-view {
+            .mobile-view {
                 gap: 1em;
 
                 .user-order {
@@ -393,6 +393,8 @@
                             padding-block-start: 1em;
                             border-top: 1px solid $clrSecondary3;
                             color: $clrSecondary5;
+
+                            
                         }
 
                         .order-state-dropdown {
