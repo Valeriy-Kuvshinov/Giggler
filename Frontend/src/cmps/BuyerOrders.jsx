@@ -2,14 +2,16 @@ import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Loader } from "./Loader.jsx"
-import SvgIcon from "./SvgIcon.jsx"
-
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
+import { Loader } from "./Loader.jsx"
+import SvgIcon from "./SvgIcon.jsx"
+import { InvoiceModal } from "./InvoiceModal.jsx"
+
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
 
@@ -70,7 +72,12 @@ export function BuyerOrders({ loggedInUser, onClose }) {
 
   function onClickReceipt(event, order) {
     event.stopPropagation()
+    setIsModalOpen(true)
     console.log("receipt selected for order: ", order._id)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
   }
 
   if (!allDetailsLoaded) {
@@ -93,9 +100,11 @@ export function BuyerOrders({ loggedInUser, onClose }) {
                 <div key={order._id} className="buyer-order grid">
                   <div className="order-image">
                     <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
-                    <span onClick={(event) => onClickReceipt(event, order)}>
-                      <SvgIcon iconName={'receiptIcon'} />
-                    </span>
+                    {(order.orderState === 'accepted' || order.orderState === 'completed') && (
+                      <span title="Order Invoice" onClick={(event) => onClickReceipt(event, order)}>
+                        <SvgIcon iconName={'receiptIcon'} />
+                      </span>
+                    )}
                   </div>
                   {details ? (
                     <Link
@@ -116,6 +125,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
             }
           })}
       </div>
+      {isModalOpen && <InvoiceModal onClose={closeModal} />}
     </section>
   )
 }

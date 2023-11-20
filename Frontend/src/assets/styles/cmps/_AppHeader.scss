@@ -21,9 +21,6 @@
       flex-shrink: 0;
     }
 
-    align-items: center;
-    gap: 10px;
-
     .dropdown {
       position: relative;
       margin-right: 10px;
@@ -174,7 +171,7 @@
                   fill: #FDD005;
                   max-height: 32px;
 
-                  &:hover{
+                  &:hover {
                     fill: #d6b41a;
                   }
                 }
