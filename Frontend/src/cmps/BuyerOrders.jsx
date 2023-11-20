@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -7,23 +7,28 @@ import { Loader } from "./Loader.jsx"
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
-export function BuyerOrders({ user, onClose }) {
+export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
-
-  const dispatch = useDispatch()
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
 
   useEffect(() => {
-    if (user) {
-      dispatch(loadOrders({ buyerId: user._id }))
+    const fetchOrders = async () => {
+      if (loggedInUser) {
+        try {
+          await loadOrders({ buyerId: loggedInUser._id })
+        } catch (err) {
+          console.error("Error loading orders:", err)
+        }
+      }
     }
-  }, [user, dispatch])
+    fetchOrders()
+  }, [loggedInUser])
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
       for (const order of orders) {
-        if (order.buyerId === user._id) {
+        if (order.buyerId === loggedInUser._id) {
           setOrderDetails((prevDetails) => ({
             ...prevDetails,
             [order._id]: { isLoading: true },
@@ -51,14 +56,14 @@ export function BuyerOrders({ user, onClose }) {
         }
       }
     }
-    if (orders.some((order) => order.buyerId === user._id)) {
+    if (orders.some((order) => order.buyerId === loggedInUser._id)) {
       fetchOrderDetails()
     }
-  }, [orders, user, dispatch])
+  }, [orders, loggedInUser])
   // Check if all the relevant orders have their details loaded
   const allDetailsLoaded = orders.every(
     (order) =>
-      order.buyerId !== user._id ||
+      order.buyerId !== loggedInUser._id ||
       (orderDetails[order._id] && !orderDetails[order._id].isLoading)
   )
   if (!allDetailsLoaded) {
@@ -73,7 +78,7 @@ export function BuyerOrders({ user, onClose }) {
     <section className="buyer-orders-dropdown flex column" onClick={onClose}>
       <div className="buyer-orders flex column">
         {orders
-          .filter((order) => order.buyerId === user._id)
+          .filter((order) => order.buyerId === loggedInUser._id)
           .map((order) => {
             const details = orderDetails[order._id]
             if (details && !details.isLoading) {
@@ -82,6 +87,7 @@ export function BuyerOrders({ user, onClose }) {
                   <div className="order-image">
                     <Link to={`/gig/${details.gigData._id}`}>
                       <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+
                     </Link>
                   </div>
                   {details ? (

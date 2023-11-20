@@ -1,0 +1,20 @@
+.mobile-filter {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $clrSecondary45;
+  z-index: 100;
+  .mobile-filter-header{
+    display:flex;
+    justify-content: space-between;
+    .wrapper {
+      display:grid;
+      grid-auto-flow: column;
+      gap: 2em;
+    }
+  }
+
+}
