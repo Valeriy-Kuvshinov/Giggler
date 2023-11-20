@@ -17,9 +17,9 @@
         background-color: $clrPrimary1;
         height: 400px;
         justify-content: center;
-        align-items: center;
         position: relative;
         z-index: 10;
+        padding: 0.75em;
 
         button {
             color: $clrSecondary11;
@@ -32,6 +32,35 @@
             width: 40px;
             font-weight: 700;
             background: none;
+        }
+
+        .invoice-header {
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            width: 90%;
+            border-bottom: 1px solid $clrSecondary4;
+            justify-content: space-between;
+
+            h1 {
+                font-family: arial;
+                font-size: 30.5px;
+                letter-spacing: -3px;
+                color: $clrSecondary8;
+            }
+
+            button {
+                i {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+
+        .invoice-info {
+            h2 {
+                font-size: 16px;
+            }
         }
     }
 }

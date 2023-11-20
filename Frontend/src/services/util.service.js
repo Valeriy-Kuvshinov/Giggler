@@ -9,7 +9,8 @@ export const utilService = {
   getAssetSrc,
   timeAgoString,
   getRandomColor,
-  getRandomMidColor
+  getRandomMidColor,
+  formatDate
 }
 
 function makeId(length = 6) {
@@ -119,15 +120,28 @@ function timeAgoString(timestamp) {
 
   if (monthsAgo >= 2) {
     return `${monthsAgo} months ago`
-  } else if (daysAgo >= 2) {
-    return `${daysAgo} days ago`
-  } else if (hoursAgo >= 1) {
-    return `${hoursAgo} hour${hoursAgo === 1 ? '' : 's'} ago`
-  } else if (minutesAgo >= 1) {
-    return `${minutesAgo} minute${minutesAgo === 1 ? '' : 's'} ago`
-  } else {
-    return 'a few seconds ago'
   }
+  else if (daysAgo >= 2) {
+    return `${daysAgo} days ago`
+  }
+  else if (hoursAgo >= 1) {
+    return `${hoursAgo} hour${hoursAgo === 1 ? '' : 's'} ago`
+  }
+  else if (minutesAgo >= 1) {
+    return `${minutesAgo} minute${minutesAgo === 1 ? '' : 's'} ago`
+  }
+  else return 'a few seconds ago'
+}
+
+function formatDate(timestamp) {
+  if (!timestamp) return ''
+
+  const date = new Date(timestamp)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear().toString().substring(-2)
+
+  return `${day}/${month}/${year}`
 }
 
 function getRandomMidColor() {

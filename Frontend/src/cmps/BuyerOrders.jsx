@@ -11,6 +11,7 @@ import { InvoiceModal } from "./InvoiceModal.jsx"
 
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
+  const [selectedOrder, setSelectedOrder] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
@@ -72,6 +73,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
 
   function onClickReceipt(event, order) {
     event.stopPropagation()
+    setSelectedOrder(order)
     setIsModalOpen(true)
     console.log("receipt selected for order: ", order._id)
   }
@@ -125,7 +127,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
             }
           })}
       </div>
-      {isModalOpen && <InvoiceModal onClose={closeModal} />}
+      {isModalOpen && <InvoiceModal order={selectedOrder} onClose={closeModal} />}
     </section>
   )
 }

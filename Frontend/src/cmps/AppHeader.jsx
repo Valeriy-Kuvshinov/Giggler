@@ -186,7 +186,7 @@ export function AppHeader() {
             )}
           </div>
           <Link to="/" style={{ color: headerStyles.color }}>
-            <h1 style={{ color: logoColor }} className="logo flex">
+            <h1 style={{ color: logoColor }} className="flex row">
               Giggler
               <span className="flex">
                 <SvgIcon iconName={'greenDotIcon'} />

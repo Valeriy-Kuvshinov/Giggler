@@ -39,7 +39,7 @@ export function AppFooter() {
   return !isMobile ? (
     <footer className="desktop-footer flex full">
       <div className="footer-part flex">
-        <h1 className="logo">Giggler</h1>
+        <h1>Giggler</h1>
         <h2>© Giggler International Ltd. 2023</h2>
       </div>
 
@@ -73,7 +73,7 @@ export function AppFooter() {
           if (!loggedinUser) {
             e.preventDefault()
             openLogin()
-          } 
+          }
         }}
       >
         <SvgIcon iconName="appEnvelopeIcon" />
@@ -95,7 +95,7 @@ export function AppFooter() {
           if (!loggedinUser) {
             e.preventDefault()
             openLogin()
-          } 
+          }
         }}
       >
         <SvgIcon iconName="appOrdersIcon" />
@@ -107,7 +107,7 @@ export function AppFooter() {
           if (!loggedinUser) {
             e.preventDefault()
             openLogin()
-          } 
+          }
         }}
       >
         <SvgIcon iconName="appProfileIcon" />
