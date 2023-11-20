@@ -7,6 +7,13 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 const initialState = {
     orders: [],
     isLoading: false,
+    receipt: {
+        crdNum: '1111222233334444',
+        expDate: `${new Date().getMonth() + 1}/${new Date().getFullYear() % 100}`,
+        pinCode: '123',
+        firstName: 'Yaron',
+        lastName: 'Biton'
+    }
 }
 
 export function orderReducer(state = initialState, action = {}) {
@@ -29,7 +36,10 @@ export function orderReducer(state = initialState, action = {}) {
             }
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }
-
+        // case UPDATE_RECEIPT:
+        //     return {...state, orders: state.orders.map(order =>
+        //             order._id === action.order._id ? action.order : order )
+        //     }
         default:
             return state
     }

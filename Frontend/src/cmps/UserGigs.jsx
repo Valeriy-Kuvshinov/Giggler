@@ -1,7 +1,6 @@
 import seller from "../assets/img/svg/become.seller.icon.svg"
 
 import { Link } from "react-router-dom"
-import { useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import { GigPreview } from "./GigPreview.jsx"
@@ -9,25 +8,24 @@ import { UserReviews } from "./UserReviews.jsx"
 
 import { loadReviews } from "../store/review.actions.js"
 
-export function UserGigs({ user, gigs }) {
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const is = "userProfile"
+export function UserGigs({ watchedUser, loggedinUser, gigs }) {
+  const isFrom = "userProfile"
 
   useEffect(() => {
     loadReviews()
   }, [])
 
-  const userGigs = gigs.filter((gig) => gig.ownerId === user._id)
+  const userGigs = gigs.filter((gig) => gig.ownerId === watchedUser._id)
 
   if (!userGigs) return <div>No gigs yet, maybe create one ^_^</div>
 
   return (
     <section className="profile-content flex column">
-      {gigs.length !== 0 && user._id !== loggedinUser._id && (
-        <div className="title flex">{`${user.username}'s Gigs`}</div>
+      {gigs.length !== 0 && watchedUser._id !== loggedinUser?._id && (
+        <div className="title flex">{`${watchedUser.username}'s Gigs`}</div>
       )}
 
-      {user._id === loggedinUser._id && (
+      {watchedUser._id === loggedinUser?._id && (
         <div className="info-block gig seller">
           <Link
             to="/gig/edit"
@@ -49,7 +47,7 @@ export function UserGigs({ user, gigs }) {
         {gigs.length !== 0 &&
           userGigs.map((gig) => (
             <div key={gig._id}>
-              <GigPreview is={is} gig={gig} />
+              <GigPreview isFrom={isFrom} gig={gig} />
             </div>
           ))}
       </div>

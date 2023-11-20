@@ -1,4 +1,4 @@
-.app-footer {
+.desktop-footer {
     color: $clrSecondary7;
     text-align: center;
     position: relative;
@@ -70,6 +70,39 @@
                     fill: $clrSecondary8;
                 }
             }
+        }
+    }
+}
+
+.mobile-footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    background-color: $clrPrimary1;
+    padding: 0.5em 0 1em 0;
+    border-top: 1px solid $clrSecondary2;
+    justify-items: center;
+
+    a {
+        min-width: 48px;
+        display: flex;
+        justify-content: center;
+
+        &.active {
+            svg {
+                fill: $bgColor3;
+            }
+
+            background: $clrSecondary14;
+            border-radius: 0.5em;
+        }
+
+        svg {
+            width: 1.5em;
+            height: 1.5em;
         }
     }
 }

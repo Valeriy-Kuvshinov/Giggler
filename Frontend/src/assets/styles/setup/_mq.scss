@@ -624,6 +624,27 @@
   @media (min-width: 1260px) {
     gap: 9.15%;
   }
+
+  .gig-reviews {
+    .review-breakdown {
+      .breakdown-wrapper {
+        @media (max-width: 400px) {
+          flex-direction: column;
+          gap: 1em;
+
+          .star-counts,
+          .rating-breakdown {
+            width: 100%;
+            margin-inline-start: 0;
+
+            &.star-counts {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .profile-page {
@@ -744,7 +765,7 @@
   }
 }
 
-.app-footer {
+.desktop-footer {
   @media (max-width: 1400px) {
     padding: 1em 2em;
   }

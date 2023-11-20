@@ -10,7 +10,7 @@ export function GigDetailsHeader({ gig, owner }) {
     <section className="gig-details-header flex column">
       <div className="gig-overview">
         <h2 className="gig-title">{gig.title}</h2>
-        <UserPreview is={'gig-details'} owner={owner} />
+        <UserPreview isFrom={'gig-details'} owner={owner} />
       </div>
 
       <ImageCarousel

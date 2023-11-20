@@ -1,26 +1,23 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import icon from '../assets/img/svg/user.icon.svg'
-import location from '../assets/img/svg/location.icon.svg'
-
 import { UserEditModal } from './UserEditModal.jsx'
 import { updateUser } from '../store/user.actions.js'
 import SvgIcon from './SvgIcon'
 import { loadReviews } from '../store/review.actions'
 import { utilService } from '../services/util.service'
-import { loadOrders } from '../store/order.actions'
 
-export function UserInfo({ user }) {
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+export function UserInfo({ watchedUser, loggedinUser }) {
   const [isModal, setModal] = useState(false)
   const [isEditing, setEditing] = useState(false)
   const [isEditingFullName, setIsEditingFullName] = useState(false)
-  const [description, setDescription] = useState(user.description)
-  const [fullName, setFullName] = useState(user.fullName)
+  const [description, setDescription] = useState(watchedUser.description)
+  const [fullName, setFullName] = useState(watchedUser.fullName)
+  
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  const filteredReviews = user
-    ? reviews.filter((review) => review.sellerId === user._id)
+  
+  const filteredReviews = watchedUser
+    ? reviews.filter((review) => review.sellerId === watchedUser._id)
     : []
 
   useEffect(() => {
@@ -41,16 +38,16 @@ export function UserInfo({ user }) {
     'November',
     'December',
   ]
-  const time = new Date(user.createdAt * 1000)
+  const time = new Date(watchedUser.createdAt * 1000)
   let month = months[time.getMonth()]
   let year = time.getFullYear()
   let deliveredTime
 
-  if (!user.lastDeliveredAt) deliveredTime = new Date(Date.now())
-  else deliveredTime = new Date(user.lastDeliveredAt)
+  if (!watchedUser.lastDeliveredAt) deliveredTime = new Date(Date.now())
+  else deliveredTime = new Date(watchedUser.lastDeliveredAt)
 
   function loadModal() {
-    if (loggedinUser._id !== user._id) return
+    if (loggedinUser._id !== watchedUser._id) return
     setModal(true)
   }
 
@@ -75,15 +72,15 @@ export function UserInfo({ user }) {
   }
 
   async function handleConfirmChange() {
-    const updatedUser = { ...user, description, fullName }
+    const updatedUser = { ...watchedUser, description, fullName }
     await updateUser(updatedUser)
     setEditing(false)
     setIsEditingFullName(false)
   }
 
   const renderStars = () => {
-    let fullStarsCount = Math.floor(user.rating)
-    const isHalfStar = user.rating % 1 >= 0.5
+    let fullStarsCount = Math.floor(watchedUser.rating)
+    const isHalfStar = watchedUser.rating % 1 >= 0.5
 
     const stars = [...Array(fullStarsCount)].map((_, idx) => (
       <SvgIcon iconName={'star'} key={utilService.makeId()} />
@@ -102,22 +99,22 @@ export function UserInfo({ user }) {
   }
 
   let userLevel = ''
-  if (user.level === 'level 0') userLevel = 'newuser'
-  if (user.level === 'level 1') userLevel = 'level1'
-  if (user.level === 'level 2') userLevel = 'level2'
-  if (user.level === 'level 3') userLevel = 'topuser'
+  if (watchedUser.level === 'level 0') userLevel = 'newuser'
+  if (watchedUser.level === 'level 1') userLevel = 'level1'
+  if (watchedUser.level === 'level 2') userLevel = 'level2'
+  if (watchedUser.level === 'level 3') userLevel = 'topuser'
 
   return (
     <section className="user-info">
       <div className="info-block flex column">
         <div className="profile-picture">
-          <img src={user.imgUrl} onClick={loadModal} />
+          <img src={watchedUser.imgUrl} onClick={loadModal} />
           <div className='background'><SvgIcon iconName={'user'} /></div>
           <SvgIcon iconName={userLevel} />
         </div>
 
         <h2>
-          {isEditingFullName && loggedinUser._id === user._id ? (
+          {isEditingFullName && loggedinUser._id === watchedUser._id ? (
             <input
               type="text"
               style={{ padding: '0', border: 'none', textAlign: 'center' }}
@@ -126,15 +123,15 @@ export function UserInfo({ user }) {
               onBlur={handleConfirmChange}
             />
           ) : (
-            <span onClick={handleFullNameEditClick}>{user.fullName}</span>
+            <span onClick={handleFullNameEditClick}>{watchedUser.fullName}</span>
           )}
         </h2>
 
-        <span className="username">@{user.username}</span>
+        <span className="username">@{watchedUser.username}</span>
 
         <div className="stars flex">
           {renderStars()}
-          <span className="rating">{user.rating}</span>
+          <span className="rating">{watchedUser.rating}</span>
           <span className="review-count">
             ({filteredReviews.length} reviews)
           </span>
@@ -146,7 +143,7 @@ export function UserInfo({ user }) {
               <SvgIcon iconName={'location'} />
               <span>From</span>
             </span>
-            <span className="bold">{user.country}</span>
+            <span className="bold">{watchedUser.country}</span>
           </div>
 
           <div className="info-line flex">
@@ -184,7 +181,7 @@ export function UserInfo({ user }) {
 
       <div className="info-block flex column description">
         <h3 className="description-title">Description</h3>
-        {isEditing && loggedinUser._id === user._id ? (
+        {isEditing && loggedinUser._id === watchedUser._id ? (
           <div className="description-box">
             <textarea
               className="description-area"
@@ -202,8 +199,8 @@ export function UserInfo({ user }) {
         )}
         <div className="languages">
           <span className="title">Languages</span>
-          {user.languages && <div className="the-languages">
-            {user.languages.map((language) => (
+          {watchedUser.languages && <div className="the-languages">
+            {watchedUser.languages.map((language) => (
               <div className="language" key={language.language}>
                 <span>{language.language}</span>
                 <span> - </span>
@@ -214,8 +211,8 @@ export function UserInfo({ user }) {
         </div>
         <div className="skills">
           <span className="title">Skills</span>
-          {user.skills && <div className="the-skills flex">
-            {user.skills.map(skill =>
+          {watchedUser.skills && <div className="the-skills flex">
+            {watchedUser.skills.map(skill =>
               <div className="skill" key={skill}>
                 <span>{skill}</span>
               </div>)}
@@ -223,8 +220,8 @@ export function UserInfo({ user }) {
         </div>
         <div className="educations">
           <span className="title">Education</span>
-          {user.education && <div className="the-educations">
-            {user.education.map(education =>
+          {watchedUser.education && <div className="the-educations">
+            {watchedUser.education.map(education =>
               <div className="education flex column" key={education.graduationTime}>
                 <span>{education.certificate}</span>
                 <span>{education.educationPlace}, Graduated {education.graduationTime}</span>
@@ -233,7 +230,7 @@ export function UserInfo({ user }) {
         </div>
       </div>
 
-      {isModal && <UserEditModal user={user} closeModal={closeModal} />}
+      {isModal && <UserEditModal user={watchedUser} closeModal={closeModal} />}
       {isModal && <div className="modal-background" onClick={closeModal}></div>}
     </section>
   )
