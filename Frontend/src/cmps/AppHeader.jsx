@@ -230,7 +230,7 @@ export function AppHeader() {
                   </button>
                   {showOrdersDropdown && (
                     <BuyerOrders
-                      user={loggedinUser}
+                      loggedInUser={loggedinUser}
                       onClose={() => setShowOrdersDropdown(false)}
                     />
                   )}
@@ -249,7 +249,7 @@ export function AppHeader() {
                   )}
                   {showUserDropdown && (
                     <UserDropdown
-                      user={loggedinUser}
+                      loggedInUser={loggedinUser}
                       onClose={() => setShowUserDropdown(false)}
                     />
                   )}

@@ -80,15 +80,17 @@
 
         .stars {
           margin: 0;
+          display: flex;
+          align-items: baseline;
 
           .rating {
+            margin-inline-start: 0.25em;
             font-weight: 500;
           }
 
-          img {
-            margin-inline-end: 4px;
-            height: 14px;
-            width: 14px;
+          svg {
+            margin-inline-end: 0.25em;
+            fill: $clrSecondary8;
           }
         }
 
