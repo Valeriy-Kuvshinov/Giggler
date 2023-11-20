@@ -179,6 +179,7 @@
                     .order-image {
                       grid-column: 1 / -1;
                       grid-row: 1;
+                      position: relative;
 
                       img {
                         margin-block-start: 0.375em;
@@ -186,6 +187,25 @@
                         border: 1px solid $clrSecondary4;
                         border-radius: 10px;
                         max-height: 150px;
+                      }
+
+                      i {
+                        width: 48px;
+                        height: 48px;
+                        position: absolute;
+                        top: 0%;
+                        right: 0%;
+                        cursor: pointer;
+                        z-index: 5;
+        
+                        svg {
+                          fill: #FDD005;
+                          max-height: 48px;
+        
+                          &:hover{
+                            fill: #d6b41a;
+                          }
+                        }
                       }
                     }
 
