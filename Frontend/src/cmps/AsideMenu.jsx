@@ -11,7 +11,7 @@ import SvgIcon from './SvgIcon.jsx'
 import { logout } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-export function AsideMenu({ user, onClose, theBuyer, onChatState,
+export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
   chatNotification, setChatNotification,
 }) {
   const navigate = useNavigate()
@@ -34,12 +34,12 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
 
   return (
     <div className="aside-menu flex column" onClick={(e) => e.stopPropagation()}>
-      {user ? (
+      {loggedInUser ? (
         <>
           <div className="top-icons flex row">
             <div className="user-info flex row">
-              <img src={user.imgUrl} alt="user" />
-              <span>{user.username}</span>
+              <img src={loggedInUser.imgUrl} alt="user" />
+              <span>{loggedInUser.username}</span>
             </div>
             {theBuyer && (
               <span
@@ -55,7 +55,7 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
               </span>
             )}
           </div>
-          <Link to={`/user/${user._id}`} onClick={onClose}>
+          <Link to={`/user/${loggedInUser._id}`} onClick={onClose}>
             Profile
           </Link>
 
@@ -86,7 +86,7 @@ export function AsideMenu({ user, onClose, theBuyer, onChatState,
             </AccordionSummary>
 
             <AccordionDetails id="panel1bh-content">
-              <BuyerOrders user={user} onClose={onClose} />
+              <BuyerOrders loggedInUser={loggedInUser} onClose={onClose} />
             </AccordionDetails>
           </Accordion>
           <button className="logout" onClick={onLogout}>

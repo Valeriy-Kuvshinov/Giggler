@@ -154,7 +154,7 @@
               grid-row: 1 / -1;
 
               img {
-                margin-block-start: 0.375em;
+                margin-block-start: 0.5em;
                 width: 90px;
                 height: 80px;
                 object-fit: cover;
@@ -170,6 +170,8 @@
               grid-column: 2 / 3;
               grid-row: 2 / 3;
               font-size: 14px;
+              align-self: end;
+              padding-bottom: 5px;
             }
 
             .order-status {
@@ -177,6 +179,8 @@
               grid-row: 2 / 3;
               text-align: right;
               text-transform: uppercase;
+              align-self: end;
+              padding-bottom: 5px;
 
               &.pending {
                 color: $clr15;

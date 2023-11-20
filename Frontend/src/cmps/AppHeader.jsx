@@ -176,7 +176,7 @@ export function AppHeader() {
             />
             {showAsideMenu && (
               <AsideMenu
-                user={loggedinUser}
+                loggedInUser={loggedinUser}
                 onClose={() => setshowAsideMenu(false)}
                 theBuyer={theBuyer}
                 onChatState={onChatState}

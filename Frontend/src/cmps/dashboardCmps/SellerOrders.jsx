@@ -75,7 +75,7 @@ export function SellerOrders({ user, displayedOrders }) {
     return (
         <section className="user-orders">
             {windowWidth > 600 ? (
-                <section className="mobile-view flex column">
+                <section className="desktop-view flex column">
                     {displayedOrders.map(order => (
                         <div className="user-order" key={order._id}>
                             <SellerOrder

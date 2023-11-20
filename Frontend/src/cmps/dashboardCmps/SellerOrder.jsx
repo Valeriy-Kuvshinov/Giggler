@@ -70,29 +70,30 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
 
     return (
         windowWidth > 600 ? (
-            <div className={`user-order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
-                <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
-                <div className="order-price">
-                    {`$${order.price}`}
-                </div>
-                <div className="order-title">
-                    {gigData ? (
+            <div className={`order-contents flex row ${orderBackendService.getOrderClass(order.orderState)}`}>
+                {gigData ? (
+                    <div className="order-info flex row">
+                        <img src={gigData && gigData.firstImgUrl} alt="gig" />
                         <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
-                    ) : null}
-                </div>
-                <div className="order-buyer flex row">
-                    <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
-                    {userData && (
-                        <Link to={`/user/${userData._id}`} className="buyer-name flex row">
-                            {`${userData.username}`}
+                    </div>
+                ) : null}
+                {userData && (
+                    <div className="order-buyer flex row">
+                        <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
+                        <Link to={`/user/${userData._id}`} className="buyer-name flex column">
+                            <span className='first-name'>{`${userData.firstName}`}</span>
+                            <span className='last-name'>{`${userData.lastName}`}</span>
                         </Link>
-                    )}
-                </div>
+                    </div>
+                )}
                 <div className="order-date flex row">
                     <div className='text flex column'>
                         <span className="prefix">{prefix}</span>
                         <span className="date">{dateStr}</span>
                     </div>
+                </div>
+                <div className="order-price">
+                    {`$${order.price}`}
                 </div>
                 <div className="order-state-dropdown flex column">
                     <span
@@ -106,7 +107,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                         {order.orderState}
                     </span>
                     {isDropdownVisible && getAvailableActions(order).length > 0 && (
-                        <div ref={dropdownMenuRef} className="dropdown-menu flex row">
+                        <div ref={dropdownMenuRef} className="dropdown-menu flex column">
                             {getAvailableActions(order).map((action, idx) => (
                                 <button
                                     key={idx}
@@ -130,7 +131,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                 )}
             </div>
         ) : (
-            <div className={`user-order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
+            <div className={`order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
                 <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
                 <div className="order-price">
                     {`$${order.price}`}
