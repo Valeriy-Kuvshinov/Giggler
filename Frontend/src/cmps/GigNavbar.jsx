@@ -1,5 +1,4 @@
-import heart from "../assets/img/svg/heart.icon.svg"
-import likedHeart from "../assets/img/svg/liked.heart.icon.svg"
+
 import share from "../assets/img/svg/share.icon.svg"
 
 import { useState, useEffect } from "react"
@@ -8,6 +7,8 @@ import { useModal } from "../customHooks/ModalContext"
 
 import { CatTagDisplayBar } from "./CatTagDisplayBar.jsx"
 import { ShareGigModal } from "./ShareGigModal.jsx"
+import SvgIcon from "./SvgIcon.jsx"
+
 import { gigService } from "../services/gig.service.js"
 
 export function GigNavbar({ gig, onGigChange }) {
@@ -68,13 +69,13 @@ export function GigNavbar({ gig, onGigChange }) {
 
       <div className="gig-interactions">
         <button className="heart" onClick={likeGig}>
-          <img src={isLiked ? likedHeart : heart} title="liked the gig" />
+          <SvgIcon iconName={isLiked ? 'heartLiked' : 'heart'}/>
         </button>
 
         <span>{gig.likedByUsers.length}</span>
 
         <button onClick={shareGig} className="share" title="share the gig">
-          <img src={share} />
+          <SvgIcon iconName={'shareSocialMediaIcon'}/>
         </button>
       </div>
       {isModalOpen && <ShareGigModal onClose={closeModal} />}

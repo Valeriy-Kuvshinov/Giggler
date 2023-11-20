@@ -1,6 +1,3 @@
-import starIcon from '../assets/img/svg/star.icon.svg'
-import halfStarIcon from '../assets/img/svg/half.star.icon.svg'
-import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
 import Australia from '../assets/img/countryFlags/Australia.png'
 import Austria from '../assets/img/countryFlags/Austria.png'
@@ -17,6 +14,7 @@ import Switzerland from '../assets/img/countryFlags/Switzerland.png'
 import Turkey from '../assets/img/countryFlags/Turkey.png'
 import UnitedKingdom from '../assets/img/countryFlags/UnitedKingdom.png'
 import UnitedStates from '../assets/img/countryFlags/UnitedStates.png'
+import SvgIcon from './SvgIcon'
 
 export function GigReview({ review }) {
     const flags = {
@@ -56,21 +54,30 @@ export function GigReview({ review }) {
         let fullStarsCount = Math.floor(review.rating)
         const isHalfStar = review.rating % 1 >= 0.5
 
-        const stars = [...Array(fullStarsCount)].map((_, idx) => (
-            <img src={starIcon} key={idx} alt="star" />
-        ))
-
-        if (isHalfStar) {
-            stars.push(<img src={halfStarIcon} key="half-star" alt="half star" />)
-            fullStarsCount += 1
-        }
-
-        const emptyStarsCount = 5 - fullStarsCount
+        const stars = Array.from({ length: fullStarsCount }, (_, idx) => <SvgIcon key={idx} iconName="star" />)
+    
+        if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName='halfStar' />)
+    
+        const emptyStarsCount = 5 - stars.length
         for (let i = 0; i < emptyStarsCount; i++) {
-            stars.push(<img src={emptyStarIcon} key={`empty-${i}`} alt="empty star" />)
+          stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
         }
         return stars
     }
+    // const renderStars = () => {
+    //     const fullStarsCount = Math.floor(averageRating)
+    //     const isHalfStar = averageRating % 1 >= 0.25
+    //     const stars = Array.from({ length: fullStarsCount }, (_, idx) => <SvgIcon key={idx} iconName="star" />)
+    
+    //     if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName='halfStar' />)
+    
+    //     const emptyStarsCount = 5 - stars.length
+    //     for (let i = 0; i < emptyStarsCount; i++) {
+    //       stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
+    //     }
+    //     return stars
+    //   }
+
     if(!review.country || !review.imgUrl)return
 
     return (
