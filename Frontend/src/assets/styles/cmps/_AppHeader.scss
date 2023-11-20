@@ -127,7 +127,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         min-width: 200px;
         max-width: 400px;
-        max-height: 225px;
+        max-height: 350px;
 
         .buyer-orders {
           overflow-y: scroll;
@@ -152,12 +152,32 @@
             .order-image {
               grid-column: 1 / 2;
               grid-row: 1 / -1;
+              position: relative;
 
               img {
                 margin-block-start: 0.5em;
                 width: 90px;
                 height: 80px;
                 object-fit: cover;
+              }
+
+              i {
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                top: 3%;
+                right: -6%;
+                cursor: pointer;
+                z-index: 5;
+
+                svg {
+                  fill: #FDD005;
+                  max-height: 32px;
+
+                  &:hover{
+                    fill: #d6b41a;
+                  }
+                }
               }
             }
 

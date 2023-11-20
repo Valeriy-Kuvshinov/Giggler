@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 import { Loader } from "./Loader.jsx"
+import SvgIcon from "./SvgIcon.jsx"
 
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
@@ -66,6 +67,12 @@ export function BuyerOrders({ loggedInUser, onClose }) {
       order.buyerId !== loggedInUser._id ||
       (orderDetails[order._id] && !orderDetails[order._id].isLoading)
   )
+
+  function onClickReceipt(event, order) {
+    event.stopPropagation()
+    console.log("receipt selected for order: ", order._id)
+  }
+
   if (!allDetailsLoaded) {
     return (
       <section className="buyer-orders-dropdown flex column">
@@ -85,10 +92,10 @@ export function BuyerOrders({ loggedInUser, onClose }) {
               return (
                 <div key={order._id} className="buyer-order grid">
                   <div className="order-image">
-                    <Link to={`/gig/${details.gigData._id}`}>
-                      <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
-
-                    </Link>
+                    <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+                    <span onClick={(event) => onClickReceipt(event, order)}>
+                      <SvgIcon iconName={'receiptIcon'} />
+                    </span>
                   </div>
                   {details ? (
                     <Link
