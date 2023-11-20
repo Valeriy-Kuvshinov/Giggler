@@ -6,7 +6,7 @@
 //     , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
 const noResultsImg = 'https://res.cloudinary.com/digrqdbso/image/upload/v1699099661/Giggler/home-page-other/h4ramvmiu3q4c6skzd26.png'
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -17,17 +17,22 @@ import { SellerSummary } from '../cmps/dashboardCmps/SellerSummary.jsx'
 import { loadOrders } from '../store/order.actions.js'
 
 export function DashboardPage() {
-    const dispatch = useDispatch()
-
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
 
     useEffect(() => {
-        if (loggedInUser) {
-            dispatch(loadOrders({ sellerId: loggedInUser._id }))
+        const fetchOrders = async () => {
+            if (loggedInUser) {
+                try {
+                    await loadOrders({ sellerId: loggedInUser._id })
+                } catch (err) {
+                    console.error("Error loading orders:", err)
+                }
+            }
         }
-    }, [loggedInUser, dispatch])
+        fetchOrders()
+    }, [loggedInUser])
 
     const displayedOrders = orders.filter(order => order.sellerId === loggedInUser._id)
 

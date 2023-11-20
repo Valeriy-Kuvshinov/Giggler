@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -10,14 +10,20 @@ import { loadOrders } from "../store/order.actions.js"
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
 
-  const dispatch = useDispatch()
   const orders = useSelector((storeState) => storeState.orderModule.orders)
 
   useEffect(() => {
-    if (loggedInUser) {
-      dispatch(loadOrders({ buyerId: loggedInUser._id }))
+    const fetchOrders = async () => {
+      if (loggedInUser) {
+        try {
+          await loadOrders({ buyerId: loggedInUser._id })
+        } catch (err) {
+          console.error("Error loading orders:", err)
+        }
+      }
     }
-  }, [loggedInUser, dispatch])
+    fetchOrders()
+  }, [loggedInUser])
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -53,7 +59,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
     if (orders.some((order) => order.buyerId === loggedInUser._id)) {
       fetchOrderDetails()
     }
-  }, [orders, loggedInUser, dispatch])
+  }, [orders, loggedInUser])
   // Check if all the relevant orders have their details loaded
   const allDetailsLoaded = orders.every(
     (order) =>

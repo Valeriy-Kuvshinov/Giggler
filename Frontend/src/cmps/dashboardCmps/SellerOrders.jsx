@@ -1,4 +1,3 @@
-import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 
 import { SellerOrder } from './SellerOrder.jsx'
@@ -8,8 +7,6 @@ import { updateUser } from '../../store/user.actions.js'
 import { socketService } from '../../services/socket.service.js'
 
 export function SellerOrders({ user, displayedOrders }) {
-    const dispatch = useDispatch()
-
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     function updateLastDeliveryForUser() {
@@ -24,7 +21,7 @@ export function SellerOrders({ user, displayedOrders }) {
                 orderState: 'accepted',
                 acceptedAt: Date.now()
             }
-            dispatch(saveOrder(updatedOrder))
+            await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_accepted', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
@@ -40,7 +37,7 @@ export function SellerOrders({ user, displayedOrders }) {
                 deniedAt: Date.now(),
                 reasonForDenial: reason
             }
-            dispatch(saveOrder(updatedOrder))
+            await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_denied', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
@@ -57,7 +54,7 @@ export function SellerOrders({ user, displayedOrders }) {
             }
             updateLastDeliveryForUser()
 
-            dispatch(saveOrder(updatedOrder))
+            await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_completed', { userId: updatedOrder.buyerId, user })
 
         } catch (err) {
