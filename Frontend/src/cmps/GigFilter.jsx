@@ -11,25 +11,52 @@ export function GigFilter({
   isRenderedChoice,
   onDeleteFilter,
 }) {
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth <= 480 ? true : false
+  )
   const [isSticky, setIsSticky] = useState(false)
   let shadowStart = 139
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   useEffect(() => {
     handleScroll()
+    updateIsMobile()
     window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', updateIsMobile)
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateIsMobile)
     }
   }, [])
+
+  function updateIsMobile() {
+    if (window.innerWidth <= 480) setIsMobile(true)
+    else setIsMobile(false)
+  }
 
   function handleScroll() {
     filterBy.cat ? (shadowStart = 197) : (shadowStart = 139)
     if (window.scrollY >= shadowStart) setIsSticky(true)
     else setIsSticky(false)
   }
-  console.log('filterby.search', filterBy.search)
+
+  if (isMobile) {
+    return (
+      <main className="gig-filter">
+        <section className="floating-top-bar layout-row">
+          <button
+            onClick={() => setMobilFilter()}
+            className={`btn-mobile-filter  ${filterBy.level ? 'border' : ''}`}
+          >
+            Select Filter
+            <SvgIcon iconName={'arrowDown'} />
+          </button>
+        </section>
+      </main>
+    )
+  }
+
   return (
     <>
       <div className="gig-results-title layout-row">

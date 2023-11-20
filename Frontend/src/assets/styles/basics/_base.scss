@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: 'macan-regular';
+  font-family: macan-regular;
   line-height: 1.6;
 }
 
@@ -13,6 +13,7 @@ body {
   width: 100%;
   height: 100%;
   margin: auto;
+  font-family: macan-regular;
 }
 
 h1,
@@ -56,6 +57,7 @@ a {
 button {
   border: 0;
   cursor: pointer;
+  font-family: macan-regular;
 }
 
 input[type='radio'] {
@@ -138,7 +140,7 @@ input[type='number']::-moz-number-spin-down {
 }
 
 .btn:hover {
-  border: 1px solid $clrPrimary2;
+  border-color: $clrPrimary2;
 }
 
 .btn-contact {
