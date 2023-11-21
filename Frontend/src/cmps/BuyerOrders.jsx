@@ -2,13 +2,18 @@ import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-import { Loader } from "./Loader.jsx"
-
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
+import { Loader } from "./Loader.jsx"
+import SvgIcon from "./SvgIcon.jsx"
+import { InvoiceModal } from "./InvoiceModal.jsx"
+
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
+  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false)
+  const [isReviewModalOpen, setIsRevieweModalOpen] = useState(false)
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
 
@@ -66,17 +71,29 @@ export function BuyerOrders({ loggedInUser, onClose }) {
       order.buyerId !== loggedInUser._id ||
       (orderDetails[order._id] && !orderDetails[order._id].isLoading)
   )
+
+  function onClickReceipt(event, order) {
+    event.stopPropagation()
+    setSelectedOrder(order)
+    setIsInvoiceModalOpen(true)
+    console.log("receipt selected for order: ", order._id)
+  }
+
+  function closeInvoice() {
+    setIsInvoiceModalOpen(false)
+  }
+
   if (!allDetailsLoaded) {
     return (
-      <section className="buyer-orders-dropdown flex column">
+      <section className="buyer-orders-list flex column">
         <Loader />
       </section>
     )
   }
 
   return (
-    <section className="buyer-orders-dropdown flex column" onClick={onClose}>
-      <div className="buyer-orders flex column">
+    <section className="buyer-orders-list flex column" onClick={onClose}>
+      <div className="list-contents flex column">
         {orders
           .filter((order) => order.buyerId === loggedInUser._id)
           .map((order) => {
@@ -85,10 +102,13 @@ export function BuyerOrders({ loggedInUser, onClose }) {
               return (
                 <div key={order._id} className="buyer-order grid">
                   <div className="order-image">
-                    <Link to={`/gig/${details.gigData._id}`}>
-                      <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
-
-                    </Link>
+                    <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
+                    {(order.orderState === 'accepted' || order.orderState === 'completed') && (
+                      <span className="invoice-icon" title="Order Invoice"
+                        onClick={(event) => onClickReceipt(event, order)}>
+                        <SvgIcon iconName={'receiptIcon'} />
+                      </span>
+                    )}
                   </div>
                   {details ? (
                     <Link
@@ -109,6 +129,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
             }
           })}
       </div>
+      {isInvoiceModalOpen && <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
     </section>
   )
 }

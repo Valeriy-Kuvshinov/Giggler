@@ -1,6 +1,6 @@
 .share-gig-modal-wrapper {
     align-items: center;
-    background-color: rgba(0, 0, 0, .65);
+    background-color: rgba(0, 0, 0, .75);
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -8,7 +8,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: 90;
+    z-index: 10;
 
     .share-gig-modal {
         border-radius: 5px;
@@ -19,6 +19,7 @@
         justify-content: center;
         align-items: center;
         position: relative;
+        z-index: 10;
 
         button {
             color: $clrSecondary11;
@@ -30,6 +31,7 @@
             top: 0;
             width: 40px;
             font-weight: 700;
+            background: none;
         }
 
         h2 {

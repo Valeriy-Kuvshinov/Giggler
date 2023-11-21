@@ -41,7 +41,7 @@ export function DashboardPage() {
     if (displayedOrders.length === 0) {
         return (
             <main className="dashboard-page full flex column">
-                <div className='no-results'>
+                <div className="no-results">
                     <h3>Whoops, looks like you don't have any orders yet.</h3>
                     <p>Please check again once your gigs gain traction.</p>
                     <img src={noResultsImg} alt="no results" />
@@ -54,7 +54,7 @@ export function DashboardPage() {
 
     return (
         <main className="dashboard-page full flex column">
-            <section className='dashboard-container'>
+            <section className="dashboard-container">
                 <SellerSummary
                     user={loggedInUser}
                     displayedOrders={displayedOrders}

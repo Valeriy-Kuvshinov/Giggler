@@ -75,33 +75,21 @@ export function SellerOrders({ user, displayedOrders }) {
     return (
         <section className="user-orders">
             {windowWidth > 600 ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>GIG</th>
-                            <th></th>
-                            <th>BUYER</th>
-                            <th>ACTION DATE</th>
-                            <th>TOTAL</th>
-                            <th>STATUS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayedOrders.map(order => (
+                <section className="desktop-view flex column">
+                    {displayedOrders.map(order => (
+                        <div className="user-order" key={order._id}>
                             <SellerOrder
-                                key={order._id}
                                 order={order}
                                 acceptOrder={acceptOrder}
                                 denyOrder={denyOrder}
                                 completeOrder={completeOrder}
                                 windowWidth={windowWidth}
                             />
-                        ))}
-                    </tbody>
-                </table>
+                        </div>
+                    ))}
+                </section>
             ) : (
-                <section className="mobile-order-view flex column">
+                <section className="mobile-view flex column">
                     {displayedOrders.map(order => (
                         <div className="user-order" key={order._id}>
                             <SellerOrder

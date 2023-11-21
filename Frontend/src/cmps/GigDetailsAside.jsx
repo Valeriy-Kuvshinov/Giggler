@@ -9,22 +9,22 @@ import { ShareGigModal } from './ShareGigModal.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 export function GigDetailsAside({ gig, onGigChange, setChatState }) {
-  const user = useSelector((storeState) => storeState.userModule.user)
+  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
 
   const { openLogin } = useModal()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedPackage, setSelectedPackage] = useState('basic')
   const [isLiked, setIsLiked] = useState(
-    user && gig.likedByUsers.includes(user._id)
+    loggedInUser && gig.likedByUsers.includes(loggedInUser._id)
   )
 
   useEffect(() => {
-    setIsLiked(user && gig.likedByUsers.includes(user._id))
-  }, [user, gig])
+    setIsLiked(loggedInUser && gig.likedByUsers.includes(loggedInUser._id))
+  }, [loggedInUser, gig])
 
   function onContinue() {
-    if (!user) {
+    if (!loggedInUser) {
       openLogin()
       return
     }
@@ -40,15 +40,15 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
   }
 
   function likeGig() {
-    if (!user) {
+    if (!loggedInUser) {
       openLogin()
       return
     }
     const gigToSave = { ...gig }
 
-    if (gigToSave.likedByUsers.includes(user._id)) {
+    if (gigToSave.likedByUsers.includes(loggedInUser._id)) {
       gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
-        (liker) => liker !== user._id
+        (liker) => liker !== loggedInUser._id
       )
       setIsLiked(false)
 
@@ -56,7 +56,7 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
         onGigChange(gigToSave)
       })
     } else {
-      gigToSave.likedByUsers.push(user._id)
+      gigToSave.likedByUsers.push(loggedInUser._id)
 
       setIsLiked(true)
 
@@ -83,8 +83,6 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
           <SvgIcon iconName={'shareSocialMediaIcon'} />
         </button>
       </div>
-
-      {isModalOpen && <ShareGigModal onClose={closeModal} />}
 
       <div className="package-tabs flex">
         <button
@@ -152,7 +150,7 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
       <div className="contact-seller flex">
         <button
           onClick={() => {
-            if (user) setChatState(true)
+            if (loggedInUser) setChatState(true)
             else openLogin()
           }}
           className="b"
@@ -160,6 +158,7 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
           Contact me
         </button>
       </div>
+      {isModalOpen && <ShareGigModal onClose={closeModal} />}
     </section>
   )
 }

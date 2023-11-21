@@ -21,9 +21,6 @@
       flex-shrink: 0;
     }
 
-    align-items: center;
-    gap: 10px;
-
     .dropdown {
       position: relative;
       margin-right: 10px;
@@ -115,7 +112,7 @@
         font-family: 'macan-regular';
       }
 
-      .buyer-orders-dropdown {
+      .buyer-orders-list {
         position: absolute;
         top: 72px;
         right: 7.5%;
@@ -127,9 +124,9 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         min-width: 200px;
         max-width: 400px;
-        max-height: 225px;
+        max-height: 350px;
 
-        .buyer-orders {
+        .list-contents {
           overflow-y: scroll;
           padding: 0.75em 0.75em 0em 0.75em;
 
@@ -152,12 +149,34 @@
             .order-image {
               grid-column: 1 / 2;
               grid-row: 1 / -1;
+              position: relative;
 
               img {
-                margin-block-start: 0.375em;
+                margin-block-start: 0.5em;
                 width: 90px;
                 height: 80px;
                 object-fit: cover;
+              }
+
+              .invoice-icon {
+                i {
+                  width: 32px;
+                  height: 32px;
+                  position: absolute;
+                  top: 4%;
+                  right: -6%;
+                  cursor: pointer;
+                  z-index: 5;
+
+                  svg {
+                    fill: #FDD005;
+                    max-height: 32px;
+
+                    &:hover {
+                      fill: #d6b41a;
+                    }
+                  }
+                }
               }
             }
 
@@ -170,6 +189,8 @@
               grid-column: 2 / 3;
               grid-row: 2 / 3;
               font-size: 14px;
+              align-self: end;
+              padding-bottom: 5px;
             }
 
             .order-status {
@@ -177,6 +198,8 @@
               grid-row: 2 / 3;
               text-align: right;
               text-transform: uppercase;
+              align-self: end;
+              padding-bottom: 5px;
 
               &.pending {
                 color: $clr15;
