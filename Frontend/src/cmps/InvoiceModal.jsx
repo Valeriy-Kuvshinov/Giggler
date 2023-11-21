@@ -23,6 +23,10 @@ export function InvoiceModal({ order, onClose }) {
         }
     }, [onClose])
 
+    function handleModalClick(event) {
+        event.stopPropagation()
+    }
+
     useEffect(() => {
         const fetchUserDetails = async () => {
             try {
@@ -48,7 +52,7 @@ export function InvoiceModal({ order, onClose }) {
     }
 
     return (
-        <div className="invoice-modal-wrapper">
+        <div className="invoice-modal-wrapper" onClick={handleModalClick}>
             <section className="invoice-modal flex column" ref={modalRef}>
                 <button className="close-modal" onClick={onClose}>×</button>
                 <div className="invoice-header flex row">

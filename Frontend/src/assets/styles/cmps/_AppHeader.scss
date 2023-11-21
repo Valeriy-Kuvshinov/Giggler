@@ -158,21 +158,23 @@
                 object-fit: cover;
               }
 
-              i {
-                width: 32px;
-                height: 32px;
-                position: absolute;
-                top: 3%;
-                right: -6%;
-                cursor: pointer;
-                z-index: 5;
+              .invoice-icon {
+                i {
+                  width: 32px;
+                  height: 32px;
+                  position: absolute;
+                  top: 4%;
+                  right: -6%;
+                  cursor: pointer;
+                  z-index: 5;
 
-                svg {
-                  fill: #FDD005;
-                  max-height: 32px;
+                  svg {
+                    fill: #FDD005;
+                    max-height: 32px;
 
-                  &:hover {
-                    fill: #d6b41a;
+                    &:hover {
+                      fill: #d6b41a;
+                    }
                   }
                 }
               }

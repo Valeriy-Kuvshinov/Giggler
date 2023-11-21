@@ -12,7 +12,8 @@ import { InvoiceModal } from "./InvoiceModal.jsx"
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
   const [selectedOrder, setSelectedOrder] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false)
+  const [isReviewModalOpen, setIsRevieweModalOpen] = useState(false)
 
   const orders = useSelector((storeState) => storeState.orderModule.orders)
 
@@ -74,12 +75,12 @@ export function BuyerOrders({ loggedInUser, onClose }) {
   function onClickReceipt(event, order) {
     event.stopPropagation()
     setSelectedOrder(order)
-    setIsModalOpen(true)
+    setIsInvoiceModalOpen(true)
     console.log("receipt selected for order: ", order._id)
   }
 
-  function closeModal() {
-    setIsModalOpen(false)
+  function closeInvoice() {
+    setIsInvoiceModalOpen(false)
   }
 
   if (!allDetailsLoaded) {
@@ -103,7 +104,8 @@ export function BuyerOrders({ loggedInUser, onClose }) {
                   <div className="order-image">
                     <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
                     {(order.orderState === 'accepted' || order.orderState === 'completed') && (
-                      <span title="Order Invoice" onClick={(event) => onClickReceipt(event, order)}>
+                      <span className="invoice-icon" title="Order Invoice"
+                        onClick={(event) => onClickReceipt(event, order)}>
                         <SvgIcon iconName={'receiptIcon'} />
                       </span>
                     )}
@@ -127,7 +129,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
             }
           })}
       </div>
-      {isModalOpen && <InvoiceModal order={selectedOrder} onClose={closeModal} />}
+      {isInvoiceModalOpen && <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
     </section>
   )
 }

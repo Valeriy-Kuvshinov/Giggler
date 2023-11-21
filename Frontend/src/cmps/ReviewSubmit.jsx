@@ -5,9 +5,8 @@ import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
 import { reviewService } from '../services/review.service.js'
 import { saveGig } from '../store/gig.actions.js'
-import { loadReviews } from '../store/review.actions'
 
-export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
+export function ReviewSubmit({ loggedInUser, gig }) {
     const [reviewText, setReviewText] = useState('')
     const [reviewRating, setReviewRating] = useState(0)
     const [hoverRating, setHoverRating] = useState(0)
@@ -56,8 +55,6 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
 
             setReviewText('')
             setReviewRating(0)
-            onReviewAdded(savedReview)
-            loadReviews()
         }
         catch (err) {
             console.log('Error while submitting the review:', err)
@@ -77,7 +74,6 @@ export function ReviewSubmit({ loggedInUser, gig, onReviewAdded }) {
                 className='text'
             />
             <button className="btn-contact" onClick={submitReview}>Submit</button> 
-            
         </div>
     )
 }
