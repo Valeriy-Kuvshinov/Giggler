@@ -84,7 +84,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
 
   if (!allDetailsLoaded) {
     return (
-      <section className="buyer-orders-dropdown flex column">
+      <section className="buyer-orders-list flex column">
         <Loader />
       </section>
     )
