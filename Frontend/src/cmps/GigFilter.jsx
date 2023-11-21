@@ -59,7 +59,12 @@ export function GigFilter({
             Select Filter
             <SvgIcon iconName={'filterIcon'} />
           </button>
-          {mobileFilter && <MobileFilter />}
+          {mobileFilter && (
+            <MobileFilter
+              filterBy={filterBy}
+              onMobileFilter={onMobileFilter}
+            />
+          )}
         </section>
       </main>
     )
