@@ -91,8 +91,8 @@ export function BuyerOrders({ loggedInUser, onClose }) {
   }
 
   return (
-    <section className="buyer-orders-dropdown flex column" onClick={onClose}>
-      <div className="buyer-orders flex column">
+    <section className="buyer-orders-list flex column" onClick={onClose}>
+      <div className="list-contents flex column">
         {orders
           .filter((order) => order.buyerId === loggedInUser._id)
           .map((order) => {
