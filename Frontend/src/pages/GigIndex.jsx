@@ -9,7 +9,7 @@ import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.js'
 
-export function GigIndex() {
+export function GigIndex({onMobileFilter}) {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const [searchParams, setSearchparams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
@@ -134,6 +134,7 @@ export function GigIndex() {
     }
   }
 
+  
   function handlePageChange(newPage) {
     setFilter({ ...filterBy, page: newPage })
   }
@@ -148,6 +149,7 @@ export function GigIndex() {
         onHandleChoice={onHandleChoice}
         isRenderedChoice={isRenderedChoice}
         onDeleteFilter={onDeleteFilter}
+        onMobileFilter={onMobileFilter}
       />
       <GigList gigs={currentGigs} />
       <Pagination

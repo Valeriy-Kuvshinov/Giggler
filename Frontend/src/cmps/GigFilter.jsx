@@ -3,6 +3,7 @@ import SvgIcon from './SvgIcon.jsx'
 import { MenuFilterContent } from './MenuFilterContent.jsx'
 import { CatTagDisplayBar } from './CatTagDisplayBar.jsx'
 import { SelectedFilters } from './SelectedFilters.jsx'
+import { MobileFilter } from './MobileFilter.jsx'
 
 export function GigFilter({
   filterBy,
@@ -15,8 +16,14 @@ export function GigFilter({
     window.innerWidth <= 480 ? true : false
   )
   const [isSticky, setIsSticky] = useState(false)
+  const [mobileFilter, setMobileFilter] = useState(false)
   let shadowStart = 139
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
+
+  function onMobileFilter() {
+    console.log('onmobilefilter!!!')
+    setMobileFilter((prevState) => !prevState)
+  }
 
   useEffect(() => {
     handleScroll()
@@ -46,12 +53,13 @@ export function GigFilter({
       <main className="gig-filter">
         <section className="floating-top-bar layout-row">
           <button
-            onClick={() => setMobilFilter()}
+            onClick={() => onMobileFilter()}
             className={`btn-mobile-filter  ${filterBy.level ? 'border' : ''}`}
           >
             Select Filter
-            <SvgIcon iconName={'arrowDown'} />
+            <SvgIcon iconName={'filterIcon'} />
           </button>
+          {mobileFilter && <MobileFilter />}
         </section>
       </main>
     )
