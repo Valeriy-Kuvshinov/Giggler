@@ -11,17 +11,16 @@
     z-index: 10;
 
     .invoice-modal {
-        border-radius: 5px;
+        border-radius: 0.5em;
         max-width: 620px;
         width: 70vw;
         background-color: $clrPrimary1;
-        height: 400px;
-        justify-content: center;
+        height: fit-content;
         position: relative;
         z-index: 10;
-        padding: 0.75em;
+        padding: 0.75em 0.75em 0.75em 0.75em;
 
-        button {
+        .close-modal {
             color: $clrSecondary11;
             font-size: 20px;
             height: 50px;
@@ -43,23 +42,97 @@
             justify-content: space-between;
 
             h1 {
-                font-family: arial;
-                font-size: 30.5px;
                 letter-spacing: -3px;
                 color: $clrSecondary8;
             }
 
             button {
+                background: none;
+
                 i {
-                    width: 32px;
-                    height: 32px;
+                    width: 25px;
+                    height: 25px;
                 }
+            }
+
+            h3 {
+                align-self: end;
+                font-size: 21px;
+                padding-bottom: 0.35em;
+                color: $clrSecondary5;
             }
         }
 
-        .invoice-info {
+        .invoice-body {
+            margin-top: 3em;
+            gap: 1em;
+
             h2 {
                 font-size: 16px;
+                border-bottom: 1px solid $clrSecondary5;
+                width: fit-content;
+                color: $clrSecondary5;
+            }
+
+            p {
+                color: $clrSecondary6;
+                margin: 0;
+            }
+
+            .body-start {
+                grid-template-columns: 1fr 1fr;
+                gap: 1em;
+
+                .info-div-one {
+                    grid-column: 1;
+                }
+
+                .info-div-two {
+                    grid-column: 2;
+                }
+            }
+
+            .body-middle {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 1fr 1fr;
+                gap: 1em;
+
+                .info-div-one {
+                    grid-column: 1 / -1;
+                    grid-row: 1;
+                }
+
+                .info-div-two {
+                    grid-column: 1;
+                    grid-row: 2;
+                }
+
+                .info-div-three {
+                    grid-column: 2;
+                    grid-row: 2;
+                }
+
+                .info-div-four {
+                    grid-column: 3;
+                    grid-row: 2;
+                }
+            }
+
+            .body-end {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1em;
+
+                .info-div-one {
+                    grid-column: 1;
+                }
+
+                .info-div-two {
+                    grid-column: 2;
+                }
+
+                .info-div-three {
+                    grid-column: 3;
+                }
             }
         }
     }
