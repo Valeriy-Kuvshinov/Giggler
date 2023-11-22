@@ -16,6 +16,7 @@
     color: $clrSecondary8;
     font-weight: 700;
   }
+
   .payment-methods {
     flex-wrap: wrap;
 
@@ -52,6 +53,7 @@
         border-width: 5px;
       }
     }
+
     .credit-type {
       display: inline-flex;
       align-items: center;
@@ -85,16 +87,18 @@
           @media only screen and (min-width: 900px) {
             max-width: 520px;
           }
+
           display: grid;
-          grid-template-areas:
-            'number number'
-            'date code'
-            'first last';
-          > * {
+          grid-template-areas: 'number number'
+          'date code'
+          'first last';
+
+          >* {
             input {
               width: 100%;
             }
           }
+
           gap: 1em;
 
           span {
@@ -118,17 +122,21 @@
               margin-top: 0.625em;
             }
           }
+
           .expiration-date {
             grid-area: date;
             display: flex;
             flex-direction: column;
           }
+
           .security-code {
             grid-area: code;
           }
+
           .first-name {
             grid-area: first;
           }
+
           .last-name {
             grid-area: last;
           }
@@ -144,12 +152,5 @@
       border-block-end: 1px solid $clrSecondary2;
       box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
     }
-
-    // .credit-card {
-    //   background-color: $clrPrimary1;
-    //   border-block-start: 1px solid $clrSecondary2;
-    //   border-block-end: 1px solid $clrSecondary2;
-    //   border-bottom: none;
-    // }
   }
 }

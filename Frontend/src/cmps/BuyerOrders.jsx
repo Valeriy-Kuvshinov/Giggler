@@ -8,10 +8,12 @@ import { loadOrders } from "../store/order.actions.js"
 import { Loader } from "./Loader.jsx"
 import SvgIcon from "./SvgIcon.jsx"
 import { InvoiceModal } from "./InvoiceModal.jsx"
+import { ReviewSubmit } from "./ReviewSubmit.jsx"
 
 export function BuyerOrders({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
   const [selectedOrder, setSelectedOrder] = useState(null)
+  const [selectedGig, setSelectedGig] = useState(null)
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false)
   const [isReviewModalOpen, setIsRevieweModalOpen] = useState(false)
 
@@ -76,11 +78,21 @@ export function BuyerOrders({ loggedInUser, onClose }) {
     event.stopPropagation()
     setSelectedOrder(order)
     setIsInvoiceModalOpen(true)
-    console.log("receipt selected for order: ", order._id)
+  }
+
+  function onClickReview(event, order) {
+    event.stopPropagation()
+    const orderedGigData = orderDetails[order._id].gigData
+    setSelectedGig(orderedGigData)
+    setIsRevieweModalOpen(true)
   }
 
   function closeInvoice() {
     setIsInvoiceModalOpen(false)
+  }
+
+  function closeReview() {
+    setIsRevieweModalOpen(false)
   }
 
   if (!allDetailsLoaded) {
@@ -109,6 +121,12 @@ export function BuyerOrders({ loggedInUser, onClose }) {
                         <SvgIcon iconName={'receiptIcon'} />
                       </span>
                     )}
+                    {(order.orderState === 'completed') && (
+                      <span className="review-icon" title="Review Order"
+                        onClick={(event) => onClickReview(event, order)}>
+                        <SvgIcon iconName={'reviewIcon'} />
+                      </span>
+                    )}
                   </div>
                   {details ? (
                     <Link
@@ -130,6 +148,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
           })}
       </div>
       {isInvoiceModalOpen && <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
+      {isReviewModalOpen && <ReviewSubmit gig={selectedGig} loggedInUser={loggedInUser} onClose={closeReview} />}
     </section>
   )
 }

@@ -189,21 +189,23 @@
                         max-height: 150px;
                       }
 
-                      i {
-                        width: 48px;
-                        height: 48px;
-                        position: absolute;
-                        top: 0%;
-                        right: 0%;
-                        cursor: pointer;
-                        z-index: 5;
-        
-                        svg {
-                          fill: #FDD005;
-                          max-height: 48px;
-        
-                          &:hover{
-                            fill: #d6b41a;
+                      .invoice-icon {
+                        i {
+                          width: 48px;
+                          height: 48px;
+                          position: absolute;
+                          top: 0%;
+                          right: 0%;
+                          cursor: pointer;
+                          z-index: 5;
+
+                          svg {
+                            fill: #FDD005;
+                            max-height: 48px;
+
+                            &:hover {
+                              fill: #d6b41a;
+                            }
                           }
                         }
                       }

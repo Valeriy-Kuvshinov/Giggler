@@ -54,11 +54,9 @@ async function getOrderDetails(orderId, role = 'buyer') {
     const gigData = await gigService.getById(order.orderedGigId)
     let userData
 
-    if (role === 'buyer') {
-        userData = await userService.getById(order.buyerId)
-    } else if (role === 'seller') {
-        userData = await userService.getById(order.sellerId)
-    }
+    if (role === 'buyer') userData = await userService.getById(order.buyerId)
+    else if (role === 'seller') userData = await userService.getById(order.sellerId)
+
     return {
         ...order,
         gigData,

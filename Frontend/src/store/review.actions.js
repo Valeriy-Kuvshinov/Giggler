@@ -6,7 +6,6 @@ export async function loadReviews() {
   try {
     const reviews = await reviewService.query()
     store.dispatch({ type: SET_REVIEWS, reviews })
-
   } catch (err) {
     console.log('ReviewActions: err in loadReviews', err)
     throw err

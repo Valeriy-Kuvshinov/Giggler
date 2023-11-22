@@ -178,6 +178,27 @@
                   }
                 }
               }
+
+              .review-icon {
+                i {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  cursor: pointer;
+                  z-index: 5;
+                  width: 32px;
+                  height: 32px;
+
+                  svg {
+                    fill: #464443;
+                    max-height: 32px;
+
+                    &:hover {
+                      fill: #888785;
+                    }
+                  }
+                }
+              }
             }
 
             .order-title {

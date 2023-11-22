@@ -9,33 +9,33 @@
     font-weight: 700;
   }
 
-  .review-addition {
-    padding: 5px;
-    margin-block-end: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  // .review-addition {
+  //   padding: 5px;
+  //   margin-block-end: 10px;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
 
-    .stars-input {
-      justify-content: center;
-      margin-bottom: 0.5em;
+  //   .stars-input {
+  //     justify-content: center;
+  //     margin-bottom: 0.5em;
 
-      img {
-        width: 24px;
-      }
-    }
+  //     img {
+  //       width: 24px;
+  //     }
+  //   }
 
-    .text {
-      margin: 0 auto;
-      margin-bottom: 1em;
-      margin-block-start: 1em;
-      width: 60%;
-    }
+  //   .text {
+  //     margin: 0 auto;
+  //     margin-bottom: 1em;
+  //     margin-block-start: 1em;
+  //     width: 60%;
+  //   }
 
-    button {
-      margin: auto;
-    }
-  }
+  //   button {
+  //     margin: auto;
+  //   }
+  // }
 
   .reviews {
     margin-block-start: 1em;
