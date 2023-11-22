@@ -8,6 +8,7 @@
   height: 100vh;
   background-color: $clrSecondary2;
   z-index: 100;
+
   .mobile-filter-header {
     padding: 1em 1em;
     display: flex;
@@ -18,40 +19,50 @@
     color: $clrPrimary2;
     font-weight: 700;
     font-size: 1em;
+
     .wrapper {
       display: grid;
       grid-auto-flow: column;
       gap: 2em;
+
       .exit-filter {
         display: flex;
+
         i {
           svg {
             width: 0.9em;
             height: 0.9em;
           }
+
           padding: 0 0.25em;
           align-self: center;
         }
       }
+
       span {
         font-size: 1.25em;
       }
     }
+
     .clear {
       color: $clrSecondary4;
     }
   }
+
   form {
     .form-wrapper {
       padding: 0 1em;
+
       h3 {
         padding: 0.5em 0;
       }
+
       .radio-list {
         // margin-block-start: .5em;
         display: flex;
         flex-wrap: wrap;
         gap: 0.5em;
+
         .radio-item {
           background-color: $clrPrimary1;
           font-size: 0.75em;
@@ -60,15 +71,19 @@
           border-radius: 0.5em;
         }
       }
+
       .budget-list {
         display: flex;
         gap: 1em;
+
         .budget-input {
           position: relative;
           display: grid;
+
           input[type='number'] {
             border: 1px solid $clrSecondary4;
           }
+
           i {
             color: $clrSecondary4;
             font-style: normal;
