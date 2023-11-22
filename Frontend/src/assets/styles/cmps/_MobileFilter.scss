@@ -1,20 +1,84 @@
 .mobile-filter {
-
   position: fixed;
   top: 0;
   left: 0;
+  font-family: macan-regular;
+  font-size: 1em;
   width: 100vw;
   height: 100vh;
-  background-color: $clrSecondary45;
+  background-color: $clrSecondary2;
   z-index: 100;
-  .mobile-filter-header{
-    display:flex;
+  .mobile-filter-header {
+    padding: 1em 1em;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    background-color: $clrPrimary1;
+    border: 1px solid $clrSecondary4;
+    color: $clrPrimary2;
+    font-weight: 700;
+    font-size: 1em;
     .wrapper {
-      display:grid;
+      display: grid;
       grid-auto-flow: column;
       gap: 2em;
+      .exit-filter {
+        display: flex;
+        i {
+          svg {
+            width: 0.9em;
+            height: 0.9em;
+          }
+          padding: 0 0.25em;
+          align-self: center;
+        }
+      }
+      span {
+        font-size: 1.25em;
+      }
+    }
+    .clear {
+      color: $clrSecondary4;
     }
   }
-
+  form {
+    .form-wrapper {
+      padding: 0 1em;
+      h3 {
+        padding: 0.5em 0;
+      }
+      .radio-list {
+        // margin-block-start: .5em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        .radio-item {
+          background-color: $clrPrimary1;
+          font-size: 0.75em;
+          padding: 0.5em;
+          border: 1px solid $clrSecondary4;
+          border-radius: 0.5em;
+        }
+      }
+      .budget-list {
+        display: flex;
+        gap: 1em;
+        .budget-input {
+          position: relative;
+          display: grid;
+          input[type='number'] {
+            border: 1px solid $clrSecondary4;
+          }
+          i {
+            color: $clrSecondary4;
+            font-style: normal;
+            position: absolute;
+            right: 0.5em;
+            top: 35.5px;
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
 }

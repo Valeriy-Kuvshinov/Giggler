@@ -56,6 +56,10 @@
       background: none;
       padding: rem(12px) rem(16px);
       transition: border-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+      i{
+        width: 1em;
+        height: 1em;
+      }
       &:hover {
         border-color: $clrPrimary2;
       }

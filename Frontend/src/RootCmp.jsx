@@ -26,7 +26,6 @@ export function RootCmp() {
       <AppHeader />
       <div className="dimmed-content" style={dimmerStyle}></div>
       <UserMsg />
-
       <Routes>
         {routes.map((route) => (
           <Route
