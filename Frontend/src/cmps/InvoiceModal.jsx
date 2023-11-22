@@ -34,7 +34,6 @@ export function InvoiceModal({ order, onClose }) {
                     const sellerInfo = await userService.getById(order.sellerId)
                     setSeller(sellerInfo)
                 }
-
                 if (order?.buyerId) {
                     const buyerInfo = await userService.getById(order.buyerId)
                     setBuyer(buyerInfo)
