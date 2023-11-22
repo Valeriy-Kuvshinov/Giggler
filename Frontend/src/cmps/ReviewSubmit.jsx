@@ -4,18 +4,32 @@ import starIcon from '../assets/img/svg/star.icon.svg'
 import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 
 import { reviewService } from '../services/review.service.js'
+import { userService } from '../services/user.service.js'
 import { saveGig } from '../store/gig.actions.js'
 
 export function ReviewSubmit({ loggedInUser, gig, onClose }) {
     const [reviewText, setReviewText] = useState('')
     const [reviewRating, setReviewRating] = useState(0)
     const [hoverRating, setHoverRating] = useState(0)
+    const [gigOwner, setGigOwner] = useState(null)
 
     const modalRef = useRef()
 
     function handleModalClick(event) {
         event.stopPropagation()
     }
+
+    useEffect(() => {
+        async function fetchGigOwner() {
+            try {
+                const ownerDetails = await userService.getById(gig.ownerId)
+                setGigOwner(ownerDetails)
+            } catch (err) {
+                console.log('Error fetching gig owner details:', err)
+            }
+        }
+        fetchGigOwner()
+    }, [gig.ownerId])
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -80,19 +94,29 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
 
     return (
         <div className="review-modal-wrapper" onClick={handleModalClick}>
-            <div className="review-modal" ref={modalRef}>
+            <div className="review-modal flex column" ref={modalRef}>
                 <button className="close-modal" onClick={onClose}>×</button>
+                <div className="reviewed-gig grid">
+                    <div className="title-user-info flex column">
+                        <h3>{gig.title}</h3>
+                        <h4 className='user-info flex row'>
+                            By
+                            <img src={gigOwner ? gigOwner.imgUrl : "gig-owner-img"} />
+                            {gigOwner ? `@${gigOwner.username}` : "owner-username"}
+                        </h4>
+                    </div>
+                    <img src={gig.imgUrls[0]} alt="gig-img" />
+                </div>
                 <div className="stars-input flex row">
                     {renderStarsInput()}
                 </div>
-                <input
+                <textarea
                     type='text'
-                    placeholder="Enter your review"
+                    placeholder="Please describe your experience with the seller, was the final version of the product exactly as you wanted it to be?"
                     value={reviewText}
                     onChange={e => setReviewText(e.target.value)}
-                    className='text'
                 />
-                <button className="btn-contact" onClick={submitReview}>Submit</button>
+                <button className="submit" onClick={submitReview}>Submit</button>
             </div>
         </div>
     )

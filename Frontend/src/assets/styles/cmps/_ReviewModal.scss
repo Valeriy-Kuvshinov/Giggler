@@ -18,7 +18,7 @@
         height: fit-content;
         position: relative;
         z-index: 10;
-        padding: 0.75em 0.75em 0.75em 0.75em;
+        padding: 2em 0.75em 0.75em 0.75em;
 
         .close-modal {
             color: $clrSecondary11;
@@ -33,6 +33,76 @@
             background: none;
         }
 
-        
+        .reviewed-gig {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 1fr 1fr;
+            margin-bottom: 1.5em;
+
+            .title-user-info {
+                grid-column: 1 / 4;
+                grid-row: 1 / -1;
+                gap: 0.5em;
+
+                .user-info {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: 0;
+                    gap: 0.5em;
+
+                    img {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+
+            img {
+                grid-column: 4 / -1;
+                grid-row: 1 / -1;
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 0.5em;
+            }
+        }
+
+        .stars-input {
+            justify-content: center;
+            margin-bottom: 0.5em;
+            gap: 0.25em;
+
+            img {
+                width: 36px;
+            }
+        }
+
+        textarea {
+            margin: 0 auto;
+            margin-bottom: 1em;
+            margin-block-start: 1em;
+            width: 90%;
+            border: 1px solid $clrSecondary11;
+            min-height: 8em;
+
+            &:focus {
+                outline: none;
+                border-color: $clrSecondary8;
+            }
+        }
+
+        .submit {
+            margin: auto;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
+            font-size: 16px;
+            font-family: 'macan-bold';
+            background: $clrSecondary2;
+            color: $bgColor5;
+
+            &:hover {
+                background: $bgColor5;
+                color: $clrSecondary2;
+            }
+        }
     }
 }
