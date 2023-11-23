@@ -51,19 +51,3 @@ export function GigReviews({ gig }) {
         </section>
     )
 }
-
-
-// const handleReviewAdded = (newReview) => {
-//     setFullReviews((prevReviews) => [...prevReviews, newReview])
-// }
-
-// let isReviewedAlready = false
-// fullReviews.forEach((review) => {
-//     if (review.userId === loggedInUser._id) {
-//         isReviewedAlready = true
-//     }
-// })
-
-{/* {gig && loggedInUser && loggedInUser._id !== gig.ownerId && !isReviewedAlready && (
-                <ReviewSubmit loggedInUser={loggedInUser} gig={gig} onReviewAdded={handleReviewAdded} />
-            )} */}

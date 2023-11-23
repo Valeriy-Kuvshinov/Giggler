@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-import { galleryService } from '../services/gallery.service.js'
+import { socialMediaLinks } from '../services/gallery.service.js'
 
 import { MobileFilter } from './MobileFilter.jsx'
 
@@ -14,10 +14,7 @@ export function AppFooter() {
   const [search, setSearch] = useState(false)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-
   const { openLogin } = useModal()
-
-  const { socialMediaLinks } = galleryService
 
   useEffect(() => {
     window.addEventListener('resize', updateFooter)

@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
 import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
-import { galleryService } from '../services/gallery.service.js'
+import { servicesInfo } from '../services/gallery.service.js'
 
 export function ServicesCarousel({ onHandleFilter }) {
-  const { services } = galleryService
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [itemsPerPage, setItemsPerPage] = useState(0)
-  const halfImagesCount = Math.floor(services.length / 2)
+  const halfImagesCount = Math.floor(servicesInfo.length / 2)
   const [images, setImages] = useState(() => [
-    ...services.slice(-halfImagesCount),
-    ...services,
-    ...services.slice(0, halfImagesCount),
+    ...servicesInfo.slice(-halfImagesCount),
+    ...servicesInfo,
+    ...servicesInfo.slice(0, halfImagesCount),
   ])
   const [visibleStartIndex, setVisibleStartIndex] = useState(halfImagesCount)
   const carouselRef = useRef()
@@ -56,9 +55,10 @@ export function ServicesCarousel({ onHandleFilter }) {
       if (newIndex < halfImagesCount) {
         carouselRef.current.addEventListener('transitionend', resetTransition)
       }
-    } else if (direction === 'right') {
+    }
+    else if (direction === 'right') {
       newIndex += itemsPerPage
-      if (newIndex >= halfImagesCount + services.length) {
+      if (newIndex >= halfImagesCount + servicesInfo.length) {
         carouselRef.current.addEventListener('transitionend', resetTransition)
       }
     }
@@ -80,8 +80,8 @@ export function ServicesCarousel({ onHandleFilter }) {
           {images.map((service, index) => (
             <div
               onClick={(e) => onHandleFilter(e, {
-                cat: services[index % services.length].cat,
-                tag: services[index % services.length].tag,
+                cat: servicesInfo[index % servicesInfo.length].cat,
+                tag: servicesInfo[index % servicesInfo.length].tag,
               })}
               className="service"
               key={index}
@@ -92,9 +92,13 @@ export function ServicesCarousel({ onHandleFilter }) {
             >
               <img src={service.img} alt={`Service image ${index}`} />
               <h4 className="service-text">
-                <span>{services[index % services.length].title}</span>
+                <span>
+                  {servicesInfo[index % servicesInfo.length].title}
+                </span>
                 <br />
-                <span className='subtitle'>{services[index % services.length].subtitle}</span>
+                <span className='subtitle'>
+                  {servicesInfo[index % servicesInfo.length].subtitle}
+                </span>
               </h4>
             </div>
           ))}

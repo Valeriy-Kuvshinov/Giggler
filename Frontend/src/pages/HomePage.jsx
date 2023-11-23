@@ -9,10 +9,10 @@ import { InfoListItem } from '../cmps/InfoListItem.jsx'
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
 
 import { setFilter } from '../store/gig.actions.js'
-import { galleryService } from '../services/gallery.service.js'
+import { galleryService, infoListData, companyImages } from '../services/gallery.service.js'
 
 export function HomePage() {
-    const { companyImages, categoryIcons, categoryTexts, infoListData } = galleryService
+    const { categoryIcons, categoryTexts } = galleryService
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const navigate = useNavigate()
 

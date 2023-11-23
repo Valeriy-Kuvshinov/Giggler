@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { galleryService } from '../services/gallery.service.js'
+import { personImages } from '../services/gallery.service.js'
 import { SearchBar } from './SearchBar.jsx'
 
 export function WelcomeSection({ onHandleFilter }) {
-    const { personImages } = galleryService
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [showImage, setShowImage] = useState(true)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
