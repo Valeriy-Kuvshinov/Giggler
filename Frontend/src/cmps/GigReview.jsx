@@ -1,20 +1,20 @@
 
-import Australia from '../assets/img/countryFlags/Australia.png'
-import Austria from '../assets/img/countryFlags/Austria.png'
-import Canada from '../assets/img/countryFlags/Canada.png'
-import CzechRepublic from '../assets/img/countryFlags/CzechRepublic.png'
-import Germany from '../assets/img/countryFlags/Germany.png'
-import Hungary from '../assets/img/countryFlags/Hungary.png'
-import India from '../assets/img/countryFlags/India.png'
-import Netherlands from '../assets/img/countryFlags/Netherlands.png'
-import Norway from '../assets/img/countryFlags/Norway.png'
-import Poland from '../assets/img/countryFlags/Poland.png'
-import Spain from '../assets/img/countryFlags/Spain.png'
-import Switzerland from '../assets/img/countryFlags/Switzerland.png'
-import Turkey from '../assets/img/countryFlags/Turkey.png'
-import UnitedKingdom from '../assets/img/countryFlags/UnitedKingdom.png'
-import UnitedStates from '../assets/img/countryFlags/UnitedStates.png'
-import SvgIcon from './SvgIcon'
+const Canada = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/p1slleqaqcanpdbquzpw.png'
+const Australia = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/wdmi574witt06qrffwir.png'
+const CzechRepublic = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/iudkuang0fjwgl5kymfa.png'
+const Austria = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/iniqjkoklzrwtslwxcey.png'
+const Germany = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/lqhknlw5hhbtebzhvgkb.png'
+const Hungary = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/youcp3zqjhzwitvfscm2.png'
+const India = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746193/Giggler/country-flags/uysqvjkaziqwc6rdyywi.png'
+const Netherlands = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746194/Giggler/country-flags/smkrc5mpyxqxslywa3be.png'
+const Norway = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746194/Giggler/country-flags/ds8jaimhxxjdlzamelta.png'
+const Poland = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746194/Giggler/country-flags/atltmxuforz8abc5rtqm.png'
+const Spain = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746195/Giggler/country-flags/tpsbun2clh4p73pvbapy.png'
+const Switzerland = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746195/Giggler/country-flags/c8u3fqxsc95tjhymvv4u.png'
+const Turkey = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746195/Giggler/country-flags/yaycbbd7a0navywwmckb.png'
+const UnitedKingdom = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746195/Giggler/country-flags/n3xjqehalxfdyd6mj8ly.png'
+const UnitedStates = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700746196/Giggler/country-flags/w9mwmbw4mg5ndzml6huf.png'
+import SvgIcon from './SvgIcon.jsx'
 
 export function GigReview({ review }) {
     const flags = {
@@ -22,7 +22,7 @@ export function GigReview({ review }) {
         Germany, India, Netherlands, Norway, Poland,
         Spain, Switzerland, Turkey, UnitedKingdom, UnitedStates, Hungary
     }
-    
+
     const dateOfReview = review.createdAt
     let timeDelay = (Date.now() - dateOfReview) / 1000 / 60 / 60 / 24
     timeDelay = Math.floor(timeDelay)
@@ -55,12 +55,12 @@ export function GigReview({ review }) {
         const isHalfStar = review.rating % 1 >= 0.5
 
         const stars = Array.from({ length: fullStarsCount }, (_, idx) => <SvgIcon key={idx} iconName="star" />)
-    
+
         if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName='halfStar' />)
-    
+
         const emptyStarsCount = 5 - stars.length
         for (let i = 0; i < emptyStarsCount; i++) {
-          stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
+            stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
         }
         return stars
     }
@@ -68,9 +68,9 @@ export function GigReview({ review }) {
     //     const fullStarsCount = Math.floor(averageRating)
     //     const isHalfStar = averageRating % 1 >= 0.25
     //     const stars = Array.from({ length: fullStarsCount }, (_, idx) => <SvgIcon key={idx} iconName="star" />)
-    
+
     //     if (isHalfStar) stars.push(<SvgIcon key="half-star" iconName='halfStar' />)
-    
+
     //     const emptyStarsCount = 5 - stars.length
     //     for (let i = 0; i < emptyStarsCount; i++) {
     //       stars.push(<SvgIcon key={`empty-star-${i}`} iconName='emptyStar' />)
@@ -78,7 +78,7 @@ export function GigReview({ review }) {
     //     return stars
     //   }
 
-    if(!review.country || !review.imgUrl)return
+    if (!review.country || !review.imgUrl) return
 
     return (
         <section className="gig-review" key={review._id}>
