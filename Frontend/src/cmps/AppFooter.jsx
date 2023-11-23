@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
-import SvgIcon from './SvgIcon.jsx'
 
 import { socialMediaLinks } from '../services/gallery.service.js'
 
 import { MobileFilter } from './MobileFilter.jsx'
+import SvgIcon from './SvgIcon.jsx'
 
 export function AppFooter() {
   const [isMobile, setIsMobile] = useState(

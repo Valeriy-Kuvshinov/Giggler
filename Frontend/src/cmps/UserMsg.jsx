@@ -1,12 +1,8 @@
-import {
-  eventBusService,
-  showErrorMsg,
-  showSuccessMsg,
-} from '../services/event-bus.service.js'
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { useState, useEffect } from 'react'
 
-import SvgIcon from './SvgIcon.jsx'
 import { socketService } from '../services/socket.service.js'
+import SvgIcon from './SvgIcon.jsx'
 
 export function UserMsg() {
   const [msg, setMsg] = useState(null)

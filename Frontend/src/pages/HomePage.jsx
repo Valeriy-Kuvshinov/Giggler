@@ -9,10 +9,9 @@ import { InfoListItem } from '../cmps/InfoListItem.jsx'
 import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
 
 import { setFilter } from '../store/gig.actions.js'
-import { galleryService, infoListData, companyImages } from '../services/gallery.service.js'
+import { infoListData, companyImages, categoriesInfo } from '../services/gallery.service.js'
 
 export function HomePage() {
-    const { categoryIcons, categoryTexts } = galleryService
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const navigate = useNavigate()
 
@@ -60,10 +59,10 @@ export function HomePage() {
             <section className='home-categories-section'>
                 <h2>You need it, we've got it</h2>
                 <div className='categories grid'>
-                    {categoryIcons.map((category, index) => (
-                        <div className='category' onClick={(e) => onHandleFilter(e, { cat: categoryTexts[index] })} key={index}>
-                            <img src={category} alt={`Category icon ${index}`} />
-                            <p>{categoryTexts[index]}</p>
+                    {categoriesInfo.map((category, index) => (
+                        <div className='category' onClick={(e) => onHandleFilter(e, { cat: category.text })} key={index}>
+                            <img src={category.icon} alt={`Category icon ${index}`} />
+                            <p>{category.text}</p>
                         </div>
                     ))}
                 </div>

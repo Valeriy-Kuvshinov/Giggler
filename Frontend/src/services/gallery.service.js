@@ -34,8 +34,6 @@ const personFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v169892085
 const mediumPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920848/Giggler/home-page-people/srhesrvbpmvgwne7hatq.webp'
 const miniPersonFive = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698920849/Giggler/home-page-people/t1irgj9gtzpadutsyp14.webp'
 
-import starIcon from '../assets/img/svg/white.star.icon.svg'
-
 const companyMeta = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938873/Giggler/home-page-other/qof1foweuofaopytnkht.png'
 const companyNetflix = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938872/Giggler/home-page-other/llkwvmn7tk1pi3rkfjma.png'
 const companyGoogle = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698938873/Giggler/home-page-other/bcllml7mezhfkeckuuyq.png'
@@ -54,23 +52,23 @@ const serviceNine = 'https://res.cloudinary.com/digrqdbso/image/upload/v16989239
 const serviceTen = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/a2rfk7akvuzje29lmovz.webp'
 const serviceEleven = 'https://res.cloudinary.com/digrqdbso/image/upload/v1698923981/Giggler/home-page-services/qqk1dd1q6w434s7gmc4r.webp'
 
-import categoryOneSvg from '../assets/img/svg/graphics.design.icon.svg'
-import categoryTwoSvg from '../assets/img/svg/digital.marketing.icon.svg'
-import categoryThreeSvg from '../assets/img/svg/writing.translation.icon.svg'
-import categoryFourSvg from '../assets/img/svg/video.animation.icon.svg'
-import categoryFiveSvg from '../assets/img/svg/music.audio.icon.svg'
-import categorySixSvg from '../assets/img/svg/programming.tech.icon.svg'
-import categorySevenSvg from '../assets/img/svg/business.icon.svg'
-import categoryEightSvg from '../assets/img/svg/lifestyle.icon.svg'
-import categoryNineSvg from '../assets/img/svg/data.icon.svg'
-import categoryTenSvg from '../assets/img/svg/photography.icon.svg'
+const categoryOneIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768841/Giggler/home-page-categories/dctdvq2yojj2vkiug2hm.svg'
+const categoryTwoIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768841/Giggler/home-page-categories/g9p5fptrhkzpugf1i7rr.svg'
+const categoryThreeIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768844/Giggler/home-page-categories/catxy7ybz3sopvrari1f.svg'
+const categoryFourIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768844/Giggler/home-page-categories/akn515dgfsvwoy0a52af.svg'
+const categoryFiveIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768842/Giggler/home-page-categories/pkoerq072xowx0aoaxun.svg'
+const categorySixIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768844/Giggler/home-page-categories/fn0twfs0re0y9blkff7t.svg'
+const categorySevenIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768841/Giggler/home-page-categories/avl0qnpkusp01vvbtzvt.svg'
+const categoryEightIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768842/Giggler/home-page-categories/zkksneoz6mtdrwskxeyq.svg'
+const categoryNineIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768841/Giggler/home-page-categories/gszqozbbk2deqao0u8md.svg'
+const categoryTenIcon = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700768842/Giggler/home-page-categories/aykxzor3ti8z8vp9pti3.svg'
 
-import socialMediaTiktok from '../assets/img/svg/social.media.tiktok.svg'
-import socialMediaInstagram from '../assets/img/svg/social.media.instagram.svg'
-import socialMediaLinkedin from '../assets/img/svg/social.media.linkedin.svg'
-import socialMediaFacebook from '../assets/img/svg/social.media.facebook.svg'
-import socialMediaPinterest from '../assets/img/svg/social.media.pinterest.svg'
-import socialMediaTwitter from '../assets/img/svg/social.media.twitter.svg'
+const socialMediaTiktok = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769731/Giggler/footer/xehswclpckgylwzsgl5c.svg'
+const socialMediaLinkedin = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769731/Giggler/footer/dflsumeym5x74uvgcjxu.svg'
+const socialMediaInstagram = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769732/Giggler/footer/qlepil1cobyqyq2aacix.svg'
+const socialMediaFacebook = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769732/Giggler/footer/uvrc9gx0k7klaoov5edf.svg'
+const socialMediaPinterest = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769731/Giggler/footer/zrqvi4rwvfv7t2cov1ke.svg'
+const socialMediaTwitter = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700769730/Giggler/footer/tw2jpibvfsfwutf9hiuq.svg'
 
 export const socialMediaLinks = [
     { img: socialMediaTiktok, url: 'https://www.tiktok.com/@fiverr' },
@@ -81,10 +79,18 @@ export const socialMediaLinks = [
     { img: socialMediaTwitter, url: 'https://twitter.com/fiverr' },
 ]
 
-export const galleryService = {
-    categoryIcons: [categoryOneSvg, categoryTwoSvg, categoryThreeSvg, categoryFourSvg, categoryFiveSvg, categorySixSvg, categorySevenSvg, categoryEightSvg, categoryNineSvg, categoryTenSvg],
-    categoryTexts: ["Graphics & Design", "Digital Marketing", "Writing & Translation", "Video & Animation", "Music & Audio", "Programming & Tech", "Business", "Lifestyle", "Data", "Photography"]
-}
+export const categoriesInfo = [
+    { icon: categoryOneIcon, text: "Graphics & Design" },
+    { icon: categoryTwoIcon, text: "Digital Marketing" },
+    { icon: categoryThreeIcon, text: "Writing & Translation" },
+    { icon: categoryFourIcon, text: "Video & Animation" },
+    { icon: categoryFiveIcon, text: "Music & Audio" },
+    { icon: categorySixIcon, text: "Programming & Tech" },
+    { icon: categorySevenIcon, text: "Business" },
+    { icon: categoryEightIcon, text: "Lifestyle" },
+    { icon: categoryNineIcon, text: "Data" },
+    { icon: categoryTenIcon, text: "Photography" }
+]
 
 export const companyImages = [companyMeta, companyGoogle, companyNetflix,
     companyPandg, companyPaylpal]
@@ -131,11 +137,11 @@ export const servicesInfo = [
 ]
 
 export const personImages = [
-    { big: personOne, medium: mediumPersonOne, small: miniPersonOne, backgroundColor: "#0a4226", title: "@Jenny", subtitle: "Children's Voice Over", star: starIcon },
-    { big: personTwo, medium: mediumPersonTwo, small: miniPersonTwo, backgroundColor: "#a7445a", title: "@colinstark", subtitle: "Creative Director", star: starIcon },
-    { big: personThree, medium: mediumPersonThree, small: miniPersonThree, backgroundColor: "#5f1628", title: "Scarlett", subtitle: "Business Founder" },
-    { big: personFour, medium: mediumPersonFour, small: miniPersonFour, backgroundColor: "#0f4926", title: "@jordanruncle_", subtitle: "Production Assistant", star: starIcon },
-    { big: personFive, medium: mediumPersonFive, small: miniPersonFive, backgroundColor: "#ad3906", title: "Christina", subtitle: "Jewelery Shop Owner" }
+    { big: personOne, medium: mediumPersonOne, small: miniPersonOne, backgroundColor: "#0a4226", title: "@Jenny", subtitle: "Children's Voice Over", star: true },
+    { big: personTwo, medium: mediumPersonTwo, small: miniPersonTwo, backgroundColor: "#a7445a", title: "@colinstark", subtitle: "Creative Director", star: true },
+    { big: personThree, medium: mediumPersonThree, small: miniPersonThree, backgroundColor: "#5f1628", title: "Scarlett", subtitle: "Business Founder", star: false },
+    { big: personFour, medium: mediumPersonFour, small: miniPersonFour, backgroundColor: "#0f4926", title: "@jordanruncle_", subtitle: "Production Assistant", star: true },
+    { big: personFive, medium: mediumPersonFive, small: miniPersonFive, backgroundColor: "#ad3906", title: "Christina", subtitle: "Jewelery Shop Owner", star: false }
 ]
 
 export const flagImages = {

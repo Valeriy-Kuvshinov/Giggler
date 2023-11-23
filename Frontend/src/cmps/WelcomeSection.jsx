@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 import { personImages } from '../services/gallery.service.js'
+
 import { SearchBar } from './SearchBar.jsx'
+import SvgIcon from './SvgIcon.jsx'
 
 export function WelcomeSection({ onHandleFilter }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -13,7 +16,6 @@ export function WelcomeSection({ onHandleFilter }) {
             setWindowWidth(window.innerWidth)
         }
         window.addEventListener('resize', handleResize)
-
         return () => {
             window.removeEventListener('resize', handleResize)
         }
@@ -86,12 +88,10 @@ export function WelcomeSection({ onHandleFilter }) {
                         <div className="title flex">
                             {personImages[currentImageIndex].title}
                             {personImages[currentImageIndex].star && (
-                                <>
-                                    <span className="flex">
-                                        5
-                                        <img src={personImages[currentImageIndex].star} alt="Star Icon" className="star-icon" />
-                                    </span>
-                                </>
+                                <span className="flex">
+                                    5
+                                    <SvgIcon iconName="whiteStar" />
+                                </span>
                             )}
                         </div>
                         <div className="subtitle">{personImages[currentImageIndex].subtitle}</div>
