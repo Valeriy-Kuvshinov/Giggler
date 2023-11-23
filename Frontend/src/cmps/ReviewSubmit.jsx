@@ -43,30 +43,16 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
         }
     }, [onClose])
 
-    const handleStarHover = (ratingValue) => {
+    function handleStarHover(ratingValue) {
         setHoverRating(ratingValue)
     }
 
-    const handleStarLeave = () => {
+    function handleStarLeave() {
         setHoverRating(0)
     }
 
-    const handleStarClick = (ratingValue) => {
+    function handleStarClick(ratingValue) {
         setReviewRating(ratingValue)
-    }
-
-    const renderStarsInput = () => {
-        const stars = []
-        const effectiveRating = hoverRating || reviewRating
-
-        for (let i = 1; i <= 5; i++) {
-            if (i <= effectiveRating) {
-                stars.push(<img src={starIcon} key={i} alt="star" onMouseEnter={() => handleStarHover(i)} onMouseLeave={handleStarLeave} onClick={() => handleStarClick(i)} />)
-            } else {
-                stars.push(<img src={emptyStarIcon} key={i} alt="empty star" onMouseEnter={() => handleStarHover(i)} onMouseLeave={handleStarLeave} onClick={() => handleStarClick(i)} />)
-            }
-        }
-        return stars
     }
 
     const submitReview = async () => {
@@ -90,6 +76,20 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
         catch (err) {
             console.log('Error while submitting the review:', err)
         }
+    }
+
+    function renderStarsInput() {
+        const stars = []
+        const effectiveRating = hoverRating || reviewRating
+
+        for (let i = 1; i <= 5; i++) {
+            if (i <= effectiveRating) {
+                stars.push(<img src={starIcon} key={i} alt="star" onMouseEnter={() => handleStarHover(i)} onMouseLeave={handleStarLeave} onClick={() => handleStarClick(i)} />)
+            } else {
+                stars.push(<img src={emptyStarIcon} key={i} alt="empty star" onMouseEnter={() => handleStarHover(i)} onMouseLeave={handleStarLeave} onClick={() => handleStarClick(i)} />)
+            }
+        }
+        return stars
     }
 
     return (

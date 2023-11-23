@@ -19,76 +19,64 @@ const ICONS = {
 
   heart: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_4_20)">
-      <g filter="url(#filter0_d_4_20)">
-          <path
-              d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0029 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0017 5.867 7.1 7.1 0 0012.2 4C8.224 4 5 7.283 5 11.333z"
-              fill="#404145" fill-opacity=".3" />
+      <g filter="url(#a)">
+        <path d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0 0 29 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0 0 17 5.867 7.1 7.1 0 0 0 12.2 4C8.224 4 5 7.283 5 11.333z" fill="#404145" fill-opacity=".3"/>
       </g>
-      <g filter="url(#filter1_d_4_20)">
-          <path
-              d="M7.916 16.305l-.011-.01-.012-.01C6.592 15.141 5.75 13.32 5.75 11.332c0-3.649 2.9-6.583 6.45-6.583a6.35 6.35 0 014.295 1.672l.505.46.505-.46A6.35 6.35 0 0121.8 4.75c3.55 0 6.45 2.934 6.45 6.583a6.624 6.624 0 01-2.2 4.953l-.01.009-.01.009-9.032 8.658-9.082-8.657z"
-              stroke="#fff" stroke-width="1.5" />
+      <g filter="url(#b)">
+        <path d="m7.916 16.305-.011-.01-.012-.01C6.592 15.141 5.75 13.32 5.75 11.332c0-3.649 2.9-6.583 6.45-6.583a6.35 6.35 0 0 1 4.295 1.672l.505.46.505-.46A6.35 6.35 0 0 1 21.8 4.75c3.55 0 6.45 2.934 6.45 6.583a6.624 6.624 0 0 1-2.2 4.953l-.01.009-.01.009-9.032 8.658-9.082-8.657z" stroke="#fff" stroke-width="1.5"/>
       </g>
     </g>
     <defs>
-      <filter id="filter0_d_4_20" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="1" />
-          <feGaussianBlur stdDeviation="2.5" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0" />
-          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20" />
-          <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape" />
+      <filter id="a" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="1"/>
+        <feGaussianBlur stdDeviation="2.5"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0"/>
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20"/>
+        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape"/>
       </filter>
-      <filter id="filter1_d_4_20" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
-          <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-          <feOffset dy="1" />
-          <feGaussianBlur stdDeviation="2.5" />
-          <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0" />
-          <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20" />
-          <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape" />
+      <filter id="b" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="1"/>
+        <feGaussianBlur stdDeviation="2.5"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0"/>
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20"/>
+        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape"/>
       </filter>
     </defs>
   </svg>`,
 
   heartLiked: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g clip-path="url(#clip0_4_20)">
-    <g filter="url(#filter0_d_4_20)">
-        <path
-            d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0029 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0017 5.867 7.1 7.1 0 0012.2 4C8.224 4 5 7.283 5 11.333z"
-            fill="#F85D5D" />
+    <g clip-path="url(#clip0_4_20)">
+      <g filter="url(#a)">
+        <path d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0 0 29 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0 0 17 5.867 7.1 7.1 0 0 0 12.2 4C8.224 4 5 7.283 5 11.333z" fill="#F85D5D"/>
+      </g>
+      <g filter="url(#b)">
+        <path d="m7.916 16.305-.011-.01-.012-.01C6.592 15.141 5.75 13.32 5.75 11.332c0-3.649 2.9-6.583 6.45-6.583a6.35 6.35 0 0 1 4.295 1.672l.505.46.505-.46A6.35 6.35 0 0 1 21.8 4.75c3.55 0 6.45 2.934 6.45 6.583a6.624 6.624 0 0 1-2.2 4.953l-.01.009-.01.009-9.032 8.658-9.082-8.657z" stroke="#fff" stroke-width="1.5"/>
+      </g>
     </g>
-    <g filter="url(#filter1_d_4_20)">
-        <path
-            d="M7.916 16.305l-.011-.01-.012-.01C6.592 15.141 5.75 13.32 5.75 11.332c0-3.649 2.9-6.583 6.45-6.583a6.35 6.35 0 014.295 1.672l.505.46.505-.46A6.35 6.35 0 0121.8 4.75c3.55 0 6.45 2.934 6.45 6.583a6.624 6.624 0 01-2.2 4.953l-.01.009-.01.009-9.032 8.658-9.082-8.657z"
-            stroke="#fff" stroke-width="1.5" />
-    </g>
-  </g>
-  <defs>
-    <filter id="filter0_d_4_20" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-        <feOffset dy="1" />
-        <feGaussianBlur stdDeviation="2.5" />
-        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0" />
-        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20" />
-        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape" />
-    </filter>
-    <filter id="filter1_d_4_20" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB">
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-        <feOffset dy="1" />
-        <feGaussianBlur stdDeviation="2.5" />
-        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0" />
-        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20" />
-        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape" />
-    </filter>
-  </defs>
+    <defs>
+      <filter id="a" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="1"/>
+        <feGaussianBlur stdDeviation="2.5"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0"/>
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20"/>
+        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape"/>
+      </filter>
+      <filter id="b" x="0" y="0" width="34" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="1"/>
+        <feGaussianBlur stdDeviation="2.5"/>
+        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.11 0"/>
+        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_4_20"/>
+        <feBlend in="SourceGraphic" in2="effect1_dropShadow_4_20" result="shape"/>
+      </filter>
+    </defs>
   </svg>`,
 
   home: `<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.666 13.548H3.333a.667.667 0 01-.667-.666v-6h-2L7.552.621a.667.667 0 01.897 0l6.885 6.26h-2v6a.667.667 0 01-.667.666zm-4-1.333H12V5.653L8 2.017 4 5.653v6.562h3.333v-4h1.333v4z" fill="#404145"/></svg>`,
@@ -119,6 +107,11 @@ const ICONS = {
     <path
       d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
     </path>
+  </svg>`,
+
+  customCheckmarkIcon: `<svg width="16" height="16" fill="#7A7D85" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 1.75a6.25 6.25 0 1 0 0 12.5 6.25 6.25 0 0 0 0-12.5ZM.25 8a7.75 7.75 0 1 1 15.5 0A7.75 7.75 0 0 1 .25 8Z"/>
+    <path d="M11.53 5.47a.75.75 0 0 1 0 1.06l-4 4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L7 8.94l3.47-3.47a.75.75 0 0 1 1.06 0Z"/>
   </svg>`,
 
   questionMarkIcon: `<svg width="16" height="16" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -435,6 +428,60 @@ const ICONS = {
   reviewIcon: `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="241" viewBox="0 0 256 241" xml:space="preserve">
     <path d="M19 19h218v151H19Zm164.48 73.185v41.628c0 6.203-5.927 12.13-12.13 12.13h-36.39c-7.581 0-13.715-.965-20.814-3.446-2.205-.758-8.684-3.446-8.684-3.446v-48.52l28.602-33.633 2.619-14.956h5.169c5.789 0 9.787 4.618 9.787 10.338v3.239c0 7.374-.414 14.818-1.309 22.123l-.276 2.412h21.296c6.203.001 12.13 5.928 12.13 12.131zM72.52 144.22h25.983V85.293H72.52v58.927z" fill="#fff"/>
     <path d="M254 188V2H2v186h111v29H75v22h106v-22h-38v-29h111zM19 19h217v151H19V19zm164.48 73.185v41.628c0 6.203-5.927 12.13-12.13 12.13h-36.39c-7.581 0-13.715-.965-20.814-3.446-2.205-.758-8.684-3.446-8.684-3.446v-48.52l28.602-33.633 2.619-14.956h5.169c5.789 0 9.787 4.618 9.787 10.338v3.239c0 7.374-.414 14.818-1.309 22.123l-.276 2.412h21.296c6.203.001 12.13 5.928 12.13 12.131zM72.52 144.22h25.983V85.293H72.52v58.927z"/>
+  </svg>`,
+
+  shareFacebookIcon: `<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <circle id="link" cx="28" cy="28" r="28"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+      <use fill="#3E5A99" xlink:href="#link"/>
+      <use class="image-filter" fill-opacity=".2" fill="#000" xlink:href="#link"/>
+      <path d="M36.055 23.61H31.16v-2.919c0-1.107.816-1.409 1.326-1.409h3.467v-4.83H31.16c-5.302 0-6.424 3.623-6.424 5.938v3.22h-3.059v5.032h3.06v14.09h6.423v-14.09h4.283l.612-5.032Z" fill="#FFF"/>
+    </g>
+  </svg>`,
+
+  shareLinkedinIcon: `<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <circle id="link" cx="28" cy="28" r="28"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+      <use fill="#0677B5" xlink:href="#link"/>
+      <use class="image-filter" fill-opacity=".1" fill="#000" xlink:href="#link"/>
+      <path d="M14.794 41.522H20.6V23.248h-5.806zm2.903-20.75c-1.965 0-3.245-1.368-3.245-3.16 0-1.794 1.28-3.16 3.245-3.16 1.964 0 3.16 1.366 3.245 3.16.085 1.707-1.196 3.16-3.245 3.16m23.825 20.665h-5.807v-9.735c0-2.477-.854-4.1-2.903-4.1-1.623 0-2.562 1.111-2.989 2.22-.17.427-.17.94-.17 1.453v10.162h-5.808s.084-16.481 0-18.275h5.807v2.562c.769-1.28 2.135-2.989 5.21-2.989 3.842 0 6.66 2.648 6.66 8.198v10.504Z" fill="#FFF"/>
+    </g>
+  </svg>`,
+
+  shareTwitterIcon: `<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <circle id="link" cx="28" cy="28" r="28"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+      <use fill="#60A9DD" xlink:href="#link"/>
+      <use class="image-filter" fill-opacity=".2" fill="#000" xlink:href="#link"/>
+      <path d="M42.126 19.13a8.697 8.697 0 0 1-3.285.928 6.039 6.039 0 0 0 2.464-3.378c-1.068.676-2.3 1.182-3.613 1.52-1.068-1.182-2.546-1.942-4.188-1.942-3.121 0-5.667 2.702-5.667 6.08 0 .507.082.929.164 1.351-4.762-.253-8.95-2.702-11.743-6.333a6.386 6.386 0 0 0-.739 3.04c0 2.11.986 3.969 2.546 5.066-.903 0-1.807-.338-2.546-.76v.085c0 2.955 1.971 5.405 4.599 5.995a4.536 4.536 0 0 1-1.478.254c-.329 0-.74 0-1.068-.085.74 2.449 2.792 4.222 5.338 4.222-1.97 1.604-4.434 2.619-7.062 2.619-.493 0-.904 0-1.396-.086 2.545 1.69 5.502 2.702 8.704 2.702 10.512 0 16.178-9.288 16.178-17.31v-.76c1.068-.929 2.053-1.942 2.792-3.209" fill="#FFF"/>
+    </g>
+  </svg>`,
+
+  shareWhatsappIcon: `<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <circle id="link" cx="28" cy="28" r="28"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+      <use fill="#0D9F16" xlink:href="#link"/>
+      <use class="image-filter" fill-opacity=".2" fill="#000" xlink:href="#link"/>
+      <path d="M30.643 40.01c-.698.118-1.4.18-1.77.173-2.718-.008-4.934-.614-6.972-1.842a.935.935 0 0 0-.793-.119c-1.37.378-2.75.717-4.122 1.079-.288.087-.316.024-.242-.236.363-1.3.705-2.59 1.081-3.874.104-.362.067-.638-.14-.96-2.82-4.513-2.7-10.134.454-14.308 3.278-4.346 7.734-6.126 13.065-4.992 5.254 1.103 8.603 4.48 9.835 9.685 1.682 7.118-3.17 14.197-10.396 15.394m12.922-16.126C41.867 16.868 35.806 12.083 28.48 12c-.965.016-1.975.094-2.973.303-10.22 2.061-15.517 13.344-10.535 22.455a.848.848 0 0 1 .068.693c-.663 2.401-1.32 4.803-1.98 7.196-.106.394-.106.394.29.292 2.5-.654 4.997-1.3 7.496-1.96a.727.727 0 0 1 .559.062c3.218 1.638 6.609 2.118 10.159 1.434 8.482-1.638 14.025-10.23 12.001-18.591" fill="#FCFCFC"/>
+      <path d="M32.524 34.774c-.551.023-1.077-.103-1.605-.245-3.548-1.015-6.21-3.228-8.35-6.141-.808-1.095-1.557-2.229-1.806-3.59-.3-1.639.173-3.024 1.397-4.159.39-.354 1.575-.511 2.05-.283a.795.795 0 0 1 .362.41c.448 1.063.891 2.11 1.33 3.173.083.205.048.401-.045.606-.226.488-.588.882-.955 1.268-.279.284-.29.543-.085.882 1.253 2.078 2.987 3.59 5.254 4.496.338.134.594.086.819-.197.377-.464.777-.93 1.134-1.41.245-.338.526-.385.872-.228.75.339 1.498.693 2.248 1.047.168.071.334.158.5.237.759.378.751.385.686 1.22-.127 1.63-1.354 2.433-2.81 2.835-.32.086-.66.094-.996.079" fill="#FDFDFD"/>
+    </g>
+  </svg>`,
+
+  shareLinkIcon: `<svg class="social-medium-image" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+    <g class="circle-wrapper" fill="#FFF" stroke="#CCC">
+      <circle class="background-circle" cx="28" cy="28" r="27.5" fill="none"/>
+    </g>
+      <path class="inner-image" d="M28.122 24.723a1.525 1.525 0 0 1 2.16-.007 1.515 1.515 0 0 1-.008 2.159l-4.394 4.396a1.522 1.522 0 0 1-2.16.007 1.515 1.515 0 0 1 .008-2.16l4.394-4.395ZM32.4 31.21l-2.152-2.152L35.7 23.6c.5-.5.218-1.988-1.049-3.255-1.257-1.258-2.76-1.545-3.25-1.056l-5.46 5.46-2.152-2.153 5.46-5.459c1.927-1.927 5.284-1.287 7.59 1.021 2.316 2.316 2.948 5.661 1.015 7.596L32.4 31.209Zm-4.344.038 2.152 2.153-5.454 5.454c-1.933 1.935-5.28 1.302-7.595-1.014-2.307-2.307-2.949-5.663-1.021-7.59l5.46-5.46 2.152 2.153-5.46 5.46c-.49.49-.202 1.993 1.056 3.25 1.266 1.267 2.757 1.549 3.256 1.05l5.454-5.456Z" fill="#999"/>
+    </g>
   </svg>`
 }
 

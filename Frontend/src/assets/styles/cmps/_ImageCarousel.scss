@@ -7,8 +7,10 @@
   img {
     aspect-ratio: 5/3;
   }
+
   .carousel-wrapper {
     overflow: hidden;
+
     .carousel {
       display: flex;
       transition: transform 0.3s ease-in-out;
@@ -21,11 +23,9 @@
       }
 
       .carousel-item::after {
-        background-image: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.3),
-          hsla(0, 0%, 100%, 0)
-        );
+        background-image: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.3),
+            hsla(0, 0%, 100%, 0));
         border-radius: 0.5em;
         bottom: 0;
         content: '';
@@ -48,7 +48,6 @@
     width: 10.75%;
     height: 16.5%;
     transform: translateY(-50%);
-    // color: white;
     border: none;
     border-radius: 50%;
     font-size: 1em;
@@ -99,11 +98,9 @@
     height: 11%;
     transform: translateY(-50%);
     color: $clrPrimary2;
-    border: none;
     border-radius: 50%;
     font-size: 1em;
     padding: 0.25em;
-    cursor: pointer;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
 
     i {

@@ -2,14 +2,12 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useModal } from '../customHooks/ModalContext.jsx'
 
+import { setFilter } from '../store/gig.actions.js'
+import { infoListData, companyImages, categoriesInfo } from '../services/gallery.service.js'
+
 import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
-
-import customCheckmarkImg from '../assets/img/svg/special.checkmark.icon.svg'
-
-import { setFilter } from '../store/gig.actions.js'
-import { infoListData, companyImages, categoriesInfo } from '../services/gallery.service.js'
 
 export function HomePage() {
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
@@ -45,7 +43,6 @@ export function HomePage() {
                             {infoListData.map((item, idx) => (
                                 <InfoListItem
                                     key={idx}
-                                    imgSrc={customCheckmarkImg}
                                     title={item.title}
                                     description={item.description}
                                 />

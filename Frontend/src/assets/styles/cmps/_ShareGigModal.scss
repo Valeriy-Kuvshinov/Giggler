@@ -48,15 +48,15 @@
             line-height: 150%;
         }
 
-        .social-mediums {
+        ul {
             justify-content: center;
             gap: 1.4em;
             padding-top: 1em;
 
-            .social-medium {
+            li {
                 cursor: pointer;
 
-                img {
+                i {
                     width: 56px;
                     height: 56px;
                     align-self: center;

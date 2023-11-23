@@ -1,11 +1,7 @@
-import shareFacebook from "../assets/img/svg/share.facebook.icon.svg"
-import shareLinkedin from "../assets/img/svg/share.linkedin.icon.svg"
-import shareTwitter from "../assets/img/svg/share.twitter.icon.svg"
-import shareWhatsapp from "../assets/img/svg/share.whatsapp.icon.svg"
-import shareLink from "../assets/img/svg/share.link.icon.svg"
-
 import { useEffect, useState, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
+
+import SvgIcon from "./SvgIcon.jsx"
 
 export function ShareGigModal({ onClose }) {
     const modalRef = useRef()
@@ -17,11 +13,11 @@ export function ShareGigModal({ onClose }) {
         navigator.clipboard.writeText(decodeURIComponent(currentURL)).then(() => {
             setIsLinkCopied(true)
             setTimeout(() => setIsLinkCopied(false), 4000)
-    
+
             setTimeout(() => {
                 onClose()
             }, 3000)
-    
+
         }).catch(err => {
             console.error("Could not copy text: ", err)
         })
@@ -46,41 +42,41 @@ export function ShareGigModal({ onClose }) {
 
                 <h2>Share This Gig</h2>
                 <p>Spread the word about this Gig on Giggler</p>
-                <ul className="social-mediums flex row">
-                    <li className="social-medium flex column">
+                <ul className="flex row">
+                    <li className="flex column">
                         <a className="flex column"
                             href={`https://www.facebook.com/sharer/sharer.php?u=${currentURL}`} target="_blank" rel="noopener noreferrer">
-                            <img src={shareFacebook} />
+                            <SvgIcon iconName={'shareFacebookIcon'} />
                             <span>Facebook</span>
                         </a>
                     </li>
 
-                    <li className="social-medium flex column">
+                    <li className="flex column">
                         <a className="flex column"
                             href={`https://www.linkedin.com/shareArticle?mini=true&url=${currentURL}`} target="_blank" rel="noopener noreferrer">
-                            <img src={shareLinkedin} />
+                            <SvgIcon iconName={'shareLinkedinIcon'} />
                             <span>LinkedIn</span>
                         </a>
                     </li>
 
-                    <li className="social-medium flex column">
+                    <li className="flex column">
                         <a className="flex column"
                             href={`https://twitter.com/intent/tweet?url=${currentURL}`} target="_blank" rel="noopener noreferrer">
-                            <img src={shareTwitter} />
+                            <SvgIcon iconName={'shareTwitterIcon'} />
                             <span>Twitter</span>
                         </a>
                     </li>
 
-                    <li className="social-medium flex column">
+                    <li className="flex column">
                         <a className="flex column"
                             href={`whatsapp://send?text=${currentURL}`} target="_blank" rel="noopener noreferrer">
-                            <img src={shareWhatsapp} />
+                            <SvgIcon iconName={'shareWhatsappIcon'} />
                             <span>WhatsApp</span>
                         </a>
                     </li>
 
-                    <li className="social-medium flex column" onClick={copyLink}>
-                        <img src={shareLink} />
+                    <li className="flex column" onClick={copyLink}>
+                        <SvgIcon iconName={'shareLinkIcon'} />
                         <span style={isLinkCopied ? { color: 'green' } : {}}>{isLinkCopied ? "Link Copied!" : "Copy Link"}</span>
                     </li>
                 </ul>

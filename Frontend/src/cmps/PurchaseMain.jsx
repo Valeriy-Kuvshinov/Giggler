@@ -1,5 +1,5 @@
+const creditCardImage = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700774612/Giggler/home-page-other/gjw5aozga1iv2wkqkrak.png'
 import SvgIcon from './SvgIcon.jsx'
-import creditCardImage from '../../src/assets/img/credit.card.png'
 
 export function PurchaseMain({
   paymentMethod,
@@ -7,7 +7,6 @@ export function PurchaseMain({
   formData,
   setFormData
 }) {
-
   function handleInputChange(e) {
     e.preventDefault()
     const { name, value } = e.target

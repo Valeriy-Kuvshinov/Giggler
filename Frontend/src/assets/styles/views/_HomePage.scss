@@ -58,9 +58,13 @@
                         color: $clrSecondary8;
                     }
 
-                    img {
-                        width: 24px;
-                        height: 24px;
+                    i {
+                        align-self: baseline;
+
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                        }
                     }
                 }
 
