@@ -31,7 +31,7 @@
 .flex {
   display: flex;
 
-  > *.full {
+  >*.full {
     flex: 1;
   }
 
@@ -89,10 +89,12 @@
 
 .black {
   fill: $clrPrimary2;
+
   svg {
     fill: $clrPrimary2;
   }
 }
+
 .rotate {
   transform: rotate(-180deg);
 }
@@ -109,6 +111,7 @@
     opacity: 1;
     pointer-events: all;
   }
+
   .dwn-arr {
     transform: translateY(0) rotate(-180deg);
   }
@@ -131,13 +134,11 @@
   opacity: 1 !important;
   transition: opacity .3s ease-in-out;
 }
+
 .gap12 {
   gap: 0.75em;
 }
+
 .gap16 {
   gap: 1em;
-}
-
-.checked {
-  
 }

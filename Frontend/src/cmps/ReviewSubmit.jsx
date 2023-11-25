@@ -93,7 +93,7 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
     }
 
     return (
-        <div className="review-modal-wrapper" onClick={handleModalClick}>
+        <div className="modal-wrapper" onClick={handleModalClick}>
             <div className="review-modal flex column" ref={modalRef}>
                 <button className="close-modal" onClick={onClose}>×</button>
                 <div className="reviewed-gig grid">

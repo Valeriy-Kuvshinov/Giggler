@@ -36,9 +36,9 @@ export function ShareGigModal({ onClose }) {
     }, [onClose])
 
     return (
-        <div className="share-gig-modal-wrapper">
+        <div className="modal-wrapper">
             <section className="share-gig-modal flex column" ref={modalRef}>
-                <button onClick={onClose}>×</button>
+                <button className="close-modal" onClick={onClose}>×</button>
 
                 <h2>Share This Gig</h2>
                 <p>Spread the word about this Gig on Giggler</p>
