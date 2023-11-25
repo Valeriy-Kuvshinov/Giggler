@@ -57,13 +57,24 @@ async function save(review) {
     const collection = await dbService.getCollection(REVIEWS_COLLECTION)
 
     try {
-        const response = await collection.insertOne(review)
-        return { ...review, _id: response.insertedId }
+        const reviewToSave = { ...review }
+        _convertIdsToObjectIds(reviewToSave)
+
+        const response = await collection.insertOne(reviewToSave)
+        return { ...reviewToSave, _id: response.insertedId }
     }
     catch (err) {
         loggerService.error('cannot insert review', err)
         throw err
     }
+}
+
+function _convertIdsToObjectIds(reviewData) {
+    ['userId', 'gigId', 'sellerId'].forEach(field => {
+        if (reviewData[field] && typeof reviewData[field] === 'string') {
+            reviewData[field] = new ObjectId(reviewData[field])
+        }
+    })
 }
 
 function _buildCriteria(filterBy) {

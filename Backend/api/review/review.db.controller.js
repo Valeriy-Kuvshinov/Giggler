@@ -24,11 +24,8 @@ export async function getReviewById(req, res) {
 }
 
 export async function addReview(req, res) {
-    const { loggedinUser } = req
-
     try {
         const review = req.body
-        review.userId = loggedinUser
         const addedReview = await reviewService.save(review)
         res.json(addedReview)
     }

@@ -55,7 +55,7 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
         setReviewRating(ratingValue)
     }
 
-    const submitReview = async () => {
+    async function submitReview() {
         try {
             const review = {
                 userId: loggedInUser._id,

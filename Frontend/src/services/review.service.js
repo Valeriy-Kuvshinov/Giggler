@@ -15,6 +15,7 @@ function query(filterBy = {}) {
 function getById(reviewId) {
     return httpService.get(BASE_URL + reviewId)
 }
+
 function remove(reviewId) {
     return httpService.delete(BASE_URL + reviewId)
 }

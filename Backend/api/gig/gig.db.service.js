@@ -69,17 +69,15 @@ async function save(gig) {
   if (gig._id) {
     try {
       const gigToSave = { ...gig }
-      let ownerId=gigToSave.ownerId
-      ownerId=new ObjectId(ownerId)
-      gigToSave.ownerId=ownerId
-      let likedByUsers=[...gigToSave.likedByUsers]
-      likedByUsers=likedByUsers.map(userId=>userId=new ObjectId(userId))
-      gigToSave.likedByUsers=[...likedByUsers]
-      let reviews=[...gigToSave.reviews]
-      reviews=reviews.map(reviewId=>reviewId=new ObjectId(reviewId))
-      gigToSave.reviews=[...reviews]
-
-      // console.log(utilService.idToObjectId())
+      let ownerId = gigToSave.ownerId
+      ownerId = new ObjectId(ownerId)
+      gigToSave.ownerId = ownerId
+      let likedByUsers = [...gigToSave.likedByUsers]
+      likedByUsers = likedByUsers.map(userId => userId = new ObjectId(userId))
+      gigToSave.likedByUsers = [...likedByUsers]
+      let reviews = [...gigToSave.reviews]
+      reviews = reviews.map(reviewId => reviewId = new ObjectId(reviewId))
+      gigToSave.reviews = [...reviews]
 
       const id = gig._id
       delete gigToSave._id
