@@ -9,13 +9,9 @@ import { utilService } from '../services/util.service'
 
 export function UserInfo({ watchedUser, loggedinUser }) {
   const [isModal, setModal] = useState(false)
-  const [isEditing, setEditing] = useState(false)
-  const [isEditingFullName, setIsEditingFullName] = useState(false)
-  const [description, setDescription] = useState(watchedUser.description)
-  const [fullName, setFullName] = useState(watchedUser.fullName)
-  
+
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
-  
+
   const filteredReviews = watchedUser
     ? reviews.filter((review) => review.sellerId === watchedUser._id)
     : []
@@ -46,36 +42,8 @@ export function UserInfo({ watchedUser, loggedinUser }) {
   if (!watchedUser.lastDeliveredAt) deliveredTime = new Date(Date.now())
   else deliveredTime = new Date(watchedUser.lastDeliveredAt)
 
-  function loadModal() {
-    if (loggedinUser._id !== watchedUser._id) return
-    setModal(true)
-  }
-
   function closeModal() {
     setModal(false)
-  }
-
-  function handleEditClick() {
-    setEditing(true)
-  }
-
-  function handleFullNameEditClick() {
-    setIsEditingFullName(true)
-  }
-
-  function handleDescriptionChange(e) {
-    setDescription(e.target.value)
-  }
-
-  function handleFullNameChange(e) {
-    setFullName(e.target.value)
-  }
-
-  async function handleConfirmChange() {
-    const updatedUser = { ...watchedUser, description, fullName }
-    await updateUser(updatedUser)
-    setEditing(false)
-    setIsEditingFullName(false)
   }
 
   const renderStars = () => {
@@ -108,23 +76,13 @@ export function UserInfo({ watchedUser, loggedinUser }) {
     <section className="user-info">
       <div className="info-block flex column">
         <div className="profile-picture">
-          <img src={watchedUser.imgUrl} onClick={loadModal} />
+          <img src={watchedUser.imgUrl} />
           <div className='background'><SvgIcon iconName={'user'} /></div>
           <SvgIcon iconName={userLevel} />
         </div>
 
         <h2>
-          {isEditingFullName && loggedinUser._id === watchedUser._id ? (
-            <input
-              type="text"
-              style={{ padding: '0', border: 'none', textAlign: 'center' }}
-              value={fullName}
-              onChange={handleFullNameChange}
-              onBlur={handleConfirmChange}
-            />
-          ) : (
-            <span onClick={handleFullNameEditClick}>{watchedUser.fullName}</span>
-          )}
+          <span>{watchedUser.fullName}</span>
         </h2>
 
         <span className="username">@{watchedUser.username}</span>
@@ -138,7 +96,7 @@ export function UserInfo({ watchedUser, loggedinUser }) {
         </div>
 
         <div className="location-and-time">
-          <div className="info-line flex" onClick={loadModal}>
+          <div className="info-line flex">
             <span className="data flex">
               <SvgIcon iconName={'location'} />
               <span>From</span>
@@ -181,22 +139,9 @@ export function UserInfo({ watchedUser, loggedinUser }) {
 
       <div className="info-block flex column description">
         <h3 className="description-title">Description</h3>
-        {isEditing && loggedinUser._id === watchedUser._id ? (
-          <div className="description-box">
-            <textarea
-              className="description-area"
-              value={description}
-              onChange={handleDescriptionChange}
-              onBlur={handleConfirmChange}
-            />
-          </div>
-        ) : (
-          <div className="description-box">
-            <p className="description-area" onClick={handleEditClick}>
-              {description}
-            </p>
-          </div>
-        )}
+        <div className="description-box">
+          <p className="description-area">{watchedUser.description}</p>
+        </div>
         <div className="languages">
           <span className="title">Languages</span>
           {watchedUser.languages && <div className="the-languages">
