@@ -8,7 +8,7 @@ import { loadReviews } from '../store/review.actions'
 import { utilService } from '../services/util.service'
 
 export function UserInfo({ watchedUser, loggedinUser }) {
-  const [isModal, setModal] = useState(false)
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
 
@@ -43,7 +43,7 @@ export function UserInfo({ watchedUser, loggedinUser }) {
   else deliveredTime = new Date(watchedUser.lastDeliveredAt)
 
   function closeModal() {
-    setModal(false)
+    setIsEditModalOpen(false)
   }
 
   const renderStars = () => {
@@ -81,9 +81,7 @@ export function UserInfo({ watchedUser, loggedinUser }) {
           <SvgIcon iconName={userLevel} />
         </div>
 
-        <h2>
-          <span>{watchedUser.fullName}</span>
-        </h2>
+        <h2>{watchedUser.fullName}</h2>
 
         <span className="username">@{watchedUser.username}</span>
 
@@ -139,9 +137,8 @@ export function UserInfo({ watchedUser, loggedinUser }) {
 
       <div className="info-block flex column description">
         <h3 className="description-title">Description</h3>
-        <div className="description-box">
-          <p className="description-area">{watchedUser.description}</p>
-        </div>
+        <div className="description-box">{watchedUser.description}</div>
+
         <div className="languages">
           <span className="title">Languages</span>
           {watchedUser.languages && <div className="the-languages">
@@ -154,6 +151,7 @@ export function UserInfo({ watchedUser, loggedinUser }) {
             ))}
           </div>}
         </div>
+
         <div className="skills">
           <span className="title">Skills</span>
           {watchedUser.skills && <div className="the-skills flex">
@@ -163,6 +161,7 @@ export function UserInfo({ watchedUser, loggedinUser }) {
               </div>)}
           </div>}
         </div>
+
         <div className="educations">
           <span className="title">Education</span>
           {watchedUser.education && <div className="the-educations">
@@ -174,9 +173,8 @@ export function UserInfo({ watchedUser, loggedinUser }) {
           </div>}
         </div>
       </div>
-
-      {isModal && <UserEditModal user={watchedUser} closeModal={closeModal} />}
-      {isModal && <div className="modal-background" onClick={closeModal}></div>}
+      {isEditModalOpen && <UserEditModal user={watchedUser} closeModal={closeModal} />}
+      {isEditModalOpen && <div className="modal-background" onClick={closeModal}></div>}
     </section>
   )
 }

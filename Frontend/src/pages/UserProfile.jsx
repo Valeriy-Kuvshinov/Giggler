@@ -18,15 +18,16 @@ export function UserProfile() {
   const gigs = useSelector((storeState) => storeState.gigModule.gigs)
 
   useEffect(() => {
-    if (!id || id.length !== 24) {      
+    if (!id || id.length !== 24) {
       navigate('/explore')
       return
     }
     const loadData = async () => {
       try {
-        await loadGigs()
         await loadUser(id)
-      } catch (err) {
+        await loadGigs()
+      }
+      catch (err) {
         console.error("Error loading data: ", err)
       }
     }
