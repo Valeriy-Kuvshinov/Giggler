@@ -5,62 +5,70 @@
         background-color: $clrPrimary1;
         position: relative;
         z-index: 10;
-        padding: 2em 0.75em 0.75em 0.75em;
+        padding: 0.75em;
+        color: $clrSecondary6;
 
         .reviewed-gig {
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr auto 1fr;
             margin-bottom: 1.5em;
+            gap: 0.5em;
 
             .title-user-info {
                 grid-column: 1 / 4;
                 grid-row: 1 / -1;
                 gap: 0.5em;
 
+                h3 {
+                    grid-row: 1 / 2;
+                }
+
                 .user-info {
                     width: fit-content;
                     height: fit-content;
                     margin: 0;
                     gap: 0.5em;
+                    grid-row: 3;
 
                     img {
                         width: 32px;
                         height: 32px;
+                        border-radius: 50%;
                     }
                 }
             }
 
-            img {
+            .gig-img {
                 grid-column: 4 / -1;
                 grid-row: 1 / -1;
-                width: 120px;
-                height: 120px;
                 object-fit: cover;
                 border-radius: 0.5em;
             }
         }
 
-        .stars-input {
-            justify-content: center;
-            margin-bottom: 0.5em;
-            gap: 0.25em;
+        .review-submission {
+            .stars-input {
+                justify-content: center;
+                margin-bottom: 0.5em;
+                gap: 0.25em;
 
-            img {
-                width: 36px;
+                img {
+                    width: 36px;
+                }
             }
-        }
 
-        textarea {
-            margin: 0 auto;
-            margin-bottom: 1em;
-            margin-block-start: 1em;
-            width: 90%;
-            border: 1px solid $clrSecondary11;
-            min-height: 8em;
+            textarea {
+                margin: 0 auto;
+                margin-block-end: 1em;
+                margin-block-start: 1em;
+                width: 100%;
+                border: 1px solid $clrSecondary11;
+                min-height: 8em;
 
-            &:focus {
-                outline: none;
-                border-color: $clrSecondary8;
+                &:focus {
+                    outline: none;
+                    border-color: $clrSecondary8;
+                }
             }
         }
 
@@ -72,10 +80,11 @@
             font-family: 'macan-bold';
             background: $clrSecondary2;
             color: $bgColor5;
+            transition: color 0.3s, background-color 0.3s;
 
             &:hover {
                 background: $bgColor5;
-                color: $clrSecondary2;
+                color: $clrSecondary1;
             }
         }
     }

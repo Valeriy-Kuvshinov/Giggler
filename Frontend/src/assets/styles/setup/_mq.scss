@@ -826,11 +826,6 @@
     .review-modal,
     .share-gig-modal {
       width: 100%;
-
-      .close-modal {
-        right: -5px;
-        top: -10px;
-      }
     }
 
     .invoice-modal {
@@ -910,6 +905,24 @@
         }
       }
     }
+
+
+    .review-modal {
+      .reviewed-gig {
+        .title-user-info {
+
+          h3,
+          h4 {
+            font-size: 16px;
+          }
+        }
+
+        .gig-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
   }
 
   @media(min-width: 401px) {
@@ -918,11 +931,6 @@
     .review-modal,
     .share-gig-modal {
       width: 70vw;
-
-      .close-modal {
-        right: 5px;
-        top: 0;
-      }
     }
 
     .invoice-modal {
@@ -1011,6 +1019,23 @@
               grid-column: 3;
             }
           }
+        }
+      }
+    }
+
+    .review-modal {
+      .reviewed-gig {
+        .title-user-info {
+
+          h3,
+          h4 {
+            font-size: 21px;
+          }
+        }
+
+        .gig-img {
+          width: 150px;
+          height: 120px;
         }
       }
     }

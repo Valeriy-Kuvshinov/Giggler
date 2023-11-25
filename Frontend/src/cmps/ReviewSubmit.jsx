@@ -105,17 +105,19 @@ export function ReviewSubmit({ loggedInUser, gig, onClose }) {
                             {gigOwner ? `@${gigOwner.username}` : "owner-username"}
                         </h4>
                     </div>
-                    <img src={gig.imgUrls[0]} alt="gig-img" />
+                    <img className='gig-img' src={gig.imgUrls[0]} alt="gig-img" />
                 </div>
-                <div className="stars-input flex row">
-                    {renderStarsInput()}
+                <div className="review-submission">
+                    <div className="stars-input flex row">
+                        {renderStarsInput()}
+                    </div>
+                    <textarea
+                        type='text'
+                        placeholder="Please describe your experience with the seller, was the final version of the product exactly as you wanted it to be?"
+                        value={reviewText}
+                        onChange={e => setReviewText(e.target.value)}
+                    />
                 </div>
-                <textarea
-                    type='text'
-                    placeholder="Please describe your experience with the seller, was the final version of the product exactly as you wanted it to be?"
-                    value={reviewText}
-                    onChange={e => setReviewText(e.target.value)}
-                />
                 <button className="submit" onClick={submitReview}>Submit</button>
             </div>
         </div>
