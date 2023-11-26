@@ -216,6 +216,7 @@ export function AppHeader() {
             {loggedinUser ? (
               <>
                 <li
+                  className='orders-info'
                   onClick={(e) => {
                     e.stopPropagation()
                     setShowOrdersDropdown(!showOrdersDropdown)

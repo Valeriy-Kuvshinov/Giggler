@@ -12,7 +12,6 @@ export const orderBackendService = {
     getById,
     getOrderDetails,
     getActionDate,
-    getDueDate,
     getOrderClass
 }
 
@@ -67,50 +66,40 @@ async function getOrderDetails(orderId, role = 'buyer') {
 function getActionDate(order) {
     let prefix = ''
     let dateStr = ''
-    const months = ['January', 'February', 'March', 'April',
-        'May', 'June', 'July', 'August',
-        'September', 'October', 'November', 'December']
+    const months = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December']
+    let dateToUse
 
     if (order.orderState === 'reviewed') {
-        prefix = 'Reviewed at '
-        dateStr = new Date(order.reviewedAt).toLocaleDateString()
+        prefix = 'Reviewed at'
+        dateToUse = new Date(order.reviewedAt)
+    } else if (order.orderState === 'completed') {
+        prefix = 'Completed at'
+        dateToUse = new Date(order.completedAt)
+    } else if (order.orderState === 'denied') {
+        prefix = 'Rejected at'
+        dateToUse = new Date(order.deniedAt)
+    } else if (order.orderState === 'accepted') {
+        prefix = 'Accepted at'
+        dateToUse = new Date(order.acceptedAt)
+    } else if (order.orderState === 'pending') {
+        prefix = 'Received at'
+        dateToUse = new Date(order.createdAt)
     }
-    if (order.orderState === 'completed') {
-        prefix = 'Completed at '
-        dateStr = new Date(order.completedAt).toLocaleDateString()
-    }
-    if (order.orderState === 'denied') {
-        prefix = 'Rejected at '
-        dateStr = new Date(order.deniedAt).toLocaleDateString()
-    }
-    if (order.orderState === 'accepted') {
-        prefix = 'Accepted at '
-        dateStr = new Date(order.acceptedAt).toLocaleDateString()
-    }
-    if (order.orderState === 'pending') {
-        prefix = 'Received at '
-        dateStr = new Date(order.createdAt).toLocaleDateString()
-    }
-    dateStr = months[new Date(order.createdAt).getMonth()] + ' ' + (new Date(order.createdAt).getDay() + 1)
-    if ((new Date(order.createdAt).getDay() + 1) === 3 || (new Date(order.createdAt).getDay() + 1) === 23) {
-        dateStr += 'rd'
-    }
-    else if ((new Date(order.createdAt).getDay() + 1) === 2 || (new Date(order.createdAt).getDay() + 1) === 22) {
-        dateStr += 'nd'
-    }
-    else if ((new Date(order.createdAt).getDay() + 1) === 1 || (new Date(order.createdAt).getDay() + 1) === 21 || (new Date(order.createdAt).getDay() + 1) === 31) {
-        dateStr += 'st'
-    }
-    else dateStr += 'th'
-    return { prefix, dateStr }
-}
 
-function getDueDate(acceptedDate, daysToMake) {
-    let days = 0
-    if (daysToMake === 'Express 24H') days = 1
-    else if (daysToMake === 'Up to 3 days') days = 3
-    else if (daysToMake === 'Up to 7 days') days = 7
-    return new Date(acceptedDate.getTime() + days * 24 * 60 * 60 * 1000).toLocaleDateString()
+    // Common formatting for the date
+    dateStr = months[dateToUse.getMonth()] + ' ' + (dateToUse.getDate())
+    if (dateToUse.getDate() === 3 || dateToUse.getDate() === 23) {
+        dateStr += 'rd'
+    } else if (dateToUse.getDate() === 2 || dateToUse.getDate() === 22) {
+        dateStr += 'nd'
+    } else if (dateToUse.getDate() === 1 || dateToUse.getDate() === 21 || dateToUse.getDate() === 31) {
+        dateStr += 'st'
+    } else {
+        dateStr += 'th'
+    }
+
+    return { prefix, dateStr }
 }
 
 function getOrderClass(orderState) {

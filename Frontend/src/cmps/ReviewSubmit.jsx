@@ -6,6 +6,7 @@ import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
 import { reviewService } from '../services/review.service.js'
 import { userService } from '../services/user.service.js'
 import { socketService } from '../services/socket.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { saveOrder } from '../store/order.actions.js'
 import { saveGig } from '../store/gig.actions.js'
 
@@ -67,9 +68,33 @@ export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
 
             setReviewText('')
             setReviewRating(0)
+
+            onClose()
+            showSuccessMsg(
+                {
+                    title: 'ORDER REVIEWED',
+                    body: `Thank you for the feedback!`,
+                },
+                {
+                    userMsgLeft: '55%',
+                    messageAreaPadding: '2em 1.5em 2em 7em',
+                    msgStatusTranslateX: '-12em',
+                }
+            )
         }
         catch (err) {
             console.log('Error while submitting the review:', err)
+            showErrorMsg(
+                {
+                    title: 'FAILED TO REVIEW',
+                    body: `Please try again later.`,
+                },
+                {
+                    userMsgLeft: '55%',
+                    messageAreaPadding: '1em 0.5em 1em 6em',
+                    msgStatusTranslateX: '-13em',
+                }
+            )
         }
     }
 

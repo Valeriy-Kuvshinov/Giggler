@@ -116,12 +116,14 @@ export function BuyerOrders({ loggedInUser, onClose }) {
                 <div key={order._id} className="buyer-order grid">
                   <div className="order-image">
                     <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
-                    {(order.orderState === 'accepted' || order.orderState === 'completed') && (
-                      <span className="invoice-icon" title="Order Invoice"
-                        onClick={(event) => onClickReceipt(event, order)}>
-                        <SvgIcon iconName={'receiptIcon'} />
-                      </span>
-                    )}
+                    {(order.orderState === 'accepted' ||
+                      order.orderState === 'completed' ||
+                      order.orderState === 'reviewed') && (
+                        <span className="invoice-icon" title="Order Invoice"
+                          onClick={(event) => onClickReceipt(event, order)}>
+                          <SvgIcon iconName={'receiptIcon'} />
+                        </span>
+                      )}
                     {(order.orderState === 'completed') && (
                       <span className="review-icon" title="Review Order"
                         onClick={(event) => onClickReview(event, order)}>
