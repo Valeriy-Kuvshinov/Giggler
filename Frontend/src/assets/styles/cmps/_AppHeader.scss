@@ -15,6 +15,11 @@
   }
 
   .main-nav {
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
 
     .logo-dropdown-area,
     .nav-links {
@@ -209,10 +214,6 @@
                 max-height: 48px;
                 text-overflow: ellipsis;
                 overflow: hidden;
-
-                &:hover {
-                  text-decoration: none;
-                }
               }
 
               .seller-name {
@@ -330,10 +331,6 @@
             padding: 10px 15px;
             color: $clrSecondary5;
             font-weight: 400;
-
-            &:hover {
-              text-decoration: none;
-            }
           }
 
           button {
