@@ -73,10 +73,12 @@ async function save(gig) {
       ownerId = new ObjectId(ownerId)
       gigToSave.ownerId = ownerId
       let likedByUsers = [...gigToSave.likedByUsers]
-      likedByUsers = likedByUsers.map(userId => userId = new ObjectId(userId))
+      likedByUsers = likedByUsers.map(
+        (userId) => (userId = new ObjectId(userId))
+      )
       gigToSave.likedByUsers = [...likedByUsers]
       let reviews = [...gigToSave.reviews]
-      reviews = reviews.map(reviewId => reviewId = new ObjectId(reviewId))
+      reviews = reviews.map((reviewId) => (reviewId = new ObjectId(reviewId)))
       gigToSave.reviews = [...reviews]
 
       const id = gig._id
@@ -105,80 +107,82 @@ async function save(gig) {
   }
 }
 
-function _buildCriteria(filterBy) {
-  const criteria = {}
+// function _buildCriteria(filterBy) {
+//   const criteria = {}
 
-  if (filterBy.search) {
-    criteria.$or = [
-      { title: { $regex: filterBy.search, $options: 'i' } },
-      { description: { $regex: filterBy.search, $options: 'i' } },
-    ]
-  }
-  if (filterBy.cat) {
-    criteria.category = { $regex: filterBy.cat, $options: 'i' }
-  }
-  if (filterBy.tag) {
-    criteria.tags = { $regex: filterBy.tag, $options: 'i' }
-  }
-  if (filterBy.time) {
-    criteria.daysToMake = { $regex: filterBy.time, $options: 'i' }
-  }
-  if (filterBy.min) {
-    criteria.price = { ...criteria.price, $gte: parseInt(filterBy.min) }
-  }
-  if (filterBy.max) {
-    criteria.price = { ...criteria.price, $lte: parseInt(filterBy.max) }
-  }
-  if (filterBy.min && filterBy.max) {
-    criteria.price = {
-      $gte: parseInt(filterBy.min),
-      $lte: parseInt(filterBy.max)
-    }
-  }
-  // // Uncomment and implement the logic for 'level' if needed
-  // if (filterBy.level) {
-  //   // You will need to ensure that _findUsersWithLevel is defined and available to use here.
-  //   // This function must return an array of user IDs that match the level.
-  //   const matchingUsers = await _findUsersWithLevel(filterBy.level)
-  //   criteria.ownerId = { $in: matchingUsers }
-  // }
-  return criteria
-}
+//   if (filterBy.search) {
+//     criteria.$or = [
+//       { title: { $regex: filterBy.search, $options: 'i' } },
+//       { description: { $regex: filterBy.search, $options: 'i' } },
+//     ]
+//   }
+//   if (filterBy.cat) {
+//     criteria.category = { $regex: filterBy.cat, $options: 'i' }
+//   }
+//   if (filterBy.tag) {
+//     criteria.tags = { $regex: filterBy.tag, $options: 'i' }
+//   }
+//   if (filterBy.time) {
+//     criteria.daysToMake = { $regex: filterBy.time, $options: 'i' }
+//   }
+//   if (filterBy.min !== undefined) {
+//     criteria.price = { ...criteria.price, $gte: parseInt(filterBy.min) }
+//   }
+//   if (filterBy.max !== undefined) {
+//     criteria.price = { ...criteria.price, $lte: parseInt(filterBy.max) }
+//   }
+//   // if (filterBy.min && filterBy.max) {
+//   //   criteria.price = {
+//   //     $gte: parseInt(filterBy.min),
+//   //     $lte: parseInt(filterBy.max)
+//   //   }
+//   // }
+//   // // Uncomment and implement the logic for 'level' if needed
+//   if (filterBy.level) {
+//     // You will need to ensure that _findUsersWithLevel is defined and available to use here.
+//     // This function must return an array of user IDs that match the level.
+//     const matchingUsers = await _findUsersWithLevel(filterBy.level)
+//     criteria.ownerId = { $in: matchingUsers }
+//   }
+//   return criteria
+// }
 
 function _buildPipeline(filterBy) {
   const pipeline = []
 
-  const match = {
+  const criteria = {
     $match: {},
   }
-
+  console.log('FILTERBY: ', filterBy)
   const { search, cat, level, min, max, tag, time } = filterBy
 
   if (search) {
-    match.$match.$or = [
+    criteria.$match.$or = [
       { title: { $regex: search, $options: 'i' } },
       { description: { $regex: search, $options: 'i' } },
     ]
   }
 
   if (cat) {
-    match.$match.category = { $regex: cat, $options: 'i' }
+    criteria.$match.category = { $regex: cat, $options: 'i' }
   }
+
+  criteria.$match.price = {}
 
   if (min) {
-    match.$match.price.$gte = parseInt(min)
-  }
+    criteria.$match.price.$gte = parseInt(min)
+  } else criteria.$match.price.$gte = parseInt(0)
 
   if (max) {
-    match.$match.price.$lte = parseInt(max)
-  }
+    criteria.$match.price.$lte = parseInt(max)
+  } else criteria.$match.price.$lte = parseInt(10000)
 
   if (tag) {
-    match.$match.tags = { $regex: tag, $options: 'i' }
+    criteria.$match.tags = { $regex: tag, $options: 'i' }
   }
 
   if (time) {
-    match.$match.daysToMake = { $regex: time, $options: 'i' }
+    criteria.$match.daysToMake = { $regex: time, $options: 'i' }
   }
 
   if (level) {
@@ -207,8 +211,8 @@ function _buildPipeline(filterBy) {
   //   $limit: itemsPerPage,
   // })
 
-  if (Object.keys(match.$match).length > 0) {
-    pipeline.push(match)
+  if (Object.keys(criteria.$match).length > 0) {
+    pipeline.push(criteria)
   }
 
   return pipeline

@@ -13,7 +13,7 @@ export function GigFilter({
   onDeleteFilter,
   setMobileFilter,
   mobileState,
-  setMobileState
+  onMobileFilterState
 }) {
   const [isMobile, setIsMobile] = useState(
     window.innerWidth <= 480 ? true : false
@@ -23,9 +23,6 @@ export function GigFilter({
   let shadowStart = 139
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
-  function onMobileFilter() {
-    setMobileState((prevState) => !prevState)
-  }
 
   useEffect(() => {
     handleScroll()
@@ -55,7 +52,7 @@ export function GigFilter({
       <main className={`gig-filter ${isMobile ? 'mobileStyles' : ''}`}>
         <section className="floating-top-bar layout-row">
           <button
-            onClick={() => onMobileFilter()}
+            onClick={() => onMobileFilterState()}
             className={`btn-mobile-filter  ${filterBy.level ? 'border' : ''}`}
           >
             Select Filter
@@ -64,8 +61,8 @@ export function GigFilter({
           {mobileState && (
             <MobileFilter
               filterBy={filterBy}
-              onMobileFilter={onMobileFilter}
               setMobileFilter={setMobileFilter}
+              onMobileFilterState={onMobileFilterState}
             />
           )}
         </section>

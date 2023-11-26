@@ -143,8 +143,12 @@ export function GigIndex({ onMobileFilter }) {
     setFilter({ ...filterBy, page: newPage })
   }
 
-  const categorySelect = filterBy.cat ? filterBy.cat : 'category'
+  function onMobileFilterState() {
+    setMobileState((prevState) => !prevState)
+  }
 
+
+  const categorySelect = filterBy.cat ? filterBy.cat : 'category'
   return (
     <main
       className="gig-index flex column full"
@@ -159,7 +163,7 @@ export function GigIndex({ onMobileFilter }) {
         onMobileFilter={onMobileFilter}
         setMobileFilter={setMobileFilter}
         mobileState={mobileState}
-        setMobileState={setMobileFilter}
+        onMobileFilterState={onMobileFilterState}
       />
       <GigList gigs={currentGigs} />
       <Pagination

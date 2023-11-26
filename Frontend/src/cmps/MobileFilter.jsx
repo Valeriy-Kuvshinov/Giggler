@@ -11,7 +11,11 @@ import {
 import { RenderMobileRadioButtons } from './RenderMobileRadioButtons'
 import { useEffect, useState } from 'react'
 
-export function MobileFilter({ filterBy, onMobileFilter, setMobileFilter }) {
+export function MobileFilter({
+  filterBy,
+  setMobileFilter,
+  onMobileFilterState,
+}) {
   const [tempFilterState, setTempFilterState] = useState(false)
   const [fields, setFields, handleChange] = useForm(
     filterBy || gigService.getDefaultFilter
@@ -26,8 +30,8 @@ export function MobileFilter({ filterBy, onMobileFilter, setMobileFilter }) {
       fields.cat ||
       fields.tag ||
       fields.level ||
-      fields.min !== undefined ||
-      fields.max !== undefined ||
+      fields.min ||
+      fields.max ||
       fields.time
     )
   }
@@ -36,13 +40,13 @@ export function MobileFilter({ filterBy, onMobileFilter, setMobileFilter }) {
     event.preventDefault()
     console.log('Form submitted with fields:', fields)
     if (checkFields()) setMobileFilter(fields)
-    onMobileFilter()
+    onMobileFilterState()
   }
   return (
     <main className="mobile-filter">
       <section className="mobile-filter-header">
         <div className="wrapper">
-          <span onClick={() => onMobileFilter()} className="exit-filter">
+          <span onClick={() => onMobileFilterState()} className="exit-filter">
             <SvgIcon iconName={'remove'} />
           </span>
           <span>All filters</span>
