@@ -156,3 +156,39 @@ input[type='number']::-moz-number-spin-down {
     background-color: $clrSecondary5;
   }
 }
+
+.modal-wrapper {
+  align-items: center;
+  background-color: rgba(0, 0, 0, .75);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+
+  .close-modal {
+    color: $clrSecondary11;
+    font-size: 24px;
+    position: absolute;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $clrPrimary1;
+    right: 5px;
+    top: 5px;
+    box-shadow: 0.025em 0.025em 0.25em 0.0025em $clrSecondary8;
+    transition: color 0.3s, background-color 0.3s;
+
+    &:hover {
+      background: $clrSecondary2;
+      color: $clrSecondary8;
+    }
+  }
+}

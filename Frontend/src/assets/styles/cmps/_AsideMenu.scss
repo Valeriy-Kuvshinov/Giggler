@@ -167,6 +167,7 @@
                     gap: 16px;
                     font-weight: 100;
                     border-bottom: 1px solid $clrSecondary2;
+                    overflow-x: hidden;
 
                     &:last-child {
                       border: none;
@@ -238,9 +239,10 @@
                     }
 
                     .seller-name {
-                      grid-column: 1;
+                      grid-column: 1 / -1;
                       grid-row: -1;
-                      font-size: 14px;
+                      font-size: 16px;
+                      align-self: center;
                     }
 
                     .order-status {
@@ -263,6 +265,10 @@
 
                       &.completed {
                         color: $clr13;
+                      }
+
+                      &.reviewed {
+                        color: $clrSecondary4;
                       }
                     }
                   }

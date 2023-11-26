@@ -6,11 +6,11 @@ import { saveOrder } from '../../store/order.actions.js'
 import { updateUser } from '../../store/user.actions.js'
 import { socketService } from '../../services/socket.service.js'
 
-export function SellerOrders({ user, displayedOrders }) {
+export function SellerOrders({ loggedInUser, displayedOrders }) {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
     function updateLastDeliveryForUser() {
-        const updatedUser = { ...user, lastDelivery: Date.now() }
+        const updatedUser = { ...loggedInUser, lastDelivery: Date.now() }
         updateUser(updatedUser)
     }
 
@@ -22,9 +22,9 @@ export function SellerOrders({ user, displayedOrders }) {
                 acceptedAt: Date.now()
             }
             await saveOrder(updatedOrder)
-            socketService.emit('notify_buyer_accepted', { userId: updatedOrder.buyerId, user })
-
-        } catch (err) {
+            socketService.emit('notify_buyer_accepted', { userId: updatedOrder.buyerId, user: loggedInUser })
+        } 
+        catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
         }
     }
@@ -38,9 +38,9 @@ export function SellerOrders({ user, displayedOrders }) {
                 reasonForDenial: reason
             }
             await saveOrder(updatedOrder)
-            socketService.emit('notify_buyer_denied', { userId: updatedOrder.buyerId, user })
-
-        } catch (err) {
+            socketService.emit('notify_buyer_denied', { userId: updatedOrder.buyerId, user: loggedInUser })
+        } 
+        catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
         }
     }
@@ -55,9 +55,9 @@ export function SellerOrders({ user, displayedOrders }) {
             updateLastDeliveryForUser()
 
             await saveOrder(updatedOrder)
-            socketService.emit('notify_buyer_completed', { userId: updatedOrder.buyerId, user })
-
-        } catch (err) {
+            socketService.emit('notify_buyer_completed', { userId: updatedOrder.buyerId, user: loggedInUser })
+        } 
+        catch (err) {
             console.error(`Error completing order ${order._id}:`, err)
         }
     }

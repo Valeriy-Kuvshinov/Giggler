@@ -31,11 +31,13 @@ export function UserMsg() {
     socketService.on('notify-buyer-accepted', orderAcceptedNotification)
     socketService.on('notify-buyer-denied', orderDeniedNotification)
     socketService.on('notify-buyer-completed', orderCompletedNotification)
+    socketService.on('notify-seller-order-reviewed', orderReviewedNotification)
     socketService.on('notify-seller-new-order', newOrderNotification)
     return () => {
       socketService.off('notify-buyer-accepted', orderAcceptedNotification)
       socketService.off('notify-buyer-denied', orderDeniedNotification)
       socketService.off('notify-buyer-completed', orderCompletedNotification)
+      socketService.on('notify-seller-order-reviewed', orderReviewedNotification)
       socketService.off('notify-seller-new-order', newOrderNotification)
     }
   }, [])
@@ -71,6 +73,19 @@ export function UserMsg() {
       {
         title: 'ORDER COMPLETED',
         body: `${user.username} has completed your order!`,
+      },
+      {
+        userMsgLeft: '50%',
+        messageAreaPadding: '2em 1.5em 2em 7em',
+        msgStatusTranslateX: '-14em',
+      }
+    )
+  }
+  function orderReviewedNotification(user) {
+    showSuccessMsg(
+      {
+        title: 'ORDER REVIEWED',
+        body: `${user.username} has reviewed your order!`,
       },
       {
         userMsgLeft: '50%',

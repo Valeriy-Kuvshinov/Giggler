@@ -1,3 +1,4 @@
+// Main page media query
 .home-wrapper {
   .welcome-wrapper {
     @media(max-width: 899px) {
@@ -311,6 +312,8 @@
   }
 }
 
+// Header media query
+
 .app-header {
   @media (min-width: 1250px) {
     .carousel-btn {
@@ -428,6 +431,8 @@
   }
 }
 
+// Login / Signup modal media query
+
 .user-login-wrapper {
   @media (max-width: 900px) {
     width: 400px;
@@ -450,6 +455,8 @@
   }
 }
 
+// Page dimmer media query
+
 .dimmed-content {
   @media (max-width:600px) {
     inset: 134px 0px 0px;
@@ -459,6 +466,8 @@
     inset: 80px 0px 0px;
   }
 }
+
+// Dashboard page media query
 
 .dashboard-page {
   @media(max-width: 600px) {
@@ -545,6 +554,8 @@
   }
 }
 
+// Explore page media query
+
 .gig-index {
   @media (max-width: 1400px) {
 
@@ -576,6 +587,8 @@
     }
   }
 }
+
+// Gig page media query
 
 .gig-details {
   @media (max-width: 900px) {
@@ -647,6 +660,8 @@
   }
 }
 
+// Profile page media query
+
 .profile-page {
   .user-profile {
     @media (max-width: 1240px) {
@@ -689,6 +704,8 @@
   }
 }
 
+// User notification / message media query
+
 .user-msg {
   @media (max-width: 600px) {
     left: 0 !important;
@@ -712,6 +729,8 @@
     }
   }
 }
+
+// User chat media query
 
 .chat-box-wrapper {
   .chat-box {
@@ -765,6 +784,8 @@
   }
 }
 
+// Footer media query
+
 .desktop-footer {
   @media (max-width: 1400px) {
     padding: 1em 2em;
@@ -793,5 +814,230 @@
 
   @media (min-width: 1401px) {
     padding: 1em 0em;
+  }
+}
+
+// Invoice, Review, Sharing a gig modals media query
+
+.modal-wrapper {
+  @media(max-width:400px) {
+
+    .invoice-modal,
+    .review-modal,
+    .share-gig-modal {
+      width: 100%;
+    }
+
+    .invoice-modal {
+      .invoice-header {
+        h3 {
+          font-size: 18px;
+          width: 160px;
+        }
+
+        button {
+          i {
+            width: 36px;
+            height: 36px;
+          }
+        }
+      }
+
+      .invoice-body {
+        .info-div {
+          flex-direction: row;
+          gap: 0.5em;
+          padding: 0.5em 0 0.5em 0;
+        }
+
+        .body-start {
+          grid-template-rows: 1fr 1fr;
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-row: 1;
+            }
+
+            &:nth-of-type(2) {
+              grid-row: 2;
+            }
+          }
+        }
+
+        .body-middle {
+          grid-template-rows: auto auto 1fr 1fr 1fr;
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-row: 1 / 2;
+            }
+
+            &:nth-of-type(2) {
+              grid-row: 3;
+            }
+
+            &:nth-of-type(3) {
+              grid-row: 4;
+            }
+
+            &:nth-of-type(4) {
+              grid-row: 5;
+            }
+          }
+        }
+
+        .body-end {
+          grid-template-rows: repeat(3, 1fr);
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-row: 1;
+            }
+
+            &:nth-of-type(2) {
+              grid-row: 2;
+            }
+
+            &:nth-of-type(3) {
+              grid-row: 3;
+            }
+          }
+        }
+      }
+    }
+
+
+    .review-modal {
+      .reviewed-gig {
+        .title-user-info {
+
+          h3,
+          h4 {
+            font-size: 16px;
+          }
+        }
+
+        .gig-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+  }
+
+  @media(min-width: 401px) {
+
+    .invoice-modal,
+    .review-modal,
+    .share-gig-modal {
+      width: 70vw;
+    }
+
+    .invoice-modal {
+      .invoice-header {
+        h3 {
+          font-size: 21px;
+          width: fit-content;
+        }
+
+        button {
+          i {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+
+      .invoice-body {
+        gap: 1em;
+
+        h2 {
+          border-bottom: 1px solid $clrSecondary5;
+        }
+
+        .info-div {
+          flex-direction: column;
+        }
+
+        .body-start {
+          grid-template-columns: 1fr 1fr;
+          gap: 1em;
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-column: 1;
+            }
+
+            &:nth-of-type(2) {
+              grid-column: 2;
+            }
+          }
+        }
+
+        .body-middle {
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: 1fr 1fr;
+          gap: 1em;
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-column: 1 / -1;
+              grid-row: 1;
+            }
+
+            &:nth-of-type(2) {
+              grid-column: 1;
+              grid-row: 2;
+            }
+
+            &:nth-of-type(3) {
+              grid-column: 2;
+              grid-row: 2;
+            }
+
+            &:nth-of-type(4) {
+              grid-column: 3;
+              grid-row: 2;
+            }
+          }
+        }
+
+        .body-end {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1em;
+
+          .info-div {
+            &:nth-of-type(1) {
+              grid-column: 1;
+            }
+
+            &:nth-of-type(2) {
+              grid-column: 2;
+            }
+
+            &:nth-of-type(3) {
+              grid-column: 3;
+            }
+          }
+        }
+      }
+    }
+
+    .review-modal {
+      .reviewed-gig {
+        .title-user-info {
+
+          h3,
+          h4 {
+            font-size: 21px;
+          }
+        }
+
+        .gig-img {
+          width: 150px;
+          height: 120px;
+        }
+      }
+    }
   }
 }

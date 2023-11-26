@@ -39,9 +39,8 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
 
     useEffect(() => {
         function handleDropdownClick(event) {
-            if (
-                dropdownMenuRef.current && !dropdownMenuRef.current.contains(event.target)
-            ) {
+            if (dropdownMenuRef.current &&
+                !dropdownMenuRef.current.contains(event.target)) {
                 setDropdownVisible(false)
             }
         }

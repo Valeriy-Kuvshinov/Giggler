@@ -1,6 +1,6 @@
 import { ProgressCircle } from "./ProgressCircle.jsx"
 
-export function SellerSummary({ user, displayedOrders }) {
+export function SellerSummary({ loggedInUser, displayedOrders }) {
     const parseDeliveryTime = (deliveryTimeString) => {
         const timeValue = parseInt(deliveryTimeString.split(' ')[0], 10)
         const timeUnit = deliveryTimeString.split(' ')[1]
@@ -84,7 +84,7 @@ export function SellerSummary({ user, displayedOrders }) {
                 <div className="info-area flex">
                     <div className="info-cell flex column">
                         <h4>Net income</h4>
-                        <p>{`$${user.balance}`}</p>
+                        <p>{`$${loggedInUser.balance}`}</p>
                     </div>
                     <div className="info-cell flex column">
                         <h4>Yearly revenue</h4>

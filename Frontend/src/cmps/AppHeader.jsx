@@ -216,6 +216,7 @@ export function AppHeader() {
             {loggedinUser ? (
               <>
                 <li
+                  className='orders-info'
                   onClick={(e) => {
                     e.stopPropagation()
                     setShowOrdersDropdown(!showOrdersDropdown)
@@ -223,7 +224,7 @@ export function AppHeader() {
                   ref={userInfoRef}
                 >
                   <button
-                    className="orders"
+                    className="header-btn orders"
                     style={{ color: headerStyles.color }}
                   >
                     Orders
@@ -265,7 +266,7 @@ export function AppHeader() {
 
                 <li>
                   <button
-                    className="login"
+                    className="header-btn login"
                     onClick={openLogin}
                     style={{ color: headerStyles.color }}
                   >
@@ -275,7 +276,7 @@ export function AppHeader() {
 
                 <li>
                   <button
-                    className="join"
+                    className="header-btn join"
                     onClick={openSignup}
                     style={joinButtonStyles}
                   >

@@ -1,37 +1,11 @@
-.invoice-modal-wrapper {
-    align-items: center;
-    background-color: rgba(0, 0, 0, .75);
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 10;
-
+.modal-wrapper {
     .invoice-modal {
         border-radius: 0.5em;
         max-width: 620px;
-        width: 70vw;
         background-color: $clrPrimary1;
-        height: fit-content;
         position: relative;
         z-index: 10;
-        padding: 0.75em 0.75em 0.75em 0.75em;
-
-        .close-modal {
-            color: $clrSecondary11;
-            font-size: 20px;
-            height: 50px;
-            padding: 5px 5px 7px;
-            position: absolute;
-            right: 5px;
-            top: 0;
-            width: 40px;
-            font-weight: 700;
-            background: none;
-        }
+        padding: 0.75em;
 
         .invoice-header {
             position: absolute;
@@ -44,32 +18,36 @@
             h1 {
                 letter-spacing: -3px;
                 color: $clrSecondary8;
+                height: fit-content;
+                align-self: center;
+
+                .dot {
+                    i {
+                        align-self: flex-end;
+                        cursor: default;
+                    }
+                }
             }
 
             button {
                 background: none;
-
-                i {
-                    width: 25px;
-                    height: 25px;
-                }
+                height: fit-content;
+                align-self: center;
             }
 
             h3 {
-                align-self: end;
-                font-size: 21px;
-                padding-bottom: 0.35em;
+                height: fit-content;
+                align-self: center;
                 color: $clrSecondary5;
+                text-align: center;
             }
         }
 
         .invoice-body {
-            margin-top: 3em;
-            gap: 1em;
+            margin-top: 3.5em;
 
             h2 {
                 font-size: 16px;
-                border-bottom: 1px solid $clrSecondary5;
                 width: fit-content;
                 color: $clrSecondary5;
             }
@@ -77,62 +55,6 @@
             p {
                 color: $clrSecondary6;
                 margin: 0;
-            }
-
-            .body-start {
-                grid-template-columns: 1fr 1fr;
-                gap: 1em;
-
-                .info-div-one {
-                    grid-column: 1;
-                }
-
-                .info-div-two {
-                    grid-column: 2;
-                }
-            }
-
-            .body-middle {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: 1fr 1fr;
-                gap: 1em;
-
-                .info-div-one {
-                    grid-column: 1 / -1;
-                    grid-row: 1;
-                }
-
-                .info-div-two {
-                    grid-column: 1;
-                    grid-row: 2;
-                }
-
-                .info-div-three {
-                    grid-column: 2;
-                    grid-row: 2;
-                }
-
-                .info-div-four {
-                    grid-column: 3;
-                    grid-row: 2;
-                }
-            }
-
-            .body-end {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1em;
-
-                .info-div-one {
-                    grid-column: 1;
-                }
-
-                .info-div-two {
-                    grid-column: 2;
-                }
-
-                .info-div-three {
-                    grid-column: 3;
-                }
             }
         }
     }
