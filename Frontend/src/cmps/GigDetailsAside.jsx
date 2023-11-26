@@ -1,27 +1,17 @@
 import { useModal } from '../customHooks/ModalContext.jsx'
-import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { gigService, packages } from '../services/gig.service.js'
+import { packages } from '../services/gig.service.js'
 
-import { ShareGigModal } from './ShareGigModal.jsx'
+import { GigDetailsInteractions } from './GigDetailsInteractions.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-export function GigDetailsAside({ gig, onGigChange, setChatState }) {
-  const loggedInUser = useSelector((storeState) => storeState.userModule.user)
-  const navigate = useNavigate()
-
-  const { openLogin } = useModal()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+export function GigDetailsAside({ loggedInUser, gig, onGigChange, setChatState }) {
   const [selectedPackage, setSelectedPackage] = useState('basic')
-  const [isLiked, setIsLiked] = useState(
-    loggedInUser && gig.likedByUsers.includes(loggedInUser._id)
-  )
 
-  useEffect(() => {
-    setIsLiked(loggedInUser && gig.likedByUsers.includes(loggedInUser._id))
-  }, [loggedInUser, gig])
+  const navigate = useNavigate()
+  const { openLogin } = useModal()
 
   function onContinue() {
     if (!loggedInUser) {
@@ -31,58 +21,13 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
     navigate(`/purchase/${gig._id}/?package=${selectedPackage}`)
   }
 
-  function shareGig() {
-    setIsModalOpen(true)
-  }
-
-  function closeModal() {
-    setIsModalOpen(false)
-  }
-
-  function likeGig() {
-    if (!loggedInUser) {
-      openLogin()
-      return
-    }
-    const gigToSave = { ...gig }
-
-    if (gigToSave.likedByUsers.includes(loggedInUser._id)) {
-      gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
-        (liker) => liker !== loggedInUser._id
-      )
-      setIsLiked(false)
-
-      gigService.save(gigToSave).then(() => {
-        onGigChange(gigToSave)
-      })
-    } else {
-      gigToSave.likedByUsers.push(loggedInUser._id)
-
-      setIsLiked(true)
-
-      gigService.save(gigToSave).then(() => {
-        onGigChange(gigToSave)
-      })
-    }
-  }
-
   return (
     <section className="gig-details-aside">
-      <div className="gig-interactions flex">
-        <span className="heart" onClick={(e) => likeGig(e)}>
-          {isLiked ? (
-            <SvgIcon iconName={'heartLiked'} />
-          ) : (
-            <SvgIcon iconName={'heart'} />
-          )}
-        </span>
-
-        <span className="liked-count flex">{gig.likedByUsers.length}</span>
-
-        <button onClick={shareGig} className="flex" title="share the gig">
-          <SvgIcon iconName={'shareSocialMediaIcon'} />
-        </button>
-      </div>
+      <GigDetailsInteractions
+        gig={gig}
+        loggedInUser={loggedInUser}
+        onGigChange={onGigChange}
+      />
 
       <div className="package-tabs flex">
         <button
@@ -158,7 +103,6 @@ export function GigDetailsAside({ gig, onGigChange, setChatState }) {
           Contact me
         </button>
       </div>
-      {isModalOpen && <ShareGigModal onClose={closeModal} />}
     </section>
   )
 }

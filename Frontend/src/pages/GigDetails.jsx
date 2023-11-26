@@ -77,7 +77,9 @@ export function GigDetails() {
               <GigDetailsHeader gig={gig} owner={gigOwner} />
               <GigDetailsAside
                 gig={gig}
+                loggedInUser={loggedInUser}
                 onGigChange={(updatedGig) => setGig(updatedGig)}
+                setChatState={setChatState}
               />
               <section className="about-gig" style={{ overflow: 'hidden' }}>
                 <h3>About This Gig</h3>
@@ -101,6 +103,7 @@ export function GigDetails() {
             </main>
             <GigDetailsAside
               gig={gig}
+              loggedInUser={loggedInUser}
               onGigChange={(updatedGig) => setGig(updatedGig)}
               setChatState={setChatState}
             />
