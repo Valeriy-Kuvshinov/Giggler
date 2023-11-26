@@ -118,7 +118,7 @@ export function setupSocketAPI(http) {
         `notify_seller_order_reviewed from socket [id: ${socket.id}], on user ${userId}`
       )
       emitToUser({
-        type: 'notify_seller_order_reviewed',
+        type: 'notify-seller-order-reviewed',
         data: user,
         userId,
       })
