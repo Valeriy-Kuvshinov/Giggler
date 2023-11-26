@@ -84,6 +84,7 @@ export function BuyerOrders({ loggedInUser, onClose }) {
     event.stopPropagation()
     const orderedGigData = orderDetails[order._id].gigData
     setSelectedGig(orderedGigData)
+    setSelectedOrder(order)
     setIsRevieweModalOpen(true)
   }
 
@@ -148,7 +149,8 @@ export function BuyerOrders({ loggedInUser, onClose }) {
           })}
       </div>
       {isInvoiceModalOpen && <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
-      {isReviewModalOpen && <ReviewSubmit gig={selectedGig} loggedInUser={loggedInUser} onClose={closeReview} />}
+      {isReviewModalOpen && <ReviewSubmit gig={selectedGig}
+        loggedInUser={loggedInUser} order={selectedOrder} onClose={closeReview} />}
     </section>
   )
 }

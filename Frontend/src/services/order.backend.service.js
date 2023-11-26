@@ -71,6 +71,10 @@ function getActionDate(order) {
         'May', 'June', 'July', 'August',
         'September', 'October', 'November', 'December']
 
+    if (order.orderState === 'reviewed') {
+        prefix = 'Reviewed at '
+        dateStr = new Date(order.reviewedAt).toLocaleDateString()
+    }
     if (order.orderState === 'completed') {
         prefix = 'Completed at '
         dateStr = new Date(order.completedAt).toLocaleDateString()
@@ -114,7 +118,8 @@ function getOrderClass(orderState) {
         'pending': 'pending user-order',
         'accepted': 'accepted user-order',
         'denied': 'denied user-order',
-        'completed': 'completed user-order'
+        'completed': 'completed user-order',
+        'reviewed': 'reviewed user-order'
     }
     return orderStateClasses[orderState] || ''
 }

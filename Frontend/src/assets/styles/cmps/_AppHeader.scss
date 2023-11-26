@@ -237,6 +237,10 @@
               &.completed {
                 color: $clr13;
               }
+
+              &.reviewed {
+                color: $clrSecondary4;
+              }
             }
           }
         }

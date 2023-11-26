@@ -63,6 +63,7 @@ export function setupSocketAPI(http) {
       socket.join('watching:' + userId)
     })
 
+    // User-msg
     socket.on('notify_buyer_accepted', (data) => {
       const { userId, user } = data
       loggerService.info(
@@ -106,6 +107,18 @@ export function setupSocketAPI(http) {
       )
       emitToUser({
         type: 'notify-seller-new-order',
+        data: user,
+        userId,
+      })
+    })
+
+    socket.on('notify_seller_order_reviewed', (data) => {
+      const { userId, user } = data
+      loggerService.info(
+        `notify_seller_order_reviewed from socket [id: ${socket.id}], on user ${userId}`
+      )
+      emitToUser({
+        type: 'notify_seller_order_reviewed',
         data: user,
         userId,
       })

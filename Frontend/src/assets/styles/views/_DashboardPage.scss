@@ -439,6 +439,10 @@
                                 &.completed {
                                     background: $clr12;
                                 }
+
+                                &.reviewed {
+                                    background: $clrSecondary5;
+                                }
                             }
                         }
                     }

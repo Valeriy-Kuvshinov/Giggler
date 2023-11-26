@@ -56,13 +56,12 @@ export function DashboardPage() {
         <main className="dashboard-page full flex column">
             <section className="dashboard-container">
                 <SellerSummary
-                    user={loggedInUser}
+                    loggedInUser={loggedInUser}
                     displayedOrders={displayedOrders}
                 />
-
                 <h3>Manage Your Orders</h3>
                 <SellerOrders
-                    user={loggedInUser}
+                    loggedInUser={loggedInUser}
                     displayedOrders={displayedOrders}
                 />
             </section>

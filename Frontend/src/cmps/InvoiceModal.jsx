@@ -38,7 +38,8 @@ export function InvoiceModal({ order, onClose }) {
                     const buyerInfo = await userService.getById(order.buyerId)
                     setBuyer(buyerInfo)
                 }
-            } catch (err) {
+            }
+            catch (err) {
                 console.error("Error fetching user's details:", err)
             }
         }
