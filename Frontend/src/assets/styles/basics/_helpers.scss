@@ -129,7 +129,7 @@
 
 .selected {
   opacity: 1 !important;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 .gap12 {
   gap: 0.75em;
@@ -139,5 +139,11 @@
 }
 
 .checked {
-  
+}
+
+.mobileStyles {
+  padding: 0 !important;
+  &:after {
+    height: 0 !important;
+  }
 }

@@ -9,16 +9,34 @@ import {
   subcategories,
 } from '../services/gig.service'
 import { RenderMobileRadioButtons } from './RenderMobileRadioButtons'
+import { useEffect, useState } from 'react'
 
-export function MobileFilter({ filterBy, onMobileFilter }) {
+export function MobileFilter({ filterBy, onMobileFilter, setMobileFilter }) {
+  const [tempFilterState, setTempFilterState] = useState(false)
   const [fields, setFields, handleChange] = useForm(
-    gigService.getDefaultFilter()
+    filterBy || gigService.getDefaultFilter
   )
+
+  useEffect(() => {
+    setTempFilterState(checkFields())
+  }, [fields])
+
+  function checkFields() {
+    return (
+      fields.cat ||
+      fields.tag ||
+      fields.level ||
+      fields.min !== undefined ||
+      fields.max !== undefined ||
+      fields.time
+    )
+  }
 
   function handleSubmit(event) {
     event.preventDefault()
-    // Perform actions with form data, e.g., send it to a server
     console.log('Form submitted with fields:', fields)
+    if (checkFields()) setMobileFilter(fields)
+    onMobileFilter()
   }
   return (
     <main className="mobile-filter">
@@ -29,23 +47,29 @@ export function MobileFilter({ filterBy, onMobileFilter }) {
           </span>
           <span>All filters</span>
         </div>
-        <span className="clear">Clear all</span>
+        {
+          <span
+            className={`clear ${tempFilterState ? 'on' : ''}`}
+            onClick={() => setFields(gigService.getDefaultFilter)}
+          >
+            Clear all
+          </span>
+        }
       </section>
-      {/* <section className="filter-form"> */}
       <form onSubmit={handleSubmit}>
         <div className="form-wrapper">
           <h3>Category</h3>
           <RenderMobileRadioButtons
             options={category}
-            groupName="category"
+            groupName={'cat'}
             selectedOption={fields.cat}
             onOptionChange={handleChange}
           />
-          {filterBy.tag && (
+          {fields.tag !== undefined && fields.tag && (
             <>
-              <h3>{filterBy.tag}</h3>
+              <h3>{fields.tag}</h3>
               <RenderMobileRadioButtons
-                options={subcategories[filterBy.tag]}
+                options={subcategories[fields.tag]}
                 groupName={'tag'}
                 selectedOption={fields.tag}
                 onOptionChange={handleChange}
@@ -76,9 +100,9 @@ export function MobileFilter({ filterBy, onMobileFilter }) {
                   name={type}
                   className={type}
                   placeholder="Any"
-                  min="0"
+                  min="1"
                   max="10000"
-                  value={filterBy[type]}
+                  value={fields[type] || ''}
                   onChange={(e) => handleChange(e)}
                 />
                 <i className={type}>$</i>
@@ -86,9 +110,10 @@ export function MobileFilter({ filterBy, onMobileFilter }) {
             ))}
           </div>
         </div>
-        <button>Submit</button>
+        <div className="submit-wrapper">
+          <button type="submit">Show Results</button>
+        </div>
       </form>
-      {/* </section> */}
     </main>
   )
 }

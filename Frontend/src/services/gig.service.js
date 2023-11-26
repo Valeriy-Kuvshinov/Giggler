@@ -23,6 +23,7 @@ function getFilterFromParams(searchParams) {
 }
 
 async function query(filterBy = {}) {
+  console.log('filterBy: ', filterBy)
   try {
     return await httpService.get(BASE_URL, filterBy)
   } catch (error) {

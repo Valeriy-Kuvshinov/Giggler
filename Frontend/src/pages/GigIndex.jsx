@@ -9,11 +9,12 @@ import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.js'
 
-export function GigIndex({onMobileFilter}) {
+export function GigIndex({ onMobileFilter }) {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const [searchParams, setSearchparams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
+  const [mobileState, setMobileState] = useState(false)
 
   const currentPage = filterBy.page || 1
   const totalGigsPerPage = 12
@@ -134,7 +135,10 @@ export function GigIndex({onMobileFilter}) {
     }
   }
 
-  
+  function setMobileFilter(mobileFilter) {
+    setFilter({ ...filterBy, ...mobileFilter })
+  }
+
   function handlePageChange(newPage) {
     setFilter({ ...filterBy, page: newPage })
   }
@@ -142,7 +146,10 @@ export function GigIndex({onMobileFilter}) {
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   return (
-    <main className="gig-index flex column full">
+    <main
+      className="gig-index flex column full"
+      style={mobileState ? { zIndex: 50 } : {}}
+    >
       <GigFilter
         filterBy={filterBy}
         setMenuFilter={setMenuFilter}
@@ -150,6 +157,9 @@ export function GigIndex({onMobileFilter}) {
         isRenderedChoice={isRenderedChoice}
         onDeleteFilter={onDeleteFilter}
         onMobileFilter={onMobileFilter}
+        setMobileFilter={setMobileFilter}
+        mobileState={mobileState}
+        setMobileState={setMobileFilter}
       />
       <GigList gigs={currentGigs} />
       <Pagination

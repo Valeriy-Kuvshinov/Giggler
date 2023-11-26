@@ -12,8 +12,6 @@ export const useForm = (initialState) => {
                 break;
             case 'checkbox':
                 value = checked
-            case 'radio':
-                value = checked
             default:
                 break;
         }
