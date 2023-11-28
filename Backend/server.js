@@ -40,6 +40,7 @@ import { userRoutes } from './api/user/user.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { orderRoutes } from './api/order/order.routes.js'
 import { reviewRoutes } from './api/review/review.routes.js'
+import { chatRoutes } from './api/chat/chat.routes.js'
 import { setupSocketAPI } from './services/socket.service.js'
 
 app.use('/api/gig', gigRoutes)
@@ -47,6 +48,7 @@ app.use('/api/user', userRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/review', reviewRoutes)
+app.use('/api/chat', chatRoutes)
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
