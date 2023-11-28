@@ -6,7 +6,7 @@ import { gigService } from '../services/gig.service.js'
 import { ShareGigModal } from './ShareGigModal.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-export function GigDetailsInteractions({ loggedInUser, gig, onGigChange }) {
+export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange }) {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isLiked, setIsLiked] = useState(
         loggedInUser && gig.likedByUsers.includes(loggedInUser._id)
@@ -61,9 +61,9 @@ export function GigDetailsInteractions({ loggedInUser, gig, onGigChange }) {
                     <SvgIcon iconName={'heart'} />
                 )}
             </span>
-
-            <span className="liked-count flex">{gig.likedByUsers.length}</span>
-
+            <span className="liked-count flex">
+                {gig.likedByUsers.length}
+            </span>
             <button onClick={shareGig} className="share-gig flex" title="share the gig">
                 <SvgIcon iconName={'shareSocialMediaIcon'} />
             </button>
