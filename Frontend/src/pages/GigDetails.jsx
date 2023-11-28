@@ -9,6 +9,7 @@ import { GigDetailsAside } from '../cmps/GigDetailsAside.jsx'
 import { GigReviews } from '../cmps/GigReviews.jsx'
 import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 import { Loader } from '../cmps/Loader.jsx'
+import { MiniMessageBar } from '../cmps/MiniMessageBar.jsx'
 import { UserChat } from '../cmps/UserChat.jsx'
 
 import { loadUser } from '../store/user.actions.js'
@@ -67,33 +68,38 @@ export function GigDetails() {
     <>
       <section className="gig-details grid layout-row">
         {isMobile ? (
+          <main>
+            <CatTagDisplayBar
+              isFrom={'gigDetails'}
+              category={gig.category}
+              tag={gig.tags[1]}
+            />
+            <GigDetailsHeader
+              gig={gig}
+              owner={gigOwner} />
+            <GigDetailsAside
+              gig={gig}
+              loggedInUser={loggedInUser}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+              setChatState={setChatState}
+            />
+            <section className="about-gig" style={{ overflow: 'hidden' }}>
+              <h3>About This Gig</h3>
+              <p className="gig-description">{gig.description}</p>
+            </section>
+            <AboutSeller owner={gigOwner} />
+            <GigReviews gig={gig} />
+          </main>
+        ) : (
           <>
             <main>
               <CatTagDisplayBar
                 isFrom={'gigDetails'}
                 category={gig.category}
-                tag={gig.tags[1]}
-              />
-              <GigDetailsHeader gig={gig} owner={gigOwner} />
-              <GigDetailsAside
+                tag={gig.tags[1]} />
+              <GigDetailsHeader
                 gig={gig}
-                loggedInUser={loggedInUser}
-                onGigChange={(updatedGig) => setGig(updatedGig)}
-                setChatState={setChatState}
-              />
-              <section className="about-gig" style={{ overflow: 'hidden' }}>
-                <h3>About This Gig</h3>
-                <p className="gig-description">{gig.description}</p>
-              </section>
-              <AboutSeller owner={gigOwner} />
-              <GigReviews gig={gig} />
-            </main>
-          </>
-        ) : (
-          <>
-            <main>
-              <CatTagDisplayBar isFrom={'gigDetails'} category={gig.category} tag={gig.tags[1]} />
-              <GigDetailsHeader gig={gig} owner={gigOwner} />
+                owner={gigOwner} />
               <section className="about-gig" style={{ overflow: 'hidden' }}>
                 <h3>About This Gig</h3>
                 <p>{gig.description}</p>
@@ -110,42 +116,10 @@ export function GigDetails() {
           </>
         )}
       </section>
-      <section
-        onClick={handleOpenChat}
-        className="mini-message-bar"
-      >
-        <div className="mini-message-bar-container grid">
-          <div
-            style={{
-              height: isMobile ? '32px' : '48px',
-              width: isMobile ? '32px' : '48px',
-            }}
-            className="avatar"
-          >
-            <img src={gigOwner.imgUrl} alt={gigOwner.username} />
-            <span
-              style={{
-                height: isMobile ? '.65em' : '1em',
-                width: isMobile ? '.65em' : '1em',
-              }}
-              className="status-dot"
-            ></span>
-          </div>
-          <div className="owner-info flex column">
-            <span className="message">{`Message${isMobile ? '' : ` ${gigOwner.fullName}`
-              }`}</span>
-            {!isMobile && (
-              <span className="response-time flex">
-                <span>Online</span>
-                <span className="dot flex"></span>
-                <span>
-                  Avg. response time: <span className="b">1 Hour</span>
-                </span>
-              </span>
-            )}
-          </div>
-        </div>
-      </section>
+      <MiniMessageBar
+        gigOwner={gigOwner}
+        isMobile={isMobile}
+        handleOpenChat={handleOpenChat} />
       {chatState && (
         <UserChat
           owner={gigOwner}

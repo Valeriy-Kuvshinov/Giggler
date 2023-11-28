@@ -144,11 +144,15 @@
             max-width: 1400px;
             margin: auto;
             border-radius: 5px;
+            background-color: $bgColor4;
+            padding: 4em 2em;
 
             h2 {
                 color: $clrPrimary1;
                 font-family: 'macan-bold';
                 font-weight: 500;
+                font-size: 40px;
+                line-height: 48px;
 
                 span {
                     font-family: 'domain-display-medium';

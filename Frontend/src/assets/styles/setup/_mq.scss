@@ -43,7 +43,7 @@
           }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           padding: 48px 16px;
           left: 0.2em;
 
@@ -279,16 +279,6 @@
     }
 
     .join-section {
-      @media (min-width: 300px) {
-        background-color: $bgColor4;
-        padding: 4em 2em;
-
-        h2 {
-          font-size: 40px;
-          line-height: 48px;
-        }
-      }
-
       @media (min-width: 900px) {
         background-image: url('https://res.cloudinary.com/digrqdbso/image/upload/v1698938893/Giggler/home-page-other/gwrhqjr4tkp5dzkkndwp.webp');
         background-size: contain;
@@ -608,7 +598,7 @@
     }
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 901px) {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2%;
 
@@ -641,7 +631,7 @@
   .gig-reviews {
     .review-breakdown {
       .breakdown-wrapper {
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           flex-direction: column;
           gap: 1em;
 
@@ -820,7 +810,7 @@
 // Invoice, Review, Sharing a gig modals media query
 
 .modal-wrapper {
-  @media(max-width:400px) {
+  @media(max-width:480px) {
 
     .invoice-modal,
     .review-modal,
@@ -925,7 +915,7 @@
     }
   }
 
-  @media(min-width: 401px) {
+  @media(min-width: 481px) {
 
     .invoice-modal,
     .review-modal,

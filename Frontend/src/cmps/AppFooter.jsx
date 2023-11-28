@@ -9,25 +9,21 @@ import { MobileFilter } from './MobileFilter.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 export function AppFooter() {
-  const [isMobile, setIsMobile] = useState(
-    window.innerWidth <= 480 ? true : false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
   const [search, setSearch] = useState(false)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
 
   useEffect(() => {
-    window.addEventListener('resize', updateFooter)
-    updateFooter()
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480)
+    }
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', updateFooter)
+      window.removeEventListener('resize', handleResize)
     }
   }, [])
-
-  function updateFooter() {
-    if (window.innerWidth <= 480) setIsMobile(true)
-    else setIsMobile(false)
-  }
 
   function onOpenSearch() {
     setSearch((prevState) => !prevState)
