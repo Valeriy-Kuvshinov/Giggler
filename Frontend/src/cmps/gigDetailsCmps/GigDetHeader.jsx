@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { ImageCarousel } from './ImageCarousel.jsx'
-import { UserPreview } from './UserPreview.jsx'
+import { ImageCarousel } from '../ImageCarousel.jsx'
+import { UserPreview } from '../UserPreview.jsx'
 
-export function GigDetailsHeader({ gig, owner }) {
+export function GigDetHeader({ gig, owner, deviceType }) {
   const [newImgIndex, setNewImgIndex] = useState(0)
 
   return (

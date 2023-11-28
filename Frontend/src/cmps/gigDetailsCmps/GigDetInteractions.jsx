@@ -1,10 +1,10 @@
-import { useModal } from '../customHooks/ModalContext.jsx'
+import { useModal } from '../../customHooks/ModalContext.jsx'
 import { useState, useEffect } from 'react'
 
-import { gigService } from '../services/gig.service.js'
+import { gigService } from '../../services/gig.service.js'
 
-import { ShareGigModal } from './ShareGigModal.jsx'
-import SvgIcon from './SvgIcon.jsx'
+import { ShareGigModal } from '../ShareGigModal.jsx'
+import SvgIcon from '../SvgIcon.jsx'
 
 export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange }) {
     const [isModalOpen, setIsModalOpen] = useState(false)

@@ -1,4 +1,4 @@
-export function MiniMessageBar({ gigOwner, deviceType, handleOpenChat }) {
+export function ChatBubble({ gigOwner, deviceType, handleOpenChat }) {
     return (
         <section onClick={handleOpenChat} className="mini-message-bar">
             <div className="mini-message-bar-container grid">

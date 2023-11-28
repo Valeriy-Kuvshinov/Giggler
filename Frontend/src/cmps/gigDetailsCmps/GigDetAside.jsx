@@ -1,13 +1,13 @@
-import { useModal } from '../customHooks/ModalContext.jsx'
+import { useModal } from '../../customHooks/ModalContext.jsx'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { packages } from '../services/gig.service.js'
+import { packages } from '../../services/gig.service.js'
 
 import { GigDetInteractions } from './GigDetInteractions.jsx'
-import SvgIcon from './SvgIcon.jsx'
+import SvgIcon from '../SvgIcon.jsx'
 
-export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, setChatState }) {
+export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setChatState }) {
   const [selectedPackage, setSelectedPackage] = useState('basic')
 
   const navigate = useNavigate()
@@ -33,24 +33,21 @@ export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, se
       )}
       <div className="package-tabs flex">
         <button
-          className={`b ${selectedPackage === 'basic' ? 'checked' : ''
-            }`}
+          className={`b ${selectedPackage === 'basic' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('basic')}
         >
           Basic
         </button>
 
         <button
-          className={`b ${selectedPackage === 'standard' ? 'checked' : ''
-            }`}
+          className={`b ${selectedPackage === 'standard' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('standard')}
         >
           Standard
         </button>
 
         <button
-          className={`b ${selectedPackage === 'premium' ? 'checked' : ''
-            }`}
+          className={`b ${selectedPackage === 'premium' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('premium')}
         >
           Premium
@@ -62,6 +59,7 @@ export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, se
           <span className="b">{packages[selectedPackage].type}</span>
           <span className="price">${packages[selectedPackage].price * gig.price}</span>
         </div>
+
         <p>{packages[selectedPackage].desc}</p>
 
         <div className="additional-info flex">
@@ -72,9 +70,12 @@ export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, se
               {packages[selectedPackage].time} Delivery
             </span>
           </div>
+          
           <div className="revisions-wrapper flex">
             <SvgIcon iconName={'refresh'} />
-            <span className="revisions b">{`${packages[selectedPackage].revisions} Revisions`}</span>
+            <span className="revisions b">
+              {`${packages[selectedPackage].revisions} Revisions`}
+            </span>
           </div>
         </div>
         <ul className="features">
@@ -83,24 +84,26 @@ export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, se
               <SvgIcon
                 iconName={`${packages[selectedPackage].featuresCond[idx]
                   ? 'checked'
-                  : 'unchecked'
-                  }`}
+                  : 'unchecked'}`}
               />
               {feature}
             </li>
           ))}
         </ul>
         <button className="flex" onClick={onContinue}>
-          <span className="b"> Continue </span> <SvgIcon iconName={'pageArrowRight'} />
+          <span className="b">
+            Continue
+          </span>
+          <SvgIcon iconName={'pageArrowRight'} />
         </button>
       </section>
       <div className="contact-seller flex">
         <button
+          className="b"
           onClick={() => {
             if (loggedInUser) setChatState(true)
             else openLogin()
           }}
-          className="b"
         >
           Contact me
         </button>

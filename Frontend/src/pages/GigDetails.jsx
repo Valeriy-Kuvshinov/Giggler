@@ -3,16 +3,17 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
 
-import { GigDetailsHeader } from '../cmps/GigDetailsHeader.jsx'
-import { AboutSeller } from '../cmps/AboutSeller.jsx'
-import { GigDetailsAside } from '../cmps/GigDetailsAside.jsx'
+import { GigDetHeader } from '../cmps/gigDetailsCmps/GigDetHeader.jsx'
+import { AboutSeller } from '../cmps/gigDetailsCmps/AboutSeller.jsx'
+import { AboutGig } from '../cmps/gigDetailsCmps/AboutGig.jsx'
+import { GigDetAside } from '../cmps/gigDetailsCmps/GigDetAside.jsx'
+import { GigDetInteractions } from '../cmps/gigDetailsCmps/GigDetInteractions.jsx'
+import { ChatBubble } from '../cmps/gigDetailsCmps/ChatBubble.jsx'
+
 import { GigReviews } from '../cmps/GigReviews.jsx'
 import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 import { Loader } from '../cmps/Loader.jsx'
-import { MiniMessageBar } from '../cmps/MiniMessageBar.jsx'
 import { UserChat } from '../cmps/UserChat.jsx'
-import { AboutGig } from '../cmps/AboutGig.jsx'
-import { GigDetInteractions } from '../cmps/GigDetInteractions.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
@@ -73,14 +74,18 @@ export function GigDetails() {
       <section className="gig-details grid layout-row">
         {deviceType === 'mobile' ? (
           <main>
-            <GigDetailsHeader gig={gig} owner={gigOwner} />
+            <GigDetHeader
+              gig={gig}
+              owner={gigOwner}
+              deviceType={deviceType}
+            />
             <GigDetInteractions
               gig={gig}
               loggedInUser={loggedInUser}
               deviceType={deviceType}
               onGigChange={(updatedGig) => setGig(updatedGig)}
             />
-            <GigDetailsAside
+            <GigDetAside
               gig={gig}
               loggedInUser={loggedInUser}
               deviceType={deviceType}
@@ -98,8 +103,12 @@ export function GigDetails() {
               category={gig.category}
               tag={gig.tags[1]}
             />
-            <GigDetailsHeader gig={gig} owner={gigOwner} />
-            <GigDetailsAside
+            <GigDetHeader
+              gig={gig}
+              owner={gigOwner}
+              deviceType={deviceType}
+            />
+            <GigDetAside
               gig={gig}
               loggedInUser={loggedInUser}
               onGigChange={(updatedGig) => setGig(updatedGig)}
@@ -116,12 +125,16 @@ export function GigDetails() {
                 isFrom={'gigDetails'}
                 category={gig.category}
                 tag={gig.tags[1]} />
-              <GigDetailsHeader gig={gig} owner={gigOwner} />
+              <GigDetHeader
+                gig={gig}
+                owner={gigOwner}
+                deviceType={deviceType}
+              />
               <AboutGig gig={gig} />
               <AboutSeller owner={gigOwner} />
               <GigReviews gig={gig} />
             </main>
-            <GigDetailsAside
+            <GigDetAside
               gig={gig}
               loggedInUser={loggedInUser}
               deviceType={deviceType}
@@ -131,7 +144,7 @@ export function GigDetails() {
           </>
         )}
       </section>
-      <MiniMessageBar
+      <ChatBubble
         gigOwner={gigOwner}
         deviceType={deviceType}
         handleOpenChat={handleOpenChat} />

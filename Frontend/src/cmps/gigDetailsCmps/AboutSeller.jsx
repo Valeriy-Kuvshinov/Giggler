@@ -1,9 +1,9 @@
-import { useModal } from '../customHooks/ModalContext.jsx'
+import { useModal } from '../../customHooks/ModalContext.jsx'
 import { useSelector } from 'react-redux'
 
-import { UserPreview } from './UserPreview.jsx'
+import { UserPreview } from '../UserPreview.jsx'
 
-import { utilService } from '../services/util.service.js'
+import { utilService } from '../../services/util.service.js'
 
 export function AboutSeller({ owner }) {
   const user = useSelector((storeState) => storeState.userModule.user)
