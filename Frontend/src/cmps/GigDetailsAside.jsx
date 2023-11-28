@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { packages } from '../services/gig.service.js'
 
-import { GigDetailsInteractions } from './GigDetailsInteractions.jsx'
+import { GigDetInteractions } from './GigDetInteractions.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
-export function GigDetailsAside({ loggedInUser, gig, onGigChange, setChatState }) {
+export function GigDetailsAside({ loggedInUser, gig, deviceType, onGigChange, setChatState }) {
   const [selectedPackage, setSelectedPackage] = useState('basic')
 
   const navigate = useNavigate()
@@ -23,12 +23,14 @@ export function GigDetailsAside({ loggedInUser, gig, onGigChange, setChatState }
 
   return (
     <section className="gig-details-aside">
-      <GigDetailsInteractions
-        gig={gig}
-        loggedInUser={loggedInUser}
-        onGigChange={onGigChange}
-      />
-
+      {deviceType === 'desktop' && (
+        <GigDetInteractions
+          gig={gig}
+          loggedInUser={loggedInUser}
+          deviceType={deviceType}
+          onGigChange={onGigChange}
+        />
+      )}
       <div className="package-tabs flex">
         <button
           className={`b ${selectedPackage === 'basic' ? 'checked' : ''

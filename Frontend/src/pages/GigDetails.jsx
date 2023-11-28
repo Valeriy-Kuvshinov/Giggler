@@ -11,14 +11,18 @@ import { CatTagDisplayBar } from '../cmps/CatTagDisplayBar.jsx'
 import { Loader } from '../cmps/Loader.jsx'
 import { MiniMessageBar } from '../cmps/MiniMessageBar.jsx'
 import { UserChat } from '../cmps/UserChat.jsx'
+import { AboutGig } from '../cmps/AboutGig.jsx'
+import { GigDetInteractions } from '../cmps/GigDetInteractions.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
+import { utilService } from '../services/util.service.js'
 
 export function GigDetails() {
   const [gig, setGig] = useState(null)
   const [gigOwner, setGigOwner] = useState(null)
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 900)
+  const [deviceType, setDeviceType] = useState(
+    utilService.getDeviceType(window.innerWidth))
   const [chatState, setChatState] = useState(false)
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
@@ -31,7 +35,7 @@ export function GigDetails() {
       navigate('/explore')
       return
     }
-    const loadData = async () => {
+    async function loadData() {
       try {
         const fetchedGig = await gigService.getById(id)
         setGig(fetchedGig)
@@ -49,7 +53,7 @@ export function GigDetails() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 900)
+      setDeviceType(utilService.getDeviceType(window.innerWidth))
     }
     window.addEventListener('resize', handleResize)
     return () => {
@@ -67,26 +71,41 @@ export function GigDetails() {
   return (
     <>
       <section className="gig-details grid layout-row">
-        {isMobile ? (
+        {deviceType === 'mobile' ? (
+          <main>
+            <GigDetailsHeader gig={gig} owner={gigOwner} />
+            <GigDetInteractions
+              gig={gig}
+              loggedInUser={loggedInUser}
+              deviceType={deviceType}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+            />
+            <GigDetailsAside
+              gig={gig}
+              loggedInUser={loggedInUser}
+              deviceType={deviceType}
+              onGigChange={(updatedGig) => setGig(updatedGig)}
+              setChatState={setChatState}
+            />
+            <AboutGig gig={gig} />
+            <AboutSeller owner={gigOwner} />
+            <GigReviews gig={gig} />
+          </main>
+        ) : deviceType === 'tablet' ? (
           <main>
             <CatTagDisplayBar
               isFrom={'gigDetails'}
               category={gig.category}
               tag={gig.tags[1]}
             />
-            <GigDetailsHeader
-              gig={gig}
-              owner={gigOwner} />
+            <GigDetailsHeader gig={gig} owner={gigOwner} />
             <GigDetailsAside
               gig={gig}
               loggedInUser={loggedInUser}
               onGigChange={(updatedGig) => setGig(updatedGig)}
               setChatState={setChatState}
             />
-            <section className="about-gig" style={{ overflow: 'hidden' }}>
-              <h3>About This Gig</h3>
-              <p className="gig-description">{gig.description}</p>
-            </section>
+            <AboutGig gig={gig} />
             <AboutSeller owner={gigOwner} />
             <GigReviews gig={gig} />
           </main>
@@ -97,19 +116,15 @@ export function GigDetails() {
                 isFrom={'gigDetails'}
                 category={gig.category}
                 tag={gig.tags[1]} />
-              <GigDetailsHeader
-                gig={gig}
-                owner={gigOwner} />
-              <section className="about-gig" style={{ overflow: 'hidden' }}>
-                <h3>About This Gig</h3>
-                <p>{gig.description}</p>
-              </section>
+              <GigDetailsHeader gig={gig} owner={gigOwner} />
+              <AboutGig gig={gig} />
               <AboutSeller owner={gigOwner} />
               <GigReviews gig={gig} />
             </main>
             <GigDetailsAside
               gig={gig}
               loggedInUser={loggedInUser}
+              deviceType={deviceType}
               onGigChange={(updatedGig) => setGig(updatedGig)}
               setChatState={setChatState}
             />
@@ -118,7 +133,7 @@ export function GigDetails() {
       </section>
       <MiniMessageBar
         gigOwner={gigOwner}
-        isMobile={isMobile}
+        deviceType={deviceType}
         handleOpenChat={handleOpenChat} />
       {chatState && (
         <UserChat
