@@ -8,7 +8,6 @@
     z-index: 60;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     display: flex;
-    // height: 650px;
     margin: auto;
 
     .login-notes {
@@ -22,7 +21,6 @@
 
         .text {
             h2 {
-                font-size: 32px;
                 font-weight: 700;
                 margin-bottom: 0.5em;
             }
@@ -48,7 +46,7 @@
     }
 
     .user-interaction {
-        padding: 1.5em 2.5em 2em;
+        padding: 3em 2.5em 0.75em;
         justify-content: space-between;
 
         h3 {
@@ -74,7 +72,6 @@
                     label {
                         color: $clrSecondary8;
                         font-weight: 600;
-                        margin-bottom: 0.5em;
                     }
 
                     input {
@@ -83,7 +80,7 @@
                         border: 1px solid $clrSecondary45;
                         border-radius: 5px;
                         width: 100%;
-                        margin-block-end: 1em;
+                        margin: .5em 0;
 
                         &:focus {
                             border: 1px solid $clrSecondary5;

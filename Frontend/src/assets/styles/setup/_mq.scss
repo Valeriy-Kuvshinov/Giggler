@@ -449,8 +449,13 @@
 
     .user-interaction {
       width: 100%;
+      h3{
+        font-size: 1em;
+      }
     }
   }
+
+
 
   @media (min-width: 900px) {
     width: 850px;
