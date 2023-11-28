@@ -9,14 +9,14 @@ import { MobileFilter } from './MobileFilter.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 export function AppFooter() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 600)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 480)
+      setIsMobile(window.innerWidth < 600)
     }
     window.addEventListener('resize', handleResize)
     return () => {

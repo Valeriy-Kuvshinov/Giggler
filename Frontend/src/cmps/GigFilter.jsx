@@ -16,7 +16,7 @@ export function GigFilter({
   onMobileFilterState
 }) {
   const [isMobile, setIsMobile] = useState(
-    window.innerWidth <= 480 ? true : false
+    window.innerWidth < 600 ? true : false
   )
   const [isSticky, setIsSticky] = useState(false)
   
@@ -37,7 +37,7 @@ export function GigFilter({
   }, [])
 
   function updateIsMobile() {
-    if (window.innerWidth <= 480) setIsMobile(true)
+    if (window.innerWidth < 600) setIsMobile(true)
     else setIsMobile(false)
   }
 
@@ -45,6 +45,16 @@ export function GigFilter({
     filterBy.cat ? (shadowStart = 197) : (shadowStart = 139)
     if (window.scrollY >= shadowStart) setIsSticky(true)
     else setIsSticky(false)
+  }
+  function checkFilter() {
+    return (
+      filterBy.cat ||
+      filterBy.tag ||
+      filterBy.level ||
+      filterBy.min ||
+      filterBy.max ||
+      filterBy.time
+    )
   }
 
   if (isMobile) {

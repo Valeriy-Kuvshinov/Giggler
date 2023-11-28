@@ -1,69 +1,109 @@
 .gig-index {
-    min-height: 100vh;
-    width: 100%;
+  width: 100%;
 
-    .pagination {
-        justify-content: center;
-        color: $clrSecondary6;
-        padding: rem(15px) 0;
+  .gigless {
+    height: 100%;
+    margin: 1em auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-        .page-number {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+    .clr-filter {
+      width: fit-content;
+      margin: 1em auto;
+      padding: 0.75em 1em;
+      background: $bgColor3;
+      color: $clrPrimary1;
+      border-radius: 0.25em;
+      text-transform: uppercase;
+      font-family: 'macan-bold';
+      box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s;
 
-            span {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                height: 2.625em;
-                width: 2.625em;
-            }
+      &:hover {
+        background-color: $clr10;
+        transform: translateY(-2px);
+      }
 
-            &:after {
-                border-bottom: 1px solid transparent;
-                content: '';
-                display: block;
-                position: relative;
-                width: 1em;
-
-                &.active {
-                    color: $clrPrimary2;
-                }
-            }
-
-            &.active {
-                color: $clrPrimary2;
-
-                &:after {
-                    border-bottom-color: $clrPrimary2;
-                }
-            }
-
-            &:hover {
-                color: $clrPrimary2;
-
-                &:after {
-                    border-bottom-color: $clrPrimary2;
-                }
-            }
-
-            transition: color 0.2s;
-        }
-
-        .pagination-arrows {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            height: 2.625em;
-            width: 2.625em;
-
-            i {
-                display: flex;
-                align-items: center;
-            }
-        }
+      &:active {
+        transform: translateY(1px);
+      }
     }
+
+    img {
+      align-self: center;
+      justify-self: center;
+
+      max-width: 500px;
+      height: auto;
+      margin-block-end: auto important;
+    }
+  }
+  
+  .pagination {
+    justify-content: center;
+    color: $clrSecondary6;
+    padding: rem(15px) 0;
+
+    .page-number {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        height: 2.625em;
+        width: 2.625em;
+      }
+
+      &:after {
+        border-bottom: 1px solid transparent;
+        content: '';
+        display: block;
+        position: relative;
+        width: 1em;
+
+        &.active {
+          color: $clrPrimary2;
+        }
+      }
+
+      &.active {
+        color: $clrPrimary2;
+
+        &:after {
+          border-bottom-color: $clrPrimary2;
+        }
+      }
+
+      &:hover {
+        color: $clrPrimary2;
+
+        &:after {
+          border-bottom-color: $clrPrimary2;
+        }
+      }
+
+      transition: color 0.2s;
+    }
+
+    .pagination-arrows {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      height: 2.625em;
+      width: 2.625em;
+
+      i {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
 }

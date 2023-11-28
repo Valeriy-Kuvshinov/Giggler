@@ -139,6 +139,10 @@ export function GigIndex({ onMobileFilter }) {
     setFilter({ ...filterBy, ...mobileFilter })
   }
 
+  function clearAllFilters() {
+    setFilter(gigService.getDefaultFilter())
+  }
+
   function handlePageChange(newPage) {
     setFilter({ ...filterBy, page: newPage })
   }
@@ -146,7 +150,6 @@ export function GigIndex({ onMobileFilter }) {
   function onMobileFilterState() {
     setMobileState((prevState) => !prevState)
   }
-
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
   return (
@@ -165,12 +168,24 @@ export function GigIndex({ onMobileFilter }) {
         mobileState={mobileState}
         onMobileFilterState={onMobileFilterState}
       />
-      <GigList gigs={currentGigs} />
-      <Pagination
-        currentPage={filterBy.page}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      {currentGigs.length ? (
+        <>
+          <GigList gigs={currentGigs} />
+          <Pagination
+            currentPage={filterBy.page}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      ) : (
+        <section className="gigless">
+          <h2>We couldn't find Gigs that match your search</h2>
+          <button className="clr-filter" onClick={() => clearAllFilters()}>
+            clear all filters
+          </button>
+          <img src="https://res.cloudinary.com/digrqdbso/image/upload/v1699099661/Giggler/home-page-other/h4ramvmiu3q4c6skzd26.png" />
+        </section>
+      )}
     </main>
   )
 }
