@@ -71,20 +71,21 @@ export function GigDetails() {
 
   return (
     <>
-      <section className="gig-details grid layout-row">
-        {deviceType === 'mobile' ? (
+      {deviceType === 'mobile' ? (
+        <section className="gig-details grid full layout-row">
           <main>
-            <GigDetHeader
-              gig={gig}
-              owner={gigOwner}
-              deviceType={deviceType}
-            />
             <GigDetInteractions
               gig={gig}
               loggedInUser={loggedInUser}
               deviceType={deviceType}
               onGigChange={(updatedGig) => setGig(updatedGig)}
             />
+            <GigDetHeader
+              gig={gig}
+              owner={gigOwner}
+              deviceType={deviceType}
+            />
+            <AboutGig gig={gig} deviceType={deviceType} />
             <GigDetAside
               gig={gig}
               loggedInUser={loggedInUser}
@@ -92,11 +93,11 @@ export function GigDetails() {
               onGigChange={(updatedGig) => setGig(updatedGig)}
               setChatState={setChatState}
             />
-            <AboutGig gig={gig} />
-            <AboutSeller owner={gigOwner} />
             <GigReviews gig={gig} />
           </main>
-        ) : deviceType === 'tablet' ? (
+        </section>
+      ) : deviceType === 'tablet' ? (
+        <section className="gig-details grid layout-row">
           <main>
             <CatTagDisplayBar
               isFrom={'gigDetails'}
@@ -114,36 +115,36 @@ export function GigDetails() {
               onGigChange={(updatedGig) => setGig(updatedGig)}
               setChatState={setChatState}
             />
-            <AboutGig gig={gig} />
+            <AboutGig gig={gig} deviceType={deviceType} />
             <AboutSeller owner={gigOwner} />
             <GigReviews gig={gig} />
           </main>
-        ) : (
-          <>
-            <main>
-              <CatTagDisplayBar
-                isFrom={'gigDetails'}
-                category={gig.category}
-                tag={gig.tags[1]} />
-              <GigDetHeader
-                gig={gig}
-                owner={gigOwner}
-                deviceType={deviceType}
-              />
-              <AboutGig gig={gig} />
-              <AboutSeller owner={gigOwner} />
-              <GigReviews gig={gig} />
-            </main>
-            <GigDetAside
+        </section>
+      ) : (
+        <section className="gig-details grid layout-row">
+          <main>
+            <CatTagDisplayBar
+              isFrom={'gigDetails'}
+              category={gig.category}
+              tag={gig.tags[1]} />
+            <GigDetHeader
               gig={gig}
-              loggedInUser={loggedInUser}
+              owner={gigOwner}
               deviceType={deviceType}
-              onGigChange={(updatedGig) => setGig(updatedGig)}
-              setChatState={setChatState}
             />
-          </>
-        )}
-      </section>
+            <AboutGig gig={gig} deviceType={deviceType} />
+            <AboutSeller owner={gigOwner} />
+            <GigReviews gig={gig} />
+          </main>
+          <GigDetAside
+            gig={gig}
+            loggedInUser={loggedInUser}
+            deviceType={deviceType}
+            onGigChange={(updatedGig) => setGig(updatedGig)}
+            setChatState={setChatState}
+          />
+        </section>
+      )}
       <ChatBubble
         gigOwner={gigOwner}
         deviceType={deviceType}

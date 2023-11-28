@@ -53,21 +53,38 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
     }, [loggedInUser, gig])
 
     return (
-        <div className="gig-interactions flex">
-            <span className="heart" onClick={(e) => likeGig(e)}>
-                {isLiked ? (
-                    <SvgIcon iconName={'heartLiked'} />
-                ) : (
-                    <SvgIcon iconName={'heart'} />
-                )}
-            </span>
-            <span className="liked-count flex">
-                {gig.likedByUsers.length}
-            </span>
-            <button onClick={shareGig} className="share-gig flex" title="share the gig">
-                <SvgIcon iconName={'shareSocialMediaIcon'} />
-            </button>
+        <>
+            {deviceType === 'mobile' ? (
+                <div className="gig-interactions mobile flex">
+                    <span className="heart" onClick={(e) => likeGig(e)}>
+                        {isLiked ? (
+                            <SvgIcon iconName={'heartLiked'} />
+                        ) : (
+                            <SvgIcon iconName={'heart'} />
+                        )}
+                    </span>
+                    <button onClick={shareGig} className="share-gig flex" title="share the gig">
+                        <SvgIcon iconName={'shareGigMobileIcon'} />
+                    </button>
+                </div>
+            ) : (
+                <div className="gig-interactions flex">
+                    <span className="heart" onClick={(e) => likeGig(e)}>
+                        {isLiked ? (
+                            <SvgIcon iconName={'heartLiked'} />
+                        ) : (
+                            <SvgIcon iconName={'heart'} />
+                        )}
+                    </span>
+                    <span className="liked-count flex">
+                        {gig.likedByUsers.length}
+                    </span>
+                    <button onClick={shareGig} className="share-gig desktop flex" title="share the gig">
+                        <SvgIcon iconName={'shareGigDesktopIcon'} />
+                    </button>
+                </div>
+            )}
             {isModalOpen && <ShareGigModal onClose={closeModal} />}
-        </div>
+        </>
     )
 }

@@ -54,15 +54,29 @@
     .share-gig {
         align-items: center;
         justify-content: center;
-        width: 48px;
-        height: 34px;
         background-color: transparent;
-        border: 1px solid $clrSecondary10;
-        border-radius: 8px;
         margin-inline-start: 10px;
 
-        &:hover {
-            background-color: $clrSecondary10;
+        &.desktop {
+            width: 48px;
+            height: 34px;
+            border: 1px solid $clrSecondary10;
+            border-radius: 8px;
+
+            &:hover {
+                background-color: $clrSecondary10;
+            }
         }
+    }
+
+    &.mobile {
+        position: sticky;
+        top: 0;
+        right: 0;
+        padding: 0.5em 16px;
+        background: white;
+        border-bottom: 1px solid $clrSecondary2;
+        z-index: 2;
+        margin-block-end: 0;
     }
 }

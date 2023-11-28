@@ -1,7 +1,6 @@
 .gig-details {
   max-width: 1304px;
   color: $clrPrimary2;
-  padding: 32px 0px 24px 0px;
 
   main {
     background-color: $clrPrimary1;
@@ -21,15 +20,11 @@
     }
 
     .gig-details-header {
-      margin-block-end: 30px;
       width: 100%;
 
       .gig-overview {
-        margin-block-end: 1.5em;
-
-        .gig-title {
+        h2 {
           overflow-wrap: break-word;
-          padding-bottom: 16px;
           color: $clrSecondary8;
           font-size: 1.75em;
         }
@@ -53,8 +48,6 @@
     }
 
     .about-gig {
-      margin: 1em 0;
-
       h3 {
         font-weight: 700;
       }

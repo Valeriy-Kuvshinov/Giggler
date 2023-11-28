@@ -453,7 +453,8 @@
 
     .user-interaction {
       width: 100%;
-      h3{
+
+      h3 {
         font-size: 1em;
       }
     }
@@ -618,6 +619,69 @@
     .gig-details-aside {
       grid-column: 1/-1;
       position: static;
+    }
+  }
+
+  @media(max-width: 480px) {
+    padding: 0;
+
+    main {
+      .gig-details-header {
+        margin-block-end: 0px;
+
+        .gig-overview {
+          margin-block-end: 0;
+
+          .user-preview {
+            border-bottom: 1px solid $clrSecondary2;
+            padding: 4px 16px;
+
+            .avatar-gig-details {
+              width: 3rem;
+              height: 3rem;
+            }
+          }
+
+          h2 {
+            padding: 0 16px;
+          }
+        }
+      }
+
+      .about-gig {
+        margin: 0.5em 0 0.5em 0;
+        padding: 0 16px;
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .gig-reviews {
+        padding: 0 16px;
+      }
+    }
+  }
+
+  @media(min-width: 481px) {
+    padding: 32px 0px 24px 0px;
+
+    main {
+      .gig-details-header {
+        margin-block-end: 30px;
+
+        .gig-overview {
+          margin-block-end: 1.5em;
+
+          h2 {
+            padding-bottom: 16px;
+          }
+        }
+      }
+
+      .about-gig {
+        margin: 1em 0;
+      }
     }
   }
 
