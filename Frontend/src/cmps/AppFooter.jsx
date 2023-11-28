@@ -10,7 +10,6 @@ import SvgIcon from './SvgIcon.jsx'
 
 export function AppFooter() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
-  const [search, setSearch] = useState(false)
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
@@ -24,10 +23,6 @@ export function AppFooter() {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
-
-  function onOpenSearch() {
-    setSearch((prevState) => !prevState)
-  }
 
   return !isMobile ? (
     <footer className="desktop-footer flex full">
@@ -48,20 +43,18 @@ export function AppFooter() {
         </div>
 
         <div className="access-icon flex">
-          <SvgIcon iconName='accessIcon' />
+          <SvgIcon iconName="accessIcon" />
         </div>
       </div>
     </footer>
   ) : (
     <footer className="mobile-footer grid">
-      <NavLink
-        to="/"
-      >
+      <NavLink to="/">
         <SvgIcon iconName="appHomeIcon" />
       </NavLink>
 
       <NavLink
-        to='inbox'
+        to="inbox"
         onClick={(e) => {
           if (!loggedinUser) {
             e.preventDefault()
@@ -72,18 +65,12 @@ export function AppFooter() {
         <SvgIcon iconName="appEnvelopeIcon" />
       </NavLink>
 
-      <NavLink
-        to='/explore'
-        onClick={(e) => {
-          onOpenSearch(e)
-        }}
-      >
-        {search && <MobileFilter />}
+      <NavLink to="/explore">
         <SvgIcon iconName="appMagnifyingGlassIcon" />
       </NavLink>
 
       <NavLink
-        to='orders'
+        to="orders"
         onClick={(e) => {
           if (!loggedinUser) {
             e.preventDefault()
