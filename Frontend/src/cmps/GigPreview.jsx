@@ -93,17 +93,15 @@ export function GigPreview({ isFrom, gig }) {
         newImgIndex={newImgIndex}
         setNewImgIndex={setNewImgIndex}
       />
-
       {isFrom !== "userProfile" && (
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
-            <SvgIcon iconName={"heartLiked"} />
+            <SvgIcon iconName={"heartLikedDesktopIcon"} />
           ) : (
-            <SvgIcon iconName={"heart"} />
+            <SvgIcon iconName={"heartEmptyDesktopIcon"} />
           )}
         </span>
       )}
-
       <div className="preview-body">
         {isFrom === "explore" && (
           <UserPreview isFrom={isFrom} owner={owner} gig={updatedGig}>
@@ -112,7 +110,6 @@ export function GigPreview({ isFrom, gig }) {
             </Link>
           </UserPreview>
         )}
-
         {isFrom === "userProfile" && (
           <>
             <div className="profile">

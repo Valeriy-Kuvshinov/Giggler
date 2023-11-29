@@ -58,9 +58,9 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
                 <div className="gig-interactions mobile flex">
                     <span className="heart" onClick={(e) => likeGig(e)}>
                         {isLiked ? (
-                            <SvgIcon iconName={'heartLiked'} />
+                            <SvgIcon iconName={'heartLikedDesktopIcon'} />
                         ) : (
-                            <SvgIcon iconName={'heart'} />
+                            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
                         )}
                     </span>
                     <button onClick={shareGig} className="share-gig flex" title="share the gig">
@@ -71,9 +71,9 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
                 <div className="gig-interactions flex">
                     <span className="heart" onClick={(e) => likeGig(e)}>
                         {isLiked ? (
-                            <SvgIcon iconName={'heartLiked'} />
+                            <SvgIcon iconName={'heartLikedDesktopIcon'} />
                         ) : (
-                            <SvgIcon iconName={'heart'} />
+                            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
                         )}
                     </span>
                     <span className="liked-count flex">

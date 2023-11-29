@@ -6,7 +6,7 @@ import { DenialOrderModal } from "./DenialOrderModal.jsx"
 import { orderBackendService } from '../../services/order.backend.service.js'
 import { gigService } from '../../services/gig.service.js'
 
-export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, windowWidth }) {
+export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, deviceType }) {
     const [isDenied, setDenial] = useState(false)
     const [gigData, setGigData] = useState(null)
     const [userData, setUserData] = useState(null)
@@ -68,17 +68,17 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
     const { prefix, dateStr } = orderBackendService.getActionDate(order)
 
     return (
-        windowWidth > 600 ? (
+        deviceType === 'tablet' || deviceType === 'desktop' ? (
             <div className={`order-contents flex row ${orderBackendService.getOrderClass(order.orderState)}`}>
                 {gigData ? (
                     <div className="order-info flex row">
-                        <img src={gigData && gigData.firstImgUrl} alt="gig" />
+                        <img src={gigData && gigData.firstImgUrl} alt="gig-img" />
                         <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
                     </div>
                 ) : null}
                 {userData && (
                     <div className="order-buyer flex row">
-                        <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
+                        <img src={userData && userData.avatar} alt="buyer-img" className="buyer-avatar" />
                         <Link to={`/user/${userData._id}`} className="buyer-name flex column">
                             <span className='first-name'>{`${userData.firstName}`}</span>
                             <span className='last-name'>{`${userData.lastName}`}</span>
@@ -131,7 +131,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
             </div>
         ) : (
             <div className={`order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
-                <img src={gigData && gigData.firstImgUrl} alt="gig" className="order-image" />
+                <img src={gigData && gigData.firstImgUrl} alt="gig-img" className="order-image" />
                 <div className="order-price">
                     {`$${order.price}`}
                 </div>
@@ -141,7 +141,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, wind
                     ) : null}
                 </div>
                 <div className="order-buyer flex row">
-                    <img src={userData && userData.avatar} alt="buyer" className="buyer-avatar" />
+                    <img src={userData && userData.avatar} alt="buyer-img" className="buyer-avatar" />
                     {userData && (
                         <Link to={`/user/${userData._id}`} className="buyer-name flex row">
                             {`${userData.username}`}

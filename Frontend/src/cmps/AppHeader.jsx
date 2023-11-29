@@ -39,6 +39,7 @@ export function AppHeader() {
 
   const categories = category
   const isHomePage = useLocation().pathname === '/'
+  const isGigPage = useLocation().pathname.startsWith('/gig/')
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
   const headerStyles = {
@@ -138,6 +139,10 @@ export function AppHeader() {
   function onChatState(e) {
     e.preventDefault()
     setChatState(true)
+  }
+
+  if (isGigPage && deviceType === 'mobile') {
+    return null
   }
 
   return (
