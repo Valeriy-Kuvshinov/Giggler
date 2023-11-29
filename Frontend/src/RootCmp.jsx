@@ -12,13 +12,7 @@ export function RootCmp() {
 
   const dimmerStyle = {
     backgroundColor: isDimmed ? 'rgba(0, 0, 0, 0.6)' : 'rgba(0, 0, 0, 0)',
-    transition: 'background-color 0.3s',
     visibility: isDimmed ? 'visible' : 'hidden',
-    position: 'fixed',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    zIndex: 10,
   }
 
   return (
