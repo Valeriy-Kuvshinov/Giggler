@@ -1,30 +1,18 @@
-import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 import { socialMediaLinks } from '../services/gallery.service.js'
 
-import { MobileFilter } from './MobileFilter.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 export function AppFooter() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 600)
-
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
+  const deviceType = useDeviceType()
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 600)
-    }
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
-
-  return !isMobile ? (
+  return deviceType === 'desktop' || deviceType === 'tablet' ? (
     <footer className="desktop-footer flex full">
       <div className="footer-part flex">
         <h1>Giggler</h1>
