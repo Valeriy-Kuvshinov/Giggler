@@ -48,23 +48,6 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
   if (deviceType === 'mini-tablet' || deviceType === 'mobile') {
     return (
       <>
-        <div className="gig-results-title layout-row">
-          {filterBy.search && (
-            <section className="search-param">
-              <h1>
-                {`Results for `}
-                <span className="b">{filterBy.search}</span>
-              </h1>
-            </section>
-          )}
-          {filterBy.cat && (
-            <CatTagDisplayBar
-              isFrom="explore"
-              category={filterBy.cat}
-              tag={filterBy.tag}
-            />
-          )}
-        </div>
         <main className={`gig-filter ${deviceType === 'mini-tablet'
           || deviceType === 'mobile' ? 'mobileStyles' : ''}`}>
           <section className="floating-top-bar layout-row">

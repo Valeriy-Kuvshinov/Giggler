@@ -8,9 +8,11 @@ import { GigFilter } from '../cmps/GigFilter.jsx'
 
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.js'
+import { Loader } from '../cmps/Loader.jsx'
 
 export function GigIndex({ onMobileFilter }) {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
+  const isLoading = useSelector(storeState => storeState.gigModule.isLoading)
   const [searchParams, setSearchparams] = useSearchParams()
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
   const [isRenderedChoice, setIsRenderedChoice] = useState([false, ''])
@@ -152,6 +154,8 @@ export function GigIndex({ onMobileFilter }) {
   }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
+
+  if (isLoading) return <Loader />
   return (
     <main
       className="gig-index flex column full"
