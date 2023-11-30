@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 
 import { orderBackendService } from "../services/order.backend.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
 import { Loader } from "../cmps/Loader.jsx"
-import SvgIcon from "../cmps/SvgIcon.jsx"
+import { BuyerOrder } from "../cmps/BuyerOrder.jsx"
 import { InvoiceModal } from "../cmps/InvoiceModal.jsx"
 import { ReviewSubmit } from "../cmps/ReviewSubmit.jsx"
 
@@ -21,7 +20,7 @@ export function OrdersPage() {
     const orders = useSelector((storeState) => storeState.orderModule.orders)
 
     useEffect(() => {
-        const fetchOrders = async () => {
+        async function fetchOrders() {
             if (loggedInUser) {
                 try {
                     await loadOrders({ buyerId: loggedInUser._id })
@@ -34,7 +33,7 @@ export function OrdersPage() {
     }, [loggedInUser])
 
     useEffect(() => {
-        const fetchOrderDetails = async () => {
+        async function fetchOrderDetails() {
             for (const order of orders) {
                 if (order.buyerId === loggedInUser._id) {
                     setOrderDetails((prevDetails) => ({
@@ -103,52 +102,21 @@ export function OrdersPage() {
         <main className="orders-page full flex column">
             <section className="buyer-orders-list layout-row flex column">
                 <div className="list-contents flex column">
-                    {orders
-                        .filter((order) => order.buyerId === loggedInUser._id)
-                        .map((order) => {
-                            const details = orderDetails[order._id]
-                            if (details && !details.isLoading) {
-                                return (
-                                    <div key={order._id} className="buyer-order grid">
-                                        <div className="order-image">
-                                            <img src={details.gigData.imgUrls?.[0]} alt="Gig" />
-                                            {(order.orderState === 'accepted' ||
-                                                order.orderState === 'completed' ||
-                                                order.orderState === 'reviewed') && (
-                                                    <span className="invoice-icon" title="Order Invoice"
-                                                        onClick={(event) => onClickReceipt(event, order)}>
-                                                        <SvgIcon iconName={'receiptIcon'} />
-                                                    </span>
-                                                )}
-                                            {(order.orderState === 'completed') && (
-                                                <span className="review-icon" title="Review Order"
-                                                    onClick={(event) => onClickReview(event, order)}>
-                                                    <SvgIcon iconName={'reviewIcon'} />
-                                                </span>
-                                            )}
-                                        </div>
-                                        {details ? (
-                                            <Link
-                                                className="order-title"
-                                                to={`/gig/${details.gigData._id}`}
-                                            >
-                                                {details.gigData.title}
-                                            </Link>
-                                        ) : null}
-                                        <div className="seller-name">
-                                            {`By ${details.userData.username}`}
-                                        </div>
-                                        <div className={`order-status ${order.orderState}`}>
-                                            {order.orderState}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        })}
+                    {orders.map(order => order.buyerId === loggedInUser._id &&
+                        <BuyerOrder
+                            key={order._id}
+                            order={order}
+                            details={orderDetails[order._id]}
+                            onClickReceipt={onClickReceipt}
+                            onClickReview={onClickReview}
+                        />)
+                    }
                 </div>
-                {isInvoiceModalOpen && <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
-                {isReviewModalOpen && <ReviewSubmit gig={selectedGig}
-                    loggedInUser={loggedInUser} order={selectedOrder} onClose={closeReview} />}
+                {isInvoiceModalOpen &&
+                    <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
+                {isReviewModalOpen &&
+                    <ReviewSubmit gig={selectedGig}
+                        loggedInUser={loggedInUser} order={selectedOrder} onClose={closeReview} />}
             </section>
         </main>
     )

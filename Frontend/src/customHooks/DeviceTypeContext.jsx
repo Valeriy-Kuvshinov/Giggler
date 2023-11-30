@@ -3,7 +3,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 const DeviceTypeContext = createContext()
 
 export const DeviceTypeProvider = ({ children }) => {
-    const [deviceType, setDeviceType] = useState(getDeviceType(window.innerWidth));
+    const [deviceType, setDeviceType] = useState(
+        getDeviceType(window.innerWidth))
 
     function getDeviceType(width) {
         if (width <= 480) return 'mobile'
