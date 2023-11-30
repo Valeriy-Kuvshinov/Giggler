@@ -643,7 +643,9 @@
 
           .user-preview {
             border-bottom: 1px solid $clrSecondary2;
-            padding: 4px 16px;
+            padding: 8px 16px;
+            background: $clrSecondary1;
+            margin: 0;
 
             .avatar-gig-details {
               width: 3rem;
@@ -668,6 +670,10 @@
 
       .gig-reviews {
         padding: 0 16px;
+
+        .title {
+          display: none;
+        }
       }
     }
 
