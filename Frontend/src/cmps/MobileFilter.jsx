@@ -39,7 +39,7 @@ export function MobileFilter({
   function handleSubmit(event) {
     event.preventDefault()
     console.log('Form submitted with fields:', fields)
-    if (checkFields()) setMobileFilter(fields)
+    setMobileFilter(fields)
     onMobileFilterState()
   }
   return (

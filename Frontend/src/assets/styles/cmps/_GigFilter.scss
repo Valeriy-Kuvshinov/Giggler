@@ -45,28 +45,29 @@
   padding-block-start: 1em;
 
   .floating-top-bar {
+    display: flex;
+    gap: 0.5em;
     .btn-mobile-filter {
       display: grid;
       grid-auto-flow: column;
       gap: 0.5em;
       align-items: center;
-      border: 1px solid $clrSecondary10;
-      border-radius: rem(8px);
+      border: 1px solid $clrSecondary45;
+      border-radius: rem(24px);
       color: $clrPrimary2;
       font-weight: 600;
       font-size: 1rem;
       background: none;
-      padding: rem(12px) rem(16px);
+      padding: rem(8px) rem(12px);
+      margin: 0.25em 0;
       transition: border-color 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-
-      // i {
-      //   width: 1em;
-      //   height: 1em;
-      // }
-
-      &:hover {
-        border-color: $clrPrimary2;
-      }
+    }
+    .filtered-clr {
+      border-radius: 1.5em;
+      border: 1px solid $clrPrimary2;
+      padding: 0.5em 0.75em;
+      margin: 0.25em 0;
+      min-height: fit-content;
     }
 
     .floating-menu {

@@ -31,7 +31,23 @@ export function UserPreview({ isFrom, owner, children }) {
     setUser(owner)
   }
   if (!user) return null
-  
+  if(isFrom === 'mobile') {
+    return (
+      <div className="user-mobile-preview">
+          <div className="user-rating-order">
+            <span className="rating-score flex">
+              <SvgIcon iconName={'star'} tag={'span'} />
+              <span className="rate b">{user.rating}</span>
+              <span className="rate-count ">{`(${ratingCount})`}</span>
+            </span>
+          </div>
+          {children}
+
+        </div>
+
+    )
+  }
+
   return (
     <>
       <div

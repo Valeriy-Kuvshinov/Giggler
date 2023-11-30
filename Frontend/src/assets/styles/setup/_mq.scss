@@ -1,11 +1,11 @@
 // Main page media query
 .home-wrapper {
   .welcome-wrapper {
-    @media(max-width: 899px) {
+    @media (max-width: 899px) {
       height: 495px;
     }
 
-    @media(min-width: 900px) {
+    @media (min-width: 900px) {
       height: 760px;
     }
 
@@ -87,7 +87,7 @@
         gap: 1.5em;
       }
 
-      @media(max-width: 600px) {
+      @media (max-width: 600px) {
         gap: 0.75em;
 
         img {
@@ -113,7 +113,7 @@
       padding: 1em 2em;
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       padding: 1em 1.5em;
     }
 
@@ -171,7 +171,7 @@
       padding: 6em 2em;
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       padding: 3em 1.5em;
 
       h2 {
@@ -201,7 +201,7 @@
       }
     }
 
-    @media(min-width: 601px) {
+    @media (min-width: 601px) {
       h2 {
         font-size: 32px;
       }
@@ -243,7 +243,7 @@
         }
       }
 
-      @media(max-width: 600px) {
+      @media (max-width: 600px) {
         padding: 3.5em 1.5em;
       }
 
@@ -270,7 +270,7 @@
       padding: 1em 2em;
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       padding: 1em 1.5em;
     }
 
@@ -316,11 +316,11 @@
       padding: 1em 2em;
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       padding: 1em 1.5em;
     }
 
-    @media(max-width: 480px) {
+    @media (max-width: 480px) {
       padding: 1em;
     }
 
@@ -329,7 +329,7 @@
     }
 
     .container {
-      @media(max-width: 600px) {
+      @media (max-width: 600px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -419,7 +419,7 @@
       padding: 0 2em;
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       display: none;
     }
   }
@@ -460,8 +460,6 @@
     }
   }
 
-
-
   @media (min-width: 900px) {
     width: 850px;
     height: 650px;
@@ -476,11 +474,11 @@
 // Page dimmer media query
 
 .dimmed-content {
-  @media (max-width:600px) {
+  @media (max-width: 600px) {
     inset: 134px 0px 0px;
   }
 
-  @media (min-width:601px) {
+  @media (min-width: 601px) {
     inset: 80px 0px 0px;
   }
 }
@@ -488,21 +486,20 @@
 // Dashboard page media query
 
 .dashboard-page {
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
     padding: 1.25em 1.5em 5em 1.5em;
   }
 
-  @media(min-width:601px) {
+  @media (min-width: 601px) {
     padding: 1.25em 2em 10em 2em;
   }
 
   .dashboard-container {
     .seller-summary {
-
       .general-area,
       .financial-area {
         .info-area {
-          @media(max-width: 600px) {
+          @media (max-width: 600px) {
             flex-direction: column;
             height: fit-content;
 
@@ -536,7 +533,7 @@
             }
           }
 
-          @media(min-width: 601px) {
+          @media (min-width: 601px) {
             flex-direction: row;
 
             .info-cell {
@@ -576,7 +573,6 @@
 
 .gig-index {
   @media (max-width: 1400px) {
-
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -590,17 +586,22 @@
     }
   }
 
-  @media(max-width: 600px) {
+  @media (max-width: 600px) {
+    .pagination{
+      margin-block-end: 2em;
+      justify-self: center;
+    }
 
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
-      padding: 0 1.5em;
+      padding: 0 1em;
+      margin: 0.5em 0;
     }
 
     .gig-filter {
       .floating-top-bar {
-        padding: 0 1.5em;
+        padding: 0 1em;
       }
     }
   }
@@ -622,7 +623,7 @@
     }
   }
 
-  @media(max-width: 480px) {
+  @media (max-width: 480px) {
     padding: 0;
 
     main {
@@ -663,7 +664,7 @@
     }
   }
 
-  @media(min-width: 481px) {
+  @media (min-width: 481px) {
     padding: 32px 0px 24px 0px;
 
     main {
@@ -868,7 +869,7 @@
     padding: 1em 2em;
   }
 
-  @media (max-width:800px) {
+  @media (max-width: 800px) {
     flex-direction: column;
     gap: 1em;
 
@@ -880,7 +881,7 @@
     }
   }
 
-  @media(min-width: 801px) {
+  @media (min-width: 801px) {
     flex-direction: row;
 
     .footer-part {
@@ -899,8 +900,7 @@
 // Invoice, Review, Sharing a gig modals media query
 
 .modal-wrapper {
-  @media(max-width:480px) {
-
+  @media (max-width: 480px) {
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -985,11 +985,9 @@
       }
     }
 
-
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 16px;
@@ -1004,8 +1002,7 @@
     }
   }
 
-  @media(min-width: 481px) {
-
+  @media (min-width: 481px) {
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1105,7 +1102,6 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 21px;

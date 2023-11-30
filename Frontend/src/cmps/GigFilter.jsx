@@ -13,16 +13,15 @@ export function GigFilter({
   onDeleteFilter,
   setMobileFilter,
   mobileState,
-  onMobileFilterState
+  onMobileFilterState,
 }) {
   const [isMobile, setIsMobile] = useState(
     window.innerWidth < 600 ? true : false
   )
   const [isSticky, setIsSticky] = useState(false)
-  
+
   let shadowStart = 139
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
-
 
   useEffect(() => {
     handleScroll()
@@ -46,37 +45,68 @@ export function GigFilter({
     if (window.scrollY >= shadowStart) setIsSticky(true)
     else setIsSticky(false)
   }
+
   function checkFilter() {
     return (
+      filterBy.search ||
       filterBy.cat ||
       filterBy.tag ||
       filterBy.level ||
       filterBy.min ||
       filterBy.max ||
-      filterBy.time
+      filterBy.time ||
+      filterBy.page !== 1
     )
   }
 
   if (isMobile) {
     return (
-      <main className={`gig-filter ${isMobile ? 'mobileStyles' : ''}`}>
-        <section className="floating-top-bar layout-row">
-          <button
-            onClick={() => onMobileFilterState()}
-            className={`btn-mobile-filter  ${filterBy.level ? 'border' : ''}`}
-          >
-            Select Filter
-            <SvgIcon iconName={'filterIcon'} />
-          </button>
-          {mobileState && (
-            <MobileFilter
-              filterBy={filterBy}
-              setMobileFilter={setMobileFilter}
-              onMobileFilterState={onMobileFilterState}
+      <>
+        <div className="gig-results-title layout-row">
+          {filterBy.search && (
+            <section className="search-param">
+              <h1>
+                {`Results for `}
+                <span className="b">{filterBy.search}</span>
+              </h1>
+            </section>
+          )}
+          {filterBy.cat && (
+            <CatTagDisplayBar
+              isFrom="explore"
+              category={filterBy.cat}
+              tag={filterBy.tag}
             />
           )}
-        </section>
-      </main>
+        </div>
+        <main className={`gig-filter ${isMobile ? 'mobileStyles' : ''}`}>
+          <section className="floating-top-bar layout-row">
+            {checkFilter() && (
+              <button
+                onClick={() => onHandleChoice('clear')}
+                className="btn filtered-clr"
+                title="Clear all filters"
+              >
+                Clear filter
+              </button>
+            )}
+            <button
+              onClick={() => onMobileFilterState()}
+              className={`btn-mobile-filter  ${checkFilter() ? 'border' : ''}`}
+            >
+              Select Filter
+              <SvgIcon iconName={'filterIcon'} />
+            </button>
+            {mobileState && (
+              <MobileFilter
+                filterBy={filterBy}
+                setMobileFilter={setMobileFilter}
+                onMobileFilterState={onMobileFilterState}
+              />
+            )}
+          </section>
+        </main>
+      </>
     )
   }
 
@@ -103,13 +133,7 @@ export function GigFilter({
       <main className={`gig-filter ${isSticky ? 'shadow' : ''}`}>
         <section className="floating-top-bar layout-row">
           <div className="filter-nav">
-            {(filterBy.cat ||
-              filterBy.search ||
-              filterBy.level ||
-              filterBy.min !== undefined ||
-              filterBy.max !== undefined ||
-              filterBy.time ||
-              filterBy.page !== 1) && (
+            {checkFilter() && (
               <button
                 onClick={() => onHandleChoice('clear')}
                 className="btn filtered-clr"
