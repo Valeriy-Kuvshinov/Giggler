@@ -10,7 +10,7 @@ import SvgIcon from "./SvgIcon.jsx"
 import { InvoiceModal } from "./InvoiceModal.jsx"
 import { ReviewSubmit } from "./ReviewSubmit.jsx"
 
-export function BuyerOrders({ loggedInUser, onClose }) {
+export function BuyerOrdersDropdown({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
   const [selectedOrder, setSelectedOrder] = useState(null)
   const [selectedGig, setSelectedGig] = useState(null)

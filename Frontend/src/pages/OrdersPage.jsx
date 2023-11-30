@@ -101,7 +101,7 @@ export function OrdersPage() {
 
     return (
         <main className="orders-page full flex column">
-            <section className="buyer-orders-list flex column">
+            <section className="buyer-orders-list layout-row flex column">
                 <div className="list-contents flex column">
                     {orders
                         .filter((order) => order.buyerId === loggedInUser._id)
