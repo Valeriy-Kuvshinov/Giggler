@@ -5,12 +5,11 @@ import { MenuFilterContent } from './MenuFilterContent.jsx'
 import { CatTagDisplayBar } from './CatTagDisplayBar.jsx'
 import { SelectedFilters } from './SelectedFilters.jsx'
 import { MobileFilter } from './MobileFilter.jsx'
-
 import SvgIcon from './SvgIcon.jsx'
 
 export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
   isRenderedChoice, onDeleteFilter, setMobileFilter, mobileState,
-  onMobileFilterState,
+  onMobileFilterState, setIsRenderedChoice,
 }) {
   const [isSticky, setIsSticky] = useState(false)
   const deviceType = useDeviceType()
@@ -54,7 +53,7 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
             {checkFilter() && (
               <button
                 onClick={() => onHandleChoice('clear')}
-                className="btn filtered-clr"
+                className="btn clear-filter"
                 title="Clear all filters"
               >
                 Clear filter
@@ -133,6 +132,7 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
                   <MenuFilterContent
                     renderedChoice={isRenderedChoice[1]}
                     setMenuFilter={setMenuFilter}
+                    setIsRenderedChoice={setIsRenderedChoice}
                   />
                 )}
             </div>
@@ -154,6 +154,7 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
                 <MenuFilterContent
                   renderedChoice={isRenderedChoice[1]}
                   setMenuFilter={setMenuFilter}
+                  setIsRenderedChoice={setIsRenderedChoice}
                 />
               )}
             </div>
@@ -176,6 +177,7 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
                 <MenuFilterContent
                   renderedChoice={isRenderedChoice[1]}
                   setMenuFilter={setMenuFilter}
+                  setIsRenderedChoice={setIsRenderedChoice}
                 />
               )}
             </div>
@@ -198,6 +200,7 @@ export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
                 <MenuFilterContent
                   renderedChoice={isRenderedChoice[1]}
                   setMenuFilter={setMenuFilter}
+                  setIsRenderedChoice={setIsRenderedChoice}
                 />
               )}
             </div>

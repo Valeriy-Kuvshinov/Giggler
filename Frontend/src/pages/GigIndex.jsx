@@ -166,6 +166,7 @@ export function GigIndex({ onMobileFilter }) {
         setMenuFilter={setMenuFilter}
         onHandleChoice={onHandleChoice}
         isRenderedChoice={isRenderedChoice}
+        setIsRenderedChoice={setIsRenderedChoice}
         onDeleteFilter={onDeleteFilter}
         onMobileFilter={onMobileFilter}
         setMobileFilter={setMobileFilter}
