@@ -108,9 +108,9 @@ export function GigPreview({ isFrom, gig }) {
         </div>
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
-            <SvgIcon iconName={'heartLiked'} />
+            <SvgIcon iconName={'heartLikedDesktopIcon'} />
           ) : (
-            <SvgIcon iconName={'heart'} />
+            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
           )}
         </span>
       </li>
@@ -129,9 +129,9 @@ export function GigPreview({ isFrom, gig }) {
       {isFrom !== 'userProfile' && (
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
-            <SvgIcon iconName={'heartLiked'} />
+            <SvgIcon iconName={'heartLikedDesktopIcon'} />
           ) : (
-            <SvgIcon iconName={'heart'} />
+            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
           )}
         </span>
       )}
