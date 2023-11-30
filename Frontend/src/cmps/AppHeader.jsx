@@ -88,7 +88,7 @@ export function AppHeader() {
   }, [])
 
   useEffect(() => {
-    if (!isHomePage || deviceType === 'small' || deviceType === 'mobile') {
+    if (!isHomePage || deviceType === 'mini-tablet' || deviceType === 'mobile') {
       setHeaderStage(2)
       setHeaderPlaceholderText('Find services...')
     } else {
@@ -99,12 +99,12 @@ export function AppHeader() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (deviceType !== 'small' && deviceType !== 'mobile') {
+      if (deviceType !== 'mini-tablet' && deviceType !== 'mobile') {
         const newStage = window.scrollY < 50 ? 0 : (window.scrollY < 150 ? 1 : 2)
         setHeaderStage(newStage)
       }
     }
-    if (isHomePage && deviceType !== 'small' && deviceType !== 'mobile') {
+    if (isHomePage && deviceType !== 'mini-tablet' && deviceType !== 'mobile') {
       window.addEventListener('scroll', handleScroll)
       return () => window.removeEventListener('scroll', handleScroll)
     }

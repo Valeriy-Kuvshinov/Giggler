@@ -31,20 +31,19 @@ export function UserPreview({ isFrom, owner, children }) {
     setUser(owner)
   }
   if (!user) return null
-  if(isFrom === 'mobile') {
+
+  if (isFrom === 'mobile') {
     return (
-      <div className="user-mobile-preview">
-          <div className="user-rating-order">
-            <span className="rating-score flex">
-              <SvgIcon iconName={'star'} tag={'span'} />
-              <span className="rate b">{user.rating}</span>
-              <span className="rate-count ">{`(${ratingCount})`}</span>
-            </span>
-          </div>
-          {children}
-
+      <div className="user-mobile-preview grid">
+        <div className="user-rating-order flex">
+          <span className="rating-score flex">
+            <SvgIcon iconName={'star'} tag={'span'} />
+            <span className="rate b">{user.rating}</span>
+            <span className="rate-count ">{`(${ratingCount})`}</span>
+          </span>
         </div>
-
+        {children}
+      </div>
     )
   }
 
@@ -64,9 +63,9 @@ export function UserPreview({ isFrom, owner, children }) {
             {(isFrom === 'gig-details' || isFrom === 'gig-details-2') && (
               <span className="fullname b">{user.fullName}</span>
             )}
-          <Link to={`/user/${user._id}`} className={`username ${isFrom === 'explore' ? 'b' : ''}`}>{`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''
+            <Link to={`/user/${user._id}`} className={`username ${isFrom === 'explore' ? 'b' : ''}`}>{`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''
               }${user.username}`}</Link>
-              {isFrom==='userProfile' && <span className={`user-level ${user.level==='level 3'?'top':''}`}>{user.level}</span>}
+            {isFrom === 'userProfile' && <span className={`user-level ${user.level === 'level 3' ? 'top' : ''}`}>{user.level}</span>}
           </span>
           {isFrom === 'gig-details-2' && (
             <span className="saying">{`Work Hard\, Work Fast and Cater Your needs as imagined`}</span>
@@ -85,7 +84,7 @@ export function UserPreview({ isFrom, owner, children }) {
             </div>
           )}
         </div>
-        {isFrom === 'explore' && <span className={`level ${user.level==='Pro Talent'?'pro':''}`}>{user.level}</span>}
+        {isFrom === 'explore' && <span className={`level ${user.level === 'Pro Talent' ? 'pro' : ''}`}>{user.level}</span>}
       </div>
       {isFrom === 'explore' && children}
       {isFrom === 'explore' && (

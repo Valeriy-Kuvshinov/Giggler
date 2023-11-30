@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 import { MenuFilterContent } from './MenuFilterContent.jsx'
 import { CatTagDisplayBar } from './CatTagDisplayBar.jsx'
@@ -7,40 +8,23 @@ import { MobileFilter } from './MobileFilter.jsx'
 
 import SvgIcon from './SvgIcon.jsx'
 
-export function GigFilter({
-  filterBy,
-  setMenuFilter,
-  onHandleChoice,
-  isRenderedChoice,
-  onDeleteFilter,
-  setMobileFilter,
-  mobileState,
+export function GigFilter({ filterBy, setMenuFilter, onHandleChoice,
+  isRenderedChoice, onDeleteFilter, setMobileFilter, mobileState,
   onMobileFilterState,
 }) {
-  const [isMobile, setIsMobile] = useState(
-    window.innerWidth < 600 ? true : false
-  )
   const [isSticky, setIsSticky] = useState(false)
+  const deviceType = useDeviceType()
 
   let shadowStart = 139
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
   useEffect(() => {
     handleScroll()
-    updateIsMobile()
     window.addEventListener('scroll', handleScroll)
-    window.addEventListener('resize', updateIsMobile)
-
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', updateIsMobile)
     }
   }, [])
-
-  function updateIsMobile() {
-    if (window.innerWidth < 600) setIsMobile(true)
-    else setIsMobile(false)
-  }
 
   function handleScroll() {
     filterBy.cat ? (shadowStart = 197) : (shadowStart = 139)
@@ -61,7 +45,7 @@ export function GigFilter({
     )
   }
 
-  if (isMobile) {
+  if (deviceType === 'mini-tablet' || deviceType === 'mobile') {
     return (
       <>
         <div className="gig-results-title layout-row">
@@ -81,7 +65,8 @@ export function GigFilter({
             />
           )}
         </div>
-        <main className={`gig-filter ${isMobile ? 'mobileStyles' : ''}`}>
+        <main className={`gig-filter ${deviceType === 'mini-tablet'
+          || deviceType === 'mobile' ? 'mobileStyles' : ''}`}>
           <section className="floating-top-bar layout-row">
             {checkFilter() && (
               <button
