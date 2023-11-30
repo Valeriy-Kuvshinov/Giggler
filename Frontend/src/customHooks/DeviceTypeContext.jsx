@@ -7,7 +7,7 @@ export const DeviceTypeProvider = ({ children }) => {
 
     function getDeviceType(width) {
         if (width <= 480) return 'mobile'
-        else if (width <= 600) return 'small'
+        else if (width <= 600) return 'mini-tablet'
         else if (width <= 900) return 'tablet'
         return 'desktop'
     }

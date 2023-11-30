@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 import { gigService } from '../services/gig.service'
 import { userService } from '../services/user.service.js'
@@ -19,6 +20,7 @@ export function GigPreview({ isFrom, gig }) {
   const loggedInUserId = params.id
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
+  const deviceType = useDeviceType()
 
   const [newImgIndex, setNewImgIndex] = useState(0)
   const [owner, setOwner] = useState(null)
@@ -26,7 +28,6 @@ export function GigPreview({ isFrom, gig }) {
   const [isLiked, setIsLiked] = useState(
     loggedInUser && updatedGig.likedByUsers.includes(loggedInUser._id)
   )
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 600)
 
   useEffect(() => {
     async function fetchOwnerDetails() {
@@ -40,16 +41,6 @@ export function GigPreview({ isFrom, gig }) {
   useEffect(() => {
     setIsLiked(loggedInUser && gig.likedByUsers.includes(loggedInUser._id))
   }, [loggedInUser, gig])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 600)
-    }
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   async function onRemoveGig() {
     try {
@@ -92,11 +83,14 @@ export function GigPreview({ isFrom, gig }) {
       setUpdatedGig(gigToSave)
     }
   }
-  if (isMobile) {
+  if (deviceType === 'mobile' || deviceType === 'mini-tablet') {
     return (
-      <li className="mobile-gig-preview">
+      <li className="mobile-gig-preview grid">
+        <span className={`level ${owner?.level === 'Pro Talent' ? 'pro' : ''}`}>
+          {owner?.level === 'Pro Talent' ? 'Pro' : ''}
+        </span>
         <img src={updatedGig.imgUrls[0]} alt="gig-img"></img>
-        <div className="mobile-preview-body">
+        <div className="mobile-preview-body flex">
           <UserPreview isFrom={'mobile'} owner={owner} gig={updatedGig}>
             <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
               {updatedGig.title}
@@ -125,7 +119,6 @@ export function GigPreview({ isFrom, gig }) {
         newImgIndex={newImgIndex}
         setNewImgIndex={setNewImgIndex}
       />
-
       {isFrom !== 'userProfile' && (
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
@@ -143,7 +136,6 @@ export function GigPreview({ isFrom, gig }) {
             </Link>
           </UserPreview>
         )}
-
         {isFrom === 'userProfile' && (
           <>
             <div className="profile">
@@ -162,9 +154,8 @@ export function GigPreview({ isFrom, gig }) {
               </div>
             </div>
             <div
-              className={`gig-changes ${
-                loggedInUserId !== loggedInUser?._id ? 'right' : ''
-              }`}
+              className={`gig-changes ${loggedInUserId !== loggedInUser?._id ? 'right' : ''
+                }`}
             >
               {loggedInUserId === loggedInUser?._id && (
                 <div className="gig-btns">
