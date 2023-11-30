@@ -33,6 +33,8 @@ export function GigReviews({ gig }) {
         setFullReviews(reviewsWithUser)
     }
 
+    if(fullReviews.length===0) return <div></div>
+
     return (
         <section className="gig-reviews">
             <span className="title">Reviews</span>

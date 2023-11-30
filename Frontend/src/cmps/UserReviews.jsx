@@ -37,6 +37,7 @@ export function UserReviews({ gigs }) {
         }
         setAllFullReviews(reviewsWithUser)
     }
+    if(allFullReviews.length===0) return <div></div>
 
     return (
         <section className="user-reviews">
