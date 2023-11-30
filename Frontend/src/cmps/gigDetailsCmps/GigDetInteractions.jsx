@@ -1,5 +1,6 @@
-import { useModal } from '../../customHooks/ModalContext.jsx'
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useModal } from '../../customHooks/ModalContext.jsx'
 
 import { gigService } from '../../services/gig.service.js'
 
@@ -11,7 +12,15 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
     const [isLiked, setIsLiked] = useState(
         loggedInUser && gig.likedByUsers.includes(loggedInUser._id)
     )
+    const [headerStage, setHeaderStage] = useState(0)
+
     const { openLogin } = useModal()
+
+    const headerStyles = {
+        backgroundColor: headerStage === 0 ? 'transparent' : '#fff',
+        position: headerStage === 0 ? 'absolute' : 'sticky',
+        borderBottom: headerStage === 0 ? 'none' : '1px solid #dadbdd'
+    }
 
     function likeGig() {
         if (!loggedInUser) {
@@ -22,8 +31,7 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
 
         if (gigToSave.likedByUsers.includes(loggedInUser._id)) {
             gigToSave.likedByUsers = gigToSave.likedByUsers.filter(
-                (liker) => liker !== loggedInUser._id
-            )
+                (liker) => liker !== loggedInUser._id)
             setIsLiked(false)
 
             gigService.save(gigToSave).then(() => {
@@ -31,7 +39,6 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
             })
         } else {
             gigToSave.likedByUsers.push(loggedInUser._id)
-
             setIsLiked(true)
 
             gigService.save(gigToSave).then(() => {
@@ -52,20 +59,37 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
         setIsLiked(loggedInUser && gig.likedByUsers.includes(loggedInUser._id))
     }, [loggedInUser, gig])
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (deviceType === 'mobile') {
+                const newStage = window.scrollY < 100 ? 0 : 1
+                setHeaderStage(newStage)
+            }
+        }
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [deviceType])
+
     return (
         <>
             {deviceType === 'mobile' ? (
-                <div className="gig-interactions mobile flex">
-                    <span className="heart" onClick={(e) => likeGig(e)}>
-                        {isLiked ? (
-                            <SvgIcon iconName={'heartLikedDesktopIcon'} />
-                        ) : (
-                            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
-                        )}
-                    </span>
-                    <button onClick={shareGig} className="share-gig flex" title="share the gig">
-                        <SvgIcon iconName={'shareGigMobileIcon'} />
-                    </button>
+                <div className="gig-interactions mobile flex"
+                    style={headerStyles}>
+                    <Link to="/explore">
+                        <SvgIcon iconName={'arrowDown'} />
+                    </Link>
+                    <div className="flex row">
+                        <span className="heart" onClick={(e) => likeGig(e)}>
+                            {isLiked ? (
+                                <SvgIcon iconName={'heartLikedMobileIcon'} />
+                            ) : (
+                                <SvgIcon iconName={'heartEmptyMobileIcon'} />
+                            )}
+                        </span>
+                        <button onClick={shareGig} className="share-gig flex" title="share the gig">
+                            <SvgIcon iconName={'shareGigMobileIcon'} />
+                        </button>
+                    </div>
                 </div>
             ) : (
                 <div className="gig-interactions flex">
