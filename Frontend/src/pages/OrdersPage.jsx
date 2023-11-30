@@ -101,23 +101,22 @@ export function OrdersPage() {
     return (
         <main className="orders-page full flex column">
             <section className="buyer-orders-list layout-row flex column">
-                <div className="list-contents flex column">
-                    {orders.map(order => order.buyerId === loggedInUser._id &&
-                        <BuyerOrder
-                            key={order._id}
-                            order={order}
-                            details={orderDetails[order._id]}
-                            onClickReceipt={onClickReceipt}
-                            onClickReview={onClickReview}
-                        />)
-                    }
-                </div>
-                {isInvoiceModalOpen &&
-                    <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
-                {isReviewModalOpen &&
-                    <ReviewSubmit gig={selectedGig}
-                        loggedInUser={loggedInUser} order={selectedOrder} onClose={closeReview} />}
+                {orders.map(order => order.buyerId === loggedInUser._id &&
+                    <BuyerOrder
+                        key={order._id}
+                        order={order}
+                        details={orderDetails[order._id]}
+                        onClickReceipt={onClickReceipt}
+                        onClickReview={onClickReview}
+                        isFrom='orders'
+                    />)
+                }
             </section>
+            {isInvoiceModalOpen &&
+                <InvoiceModal order={selectedOrder} onClose={closeInvoice} />}
+            {isReviewModalOpen &&
+                <ReviewSubmit gig={selectedGig}
+                    loggedInUser={loggedInUser} order={selectedOrder} onClose={closeReview} />}
         </main>
     )
 }
