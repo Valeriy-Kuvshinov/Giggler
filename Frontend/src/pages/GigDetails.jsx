@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 import { GigDetHeader } from '../cmps/gigDetailsCmps/GigDetHeader.jsx'
 import { AboutSeller } from '../cmps/gigDetailsCmps/AboutSeller.jsx'
@@ -17,19 +18,17 @@ import { UserChat } from '../cmps/UserChat.jsx'
 
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
-import { utilService } from '../services/util.service.js'
 
 export function GigDetails() {
   const [gig, setGig] = useState(null)
   const [gigOwner, setGigOwner] = useState(null)
-  const [deviceType, setDeviceType] = useState(
-    utilService.getDeviceType(window.innerWidth))
   const [chatState, setChatState] = useState(false)
 
   const loggedInUser = useSelector((storeState) => storeState.userModule.user)
   const navigate = useNavigate()
   const { id } = useParams()
   const { openLogin } = useModal()
+  const deviceType = useDeviceType()
 
   useEffect(() => {
     if (!id || id.length !== 24) {
@@ -51,16 +50,6 @@ export function GigDetails() {
     }
     loadData()
   }, [id, navigate])
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDeviceType(utilService.getDeviceType(window.innerWidth))
-    }
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   const handleOpenChat = () => {
     if (loggedInUser) setChatState(true)

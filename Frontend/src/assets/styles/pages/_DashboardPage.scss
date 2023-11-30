@@ -186,6 +186,7 @@
                             height: 60px;
                             border-radius: 0.5em;
                             object-fit: cover;
+                            background: $clrSecondary5;
                         }
 
                         .order-info {
@@ -345,6 +346,7 @@
                             margin-bottom: 1em;
                             border-radius: 0.5em;
                             height: 90%;
+                            background: $clrSecondary5;
                         }
 
                         .order-price {
@@ -386,6 +388,7 @@
                                 width: 32px;
                                 object-fit: cover;
                                 border-radius: 50%;
+                                background: $clrSecondary5;
                             }
 
                             .buyer-name {

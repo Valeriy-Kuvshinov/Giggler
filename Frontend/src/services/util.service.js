@@ -10,8 +10,7 @@ export const utilService = {
   timeAgoString,
   getRandomColor,
   getRandomMidColor,
-  formatDate,
-  getDeviceType
+  formatDate
 }
 
 function makeId(length = 6) {
@@ -162,10 +161,4 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)]
   }
   return color
-}
-
-function getDeviceType(width) {
-  if (width <= 480) return 'mobile'
-  else if (width <= 900) return 'tablet'
-  return 'desktop'
 }

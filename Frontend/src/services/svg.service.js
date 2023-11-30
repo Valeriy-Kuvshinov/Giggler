@@ -17,7 +17,7 @@ const ICONS = {
     <path fill="#fff" fill-rule="evenodd" clip-rule="evenodd" d="M12 4.36c0 .127-.093.247-.188.34L9.194 7.208l.62 3.545c.008.05.008.093.008.143 0 .183-.087.354-.295.354a.594.594 0 0 1-.289-.085L6.001 9.492l-3.237 1.673a.617.617 0 0 1-.289.086c-.209 0-.303-.17-.303-.355 0-.049.008-.092.015-.142l.62-3.545L.181 4.701C.093 4.608 0 4.487 0 4.36c0-.213.223-.298.403-.326l3.621-.517L5.647.291C5.711.156 5.834 0 6 0c.166 0 .289.156.353.291l1.623 3.225 3.62.517c.173.029.404.113.404.326Z"/>
   </svg>`,
 
-  heart: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  heartEmptyDesktopIcon: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_4_20)">
       <g filter="url(#a)">
         <path d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0 0 29 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0 0 17 5.867 7.1 7.1 0 0 0 12.2 4C8.224 4 5 7.283 5 11.333z" fill="#404145" fill-opacity=".3"/>
@@ -48,7 +48,7 @@ const ICONS = {
     </defs>
   </svg>`,
 
-  heartLiked: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  heartLikedDesktopIcon: `<svg width="34" height="32" viewBox="0 0 34 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clip-path="url(#clip0_4_20)">
       <g filter="url(#a)">
         <path d="M5 11.333c0 2.193.926 4.223 2.399 5.515L17 26l9.55-9.155A7.374 7.374 0 0 0 29 11.333C29 7.283 25.776 4 21.8 4A7.1 7.1 0 0 0 17 5.867 7.1 7.1 0 0 0 12.2 4C8.224 4 5 7.283 5 11.333z" fill="#F85D5D"/>

@@ -135,7 +135,6 @@ export function GigPreview({ isFrom, gig }) {
           )}
         </span>
       )}
-
       <div className="preview-body">
         {isFrom === 'explore' && (
           <UserPreview isFrom={isFrom} owner={owner} gig={updatedGig}>

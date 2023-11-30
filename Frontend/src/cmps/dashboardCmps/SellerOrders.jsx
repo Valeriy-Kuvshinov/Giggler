@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useDeviceType } from '../../customHooks/DeviceTypeContext.jsx'
 
 import { SellerOrder } from './SellerOrder.jsx'
 
@@ -7,7 +7,7 @@ import { updateUser } from '../../store/user.actions.js'
 import { socketService } from '../../services/socket.service.js'
 
 export function SellerOrders({ loggedInUser, displayedOrders }) {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const deviceType = useDeviceType()
 
     function updateLastDeliveryForUser() {
         const updatedUser = { ...loggedInUser, lastDelivery: Date.now() }
@@ -23,7 +23,7 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
             }
             await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_accepted', { userId: updatedOrder.buyerId, user: loggedInUser })
-        } 
+        }
         catch (err) {
             console.error(`Error accepting order ${order._id}:`, err)
         }
@@ -39,7 +39,7 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
             }
             await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_denied', { userId: updatedOrder.buyerId, user: loggedInUser })
-        } 
+        }
         catch (err) {
             console.error(`Error denying order ${order._id}:`, err)
         }
@@ -56,25 +56,15 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
 
             await saveOrder(updatedOrder)
             socketService.emit('notify_buyer_completed', { userId: updatedOrder.buyerId, user: loggedInUser })
-        } 
+        }
         catch (err) {
             console.error(`Error completing order ${order._id}:`, err)
         }
     }
 
-    useEffect(() => {
-        function handleResize() {
-            setWindowWidth(window.innerWidth)
-        }
-        window.addEventListener('resize', handleResize)
-        handleResize()
-
-        return () => window.removeEventListener('resize', handleResize)
-    }, [])
-
     return (
         <section className="user-orders">
-            {windowWidth > 600 ? (
+            {deviceType === 'tablet' || deviceType === 'desktop' ? (
                 <section className="desktop-view flex column">
                     {displayedOrders.map(order => (
                         <div className="user-order" key={order._id}>
@@ -83,7 +73,7 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
                                 acceptOrder={acceptOrder}
                                 denyOrder={denyOrder}
                                 completeOrder={completeOrder}
-                                windowWidth={windowWidth}
+                                deviceType={deviceType}
                             />
                         </div>
                     ))}
@@ -97,7 +87,7 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
                                 acceptOrder={acceptOrder}
                                 denyOrder={denyOrder}
                                 completeOrder={completeOrder}
-                                windowWidth={windowWidth}
+                                deviceType={deviceType}
                             />
                         </div>
                     ))}

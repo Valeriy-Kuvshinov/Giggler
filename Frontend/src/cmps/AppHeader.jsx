@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
@@ -17,8 +18,7 @@ import { socketService } from '../services/socket.service.js'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [headerStage, setHeaderStage] = useState(
-    window.innerWidth <= 600 ? 2 : 0)
+  const [headerStage, setHeaderStage] = useState(0)
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
@@ -26,24 +26,20 @@ export function AppHeader() {
   const [chatNotification, setChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
   const [chatState, setChatState] = useState(false)
-  const [headerPlaceholderText, setHeaderPlaceholderText] = useState(
-    window.innerWidth <= 600
-      ? 'Find services...'
-      : 'What service are you looking for today?'
-  )
+  const [headerPlaceholderText, setHeaderPlaceholderText] = useState('')
 
   const userInfoRef = useRef(null)
   const asideMenuRef = useRef(null)
-  const location = useLocation()
   const navigate = useNavigate()
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-
   const { showModal, openLogin, openSignup } = useModal()
+  const deviceType = useDeviceType()
 
   const categories = category
-  const isHomePage = location.pathname === '/'
+  const isHomePage = useLocation().pathname === '/'
+  const isGigPage = useLocation().pathname.startsWith('/gig/')
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
   const headerStyles = {
@@ -84,42 +80,35 @@ export function AppHeader() {
 
   useEffect(() => {
     socketService.on('chat_seller_prompt', promptSellerChat)
-    socketService.on('notify-seller-new-order', newOrderNotification)
+    socketService.on('notify_seller_new_order', newOrderNotification)
     return () => {
       socketService.off('chat_seller_prompt', promptSellerChat)
+      socketService.off('notify_seller_new_order', newOrderNotification)
     }
   }, [])
 
   useEffect(() => {
-    if (isHomePage) {
-      const handleScrollResize = () => {
-        if (window.innerWidth > 600) {
-          if (window.scrollY < 50) setHeaderStage(0)
-          else if (window.scrollY < 150) setHeaderStage(1)
-          else setHeaderStage(2)
-        }
-        else setHeaderStage(window.innerWidth <= 600 ? 2 : 0)
-      }
-      window.addEventListener('scroll', handleScrollResize)
-      window.addEventListener('resize', handleScrollResize)
-
-      return () => {
-        window.removeEventListener('scroll', handleScrollResize)
-        window.removeEventListener('resize', handleScrollResize)
-      }
+    if (!isHomePage || deviceType === 'small' || deviceType === 'mobile') {
+      setHeaderStage(2)
+      setHeaderPlaceholderText('Find services...')
+    } else {
+      setHeaderStage(0)
+      setHeaderPlaceholderText('What service are you looking for today?')
     }
-    else setHeaderStage(2)
-  }, [isHomePage])
+  }, [deviceType, isHomePage])
 
   useEffect(() => {
-    const updatePlaceholder = () => {
-      if (window.innerWidth <= 600) setHeaderPlaceholderText('Find services...')
-      else setHeaderPlaceholderText('What service are you looking for today?')
+    const handleScroll = () => {
+      if (deviceType !== 'small' && deviceType !== 'mobile') {
+        const newStage = window.scrollY < 50 ? 0 : (window.scrollY < 150 ? 1 : 2)
+        setHeaderStage(newStage)
+      }
     }
-    window.addEventListener('resize', updatePlaceholder)
-    updatePlaceholder()
-    return () => window.removeEventListener('resize', updatePlaceholder)
-  }, [])
+    if (isHomePage && deviceType !== 'small' && deviceType !== 'mobile') {
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isHomePage, deviceType])
 
   useEffect(() => {
     window.addEventListener('click', closeDropdown)
@@ -150,6 +139,10 @@ export function AppHeader() {
   function onChatState(e) {
     e.preventDefault()
     setChatState(true)
+  }
+
+  if (isGigPage && deviceType === 'mobile') {
+    return null
   }
 
   return (
@@ -201,7 +194,6 @@ export function AppHeader() {
             onSearchSubmit={handleSearchSubmit}
             visibility={headerStage >= 1 ? 'visible' : 'hidden'}
           />
-
           <ul className="nav-links flex">
             {theBuyer && (
               <li onClick={(e) => onChatState(e)}>
