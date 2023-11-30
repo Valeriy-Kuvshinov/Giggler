@@ -8,17 +8,17 @@ export function ModalProvider({ children }) {
     const [modalMode, setModalMode] = useState('login')
     const [isDimmed, setIsDimmed] = useState(false)
 
-    const openLogin = () => {
+    function openLogin() {
         setModalMode('login')
         setShowModal(true)
     }
 
-    const openSignup = () => {
+    function openSignup() {
         setModalMode('signup')
         setShowModal(true)
     }
 
-    const closeModal = () => {
+    function closeModal() {
         setShowModal(false)
     }
 

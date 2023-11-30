@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
-import SvgIcon from './SvgIcon.jsx'
 import { Link } from 'react-router-dom'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
+
+import SvgIcon from './SvgIcon.jsx'
 
 export function ImageCarousel({
   isFrom,
@@ -11,17 +13,20 @@ export function ImageCarousel({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [parentWidth, setParentWidth] = useState(0)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
 
   const carouselRef = useRef()
+  const deviceType = useDeviceType()
+
   const numImages = images.length
   let imageWidth = parentWidth
 
   useEffect(() => {
     const totalCarouselWidth = imageWidth * numImages
     carouselRef.current.style.width = `${totalCarouselWidth}px`
-    carouselRef.current.style.transform = `translateX(-${
-      imageWidth * currentIndex
-    }px`
+    carouselRef.current.style.transform = `translateX(-${imageWidth * currentIndex
+      }px`
   }, [imageWidth, currentIndex, numImages])
 
   useEffect(() => {
@@ -37,12 +42,9 @@ export function ImageCarousel({
         }
       }
     }
-
     updateParentWidth()
-
     window.addEventListener('reload', updateParentWidth)
     window.addEventListener('resize', updateParentWidth)
-
     return () => {
       window.removeEventListener('reload', updateParentWidth)
       window.removeEventListener('resize', updateParentWidth)
@@ -57,17 +59,32 @@ export function ImageCarousel({
 
   function prevImage(event) {
     event.stopPropagation()
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? numImages - 1 : prevIndex - 1
-    )
-    setNewImgIndex((prevIndex) =>
-      prevIndex === 0 ? numImages - 1 : prevIndex - 1
-    )
+    setCurrentIndex((prevIndex) => prevIndex === 0 ? numImages - 1 : prevIndex - 1)
+    setNewImgIndex((prevIndex) => prevIndex === 0 ? numImages - 1 : prevIndex - 1)
   }
 
   function handleDotClick(index, event) {
     event.stopPropagation()
     setCurrentIndex(index)
+  }
+
+  function handleTouchStart(e) {
+    setTouchStart(e.targetTouches[0].clientX)
+    setTouchEnd(null)
+  }
+
+  function handleTouchMove(e) {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  function handleTouchEnd() {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 25
+    const isRightSwipe = distance < -25
+
+    if (isLeftSwipe) nextImage(new Event('swipe'))
+    if (isRightSwipe) prevImage(new Event('swipe'))
   }
 
   return (
@@ -76,9 +93,8 @@ export function ImageCarousel({
       style={{ borderRadius: isFrom === 'gig-details' ? '0' : '0.5em' }}
     >
       <button
-        className={`arrow${
-          isFrom === 'gig-details' ? '-gig-details' : ''
-        } left`}
+        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
+          } left`}
         onClick={(e) => prevImage(e)}
       >
         <SvgIcon iconName={'arrowDown'} />
@@ -87,6 +103,9 @@ export function ImageCarousel({
         <div
           className="carousel"
           ref={carouselRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           style={{
             width: `${imageWidth * numImages}px`,
           }}
@@ -123,13 +142,18 @@ export function ImageCarousel({
       </div>
 
       <button
-        className={`arrow${
-          isFrom === 'gig-details' ? '-gig-details' : ''
-        } right`}
+        className={`arrow${isFrom === 'gig-details' ? '-gig-details' : ''
+          } right`}
         onClick={(e) => nextImage(e)}
       >
         <SvgIcon iconName={'arrowDown'} />
       </button>
+
+      {deviceType === 'mobile' && (
+        <span className="carousel-index-display">
+          {currentIndex + 1} of {numImages}
+        </span>
+      )}
 
       {isFrom !== 'gig-details' && (
         <ul className="dot-container">

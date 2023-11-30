@@ -1,7 +1,6 @@
 .gig-details-aside {
   top: rem(30px);
   height: fit-content;
-  margin-block-end: 30px;
   background-color: $clrPrimary1;
   color: $clrPrimary2;
 
@@ -109,7 +108,7 @@
 
       i {
         svg {
-          fill: white;
+          fill: $clrPrimary1;
           width: 1rem;
           height: 1rem;
         }

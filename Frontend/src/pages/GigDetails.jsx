@@ -85,7 +85,7 @@ export function GigDetails() {
             <GigReviews gig={gig} />
           </main>
         </section>
-      ) : deviceType === 'tablet' ? (
+      ) : deviceType === 'tablet' || deviceType === 'mini-tablet' ? (
         <section className="gig-details grid layout-row">
           <main>
             <CatTagDisplayBar

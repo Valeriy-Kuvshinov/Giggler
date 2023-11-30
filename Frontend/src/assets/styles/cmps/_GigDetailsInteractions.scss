@@ -90,5 +90,21 @@
                 }
             }
         }
+
+        &.stage-one {
+            svg {
+                path {
+                    fill: white;
+                }
+            }
+        }
+
+        &.stage-two {
+            svg {
+                path {
+                    fill: black;
+                }
+            }
+        }
     }
 }

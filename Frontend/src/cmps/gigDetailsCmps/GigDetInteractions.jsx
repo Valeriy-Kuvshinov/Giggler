@@ -73,7 +73,7 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
     return (
         <>
             {deviceType === 'mobile' ? (
-                <div className="gig-interactions mobile flex"
+                <div className={`gig-interactions mobile flex ${headerStage === 0 ? 'stage-one' : 'stage-two'}`}
                     style={headerStyles}>
                     <Link to="/explore">
                         <SvgIcon iconName={'arrowDown'} />
