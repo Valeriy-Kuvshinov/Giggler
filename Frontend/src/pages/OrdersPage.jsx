@@ -138,11 +138,11 @@ export function OrdersPage() {
                                         <div className="seller-name">
                                             {`By ${details.userData.username}`}
                                         </div>
-                                        <div className={`order-status ${order.orderState}`}>{order.orderState}</div>
+                                        <div className={`order-status ${order.orderState}`}>
+                                            {order.orderState}
+                                        </div>
                                     </div>
                                 )
-                            } else {
-                                return <p>No orders yet, go & explore the place!</p>
                             }
                         })}
                 </div>
