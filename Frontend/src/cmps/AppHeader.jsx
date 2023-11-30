@@ -34,7 +34,7 @@ export function AppHeader() {
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
-  const { showModal, openLogin, openSignup } = useModal()
+  const { openLogin, openSignup } = useModal()
   const deviceType = useDeviceType()
 
   const categories = category
@@ -147,8 +147,7 @@ export function AppHeader() {
 
   return (
     <header
-      className={`app-header flex column full ${isHomePage ? 'home-page' : ''
-        } ${showModal ? 'show-modal' : ''}`}
+      className={`app-header flex column full ${isHomePage ? 'home-page' : ''}`}
       style={headerStyles}
     >
       <nav className="main-nav">
