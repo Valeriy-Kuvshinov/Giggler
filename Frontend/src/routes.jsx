@@ -6,6 +6,7 @@ import { GigPurchase } from './pages/GigPurchase.jsx'
 import { GigEdit } from './pages/GigEdit.jsx'
 import { DashboardPage } from './pages/DashboardPage.jsx'
 import { OrdersPage } from './pages/OrdersPage.jsx'
+import { Chat } from './pages/Chat.jsx'
 
 // import { Testing } from './pages/Testing.jsx'
 
@@ -18,6 +19,7 @@ const routes = [
     { path: '/purchase/:id', component: GigPurchase},
     { path: '/dashboard', component: DashboardPage},
     { path: '/orders', component: OrdersPage},
+    { path: '/chat/:id', component: Chat},
     // { path: '/testing', component: Testing, label: 'testing'} Used for Development
 ]
 
