@@ -16,7 +16,7 @@ import { SellerSummary } from '../cmps/dashboardCmps/SellerSummary.jsx'
 
 import { loadOrders } from '../store/order.actions.js'
 
-export function DashboardPage() {
+export function SellerDashboard() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
