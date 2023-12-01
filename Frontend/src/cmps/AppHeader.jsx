@@ -7,7 +7,7 @@ import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
 import { UserDropdown } from './UserDropdown.jsx'
-import { BuyerOrders } from './BuyerOrders.jsx'
+import { BuyerOrdersDropdown } from './BuyerOrdersDropdown.jsx'
 import { AsideMenu } from './AsideMenu.jsx'
 import SvgIcon from './SvgIcon.jsx'
 import { UserChat } from './UserChat.jsx'
@@ -221,7 +221,7 @@ export function AppHeader() {
                     Orders
                   </button>
                   {showOrdersDropdown && (
-                    <BuyerOrders
+                    <BuyerOrdersDropdown
                       loggedInUser={loggedinUser}
                       onClose={() => setShowOrdersDropdown(false)}
                     />

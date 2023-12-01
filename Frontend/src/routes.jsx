@@ -5,17 +5,19 @@ import { UserProfile } from './pages/UserProfile.jsx'
 import { GigPurchase } from './pages/GigPurchase.jsx'
 import { GigEdit } from './pages/GigEdit.jsx'
 import { DashboardPage } from './pages/DashboardPage.jsx'
+import { OrdersPage } from './pages/OrdersPage.jsx'
 
-import { Testing } from './pages/Testing.jsx'
+// import { Testing } from './pages/Testing.jsx'
 
 const routes = [
-    { path: '/', component: HomePage, label: 'Home' },
-    { path: '/explore/', component: GigIndex, label: 'Explore' },
+    { path: '/', component: HomePage},
+    { path: '/explore/', component: GigIndex},
     { path: '/gig/:id', component: GigDetails },
-    { path: '/user/:id', component: UserProfile, label: 'profile' },
+    { path: '/user/:id', component: UserProfile},
     { path: '/gig/edit/:id?', component: GigEdit },
-    { path: '/purchase/:id', component: GigPurchase, label: 'purchase' },
-    { path: '/dashboard', component: DashboardPage, label: 'dashboard'},
+    { path: '/purchase/:id', component: GigPurchase},
+    { path: '/dashboard', component: DashboardPage},
+    { path: '/orders', component: OrdersPage},
     // { path: '/testing', component: Testing, label: 'testing'} Used for Development
 ]
 

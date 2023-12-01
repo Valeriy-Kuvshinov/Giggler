@@ -1,17 +1,22 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { ApplyFilterBtn } from './ApplyFilterBtn.jsx'
 import { RenderRadioButtons } from './RenderRadioButtons.jsx'
+import  outsideClick  from '../customHooks/outsideClick.js'
 
 import { levels, deliveryTime, category, budget, subcategories } from '../services/gig.service.js'
 
-export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
+export function MenuFilterContent({ renderedChoice, setMenuFilter, setIsRenderedChoice }) {
   const [selectedOption, setSelectedOption] = useState('')
   const [selectedFilter, setSelectedFilter] = useState({
     min: '',
     max: '',
   })
-  const time = [1, 3, 7]
+  const filterRef = useRef(null)
+  
+  outsideClick(filterRef, () => {
+    setIsRenderedChoice(false,'')
+  })
 
   function onHandleBudgetChange(event) {
     if (!event.target.value) return
@@ -27,7 +32,7 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter }) {
   return (
     <>
       {renderedChoice && (
-        <section className="menu-filter-content">
+        <section className="menu-filter-content" ref={filterRef}>
           {(() => {
             switch (renderedChoice) {
               case 'delivery_time':

@@ -67,17 +67,18 @@ export function GigPreview({ isFrom, gig }) {
       setIsLiked(false)
       try {
         await gigService.save(gigToSave)
-      } catch (err) {
+      }
+      catch (err) {
         console.error(err)
       }
       setUpdatedGig(gigToSave)
     } else {
       gigToSave.likedByUsers.push(loggedInUser._id)
-
       setIsLiked(true)
       try {
         await gigService.save(gigToSave)
-      } catch (err) {
+      }
+      catch (err) {
         console.error(err)
       }
       setUpdatedGig(gigToSave)
@@ -102,9 +103,9 @@ export function GigPreview({ isFrom, gig }) {
         </div>
         <span className="heart" onClick={(e) => likeGig(e)}>
           {isLiked ? (
-            <SvgIcon iconName={'heartLikedDesktopIcon'} />
+            <SvgIcon iconName={'heartLikedMobileIcon'} />
           ) : (
-            <SvgIcon iconName={'heartEmptyDesktopIcon'} />
+            <SvgIcon iconName={'heartEmptyMobileIcon'} />
           )}
         </span>
       </li>

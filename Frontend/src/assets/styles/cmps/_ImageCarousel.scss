@@ -38,6 +38,19 @@
     }
   }
 
+  .carousel-index-display {
+    position: absolute;
+    background: $clrPrimary3;
+    color: $clrSecondary1;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    padding: 0 0.5em;
+    border-radius: 1em;
+    margin: 0.5em;
+    font-size: 14px;
+  }
+
   .arrow {
     position: absolute;
     user-select: none;

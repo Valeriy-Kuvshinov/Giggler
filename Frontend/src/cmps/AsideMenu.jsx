@@ -1,11 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
 import { useModal } from '../customHooks/ModalContext.jsx'
 
-import { Accordion, AccordionSummary, AccordionDetails, Typography, } from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-
-import { BuyerOrders } from './BuyerOrders.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 import { logout } from '../store/user.actions.js'
@@ -16,12 +11,6 @@ export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
 }) {
   const navigate = useNavigate()
   const { openLogin, openSignup } = useModal()
-
-  const [expanded, setExpanded] = useState(false)
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false)
-  }
 
   async function onLogout() {
     try {
@@ -71,24 +60,11 @@ export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
           <Link to="/dashboard" onClick={onClose}>
             Dashboard
           </Link>
-          <Accordion
-            expanded={expanded === 'panel1'}
-            onChange={handleChange('panel1')}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1bh-content"
-              id="panel1bh-header"
-            >
-              <Typography>
-                Orders
-              </Typography>
-            </AccordionSummary>
 
-            <AccordionDetails id="panel1bh-content">
-              <BuyerOrders loggedInUser={loggedInUser} onClose={onClose} />
-            </AccordionDetails>
-          </Accordion>
+          <Link to="/orders" onClick={onClose}>
+            Orders
+          </Link>
+
           <button className="logout" onClick={onLogout}>
             Logout
           </button>
