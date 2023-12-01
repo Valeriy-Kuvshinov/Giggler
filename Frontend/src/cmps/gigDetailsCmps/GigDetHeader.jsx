@@ -10,13 +10,13 @@ export function GigDetHeader({ gig, owner, deviceType }) {
     <>
       {deviceType === 'mobile' ? (
         <section className="gig-details-header flex column">
-          <ImageCarousel
+          {gig.imgUrls && (<ImageCarousel
             isFrom={'gig-details'}
             images={gig.imgUrls}
             gigId={gig._id}
             newImgIndex={newImgIndex}
             setNewImgIndex={setNewImgIndex}
-          />
+          />)}
           <div className="gig-overview">
             <UserPreview isFrom={'gig-details'} owner={owner} />
             <h2>{gig.title}</h2>
@@ -28,13 +28,13 @@ export function GigDetHeader({ gig, owner, deviceType }) {
             <h2>{gig.title}</h2>
             <UserPreview isFrom={'gig-details'} owner={owner} />
           </div>
-          <ImageCarousel
+          {gig.imgUrls && (<ImageCarousel
             isFrom={'gig-details'}
             images={gig.imgUrls}
             gigId={gig._id}
             newImgIndex={newImgIndex}
             setNewImgIndex={setNewImgIndex}
-          />
+          />)}
           <div className="gig-thumbnail">
             {gig.imgUrls.map((imgUrl, idx) => (
               <img
