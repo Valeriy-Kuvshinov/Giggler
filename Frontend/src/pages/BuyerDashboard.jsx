@@ -9,7 +9,7 @@ import { BuyerOrder } from "../cmps/BuyerOrder.jsx"
 import { InvoiceModal } from "../cmps/InvoiceModal.jsx"
 import { ReviewSubmit } from "../cmps/ReviewSubmit.jsx"
 
-export function OrdersPage() {
+export function BuyerDashboard() {
     const [orderDetails, setOrderDetails] = useState({})
     const [selectedOrder, setSelectedOrder] = useState(null)
     const [selectedGig, setSelectedGig] = useState(null)

@@ -9,7 +9,7 @@ import { WelcomeSection } from '../cmps/WelcomeSection.jsx'
 import { ServicesCarousel } from '../cmps/ServicesCarousel.jsx'
 import { InfoListItem } from '../cmps/InfoListItem.jsx'
 
-export function HomePage() {
+export function Home() {
     const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
     const navigate = useNavigate()
 
