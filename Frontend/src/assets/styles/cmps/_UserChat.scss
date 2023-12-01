@@ -1,6 +1,7 @@
 .chat-box-wrapper {
-  position: sticky;
+  position: fixed;
   bottom: 2em;
+  left: 2em;
   display: inline-block;
   z-index: 10;
   width: fit-content;

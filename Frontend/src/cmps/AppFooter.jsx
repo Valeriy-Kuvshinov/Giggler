@@ -42,7 +42,7 @@ export function AppFooter() {
       </NavLink>
 
       <NavLink
-        to="inbox"
+        to={`chat/${loggedinUser?._id}`}
         onClick={(e) => {
           if (!loggedinUser) {
             e.preventDefault()

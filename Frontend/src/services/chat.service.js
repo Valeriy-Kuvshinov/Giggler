@@ -10,10 +10,14 @@ export const chatService = {
   remove,
   update,
 }
-window.chatService = chatService
 
-async function getChats() {
-  return httpService.get(BASE_URL)
+async function getChats(filterByUser) {
+  try {
+    return await httpService.get(BASE_URL, filterByUser)
+  } catch (error) {
+    console.error('Error querying chats:', error)
+    throw error 
+  }
 }
 
 async function getById(chatId) {

@@ -114,7 +114,7 @@ export function LoginSignup({ closeModal, mode }) {
 
       <section className="user-interaction flex column">
         {deviceType === 'mobile' &&
-          <span onClick={() => closeModal()}>
+          <span className="close" onClick={() => closeModal()}>
             <SvgIcon iconName={'remove'} />
           </span>
         }
