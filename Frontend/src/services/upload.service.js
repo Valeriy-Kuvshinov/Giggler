@@ -2,9 +2,9 @@ export const uploadService = {
   uploadImg
 }
 async function uploadImg(ev) {
-  const CLOUD_NAME = "digrqdbso"
-  const UPLOAD_PRESET = "p014xlwt"
-  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/home/Giggler/upload`
+  const CLOUD_NAME = "dgwgcf6mk"
+  const UPLOAD_PRESET = "ao68llgp"
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/home/Giggler/gigs/upload`
 
   try {
     const formData = new FormData()
