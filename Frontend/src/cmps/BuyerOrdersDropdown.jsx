@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 
-import { orderBackendService } from "../services/order.backend.service.js"
+import { orderService } from "../services/order.service.js"
 import { loadOrders } from "../store/order.actions.js"
 
 import { Loader } from "./Loader.jsx"
@@ -40,7 +40,7 @@ export function BuyerOrdersDropdown({ loggedInUser, onClose }) {
             [order._id]: { isLoading: true },
           }))
           try {
-            const details = await orderBackendService.getOrderDetails(
+            const details = await orderService.getOrderDetails(
               order._id,
               "seller"
             )

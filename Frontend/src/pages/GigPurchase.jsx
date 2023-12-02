@@ -7,7 +7,7 @@ import { PurchaseAside } from '../cmps/PurchaseAside.jsx'
 import { Loader } from "../cmps/Loader.jsx"
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { orderBackendService } from '../services/order.backend.service.js'
+import { orderService } from '../services/order.service.js'
 
 import { loadGigs } from '../store/gig.actions.js'
 
@@ -48,7 +48,7 @@ export function GigPurchase() {
   }, [id, navigate])
 
   async function createOrder() {
-    const newOrder = orderBackendService.createOrder(
+    const newOrder = orderService.createOrder(
       loggedInUser._id,
       gig.ownerId,
       gig.title,
@@ -57,7 +57,7 @@ export function GigPurchase() {
       gig.price
     )
     try {
-      await orderBackendService.save(newOrder)
+      await orderService.save(newOrder)
       socketService.emit('notify_seller_new_order', {userId: newOrder.sellerId , user: loggedInUser})
       showSuccessMsg(
         {

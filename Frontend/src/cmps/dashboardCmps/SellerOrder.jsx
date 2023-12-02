@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
-import { orderBackendService } from '../../services/order.backend.service.js'
+import { orderService } from '../../services/order.service.js'
 import { gigService } from '../../services/gig.service.js'
 
 export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, deviceType }) {
@@ -16,7 +16,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
 
     async function fetchOrderDetails() {
         try {
-            const orderDetails = await orderBackendService.getOrderDetails(order._id, 'buyer')
+            const orderDetails = await orderService.getOrderDetails(order._id, 'buyer')
             setUserData({
                 username: orderDetails.userData.username,
                 firstName: orderDetails.userData.fullName.split(' ')[0],
@@ -65,11 +65,11 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
         }
         return actions
     }
-    const { prefix, dateStr } = orderBackendService.getActionDate(order)
+    const { prefix, dateStr } = orderService.getActionDate(order)
 
     return (
         deviceType === 'tablet' || deviceType === 'desktop' ? (
-            <div className={`order-contents flex row ${orderBackendService.getOrderClass(order.orderState)}`}>
+            <div className={`order-contents flex row ${orderService.getOrderClass(order.orderState)}`}>
                 {gigData ? (
                     <div className="order-info flex row">
                         <img src={gigData && gigData.firstImgUrl} alt="gig-img" />
@@ -130,7 +130,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
                 )}
             </div>
         ) : (
-            <div className={`order-contents grid ${orderBackendService.getOrderClass(order.orderState)}`}>
+            <div className={`order-contents grid ${orderService.getOrderClass(order.orderState)}`}>
                 <img src={gigData && gigData.firstImgUrl} alt="gig-img" className="order-image" />
                 <div className="order-price">
                     {`$${order.price}`}

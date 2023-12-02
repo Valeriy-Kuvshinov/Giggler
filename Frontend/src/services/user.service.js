@@ -17,7 +17,6 @@ export const userService = {
   update,
   getUserRatingCount,
 }
-window.userService = userService
 
 async function getUsers() {
   return httpService.get(BASE_URL)

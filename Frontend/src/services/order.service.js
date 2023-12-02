@@ -4,7 +4,7 @@ import { userService } from './user.service.js'
 
 const BASE_URL = 'order/'
 
-export const orderBackendService = {
+export const orderService = {
     query,
     remove,
     save,
