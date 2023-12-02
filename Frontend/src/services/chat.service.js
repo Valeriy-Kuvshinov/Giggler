@@ -9,6 +9,7 @@ export const chatService = {
   getById,
   remove,
   update,
+  getDefaultFilter,
 }
 
 async function getChats(filterByUser) {
@@ -33,4 +34,11 @@ async function update(chat) {
   const savedChat = await httpService.put(`${BASE_URL}${chat._id}`, chat)
   if (getLoggedinChat()._id === chat._id) setLoggedinChat(chat)
   return savedChat
+}
+
+function getDefaultFilter() {
+  return {
+    userId: '',
+    gigId: ''
+  }
 }
