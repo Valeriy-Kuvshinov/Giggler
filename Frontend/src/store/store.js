@@ -5,12 +5,14 @@ import { gigReducer } from './gig.reducer'
 import { userReducer } from './user.reducer'
 import { reviewReducer } from './review.reducer'
 import { orderReducer } from './order.reducer'
+import { chatReducer } from './chat.reducer'
 
 const rootReducer = combineReducers({
     gigModule: gigReducer,
     userModule: userReducer,
     reviewModule: reviewReducer,
-    orderModule: orderReducer
+    orderModule: orderReducer,
+    chatModule: chatReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
