@@ -96,11 +96,11 @@ export const companyImages = [companyMeta, companyGoogle, companyNetflix,
     companyPandg, companyPaylpal]
 
 export const defaultImgUrls = [
-    'https://img.freepik.com/premium-vector/cute-robot-mascot-logo-cartoon-character-illustration_8169-227.jpg',
-    'https://img.freepik.com/premium-vector/cute-robot-logo-vector-design-template_612390-492.jpg',
-    'https://img.freepik.com/free-vector/hand-drawn-data-logo-template_23-2149203374.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-    'https://img.freepik.com/free-vector/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
-    'https://img.freepik.com/free-vector/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184.jpg?size=626&ext=jpg&ga=GA1.1.1028445320.1691753202&semt=ais',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551738/Giggler/gig-images/default-gig/image5_fy2on4.jpg',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551738/Giggler/gig-images/default-gig/image1_x1afry.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551737/Giggler/gig-images/default-gig/image3_envijn.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551737/Giggler/gig-images/default-gig/image4_p76kzh.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551739/Giggler/gig-images/default-gig/image2_qrervu.webp',
 ]
 
 export const infoListData = [

@@ -1,24 +1,23 @@
-import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { useForm } from '../customHooks/useForm.js'
+import { useGigForm } from '../customHooks/useGigForm.js'
 import { saveGig } from '../store/gig.actions.js'
 import { defaultImgUrls } from '../services/gallery.service.js'
 import { deliveryTime, category, subcategories, gigService } from '../services/gig.service.js'
 
 export function GigEdit() {
     const { id } = useParams()
-    const [availableTags, setAvailableTags] = useState([])
     const navigate = useNavigate()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    console.log(loggedInUser._id)
 
-    const [fields, setFields, handleChange] = useForm({
+    const initialValues = {
         title: '',
         category: category[0],
-        tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
-        price: '',
+        tags: ['Logo & Brand Identity', 'Visual Design', 'Art & Illustration'],
+        price: 0,
         description: '',
         daysToMake: "Express 24H",
         ownerId: loggedInUser._id,
@@ -26,65 +25,26 @@ export function GigEdit() {
         likedByUsers: [],
         reviews: [],
         createdAt: Date.now()
-    })
-
-    useEffect(() => {
-        if (id && id !== 'edit') {
-            async function fetchGig() {
-                try {
-                    const gig = await gigService.getById(id)
-                    if (gig) setFields(gig)
-                }
-                catch (err) {
-                    console.error('Failed to load gig:', err)
-                }
-            }
-            fetchGig()
-        }
-    }, [id, setFields])
-
-    useEffect(() => {
-        updateAvailableTags(fields.category)
-    }, [fields.category])
-
-    const updateAvailableTags = (selectedCategory) => {
-        const categoryKey = selectedCategory.replace(/\s+/g, '_').replace('&', 'And')
-        setAvailableTags(subcategories[categoryKey] || [])
     }
 
-    const handleCategoryChange = (e) => {
+    const { fields, handleChange, handleSubmit, availableTags,
+        updateAvailableTags, setFields } = useGigForm(
+            initialValues, saveGig, navigate, loggedInUser,
+            id, gigService, subcategories)
+
+    function handleCategoryChange(e) {
         handleChange(e)
         updateAvailableTags(e.target.value)
     }
 
-    const handleTagsChange = (e) => {
+    function handleTagsChange(e) {
         const selectedTags = Array.from(e.target.selectedOptions, option => option.value)
         setFields(prevFields => ({ ...prevFields, tags: selectedTags }))
     }
 
-    async function onSave() {
-        try {
-            const gigToSave = (!id || id === 'edit') ?
-                { ...fields, ownerId: loggedInUser._id } : fields
-
-            await saveGig(gigToSave)
-            navigate(`/user/${loggedInUser._id}`)
-        }
-        catch (err) {
-            console.error('Failed to save gig:', err)
-        }
-    }
-
-    function onCancel() {
-        navigate(`/user/${loggedInUser._id}`)
-    }
-
     return (
         <div className="gig-edit-container flex column">
-            <form onSubmit={(e) => {
-                e.preventDefault()
-                onSave()
-            }}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-inputs flex column">
                     <div className="input-group flex row">
                         <div className="info flex column">
@@ -191,7 +151,7 @@ export function GigEdit() {
                     </div>
                 </div>
                 <div className="actions flex row">
-                    <button type="button" onClick={onCancel}>Cancel</button>
+                    <button type="button" onClick={() => navigate(`/user/${loggedInUser._id}`)}>Cancel</button>
                     <button type="submit">Save</button>
                 </div>
             </form>
