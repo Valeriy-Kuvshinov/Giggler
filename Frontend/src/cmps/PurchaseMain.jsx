@@ -1,4 +1,4 @@
-const creditCardImage = 'https://res.cloudinary.com/digrqdbso/image/upload/v1700774612/Giggler/home-page-other/gjw5aozga1iv2wkqkrak.png'
+const creditCardImage = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539880/Giggler/other/uiejhkmi0zk9v8asvtbz.png'
 import SvgIcon from './SvgIcon.jsx'
 
 export function PurchaseMain({

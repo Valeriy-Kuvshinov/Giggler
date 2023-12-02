@@ -3,7 +3,7 @@ import { ImgUploader } from './ImgUploader.jsx'
 import { login, signup } from '../store/user.actions.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 const loginSignupImg =
-  'https://res.cloudinary.com/digrqdbso/image/upload/v1699099670/Giggler/home-page-other/w9peebtuzesqc71ppcd5.png'
+  'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539882/Giggler/other/ig0he3ezrfszaiqg6joe.png'
 import checkmarkImg from '../assets/img/svg/checkmark.white.icon.svg'
 import { utilService } from '../services/util.service.js'
 import SvgIcon from './SvgIcon.jsx'

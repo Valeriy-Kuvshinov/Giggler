@@ -1,3 +1,5 @@
+const infoPhoto = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539555/Giggler/home-page/so1b8ydo7mx8dz71czbf.webp'
+
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useModal } from '../customHooks/ModalContext.jsx'
@@ -49,7 +51,7 @@ export function Home() {
                             ))}
                         </ul>
                     </section>
-                    <img className='info-img' src={'https://res.cloudinary.com/digrqdbso/image/upload/v1698938879/Giggler/home-page-other/jqz3ilgiaklmxo69cm71.webp'} />
+                    <img className='info-img' src={infoPhoto} />
                 </section>
             </div>
 
