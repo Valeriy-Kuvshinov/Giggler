@@ -1,3 +1,5 @@
+const noResultsImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539881/Giggler/other/bzqrborygalzssnmogax.png'
+
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
@@ -188,7 +190,7 @@ export function GigIndex({ onMobileFilter }) {
           <button className="clr-filter" onClick={() => clearAllFilters()}>
             clear all filters
           </button>
-          <img src="https://res.cloudinary.com/digrqdbso/image/upload/v1699099661/Giggler/home-page-other/h4ramvmiu3q4c6skzd26.png" />
+          <img src={noResultsImg} />
         </section>
       )}
     </main>

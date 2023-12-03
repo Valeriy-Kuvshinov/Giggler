@@ -3,7 +3,6 @@ const { ObjectId } = mongodb
 
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
-import { utilService } from '../../services/util.service.js'
 
 const GIGS_COLLECTION = 'gig'
 
@@ -66,86 +65,42 @@ async function remove(gigId) {
 async function save(gig) {
   const collection = await dbService.getCollection(GIGS_COLLECTION)
 
-  if (gig._id) {
-    try {
-      const gigToSave = { ...gig }
-      let ownerId = gigToSave.ownerId
-      ownerId = new ObjectId(ownerId)
-      gigToSave.ownerId = ownerId
-      let likedByUsers = [...gigToSave.likedByUsers]
-      likedByUsers = likedByUsers.map(
-        (userId) => (userId = new ObjectId(userId))
-      )
-      gigToSave.likedByUsers = [...likedByUsers]
-      let reviews = [...gigToSave.reviews]
-      reviews = reviews.map((reviewId) => (reviewId = new ObjectId(reviewId)))
-      gigToSave.reviews = [...reviews]
+  try {
+    const gigToSave = { ...gig }
 
-      const id = gig._id
+    if (gig._id) {
+      const id = new ObjectId(gig._id)
       delete gigToSave._id
 
-      const response = await collection.updateOne(
-        { _id: new ObjectId(id) },
-        { $set: gigToSave }
-      )
+      _convertIdsToObjectIds(gigToSave)
+
+      const response = await collection.updateOne({ _id: id }, { $set: gigToSave })
       if (response.matchedCount === 0) {
-        throw new Error(`Gig with id ${id} was not found`)
+        throw new Error(`Gig with id ${id.toHexString()} was not found`)
       }
       return { _id: id, ...gigToSave }
-    } catch (err) {
-      loggerService.error(`cannot update gig ${gig._id}`, err)
-      throw err
+    } else {
+      _convertIdsToObjectIds(gigToSave)
+
+      const response = await collection.insertOne(gigToSave)
+      return { ...gigToSave, _id: response.insertedId }
     }
-  } else {
-    try {
-      const response = await collection.insertOne(gig)
-      return { ...gig, _id: response.insertedId }
-    } catch (err) {
-      loggerService.error('cannot insert gig', err)
-      throw err
-    }
+  } catch (err) {
+    loggerService.error(`cannot save gig ${gig._id}`, err)
+    throw err
   }
 }
 
-// function _buildCriteria(filterBy) {
-//   const criteria = {}
-
-//   if (filterBy.search) {
-//     criteria.$or = [
-//       { title: { $regex: filterBy.search, $options: 'i' } },
-//       { description: { $regex: filterBy.search, $options: 'i' } },
-//     ]
-//   }
-//   if (filterBy.cat) {
-//     criteria.category = { $regex: filterBy.cat, $options: 'i' }
-//   }
-//   if (filterBy.tag) {
-//     criteria.tags = { $regex: filterBy.tag, $options: 'i' }
-//   }
-//   if (filterBy.time) {
-//     criteria.daysToMake = { $regex: filterBy.time, $options: 'i' }
-//   }
-//   if (filterBy.min !== undefined) {
-//     criteria.price = { ...criteria.price, $gte: parseInt(filterBy.min) }
-//   }
-//   if (filterBy.max !== undefined) {
-//     criteria.price = { ...criteria.price, $lte: parseInt(filterBy.max) }
-//   }
-//   // if (filterBy.min && filterBy.max) {
-//   //   criteria.price = {
-//   //     $gte: parseInt(filterBy.min),
-//   //     $lte: parseInt(filterBy.max)
-//   //   }
-//   // }
-//   // // Uncomment and implement the logic for 'level' if needed
-//   if (filterBy.level) {
-//     // You will need to ensure that _findUsersWithLevel is defined and available to use here.
-//     // This function must return an array of user IDs that match the level.
-//     const matchingUsers = await _findUsersWithLevel(filterBy.level)
-//     criteria.ownerId = { $in: matchingUsers }
-//   }
-//   return criteria
-// }
+function _convertIdsToObjectIds(gigData) {
+  const fieldsToConvert = ['ownerId', 'likedByUsers', 'reviews']
+  fieldsToConvert.forEach(field => {
+    if (Array.isArray(gigData[field])) {
+      gigData[field] = gigData[field].map(id => new ObjectId(id))
+    } else if (gigData[field] && typeof gigData[field] === 'string') {
+      gigData[field] = new ObjectId(gigData[field])
+    }
+  })
+}
 
 function _buildPipeline(filterBy) {
   const pipeline = []

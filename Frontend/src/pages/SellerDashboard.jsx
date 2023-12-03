@@ -4,7 +4,7 @@
 // } from 'chart.js'
 // ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
 //     , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
-const noResultsImg = 'https://res.cloudinary.com/digrqdbso/image/upload/v1699099661/Giggler/home-page-other/h4ramvmiu3q4c6skzd26.png'
+const noResultsImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539881/Giggler/other/bzqrborygalzssnmogax.png'
 
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'

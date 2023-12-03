@@ -6,7 +6,7 @@ export async function getGigs(req, res) {
     console.log(req.query)
     let filterBy = {}
     const { user } = req.query
-    
+
     if (user) filterBy = { user }
 
     else {
@@ -36,11 +36,9 @@ export async function getGigById(req, res) {
 }
 
 export async function addGig(req, res) {
-  const { loggedinUser } = req
-
   try {
     const gig = req.body
-    gig.ownerId = loggedinUser
+    console.log('creating gig: ', gig)
     const addedGig = await gigService.save(gig)
     res.json(addedGig)
   }
@@ -53,7 +51,7 @@ export async function addGig(req, res) {
 export async function updateGig(req, res) {
   try {
     const gig = req.body
-    console.log(gig)
+    console.log('updating gig: ',gig)
     const updatedGig = await gigService.save(gig)
     res.send(updatedGig)
   }
