@@ -8,8 +8,10 @@ export const chatService = {
   query,
   getById,
   remove,
-  update,
+  save,
+  getByUsersId,
   getDefaultFilter,
+  getEmptyChat,
 }
 
 async function query(filterByUser) {
@@ -17,28 +19,43 @@ async function query(filterByUser) {
     return await httpService.get(BASE_URL, filterByUser)
   } catch (error) {
     console.error('Error querying chats:', error)
-    throw error 
+    throw error
   }
 }
 
-async function getById(usersId) {
-  const chat = await httpService.get(BASE_URL + usersId)
+async function getByUsersId(usersId) {
+  const chat = await httpService.get(BASE_URL + usersId.buyerId, usersId)
   return chat
 }
 
-function remove(chatId) {
-  return httpService.delete(BASE_URL, chatId)
+async function save(chat) {
+  const savedChat = chat._id
+    ? await httpService.put(`${BASE_URL}${chat._id}`, chat)
+    : await httpService.post(BASE_URL, chat)
+  return savedChat
 }
 
-async function update(chat) {
-  const savedChat = await httpService.put(`${BASE_URL}${chat._id}`, chat)
-  if (getLoggedinChat()._id === chat._id) setLoggedinChat(chat)
-  return savedChat
+async function getById(chatId) {
+  const chat = await httpService.get(BASE_URL + chatId)
+  return chat
+}
+
+async function remove(chatId) {
+  return httpService.delete(BASE_URL, chatId)
 }
 
 function getDefaultFilter() {
   return {
     userId: '',
     // gigId: ''
+  }
+}
+
+function getEmptyChat() {
+  return {
+    buyerId: '',
+    sellerId: '',
+    messages: [],
+    gig: null,
   }
 }

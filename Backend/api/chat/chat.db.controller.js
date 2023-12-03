@@ -3,7 +3,8 @@ import { chatService } from '../chat/chat.db.service.js'
 
 export async function getChat(req, res) {
   try {
-    const chat = await chatService.getById(req.params.id)
+    loggerService.debug('Getting chat by users',req.query)
+    const chat = await chatService.getByUsersId(req.query)
     res.send(chat)
   }
   catch (err) {
@@ -54,7 +55,7 @@ export async function updateChat(req, res) {
     res.send(savedChat)
   }
   catch (err) {
-    logger.error('Failed to update chat', err)
+    loggerService.error('Failed to update chat', err)
     res.status(500).send({ err: 'Failed to update chat' })
   }
 }

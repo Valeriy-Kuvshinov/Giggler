@@ -1,5 +1,5 @@
 import { store } from './store.js'
-import { ADD_CHAT, GET_CHAT, REMOVE_CHAT, SET_CHATS, UPDATE_CHAT, SET_IS_LOADING, SET_FILTER } from "./chat.reducer.js"
+import { ADD_CHAT, GET_CHAT, REMOVE_CHAT, SET_CHATS, UPDATE_CHAT, SET_IS_LOADING, SET_FILTER, GET_CHAT_BY_USERS } from "./chat.reducer.js"
 import { chatService } from "../services/chat.service.js"
 
 export async function loadChats(filterBy = {}) {
@@ -26,10 +26,10 @@ export async function getChat(chatId) {
 
 export async function getChatByUsers(usersId) {
     try {
-        await chatService.getById(usersId)
-        store.dispatch({ type: GET_CHAT, usersId: usersId })
+        await chatService.getByUsersId(usersId)
+        store.dispatch({ type: GET_CHAT_BY_USERS, usersId })
     } catch (err) {
-        console.log('Cannot remove chat', err)
+        console.log('Cannot get chat by users: ', err)
         throw err
     }
 }

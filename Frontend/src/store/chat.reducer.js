@@ -2,6 +2,7 @@ export const SET_CHATS = 'SET_CHATS'
 export const REMOVE_CHAT = 'REMOVE_CHAT'
 export const ADD_CHAT = 'ADD_CHAT'
 export const GET_CHAT = 'GET_CHAT'
+export const GET_CHAT_BY_USERS = 'GET_CHAT_BY_USERS'
 export const UPDATE_CHAT = 'UPDATE_CHAT'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
@@ -19,8 +20,15 @@ export function chatReducer(state = initialState, action = {}) {
     case SET_CHATS:
       return { ...state, chats: action.chats }
     case GET_CHAT:
-      const currentChat = state.chats.find((chats) => chats._id === action.chatId)
+      const currentChat = state.chats.find((chat) => chat._id === action.chatId)
       return { ...state, currentChat: currentChat }
+    case GET_CHAT_BY_USERS:
+      const usersChat = state.chats.find(
+        (chat) =>
+          chat.buyersId === action.usersId.buyersId &&
+          chat.sellersId === action.usersId.sellersId
+      )
+      return { ...state, currentChat: usersChat }
     case REMOVE_CHAT:
       chats = state.chats.filter((chat) => chat._id !== action.chatId)
       return { ...state, chats: chats }
@@ -35,7 +43,7 @@ export function chatReducer(state = initialState, action = {}) {
 
     case SET_IS_LOADING:
       return { ...state, isLoading: action.isLoading }
-      
+
     case SET_FILTER:
       return { ...state, filterBy: action.filterBy }
 

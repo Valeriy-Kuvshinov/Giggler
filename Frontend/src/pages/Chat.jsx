@@ -7,13 +7,13 @@ import { loadChats } from '../store/chat.actions'
 export function Chat() {
   const dispatch = useDispatch()
   const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
-  const { chats, filterBy } = useSelector((storeState) => storeState.chatModule)
+  const { chats} = useSelector((storeState) => storeState.chatModule)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
 
   useEffect(() => {
-    const newFilterBy = { ...filterBy, userId: loggedinUser._id }
-    dispatch(loadChats(newFilterBy))
-  }, [dispatch, loggedinUser])
+    const newFilterBy = { userId: loggedinUser._id }
+   loadChats(newFilterBy)
+  }, [ loggedinUser])
 
   if (isLoading) return <Loader />
 

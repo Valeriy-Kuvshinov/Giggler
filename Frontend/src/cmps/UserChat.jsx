@@ -5,13 +5,13 @@ import { socketService } from '../services/socket.service.js'
 import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 import { getChatByUsers, saveChat } from '../store/chat.actions.js'
+import { chatService } from '../services/chat.service.js'
 
 export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
 
-  const [chat, setChat] = useState[null]
+  const [chat, setChat] = useState(chatService.getEmptyChat())
   const [characterCount, setCharacterCount] = useState(0)
-  const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
@@ -21,7 +21,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   useEffect(() => {
     if (chatState) {
       if (isBuyer) openChatWithSeller()
-
+      
       socketService.on('chat_add_msg', addMessage)
       socketService.on('chat_add_typing', addTypingUser)
       socketService.on('chat_remove_typing', removeTypingUser)
@@ -39,24 +39,29 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   }, [loggedinUser])
 
   async function getNewChat() {
+    try{
     if (isBuyer) {
-      const newChat = await getChatByUsers({
-        buyerId: buyer._id,
-        sellerId: owner._id,
-      })
-      if (newChat) setChat(newChat)
-      else
-        setChat(
-          saveChat({
-            buyerId: buyer._id,
+        const newChat = await getChatByUsers({
+          buyerId: loggedinUser._id,
+          sellerId: owner._id,
+        })
+        if (newChat) setChat(newChat)
+        else
+      setChat(
+          await saveChat({
+            buyerId: loggedinUser._id,
             sellerId: owner._id,
             messages: [],
             gig: gig,
           })
-        )
-    } else {
-      setChat(await getChatByUsers({ buyerId: buyer._id, sellerId: owner._id }))
-    }
+          )
+        } else {
+          setChat(await getChatByUsers({ buyerId: buyer._id, sellerId: owner._id }))
+        }
+      }
+      catch(err){
+        console.log('Problem occurred whe getting/saving new chat: ',err);
+      }
   }
 
   function openChatWithSeller() {
@@ -66,23 +71,23 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
     })
   }
 
-  function addMessage(msg) {
-    setMessages((prevMessages) => [
-      ...prevMessages.filter((m) => m.type !== 'typing'),
-      msg,
+  function addMessage(message) {
+    setChat((prevChat) => [
+      ...prevChat.messages.filter((msg) => msg.type !== 'typing'),
+      message,
     ])
   }
 
   function addTypingUser(user) {
-    setMessages((prevMessages) => [
-      ...prevMessages.filter((m) => m.type !== 'typing'),
+    setChat((prevChat) => [
+      ...prevChat.messages.filter((msg) => msg.type !== 'typing'),
       { type: 'typing', user: user },
     ])
   }
 
   function removeTypingUser() {
-    setMessages((prevMessages) =>
-      prevMessages.filter((m) => m.type !== 'typing')
+    setChat((prevChat) =>
+      prevChat.messages.filter((msg) => msg.type !== 'typing')
     )
   }
 
@@ -92,20 +97,27 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
       handleSendMessage()
     }
   }
-  function handleSendMessage() {
+  async function handleSendMessage() {
     const newMessage = {
       message: message,
       time: new Date(),
       user: loggedinUser,
     }
-    isBuyer = loggedinUser && owner._id !== loggedinUser._id
     if (isBuyer) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
     } else {
       socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
     }
 
-    setMessages((prevMessage) => [...prevMessage, newMessage])
+    setChat((prevChat) => ({
+      ...prevChat,
+      messages: [...prevChat.messages, newMessage],
+    }))
+    try {
+      await saveChat(chat)
+    } catch (err) {
+      console.log('unable to save update chat: ', err)
+    }
     clearTimeout(timeoutId.current)
     timeoutId.current = null
     setMessage('')
@@ -173,7 +185,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div className="message-container flex column">
-                    {messages.map((message, index) => {
+                    {chat.messages.map((message, index) => {
                       if (message.type === 'typing') {
                         return (
                           <div
