@@ -7,11 +7,12 @@ import { saveGig } from '../store/gig.actions.js'
 import { defaultImgUrls } from '../services/gallery.service.js'
 import { deliveryTime, category, subcategories, gigService } from '../services/gig.service.js'
 
+import { GigEditPreview } from '../cmps/GigEditPreview.jsx'
+
 export function GigEdit() {
     const { id } = useParams()
     const navigate = useNavigate()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    console.log(loggedInUser._id)
 
     const initialValues = {
         title: '',
@@ -43,46 +44,50 @@ export function GigEdit() {
     }
 
     return (
-        <div className="gig-edit-container flex column">
-            <form onSubmit={handleSubmit}>
+        <div className="gig-edit-container flex full">
+            <form className="flex column" onSubmit={handleSubmit}>
+                <div className="actions flex row">
+                    <button type="button" onClick={() => navigate(`/user/${loggedInUser._id}`)}>Cancel</button>
+                    <button type="submit">Save</button>
+                </div>
+
                 <div className="form-inputs flex column">
-                    <div className="input-group flex row">
+                    <div className="input-group grid">
                         <div className="info flex column">
                             <label htmlFor="title">Gig Title</label>
                             <p>As your gig storefront, your title is the most important place to include keywords that buyers would likely use to search for a service like yours.</p>
+                            <input
+                                id="title"
+                                type="text"
+                                name="title"
+                                placeholder="I will..."
+                                value={fields.title}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <input
-                            id="title"
-                            type="text"
-                            name="title"
-                            placeholder="I will..."
-                            value={fields.title}
-                            onChange={handleChange}
-                        />
                     </div>
 
-                    <div className="input-group flex row">
+                    <div className="input-group grid">
                         <div className="info flex column">
                             <label htmlFor="description">Description</label>
-                            <p>Describe Your gig, what you are offering, and who is the right customer for it.</p>
+                            <p>Provide a detailed description of your gig, highlighting what you offer and the ideal customer for your services. To enhance the buyer experience, it's important to be as informative and transparent as possible in your description.</p>
+                            <textarea
+                                id="description"
+                                name="description"
+                                placeholder="Description here..."
+                                value={fields.description}
+                                onChange={handleChange}
+                            ></textarea>
                         </div>
-                        <textarea
-                            id="description"
-                            name="description"
-                            placeholder="Description here..."
-                            value={fields.description}
-                            onChange={handleChange}
-                        ></textarea>
                     </div>
 
-                    <div className="input-group flex row">
+                    <div className="input-group grid">
                         <div className="info flex column">
                             <label htmlFor="category">Category</label>
                             <p>Choose the category most suitable for your gig, with which thousands of users will be able to find it.</p>
                             <select
                                 id="category"
                                 name="category"
-                                style={{ flex: '0' }}
                                 value={fields.category}
                                 onChange={handleCategoryChange}
                             >
@@ -96,7 +101,7 @@ export function GigEdit() {
 
                         <div className="info flex column">
                             <label htmlFor="tags">Subcategories</label>
-                            <p>Select the most relevant subcategories for your gig (we recommend at least 3).</p>
+                            <p>Precision is key, select the most relevant subcategories for your gig (we recommend picking 3 at least).</p>
                             <select
                                 id="tags"
                                 name="tags"
@@ -114,14 +119,13 @@ export function GigEdit() {
                         </div>
                     </div>
 
-                    <div className="input-group flex row">
+                    <div className="input-group grid">
                         <div className="info flex column">
                             <label htmlFor="days">Delivery Time</label>
                             <p>Days it will take you on average to finish this gig.</p>
                             <select
                                 id="days"
                                 name="daysToMake"
-                                style={{ flex: '0' }}
                                 value={fields.daysToMake}
                                 onChange={handleChange}
                             >
@@ -135,14 +139,13 @@ export function GigEdit() {
 
                         <div className="info flex column">
                             <label htmlFor="price">Price</label>
-                            <p style={{ flex: '2' }}>Define a price, that you believe the users are willing to pay for your gig.</p>
+                            <p>Define a price, that you believe the gig is worth the effort.</p>
                             <input
                                 id="price"
                                 type="number"
                                 name="price"
                                 min={0}
                                 max={10000}
-                                style={{ flex: '0', border: '1px solid gray', appearance: 'textfield' }}
                                 placeholder='Price'
                                 value={fields.price}
                                 onChange={handleChange}
@@ -150,11 +153,8 @@ export function GigEdit() {
                         </div>
                     </div>
                 </div>
-                <div className="actions flex row">
-                    <button type="button" onClick={() => navigate(`/user/${loggedInUser._id}`)}>Cancel</button>
-                    <button type="submit">Save</button>
-                </div>
             </form>
+            <GigEditPreview gig={fields} loggedInUser={loggedInUser} />
         </div>
     )
 }

@@ -73,10 +73,6 @@ export function LoginSignup({ closeModal, mode }) {
     clearState()
   }
 
-  function onUploaded(imgUrl) {
-    setCredentials((prevCredentials) => ({ ...prevCredentials, imgUrl }))
-  }
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -132,7 +128,7 @@ export function LoginSignup({ closeModal, mode }) {
         <form className="flex column" onSubmit={(e) => handleAuth(e, isSignup)}>
           <div
             className={
-              isSignup ? 'signup-section' : 'login-section flex column'
+              isSignup ? 'signup-section flex column' : 'login-section flex column'
             }
           >
             <div className="flex column">
@@ -178,7 +174,6 @@ export function LoginSignup({ closeModal, mode }) {
                     required
                   />
                 </div>
-                <ImgUploader onUploaded={onUploaded} />
               </>
             )}
           </div>

@@ -760,6 +760,52 @@
   }
 }
 
+// Gig editing page media query
+
+.gig-edit-container {
+  @media(max-width: 1150px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    form,
+    .gig-preview-container {
+      width: 100%;
+      max-width: 900px;
+
+      .form-inputs {
+        .input-group {
+
+          &:nth-of-type(3),
+          &:nth-of-type(4) {
+            grid-template-columns: 1fr 1fr;
+
+            .info {
+              &:first-child {
+                grid-column: 1;
+              }
+
+              &:last-child {
+                grid-column: 2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media(min-width: 1151px) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    form,
+    .gig-preview-container {
+      width: 49.5%;
+    }
+  }
+}
+
 // Profile page media query
 
 .profile-page {
