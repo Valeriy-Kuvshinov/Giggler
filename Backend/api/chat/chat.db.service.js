@@ -4,7 +4,7 @@ const { ObjectId } = mongodb
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
 
-const USERS_COLLECTION = 'chat'
+const CHATS_COLLECTION = 'chat'
 
 export const chatService = {
   query,
@@ -17,9 +17,9 @@ export const chatService = {
 async function query(filterBy = {}) {
   try {
     const criteria = _buildCriteria(filterBy)
-    const collection = await dbService.getCollection(USERS_COLLECTION)
+    const collection = await dbService.getCollection(CHATS_COLLECTION)
     const chats = await collection.find(criteria).toArray()
-    // console.log(chats)
+    console.log(chats)
     return chats
   } 
   catch (err) {
@@ -42,7 +42,7 @@ async function query(filterBy = {}) {
 
 async function getById(chatId) {
   try {
-    const collection = await dbService.getCollection(USERS_COLLECTION)
+    const collection = await dbService.getCollection(CHATS_COLLECTION)
     const chat = collection.findOne({ _id: new ObjectId(chatId) })
     return chat
   } 
@@ -54,7 +54,7 @@ async function getById(chatId) {
 
 async function remove(chatId) {
   try {
-    const collection = await dbService.getCollection(USERS_COLLECTION)
+    const collection = await dbService.getCollection(CHATS_COLLECTION)
     const { deletedCount } = await collection.deleteOne({ _id: new ObjectId(chatId) })
     if (deletedCount === 0) {
       throw new Error(`Chat with id ${chatId} was not found`)
@@ -68,7 +68,7 @@ async function remove(chatId) {
 }
 
 async function save(chat) {
-  const collection = await dbService.getCollection(USERS_COLLECTION)
+  const collection = await dbService.getCollection(CHATS_COLLECTION)
 
   if (chat._id) {
     try {
@@ -103,7 +103,23 @@ async function save(chat) {
 }
 
 function _buildCriteria(filterBy) {
-  const criteria = {}
-  if (filterBy.chatId) criteria.chatId = filterBy.chatId
-  return criteria
+  const pipeline = []
+
+  const criteria = {
+    $match: {},
+  }
+  console.log('FILTERBY: ', filterBy)
+  const {userId } = filterBy
+
+  if(userId) {
+    criteria.$match.$and = [
+      { buyerId: { $regex: userId, $options: 'i' } },
+      { sellerId: { $regex: userId, $options: 'i' } },
+    ]
+  }
+  if (Object.keys(criteria.$match).length > 0) {
+    pipeline.push(criteria)
+  }
+
+  return pipeline
 }

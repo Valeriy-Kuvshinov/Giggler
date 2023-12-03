@@ -24,6 +24,17 @@ export async function getChat(chatId) {
     }
 }
 
+export async function getChatByUsers(usersId) {
+    try {
+        await chatService.getById(usersId)
+        store.dispatch({ type: GET_CHAT, usersId: usersId })
+    } catch (err) {
+        console.log('Cannot remove chat', err)
+        throw err
+    }
+}
+
+
 export async function removeChat(chatId) {
     try {
         await chatService.remove(chatId)

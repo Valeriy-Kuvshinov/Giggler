@@ -1,0 +1,34 @@
+.chat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+
+  .chat-header {
+    width: 100%;
+    padding: 1em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $clrPrimary1;
+    border: 1px solid $clrSecondary4;
+    color: $clrPrimary2;
+    font-weight: 700;
+    span {
+      font-size: 1.25em;
+    }
+    i {
+      align-self: center;
+      svg {
+        width: 1em;
+        height: 1em;
+      }
+    }
+  }
+  .chat-body {
+    width: 100%;
+    height: 100%;
+  }
+}

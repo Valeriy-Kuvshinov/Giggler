@@ -4,20 +4,23 @@ import { socketService } from '../services/socket.service.js'
 
 import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
+import { getChatByUsers, saveChat } from '../store/chat.actions.js'
 
-export function UserChat({ owner, chatState, setChatState, buyer }) {
+export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
+  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+
+  const [chat, setChat] = useState[null]
   const [characterCount, setCharacterCount] = useState(0)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
-
-  const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const timeoutId = useRef(null)
 
   let isBuyer = loggedinUser && owner._id !== loggedinUser._id
+
   useEffect(() => {
     if (chatState) {
-      if (loggedinUser && owner._id !== loggedinUser._id) openChatWithSeller()
+      if (isBuyer) openChatWithSeller()
 
       socketService.on('chat_add_msg', addMessage)
       socketService.on('chat_add_typing', addTypingUser)
@@ -31,6 +34,31 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
     }
   }, [chatState])
 
+  useEffect(() => {
+    getNewChat()
+  }, [loggedinUser])
+
+  async function getNewChat() {
+    if (isBuyer) {
+      const newChat = await getChatByUsers({
+        buyerId: buyer._id,
+        sellerId: owner._id,
+      })
+      if (newChat) setChat(newChat)
+      else
+        setChat(
+          saveChat({
+            buyerId: buyer._id,
+            sellerId: owner._id,
+            messages: [],
+            gig: gig,
+          })
+        )
+    } else {
+      setChat(await getChatByUsers({ buyerId: buyer._id, sellerId: owner._id }))
+    }
+  }
+
   function openChatWithSeller() {
     socketService.emit('chat_open', {
       sellerId: owner._id,
@@ -40,20 +68,22 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
 
   function addMessage(msg) {
     setMessages((prevMessages) => [
-      ...prevMessages.filter(m => m.type !== 'typing'),
-      msg
+      ...prevMessages.filter((m) => m.type !== 'typing'),
+      msg,
     ])
   }
 
   function addTypingUser(user) {
     setMessages((prevMessages) => [
-      ...prevMessages.filter(m => m.type !== 'typing'),
-      { type: 'typing', user: user }
+      ...prevMessages.filter((m) => m.type !== 'typing'),
+      { type: 'typing', user: user },
     ])
   }
 
   function removeTypingUser() {
-    setMessages((prevMessages) => prevMessages.filter(m => m.type !== 'typing'))
+    setMessages((prevMessages) =>
+      prevMessages.filter((m) => m.type !== 'typing')
+    )
   }
 
   function handleKeyPress(event) {
@@ -88,15 +118,18 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
     setCharacterCount(messageText.length)
     setMessage(messageText)
 
-    isBuyer = loggedinUser && owner._id !== loggedinUser._id
     if (!timeoutId.current)
-      socketService.emit('chat-user-typing'
-        , { typingUser: loggedinUser, receiverId: isBuyer ? owner._id : buyer._id })
+      socketService.emit('chat-user-typing', {
+        typingUser: loggedinUser,
+        receiverId: isBuyer ? owner._id : buyer._id,
+      })
 
     if (timeoutId.current) clearTimeout(timeoutId.current)
     timeoutId.current = setTimeout(() => {
-      socketService.emit('chat-stop-typing',
-        { typingUser: loggedinUser, receiverId: isBuyer ? owner._id : buyer._id })
+      socketService.emit('chat-stop-typing', {
+        typingUser: loggedinUser,
+        receiverId: isBuyer ? owner._id : buyer._id,
+      })
       timeoutId.current = null
     }, 2000)
   }
@@ -143,7 +176,10 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
                     {messages.map((message, index) => {
                       if (message.type === 'typing') {
                         return (
-                          <div key={index} className="message user-two typing-indicator">
+                          <div
+                            key={index}
+                            className="message user-two typing-indicator"
+                          >
                             <div className="message-body grid">
                               <span className="text">
                                 <span className="typing-loader">
@@ -152,7 +188,11 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
                                   <span className="dot"></span>
                                 </span>
                               </span>
-                              <img className="avatar" src={message.user.imgUrl} alt={message.user.username} />
+                              <img
+                                className="avatar"
+                                src={message.user.imgUrl}
+                                alt={message.user.username}
+                              />
                             </div>
                           </div>
                         )
@@ -161,12 +201,19 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
                           <div
                             key={index}
                             className={`message 
-                            ${message.user._id === loggedinUser._id
-                                ? 'user-one' : 'user-two'} flex column`}
+                            ${
+                              message.user._id === loggedinUser._id
+                                ? 'user-one'
+                                : 'user-two'
+                            } flex column`}
                           >
                             <div className="message-body grid">
-                              <span className='text'>{message.message}</span>
-                              <img className='avatar' src={message.user.imgUrl} alt={message.user.username} />
+                              <span className="text">{message.message}</span>
+                              <img
+                                className="avatar"
+                                src={message.user.imgUrl}
+                                alt={message.user.username}
+                              />
                             </div>
                           </div>
                         )
@@ -238,8 +285,9 @@ export function UserChat({ owner, chatState, setChatState, buyer }) {
                       <span className="smiley-container">
                         <SvgIcon iconName={'smiley'} />
                         <span
-                          className={`smiley-selection ${smileyChoice ? '' : 'hidden'
-                            }`}
+                          className={`smiley-selection ${
+                            smileyChoice ? '' : 'hidden'
+                          }`}
                           onClick={() =>
                             setSmileyChoice((prevState) => !prevState)
                           }

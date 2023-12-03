@@ -5,14 +5,14 @@ import { utilService } from './util.service.js'
 const BASE_URL = 'chat/'
 
 export const chatService = {
-  getChats,
+  query,
   getById,
   remove,
   update,
   getDefaultFilter,
 }
 
-async function getChats(filterByUser) {
+async function query(filterByUser) {
   try {
     return await httpService.get(BASE_URL, filterByUser)
   } catch (error) {
@@ -21,8 +21,8 @@ async function getChats(filterByUser) {
   }
 }
 
-async function getById(chatId) {
-  const chat = await httpService.get(BASE_URL + chatId)
+async function getById(usersId) {
+  const chat = await httpService.get(BASE_URL + usersId)
   return chat
 }
 
@@ -39,6 +39,6 @@ async function update(chat) {
 function getDefaultFilter() {
   return {
     userId: '',
-    gigId: ''
+    // gigId: ''
   }
 }

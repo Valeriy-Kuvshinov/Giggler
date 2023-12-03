@@ -14,6 +14,7 @@ export async function getChat(req, res) {
 
 export async function getChats(req, res) {
   try {
+    loggerService.debug('Getting chats', req.query)
     const chats = await chatService.query(req.query)
     res.send(chats)
   }
