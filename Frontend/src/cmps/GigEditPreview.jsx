@@ -14,13 +14,6 @@ export function GigEditPreview({ gig, loggedInUser }) {
             </div>
             <UserPreview isFrom={'gig-details'} owner={loggedInUser} />
 
-            {/* <div className="gig-preview-images grid">
-                <img src={gig.imgUrls[0]} alt="Gig preview thumbnail" />
-                <div className="future-images-carousel grid">
-                    {gig.imgUrls.map((url, idx) =>
-                        <img key={idx} src={url} alt="Gig preview images" />)}
-                </div>
-            </div> */}
             <div className="gig-preview-images grid">
                 {gig.imgUrls && (<ImageCarousel
                     isFrom={'gig-details'}

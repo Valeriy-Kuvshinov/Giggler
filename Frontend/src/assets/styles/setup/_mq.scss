@@ -793,6 +793,14 @@
         }
       }
     }
+
+    .gig-preview-container {
+      grid-template-rows: auto 80px 613px auto auto;
+
+      .gig-preview-images {
+        grid-template-rows: 513px 100px;
+      }
+    }
   }
 
   @media(min-width: 1151px) {
@@ -802,6 +810,14 @@
     form,
     .gig-preview-container {
       width: 49.5%;
+    }
+
+    .gig-preview-container {
+      grid-template-rows: auto 80px 413px auto auto;
+
+      .gig-preview-images {
+        grid-template-rows: 313px 100px;
+      }
     }
   }
 }

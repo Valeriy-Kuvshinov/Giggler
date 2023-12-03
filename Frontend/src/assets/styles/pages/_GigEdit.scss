@@ -100,7 +100,6 @@
 
     .gig-preview-container {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 80px 613px auto auto;
         background: $clrSecondary0;
         border: 1px solid $clrSecondary4;
         border-radius: 0.5em;
@@ -123,24 +122,7 @@
             margin: 0.5em 0;
         }
 
-        // .gig-preview-images {
-        //     grid-template-rows: 300px 102px;
-
-        //     .future-images-carousel {
-        //         grid-template-columns: repeat(5, 1fr);
-        //         border-top: 1px solid $clrSecondary3;
-        //         border-bottom: 1px solid $clrSecondary3;
-
-        //         img {
-        //             &:not(:first-child) {
-        //                 border-right: 1px solid $clrSecondary3;
-        //             }
-        //         }
-        //     }
-        // }
         .gig-preview-images {
-            grid-template-rows: 513px 100px;
-
             .gig-thumbnail {
                 width: fit-content;
 
