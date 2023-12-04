@@ -16,7 +16,7 @@ export const chatService = {
 async function query(filterBy = {}) {
   try {
     const criteria = _buildCriteria(filterBy)
-    console.log('Criteria: ',criteria)
+    console.log('Criteria: ', criteria)
     const collection = await dbService.getCollection(CHATS_COLLECTION)
     const chats = await collection.find(criteria).toArray()
     console.log(chats)
@@ -98,25 +98,15 @@ async function save(chat) {
 }
 
 function _buildCriteria(filterBy) {
-  const pipeline = []
-
-  const criteria = {
-    $match: {},
-  }
-  console.log('FILTERBY: ', filterBy)
+  const criteria = {}
   const { userId } = filterBy
 
   if (userId) {
-    criteria.$match.$and = [
+    criteria.$or = [
       { buyerId: { $regex: userId, $options: 'i' } },
       { sellerId: { $regex: userId, $options: 'i' } },
     ]
   }
-  if (Object.keys(criteria.$match).length > 0) {
-    pipeline.push(criteria)
-  }
-  console.log('pipeline: ',pipeline[0].$match.$and);
 
-
-  return pipeline
+  return criteria
 }
