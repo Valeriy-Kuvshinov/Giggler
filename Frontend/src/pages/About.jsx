@@ -1,4 +1,4 @@
 
 export function About(){
-    return (<section>about</section>)
+    return (<main className="layout-row">about</main>)
 }
