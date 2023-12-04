@@ -21,7 +21,7 @@ export function GigEditPreview({ gig, loggedInUser }) {
                     newImgIndex={newImgIndex}
                     setNewImgIndex={setNewImgIndex}
                 />)}
-                <div className="gig-thumbnail">
+                <div className="images-selection">
                     {gig.imgUrls.map((imgUrl, idx) => (
                         <img
                             className={`${idx === newImgIndex ? 'selected' : ''}`}

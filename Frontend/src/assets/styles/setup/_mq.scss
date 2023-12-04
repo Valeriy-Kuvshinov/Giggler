@@ -763,30 +763,133 @@
 // Gig editing page media query
 
 .gig-edit-container {
-  @media(max-width: 1150px) {
-    flex-direction: column;
-    justify-content: center;
-    gap: 1em;
+  .gig-edit {
+    @media(max-width: 1400px) {
+      flex-direction: column;
+      justify-content: center;
+      gap: 1em;
+      padding: 1em 2em;
 
-    form,
-    .gig-preview-container {
-      width: 100%;
-      max-width: 900px;
+      form,
+      .gig-preview-container {
+        width: 100%;
+        max-width: 900px;
+      }
 
-      .form-inputs {
-        .input-group {
+      .gig-preview-container {
+        grid-template-rows: auto 80px 633px auto auto;
 
-          &:nth-of-type(3),
-          &:nth-of-type(4) {
-            grid-template-columns: 1fr 1fr;
+        .gig-preview-images {
+          grid-template-rows: 533px 100px;
+        }
+      }
+    }
 
-            .info {
-              &:first-child {
-                grid-column: 1;
+    @media(max-width: 900px) {
+      .gig-preview-container {
+        grid-template-rows: auto 80px 533px auto auto;
+
+        .gig-preview-images {
+          grid-template-rows: 433px 100px;
+        }
+      }
+    }
+
+    @media(max-width: 750px) {
+      .gig-preview-container {
+        grid-template-rows: auto 80px 483px auto auto;
+
+        .gig-preview-images {
+          grid-template-rows: 383px 100px;
+        }
+      }
+    }
+
+    @media(max-width: 600px) {
+      padding: 1em 1.5em;
+      margin-bottom: 3em;
+
+      form {
+        .form-inputs {
+          padding: 0.5em;
+
+          .input-group {
+            &:nth-of-type(5) {
+              .info {
+                grid-template-columns: repeat(3, 1fr);
               }
+            }
+          }
+        }
+      }
 
-              &:last-child {
-                grid-column: 2;
+      .gig-preview-container {
+        grid-template-rows: auto 80px 433px auto auto;
+
+        .gig-preview-images {
+          grid-template-rows: 333px 100px;
+        }
+      }
+    }
+
+    @media(max-width: 480px) {
+      padding: 1em 0.5em;
+
+      .gig-preview-container {
+        grid-template-rows: auto 80px 303px auto auto;
+        padding: 0.5em;
+
+        .gig-preview-images {
+          grid-template-rows: 233px 70px;
+        }
+      }
+    }
+
+    @media(max-width: 400px) {
+      .gig-preview-container {
+        grid-template-rows: auto 80px 273px auto auto;
+
+        .gig-preview-images {
+          grid-template-rows: 213px 50px;
+        }
+      }
+    }
+
+    @media(min-width: 481px) {
+      form {
+        .form-inputs {
+          padding: 1em;
+        }
+      }
+
+      .gig-preview-container {
+        padding: 1em;
+      }
+    }
+
+    @media(min-width: 601px) {
+      form {
+        .form-inputs {
+          .input-group {
+
+            &:nth-of-type(3),
+            &:nth-of-type(4) {
+              grid-template-columns: 1fr 1fr;
+
+              .info {
+                &:first-child {
+                  grid-column: 1;
+                }
+
+                &:last-child {
+                  grid-column: 2;
+                }
+              }
+            }
+
+            &:nth-of-type(5) {
+              .info {
+                grid-template-columns: repeat(5, 1fr);
               }
             }
           }
@@ -794,29 +897,22 @@
       }
     }
 
-    .gig-preview-container {
-      grid-template-rows: auto 80px 613px auto auto;
+    @media(min-width: 1401px) {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 1em 0;
 
-      .gig-preview-images {
-        grid-template-rows: 513px 100px;
+      form,
+      .gig-preview-container {
+        width: 49.5%;
       }
-    }
-  }
 
-  @media(min-width: 1151px) {
-    flex-direction: row;
-    justify-content: space-between;
+      .gig-preview-container {
+        grid-template-rows: auto 80px 513px auto auto;
 
-    form,
-    .gig-preview-container {
-      width: 49.5%;
-    }
-
-    .gig-preview-container {
-      grid-template-rows: auto 80px 413px auto auto;
-
-      .gig-preview-images {
-        grid-template-rows: 313px 100px;
+        .gig-preview-images {
+          grid-template-rows: 413px 100px;
+        }
       }
     }
   }

@@ -1,181 +1,221 @@
 .gig-edit-container {
     width: 100%;
-    max-width: 1400px;
-    padding: 1em 2em;
 
-    p {
-        margin: 0;
-    }
+    .gig-edit {
+        p {
+            margin: 0;
+        }
 
-    form {
-        .form-inputs {
-            gap: 1em;
-            width: 100%;
+        form {
+            .form-inputs {
+                gap: 1em;
+                width: 100%;
+                background: $clrSecondary0;
+                border: 1px solid $clrSecondary4;
+                border-radius: 0 0 0.5em 0.5em;
+
+                .input-group {
+                    gap: 1em;
+                    grid-template-columns: 1fr;
+
+                    .info {
+                        gap: 0.25em;
+
+                        label {
+                            font-family: 'macan-bold';
+                        }
+
+                        p {
+                            font-size: 0.9em;
+                            color: $clrSecondary6;
+                        }
+                    }
+
+                    input,
+                    textarea,
+                    select {
+                        min-height: 30px;
+                        height: fit-content;
+                        border: 1px solid $clrSecondary4;
+                        appearance: textfield;
+                        width: 100%;
+                        border-radius: 0.5em;
+                        padding: 0.25em 0.5em;
+
+                        &:focus {
+                            outline: none;
+                            border: 1px solid $clrSecondary5;
+                        }
+                    }
+
+                    .multi-select {
+                        max-height: 64px;
+                        padding: 0;
+                    }
+
+                    &:nth-of-type(3),
+                    &:nth-of-type(4) {
+                        input {
+                            max-height: 30px;
+                            width: 120px;
+                        }
+                    }
+
+                    &:nth-of-type(5) {
+                        .info {
+                            gap: 0.5em;
+
+                            p {
+                                grid-column: 1 / -1;
+                            }
+
+                            .upload-preview {
+                                .file-upload-container {
+                                    height: 100%;
+
+                                    .custom-file-upload {
+                                        cursor: pointer;
+                                        background-color: #f0f0f0;
+                                        border: 1px solid #ddd;
+                                        border-radius: 0.5em;
+                                        transition: all 0.2s;
+                                        align-items: center;
+                                        justify-content: center;
+                                        height: 100%;
+                                        max-height: 120px;
+                                        text-align: center;
+
+                                        &:hover {
+                                            background-color: #e0e0e0;
+                                            color: $bgColor5;
+                                        }
+
+                                        img {
+                                            border-radius: 0 0 0.5em 0.5em;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .actions {
+                justify-content: space-between;
+                gap: 1em;
+                width: 100%;
+
+                button {
+                    font-weight: bold;
+                    font-size: 1rem;
+                    padding: 10px 16px;
+                    transition: all 0.3s;
+
+                    &:first-child {
+                        background: $clrSecondary3;
+                        color: $clrPrimary2;
+
+                        &:hover {
+                            background: $clrSecondary6;
+                            color: $clrPrimary1;
+                        }
+                    }
+
+                    &:last-child {
+                        background: $bgColor2;
+                        color: $clrPrimary1;
+
+                        &:hover {
+                            color: $bgColor2;
+                            background: $clrSecondary1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .gig-preview-container {
             background: $clrSecondary0;
             border: 1px solid $clrSecondary4;
-            padding: 1em;
-            border-radius: 0 0 0.5em 0.5em;
+            border-radius: 0.5em;
+            gap: 0.5em;
+            height: fit-content;
 
-            .input-group {
+            .gig-preview-header {
+                justify-content: space-between;
+
+                p {
+                    font-family: 'macan-bold';
+                }
+
+                h3 {
+                    color: $clrSecondary7;
+                }
+            }
+
+            .user-preview {
+                margin: 0.5em 0;
+            }
+
+            .gig-preview-images {
+                border-top: 1px solid $clrSecondary3;
+                border-bottom: 1px solid $clrSecondary3;
+
+                .images-selection {
+                    width: fit-content;
+
+                    img {
+                        object-fit: cover;
+                        aspect-ratio: 5/3;
+                        width: 20%;
+                        opacity: 0.6;
+                        padding: 1% 1% 1% 0;
+                        cursor: pointer;
+
+                        &:last-child {
+                            padding-inline-end: 0;
+                        }
+                    }
+                }
+            }
+
+            .gig-preview-filters {
+                margin-top: 2em;
+                grid-template-columns: repeat(3, 1fr);
                 gap: 1em;
-                grid-template-columns: 1fr;
+
+                h3 {
+                    grid-column: 1 / -1;
+                    color: $clrSecondary6;
+                }
 
                 .info {
-                    gap: 0.25em;
-
-                    label {
-                        font-family: 'macan-bold';
+                    h4 {
+                        border-bottom: 1px solid $clrSecondary4;
+                        font-size: 18px;
                     }
 
                     p {
-                        font-size: 0.9em;
-                        color: $clrSecondary6;
-                    }
-                }
-
-                input,
-                textarea,
-                select {
-                    min-height: 30px;
-                    height: fit-content;
-                    border: 1px solid $clrSecondary4;
-                    appearance: textfield;
-                    width: 100%;
-                    border-radius: 0.5em;
-
-                    &:focus {
-                        outline: none;
-                        border: 1px solid $clrSecondary5;
-                    }
-                }
-
-                .multi-select {
-                    max-height: 64px;
-                    border-radius: 0.5em;
-                    border: 1px solid gray;
-                }
-
-                &:nth-of-type(3),
-                &:nth-of-type(4) {
-                    input {
-                        max-height: 30px;
-                        width: 120px;
+                        font-size: 16px;
                     }
                 }
             }
-        }
 
-        .actions {
-            justify-content: space-between;
-            gap: 1em;
-            width: 100%;
-
-            button {
-                font-weight: bold;
-                font-size: 1rem;
-                padding: 10px 16px;
-                transition: all 0.3s;
-
-                &:first-child {
-                    background: $clrSecondary3;
-                    color: $clrPrimary2;
-
-                    &:hover {
-                        background: $clrSecondary6;
-                        color: $clrPrimary1;
-                    }
-                }
-
-                &:last-child {
-                    background: $bgColor2;
-                    color: $clrPrimary1;
-
-                    &:hover {
-                        background: $bgColor1;
-                    }
-                }
-            }
-        }
-    }
-
-    .gig-preview-container {
-        grid-template-columns: 1fr;
-        background: $clrSecondary0;
-        border: 1px solid $clrSecondary4;
-        border-radius: 0.5em;
-        gap: 0.5em;
-        padding: 1em;
-
-        .gig-preview-header {
-            justify-content: space-between;
-
+            h3,
+            h2,
             p {
-                font-family: 'macan-bold';
+                font-size: 20px;
             }
 
-            h3 {
-                color: $clrSecondary7;
-            }
-        }
-
-        .user-preview {
-            margin: 0.5em 0;
-        }
-
-        .gig-preview-images {
-            .gig-thumbnail {
-                width: fit-content;
-
-                img {
-                    object-fit: cover;
-                    aspect-ratio: 5/3;
-                    width: 20%;
-                    opacity: 0.6;
-                    padding: 1% 1% 1% 0;
-                    cursor: pointer;
-
-                    &:last-child {
-                        padding-inline-end: 0;
-                    }
-                }
-            }
-        }
-
-        .gig-preview-filters {
-            margin-top: 2em;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1em;
-
-            h3 {
-                grid-column: 1 / -1;
-                color: $clrSecondary6;
+            h2 {
+                margin: auto;
+                font-size: 24px;
             }
 
-            .info {
-                h4 {
-                    border-bottom: 1px solid $clrSecondary4;
-                    font-size: 18px;
-                }
-
-                p {
-                    font-size: 16px;
-                }
+            .gig-description {
+                color: $clrSecondary8;
             }
-        }
-
-        h3,
-        h2,
-        p {
-            font-size: 20px;
-        }
-
-        h2 {
-            margin: auto;
-            font-size: 24px;
-        }
-
-        .gig-description {
-            color: $clrSecondary8;
         }
     }
 }
