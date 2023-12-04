@@ -14,9 +14,9 @@ export const chatService = {
   getEmptyChat,
 }
 
-async function query(filterByUser) {
+async function query(user) {
   try {
-    return await httpService.get(BASE_URL, filterByUser)
+    return await httpService.get(BASE_URL, user)
   } catch (error) {
     console.error('Error querying chats:', error)
     throw error

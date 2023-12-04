@@ -5,63 +5,62 @@ import { socketService } from '../services/socket.service.js'
 import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
 import { getChatByUsers, saveChat } from '../store/chat.actions.js'
-import { chatService } from '../services/chat.service.js'
 
-export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
+export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const isBuyer = loggedinUser && owner._id !== loggedinUser._id
 
-  const [chat, setChat] = useState(chatService.getEmptyChat())
+  const [chat, setChat] = useState(incChat || {
+    sellerId: owner._id,
+    buyerId: isBuyer ? loggedinUser._id : buyer._id,
+    messages: [],
+    gig: gig,
+  })
+
   const [characterCount, setCharacterCount] = useState(0)
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
 
-  let isBuyer = loggedinUser && owner._id !== loggedinUser._id
-
   useEffect(() => {
-    if (chatState) {
-      if (isBuyer) openChatWithSeller()
-      
-      socketService.on('chat_add_msg', addMessage)
-      socketService.on('chat_add_typing', addTypingUser)
-      socketService.on('chat_remove_typing', removeTypingUser)
-    }
+    socketService.on('chat_add_msg', addMessage)
+    socketService.on('chat_add_typing', addTypingUser)
+    socketService.on('chat_remove_typing', removeTypingUser)
+
     return () => {
       socketService.off('chat_add_msg', addMessage)
       socketService.off('chat_add_typing', addTypingUser)
       socketService.off('chat_remove_typing', removeTypingUser)
       clearTimeout(timeoutId.current)
     }
-  }, [chatState])
+  }, [])
 
   useEffect(() => {
-    getNewChat()
-  }, [loggedinUser])
+    // Perform actions that depend on the updated chat state
+    console.log('Updated chat:', chat)
+    // Other logic here...
+  }, [chat])
 
-  async function getNewChat() {
-    try{
-    if (isBuyer) {
+  getChat()
+
+  async function getChat() {
+    try {
+      if (isBuyer) {
         const newChat = await getChatByUsers({
           buyerId: loggedinUser._id,
           sellerId: owner._id,
         })
         if (newChat) setChat(newChat)
-        else
-      setChat(
-          await saveChat({
-            buyerId: loggedinUser._id,
-            sellerId: owner._id,
-            messages: [],
-            gig: gig,
-          })
-          )
-        } else {
-          setChat(await getChatByUsers({ buyerId: buyer._id, sellerId: owner._id }))
-        }
+      } else {
+        const newChat = await getChatByUsers({
+          buyerId: buyer._id,
+          sellerId: owner._id,
+        })
+        if (newChat) setChat(newChat)
       }
-      catch(err){
-        console.log('Problem occurred whe getting/saving new chat: ',err);
-      }
+    } catch (err) {
+      console.log('Problem occurred whe getting new chat: ', err)
+    }
   }
 
   function openChatWithSeller() {
@@ -100,24 +99,43 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   async function handleSendMessage() {
     const newMessage = {
       message: message,
-      time: new Date(),
+      time: Date.now(),
       user: loggedinUser,
     }
-    if (isBuyer) {
-      socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
-    } else {
-      socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
+
+    try {
+      if (isBuyer) {
+        socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
+      } else {
+        socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
+      }
+
+      console.log('newMessage: ', newMessage)
+
+      
+      if (chat.messages.length > 0) {
+        console.log('Existing messages:', chat.messages)
+        const updatedChat = await saveChat({
+          ...chat,
+          messages: [...chat.messages, newMessage],
+        })
+        setChat(updatedChat)
+        console.log('Updated chat:', updatedChat)
+      } else {
+        console.log('No existing messages, creating new chat.')
+        const updatedChat = await saveChat({
+          buyerId: loggedinUser._id,
+          sellerId: owner._id,
+          messages: [newMessage],
+          gig: gig,
+        })
+        setChat(updatedChat)
+        console.log('Created new chat:', updatedChat)
+      }
+    } catch (err) {
+      console.log('Unable to save or update chat:', err)
     }
 
-    setChat((prevChat) => ({
-      ...prevChat,
-      messages: [...prevChat.messages, newMessage],
-    }))
-    try {
-      await saveChat(chat)
-    } catch (err) {
-      console.log('unable to save update chat: ', err)
-    }
     clearTimeout(timeoutId.current)
     timeoutId.current = null
     setMessage('')
@@ -252,32 +270,34 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
                     className="message-footer-wrapper"
                     data-testid="message-wrapper"
                   >
-                    {!message && !buyer && (
+                    {isBuyer && !chat.messages.length && (
                       <section className="quick-question-container flex column">
                         <button
-                          onClick={() =>
-                            setMessage(
-                              `👋 Hey ${owner.username}, can you help me with...`
-                            )
-                          }
+                          onClick={() => {
+                            const newMessage = `👋 Hey ${owner.username}, can you help me with...`
+                            setMessage(newMessage)
+                            setCharacterCount(newMessage.length)
+                          }}
                         >
                           👋 Hey {owner.username}, can you help me with...
                         </button>
                         <button
-                          onClick={() =>
-                            setMessage(
+                          onClick={() => {
+                            const newMessage =
                               'Would it be possible to get a custom offer for...'
-                            )
-                          }
+                            setMessage(newMessage)
+                            setCharacterCount(newMessage.length)
+                          }}
                         >
                           Would it be possible to get a custom offer for...
                         </button>
                         <button
-                          onClick={() =>
-                            setMessage(
-                              'Do you think you can deliver an order by...tomorrow at 10pm'
-                            )
-                          }
+                          onClick={() => {
+                            const newMessage =
+                              'Do you think you can deliver an order by...'
+                            setMessage(newMessage)
+                            setCharacterCount(newMessage.length)
+                          }}
                         >
                           Do you think you can deliver an order by...
                         </button>

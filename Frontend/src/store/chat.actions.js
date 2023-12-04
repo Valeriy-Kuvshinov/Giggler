@@ -2,10 +2,10 @@ import { store } from './store.js'
 import { ADD_CHAT, GET_CHAT, REMOVE_CHAT, SET_CHATS, UPDATE_CHAT, SET_IS_LOADING, SET_FILTER, GET_CHAT_BY_USERS } from "./chat.reducer.js"
 import { chatService } from "../services/chat.service.js"
 
-export async function loadChats(filterBy = {}) {
+export async function loadChats(user) {
     store.dispatch({ type: SET_IS_LOADING, isLoading: true })
     try {
-        const chats = await chatService.query(filterBy)
+        const chats = await chatService.query(user)
         store.dispatch({ type: SET_CHATS, chats: chats })
     } catch (err) {
         console.log('cannot load chats, heres why:', err)
