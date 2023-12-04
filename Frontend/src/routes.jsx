@@ -7,6 +7,7 @@ import { GigEdit } from './pages/GigEdit.jsx'
 import { SellerDashboard } from './pages/SellerDashboard.jsx'
 import { BuyerDashboard } from './pages/BuyerDashboard.jsx'
 import { Chat } from './pages/Chat.jsx'
+import { About } from './pages/About.jsx'
 
 // import { Testing } from './pages/Testing.jsx'
 
@@ -20,6 +21,7 @@ const routes = [
     { path: '/dashboard', component: SellerDashboard},
     { path: '/orders', component: BuyerDashboard},
     { path: '/chat/:id', component: Chat},
+    {path: '/about', component: About}
     // { path: '/testing', component: Testing, label: 'testing'} Used for Development
 ]
 
