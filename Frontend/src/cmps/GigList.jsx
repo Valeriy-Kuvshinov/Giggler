@@ -1,28 +1,12 @@
-// import { GigPreview } from './GigPreview.jsx'
 
-// import _ from 'lodash'
-// import { Loader } from './Loader.jsx'
+import React, { useState, useEffect } from "react"
 
-// export function GigList({ gigs }) {
-//   const isFrom = 'explore'
+import { GigPreview } from "./GigPreview.jsx"
+import { Loader } from "./Loader.jsx"
 
-//   // if (!gigs.length) return <Loader />
-
-//   return (
-//     <ul className="gig-list layout-row">
-//       {gigs.map((gig) => (
-//         <GigPreview isFrom={isFrom} gig={gig} key={gig._id} />
-//       ))}
-//     </ul>
-//   )
-// }
-
-import React, { useState, useEffect } from 'react'
-import { GigPreview } from './GigPreview.jsx'
-
-export function GigList({ gigs }) {
+export function GigList({ gigs , isLoading}) {
   const [showGigs, setShowGigs] = useState(false)
-  const isFrom = 'explore'
+  const isFrom = "explore"
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -32,8 +16,9 @@ export function GigList({ gigs }) {
     return () => clearTimeout(timeout)
   }, [])
 
+  if (isLoading) return <Loader />
   return (
-    <ul className={`gig-list layout-row ${showGigs ? 'show' : ''}`}>
+    <ul className={`gig-list layout-row ${showGigs ? "show" : ""}`}>
       {gigs.map((gig) => (
         <GigPreview isFrom={isFrom} gig={gig} key={gig._id} />
       ))}

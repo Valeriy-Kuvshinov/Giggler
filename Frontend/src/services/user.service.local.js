@@ -77,11 +77,9 @@ function getUserRatingCount(user) {
             countMin = 101
             countMax = 500
             break
-        case 'Level 3':
+        case 'Pro Talent':
             countMin = 501
             break
-        case 'Pro Talent':
-            return '+1k'
 
         default:
             // console.log('NO LEVEL! :(')
