@@ -3,6 +3,7 @@ const { ObjectId } = mongodb
 
 import { dbService } from '../../services/db.service.js'
 import { loggerService } from '../../services/logger.service.js'
+import { cloudinaryService } from '../../services/cloudinary.service.js'
 
 const GIGS_COLLECTION = 'gig'
 
@@ -64,6 +65,7 @@ async function remove(gigId) {
 
 async function save(gig) {
   const collection = await dbService.getCollection(GIGS_COLLECTION)
+  // _checkRedundantGigImages()
 
   try {
     const gigToSave = { ...gig }
@@ -156,19 +158,35 @@ function _buildPipeline(filterBy) {
       },
     })
   }
-
-  // const itemsPerPage = 12
-  // const skipCount = (filterBy.page - 1) * itemsPerPage
-  // pipeline.push({
-  //   $skip: skipCount,
-  // })
-  // pipeline.push({
-  //   $limit: itemsPerPage,
-  // })
-
   if (Object.keys(criteria.$match).length > 0) {
     pipeline.push(criteria)
   }
-
   return pipeline
+}
+
+async function _checkRedundantGigImages() {
+  try {
+    const gigImages = await _getAllGigImages()
+    const cloudinaryImages = await cloudinaryService.getAllCloudinaryImages('gig-images')
+
+    const orphanedImages = cloudinaryImages.filter(url => !gigImages.includes(url));
+    for (const imageUrl of orphanedImages) {
+      await cloudinaryService.deleteImageFromCloudinary(imageUrl)
+    }
+  } catch (err) {
+    loggerService.error('Error checking for redundant images', err)
+    throw err
+  }
+}
+
+async function _getAllGigImages() {
+  try {
+    const collection = await dbService.getCollection(GIGS_COLLECTION)
+    const gigs = await collection.find({}, { projection: { imgUrls: 1 } }).toArray()
+    const gigImages = gigs.flatMap(gig => gig.imgUrls)
+    return gigImages
+  } catch (err) {
+    loggerService.error('Failed to get all gig images', err)
+    throw err
+  }
 }

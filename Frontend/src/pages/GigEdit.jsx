@@ -163,7 +163,7 @@ export function GigEdit() {
 
                         <div className="input-group grid">
                             <div className="info grid">
-                                <p>Show the world the quality of your gig, by uploading images that explain your service the best. By default, we provide you with 5 images to use. Select one of the slots below to change the image:</p>
+                                <p>Show the world the quality of your gig, by uploading images that explain your service the best. By default, we provide you with 5 images to use. Select one of the slots below to change a certain image of a gig:</p>
                                 {fields.imgUrls.map((url, index) => (
                                     <ImgUploader
                                         key={index}
