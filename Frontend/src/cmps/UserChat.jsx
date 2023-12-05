@@ -4,23 +4,60 @@ import { socketService } from '../services/socket.service.js'
 
 import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
-import { getChatByUsers, saveChat } from '../store/chat.actions.js'
+import {  getChatByUsers, saveChat, loadNewMsg, loadIsTyping, removeIsTyping, getChat} from '../store/chat.actions.js'
+import { Loader } from './Loader.jsx'
 
-export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }) {
+export function UserChat({
+  owner,
+  chatState,
+  setChatState,
+  buyer,
+  gig,
+  incChat,
+}) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
+  const { currentChat } = useSelector((storeState) => storeState.chatModule)
+  //const { isTyping } = useSelector((storeState) => storeState.chatModule)
+  const { isLoading } = useSelector((storeState) => storeState.chatModule)
+
+
   const isBuyer = loggedinUser && owner._id !== loggedinUser._id
 
-  const [chat, setChat] = useState(incChat || {
-    sellerId: owner._id,
-    buyerId: isBuyer ? loggedinUser._id : buyer._id,
-    messages: [],
-    gig: gig,
-  })
-
+  // const [chat, setChat] = useState(
+  //   {
+  //     sellerId: owner._id,
+  //     buyerId: isBuyer ? loggedinUser._id : buyer._id,
+  //     messages: [],
+  //     gig: gig,
+  //   }
+  // )
   const [characterCount, setCharacterCount] = useState(0)
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
+  const [isTyping, setIsTyping ] = useState([])
   const timeoutId = useRef(null)
+
+  useEffect(() => {
+    loadsChat()
+  }, [])
+
+  async function loadsChat() {
+    try {
+      const newChat = await getChatByUsers({
+        sellerId: owner._id,
+        buyerId: isBuyer ? loggedinUser._id : buyer._id,
+      })
+      if (!newChat)
+        loadEmptyChat({
+          sellerId: owner._id,
+          buyerId: isBuyer ? loggedinUser._id : buyer._id,
+          messages: [],
+          gig: gig,
+        })
+    } catch (err) {
+      console.log('Problem occurred whe getting new chat: ', err)
+    }
+  }
 
   useEffect(() => {
     socketService.on('chat_add_msg', addMessage)
@@ -35,59 +72,21 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
     }
   }, [])
 
-  useEffect(() => {
-    // Perform actions that depend on the updated chat state
-    console.log('Updated chat:', chat)
-    // Other logic here...
-  }, [chat])
-
-  getChat()
-
-  async function getChat() {
-    try {
-      if (isBuyer) {
-        const newChat = await getChatByUsers({
-          buyerId: loggedinUser._id,
-          sellerId: owner._id,
-        })
-        if (newChat) setChat(newChat)
-      } else {
-        const newChat = await getChatByUsers({
-          buyerId: buyer._id,
-          sellerId: owner._id,
-        })
-        if (newChat) setChat(newChat)
-      }
-    } catch (err) {
-      console.log('Problem occurred whe getting new chat: ', err)
-    }
-  }
-
-  function openChatWithSeller() {
-    socketService.emit('chat_open', {
-      sellerId: owner._id,
-      buyer: loggedinUser,
-    })
-  }
-
   function addMessage(message) {
-    setChat((prevChat) => [
-      ...prevChat.messages.filter((msg) => msg.type !== 'typing'),
-      message,
-    ])
+    loadNewMsg(message)
   }
 
   function addTypingUser(user) {
-    setChat((prevChat) => [
-      ...prevChat.messages.filter((msg) => msg.type !== 'typing'),
-      { type: 'typing', user: user },
-    ])
+    // loadIsTyping()
+    setIsTyping( ...isTyping, user)
   }
 
-  function removeTypingUser() {
-    setChat((prevChat) =>
-      prevChat.messages.filter((msg) => msg.type !== 'typing')
+  function removeTypingUser(userToRemove) {
+    const updateIsTyping = isTyping.filter(
+      (user) => user._id !== userToRemove._id
     )
+    setIsTyping(updateIsTyping)
+    // removeIsTyping(user)
   }
 
   function handleKeyPress(event) {
@@ -103,35 +102,36 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
       user: loggedinUser,
     }
 
-    try {
-      if (isBuyer) {
-        socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
-      } else {
-        socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
-      }
+    if (isBuyer) {
+      socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
+    } else {
+      socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
+    }
 
+    try {
       console.log('newMessage: ', newMessage)
 
-      
-      if (chat.messages.length > 0) {
-        console.log('Existing messages:', chat.messages)
-        const updatedChat = await saveChat({
-          ...chat,
-          messages: [...chat.messages, newMessage],
+      let updatedChat
+      if (currentChat?.messages.length) {
+        // console.log('Existing messages:', currentChat.messages)
+        updatedChat = await saveChat({
+          ...currentChat,
+          messages: [...currentChat.messages, newMessage],
         })
-        setChat(updatedChat)
-        console.log('Updated chat:', updatedChat)
+        // setChat(updatedChat)
+        // console.log('Updated chat:', updatedChat)
       } else {
-        console.log('No existing messages, creating new chat.')
-        const updatedChat = await saveChat({
+        // console.log('No existing messages, creating new chat.')
+        updatedChat = await saveChat({
           buyerId: loggedinUser._id,
           sellerId: owner._id,
           messages: [newMessage],
           gig: gig,
         })
-        setChat(updatedChat)
-        console.log('Created new chat:', updatedChat)
+        // setChat(updatedChat)
+        // console.log('Created new chat:', updatedChat)
       }
+      await getChat(updatedChat._id)
     } catch (err) {
       console.log('Unable to save or update chat:', err)
     }
@@ -142,7 +142,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
     socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
     setCharacterCount(0)
   }
-
+ 
   function onChangeMessage(event) {
     const messageText = event.target.value
     setCharacterCount(messageText.length)
@@ -163,7 +163,9 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
       timeoutId.current = null
     }, 2000)
   }
-
+ 
+  if (isLoading) return <Loader />
+  
   return (
     <>
       {chatState && (
@@ -203,52 +205,50 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div className="message-container flex column">
-                    {chat.messages.map((message, index) => {
-                      if (message.type === 'typing') {
-                        return (
-                          <div
-                            key={index}
-                            className="message user-two typing-indicator"
-                          >
-                            <div className="message-body grid">
-                              <span className="text">
-                                <span className="typing-loader">
-                                  <span className="dot"></span>
-                                  <span className="dot"></span>
-                                  <span className="dot"></span>
-                                </span>
+                    {isTyping.length > 0 &&
+                      isTyping.map((user, index) => (
+                        <div
+                          key={index}
+                          className="message user-two typing-indicator"
+                        >
+                          <div className="message-body grid">
+                            <span className="text">
+                              <span className="typing-loader">
+                                <span className="dot"></span>
+                                <span className="dot"></span>
+                                <span className="dot"></span>
                               </span>
-                              <img
-                                className="avatar"
-                                src={message.user.imgUrl}
-                                alt={message.user.username}
-                              />
-                            </div>
+                            </span>
+                            <img
+                              className="avatar"
+                              src={user?.imgUrl}
+                              alt={user?.username}
+                            />
                           </div>
-                        )
-                      } else {
-                        return (
-                          <div
-                            key={index}
-                            className={`message 
-                            ${
-                              message.user._id === loggedinUser._id
-                                ? 'user-one'
-                                : 'user-two'
-                            } flex column`}
-                          >
-                            <div className="message-body grid">
-                              <span className="text">{message.message}</span>
-                              <img
-                                className="avatar"
-                                src={message.user.imgUrl}
-                                alt={message.user.username}
-                              />
-                            </div>
+                        </div>
+                      ))}
+
+                    {/* {currentChat && currentChat.messages && */}
+                      {currentChat?.messages?.length > 0 &&
+                      currentChat.messages.map((message, index) => (
+                        <div
+                          key={index}
+                          className={`message ${
+                            message.user._id === loggedinUser._id
+                              ? 'user-one'
+                              : 'user-two'
+                          } flex column`}
+                        >
+                          <div className="message-body grid">
+                            <span className="text">{message.message}</span>
+                            <img
+                              className="avatar"
+                              src={message.user?.imgUrl}
+                              alt={message.user?.username}
+                            />
                           </div>
-                        )
-                      }
-                    })}
+                        </div>
+                      ))}
                   </div>
 
                   <div className="input-container">
@@ -270,7 +270,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig, incChat }
                     className="message-footer-wrapper"
                     data-testid="message-wrapper"
                   >
-                    {isBuyer && !chat.messages.length && (
+                    {isBuyer && !currentChat?.messages?.length && (
                       <section className="quick-question-container flex column">
                         <button
                           onClick={() => {

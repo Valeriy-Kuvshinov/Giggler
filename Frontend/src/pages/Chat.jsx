@@ -13,10 +13,10 @@ export function Chat() {
   // const history = useHistory()
   const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
+ 
 
   useEffect(() => {
     chatsLoading()
-    console.log(chats)
   }, [])
 
   async function chatsLoading() {
@@ -27,22 +27,25 @@ export function Chat() {
     }
   }
 
-  function goBack() {
+  function goBack(event) {
+    event.preventDefault()
     // history.goBack()
   }
 
   function onOpenChat(props) {
     setChatProps(props)
-    setChatState((prevState) => !prevState)
+    setChatState(!chatState)
+    console.log('PROPS IN ONOPENCHAT: ',chatProps)
+    console.log('chatState IN ONOPENCHAT: ',chatState)
   }
 
-  if (isLoading) return <Loader />
+  // if (isLoading) return <Loader />
 
   return (
     <main className="chats">
       <section className="chat-header b">
         <span>Chat</span>{' '}
-        <span onClick={() => goBack()}>
+        <span onClick={(event) => goBack(event)}>
           <SvgIcon iconName={'remove'} />
         </span>
       </section>
@@ -63,7 +66,6 @@ export function Chat() {
                           owner: loggedinUser,
                           buyer: buyer,
                           gig: buyerChat.gig,
-                          incChat: buyerChat
                         })
                       }
                       className="chat"
@@ -95,13 +97,12 @@ export function Chat() {
                       <span className="erase-chat">
                         <SvgIcon iconName={'remove'} />
                       </span>
-                      {console.log(buyer)}
                     </article>
                   )
                 })}
             </section>
 
-            <section className="sellers b">
+            {/* <section className="sellers b">
               <span className="title">Potential Sellers</span>
               {chats
                 .filter((chat) => chat.buyerId === loggedinUser._id)
@@ -115,7 +116,6 @@ export function Chat() {
                           owner: loggedinUser,
                           buyer: buyer,
                           gig: sellerChat.gig,
-                          incChat: sellerChat
                         })
                       }
                       className="chat"
@@ -151,20 +151,20 @@ export function Chat() {
                     </article>
                   )
                 })}
-            </section>
+            </section> */}
           </>
         ) : (
           <div>You have no chats opened</div>
-        )}
+          )}
       </section>
+      {console.log('chatState: ',chatState)}
       {chatState && (
         <UserChat
-          owner={chatProps.owner}
-          chatState={chatState}
+        owner={chatProps.owner}
+        chatState={chatState}
           setChatState={setChatState}
           buyer={chatProps.buyer}
           gig={chatProps.gig}
-          incChat={chatProps.incChat}
         />
       )}
     </main>

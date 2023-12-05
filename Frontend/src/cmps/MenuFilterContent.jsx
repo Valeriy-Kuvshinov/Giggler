@@ -2,20 +2,30 @@ import { useRef, useState } from 'react'
 
 import { ApplyFilterBtn } from './ApplyFilterBtn.jsx'
 import { RenderRadioButtons } from './RenderRadioButtons.jsx'
-import  outsideClick  from '../customHooks/outsideClick.js'
+import outsideClick from '../customHooks/outsideClick.js'
 
-import { levels, deliveryTime, category, budget, subcategories } from '../services/gig.service.js'
+import {
+  levels,
+  deliveryTime,
+  category,
+  budget,
+  subcategories,
+} from '../services/gig.service.js'
 
-export function MenuFilterContent({ renderedChoice, setMenuFilter, setIsRenderedChoice }) {
+export function MenuFilterContent({
+  renderedChoice,
+  setMenuFilter,
+  setIsRenderedChoice,
+}) {
   const [selectedOption, setSelectedOption] = useState('')
   const [selectedFilter, setSelectedFilter] = useState({
     min: '',
     max: '',
   })
   const filterRef = useRef(null)
-  
+
   outsideClick(filterRef, () => {
-    setIsRenderedChoice(false,'')
+    setIsRenderedChoice(false, '')
   })
 
   function onHandleBudgetChange(event) {
@@ -54,7 +64,12 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter, setIsRendered
                 )
               case 'budget':
                 return (
-                  <form onSubmit={(event) => setMenuFilter(event, selectedFilter)}>
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault()
+                      setMenuFilter(event, selectedFilter)
+                    }}
+                  >
                     <div className="content-scroll">
                       <div className="budget-filter">
                         {budget.map((type) => (
@@ -126,7 +141,10 @@ export function MenuFilterContent({ renderedChoice, setMenuFilter, setIsRendered
               case 'Data':
               case 'Photography':
               case 'AI Services':
-                const subcategory = renderedChoice.replace('&', 'And').split(' ').join('_')
+                const subcategory = renderedChoice
+                  .replace('&', 'And')
+                  .split(' ')
+                  .join('_')
                 return (
                   <>
                     <div className="content-scroll">

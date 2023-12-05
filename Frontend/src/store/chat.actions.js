@@ -1,63 +1,94 @@
 import { store } from './store.js'
-import { ADD_CHAT, GET_CHAT, REMOVE_CHAT, SET_CHATS, UPDATE_CHAT, SET_IS_LOADING, SET_FILTER, GET_CHAT_BY_USERS } from "./chat.reducer.js"
-import { chatService } from "../services/chat.service.js"
+import {
+  ADD_CHAT,
+  GET_CHAT,
+  REMOVE_CHAT,
+  SET_CHATS,
+  UPDATE_CHAT,
+  SET_IS_LOADING,
+  SET_FILTER,
+  GET_CHAT_BY_USERS,
+  SET_EMPTY_CHAT,
+  SET_NEW_MSG,
+  SET_IS_TYPING,
+  REMOVE_IS_TYPING,
+} from './chat.reducer.js'
+import { chatService } from '../services/chat.service.js'
 
 export async function loadChats(user) {
-    store.dispatch({ type: SET_IS_LOADING, isLoading: true })
-    try {
-        const chats = await chatService.query(user)
-        store.dispatch({ type: SET_CHATS, chats: chats })
-    } catch (err) {
-        console.log('cannot load chats, heres why:', err)
-    } finally {
-        store.dispatch({ type: SET_IS_LOADING, isLoading: false })
-    }
+  store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+  try {
+    const chats = await chatService.query(user)
+    store.dispatch({ type: SET_CHATS, chats: chats })
+  } catch (err) {
+    console.log('cannot load chats, heres why:', err)
+  } finally {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+  }
 }
 
 export async function getChat(chatId) {
-    try {
-        await chatService.getById(chatId)
-        store.dispatch({ type: GET_CHAT, chatId: chatId })
-    } catch (err) {
-        console.log('Cannot remove chat', err)
-        throw err
-    }
+  try {
+    await chatService.getById(chatId)
+    store.dispatch({ type: GET_CHAT, chatId: chatId })
+  } catch (err) {
+    console.log('Cannot remove chat', err)
+    throw err
+  }
 }
 
 export async function getChatByUsers(usersId) {
-    try {
-        await chatService.getByUsersId(usersId)
-        store.dispatch({ type: GET_CHAT_BY_USERS, usersId })
-    } catch (err) {
-        console.log('Cannot get chat by users: ', err)
-        throw err
-    }
+  store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+  try {
+    const theChat = await chatService.getByUsersId(usersId)
+    store.dispatch({ type: GET_CHAT_BY_USERS, usersId })
+    return theChat
+  } catch (err) {
+    console.log('Cannot get chat by users: ', err)
+    throw err
+  } finally {
+    store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+  }
 }
 
+export function loadEmptyChat(emptyChat) {
+    store.dispatch({ type: SET_EMPTY_CHAT}, emptyChat)
+}
+
+export function loadNewMsg(message) {
+    store.dispatch({ type: SET_NEW_MSG}, message)
+}
+export function loadIsTyping(isTyping) {
+    store.dispatch({ type: SET_IS_TYPING}, isTyping)
+}
+export function removeIsTyping(isTyping) {
+    console.log('isTyping in removeIsTyping action: ',isTyping);
+    store.dispatch({ type: REMOVE_IS_TYPING}, isTyping)
+}
 
 export async function removeChat(chatId) {
-    try {
-        await chatService.remove(chatId)
-        store.dispatch({ type: REMOVE_CHAT, chatId })
-    } catch (err) {
-        console.log('Cannot remove chat', err)
-        throw err
-    }
+  try {
+    await chatService.remove(chatId)
+    store.dispatch({ type: REMOVE_CHAT, chatId })
+  } catch (err) {
+    console.log('Cannot remove chat', err)
+    throw err
+  }
 }
 
 export async function saveChat(chat) {
-    const type = chat._id ? UPDATE_CHAT : ADD_CHAT
-    try {
-        const savedChat = await chatService.save(chat)
-        console.log(chat._id ? 'Updated chat' : 'Added chat', savedChat)
-        store.dispatch({ type, chat: savedChat })
-        return savedChat
-    } catch (err) {
-        console.log('Cannot save chat', err)
-        throw err
-    }
+  const type = chat._id ? UPDATE_CHAT : ADD_CHAT
+  try {
+    const savedChat = await chatService.save(chat)
+    console.log(chat._id ? 'Updated chat' : 'Added chat', savedChat)
+    store.dispatch({ type, chat: savedChat })
+    return savedChat
+  } catch (err) {
+    console.log('Cannot save chat', err)
+    throw err
+  }
 }
 
 export function setFilter(newFilterBy) {
-    store.dispatch({ type: SET_FILTER, filterBy: newFilterBy })
+  store.dispatch({ type: SET_FILTER, filterBy: newFilterBy })
 }

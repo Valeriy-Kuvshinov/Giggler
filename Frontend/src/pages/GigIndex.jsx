@@ -50,7 +50,7 @@ export function GigIndex({ onMobileFilter }) {
 
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
-    let updatedFilterBy = { ...filterBy }
+    let updatedFilterBy = { ...filterBy , page: 1}
 
     switch (isRenderedChoice[1]) {
       case 'delivery_time':

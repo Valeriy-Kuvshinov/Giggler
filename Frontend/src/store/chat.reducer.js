@@ -6,12 +6,19 @@ export const GET_CHAT_BY_USERS = 'GET_CHAT_BY_USERS'
 export const UPDATE_CHAT = 'UPDATE_CHAT'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 export const SET_FILTER = 'SET_FILTER'
+export const SET_EMPTY_CHAT = 'SET_EMPTY_CHAT'
+export const SET_NEW_MSG = 'SET_NEW_MSG'
+export const REMOVE_IS_TYPING = 'REMOVE_IS_TYPING'
+export const SET_IS_TYPING = 'SET_IS_TYPING'
+
 import { chatService } from '../services/chat.service.js'
 
 const initialState = {
   chats: [],
   isLoading: false,
   filterBy: chatService.getDefaultFilter(),
+  currentChat: null,
+  isTyping: [],
 }
 
 export function chatReducer(state = initialState, action = {}) {
@@ -19,9 +26,11 @@ export function chatReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_CHATS:
       return { ...state, chats: action.chats }
+
     case GET_CHAT:
       const currentChat = state.chats.find((chat) => chat._id === action.chatId)
       return { ...state, currentChat: currentChat }
+
     case GET_CHAT_BY_USERS:
       const usersChat = state.chats.find(
         (chat) =>
@@ -29,12 +38,36 @@ export function chatReducer(state = initialState, action = {}) {
           chat.sellersId === action.usersId.sellersId
       )
       return { ...state, currentChat: usersChat }
+
+    case SET_EMPTY_CHAT:
+      return { ...state, currentChat: action.emptyChat }
+
+    case SET_NEW_MSG:
+      const updatedMessages = [...state.currentChat.messages, action.message]
+      const updatedCurrentChat = {
+        ...state.currentChat,
+        messages: updatedMessages,
+      }
+      return { ...state, currentChat: updatedCurrentChat }
+
+    case SET_IS_TYPING:
+      return { ...state, isTyping: [...state.isTyping, action.isTyping] }
+
+    case REMOVE_IS_TYPING:
+      console.log('state.isTyping: ', state.isTyping)
+      const updatedTyping = state.isTyping.filter(
+        (user) => user._id !== action.isTyping._id
+      )
+      return { ...state, isTyping: updatedTyping }
+
     case REMOVE_CHAT:
       chats = state.chats.filter((chat) => chat._id !== action.chatId)
       return { ...state, chats: chats }
+
     case ADD_CHAT:
       chats = [...state.chats, action.chat]
       return { ...state, chats: chats }
+
     case UPDATE_CHAT:
       chats = state.chats.map((chat) =>
         chat._id === action.chat._id ? action.chat : chat
