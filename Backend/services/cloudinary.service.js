@@ -24,19 +24,18 @@ async function getAllCloudinaryImages(folderName) {
         const results = await cloudinary.api.resources({
             type: 'upload',
             prefix: folderPath,
-            max_results: 500
+            max_results: 999
         })
-        return results.resources.map(resource => resource.url)
+        // return results.resources.map(resource => resource.url)
+        return results.resources.map(resource => extractPublicIdFromUrl(resource.url))
     } catch (err) {
         loggerService.error('Failed to get all Cloudinary images', err)
         throw err
     }
 }
 
-async function deleteImageFromCloudinary(imageUrl) {
+async function deleteImageFromCloudinary(publicId) {
     try {
-        const publicId = extractPublicIdFromUrl(imageUrl)
-
         await cloudinary.uploader.destroy(publicId)
     } catch (err) {
         loggerService.error('Failed to delete image from Cloudinary', err)

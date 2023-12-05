@@ -65,7 +65,6 @@ async function remove(gigId) {
 
 async function save(gig) {
   const collection = await dbService.getCollection(GIGS_COLLECTION)
-  // _checkRedundantGigImages()
 
   try {
     const gigToSave = { ...gig }
@@ -80,11 +79,15 @@ async function save(gig) {
       if (response.matchedCount === 0) {
         throw new Error(`Gig with id ${id.toHexString()} was not found`)
       }
+      _checkRedundantGigImages()
+
       return { _id: id, ...gigToSave }
     } else {
       _convertIdsToObjectIds(gigToSave)
 
       const response = await collection.insertOne(gigToSave)
+      _checkRedundantGigImages()
+
       return { ...gigToSave, _id: response.insertedId }
     }
   } catch (err) {
@@ -166,12 +169,19 @@ function _buildPipeline(filterBy) {
 
 async function _checkRedundantGigImages() {
   try {
-    const gigImages = await _getAllGigImages()
-    const cloudinaryImages = await cloudinaryService.getAllCloudinaryImages('gig-images')
+    const gigImagePublicIds = await _getAllGigImages()
+    const cloudinaryImagePublicIds = await cloudinaryService.getAllCloudinaryImages('gig-images')
 
-    const orphanedImages = cloudinaryImages.filter(url => !gigImages.includes(url));
-    for (const imageUrl of orphanedImages) {
-      await cloudinaryService.deleteImageFromCloudinary(imageUrl)
+    const orphanedImages = cloudinaryImagePublicIds.filter
+      (publicId => !gigImagePublicIds.includes(publicId))
+
+    if (orphanedImages.length === 0) {
+      console.log('No orphaned images found')
+    } else {
+      for (const publicId of orphanedImages) {
+        await cloudinaryService.deleteImageFromCloudinary(publicId)
+      }
+      console.log('Deletion of orphaned images completed, no more left')
     }
   } catch (err) {
     loggerService.error('Error checking for redundant images', err)
@@ -183,8 +193,11 @@ async function _getAllGigImages() {
   try {
     const collection = await dbService.getCollection(GIGS_COLLECTION)
     const gigs = await collection.find({}, { projection: { imgUrls: 1 } }).toArray()
-    const gigImages = gigs.flatMap(gig => gig.imgUrls)
-    return gigImages
+    // Extract public IDs from gig image URLs
+    const gigImagePublicIds = gigs.flatMap(gig => gig.imgUrls.map
+      (url => cloudinaryService.extractPublicIdFromUrl(url)))
+
+    return gigImagePublicIds
   } catch (err) {
     loggerService.error('Failed to get all gig images', err)
     throw err
