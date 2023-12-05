@@ -65,7 +65,9 @@ function getDefaultFilter() {
 }
 
 const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
-const levels = ['Level 1', 'Level 2', 'Level 3', 'Pro Talent']
+const levels = ['Level 1', 'Level 2',
+//  'Level 3',
+  'Pro Talent']
 
 export const categories = [
   'Graphics & Design',
