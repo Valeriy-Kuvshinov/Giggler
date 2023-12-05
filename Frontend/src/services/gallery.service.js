@@ -96,11 +96,11 @@ export const companyImages = [companyMeta, companyGoogle, companyNetflix,
     companyPandg, companyPaylpal]
 
 export const defaultImgUrls = [
-    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551738/Giggler/gig-images/default-gig/image5_fy2on4.jpg',
-    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551738/Giggler/gig-images/default-gig/image1_x1afry.webp',
-    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551737/Giggler/gig-images/default-gig/image3_envijn.webp',
-    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551737/Giggler/gig-images/default-gig/image4_p76kzh.webp',
-    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701551739/Giggler/gig-images/default-gig/image2_qrervu.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701788091/Giggler/default-gig-images/image5_fy2on4_z1ccrg.jpg',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701788092/Giggler/default-gig-images/image1_x1afry_cxqq2z.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701788093/Giggler/default-gig-images/image2_qrervu_wqpiwb.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701788089/Giggler/default-gig-images/image4_p76kzh_ndnihk.webp',
+    'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701788089/Giggler/default-gig-images/image3_envijn_yabejn.webp',
 ]
 
 export const infoListData = [
