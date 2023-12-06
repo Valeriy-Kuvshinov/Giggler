@@ -27,24 +27,39 @@ async function query(filterBy = {}) {
   }
 }
 
+// async function getByUsersId(usersId) {
+//   try {
+//     const { buyersId, sellersId } = usersId
+
+//     const pipeline = [
+//       {
+//         $match: {
+//           buyersId: buyersId,
+//           sellersId: sellersId,
+//         },
+//       },
+//     ]
+
+//     const collection = await dbService.getCollection(CHATS_COLLECTION)
+//     const chat = await collection.aggregate(pipeline).toArray()
+//     return chat[0]
+//   } catch (err) {
+//     loggerService.error(`while finding chat ${usersId}`, err)
+//     throw err
+//   }
+// }
 async function getByUsersId(usersId) {
+  const { buyerId, sellerId } = usersId
   try {
-    const { buyersId, sellersId } = usersId
-
-    const pipeline = [
-      {
-        $match: {
-          buyersId: buyersId,
-          sellersId: sellersId,
-        },
-      },
-    ]
-
     const collection = await dbService.getCollection(CHATS_COLLECTION)
-    const chat = await collection.aggregate(pipeline).toArray()
+    const chat = await collection.findOne({ sellerId, buyerId })
+    if (!chat) {
+      loggerService.error(`Chat not found with sellerId: ${sellerId} buyerId: ${buyerId}`)
+      //throw new Error(`Chat not found with id: ${usersId}`)
+    }
     return chat
   } catch (err) {
-    loggerService.error(`while finding chat ${usersId}`, err)
+    loggerService.error(`while finding Chat ${usersId}`, err)
     throw err
   }
 }
