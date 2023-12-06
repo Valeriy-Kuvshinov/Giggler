@@ -10,6 +10,7 @@ import { deliveryTime, category, subcategories, gigService } from '../services/g
 
 import { GigEditPreview } from '../cmps/GigEditPreview.jsx'
 import { ImgUploader } from '../cmps/ImgUploader.jsx'
+import SvgIcon from '../cmps/SvgIcon.jsx'
 
 export function GigEdit() {
     const navigate = useNavigate()
@@ -76,8 +77,15 @@ export function GigEdit() {
             <section className="gig-edit flex layout-row">
                 <form className="flex column" onSubmit={handleSubmit}>
                     <div className="actions flex row">
-                        <button type="button" onClick={() => navigate(`/user/${loggedInUser._id}`)}>Cancel</button>
-                        <button type="submit">Save</button>
+                        <button type="button" className="flex row"
+                            onClick={() => navigate(`/user/${loggedInUser._id}`)}>
+                            <SvgIcon iconName={'arrowDown'} />
+                            Cancel
+                        </button>
+                        <button type="submit" className="flex row">
+                            Save
+                            <SvgIcon iconName={'checkmarkBlackIcon'} />
+                        </button>
                     </div>
 
                     <div className="form-inputs flex column">
@@ -92,7 +100,9 @@ export function GigEdit() {
                                     placeholder="I will..."
                                     value={fields.title}
                                     onChange={handleChange}
+                                    maxLength={80}
                                 />
+                                <p className="character-counter">{fields.title.length} / 80</p>
                             </div>
                         </div>
 
@@ -106,7 +116,9 @@ export function GigEdit() {
                                     placeholder="Description here..."
                                     value={fields.description}
                                     onChange={handleChange}
+                                    maxLength={1200}
                                 ></textarea>
+                                <p className="character-counter">{fields.description.length} / 1200</p>
                             </div>
                         </div>
 

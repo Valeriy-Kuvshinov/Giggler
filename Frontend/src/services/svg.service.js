@@ -247,6 +247,10 @@ const ICONS = {
     </defs>
   </svg>`,
 
+  saveIcon: `<svg width="24" height="24" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+  <path d="M14.164 0H1.5C.673 0 0 .673 0 1.5v14c0 .827.673 1.5 1.5 1.5h14c.827 0 1.5-.673 1.5-1.5V2.776L14.164 0zM8 1v4h3V1h1v5H4V1h4zM3 16v-6h11v6H3zm13-.5c0 .275-.225.5-.5.5H15V9H2v7h-.5a.5.5 0 0 1-.5-.5v-14a.5.5 0 0 1 .5-.5H3v6h10V1h.756L16 3.196V15.5z"/>
+</svg>`,
+
   chat: `<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>`,
 
   smiley: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 23c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 12a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm9 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="#74767E"/><path d="M9 15a3 3 0 006 0" stroke="#74767E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,

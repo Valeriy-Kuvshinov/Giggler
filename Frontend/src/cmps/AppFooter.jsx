@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
@@ -33,6 +33,10 @@ export function AppFooter() {
         <div className="access-icon flex">
           <SvgIcon iconName="accessIcon" />
         </div>
+
+        <Link to="/about" className="about-icon flex">
+          <SvgIcon iconName="questionMarkIcon" />
+        </Link>
       </div>
     </footer>
   ) : (

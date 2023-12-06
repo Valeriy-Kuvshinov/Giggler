@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export function useGigForm(initialValues, saveGig, navigate, loggedInUser, id, gigService, subcategories) {
     const [fields, setFields] = useState(initialValues)
@@ -8,6 +9,8 @@ export function useGigForm(initialValues, saveGig, navigate, loggedInUser, id, g
     function handleChange(e) {
         const { name, value } = e.target
         const updatedValue = name === 'price' ? Number(value) : value
+        if (name === 'title' && value.length > 80) return
+        if (name === 'description' && value.length > 1200) return
         setFields(prevFields => ({ ...prevFields, [name]: updatedValue }))
     }
 
@@ -20,8 +23,30 @@ export function useGigForm(initialValues, saveGig, navigate, loggedInUser, id, g
 
             await saveGig(gigToSave)
             navigate(`/user/${loggedInUser._id}`)
+
+            showSuccessMsg(
+                {
+                    title: 'GIG SAVED',
+                    body: `Gig saved successfully!`,
+                },
+                {
+                    userMsgLeft: '55%',
+                    messageAreaPadding: '2em 1.5em 2em 8em',
+                    msgStatusTranslateX: '-12em',
+                }
+            )
         } catch (err) {
-            console.error('Failed to save gig:', err)
+            showErrorMsg(
+                {
+                    title: 'FAILED TO SAVE',
+                    body: `Please try again later.`,
+                },
+                {
+                    userMsgLeft: '55%',
+                    messageAreaPadding: '2em 1.5em 2em 8em',
+                    msgStatusTranslateX: '-12em',
+                }
+            )
         }
     }
 

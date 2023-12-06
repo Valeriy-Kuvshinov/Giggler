@@ -30,7 +30,7 @@
                 display: flex;
                 border-radius: 50%;
                 cursor: pointer;
-                transition: background 0.3s;
+                transition: all 0.3s;
                 padding: 0.5em;
 
                 &:hover {
@@ -44,7 +44,8 @@
             }
         }
 
-        .access-icon {
+        .access-icon,
+        .about-icon {
             width: 32px;
             height: 32px;
             cursor: pointer;
@@ -69,6 +70,15 @@
                 .person-head,
                 .person-torso {
                     fill: $clrSecondary8;
+                }
+            }
+        }
+
+        .about-icon {
+            i {
+                svg {
+                    width: 32px;
+                    height: 32px;
                 }
             }
         }
