@@ -154,13 +154,13 @@ function _buildPipeline(filterBy) {
         as: 'userDetails',
       },
     })
-
     pipeline.push({
       $match: {
         'userDetails.level': { $regex: level, $options: 'i' },
       },
     })
   }
+
   if (Object.keys(criteria.$match).length > 0) {
     pipeline.push(criteria)
   }
@@ -178,6 +178,7 @@ async function _checkRedundantGigImages() {
     if (orphanedImages.length === 0) {
       console.log('No orphaned images found')
     } else {
+      console.log('Total orphaned images found: ', orphanedImages.length)
       for (const publicId of orphanedImages) {
         await cloudinaryService.deleteImageFromCloudinary(publicId)
       }

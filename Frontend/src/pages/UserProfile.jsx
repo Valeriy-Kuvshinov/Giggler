@@ -22,7 +22,7 @@ export function UserProfile() {
       navigate('/explore')
       return
     }
-    const loadData = async () => {
+    async function loadData() {
       try {
         await loadUser(id)
         await loadGigs()

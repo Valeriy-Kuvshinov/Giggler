@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -11,9 +12,28 @@ import { GigEditPreview } from '../cmps/GigEditPreview.jsx'
 import { ImgUploader } from '../cmps/ImgUploader.jsx'
 
 export function GigEdit() {
-    const { id } = useParams()
     const navigate = useNavigate()
+    const { id } = useParams()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+
+    useEffect(() => {
+        if (!id || id.length !== 24) {
+            navigate('/explore')
+            return
+        }
+        async function checkGigOwner() {
+            try {
+                const editedGig = await gigService.getById(id)
+                if (editedGig.ownerId !== loggedInUser._id) {
+                    navigate('/explore')
+                    return
+                }
+            } catch (err) {
+                console.error('Failed to load gig:', err)
+            }
+        }
+        checkGigOwner()
+    }, [id, navigate])
 
     const initialValues = {
         title: '',
