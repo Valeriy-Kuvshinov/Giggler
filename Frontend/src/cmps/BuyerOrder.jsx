@@ -4,7 +4,6 @@ import SvgIcon from "./SvgIcon.jsx"
 
 export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFrom }) {
     if (!details || details.isLoading) return null
-    console.log(details)
     return (
         <>
             {isFrom === 'orders' ? (
