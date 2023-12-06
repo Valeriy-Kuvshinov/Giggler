@@ -102,8 +102,8 @@
           grid-template-rows: 1fr auto;
 
           .message-container {
-            height: 100%;
             overflow-y: auto;
+            margin-block-start: auto;
 
             .message {
               width: fit-content;

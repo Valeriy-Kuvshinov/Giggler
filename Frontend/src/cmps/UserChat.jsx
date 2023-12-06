@@ -17,21 +17,22 @@ import { Loader } from './Loader.jsx'
 
 export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const currentChat = useSelector((storeState) => storeState.chatModule.currentChat)
+  const currentChat = useSelector(
+    (storeState) => storeState.chatModule.currentChat
+  )
   const { isTyping } = useSelector((storeState) => storeState.chatModule)
-  const  isLoading  = useSelector((storeState) => storeState.chatModule.isLoading)
+  const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
   const isBuyer = loggedinUser && owner._id !== loggedinUser._id
-  
+
   const [characterCount, setCharacterCount] = useState(0)
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
+  const chatContainerRef = useRef(null)
 
   useEffect(() => {
     loadsChat()
   }, [])
-
-  
 
   async function loadsChat() {
     let newChat
@@ -69,6 +70,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
 
   function addMessage(message) {
     loadNewMsg(message)
+    autoScroll()
   }
 
   function addTypingUser(user) {
@@ -77,6 +79,12 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
 
   function removeTypingUser(userToRemove) {
     removeIsTyping(userToRemove)
+  }
+
+  function autoScroll() {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+    }
   }
 
   function handleKeyPress(event) {
@@ -91,7 +99,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
       time: Date.now(),
       user: loggedinUser,
     }
-    
+    setMessage('')
 
     if (isBuyer) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
@@ -100,7 +108,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
     }
 
     try {
-      if (currentChat?.messages?.length)  {
+      if (currentChat?.messages?.length) {
         await saveChat({
           ...currentChat,
           messages: [...currentChat.messages, newMessage],
@@ -119,12 +127,12 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
 
     clearTimeout(timeoutId.current)
     timeoutId.current = null
-    setMessage('')
     socketService.emit('chat-stop-typing', {
       typingUser: loggedinUser,
       receiverId: isBuyer ? owner._id : buyer._id,
     })
     setCharacterCount(0)
+    autoScroll()
   }
 
   function onChangeMessage(event) {
@@ -148,7 +156,8 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
     }, 2000)
   }
 
-  if (isLoading || currentChat === undefined || currentChat === null) return <Loader />
+  if (isLoading || currentChat === undefined || currentChat === null)
+    return <Loader />
 
   return (
     <>
@@ -188,12 +197,42 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
 
               <section className="chat-container grid">
                 <div className="message-form grid">
-                  <div className="message-container flex column">
+                  <div
+                    className="message-container flex column"
+                    ref={chatContainerRef}
+                  >
+                    {currentChat.messages?.length > 0 &&
+                      currentChat.messages.map((message, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={`message ${
+                              message.user._id === loggedinUser._id
+                                ? 'user-one'
+                                : 'user-two'
+                            } flex column`}
+                          >
+                            <div className="message-body grid">
+                              <span className="text">{message.message}</span>
+                              <img
+                                className="avatar"
+                                src={message.user.imgUrl}
+                                alt={message.user.username}
+                              />
+                            </div>
+                          </div>
+                        )
+                      })}
+
                     {isTyping.length > 0 &&
                       isTyping.map((user, index) => (
                         <div
                           key={index}
-                          className="message user-two typing-indicator"
+                          className={`message ${
+                            user._id === loggedinUser._id
+                              ? 'user-one'
+                              : 'user-two'
+                          } flex column`}
                         >
                           <div className="message-body grid">
                             <span className="text">
@@ -211,29 +250,6 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
                           </div>
                         </div>
                       ))}
-
-                    {/* {currentChat && currentChat.messages && */}
-                    {currentChat.messages?.length > 0 &&
-                      currentChat.messages.map((message, index) => { 
-                      return (
-                        <div
-                          key={index}
-                          className={`message ${
-                            message.user._id === loggedinUser._id
-                              ? 'user-one'
-                              : 'user-two'
-                          } flex column`}
-                        >
-                          <div className="message-body grid">
-                            <span className="text">{message.message}</span>
-                            <img
-                              className="avatar"
-                              src={message.user.imgUrl}
-                              alt={message.user.username}
-                            />
-                          </div>
-                        </div>
-                      )})}
                   </div>
 
                   <div className="input-container">

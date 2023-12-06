@@ -1016,8 +1016,11 @@
       .chat-container {
         .message-form {
           .message-container {
-            @media (max-width: 600px) {
+            @media (max-width: 450px) {
               max-height: 390px;
+            }
+            @media (max-width: 600px) {
+              max-height: 630px;
 
               .message {
                 .message-text {
