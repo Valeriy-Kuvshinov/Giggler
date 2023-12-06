@@ -17,23 +17,24 @@ export function GigEdit() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
     useEffect(() => {
-        if (!id || id.length !== 24) {
+        if (!loggedInUser || !id || id.length !== 24) {
             navigate('/explore')
             return
-        }
-        async function checkGigOwner() {
-            try {
-                const editedGig = await gigService.getById(id)
-                if (editedGig.ownerId !== loggedInUser._id) {
-                    navigate('/explore')
-                    return
+        } else {
+            async function checkGigOwner() {
+                try {
+                    const editedGig = await gigService.getById(id)
+                    if (editedGig.ownerId !== loggedInUser._id) {
+                        navigate('/explore')
+                        return
+                    }
+                } catch (err) {
+                    console.error('Failed to load gig:', err)
                 }
-            } catch (err) {
-                console.error('Failed to load gig:', err)
             }
+            checkGigOwner()
         }
-        checkGigOwner()
-    }, [id, navigate])
+    }, [id, navigate, loggedInUser])
 
     const initialValues = {
         title: '',
@@ -42,7 +43,7 @@ export function GigEdit() {
         price: 0,
         description: '',
         daysToMake: "Express 24H",
-        ownerId: loggedInUser._id,
+        ownerId: loggedInUser?._id,
         imgUrls: defaultImgUrls,
         likedByUsers: [],
         reviews: [],
