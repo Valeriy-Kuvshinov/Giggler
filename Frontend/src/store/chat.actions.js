@@ -12,6 +12,8 @@ import {
   SET_NEW_MSG,
   SET_IS_TYPING,
   REMOVE_IS_TYPING,
+  EMBED_CHAT_USERS,
+  UPDATE_CURR_CHAT,
 } from './chat.reducer.js'
 import { chatService } from '../services/chat.service.js'
 
@@ -41,7 +43,8 @@ export async function getChatByUsers(usersId) {
   store.dispatch({ type: SET_IS_LOADING, isLoading: true })
   try {
     const theChat = await chatService.getByUsersId(usersId)
-    store.dispatch({ type: GET_CHAT_BY_USERS, usersId })
+    if (theChat !== undefined)
+      store.dispatch({ type: GET_CHAT_BY_USERS, theChat })
     return theChat
   } catch (err) {
     console.log('Cannot get chat by users: ', err)
@@ -51,19 +54,25 @@ export async function getChatByUsers(usersId) {
   }
 }
 
+export async function embedUsersOnChat(chatToEmbed) {
+  store.dispatch({ type: SET_IS_LOADING, isLoading: true })
+  if (chatToEmbed !== undefined)
+    store.dispatch({ type: EMBED_CHAT_USERS, chatToEmbed })
+  store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+}
+
 export function loadEmptyChat(emptyChat) {
-    store.dispatch({ type: SET_EMPTY_CHAT}, emptyChat)
+  store.dispatch({ type: SET_EMPTY_CHAT, emptyChat })
 }
 
 export function loadNewMsg(message) {
-    store.dispatch({ type: SET_NEW_MSG}, message)
+  store.dispatch({ type: SET_NEW_MSG, message })
 }
 export function loadIsTyping(isTyping) {
-    store.dispatch({ type: SET_IS_TYPING}, isTyping)
+  store.dispatch({ type: SET_IS_TYPING, isTyping })
 }
 export function removeIsTyping(isTyping) {
-    console.log('isTyping in removeIsTyping action: ',isTyping);
-    store.dispatch({ type: REMOVE_IS_TYPING}, isTyping)
+  store.dispatch({ type: REMOVE_IS_TYPING, isTyping })
 }
 
 export async function removeChat(chatId) {
@@ -80,8 +89,8 @@ export async function saveChat(chat) {
   const type = chat._id ? UPDATE_CHAT : ADD_CHAT
   try {
     const savedChat = await chatService.save(chat)
-    console.log(chat._id ? 'Updated chat' : 'Added chat', savedChat)
     store.dispatch({ type, chat: savedChat })
+    store.dispatch({ type: UPDATE_CURR_CHAT, chat: savedChat })
     return savedChat
   } catch (err) {
     console.log('Cannot save chat', err)

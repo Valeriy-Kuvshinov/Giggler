@@ -10,6 +10,8 @@ export const SET_EMPTY_CHAT = 'SET_EMPTY_CHAT'
 export const SET_NEW_MSG = 'SET_NEW_MSG'
 export const REMOVE_IS_TYPING = 'REMOVE_IS_TYPING'
 export const SET_IS_TYPING = 'SET_IS_TYPING'
+export const EMBED_CHAT_USERS = 'EMBED_CHAT_USERS'
+export const UPDATE_CURR_CHAT = 'UPDATE_CURR_CHAT'
 
 import { chatService } from '../services/chat.service.js'
 
@@ -17,7 +19,7 @@ const initialState = {
   chats: [],
   isLoading: false,
   filterBy: chatService.getDefaultFilter(),
-  currentChat: null,
+  currentChat: {},
   isTyping: [],
 }
 
@@ -32,15 +34,19 @@ export function chatReducer(state = initialState, action = {}) {
       return { ...state, currentChat: currentChat }
 
     case GET_CHAT_BY_USERS:
-      const usersChat = state.chats.find(
-        (chat) =>
-          chat.buyersId === action.usersId.buyersId &&
-          chat.sellersId === action.usersId.sellersId
+      return { ...state, currentChat: action.theChat }
+
+    case EMBED_CHAT_USERS:
+      chats = state.chats.map((chat) =>
+        chat._id === action.chatToEmbed._id ? action.chatToEmbed : chat
       )
-      return { ...state, currentChat: usersChat }
+      return { ...state, chats: chats }
 
     case SET_EMPTY_CHAT:
       return { ...state, currentChat: action.emptyChat }
+
+    case UPDATE_CURR_CHAT:
+      return { ...state, currentChat: action.chat }
 
     case SET_NEW_MSG:
       const updatedMessages = [...state.currentChat.messages, action.message]
@@ -54,7 +60,6 @@ export function chatReducer(state = initialState, action = {}) {
       return { ...state, isTyping: [...state.isTyping, action.isTyping] }
 
     case REMOVE_IS_TYPING:
-      console.log('state.isTyping: ', state.isTyping)
       const updatedTyping = state.isTyping.filter(
         (user) => user._id !== action.isTyping._id
       )

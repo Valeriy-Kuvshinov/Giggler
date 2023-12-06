@@ -2,8 +2,9 @@ import { useSelector } from 'react-redux'
 import SvgIcon from '../cmps/SvgIcon'
 import { Loader } from '../cmps/Loader'
 import { useEffect, useState } from 'react'
-import { loadChats } from '../store/chat.actions'
+import { embedUsersOnChat, loadChats } from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
+import { userService } from '../services/user.service'
 // import { useHistory } from 'react-router-dom'
 
 export function Chat() {
@@ -13,10 +14,11 @@ export function Chat() {
   // const history = useHistory()
   const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
- 
 
   useEffect(() => {
     chatsLoading()
+    // if (chats) 
+    setUsersOnChat()
   }, [])
 
   async function chatsLoading() {
@@ -24,6 +26,31 @@ export function Chat() {
       await loadChats({ userId: loggedinUser._id })
     } catch (err) {
       console.log("Couldn't load chats:", err)
+    }
+    finally{
+      // setUsersOnChat() 
+    }
+  }
+  async function setUsersOnChat() {
+    try {
+      const buyerSellerArray = await Promise.all(
+        chats.map(async (chat) => {
+          const seller = await userService.getById(chat.sellerId)
+          const buyer = await userService.getById(chat.buyerId)
+          return { seller, buyer }
+        })
+      )
+
+      buyerSellerArray.forEach((buyerSeller, index) => {
+        const chat = { ...chats[index], ...buyerSeller }
+        embedUsersOnChat(chat)
+      })
+
+    } catch (err) {
+      console.log(
+        'Problem setting buyer and seller object in the chats array in store',
+        err
+      )
     }
   }
 
@@ -35,8 +62,6 @@ export function Chat() {
   function onOpenChat(props) {
     setChatProps(props)
     setChatState(!chatState)
-    console.log('PROPS IN ONOPENCHAT: ',chatProps)
-    console.log('chatState IN ONOPENCHAT: ',chatState)
   }
 
   // if (isLoading) return <Loader />
@@ -102,38 +127,42 @@ export function Chat() {
                 })}
             </section>
 
-            {/* <section className="sellers b">
+            <section className="sellers b">
               <span className="title">Potential Sellers</span>
               {chats
                 .filter((chat) => chat.buyerId === loggedinUser._id)
                 .map((sellerChat) => {
-                  const buyer = sellerChat.messages[0].user
                   return (
                     <article
                       key={sellerChat._id}
                       onClick={() =>
                         onOpenChat({
-                          owner: loggedinUser,
-                          buyer: buyer,
+                          owner: sellerChat.seller,
+                          buyer: sellerChat.buyer,
                           gig: sellerChat.gig,
                         })
                       }
                       className="chat"
                     >
-                      <img src={buyer.imgUrl} alt="buyer img" />
+                      <img src={sellerChat.seller?.imgUrl} alt="buyer img" />
                       <div className="chat-info">
                         <div className="user-info">
                           <span className="name-wrapper">
-                            <span className="name">{buyer.fullName}</span>
-                            <span className="username">@{buyer.username}</span>
+                            <span className="name">
+                              {sellerChat.seller?.fullName}
+                            </span>
+                            <span className="username">
+                              @{sellerChat.seller?.username}
+                            </span>
                           </span>
                           <span className="time">
                             {new Intl.DateTimeFormat('en-US', {
                               month: 'long',
                               day: 'numeric',
                             }).format(
-                              sellerChat.messages[sellerChat.messages.length - 1]
-                                .time
+                              sellerChat.messages[
+                                sellerChat.messages.length - 1
+                              ].time
                             )}
                           </span>
                         </div>
@@ -147,21 +176,19 @@ export function Chat() {
                       <span className="erase-chat">
                         <SvgIcon iconName={'remove'} />
                       </span>
-                      {console.log(buyer)}
                     </article>
                   )
                 })}
-            </section> */}
+            </section>
           </>
         ) : (
           <div>You have no chats opened</div>
-          )}
+        )}
       </section>
-      {console.log('chatState: ',chatState)}
       {chatState && (
         <UserChat
-        owner={chatProps.owner}
-        chatState={chatState}
+          owner={chatProps.owner}
+          chatState={chatState}
           setChatState={setChatState}
           buyer={chatProps.buyer}
           gig={chatProps.gig}

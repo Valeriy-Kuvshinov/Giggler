@@ -4,58 +4,53 @@ import { socketService } from '../services/socket.service.js'
 
 import SvgIcon from './SvgIcon.jsx'
 import { SmileyChoice } from './SmileyChoice.jsx'
-import {  getChatByUsers, saveChat, loadNewMsg, loadIsTyping, removeIsTyping, getChat} from '../store/chat.actions.js'
+import {
+  getChatByUsers,
+  saveChat,
+  loadNewMsg,
+  loadIsTyping,
+  removeIsTyping,
+  getChat,
+  loadEmptyChat,
+} from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
 
-export function UserChat({
-  owner,
-  chatState,
-  setChatState,
-  buyer,
-  gig,
-  incChat,
-}) {
+export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
-  const { currentChat } = useSelector((storeState) => storeState.chatModule)
-  //const { isTyping } = useSelector((storeState) => storeState.chatModule)
-  const { isLoading } = useSelector((storeState) => storeState.chatModule)
-
-
+  const currentChat = useSelector((storeState) => storeState.chatModule.currentChat)
+  const { isTyping } = useSelector((storeState) => storeState.chatModule)
+  const  isLoading  = useSelector((storeState) => storeState.chatModule.isLoading)
   const isBuyer = loggedinUser && owner._id !== loggedinUser._id
-
-  // const [chat, setChat] = useState(
-  //   {
-  //     sellerId: owner._id,
-  //     buyerId: isBuyer ? loggedinUser._id : buyer._id,
-  //     messages: [],
-  //     gig: gig,
-  //   }
-  // )
+  
   const [characterCount, setCharacterCount] = useState(0)
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
-  const [isTyping, setIsTyping ] = useState([])
   const timeoutId = useRef(null)
 
   useEffect(() => {
     loadsChat()
   }, [])
 
+  
+
   async function loadsChat() {
+    let newChat
     try {
-      const newChat = await getChatByUsers({
+      newChat = await getChatByUsers({
         sellerId: owner._id,
         buyerId: isBuyer ? loggedinUser._id : buyer._id,
       })
-      if (!newChat)
+    } catch (err) {
+      console.log('Problem occurred whe getting new chat: ', err)
+    } finally {
+      if (!currentChat) {
         loadEmptyChat({
           sellerId: owner._id,
           buyerId: isBuyer ? loggedinUser._id : buyer._id,
           messages: [],
           gig: gig,
         })
-    } catch (err) {
-      console.log('Problem occurred whe getting new chat: ', err)
+      }
     }
   }
 
@@ -77,16 +72,11 @@ export function UserChat({
   }
 
   function addTypingUser(user) {
-    // loadIsTyping()
-    setIsTyping( ...isTyping, user)
+    loadIsTyping(user)
   }
 
   function removeTypingUser(userToRemove) {
-    const updateIsTyping = isTyping.filter(
-      (user) => user._id !== userToRemove._id
-    )
-    setIsTyping(updateIsTyping)
-    // removeIsTyping(user)
+    removeIsTyping(userToRemove)
   }
 
   function handleKeyPress(event) {
@@ -101,6 +91,7 @@ export function UserChat({
       time: Date.now(),
       user: loggedinUser,
     }
+    
 
     if (isBuyer) {
       socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
@@ -109,29 +100,19 @@ export function UserChat({
     }
 
     try {
-      console.log('newMessage: ', newMessage)
-
-      let updatedChat
-      if (currentChat?.messages.length) {
-        // console.log('Existing messages:', currentChat.messages)
-        updatedChat = await saveChat({
+      if (currentChat?.messages?.length)  {
+        await saveChat({
           ...currentChat,
           messages: [...currentChat.messages, newMessage],
         })
-        // setChat(updatedChat)
-        // console.log('Updated chat:', updatedChat)
       } else {
-        // console.log('No existing messages, creating new chat.')
-        updatedChat = await saveChat({
+        await saveChat({
           buyerId: loggedinUser._id,
           sellerId: owner._id,
           messages: [newMessage],
           gig: gig,
         })
-        // setChat(updatedChat)
-        // console.log('Created new chat:', updatedChat)
       }
-      await getChat(updatedChat._id)
     } catch (err) {
       console.log('Unable to save or update chat:', err)
     }
@@ -139,10 +120,13 @@ export function UserChat({
     clearTimeout(timeoutId.current)
     timeoutId.current = null
     setMessage('')
-    socketService.emit('chat-stop-typing', isBuyer ? owner : buyer)
+    socketService.emit('chat-stop-typing', {
+      typingUser: loggedinUser,
+      receiverId: isBuyer ? owner._id : buyer._id,
+    })
     setCharacterCount(0)
   }
- 
+
   function onChangeMessage(event) {
     const messageText = event.target.value
     setCharacterCount(messageText.length)
@@ -163,9 +147,9 @@ export function UserChat({
       timeoutId.current = null
     }, 2000)
   }
- 
-  if (isLoading) return <Loader />
-  
+
+  if (isLoading || currentChat === undefined || currentChat === null) return <Loader />
+
   return (
     <>
       {chatState && (
@@ -221,16 +205,17 @@ export function UserChat({
                             </span>
                             <img
                               className="avatar"
-                              src={user?.imgUrl}
-                              alt={user?.username}
+                              src={user.imgUrl}
+                              alt={user.username}
                             />
                           </div>
                         </div>
                       ))}
 
                     {/* {currentChat && currentChat.messages && */}
-                      {currentChat?.messages?.length > 0 &&
-                      currentChat.messages.map((message, index) => (
+                    {currentChat.messages?.length > 0 &&
+                      currentChat.messages.map((message, index) => { 
+                      return (
                         <div
                           key={index}
                           className={`message ${
@@ -243,12 +228,12 @@ export function UserChat({
                             <span className="text">{message.message}</span>
                             <img
                               className="avatar"
-                              src={message.user?.imgUrl}
-                              alt={message.user?.username}
+                              src={message.user.imgUrl}
+                              alt={message.user.username}
                             />
                           </div>
                         </div>
-                      ))}
+                      )})}
                   </div>
 
                   <div className="input-container">
@@ -270,7 +255,7 @@ export function UserChat({
                     className="message-footer-wrapper"
                     data-testid="message-wrapper"
                   >
-                    {isBuyer && !currentChat?.messages?.length && (
+                    {isBuyer && !currentChat.messages?.length && (
                       <section className="quick-question-container flex column">
                         <button
                           onClick={() => {
