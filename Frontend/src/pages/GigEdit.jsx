@@ -18,14 +18,15 @@ export function GigEdit() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
     useEffect(() => {
-        if (!loggedInUser || !id || id.length !== 24) {
+        if (!id || id === 'edit') return
+        else if (!loggedInUser || id.length !== 24) {
             navigate('/explore')
             return
         } else {
             async function checkGigOwner() {
                 try {
                     const editedGig = await gigService.getById(id)
-                    if (editedGig.ownerId !== loggedInUser._id) {
+                    if (editedGig && editedGig.ownerId !== loggedInUser._id) {
                         navigate('/explore')
                         return
                     }

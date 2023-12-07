@@ -78,7 +78,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
                 ) : null}
                 {userData && (
                     <div className="order-buyer flex row">
-                        <img src={userData && userData.avatar} alt="buyer-img" className="buyer-avatar" />
+                        <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
                         <Link to={`/user/${userData._id}`} className="buyer-name flex column">
                             <span className='first-name'>{`${userData.firstName}`}</span>
                             <span className='last-name'>{`${userData.lastName}`}</span>
@@ -140,14 +140,14 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
                         <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
                     ) : null}
                 </div>
-                <div className="order-buyer flex row">
-                    <img src={userData && userData.avatar} alt="buyer-img" className="buyer-avatar" />
-                    {userData && (
+                {userData && (
+                    <div className="order-buyer flex row">
+                        <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
                         <Link to={`/user/${userData._id}`} className="buyer-name flex row">
                             {`${userData.username}`}
                         </Link>
-                    )}
-                </div>
+                    </div>
+                )}
                 <div className="order-date flex row">
                     <div className='text flex column'>
                         <span className="prefix">{prefix}</span>

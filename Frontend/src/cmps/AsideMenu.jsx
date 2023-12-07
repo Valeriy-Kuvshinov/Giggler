@@ -17,7 +17,17 @@ export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
       navigate('/')
       await logout()
     } catch (err) {
-      showErrorMsg('Cannot logout')
+      showErrorMsg(
+        {
+          title: 'FAILED TO LOGOUT',
+          body: `This is awkward...`,
+        },
+        {
+          userMsgLeft: '55%',
+          messageAreaPadding: '2em 1.5em 2em 8em',
+          msgStatusTranslateX: '-12em',
+        }
+      )
     }
   }
 

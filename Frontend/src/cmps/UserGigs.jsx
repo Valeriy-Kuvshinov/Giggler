@@ -17,8 +17,6 @@ export function UserGigs({ watchedUser, loggedinUser, gigs }) {
 
   const userGigs = gigs.filter((gig) => gig.ownerId === watchedUser._id)
 
-  if (!userGigs) return <div>No gigs yet, maybe create one ^_^</div>
-
   return (
     <section className="profile-content flex column">
       {gigs.length !== 0 && watchedUser._id !== loggedinUser?._id && (

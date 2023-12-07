@@ -58,14 +58,16 @@ export function useGigForm(initialValues, saveGig, navigate, loggedInUser, id, g
 
     useEffect(() => {
         async function fetchGig() {
-            try {
-                const gig = await gigService.getById(id)
-                if (gig) setFields(gig)
-            } catch (err) {
-                console.error('Failed to load gig:', err)
+            if (id) {
+                try {
+                    const gig = await gigService.getById(id)
+                    if (gig) setFields(gig)
+                } catch (err) {
+                    console.error('Failed to load gig:', err)
+                }
             }
         }
-        if (id && id !== 'edit') fetchGig()
+        fetchGig()
     }, [id, gigService])
 
     useEffect(() => {
