@@ -83,7 +83,9 @@
           }
 
           .last-msg {
+            max-width: 250px;
             text-overflow: ellipsis;
+            overflow: hidden;
             color: $clrPrimary2;
           }
         }

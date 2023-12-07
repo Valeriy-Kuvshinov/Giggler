@@ -259,7 +259,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
                       data-testid="message-box"
                       placeholder={
                         isBuyer
-                          ? `Ask ${owner.username} a question about the gig...`
+                          ? `Ask ${owner.username} a question about the gig!`
                           : `Sell your gig...`
                       }
                       value={message}

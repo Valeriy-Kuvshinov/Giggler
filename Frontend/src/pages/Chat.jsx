@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import SvgIcon from '../cmps/SvgIcon'
 import { Loader } from '../cmps/Loader'
 import { useEffect, useState } from 'react'
-import { embedUsersOnChat, loadChats } from '../store/chat.actions'
+import { embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
 import { userService } from '../services/user.service'
 // import { useHistory } from 'react-router-dom'
@@ -17,7 +17,7 @@ export function Chat() {
 
   useEffect(() => {
     chatsLoading()
-    // if (chats) 
+    // if (chats)
     setUsersOnChat()
   }, [])
 
@@ -26,9 +26,8 @@ export function Chat() {
       await loadChats({ userId: loggedinUser._id })
     } catch (err) {
       console.log("Couldn't load chats:", err)
-    }
-    finally{
-      // setUsersOnChat() 
+    } finally {
+      // setUsersOnChat()
     }
   }
   async function setUsersOnChat() {
@@ -45,12 +44,20 @@ export function Chat() {
         const chat = { ...chats[index], ...buyerSeller }
         embedUsersOnChat(chat)
       })
-
     } catch (err) {
       console.log(
         'Problem setting buyer and seller object in the chats array in store',
         err
       )
+    }
+  }
+
+  async function onRemoveChat(event,chatId) {
+    event.stopPropagation()
+    try {
+      await removeChat(chatId) 
+    } catch (err) {
+      console.log('Unable to erase chat: ', err)
     }
   }
 
@@ -119,8 +126,11 @@ export function Chat() {
                           }
                         </div>
                       </div>
-                      <span className="erase-chat">
-                        <SvgIcon iconName={'remove'} />
+                      <span
+                        onClick={(event) => onRemoveChat(event, buyerChat._id)}
+                        className="erase-chat"
+                      >
+                        <SvgIcon iconName={'deny'} />
                       </span>
                     </article>
                   )
@@ -173,8 +183,11 @@ export function Chat() {
                           }
                         </div>
                       </div>
-                      <span className="erase-chat">
-                        <SvgIcon iconName={'remove'} />
+                      <span
+                        onClick={(event) => onRemoveChat(event, sellerChat._id)}
+                        className="erase-chat"
+                      >
+                        <SvgIcon iconName={'deny'} />
                       </span>
                     </article>
                   )

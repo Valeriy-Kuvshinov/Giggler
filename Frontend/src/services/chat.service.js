@@ -41,7 +41,7 @@ async function getById(chatId) {
 }
 
 async function remove(chatId) {
-  return httpService.delete(BASE_URL, chatId)
+  return httpService.delete(BASE_URL + chatId)
 }
 
 function getDefaultFilter() {
