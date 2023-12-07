@@ -6,6 +6,7 @@ import { socketService } from '../services/socket.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { saveOrder } from '../store/order.actions.js'
 import { saveGig } from '../store/gig.actions.js'
+
 import SvgIcon from './SvgIcon.jsx'
 
 export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
@@ -103,20 +104,20 @@ export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
         for (let i = 1; i <= 5; i++) {
             if (i <= effectiveRating) {
                 stars.push(
-                    <div key={i} alt="star"
-                    onMouseEnter={() => handleStarHover(i)}
-                    onMouseLeave={handleStarLeave}
-                    onClick={() => handleStarClick(i)}>
-                    <SvgIcon iconName="star"/>
+                    <div className="star" key={i} alt="star"
+                        onMouseEnter={() => handleStarHover(i)}
+                        onMouseLeave={handleStarLeave}
+                        onClick={() => handleStarClick(i)}>
+                        <SvgIcon iconName="star" />
                     </div>)
             } else {
                 stars.push(
-                <div key={i} alt="empty star"
-                onMouseEnter={() => handleStarHover(i)}
-                onMouseLeave={handleStarLeave}
-                onClick={() => handleStarClick(i)}>
-                <SvgIcon iconName="emptyStar"/>
-                </div>)
+                    <div className="star" key={i} alt="empty star"
+                        onMouseEnter={() => handleStarHover(i)}
+                        onMouseLeave={handleStarLeave}
+                        onClick={() => handleStarClick(i)}>
+                        <SvgIcon iconName="emptyStar" />
+                    </div>)
             }
         }
         return stars

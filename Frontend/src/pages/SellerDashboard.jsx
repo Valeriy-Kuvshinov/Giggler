@@ -40,7 +40,7 @@ export function SellerDashboard() {
 
     if (displayedOrders.length === 0) {
         return (
-            <main className="dashboard-page full flex column">
+            <main className="seller-dashboard-page full flex column">
                 <div className="no-results">
                     <h3>Whoops, looks like you don't have any orders yet.</h3>
                     <p>Please check again once your gigs gain traction.</p>
@@ -53,7 +53,7 @@ export function SellerDashboard() {
     }
 
     return (
-        <main className="dashboard-page full flex column">
+        <main className="seller-dashboard-page full flex column">
             <section className="dashboard-container">
                 <SellerSummary
                     loggedInUser={loggedInUser}

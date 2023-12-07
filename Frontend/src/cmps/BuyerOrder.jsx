@@ -12,7 +12,7 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
     return (
         <>
             {isFrom === 'orders' ? (
-                <div className={`buyer-order ${deviceType} grid`}>
+                <div className={`buyer-order ${deviceType}`}>
                     <Link
                         className="order-title"
                         to={`/gig/${details.gigData._id}`}
@@ -41,7 +41,7 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
 
                         <div className={`order-status ${order.orderState} flex row`}>
                             <span>Order status:</span>
-                            <span>{order.orderState}</span>
+                            <span className={`${order.orderState}`}>{order.orderState}</span>
                         </div>
 
                         <div className="order-options flex row">

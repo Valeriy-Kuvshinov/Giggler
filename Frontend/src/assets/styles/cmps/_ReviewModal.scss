@@ -52,8 +52,16 @@
                 margin-bottom: 0.5em;
                 gap: 0.25em;
 
-                img {
-                    width: 36px;
+                .star {
+                    i {
+                        width: 24px;
+                        height: 24px;
+
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                        }
+                    }
                 }
             }
 
