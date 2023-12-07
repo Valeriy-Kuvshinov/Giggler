@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom"
 
+import { useDeviceType } from "../customHooks/DeviceTypeContext.jsx"
+
 import SvgIcon from "./SvgIcon.jsx"
 
 export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFrom }) {
+    const deviceType = useDeviceType()
+
     if (!details || details.isLoading) return null
+
     return (
         <>
             {isFrom === 'orders' ? (
-                <div className="buyer-order grid">
+                <div className={`buyer-order ${deviceType} grid`}>
                     <Link
                         className="order-title"
                         to={`/gig/${details.gigData._id}`}
@@ -20,7 +25,7 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
 
                     <div className="order-info flex column">
                         <div className="order-id flex row">
-                            <span>Order ID:</span>
+                            <span>ID:</span>
                             <span>{order._id}</span>
                         </div>
 
@@ -31,7 +36,7 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
 
                         <div className="seller-name flex row">
                             <span>Seller name:</span>
-                            <span>{details.userData.username}</span>
+                            <span>@{details.userData.username}</span>
                         </div>
 
                         <div className={`order-status ${order.orderState} flex row`}>

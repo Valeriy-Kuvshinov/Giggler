@@ -1,3 +1,106 @@
 .orders-page {
-    padding: 0 16px;
+    margin-bottom: 2em;
+
+    .buyer-orders-list {
+        gap: 0.5em;
+
+        .buyer-order {
+
+            &.mobile,
+            &.mini-tablet {
+                padding: 0.5em;
+                border-radius: 0.5em;
+                border: 1px solid #dadbdd;
+                box-shadow: 0.075em 0.125em 0.5em 0.125em #ced1d6;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: auto auto auto auto auto 48px;
+                gap: 0.5em;
+
+                .order-title {
+                    grid-column: 1 / -1;
+                    grid-row: 1;
+                    color: $clrSecondary8;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        color: $bgColor5;
+                        text-decoration: none;
+                    }
+                }
+
+                .order-image {
+                    grid-column: 1 / 3;
+                    grid-row: 2 / -1;
+                    height: 165px;
+
+                    img {
+                        border-radius: 0.5em;
+                        object-fit: cover;
+                    }
+                }
+
+                .order-info {
+                    grid-column: 3 / -1;
+                    grid-row: 2 / -1;
+                    gap: 0.25em;
+
+                    .order-id,
+                    .category-name,
+                    .seller-name,
+                    .order-status {
+                        justify-content: space-between;
+
+                        span {
+                            &:first-child {
+                                color: $clrSecondary6;
+                            }
+
+                            &:last-child {
+                                color: $clrSecondary8;
+                            }
+                        }
+                    }
+
+                    .order-options {
+                        justify-content: space-between;
+
+                        span {
+                            cursor: pointer;
+
+                            i {
+                                width: 48px;
+                                height: 48px;
+
+                                svg {
+                                    width: 100%;
+                                    height: 100%;
+                                    transition: all 0.3s;
+                                }
+                            }
+
+                            &:nth-of-type(1) {
+                                svg {
+                                    fill: #FDD005;
+
+                                    &:hover {
+                                        fill: #d6b41a;
+                                    }
+                                }
+                            }
+
+                            &:nth-of-type(2) {
+                                svg {
+                                    fill: #464443;
+
+                                    &:hover {
+                                        fill: #888785;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

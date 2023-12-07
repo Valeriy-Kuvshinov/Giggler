@@ -179,6 +179,7 @@
                     svg {
                       fill: #FDD005;
                       max-height: 32px;
+                      transition: all 0.3s;
 
                       &:hover {
                         fill: #d6b41a;
@@ -200,6 +201,7 @@
                     svg {
                       fill: #464443;
                       max-height: 32px;
+                      transition: all 0.3s;
 
                       &:hover {
                         fill: #888785;

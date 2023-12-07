@@ -483,7 +483,7 @@
   }
 }
 
-// Dashboard page media query
+// Seller's orders page media query
 
 .dashboard-page {
   @media (max-width: 600px) {
@@ -496,6 +496,7 @@
 
   .dashboard-container {
     .seller-summary {
+
       .general-area,
       .financial-area {
         .info-area {
@@ -573,6 +574,7 @@
 
 .gig-index {
   @media (max-width: 1400px) {
+
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -869,6 +871,7 @@
       form {
         .form-inputs {
           .input-group {
+
             &:nth-of-type(3),
             &:nth-of-type(4) {
               grid-template-columns: 1fr 1fr;
@@ -949,6 +952,42 @@
 
                 .rating-stat {
                   width: 95%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Buyer's orders page media query
+
+.orders-page {
+  @media(max-width: 1400px) {
+    padding: 2em 1em;
+  }
+
+  @media(max-width: 600px) {
+    padding: 2em 0.5em;
+  }
+
+  .buyer-orders-list {
+    .buyer-order {
+
+      &.mobile,
+      &.mini-tablet {
+        .order-info {
+
+          .order-id,
+          .category-name,
+          .seller-name,
+          .order-status {
+            @media(max-width: 480px) {
+              span {
+                &:first-child {
+                  display: none;
                 }
               }
             }
@@ -1044,8 +1083,9 @@
           @media (max-width: 450px) {
             position: relative;
             bottom: 48px;
-            .message-options{
-              padding: .5em 0 !important; 
+
+            .message-options {
+              padding: .5em 0 !important;
             }
           }
         }
@@ -1093,6 +1133,7 @@
 
 .modal-wrapper {
   @media (max-width: 480px) {
+
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1180,6 +1221,7 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
+
           h3,
           h4 {
             font-size: 16px;
@@ -1195,6 +1237,7 @@
   }
 
   @media (min-width: 481px) {
+
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1294,6 +1337,7 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
+
           h3,
           h4 {
             font-size: 21px;

@@ -333,7 +333,7 @@
                 .user-order {
                     .order-contents {
                         grid-template-columns: 1.5fr 1fr 1fr 1fr;
-                        grid-template-rows: repeat(3, 1fr);
+                        grid-template-rows: auto 1fr auto;
                         border: 1px solid $clrSecondary2;
                         border-radius: 0.5em;
                         padding: 1em;
@@ -395,7 +395,7 @@
                                 color: $clrSecondary5;
                                 text-overflow: ellipsis;
                                 overflow: hidden;
-                                max-width: 95px;
+                                max-width: 85px;
                             }
                         }
 
