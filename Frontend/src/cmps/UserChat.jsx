@@ -251,14 +251,15 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
                         </div>
                       ))}
                   </div>
-
+                </div>
+                <footer className="chat-footer grid">
                   <div className="input-container">
                     <textarea
                       maxLength="2500"
                       data-testid="message-box"
                       placeholder={
                         isBuyer
-                          ? `Ask ${owner.username} a question or share your project details (requirements, timeline, budget, etc.)`
+                          ? `Ask ${owner.username} a question about the gig...`
                           : `Sell your gig...`
                       }
                       value={message}
@@ -305,46 +306,44 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
                       </section>
                     )}
 
-                    <footer className="message-footer flex">
-                      <section className="character-count">
-                        <span>{characterCount}/2500</span>
-                      </section>
-                    </footer>
+                    <section className="char-count">
+                      <span>{characterCount}/2500</span>
+                    </section>
                   </div>
-                </div>
-                <div className="message-options flex row">
-                  <span className="addition flex">
-                    <span className="emoji-picker-icon">
-                      <span className="smiley-container">
-                        <SvgIcon iconName={'smiley'} />
-                        <span
-                          className={`smiley-selection ${
-                            smileyChoice ? '' : 'hidden'
-                          }`}
-                          onClick={() =>
-                            setSmileyChoice((prevState) => !prevState)
-                          }
-                        >
-                          <SmileyChoice setMessage={setMessage} />
+                  <div className="message-options flex row">
+                    <span className="addition flex">
+                      <span className="emoji-picker-icon">
+                        <span className="smiley-container">
+                          <SvgIcon iconName={'smiley'} />
+                          <span
+                            className={`smiley-selection ${
+                              smileyChoice ? '' : 'hidden'
+                            }`}
+                            onClick={() =>
+                              setSmileyChoice((prevState) => !prevState)
+                            }
+                          >
+                            <SmileyChoice setMessage={setMessage} />
+                          </span>
                         </span>
+                        <div className="emoji-picker-container"></div>
                       </span>
-                      <div className="emoji-picker-container"></div>
+
+                      <button>
+                        <SvgIcon iconName={'loadingFiles'} />
+                      </button>
                     </span>
 
-                    <button>
-                      <SvgIcon iconName={'loadingFiles'} />
+                    <button
+                      className="send-message-button flex row"
+                      disabled={!message}
+                      onClick={handleSendMessage}
+                    >
+                      <SvgIcon iconName={'send'} />
+                      <span>Send message</span>
                     </button>
-                  </span>
-
-                  <button
-                    className="send-message-button flex row"
-                    disabled={!message}
-                    onClick={handleSendMessage}
-                  >
-                    <SvgIcon iconName={'send'} />
-                    <span>Send message</span>
-                  </button>
-                </div>
+                  </div>
+                </footer>
               </section>
             </div>
           </aside>

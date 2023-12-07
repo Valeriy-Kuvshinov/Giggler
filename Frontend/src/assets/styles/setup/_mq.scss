@@ -496,7 +496,6 @@
 
   .dashboard-container {
     .seller-summary {
-
       .general-area,
       .financial-area {
         .info-area {
@@ -574,7 +573,6 @@
 
 .gig-index {
   @media (max-width: 1400px) {
-
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -764,7 +762,7 @@
 
 .gig-edit-container {
   .gig-edit {
-    @media(max-width: 1400px) {
+    @media (max-width: 1400px) {
       flex-direction: column;
       justify-content: center;
       gap: 1em;
@@ -785,7 +783,7 @@
       }
     }
 
-    @media(max-width: 900px) {
+    @media (max-width: 900px) {
       .gig-preview-container {
         grid-template-rows: auto 80px 533px auto auto;
 
@@ -795,7 +793,7 @@
       }
     }
 
-    @media(max-width: 750px) {
+    @media (max-width: 750px) {
       .gig-preview-container {
         grid-template-rows: auto 80px 483px auto auto;
 
@@ -805,7 +803,7 @@
       }
     }
 
-    @media(max-width: 600px) {
+    @media (max-width: 600px) {
       padding: 1em 1.5em;
       margin-bottom: 3em;
 
@@ -832,7 +830,7 @@
       }
     }
 
-    @media(max-width: 480px) {
+    @media (max-width: 480px) {
       padding: 1em 0.5em;
 
       .gig-preview-container {
@@ -845,7 +843,7 @@
       }
     }
 
-    @media(max-width: 400px) {
+    @media (max-width: 400px) {
       .gig-preview-container {
         grid-template-rows: auto 80px 273px auto auto;
 
@@ -855,7 +853,7 @@
       }
     }
 
-    @media(min-width: 481px) {
+    @media (min-width: 481px) {
       form {
         .form-inputs {
           padding: 1em;
@@ -867,11 +865,10 @@
       }
     }
 
-    @media(min-width: 601px) {
+    @media (min-width: 601px) {
       form {
         .form-inputs {
           .input-group {
-
             &:nth-of-type(3),
             &:nth-of-type(4) {
               grid-template-columns: 1fr 1fr;
@@ -897,7 +894,7 @@
       }
     }
 
-    @media(min-width: 1401px) {
+    @media (min-width: 1401px) {
       flex-direction: row;
       justify-content: space-between;
       padding: 1em 0;
@@ -1016,9 +1013,6 @@
       .chat-container {
         .message-form {
           .message-container {
-            @media (max-width: 450px) {
-              max-height: 390px;
-            }
             @media (max-width: 600px) {
               max-height: 630px;
 
@@ -1029,14 +1023,29 @@
               }
             }
 
+            @media (max-width: 450px) {
+              max-height: 390px;
+              margin-block-end: 1.75em;
+            }
+
             @media (min-width: 601px) {
-              max-height: 365px;
+              max-height: 500px;
 
               .message {
                 .message-text {
                   font-size: 0.85em;
                 }
               }
+            }
+          }
+        }
+
+        .chat-footer {
+          @media (max-width: 450px) {
+            position: relative;
+            bottom: 48px;
+            .message-options{
+              padding: .5em 0 !important; 
             }
           }
         }
@@ -1084,7 +1093,6 @@
 
 .modal-wrapper {
   @media (max-width: 480px) {
-
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1172,7 +1180,6 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 16px;
@@ -1188,7 +1195,6 @@
   }
 
   @media (min-width: 481px) {
-
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1288,7 +1294,6 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 21px;
