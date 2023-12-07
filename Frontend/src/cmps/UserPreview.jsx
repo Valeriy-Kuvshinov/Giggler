@@ -63,28 +63,43 @@ export function UserPreview({ isFrom, owner, children }) {
             {(isFrom === 'gig-details' || isFrom === 'gig-details-2') && (
               <span className="fullname b">{user.fullName}</span>
             )}
-            <Link to={`/user/${user._id}`} className={`username ${isFrom === 'explore' ? 'b' : ''}`}>{`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''
-              }${user.username}`}</Link>
-            {isFrom === 'userProfile' && <span className={`user-level ${user.level === 'level 3' ? 'top' : ''}`}>{user.level}</span>}
+            <Link to={`/user/${user._id}`}
+              className={`username ${isFrom === 'explore' ? 'b' : ''}`}>
+              {`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''}${user.username}`}
+            </Link>
+            {isFrom === 'userProfile' &&
+              <span className={`user-level ${user.level === 'level 3' ? 'top' : ''}`}>
+                {user.level}
+              </span>}
           </span>
           {isFrom === 'gig-details-2' && (
-            <span className="saying">{`Work Hard\, Work Fast and Cater Your needs as imagined`}</span>
+            <span className="saying">
+              {`Work Hard\, Work Fast and Cater Your needs as imagined`}
+            </span>
           )}
           {(isFrom === 'gig-details' || isFrom === 'gig-details-2') && (
             <div className="rating-order-wrapper">
               <span className="rating-score flex">
                 <SvgIcon iconName="star" />
                 <span className="rate b">{user.rating}</span>
-                <span className="rate-count ">{`(${ratingCount})`}</span>
+                <span className="rate-count "> {`(${ratingCount})`}</span>
               </span>
               {isFrom === 'gig-details' && (
-                <span className="active-orders">{`${completedOrders} Order${completedOrders !== 1 ? 's' : ''
-                  } in Queue`}</span>
+                <span className="active-orders">
+                  {`${completedOrders} Order${completedOrders !== 1 ? 's' : ''} in Queue`}
+                </span>
               )}
             </div>
           )}
         </div>
-        {isFrom === 'explore' && <span className={`level ${user.level === 'Pro Talent' ? 'pro' : ''}`}>{user.level}</span>}
+        {isFrom === 'explore' &&
+          <span className="level flex row" data-level={user.level}>
+            {user.level === 'Pro Talent' && <SvgIcon iconName="customCheckMarkSunIcon" />}
+            {user.level === 'New Seller' && <SvgIcon iconName="newSeedlingIcon" />}
+
+            {user.level === 'Pro Talent' ? 'Pro' :
+              user.level === 'New Seller' ? 'New' : user.level}
+          </span>}
       </div>
       {isFrom === 'explore' && children}
       {isFrom === 'explore' && (

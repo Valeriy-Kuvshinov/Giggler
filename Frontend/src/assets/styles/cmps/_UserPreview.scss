@@ -17,6 +17,7 @@
     line-height: 21px;
     display: grid;
     grid-auto-flow: column;
+    align-self: center;
   }
 
   .level {
@@ -26,10 +27,17 @@
     font-weight: 600;
     border-radius: 4px;
     margin-inline-start: auto;
+    gap: 0.25em;
+    align-items: center;
 
-    &.pro {
+    &[data-level="Pro Talent"] {
       color: $clrPrimary1;
       background-color: $clr17;
+    }
+
+    &[data-level="New Seller"] {
+      color: $clrPrimary1;
+      background-color: $bgColor5;
     }
   }
 
