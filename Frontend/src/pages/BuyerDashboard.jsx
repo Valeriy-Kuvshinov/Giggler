@@ -99,7 +99,7 @@ export function BuyerDashboard() {
     if (!allDetailsLoaded) return <Loader />
 
     return (
-        <main className="orders-page full flex column">
+        <main className="buyer-dashboard-page full flex column">
             <section className="buyer-orders-list layout-row flex column">
                 {orders.map(order => order.buyerId === loggedInUser._id &&
                     <BuyerOrder

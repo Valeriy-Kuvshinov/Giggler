@@ -64,35 +64,19 @@ export function SellerOrders({ loggedInUser, displayedOrders }) {
 
     return (
         <section className="user-orders">
-            {deviceType === 'tablet' || deviceType === 'desktop' ? (
-                <section className="desktop-view flex column">
-                    {displayedOrders.map(order => (
-                        <div className="user-order" key={order._id}>
-                            <SellerOrder
-                                order={order}
-                                acceptOrder={acceptOrder}
-                                denyOrder={denyOrder}
-                                completeOrder={completeOrder}
-                                deviceType={deviceType}
-                            />
-                        </div>
-                    ))}
-                </section>
-            ) : (
-                <section className="mobile-view flex column">
-                    {displayedOrders.map(order => (
-                        <div className="user-order" key={order._id}>
-                            <SellerOrder
-                                order={order}
-                                acceptOrder={acceptOrder}
-                                denyOrder={denyOrder}
-                                completeOrder={completeOrder}
-                                deviceType={deviceType}
-                            />
-                        </div>
-                    ))}
-                </section>
-            )}
+            <section className={`user-order-container ${deviceType} flex column`}>
+                {displayedOrders.map(order => (
+                    <div className="user-order" key={order._id}>
+                        <SellerOrder
+                            order={order}
+                            acceptOrder={acceptOrder}
+                            denyOrder={denyOrder}
+                            completeOrder={completeOrder}
+                            deviceType={deviceType}
+                        />
+                    </div>
+                ))}
+            </section>
         </section>
     )
 }
