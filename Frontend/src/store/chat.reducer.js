@@ -66,6 +66,9 @@ export function chatReducer(state = initialState, action = {}) {
       return { ...state, isTyping: updatedTyping }
 
     case REMOVE_CHAT:
+      if(state.currentChat._id === action.chatId) {
+        state = {...state , currentChat:{}  } 
+      }
       chats = state.chats.filter((chat) => chat._id !== action.chatId)
       return { ...state, chats: chats }
 
