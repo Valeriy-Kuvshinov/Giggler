@@ -1,14 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
 
-import starIcon from '../assets/img/svg/star.icon.svg'
-import emptyStarIcon from '../assets/img/svg/empty.star.icon.svg'
-
 import { reviewService } from '../services/review.service.js'
 import { userService } from '../services/user.service.js'
 import { socketService } from '../services/socket.service.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { saveOrder } from '../store/order.actions.js'
 import { saveGig } from '../store/gig.actions.js'
+import SvgIcon from './SvgIcon.jsx'
 
 export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
     const [reviewText, setReviewText] = useState('')
@@ -104,15 +102,21 @@ export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
 
         for (let i = 1; i <= 5; i++) {
             if (i <= effectiveRating) {
-                stars.push(<img src={starIcon} key={i} alt="star"
+                stars.push(
+                    <div key={i} alt="star"
                     onMouseEnter={() => handleStarHover(i)}
                     onMouseLeave={handleStarLeave}
-                    onClick={() => handleStarClick(i)} />)
+                    onClick={() => handleStarClick(i)}>
+                    <SvgIcon iconName="star"/>
+                    </div>)
             } else {
-                stars.push(<img src={emptyStarIcon} key={i} alt="empty star"
-                    onMouseEnter={() => handleStarHover(i)}
-                    onMouseLeave={handleStarLeave}
-                    onClick={() => handleStarClick(i)} />)
+                stars.push(
+                <div key={i} alt="empty star"
+                onMouseEnter={() => handleStarHover(i)}
+                onMouseLeave={handleStarLeave}
+                onClick={() => handleStarClick(i)}>
+                <SvgIcon iconName="emptyStar"/>
+                </div>)
             }
         }
         return stars
