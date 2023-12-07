@@ -47,14 +47,11 @@
 
         .carousel-btn {
             position: absolute;
-            top: 0%;
-            transform: translateY(-15%);
+            top: 30%;
             cursor: pointer;
             z-index: 1;
-            padding: 1em 0em;
             background: $clrPrimary1;
             width: 15px;
-            height: 47px;
 
             &.left-side {
                 left: 30px;

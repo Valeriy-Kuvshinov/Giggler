@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import leftArrowSvg from '../assets/img/svg/left.side.icon.svg'
-import rightArrowSvg from '../assets/img/svg/right.side.icon.svg'
 import { servicesInfo } from '../services/gallery.service.js'
+import SvgIcon from './SvgIcon.jsx'
 
 export function ServicesCarousel({ onHandleFilter }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -73,7 +72,7 @@ export function ServicesCarousel({ onHandleFilter }) {
         className="carousel-btn left-side"
         onClick={() => scrollServicesCarousel('left')}
       >
-        <img src={leftArrowSvg} alt="Left Arrow" />
+        <SvgIcon iconName='leftArrow'/>
       </button>
       <div className="services-carousel-wrapper">
         <div className="services" ref={carouselRef}>
@@ -108,7 +107,7 @@ export function ServicesCarousel({ onHandleFilter }) {
         className="carousel-btn right-side"
         onClick={() => scrollServicesCarousel('right')}
       >
-        <img src={rightArrowSvg} alt="Right Arrow" />
+      <SvgIcon iconName='rightArrow'/>
       </button>
     </section>
   )

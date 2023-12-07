@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-    <circle fill="#B322FF" cx="100" cy="100" r="100" />
-    <path fill="#9D1FDF" d="M100 0c55.2 0 100 44.8 100 100s-44.8 100-100 100" />
-    <circle cx="100" cy="100" r="90" fill="none" stroke="white" stroke-width="2" />
-    <text x="100" y="95" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
-        font-weight="bold">LEVEL</text>
-    <text x="105" y="140" font-family="Arial" font-size="40" fill="white" text-anchor="middle"
-        font-weight="bold">TWO</text>
-</svg>
