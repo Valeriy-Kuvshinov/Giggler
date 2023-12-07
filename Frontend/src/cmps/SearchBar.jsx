@@ -1,5 +1,6 @@
-import searchIconSvg from '../assets/img/svg/search.icon.svg'
+
 import { useModal } from '../customHooks/ModalContext'
+import SvgIcon from './SvgIcon'
 
 export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSubmit
   , visibility, controlDimming = true }) {
@@ -29,7 +30,7 @@ export function SearchBar({ placeholder, searchQuery, onSearchChange, onSearchSu
           onBlur={() => controlDimming && setIsDimmed(false)}
         />
         <button type="submit" onClick={handleSubmit} className="flex">
-          <img src={searchIconSvg} alt="Search" />
+          <SvgIcon iconName={'search'}/>
         </button>
       </div>
     </>

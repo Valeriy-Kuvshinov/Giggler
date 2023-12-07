@@ -1,13 +1,12 @@
 import { useRef, useState, useEffect } from 'react'
-import { ImgUploader } from './ImgUploader.jsx'
+
 import { login, signup } from '../store/user.actions.js'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-const loginSignupImg =
-  'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539882/Giggler/other/ig0he3ezrfszaiqg6joe.png'
-import checkmarkImg from '../assets/img/svg/checkmark.white.icon.svg'
-import { utilService } from '../services/util.service.js'
-import SvgIcon from './SvgIcon.jsx'
 import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
+import SvgIcon from './SvgIcon.jsx'
+
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { utilService } from '../services/util.service.js'
+const loginSignupImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539882/Giggler/other/ig0he3ezrfszaiqg6joe.png'
 
 export function LoginSignup({ closeModal, mode }) {
   const [credentials, setCredentials] = useState({
@@ -93,15 +92,15 @@ export function LoginSignup({ closeModal, mode }) {
           <h2>Success starts here</h2>
           <ul>
             <li className="flex row">
-              <img src={checkmarkImg} />
+              <SvgIcon iconName="checkmarkWhiteIcon"/>
               <h3>Over 600 categories</h3>
             </li>
             <li className="flex row">
-              <img src={checkmarkImg} />
+              <SvgIcon iconName="checkmarkWhiteIcon"/>
               <h3>Pay per project, not per hour</h3>
             </li>
             <li className="flex row">
-              <img src={checkmarkImg} />
+              <SvgIcon iconName="checkmarkWhiteIcon"/>
               <h3>Access to talent and businesses across the globe</h3>
             </li>
           </ul>

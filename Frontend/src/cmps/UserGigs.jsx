@@ -1,4 +1,3 @@
-import seller from "../assets/img/svg/become.seller.icon.svg"
 
 import { Link } from "react-router-dom"
 import { useEffect } from "react"
@@ -7,6 +6,7 @@ import { GigPreview } from "./GigPreview.jsx"
 import { UserReviews } from "./UserReviews.jsx"
 
 import { loadReviews } from "../store/review.actions.js"
+import SvgIcon from "./SvgIcon.jsx"
 
 export function UserGigs({ watchedUser, loggedinUser, gigs }) {
   const isFrom = "userProfile"
@@ -31,7 +31,7 @@ export function UserGigs({ watchedUser, loggedinUser, gigs }) {
             to="/gig/edit"
             className={`gig-creation-btn ${gigs.length !== 0 ? "old" : ""}`}
           >
-            <img src={seller} className="seller-img" />
+            <SvgIcon iconName="becomeseller" />
             <span className="ready">
               {gigs.length !== 0
                 ? "Ready to expand your customer base?"

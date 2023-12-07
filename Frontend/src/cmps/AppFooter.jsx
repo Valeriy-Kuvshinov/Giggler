@@ -23,9 +23,11 @@ export function AppFooter() {
         <div className="social-icons flex row">
           {socialMediaLinks.map((link, idx) => (
             <div key={idx} className="icon-container">
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
+              {/* <a href={link.url} target="_blank" rel="noopener noreferrer"> */}
+              <Link to="/about">
                 <img src={link.img} alt="Social Media Icon" />
-              </a>
+              </Link>
+              {/* </a> */}
             </div>
           ))}
         </div>

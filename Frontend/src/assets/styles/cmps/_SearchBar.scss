@@ -73,16 +73,12 @@
                 border: 1px solid $clrPrimary2;
                 border-left: none;
                 background: $clrPrimary2;
+                align-items: center;
 
                 &:hover {
                     opacity: 0.8;
                 }
 
-                img {
-                    width: 16px;
-                    height: 16px;
-                    align-self: center;
-                }
             }
         }
     }
