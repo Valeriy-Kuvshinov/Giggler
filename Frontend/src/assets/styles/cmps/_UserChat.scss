@@ -178,10 +178,11 @@
               outline: none;
               border-radius: 0;
               border: none;
+              border-top: 1px solid transparent;
 
               &:focus {
                 outline: none;
-                border-top: 1px solid $clrSecondary4;
+                border-top: 1px solid $clrSecondary3;
               }
             }
           }
