@@ -2,6 +2,7 @@ import { useModal } from '../../customHooks/ModalContext.jsx'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { showErrorMsg } from '../../services/event-bus.service.js'
 import { packages } from '../../services/gig.service.js'
 
 import { GigDetInteractions } from './GigDetInteractions.jsx'
@@ -16,6 +17,20 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
   function onContinue() {
     if (!loggedInUser) {
       openLogin()
+      return
+    }
+    else if (loggedInUser._id === gig.ownerId) {
+      showErrorMsg(
+        {
+          title: 'ORDER DENIED',
+          body: `You cannot order your own gig!`,
+        },
+        {
+          userMsgLeft: '50%',
+          messageAreaPadding: '2em 1em 2em 6em',
+          msgStatusTranslateX: '-12em',
+        }
+      )
       return
     }
     navigate(`/purchase/${gig._id}/?package=${selectedPackage}`)
@@ -67,10 +82,10 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
             <SvgIcon iconName={'clock'} />
             <span className="delivery b">
               {' '}
-              {packages[selectedPackage].time} Delivery
+              {gig.daysToMake} Delivery
             </span>
           </div>
-          
+
           <div className="revisions-wrapper flex">
             <SvgIcon iconName={'refresh'} />
             <span className="revisions b">

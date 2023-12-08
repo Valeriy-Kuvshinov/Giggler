@@ -188,7 +188,7 @@ export const packages = {
   },
   standard: {
     type: 'Standard Package',
-    price: 3,
+    price: 2,
     desc: `2 logo concepts + jpg file, transparent png, source files + 3D Mockup`,
     time: 'Up to 3 Days',
     revisions: '16',
@@ -204,7 +204,7 @@ export const packages = {
   },
   premium: {
     type: 'Pro Package',
-    price: 5,
+    price: 3,
     desc: `3 logo concepts + jpg file, png + all source & vector files + 3D Mockup`,
     time: 'Up to 3 Days',
     revisions: 'Unlimited',

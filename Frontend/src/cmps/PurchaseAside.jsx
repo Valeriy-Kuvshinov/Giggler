@@ -75,7 +75,7 @@ export function PurchaseAside({
 
             <div className="delivery-time">
               <span>Total Delivery Time</span>
-              <span>{packages[packageChoice].time}</span>
+              <span>{gig.daysToMake}</span>
             </div>
           </div>
           <Link to={`/`}>
