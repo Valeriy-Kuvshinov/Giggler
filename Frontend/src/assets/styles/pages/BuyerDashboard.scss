@@ -79,6 +79,15 @@
                                 &.reviewed {
                                     color: $clrSecondary4;
                                 }
+
+                                a {
+                                    transition: all 0.3s;
+
+                                    &:hover {
+                                        color: $bgColor5;
+                                        text-decoration: none;
+                                    }
+                                }
                             }
                         }
                     }
