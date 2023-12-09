@@ -1,11 +1,17 @@
 .chats {
-  position: relative;
+  position: absolute;
+  z-index: 20;
   top: 0;
   left: 0;
-  // z-index: 20;
   width: 100%;
   height: 100%;
   display: flex;
+
+  &.desk{
+    position: relative;
+    z-index: 0;
+  }
+
   .chats-nav {
     .chat-header {
       width: 100%;
@@ -38,72 +44,65 @@
       // height: 100%;
       background-color: $clrSecondary2;
 
-      .buyers,
-      .sellers {
-        .title {
-          padding: 1em;
-          color: $clrSecondary5;
+      .chat {
+        position: relative;
+        width: 100%;
+        padding: 0.5em 1em;
+        background-color: $clrSecondary3;
+        border: 1px solid clrSecondary4;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          width: 3.5em;
+          height: 3.5em;
+          border-radius: 50%;
+          margin-inline-end: 0.75em;
+          object-fit: cover;
         }
 
-        .chat {
-          position: relative;
-          width: 100%;
-          padding: 0.5em 1em;
-          background-color: $clrSecondary3;
-          border: 1px solid clrSecondary4;
+        .chat-info {
           display: flex;
-          align-items: center;
-          cursor: pointer;
+          flex-direction: column;
+          width: 100%;
 
-          img {
-            width: 3.5em;
-            height: 3.5em;
-            border-radius: 50%;
-            margin-inline-end: 0.75em;
-            object-fit: cover;
+          .user-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            .username {
+              margin-inline-start: 0.75em;
+              font-size: 0.85em;
+              color: $clrSecondary7;
+            }
+
+            .time {
+              font-size: 0.85em;
+              color: $clrSecondary7;
+            }
           }
 
-          .chat-info {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-
-            .user-info {
-              width: 100%;
-              display: flex;
-              justify-content: space-between;
-
-              .username {
-                margin-inline-start: 0.75em;
-                font-size: 0.85em;
-                color: $clrSecondary7;
-              }
-
-              .time {
-                font-size: 0.85em;
-                color: $clrSecondary7;
-              }
-            }
-
-            .last-msg {
-              max-width: 250px;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              color: $clrPrimary2;
-            }
+          .last-msg {
+            max-width: 350px;
+            max-height: 1.75em;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            color: $clrPrimary2;
           }
         }
+      }
 
-        .erase-chat {
-          position: absolute;
-          bottom: 1em;
-          right: 1em;
+      .erase-chat {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
 
-          svg {
-            height: 1em;
-            width: 1em;
-            fill: $clrSecondary7;
-          }
+        svg {
+          height: 1em;
+          width: 1em;
+          fill: $clrSecondary7;
         }
       }
     }

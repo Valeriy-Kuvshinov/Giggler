@@ -14,7 +14,6 @@ export async function getChat(req, res) {
 }
 
 export async function getChats(req, res) {
-  console.log('req.query in getChats backend', req.query);
   try {
     loggerService.debug('Getting chats for user:', req.query)
     const chats = await chatService.query(req.query)

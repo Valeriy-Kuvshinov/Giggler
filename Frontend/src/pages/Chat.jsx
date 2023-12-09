@@ -4,24 +4,21 @@ import { Loader } from '../cmps/Loader'
 import { useEffect, useState } from 'react'
 import { embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
-import { userService } from '../services/user.service'
 import { useDeviceType } from '../customHooks/DeviceTypeContext'
 // import { useHistory } from 'react-router-dom'
 
 export function Chat() {
   const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
-  const { chats } = useSelector((storeState) => storeState.chatModule)
+  const chats = useSelector((storeState) => storeState.chatModule.chats)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const deviceType = useDeviceType()
   // const history = useHistory()
   const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
-
+  console.log(chats)
   useEffect(() => {
     chatsLoading()
-    // if (chats)
-    setUsersOnChat()
   }, [])
 
   async function chatsLoading() {
@@ -29,29 +26,6 @@ export function Chat() {
       await loadChats({ userId: loggedinUser._id })
     } catch (err) {
       console.log("Couldn't load chats:", err)
-    } finally {
-      // setUsersOnChat()
-    }
-  }
-  async function setUsersOnChat() {
-    try {
-      const buyerSellerArray = await Promise.all(
-        chats.map(async (chat) => {
-          const seller = await userService.getById(chat.sellerId)
-          const buyer = await userService.getById(chat.buyerId)
-          return { seller, buyer }
-        })
-      )
-
-      buyerSellerArray.forEach((buyerSeller, index) => {
-        const chat = { ...chats[index], ...buyerSeller }
-        embedUsersOnChat(chat)
-      })
-    } catch (err) {
-      console.log(
-        'Problem setting buyer and seller object in the chats array in store',
-        err
-      )
     }
   }
 
@@ -77,7 +51,7 @@ export function Chat() {
   // if (isLoading) return <Loader />
 
   return (
-    <main className="chats layout-row">
+    <main className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`>
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
@@ -85,132 +59,62 @@ export function Chat() {
             <SvgIcon iconName={'remove'} />
           </span>
         </section>
-        <section className="chat-body">
+        <ul className="chat-body">
           {chats.length ? (
             <>
-              <article className="buyers">
-                <span className="title b">Potential Buyers</span>
-                {chats
-                  .filter((chat) => chat.sellerId === loggedinUser._id)
-                  .map((buyerChat) => {
-                    const buyer = buyerChat.messages[0].user
-                    return (
-                      <article
-                        key={buyerChat._id}
-                        onClick={() =>
-                          onOpenChat({
-                            owner: loggedinUser,
-                            buyer: buyer,
-                            gig: buyerChat.gig,
-                          })
-                        }
-                        className="chat"
-                      >
-                        <img src={buyer.imgUrl} alt="buyer img" />
-                        <div className="chat-info">
-                          <div className="user-info">
-                            <span className="name-wrapper">
-                              <span className="name">{buyer.fullName}</span>
-                              <span className="username">
-                                @{buyer.username}
-                              </span>
-                            </span>
-                            <span className="time">
-                              {new Intl.DateTimeFormat('en-US', {
-                                month: 'long',
-                                day: 'numeric',
-                              }).format(
-                                buyerChat.messages[
-                                  buyerChat.messages.length - 1
-                                ].time
-                              )}
-                            </span>
-                          </div>
-                          <div className="last-msg">
-                            {
-                              buyerChat.messages[buyerChat.messages.length - 1]
-                                .message
-                            }
-                          </div>
-                        </div>
-                        <span
-                          onClick={(event) =>
-                            onRemoveChat(event, buyerChat._id)
-                          }
-                          className="erase-chat"
-                        >
-                          <SvgIcon iconName={'deny'} />
+              {chats.map((chat) => {
+                const { buyer, seller } = chat
+                const role =
+                  loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
+                return (
+                  <li
+                    key={chat._id}
+                    onClick={() =>
+                      onOpenChat({
+                        owner: seller,
+                        buyer: buyer,
+                        gig: chat.gig,
+                      })
+                    }
+                    className="chat"
+                  >
+                    <img src={chat[role].imgUrl} alt="buyer img" />
+                    <div className="chat-info">
+                      <div className="user-info">
+                        <span className="name-wrapper">
+                          <span className="name">{buyer.fullName}</span>
+                          <span className="username">
+                            @{chat[role].username}
+                          </span>
                         </span>
-                      </article>
-                    )
-                  })}
-              </article>
-
-              <article className="sellers b">
-                <span className="title">Potential Sellers</span>
-                {chats
-                  .filter((chat) => chat.buyerId === loggedinUser._id)
-                  .map((sellerChat) => {
-                    return (
-                      <article
-                        key={sellerChat._id}
-                        onClick={() =>
-                          onOpenChat({
-                            owner: sellerChat.seller,
-                            buyer: sellerChat.buyer,
-                            gig: sellerChat.gig,
-                          })
-                        }
-                        className="chat"
-                      >
-                        <img src={sellerChat.seller?.imgUrl} alt="buyer img" />
-                        <div className="chat-info">
-                          <div className="user-info">
-                            <span className="name-wrapper">
-                              <span className="name">
-                                {sellerChat.seller?.fullName}
-                              </span>
-                              <span className="username">
-                                @{sellerChat.seller?.username}
-                              </span>
-                            </span>
-                            <span className="time">
-                              {new Intl.DateTimeFormat('en-US', {
-                                month: 'long',
-                                day: 'numeric',
-                              }).format(
-                                sellerChat.messages[
-                                  sellerChat.messages.length - 1
-                                ].time
-                              )}
-                            </span>
-                          </div>
-                          <div className="last-msg">
-                            {
-                              sellerChat.messages[
-                                sellerChat.messages.length - 1
-                              ].message
-                            }
-                          </div>
-                        </div>
-                        <span
-                          onClick={(event) =>
-                            onRemoveChat(event, sellerChat._id)
-                          }
-                          className="erase-chat"
-                        >
-                          <SvgIcon iconName={'deny'} />
+                        <span className="time">
+                          {new Intl.DateTimeFormat('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                          }).format(
+                            chat.messages[chat.messages.length - 1].time
+                          )}
                         </span>
-                      </article>
-                    )
-                  })}
-              </article>
+                      </div>
+                      <div className="last-msg">
+                        {chat.messages[chat.messages.length - 1].message}
+                      </div>
+                    </div>
+                    <span
+                      onClick={(event) => onRemoveChat(event, chat._id)}
+                      className="erase-chat"
+                    >
+                      <SvgIcon iconName={'deny'} />
+                    </span>
+                  </li>
+                )
+              })}
             </>
           ) : (
             <div>You have no chats opened</div>
           )}
-        </section>
-        {chatState && deviceType === 'mobile' && (
+        </ul>
+        {deviceType === 'mobile' && (
           <UserChat
             owner={chatProps.owner}
             chatState={chatState}
@@ -221,14 +125,14 @@ export function Chat() {
         )}
       </main>
       {chatState && deviceType === 'desktop' && (
-          <UserChat
-            owner={chatProps.owner}
-            chatState={chatState}
-            setChatState={setChatState}
-            buyer={chatProps.buyer}
-            gig={chatProps.gig}
-            isFrom={isFrom}
-          />
+        <UserChat
+          owner={chatProps.owner}
+          chatState={chatState}
+          setChatState={setChatState}
+          buyer={chatProps.buyer}
+          gig={chatProps.gig}
+          isFrom={isFrom}
+        />
       )}
     </main>
   )

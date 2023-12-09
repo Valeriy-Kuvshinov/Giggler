@@ -118,8 +118,8 @@ function _buildCriteria(filterBy) {
 
   if (userId) {
     criteria.$or = [
-      { buyerId: { $regex: userId, $options: 'i' } },
-      { sellerId: { $regex: userId, $options: 'i' } },
+      { 'buyer._id': userId },
+      { 'seller._id': userId },
     ]
   }
 

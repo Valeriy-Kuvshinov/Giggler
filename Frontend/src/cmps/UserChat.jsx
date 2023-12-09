@@ -15,14 +15,7 @@ import {
 } from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
 
-export function UserChat({
-  owner,
-  chatState,
-  setChatState,
-  buyer,
-  gig,
-  isFrom,
-}) {
+export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom}) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const currentChat = useSelector(
     (storeState) => storeState.chatModule.currentChat
@@ -53,8 +46,8 @@ export function UserChat({
     } finally {
       if (!currentChat) {
         loadEmptyChat({
-          sellerId: owner._id,
-          buyerId: isBuyer ? loggedinUser._id : buyer._id,
+          seller: owner,
+          buyer: isBuyer ? loggedinUser : buyer,
           messages: [],
           gig: gig,
         })
@@ -122,8 +115,8 @@ export function UserChat({
         })
       } else {
         await saveChat({
-          buyerId: loggedinUser._id,
-          sellerId: owner._id,
+          buyer: loggedinUser,
+          seller: owner,
           messages: [newMessage],
           gig: gig,
         })
@@ -169,28 +162,24 @@ export function UserChat({
   return (
     <>
       {chatState && (
-        <div
-          className={`chat-box-wrapper ${
-            isFrom === 'chatPage' ? 'chat-page' : ''
-          }`}
-        >
+        <div className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''}`}>
           <aside className="chat-box">
             <div className="chat-box-container grid">
               <section className="user-info-bar flex row">
                 <div className="avatar">
                   {buyer ? (
-                    <img src={buyer.imgUrl} alt={buyer.username} />
-                  ) : (
                     <img src={owner.imgUrl} alt={owner.username} />
+                  ) : (
+                    <img src={buyer.imgUrl} alt={buyer.username} />
                   )}
                   <span className="status-dot"></span>
                 </div>
                 <div className="owner-info flex">
                   <span>
                     {buyer ? (
-                      <span className="message flex row">{`Message ${buyer.username}`}</span>
-                    ) : (
                       <span className="message flex row">{`Message ${owner.username}`}</span>
+                    ) : (
+                      <span className="message flex row">{`Message ${buyer.username}`}</span>
                     )}
                     <span className="response-time flex">
                       <span>Online</span>
