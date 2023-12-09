@@ -5,6 +5,11 @@
   display: inline-block;
   z-index: 10;
   width: fit-content;
+  &.chat-page {
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
 
   .chat-box {
     color: $clrPrimary2;

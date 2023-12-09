@@ -156,6 +156,7 @@ export function GigIndex({ onMobileFilter }) {
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
+
   return (
     <main
       className="gig-index flex column full"
@@ -175,7 +176,7 @@ export function GigIndex({ onMobileFilter }) {
       />
       {currentGigs.length ? (
         <>
-          <GigList gigs={currentGigs} isLoading={isLoading}/>
+          <GigList gigs={currentGigs}  isLoading={isLoading}/>
           <Pagination
             currentPage={filterBy.page}
             totalPages={totalPages}

@@ -90,8 +90,25 @@
 
         &:hover {
           color: $bgColor3 !important;
+          svg{
+            fill: $bgColor3 !important;
+          }
+        }
+
+        &.clr-one{
+          svg{
+            fill: $clrPrimary1;
+            transition: fill 0.3s ease-in-out;
+          }
+        }
+        &.clr-two{
+          svg{
+            fill: $clrSecondary6;
+            transition: fill 0.3s ease-in-out;
+          }
         }
       }
+
 
       .join {
         padding: 9px 16px;

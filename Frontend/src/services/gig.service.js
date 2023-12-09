@@ -70,9 +70,7 @@ export const filterKeyMap = {
   tag: 'tag',
 }
 export const deliveryTime = ['Express 24H', 'Up to 3 days', 'Up to 7 days']
-export const levels = ['Level 1', 'Level 2',
-//  'Level 3', 
- 'Pro Talent']
+export const levels = ['New Seller', 'Level 1', 'Level 2', 'Pro Talent']
 export const budget = ['min', 'max']
 export const category = [
   'Graphics & Design',

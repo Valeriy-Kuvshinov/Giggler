@@ -15,7 +15,14 @@ import {
 } from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
 
-export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
+export function UserChat({
+  owner,
+  chatState,
+  setChatState,
+  buyer,
+  gig,
+  isFrom,
+}) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const currentChat = useSelector(
     (storeState) => storeState.chatModule.currentChat
@@ -162,7 +169,11 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig }) {
   return (
     <>
       {chatState && (
-        <div className="chat-box-wrapper">
+        <div
+          className={`chat-box-wrapper ${
+            isFrom === 'chatPage' ? 'chat-page' : ''
+          }`}
+        >
           <aside className="chat-box">
             <div className="chat-box-container grid">
               <section className="user-info-bar flex row">

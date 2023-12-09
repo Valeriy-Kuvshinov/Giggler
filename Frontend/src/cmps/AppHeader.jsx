@@ -10,7 +10,6 @@ import { UserDropdown } from './UserDropdown.jsx'
 import { BuyerOrdersDropdown } from './BuyerOrdersDropdown.jsx'
 import { AsideMenu } from './AsideMenu.jsx'
 import SvgIcon from './SvgIcon.jsx'
-import { UserChat } from './UserChat.jsx'
 
 import { category } from '../services/gig.service.js'
 import { setFilter } from '../store/gig.actions.js'
@@ -22,10 +21,8 @@ export function AppHeader() {
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
-  const [theBuyer, setTheBuyer] = useState('')
   const [chatNotification, setChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
-  const [chatState, setChatState] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState('')
 
   const userInfoRef = useRef(null)
@@ -55,11 +52,11 @@ export function AppHeader() {
     borderColor: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
   }
 
-  function promptSellerChat(buyer) {
-    setNotification(true)
-    setChatNotification(true)
-    setTheBuyer(buyer)
-  }
+  // function promptSellerChat(buyer) {
+  //   setNotification(true)
+  //   setChatNotification(true)
+  //   setTheBuyer(buyer)
+  // }
 
   function newOrderNotification() {
     setNotification(true)
@@ -78,17 +75,21 @@ export function AppHeader() {
     }
   }
 
-  useEffect(() => {
-    socketService.on('chat_seller_prompt', promptSellerChat)
-    socketService.on('notify_seller_new_order', newOrderNotification)
-    return () => {
-      socketService.off('chat_seller_prompt', promptSellerChat)
-      socketService.off('notify_seller_new_order', newOrderNotification)
-    }
-  }, [])
+  // useEffect(() => {
+  //   socketService.on('chat_seller_prompt', promptSellerChat)
+  //   socketService.on('notify_seller_new_order', newOrderNotification)
+  //   return () => {
+  //     socketService.off('chat_seller_prompt', promptSellerChat)
+  //     socketService.off('notify_seller_new_order', newOrderNotification)
+  //   }
+  // }, [])
 
   useEffect(() => {
-    if (!isHomePage || deviceType === 'mini-tablet' || deviceType === 'mobile') {
+    if (
+      !isHomePage ||
+      deviceType === 'mini-tablet' ||
+      deviceType === 'mobile'
+    ) {
       setHeaderStage(2)
       setHeaderPlaceholderText('Find services...')
     } else {
@@ -100,7 +101,7 @@ export function AppHeader() {
   useEffect(() => {
     const handleScroll = () => {
       if (deviceType !== 'mini-tablet' && deviceType !== 'mobile') {
-        const newStage = window.scrollY < 50 ? 0 : (window.scrollY < 150 ? 1 : 2)
+        const newStage = window.scrollY < 50 ? 0 : window.scrollY < 150 ? 1 : 2
         setHeaderStage(newStage)
       }
     }
@@ -136,10 +137,10 @@ export function AppHeader() {
     setFilter({ ...filterBy, cat: category })
   }
 
-  function onChatState(e) {
-    e.preventDefault()
-    setChatState(true)
-  }
+  // function onChatState(e) {
+  //   e.preventDefault()
+  //   setChatState(true)
+  // }
 
   if (isGigPage && deviceType === 'mobile') {
     return null
@@ -194,11 +195,6 @@ export function AppHeader() {
             visibility={headerStage >= 1 ? 'visible' : 'hidden'}
           />
           <ul className="nav-links flex">
-            {theBuyer && (
-              <li onClick={(e) => onChatState(e)}>
-                <SvgIcon iconName={'chat'} />
-              </li>
-            )}
             <li>
               <Link to="/explore" style={{ color: headerStyles.color }}>
                 Explore
@@ -207,7 +203,7 @@ export function AppHeader() {
             {loggedinUser ? (
               <>
                 <li
-                  className='orders-info'
+                  className="orders-info"
                   onClick={(e) => {
                     e.stopPropagation()
                     setShowOrdersDropdown(!showOrdersDropdown)
@@ -222,11 +218,19 @@ export function AppHeader() {
                   </button>
                   {showOrdersDropdown && (
                     <BuyerOrdersDropdown
-                      loggedInUser={loggedinUser}
+                    loggedInUser={loggedinUser}
                       onClose={() => setShowOrdersDropdown(false)}
                     />
                   )}
                 </li>
+          
+                {loggedinUser && (
+                  <li>
+                    <Link to={`/chat/${loggedinUser._id}`} className={headerStage === 0 ? 'clr-one' : 'clr-two'}>
+                      <SvgIcon iconName={'appEnvelopeIcon'} />
+                    </Link>
+                  </li>
+                )}
 
                 <li
                   className="user-info flex"
@@ -235,7 +239,7 @@ export function AppHeader() {
                     setShowUserDropdown(!showUserDropdown)
                   }}
                   ref={userInfoRef}
-                >
+                  >
                   {loggedinUser.imgUrl && (
                     <img src={loggedinUser.imgUrl} alt="User" />
                   )}
@@ -286,15 +290,6 @@ export function AppHeader() {
         setCatFilter={setCatFilter}
         style={navBarStyles}
       />
-      {chatState && (
-        <UserChat
-          owner={loggedinUser}
-          window={null}
-          chatState={chatState}
-          setChatState={setChatState}
-          buyer={theBuyer}
-        />
-      )}
     </header>
   )
 }

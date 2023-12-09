@@ -14,6 +14,10 @@ export async function loadGigs(filterBy = {}) {
     }
 }
 
+export function turnOffLoader() {
+    // store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+}
+
 export async function getGig(gigId) {
     try {
         await gigService.getById(gigId)
