@@ -1,5 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+
 import SvgIcon from './SvgIcon'
 
 export function NavBar({ categories, display, headerStage, setCatFilter, style }) {
@@ -35,8 +36,7 @@ export function NavBar({ categories, display, headerStage, setCatFilter, style }
         <nav className="category-nav" style={style}>
             {!isAtStart && (
                 <div className="carousel-btn left-side" onClick={() => scrollCarousel('left')}>
-                    <SvgIcon iconName='leftArrow'/>
-                    {/* <img src={leftArrowSvg} alt="Left Arrow" /> */}
+                    <SvgIcon iconName='leftArrow' />
                 </div>
             )}
             <div className={`container flex ${display === 'none' ? 'hidden' : ''}`} ref={carouselRef}>
@@ -48,8 +48,7 @@ export function NavBar({ categories, display, headerStage, setCatFilter, style }
             </div>
             {!isAtEnd && (
                 <div className="carousel-btn right-side" onClick={() => scrollCarousel('right')}>
-                    <SvgIcon iconName='rightArrow'/>
-                    {/* <img src={rightArrowSvg} alt="Right Arrow" /> */}
+                    <SvgIcon iconName='rightArrow' />
                 </div>
             )}
         </nav>

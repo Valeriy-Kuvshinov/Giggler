@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import outsideClick from '../../customHooks/outsideClick.js'
 
 import { DenialOrderModal } from "./DenialOrderModal.jsx"
 
@@ -13,6 +14,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
     const [isDropdownVisible, setDropdownVisible] = useState(false)
 
     const dropdownMenuRef = useRef(null)
+    outsideClick(dropdownMenuRef, () => setDropdownVisible(false))
 
     async function fetchOrderDetails() {
         try {
@@ -37,19 +39,6 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
         fetchOrderDetails()
     }, [order])
 
-    useEffect(() => {
-        function handleDropdownClick(event) {
-            if (dropdownMenuRef.current &&
-                !dropdownMenuRef.current.contains(event.target)) {
-                setDropdownVisible(false)
-            }
-        }
-        document.addEventListener('mousedown', handleDropdownClick)
-        return () => {
-            document.removeEventListener('mousedown', handleDropdownClick)
-        }
-    }, [])
-
     function getAvailableActions(order) {
         let actions = []
         if (order.orderState === 'pending') {
@@ -66,34 +55,54 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
         return actions
     }
     const { prefix, dateStr } = orderService.getActionDate(order)
+    const isOverdue = orderService.isOrderOverdue(order)
 
     return (
-        deviceType === 'tablet' || deviceType === 'desktop' ? (
-            <div className={`order-contents flex row ${orderService.getOrderClass(order.orderState)}`}>
-                {gigData ? (
-                    <div className="order-info flex row">
-                        <img src={gigData && gigData.firstImgUrl} alt="gig-img" />
-                        <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
-                    </div>
-                ) : null}
-                {userData && (
-                    <div className="order-buyer flex row">
-                        <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
-                        <Link to={`/user/${userData._id}`} className="buyer-name flex column">
-                            <span className='first-name'>{`${userData.firstName}`}</span>
-                            <span className='last-name'>{`${userData.lastName}`}</span>
-                        </Link>
-                    </div>
-                )}
+        deviceType === 'desktop' ? (
+            <div className={`order-contents grid ${orderService.getOrderClass(order.orderState)}`}>
+                <div className="order-id">
+                    ID: {order._id}
+                </div>
+
+                <div className="order-info flex row">
+                    {gigData && (
+                        <>
+                            <img src={gigData.firstImgUrl} alt="gig-img" />
+                            <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
+                        </>
+                    )}
+                </div>
+
+                <div className="order-buyer flex row">
+                    {userData && (
+                        <>
+                            <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
+                            <Link to={`/user/${userData._id}`} className="buyer-name flex column">
+                                <span className='first-name'>{`${userData.firstName}`}</span>
+                                <span className='last-name'>{`${userData.lastName}`}</span>
+                            </Link>
+                        </>
+                    )}
+                </div>
+
                 <div className="order-date flex row">
                     <div className='text flex column'>
-                        <span className="prefix">{prefix}</span>
-                        <span className="date">{dateStr}</span>
+                        <span>{prefix}</span>
+                        <span>{dateStr}</span>
                     </div>
                 </div>
+
+                <div className="order-delivery flex row">
+                    <div className='text flex column'>
+                        <span>{order.deliveryTime}</span>
+                        {isOverdue && <span className="overdue">Overdue!</span>}
+                    </div>
+                </div>
+
                 <div className="order-price">
                     {`$${order.price}`}
                 </div>
+
                 <div className="order-state-dropdown flex column">
                     <span
                         className={order.orderState}
@@ -131,29 +140,48 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
             </div>
         ) : (
             <div className={`order-contents grid ${orderService.getOrderClass(order.orderState)}`}>
-                <img src={gigData && gigData.firstImgUrl} alt="gig-img" className="order-image" />
+                <div className="order-id">
+                    ID: {order._id}
+                </div>
+
+                {gigData && (
+                    <img src={gigData.firstImgUrl} alt="gig-img" className="order-image" />
+                )}
+                <div className="order-buyer flex row">
+                    {userData && (
+                        <>
+                            <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
+                            <Link to={`/user/${userData._id}`} className="buyer-name flex row">
+                                {`@${userData.username}`}
+                            </Link>
+                        </>
+                    )}
+                </div>
+
                 <div className="order-price">
                     {`$${order.price}`}
                 </div>
+
                 <div className="order-title">
-                    {gigData ? (
+                    {gigData && (
                         <Link to={`/gig/${gigData._id}`}>{gigData.title}</Link>
-                    ) : null}
+                    )}
                 </div>
-                {userData && (
-                    <div className="order-buyer flex row">
-                        <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
-                        <Link to={`/user/${userData._id}`} className="buyer-name flex row">
-                            {`@${userData.username}`}
-                        </Link>
+
+                <div className="order-delivery flex row">
+                    <div className='text flex row'>
+                        <span>{order.deliveryTime}</span>
+                        {isOverdue && <span className="overdue">Overdue!</span>}
                     </div>
-                )}
+                </div>
+
                 <div className="order-date flex row">
                     <div className='text flex column'>
-                        <span className="prefix">{prefix}</span>
-                        <span className="date">{dateStr}</span>
+                        <span>{prefix}</span>
+                        <span>{dateStr}</span>
                     </div>
                 </div>
+
                 <div className="order-state-dropdown flex column">
                     <span
                         className={order.orderState}

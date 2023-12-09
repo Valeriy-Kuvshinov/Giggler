@@ -501,45 +501,12 @@
   .dashboard-container {
     .seller-summary {
 
-      .general-area,
-      .financial-area {
+      #orders-info-content>div:nth-child(1),
+      #earnings-content>div:nth-child(1) {
         .info-area {
-          @media (max-width: 600px) {
-            flex-direction: column;
-            height: fit-content;
-
-            .info-cell {
-              flex-direction: row;
-
-              &:nth-of-type(1) {
-                grid-column: 1;
-                grid-row: 1;
-              }
-
-              &:nth-of-type(2) {
-                grid-column: 1;
-                grid-row: 2;
-              }
-
-              &:nth-of-type(3) {
-                grid-column: 1;
-                grid-row: 3;
-              }
-
-              &:nth-of-type(4) {
-                grid-column: 1;
-                grid-row: 4;
-              }
-
-              &:nth-of-type(5) {
-                grid-column: 1;
-                grid-row: 5;
-              }
-            }
-          }
-
-          @media (min-width: 601px) {
-            flex-direction: row;
+          @media(max-width: 1400px) {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
 
             .info-cell {
               &:nth-of-type(1) {
@@ -558,13 +525,83 @@
               }
 
               &:nth-of-type(4) {
-                grid-column: 4;
-                grid-row: 1;
+                grid-column: 1;
+                grid-row: 2;
               }
 
               &:nth-of-type(5) {
-                grid-column: 5;
+                grid-column: 2;
+                grid-row: 2;
+              }
+
+              &:nth-of-type(6) {
+                grid-column: 3;
+                grid-row: 2;
+              }
+            }
+          }
+
+          @media(max-width: 600px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+
+            .info-cell {
+              &:nth-of-type(1) {
+                grid-column: 1;
                 grid-row: 1;
+              }
+
+              &:nth-of-type(2) {
+                grid-column: 2;
+                grid-row: 1;
+              }
+
+              &:nth-of-type(3) {
+                grid-column: 1;
+                grid-row: 2;
+              }
+
+              &:nth-of-type(4) {
+                grid-column: 2;
+                grid-row: 2;
+              }
+
+              &:nth-of-type(5) {
+                grid-column: 1;
+                grid-row: 3;
+              }
+
+              &:nth-of-type(6) {
+                grid-column: 2;
+                grid-row: 3;
+              }
+            }
+          }
+
+          @media(min-width: 1401px) {
+            grid-template-columns: repeat(6, 1fr);
+          }
+        }
+      }
+    }
+
+    .user-orders {
+
+      // Desktop
+      .user-order-container {
+        &.desktop {
+          .user-order {
+            .order-contents {
+              @media(max-width: 1400px) {
+                grid-template-columns: 300px 150px 125px 100px 55px 6em;
+              }
+
+              @media(max-width: 1000px) {
+                grid-template-columns: 280px 150px 125px 100px 55px 6em;
+              }
+
+              @media(min-width: 1401px) {
+                grid-template-columns: 600px 150px 125px 100px 55px 6em;
               }
             }
           }
