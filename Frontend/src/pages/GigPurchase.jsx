@@ -52,7 +52,7 @@ export function GigPurchase() {
       loggedInUser._id,
       gig.ownerId,
       gig.title,
-      gig.deliveryTime,
+      gig.daysToMake,
       gig._id,
       gig.price
     )

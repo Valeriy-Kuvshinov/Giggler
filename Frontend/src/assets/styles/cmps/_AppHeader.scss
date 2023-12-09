@@ -234,6 +234,9 @@
                 max-height: 48px;
                 text-overflow: ellipsis;
                 overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
               }
 
               .seller-name {
@@ -242,6 +245,7 @@
                 font-size: 14px;
                 align-self: end;
                 padding-bottom: 5px;
+                gap: 0.25em;
               }
 
               .order-status {

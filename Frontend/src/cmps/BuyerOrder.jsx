@@ -36,7 +36,11 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
 
                         <div className="seller-name flex row">
                             <span>Seller name:</span>
-                            <span>@{details.userData.username}</span>
+                            <span>
+                                <Link to={`/user/${details.userData._id}`}>
+                                    {`@${details.userData.username}`}
+                                </Link>
+                            </span>
                         </div>
 
                         <div className={`order-status ${order.orderState} flex row`}>
@@ -87,8 +91,13 @@ export function BuyerOrder({ order, details, onClickReceipt, onClickReview, isFr
                     >
                         {details.gigData.title}
                     </Link>
-                    <div className="seller-name">
-                        {`By ${details.userData.username}`}
+                    <div className="seller-name flex row">
+                        <span>By</span>
+                        <span>
+                            <Link to={`/user/${details.userData._id}`}>
+                                {`${details.userData.username}`}
+                            </Link>
+                        </span>
                     </div>
                     <div className={`order-status ${order.orderState}`}>
                         {order.orderState}

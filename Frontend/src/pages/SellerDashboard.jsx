@@ -54,7 +54,7 @@ export function SellerDashboard() {
 
     return (
         <main className="seller-dashboard-page full flex column">
-            <section className="dashboard-container">
+            <section className="dashboard-container layout-row">
                 <SellerSummary
                     loggedInUser={loggedInUser}
                     displayedOrders={displayedOrders}

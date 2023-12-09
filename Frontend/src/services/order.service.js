@@ -34,12 +34,12 @@ function save(order) {
     else return httpService.post(BASE_URL, order)
 }
 
-function createOrder(buyerId = '', sellerId = '', title = 'important order', deliveryTime = '2 days', gigId = '', price = 99) {
+function createOrder(buyerId = '', sellerId = '', title = 'important order', daysToMake = 'Express 24H', gigId = '', price = 99) {
     return {
         buyerId: buyerId,
         sellerId: sellerId,
         title: title,
-        deliveryTime: deliveryTime,
+        deliveryTime: daysToMake,
         orderedGigId: gigId,
         price: price,
         createdAt: Date.now(),

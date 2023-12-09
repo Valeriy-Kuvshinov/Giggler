@@ -144,7 +144,7 @@ export function SellerOrder({ order, acceptOrder, denyOrder, completeOrder, devi
                     <div className="order-buyer flex row">
                         <img src={userData.avatar} alt="buyer-img" className="buyer-avatar" />
                         <Link to={`/user/${userData._id}`} className="buyer-name flex row">
-                            {`${userData.username}`}
+                            {`@${userData.username}`}
                         </Link>
                     </div>
                 )}
