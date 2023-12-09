@@ -12,7 +12,8 @@ export const orderService = {
     getById,
     getOrderDetails,
     getActionDate,
-    getOrderClass
+    getOrderClass,
+    isOrderOverdue
 }
 
 async function query(filterBy = {}) {
@@ -111,4 +112,27 @@ function getOrderClass(orderState) {
         'reviewed': 'reviewed user-order'
     }
     return orderStateClasses[orderState] || ''
+}
+
+function isOrderOverdue(order) {
+    if (order.orderState !== 'accepted') return false
+
+    const acceptedAt = new Date(order.acceptedAt)
+    let dueTime
+
+    switch (order.deliveryTime) {
+        case 'Express 24H':
+            dueTime = 24 * 60 * 60 * 1000
+            break;
+        case 'Up to 3 days':
+            dueTime = 3 * 24 * 60 * 60 * 1000
+            break;
+        case 'Up to 7 days':
+            dueTime = 7 * 24 * 60 * 60 * 1000
+            break;
+        default:
+            return false
+    }
+    const dueDate = new Date(acceptedAt.getTime() + dueTime)
+    return dueDate < new Date()
 }

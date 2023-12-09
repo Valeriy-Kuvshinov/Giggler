@@ -7,7 +7,6 @@ function outsideClick(ref, callback) {
         callback()
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
 
     return () => {

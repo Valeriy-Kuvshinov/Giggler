@@ -36,6 +36,7 @@ export function AppHeader() {
 
   const categories = category
   const isHomePage = useLocation().pathname === '/'
+  const isDashboardPage = useLocation().pathname === '/dashboard'
   const isGigPage = useLocation().pathname.startsWith('/gig/')
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
@@ -46,6 +47,7 @@ export function AppHeader() {
   const navBarStyles = {
     borderBottom: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
     borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
+    display: isDashboardPage ? 'none' : '',
   }
   const joinButtonStyles = {
     color: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
@@ -218,12 +220,12 @@ export function AppHeader() {
                   </button>
                   {showOrdersDropdown && (
                     <BuyerOrdersDropdown
-                    loggedInUser={loggedinUser}
+                      loggedInUser={loggedinUser}
                       onClose={() => setShowOrdersDropdown(false)}
                     />
                   )}
                 </li>
-          
+
                 {loggedinUser && (
                   <li>
                     <Link to={`/chat/${loggedinUser._id}`} className={headerStage === 0 ? 'clr-one' : 'clr-two'}>
@@ -239,7 +241,7 @@ export function AppHeader() {
                     setShowUserDropdown(!showUserDropdown)
                   }}
                   ref={userInfoRef}
-                  >
+                >
                   {loggedinUser.imgUrl && (
                     <img src={loggedinUser.imgUrl} alt="User" />
                   )}

@@ -42,6 +42,10 @@
                     transform: scaleX(1);
                     transform-origin: bottom left;
                 }
+
+                &:hover {
+                    text-decoration: none;
+                }
             }
         }
 
