@@ -51,7 +51,7 @@ export function Chat() {
   // if (isLoading) return <Loader />
 
   return (
-    <main className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`>
+    <main className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`}>
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
@@ -124,7 +124,7 @@ export function Chat() {
           />
         )}
       </main>
-      {chatState && deviceType === 'desktop' && (
+      {(chatState && deviceType === 'desktop') && (
         <UserChat
           owner={chatProps.owner}
           chatState={chatState}
@@ -134,6 +134,5 @@ export function Chat() {
           isFrom={isFrom}
         />
       )}
-    </main>
-  )
+    </main>)
 }
