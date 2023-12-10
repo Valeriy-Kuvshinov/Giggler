@@ -143,7 +143,7 @@ export function GigDetails() {
           owner={gigOwner}
           chatState={chatState}
           setChatState={setChatState}
-          buyer={null}
+          buyer={loggedInUser}
           gig={gig}
         />
       )}

@@ -12,7 +12,6 @@ export function Chat() {
   const chats = useSelector((storeState) => storeState.chatModule.chats)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const deviceType = useDeviceType()
-  // const history = useHistory()
   const [chatState, setChatState] = useState(true)
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
@@ -48,6 +47,7 @@ export function Chat() {
     setChatState(true)
   }
 
+  // if(chats.length < 1) return <Loader />
 
   return (
     <main
