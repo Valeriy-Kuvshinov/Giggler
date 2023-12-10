@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 2em 0;
+  
 
   &.desk{
     position: relative;
@@ -14,7 +14,6 @@
   }
 
   .chats-nav {
-    width: 320px;
     .chat-header {
       width: 100%;
       padding: 1em 1em;
@@ -112,10 +111,8 @@
     }
   }
   .unselected-chat{
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     border: 1px solid $clrSecondary3;
     border-radius: 1.5em;
     margin-inline-start: 1em;
@@ -139,6 +136,114 @@
       .subtitle{
         width: 21em;
         text-align: center;
+      }
+    }
+  }
+  .user-info {
+    color: $clrSecondary6;
+    width: 320px;
+
+    .info-block {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: fit-content;
+      padding: 30px;
+      background-color: $clrPrimary1;
+
+      // @media screen and (max-width: 900px) {
+      //   border: 0;
+      //   padding: 2em 0.5em 4em;
+      // }
+
+      .profile-picture {
+        position: relative;
+        height: 150px;
+        width: 150px;
+
+        img {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        i {
+          position: absolute;
+          bottom: 0px;
+          left: 96px;
+        }
+
+        svg {
+          position: relative;
+          width: 54px;
+          height: 54px;
+        }
+
+        .background {
+          display: none;
+
+          svg {
+            position: relative;
+          }
+        }
+      }
+
+      .stars {
+        align-items: baseline;
+        margin-block-end: 1.25em;
+
+        .rating {
+          padding: 0 0.25em;
+          font-weight: 700;
+        }
+
+        .review-count {
+          color: $clrSecondary11;
+        }
+      }
+
+      h2 {
+        text-align: center;
+        width: 100%;
+        text-transform: capitalize;
+        color: $clrPrimary2;
+        font-weight: 700;
+      }
+
+      .username {
+        text-align: center;
+        width: 100%;
+        margin-block-end: 1.25em;
+      }
+
+      .location-and-time {
+        width: 100%;
+        padding-block-start: 1.25em;
+        border-top: 1px solid $clrSecondary2;
+
+        .info-line {
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          margin-block-end: 1em;
+
+          .data {
+            align-items: center;
+
+            span {
+              font-weight: 100;
+            }
+
+            svg {
+              margin-inline-end: em(12px);
+            }
+          }
+
+          .bold {
+            font-weight: bold;
+          }
+        }
       }
     }
   }

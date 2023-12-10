@@ -280,14 +280,14 @@
 
     .join-section {
       @media (min-width: 900px) {
-        background-image: url('https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/y0iyhr5fzlimel158nk3.webp');
+        background-image: url("https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/y0iyhr5fzlimel158nk3.webp");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
       }
 
       @media (min-width: 1160px) {
-        background-image: url('https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/t0qyrbktsuxuhtlqz7zp.webp');
+        background-image: url("https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/t0qyrbktsuxuhtlqz7zp.webp");
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -500,11 +500,10 @@
 
   .dashboard-container {
     .seller-summary {
-
-      #orders-info-content>div:nth-child(1),
-      #earnings-content>div:nth-child(1) {
+      #orders-info-content > div:nth-child(1),
+      #earnings-content > div:nth-child(1) {
         .info-area {
-          @media(max-width: 1400px) {
+          @media (max-width: 1400px) {
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: 1fr 1fr;
 
@@ -541,7 +540,7 @@
             }
           }
 
-          @media(max-width: 600px) {
+          @media (max-width: 600px) {
             grid-template-columns: 1fr 1fr;
             grid-template-rows: repeat(3, 1fr);
 
@@ -578,7 +577,7 @@
             }
           }
 
-          @media(min-width: 1401px) {
+          @media (min-width: 1401px) {
             grid-template-columns: repeat(6, 1fr);
           }
         }
@@ -586,21 +585,20 @@
     }
 
     .user-orders {
-
       // Desktop
       .user-order-container {
         &.desktop {
           .user-order {
             .order-contents {
-              @media(max-width: 1200px) {
+              @media (max-width: 1200px) {
                 grid-template-columns: 350px 150px 125px 100px 55px 6em;
               }
 
-              @media(max-width: 1000px) {
+              @media (max-width: 1000px) {
                 grid-template-columns: 280px 150px 125px 100px 55px 6em;
               }
 
-              @media(min-width: 1201px) {
+              @media (min-width: 1201px) {
                 grid-template-columns: 500px 180px 125px 100px 55px 6em;
               }
             }
@@ -615,7 +613,6 @@
 
 .gig-index {
   @media (max-width: 1400px) {
-
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -912,7 +909,6 @@
       form {
         .form-inputs {
           .input-group {
-
             &:nth-of-type(3),
             &:nth-of-type(4) {
               grid-template-columns: 1fr 1fr;
@@ -1020,11 +1016,9 @@
 
   .buyer-orders-list {
     .buyer-order {
-
       &.mobile,
       &.mini-tablet {
-        @media(max-width: 480px) {
-
+        @media (max-width: 480px) {
           .order-id,
           .category-name,
           .seller-name,
@@ -1042,15 +1036,15 @@
       }
 
       &.desktop {
-        @media(max-width: 1200px) {
+        @media (max-width: 1200px) {
           grid-template-columns: 60px 380px 120px 150px 85px auto;
         }
 
-        @media(max-width: 1000px) {
+        @media (max-width: 1000px) {
           grid-template-columns: 60px 280px 120px 150px 85px auto;
         }
 
-        @media(min-width: 1201px) {
+        @media (min-width: 1201px) {
           grid-template-columns: 60px 380px 120px 150px 85px auto;
         }
       }
@@ -1086,79 +1080,116 @@
 
 // User chat media query
 
-.chat-box-wrapper {
+.chats {
   @media (min-width: 601px) {
-    width: 55%;
+    padding: 2em 0;
   }
-
   @media (max-width: 600px) {
-    width: 100%;
+    padding: 0;
+    padding-block-end: 49px;
+  }
+  .chats-nav {
+    @media (min-width: 601px) {
+      width: 420px;
+    }
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+  .unselected-chat{
+    @media (min-width: 601px) {
+      display: flex;
+    }
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
-
-  .chat-box {
-    @media (max-width: 600px) {
-      width: 100vw;
-      height: 100vh;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      max-height: none;
-      position: fixed;
-    }
-
+  .chat-box-wrapper {
     @media (min-width: 601px) {
-      position: sticky;
-      // width: 450px;
-      border-radius: 4px;
-      border: 1px solid $clrSecondary10;
-      height: 765px;
+      width: 450px;
+      .chat-page {
+        width: 55%;
+      }
     }
 
-    .chat-box-container {
-      .chat-container {
-        .message-form {
-          .message-container {
-            @media (max-width: 600px) {
-              max-height: 630px;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
 
-              .message {
-                .message-text {
-                  font-size: 1em;
+    .chat-box {
+      @media (max-width: 600px) {
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        max-height: none;
+        position: fixed;
+      }
+
+      @media (min-width: 601px) {
+        position: sticky;
+        width: 100%;
+        // border-radius: 4px;
+        border: 1px solid $clrSecondary10;
+        height: 765px;
+      }
+
+      .chat-box-container {
+        @media (max-width: 600px) {
+          padding-block-end: 24px;
+        }
+        .chat-container {
+          .message-form {
+            .message-container {
+              @media (max-width: 600px) {
+                max-height: 630px;
+
+                .message {
+                  .message-text {
+                    font-size: 1em;
+                  }
                 }
               }
-            }
 
-            @media (max-width: 450px) {
-              max-height: 390px;
-              margin-block-end: 1.75em;
-            }
+              @media (max-width: 450px) {
+                max-height: 390px;
+                margin-block-end: 1.75em;
+              }
 
-            @media (min-width: 601px) {
-              max-height: 500px;
+              @media (min-width: 601px) {
+                max-height: 500px;
 
-              .message {
-                .message-text {
-                  font-size: 0.85em;
+                .message {
+                  .message-text {
+                    font-size: 0.85em;
+                  }
                 }
               }
             }
           }
-        }
 
-        .chat-footer {
-          @media (max-width: 450px) {
-            position: relative;
-            bottom: 48px;
+          .chat-footer {
+            @media (max-width: 450px) {
+              position: relative;
+              bottom: 48px;
 
-            .message-options {
-              padding: .5em 0 !important;
+              .message-options {
+                padding: 0.5em 0 !important;
+              }
             }
           }
         }
       }
+    }
+  }
+  .user-info{
+    @media (min-width: 1250) {
+      display: none;
     }
   }
 }
@@ -1202,7 +1233,6 @@
 
 .modal-wrapper {
   @media (max-width: 480px) {
-
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1290,7 +1320,6 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 16px;
@@ -1306,7 +1335,6 @@
   }
 
   @media (min-width: 481px) {
-
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1406,7 +1434,6 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
-
           h3,
           h4 {
             font-size: 21px;

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { clearChats, embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
 import { useDeviceType } from '../customHooks/DeviceTypeContext'
+import { utilService } from '../services/util.service'
 // import { useHistory } from 'react-router-dom'
 
 export function Chat() {
@@ -51,6 +52,62 @@ export function Chat() {
     setChatState(true)
   }
 
+  //for side of chat
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  var time = 1
+  if(chatProps){
+    time = new Date(chatProps.owner.createdAt * 1000)
+    var month = months[time.getMonth()]
+    var year = time.getFullYear()
+    var deliveredTime
+    
+    if (!chatProps.owner.lastDeliveredAt) deliveredTime = new Date(Date.now())
+    else deliveredTime = new Date(chatProps.owner.lastDeliveredAt)
+
+    var userLevel = ''
+    if (chatProps.owner.level === 'level 0') userLevel = 'newuser'
+    if (chatProps.owner.level === 'level 1') userLevel = 'level1'
+    if (chatProps.owner.level === 'level 2') userLevel = 'level2'
+    if (chatProps.owner.level === 'level 3') userLevel = 'topuser'
+
+    var renderStars = () => {
+      let fullStarsCount = Math.floor(chatProps.owner.rating)
+      const isHalfStar = chatProps.owner.rating % 1 >= 0.5
+  
+      const stars = [...Array(fullStarsCount)].map((_, idx) => (
+        <SvgIcon iconName={'star'} key={utilService.makeId()} />
+      ))
+  
+      if (isHalfStar) {
+        stars.push(<SvgIcon iconName={'halfstar'} key={utilService.makeId()} />)
+        fullStarsCount += 1
+      }
+  
+      const emptyStarsCount = 5 - fullStarsCount
+      for (let i = 0; i < emptyStarsCount; i++) {
+        stars.push(<SvgIcon iconName={'emptystar'} key={utilService.makeId()} />)
+      }
+      return stars
+    }
+  }
+
+
+
   // if(chats.length < 1) return <Loader />
 
   return (
@@ -94,7 +151,7 @@ export function Chat() {
                     <div className="chat-info">
                       <div className="user-info">
                         <span className="name-wrapper">
-                          <span className="name">{buyer.fullName}</span>
+                          <span className="name">{chat[role].fullName}</span>
                           <span className="username">
                             @{chat[role].username}
                           </span>
@@ -126,7 +183,6 @@ export function Chat() {
             <div>You have no chats opened</div>
           )}
         </ul>
-        {console.log('chatState: ' ,chatState)}
         {chatProps && chatState && deviceType === 'mobile' && (
           <UserChat
             owner={chatProps.owner}
@@ -167,7 +223,68 @@ export function Chat() {
       )}
       
       {deviceType === 'desktop' && chatProps && (
-        <div>seller details</div>
+          <section className="user-info">
+          <div className="info-block flex column">
+        <div className="profile-picture">
+          <img src={chatProps.owner.imgUrl} />
+          <div className='background'><SvgIcon iconName={'user'} /></div>
+          <SvgIcon iconName={userLevel} />
+        </div>
+
+        <h2>{chatProps.owner.fullName}</h2>
+
+        <span className="username">@{chatProps.owner.username}</span>
+
+        <div className="stars flex">
+          {renderStars()}
+          <span className="rating">{chatProps.owner.rating}</span>
+          {/* <span className="review-count">
+            ({filteredReviews.length} reviews)
+          </span> */}
+        </div>
+
+        <div className="location-and-time">
+          <div className="info-line flex">
+            <span className="data flex">
+              <SvgIcon iconName={'location'} />
+              <span>From</span>
+            </span>
+            <span className="bold">{chatProps.owner.country}</span>
+          </div>
+
+          <div className="info-line flex">
+            <span className="data flex">
+              <SvgIcon iconName={'user'} />
+              <span>Member Since</span>
+            </span>
+            <span className="bold">
+              {month.slice(0, 3)} {year}
+            </span>
+          </div>
+
+          <div className="info-line flex">
+            <span className="data flex">
+              <SvgIcon iconName={'clock'} />
+              <span>Avg. Response Time</span>
+            </span>
+            <span className="bold">
+              {utilService.getRandomIntInclusive(2, 12)} Hours
+            </span>
+          </div>
+
+          <div className="info-line flex">
+            <span className="data flex">
+              <SvgIcon iconName={'airplaneIcon'} />
+              <span>Last Delivery</span>
+            </span>
+            <span className="bold">
+              {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
+              {deliveredTime.getFullYear()}
+            </span>
+          </div>
+         </div>
+         </div>
+        </section>
       )}
     </main>)
 }
