@@ -1043,7 +1043,7 @@
 
       &.desktop {
         @media (max-width: 1200px) {
-          grid-template-columns: 70px 330px 130px 120px 90px auto;
+          grid-template-columns: 70px 330px 150px 120px 90px auto;
         }
 
         @media (max-width: 1000px) {
@@ -1051,7 +1051,7 @@
         }
 
         @media (min-width: 1201px) {
-          grid-template-columns: 70px 330px 130px 120px 90px auto;
+          grid-template-columns: 70px 480px 180px 120px 100px auto;
         }
       }
     }

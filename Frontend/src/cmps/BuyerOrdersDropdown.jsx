@@ -8,6 +8,7 @@ import { Loader } from "./Loader.jsx"
 import { BuyerOrder } from "./BuyerOrder.jsx"
 import { InvoiceModal } from "./InvoiceModal.jsx"
 import { ReviewSubmit } from "./ReviewSubmit.jsx"
+import SvgIcon from "./SvgIcon.jsx"
 
 export function BuyerOrdersDropdown({ loggedInUser, onClose }) {
   const [orderDetails, setOrderDetails] = useState({})
@@ -95,10 +96,24 @@ export function BuyerOrdersDropdown({ loggedInUser, onClose }) {
     setIsRevieweModalOpen(false)
   }
 
+  const displayedOrders = orders.filter(order => order.buyerId === loggedInUser._id)
+
   if (!allDetailsLoaded) {
     return (
       <section className="buyer-orders-list flex column">
         <Loader />
+      </section>
+    )
+  }
+
+  if (displayedOrders.length === 0) {
+    return (
+      <section className="buyer-orders-list flex column">
+        <div className="no-results">
+          <SvgIcon iconName='nothingFoundIcon' />
+          <h3>No Orders Yet!</h3>
+          <p>Perhaps your next service is one click away from discovery!</p>
+        </div>
       </section>
     )
   }

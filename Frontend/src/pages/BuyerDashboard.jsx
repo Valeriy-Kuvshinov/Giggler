@@ -13,7 +13,7 @@ import { BuyerOrder } from "../cmps/BuyerOrder.jsx"
 import { InvoiceModal } from "../cmps/InvoiceModal.jsx"
 import { ReviewSubmit } from "../cmps/ReviewSubmit.jsx"
 
-export function BuyerDashboard() {
+export function BuyerDashboard({ onFooterUpdate }) {
     const [orderDetails, setOrderDetails] = useState({})
     const [selectedOrder, setSelectedOrder] = useState(null)
     const [selectedGig, setSelectedGig] = useState(null)
@@ -79,6 +79,10 @@ export function BuyerDashboard() {
             order.buyerId !== loggedInUser._id ||
             (orderDetails[order._id] && !orderDetails[order._id].isLoading)
     )
+
+    useEffect(() => {
+        if (allDetailsLoaded) onFooterUpdate()
+    }, [allDetailsLoaded, onFooterUpdate])
 
     function onClickReceipt(event, order) {
         event.stopPropagation()

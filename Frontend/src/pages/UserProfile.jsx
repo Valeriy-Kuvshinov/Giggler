@@ -9,7 +9,7 @@ import { Loader } from "../cmps/Loader.jsx"
 import { loadGigs } from "../store/gig.actions.js"
 import { loadUser } from "../store/user.actions.js"
 
-export function UserProfile() {
+export function UserProfile({ onFooterUpdate }) {
   const navigate = useNavigate()
   const { id } = useParams()
 
@@ -33,6 +33,10 @@ export function UserProfile() {
     }
     loadData()
   }, [id, navigate])
+
+  useEffect(() => {
+    if (watchedUser && gigs) onFooterUpdate()
+  }, [watchedUser, gigs, onFooterUpdate])
 
   if (!gigs || !watchedUser) return <Loader />
 

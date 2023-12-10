@@ -7,11 +7,13 @@
     max-width: 1400px;
     margin: auto;
     border-top: 1px solid $clrSecondary4;
+    background: $clrPrimary1;
 
     &.fixed {
         position: fixed;
         bottom: 0;
         left: 0;
+        right: 0;
     }
 
     &.relative {

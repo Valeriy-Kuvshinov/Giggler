@@ -90,19 +90,21 @@
 
         &:hover {
           color: $bgColor3 !important;
-          svg{
+
+          svg {
             fill: $bgColor3 !important;
           }
         }
 
-        &.clr-one{
-          svg{
+        &.clr-one {
+          svg {
             fill: $clrPrimary1;
             transition: fill 0.3s ease-in-out;
           }
         }
-        &.clr-two{
-          svg{
+
+        &.clr-two {
+          svg {
             fill: $clrSecondary6;
             transition: fill 0.3s ease-in-out;
           }
@@ -149,6 +151,35 @@
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
           width: 400px;
           max-height: 350px;
+
+          .no-results {
+            padding: 1em;
+            text-align: center;
+
+            i {
+              width: 120px;
+              height: 120px;
+              margin: 2em auto 1em auto;
+              padding: 1em;
+              background: lightgray;
+              border-radius: 50%;
+              align-items: center;
+              justify-content: center;
+
+              svg {
+                width: 60px;
+                height: 40px;
+              }
+            }
+
+            h3 {
+              font-size: 20px;
+            }
+
+            p {
+              font-size: 14px;
+            }
+          }
 
           .list-contents {
             overflow-y: scroll;

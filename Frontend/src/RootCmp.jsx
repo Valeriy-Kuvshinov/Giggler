@@ -41,7 +41,7 @@ export function RootCmp() {
           <Route
             key={route.path}
             path={route.path}
-            element={<route.component />}
+            element={<route.component onFooterUpdate={updateFooterPosition} />}
           />
         ))}
       </Routes>
