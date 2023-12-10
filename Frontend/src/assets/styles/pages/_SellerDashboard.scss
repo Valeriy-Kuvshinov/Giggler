@@ -42,6 +42,7 @@
 
     .dashboard-container {
         width: 100%;
+        max-width: 1200px;
 
         h3,
         #orders-info-header>div:nth-child(1)>h6:nth-child(1),
@@ -200,7 +201,6 @@
                 &.desktop {
                     box-shadow: 0.075em 0.125em 0.5em 0.125em $clrSecondary3;
                     border-radius: 0.5em;
-                    grid-template-rows: auto 60px;
                     border: 1px solid $clrSecondary4;
 
                     .user-order {
@@ -212,6 +212,7 @@
                             align-items: center;
                             padding: 1em;
                             justify-content: space-between;
+                            grid-template-rows: auto 60px;
                             gap: 0.25em;
 
                             .order-id {
@@ -221,6 +222,7 @@
                                 color: $clrSecondary7;
                                 border-bottom: 1px solid $clrSecondary3;
                                 letter-spacing: 0.05em;
+                                margin-bottom: 0.75em;
                             }
 
                             img {
@@ -496,6 +498,7 @@
                                 grid-row: 4;
                                 border-top: 1px solid $clrSecondary3;
                                 color: $clrSecondary5;
+                                margin-bottom: 0.25em;
 
                                 .text {
                                     justify-content: space-between;

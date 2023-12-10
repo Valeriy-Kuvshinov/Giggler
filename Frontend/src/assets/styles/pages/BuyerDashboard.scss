@@ -1,15 +1,118 @@
 .buyer-dashboard-page {
-    margin-bottom: 2em;
     background: $clrSecondary12;
 
+    h3 {
+        text-align: left;
+        font-size: 20px;
+        font-family: "macan-bold";
+        color: $clrSecondary6;
+        margin: auto;
+        max-width: 1200px;
+        width: 100%;
+        margin-bottom: 0.25em;
+    }
+
     .buyer-orders-list {
-        gap: 0.5em;
+        gap: 0.75em;
+        width: 100%;
+        max-width: 1200px;
 
         .buyer-order {
+            .order-title {
+                transition: all 0.3s;
+
+                &:hover {
+                    color: $bgColor5;
+                    text-decoration: none;
+                }
+            }
+
+            .order-id,
+            .category-name,
+            .seller-name,
+            .order-status {
+                span {
+                    &:first-child {
+                        color: $clrSecondary6;
+                    }
+
+                    &:last-child {
+                        color: $clrSecondary8;
+
+                        &.pending {
+                            color: $clr15;
+                        }
+
+                        &.denied {
+                            color: $clr9;
+                        }
+
+                        &.accepted {
+                            color: $clr11;
+                        }
+
+                        &.completed {
+                            color: $clr13;
+                        }
+
+                        &.reviewed {
+                            color: $clrSecondary4;
+                        }
+
+                        a {
+                            transition: all 0.3s;
+
+                            &:hover {
+                                color: $bgColor5;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .order-options {
+                span {
+                    cursor: pointer;
+
+                    i {
+                        width: 48px;
+                        height: 48px;
+
+                        svg {
+                            width: 100%;
+                            height: 100%;
+                            transition: all 0.3s;
+                        }
+                    }
+
+                    &:nth-of-type(1) {
+                        margin-left: 0.2em;
+
+                        svg {
+                            fill: #FDD005;
+
+                            &:hover {
+                                fill: #d6b41a;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(2) {
+                        svg {
+                            fill: #464443;
+
+                            &:hover {
+                                fill: #888785;
+                            }
+                        }
+                    }
+                }
+            }
 
             &.mobile,
-            &.mini-tablet {
-                display: grid;
+            &.mini-tablet,
+            &.tablet {
                 padding: 0.5em;
                 border-radius: 0.5em;
                 border: 1px solid #dadbdd;
@@ -22,18 +125,19 @@
                 .order-title {
                     grid-column: 1 / -1;
                     grid-row: 1;
-                    transition: all 0.3s;
                     font-size: 18px;
-
-                    &:hover {
-                        color: $bgColor5;
-                        text-decoration: none;
-                    }
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 1;
                 }
 
                 .order-image {
                     grid-column: 1 / 3;
                     grid-row: 2 / -1;
+                    height: 97%;
+                    max-height: 166px;
 
                     img {
                         border-radius: 0.5em;
@@ -41,101 +145,135 @@
                     }
                 }
 
-                .order-info {
+                .order-id,
+                .category-name,
+                .seller-name,
+                .order-status {
+                    justify-content: space-between;
                     grid-column: 3 / -1;
-                    grid-row: 2 / -1;
-                    gap: 0.25em;
+                    margin-bottom: -0.25em;
+                }
 
-                    .order-id,
-                    .category-name,
-                    .seller-name,
-                    .order-status {
-                        justify-content: space-between;
+                .order-id {
+                    grid-row: 2 / 3;
+                }
 
-                        span {
-                            &:first-child {
-                                color: $clrSecondary6;
-                            }
+                .category-name {
+                    grid-row: 3 / 4;
+                }
 
-                            &:last-child {
-                                color: $clrSecondary8;
+                .seller-name {
+                    grid-row: 4 / 5;
+                }
 
-                                &.pending {
-                                    color: $clr15;
-                                }
+                .order-status {
+                    grid-row: 5 / 6;
+                }
 
-                                &.denied {
-                                    color: $clr9;
-                                }
+                .order-options {
+                    justify-content: space-between;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 99%;
+                    grid-row: 6 / -1;
+                }
+            }
 
-                                &.accepted {
-                                    color: $clr11;
-                                }
+            &.tablet {
+                position: static;
 
-                                &.completed {
-                                    color: $clr13;
-                                }
+                .order-options {
+                    position: static;
+                    width: 100%;
+                    grid-column: 3 / -1;
 
-                                &.reviewed {
-                                    color: $clrSecondary4;
-                                }
-
-                                a {
-                                    transition: all 0.3s;
-
-                                    &:hover {
-                                        color: $bgColor5;
-                                        text-decoration: none;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .order-options {
-                        justify-content: space-between;
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 99%;
-
-                        span {
-                            cursor: pointer;
-
-                            i {
-                                width: 48px;
-                                height: 48px;
-
-                                svg {
-                                    width: 100%;
-                                    height: 100%;
-                                    transition: all 0.3s;
-                                }
-                            }
-
-                            &:nth-of-type(1) {
-                                svg {
-                                    fill: #FDD005;
-
-                                    &:hover {
-                                        fill: #d6b41a;
-                                    }
-                                }
-                            }
-
-                            &:nth-of-type(2) {
-                                svg {
-                                    fill: #464443;
-
-                                    &:hover {
-                                        fill: #888785;
-                                    }
-                                }
-                            }
+                    span {
+                        &:nth-of-type(1) {
+                            margin-left: -0.25em;
                         }
                     }
                 }
             }
+
+            &.desktop {
+                grid-template-rows: auto 60px;
+                padding: 0.5em;
+                gap: 0.25em;
+
+                &:not(:first-child) {
+                    border-top: 1px solid $clrSecondary4;
+                }
+
+                .order-id,
+                .category-name,
+                .seller-name,
+                .order-status {
+                    span {
+                        &:first-child {
+                            display: none;
+                        }
+                    }
+                }
+
+                .order-id {
+                    grid-column: 1 / -1;
+                    grid-row: 1;
+                    border-bottom: 1px solid $clrSecondary3;
+                    letter-spacing: 0.05em;
+                    margin-bottom: 0.75em;
+                }
+
+                .order-image {
+                    grid-column: 1 / 2;
+                    grid-row: 2;
+
+                    img {
+                        border-radius: 0.5em;
+                        object-fit: cover;
+                    }
+                }
+
+                .order-title {
+                    grid-column: 2 / 3;
+                    grid-row: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    max-height: 55px;
+                    align-self: center;
+                }
+
+                .category-name {
+                    grid-column: 3 / 4;
+                    grid-row: 2;
+                    align-items: center;
+                }
+
+                .seller-name {
+                    grid-column: 4 / 5;
+                    grid-row: 2;
+                    align-items: center;
+                }
+
+                .order-status {
+                    grid-column: 5 / 6;
+                    grid-row: 2;
+                    align-items: center;
+                }
+
+                .order-options {
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        &.desktop {
+            box-shadow: 0.075em 0.125em 0.5em 0.125em $clrSecondary3;
+            border-radius: 0.5em;
+            border: 1px solid $clrSecondary4;
         }
     }
 }
