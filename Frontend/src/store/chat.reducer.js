@@ -12,6 +12,8 @@ export const REMOVE_IS_TYPING = 'REMOVE_IS_TYPING'
 export const SET_IS_TYPING = 'SET_IS_TYPING'
 export const EMBED_CHAT_USERS = 'EMBED_CHAT_USERS'
 export const UPDATE_CURR_CHAT = 'UPDATE_CURR_CHAT'
+export const CLEAR_CURR_CHAT = 'CLEAR_CURR_CHAT'
+export const CLEAR_CHATS = 'CLEAR_CHATS'
 
 import { chatService } from '../services/chat.service.js'
 
@@ -45,6 +47,12 @@ export function chatReducer(state = initialState, action = {}) {
     case SET_EMPTY_CHAT:
       return { ...state, currentChat: action.emptyChat }
 
+    case CLEAR_CURR_CHAT:
+      return { ...state, currentChat: {} }
+
+    case CLEAR_CHATS:
+      return { ...state, chats: [] }
+
     case UPDATE_CURR_CHAT:
       return { ...state, currentChat: action.chat }
 
@@ -66,8 +74,8 @@ export function chatReducer(state = initialState, action = {}) {
       return { ...state, isTyping: updatedTyping }
 
     case REMOVE_CHAT:
-      if(state.currentChat._id === action.chatId) {
-        state = {...state , currentChat:{}  } 
+      if (state.currentChat._id === action.chatId) {
+        state = { ...state, currentChat: {} }
       }
       chats = state.chats.filter((chat) => chat._id !== action.chatId)
       return { ...state, chats: chats }

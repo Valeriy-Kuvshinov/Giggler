@@ -14,6 +14,8 @@ import {
   REMOVE_IS_TYPING,
   EMBED_CHAT_USERS,
   UPDATE_CURR_CHAT,
+  CLEAR_CURR_CHAT,
+  CLEAR_CHATS,
 } from './chat.reducer.js'
 import { chatService } from '../services/chat.service.js'
 
@@ -44,7 +46,7 @@ export async function getChatByUsers(usersId) {
   try {
     const theChat = await chatService.getByUsersId(usersId)
     if (theChat !== undefined)
-      store.dispatch({ type: GET_CHAT_BY_USERS, theChat })
+    store.dispatch({ type: GET_CHAT_BY_USERS, theChat })
     return theChat
   } catch (err) {
     console.log('Cannot get chat by users: ', err)
@@ -63,6 +65,12 @@ export async function embedUsersOnChat(chatToEmbed) {
 
 export function loadEmptyChat(emptyChat) {
   store.dispatch({ type: SET_EMPTY_CHAT, emptyChat })
+}
+export function clearCurrChat(){
+  store.dispatch({type: CLEAR_CURR_CHAT})
+}
+export function clearChats(){
+  store.dispatch({type: CLEAR_CHATS})
 }
 
 export function loadNewMsg(message) {
