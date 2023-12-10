@@ -1,5 +1,8 @@
+const noResultsImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539881/Giggler/other/bzqrborygalzssnmogax.png'
+
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import { useDeviceType } from "../customHooks/DeviceTypeContext.jsx"
 
 import { orderService } from "../services/order.service.js"
@@ -99,7 +102,22 @@ export function BuyerDashboard() {
         setIsRevieweModalOpen(false)
     }
 
+    const displayedOrders = orders.filter(order => order.buyerId === loggedInUser._id)
+
     if (!allDetailsLoaded) return <Loader />
+
+    if (displayedOrders.length === 0) {
+        return (
+            <main className="seller-dashboard-page full flex column">
+                <div className="no-results">
+                    <h3>Whoops, you haven't ordered anything yet!</h3>
+                    <img src={noResultsImg} alt="no results" />
+                    <p>Perhaps your next service is one click away from discovery!</p>
+                    <Link to={`/explore`}>Explore the Market</Link>
+                </div>
+            </main>
+        )
+    }
 
     return (
         <main className="buyer-dashboard-page full flex column">

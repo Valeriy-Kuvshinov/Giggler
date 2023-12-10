@@ -500,8 +500,9 @@
 
   .dashboard-container {
     .seller-summary {
-      #orders-info-content > div:nth-child(1),
-      #earnings-content > div:nth-child(1) {
+
+      #orders-info-content>div:nth-child(1),
+      #earnings-content>div:nth-child(1) {
         .info-area {
           @media (max-width: 1400px) {
             grid-template-columns: repeat(3, 1fr);
@@ -585,6 +586,7 @@
     }
 
     .user-orders {
+
       // Desktop
       .user-order-container {
         &.desktop {
@@ -613,6 +615,7 @@
 
 .gig-index {
   @media (max-width: 1400px) {
+
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -909,6 +912,7 @@
       form {
         .form-inputs {
           .input-group {
+
             &:nth-of-type(3),
             &:nth-of-type(4) {
               grid-template-columns: 1fr 1fr;
@@ -1016,9 +1020,11 @@
 
   .buyer-orders-list {
     .buyer-order {
+
       &.mobile,
       &.mini-tablet {
         @media (max-width: 480px) {
+
           .order-id,
           .category-name,
           .seller-name,
@@ -1037,15 +1043,15 @@
 
       &.desktop {
         @media (max-width: 1200px) {
-          grid-template-columns: 60px 380px 120px 150px 85px auto;
+          grid-template-columns: 70px 330px 130px 120px 90px auto;
         }
 
         @media (max-width: 1000px) {
-          grid-template-columns: 60px 280px 120px 150px 85px auto;
+          grid-template-columns: 70px 260px 130px 120px 90px auto;
         }
 
         @media (min-width: 1201px) {
-          grid-template-columns: 60px 380px 120px 150px 85px auto;
+          grid-template-columns: 70px 330px 130px 120px 90px auto;
         }
       }
     }
@@ -1084,10 +1090,12 @@
   @media (min-width: 601px) {
     padding: 2em 0;
   }
+
   @media (max-width: 600px) {
     padding: 0;
     padding-block-end: 49px;
   }
+
   .chats-nav {
     @media (min-width: 601px) {
       width: 420px;
@@ -1097,10 +1105,12 @@
       width: 100%;
     }
   }
-  .unselected-chat{
+
+  .unselected-chat {
     @media (min-width: 601px) {
       display: flex;
     }
+
     @media (max-width: 600px) {
       display: none;
     }
@@ -1109,6 +1119,7 @@
   .chat-box-wrapper {
     @media (min-width: 601px) {
       width: 450px;
+
       .chat-page {
         width: 55%;
       }
@@ -1143,6 +1154,7 @@
         @media (max-width: 600px) {
           padding-block-end: 24px;
         }
+
         .chat-container {
           .message-form {
             .message-container {
@@ -1187,7 +1199,8 @@
       }
     }
   }
-  .user-info{
+
+  .user-info {
     @media (min-width: 1250) {
       display: none;
     }
@@ -1233,6 +1246,7 @@
 
 .modal-wrapper {
   @media (max-width: 480px) {
+
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1320,6 +1334,7 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
+
           h3,
           h4 {
             font-size: 16px;
@@ -1335,6 +1350,7 @@
   }
 
   @media (min-width: 481px) {
+
     .invoice-modal,
     .review-modal,
     .share-gig-modal {
@@ -1434,6 +1450,7 @@
     .review-modal {
       .reviewed-gig {
         .title-user-info {
+
           h3,
           h4 {
             font-size: 21px;

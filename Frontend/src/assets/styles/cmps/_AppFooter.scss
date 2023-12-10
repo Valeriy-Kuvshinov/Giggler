@@ -1,13 +1,22 @@
 .desktop-footer {
     color: $clrSecondary7;
     text-align: center;
-    position: relative;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1400px;
     margin: auto;
     border-top: 1px solid $clrSecondary4;
+
+    &.fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    &.relative {
+        position: relative;
+    }
 
     .footer-part {
         h1 {
@@ -44,41 +53,47 @@
             }
         }
 
-        .access-icon,
-        .about-icon {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
+
+        .other-icons {
+            gap: 1em;
             align-self: center;
 
-            .circle-wrapper {
-                fill: $clrSecondary1;
-                stroke: $clrSecondary5;
-            }
+            .access-icon,
+            .about-icon {
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+                align-self: center;
 
-            .person-head,
-            .person-torso {
-                fill: $clrSecondary5;
-            }
-
-            &:hover {
                 .circle-wrapper {
-                    fill: $clrSecondary45;
-                    stroke: none;
+                    fill: $clrSecondary1;
+                    stroke: $clrSecondary5;
                 }
 
-                .person-head,
-                .person-torso {
-                    fill: $clrSecondary8;
+                &:hover {
+                    .circle-wrapper {
+                        fill: $clrSecondary45;
+                        stroke: none;
+                    }
+                }
+
+                i {
+                    svg {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
             }
-        }
 
-        .about-icon {
-            i {
-                svg {
-                    width: 32px;
-                    height: 32px;
+            .about-icon {
+                i {
+                    svg {
+                        fill: $clrSecondary4;
+
+                        &:hover {
+                            fill: $clrSecondary6;
+                        }
+                    }
                 }
             }
         }

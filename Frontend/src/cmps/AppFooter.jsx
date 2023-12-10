@@ -7,13 +7,14 @@ import { socialMediaLinks } from '../services/gallery.service.js'
 
 import SvgIcon from './SvgIcon.jsx'
 
-export function AppFooter() {
+export function AppFooter({ position }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
   const deviceType = useDeviceType()
 
   return deviceType === 'desktop' || deviceType === 'tablet' ? (
-    <footer className="desktop-footer flex full">
+    <footer className={`desktop-footer flex full 
+    ${position === 'fixed' ? 'fixed' : 'relative'}`}>
       <div className="footer-part flex">
         <h1>Giggler</h1>
         <h2>© Giggler International Ltd. 2023</h2>
@@ -23,22 +24,22 @@ export function AppFooter() {
         <div className="social-icons flex row">
           {socialMediaLinks.map((link, idx) => (
             <div key={idx} className="icon-container">
-              {/* <a href={link.url} target="_blank" rel="noopener noreferrer"> */}
               <Link to="/about">
                 <img src={link.img} alt="Social Media Icon" />
               </Link>
-              {/* </a> */}
             </div>
           ))}
         </div>
 
-        <div className="access-icon flex">
-          <SvgIcon iconName="accessIcon" />
-        </div>
+        <div className="other-icons flex row">
+          <div className="access-icon flex">
+            <SvgIcon iconName="accessIcon" />
+          </div>
 
-        <Link to="/about" className="about-icon flex">
-          <SvgIcon iconName="questionMarkIcon" />
-        </Link>
+          <Link to="/about" className="about-icon flex">
+            <SvgIcon iconName="questionMarkIcon" />
+          </Link>
+        </div>
       </div>
     </footer>
   ) : (
