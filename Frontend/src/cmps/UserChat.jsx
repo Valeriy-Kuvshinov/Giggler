@@ -16,7 +16,14 @@ import {
 } from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
 
-export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom}) {
+export function UserChat({
+  owner,
+  chatState,
+  setChatState,
+  buyer,
+  gig,
+  isFrom,
+}) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const currentChat = useSelector(
     (storeState) => storeState.chatModule.currentChat
@@ -33,6 +40,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
 
   useEffect(() => {
     loadsChat()
+    autoScroll()
   }, [owner, loggedinUser])
 
   async function loadsChat() {
@@ -40,7 +48,6 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
     try {
       newChat = await getChatByUsers({
         sellerId: owner._id,
-        // buyerId: isBuyer ? loggedinUser._id : buyer._id,
         buyerId: buyer._id,
       })
     } catch (err) {
@@ -79,6 +86,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
 
   function addTypingUser(user) {
     loadIsTyping(user)
+    autoScroll()
   }
 
   function removeTypingUser(userToRemove) {
@@ -113,7 +121,6 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
 
     try {
       if (currentChat?.messages?.length) {
-
         await saveChat({
           ...currentChat,
           messages: [...currentChat.messages, newMessage],
@@ -161,52 +168,59 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
     }, 2000)
   }
 
-  if(currentChat === undefined || currentChat === null) return <Loader />
+  if (currentChat === undefined || currentChat === null) return <Loader />
   //   return <Loader />
   // if (isLoading) return <Loader />
 
   return (
     <>
       {chatState && (
-        <div className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''}`}>
-          <aside className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}>
-              <section className="user-info-bar flex row">
-                <div className="avatar">
+        <div
+          className={`chat-box-wrapper ${
+            isFrom === 'chatPage' ? 'chat-page' : ''
+          }`}
+        >
+          <aside
+            className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}
+          >
+            <section className="user-info-bar flex row">
+              <div className="avatar">
+                {buyer ? (
+                  <img src={owner.imgUrl} alt={owner.username} />
+                ) : (
+                  <img src={buyer.imgUrl} alt={buyer.username} />
+                )}
+                <span className="status-dot"></span>
+              </div>
+              <div className="owner-info flex">
+                <span>
                   {buyer ? (
-                    <img src={owner.imgUrl} alt={owner.username} />
+                    <span className="message flex row">{`Message ${owner.username}`}</span>
                   ) : (
-                    <img src={buyer.imgUrl} alt={buyer.username} />
+                    <span className="message flex row">{`Message ${buyer.username}`}</span>
                   )}
-                  <span className="status-dot"></span>
-                </div>
-                <div className="owner-info flex">
-                  <span>
-                    {buyer ? (
-                      <span className="message flex row">{`Message ${owner.username}`}</span>
-                    ) : (
-                      <span className="message flex row">{`Message ${buyer.username}`}</span>
-                    )}
-                    <span className="response-time flex">
-                      <span>Online</span>
-                      <span className="dot flex"></span>
-                      <span>
-                        Avg. response time: <span className="b">1 Hour</span>
-                      </span>
+                  <span className="response-time flex">
+                    <span>Online</span>
+                    <span className="dot flex"></span>
+                    <span>
+                      Avg. response time: <span className="b">1 Hour</span>
                     </span>
                   </span>
-                  {isFrom !== 'chatPage' && (
-                    <span className="remove" onClick={() => setChatState(false)}>
+                </span>
+                {isFrom !== 'chatPage' && (
+                  <span className="remove" onClick={() => setChatState(false)}>
                     <SvgIcon iconName={'remove'} />
-                    </span>)
-                  }
-                </div>
-              </section>
+                  </span>
+                )}
+              </div>
+            </section>
             <div className="chat-box-container grid">
-
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div
-                    className="message-container flex column"
+                    className={`message-container flex column ${
+                      isFrom === 'chatPage' ? 'chat-page' : ''
+                    }`}
                     ref={chatContainerRef}
                   >
                     {currentChat.messages?.length > 0 &&
@@ -321,18 +335,19 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
                   <div className="message-options flex row">
                     <span className="addition flex">
                       <span className="emoji-picker-icon">
-                        <span className="smiley-container">
+                        <span
+                          className="smiley-container"
+                          onClick={() =>
+                            setSmileyChoice((prevState) => !prevState)
+                          }
+                        >
                           <SvgIcon iconName={'smiley'} />
-                          <span
-                            className={`smiley-selection ${
-                              smileyChoice ? '' : 'hidden'
-                            }`}
-                            onClick={() =>
-                              setSmileyChoice((prevState) => !prevState)
-                            }
-                          >
-                            <SmileyChoice setMessage={setMessage} />
-                          </span>
+                          {smileyChoice && (
+                            <SmileyChoice
+                              message={message}
+                              setMessage={setMessage}
+                            />
+                          )}
                         </span>
                         <div className="emoji-picker-container"></div>
                       </span>

@@ -1,7 +1,22 @@
+export function SmileyChoice({ message, setMessage }) {
+    const smileys = [
+        '😊', '😄', '😍', '😎', '🤗', '😇', '🤩', '😜', '😂', '🥳',
+        '😀', '😃', '😆', '😁', '😅', '😂', '🤣', '😇', '😉', '😊',
+        '😋', '😌', '😍', '😘', '😗', '😙', '😚', '🙂', '🤗', '🤩',
+       
+      ]
 
-export function SmileyChoice(setMessage) {
+  const insertSmiley = (smiley) => {
+    setMessage((prevMessage) => prevMessage + smiley)
+  }
 
-    return (
-        <div></div>
-    )
-} 
+  return (
+    <ul className="smiley-choice">
+      {smileys.map((smiley, index) => (
+        <li key={index} onClick={() => insertSmiley(smiley)}>
+          {smiley}
+        </li>
+      ))}
+    </ul>
+  )
+}

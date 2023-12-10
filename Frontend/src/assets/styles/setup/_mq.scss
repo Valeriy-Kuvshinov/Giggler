@@ -280,14 +280,14 @@
 
     .join-section {
       @media (min-width: 900px) {
-        background-image: url("https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/y0iyhr5fzlimel158nk3.webp");
+        background-image: url('https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/y0iyhr5fzlimel158nk3.webp');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
       }
 
       @media (min-width: 1160px) {
-        background-image: url("https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/t0qyrbktsuxuhtlqz7zp.webp");
+        background-image: url('https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539556/Giggler/home-page/t0qyrbktsuxuhtlqz7zp.webp');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
@@ -1097,7 +1097,7 @@
       width: 100%;
     }
   }
-  .unselected-chat{
+  .unselected-chat {
     @media (min-width: 601px) {
       display: flex;
     }
@@ -1110,7 +1110,7 @@
     @media (min-width: 601px) {
       width: 450px;
       .chat-page {
-        width: 55%;
+        // width: 55%;
       }
     }
 
@@ -1158,11 +1158,12 @@
 
               @media (max-width: 450px) {
                 max-height: 390px;
-                margin-block-end: 1.75em;
+                margin-block-end: 2.75em;
               }
 
               @media (min-width: 601px) {
-                max-height: 500px;
+                max-height: 550px;
+                min-width: 450px;
 
                 .message {
                   .message-text {
@@ -1177,7 +1178,11 @@
             @media (max-width: 450px) {
               position: relative;
               bottom: 48px;
-
+              .input-container {
+                textarea {
+                  max-height: 2.75em;
+                }
+              }
               .message-options {
                 padding: 0.5em 0 !important;
               }
@@ -1187,10 +1192,22 @@
       }
     }
   }
-  .user-info{
+  .user-info {
     @media (min-width: 1250) {
       display: none;
     }
+  }
+}
+
+.chat-box-wrapper
+  .chat-box
+  .chat-box-container
+  .chat-container
+  .message-form
+  .message-container {
+  @media (min-width: 601px) {
+    max-height: 550px;
+    min-width: 450px;
   }
 }
 

@@ -4,8 +4,8 @@
   left: 2em;
   display: inline-block;
   z-index: 10;
-  margin: 0 1em;
-  border-block-end: 1px solid $clrSecondary3;
+  //margin: 0 1em;
+  //border-block-end: 1px solid $clrSecondary3;
   flex-grow: 1;
 
   &.chat-page {
@@ -17,7 +17,7 @@
 
   .chat-box {
     color: $clrPrimary2;
-    font-family: "macan-regular";
+    font-family: 'macan-regular';
     background: rgba(34, 35, 37, 0.5);
     z-index: 30;
     box-shadow: 0 0 2.17382px rgba(0, 0, 0, 0.049),
@@ -26,7 +26,7 @@
 
     border-radius: 1.5em;
 
-    &.chat-page{
+    &.chat-page {
       box-shadow: none;
     }
 
@@ -102,7 +102,7 @@
     }
     .chat-box-container {
       background-color: $clrPrimary1;
-      padding: 0 1.5em;
+      padding: 0 0.5em;
       height: 87%;
       border-radius: 0 0 1.5em 1.5em;
       border-block-end: 1px solid $clrPrimary1;
@@ -119,6 +119,25 @@
           .message-container {
             overflow-y: auto;
             margin-block-start: auto;
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+            transition: scrollbar-color 0.3s ease-in-out;
+
+            &.chat-page {
+              max-height: 670px;
+            }
+
+            &::-webkit-scrollbar {
+              width: em(6px);
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: transparent;
+            }
+
+            &:hover::-webkit-scrollbar-thumb {
+              background-color: rgba(0, 0, 0, 0.3);
+            }
 
             .message {
               width: fit-content;
@@ -130,10 +149,6 @@
               &:first-child {
                 margin-top: 0.5em;
               }
-
-              // &:last-child {
-              //   margin-bottom: 0.5em;
-              // }
 
               .message-body {
                 grid-template-columns: 1fr 24px;
@@ -245,7 +260,7 @@
             }
 
             .send-message-button {
-              font-family: "macan-bold";
+              font-family: 'macan-bold';
               gap: 0.5em;
               padding: 0.625em 1.05em;
               line-height: 1.5em;
