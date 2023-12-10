@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   display: flex;
+  padding: 2em 0;
 
   &.desk{
     position: relative;
@@ -20,7 +21,6 @@
       justify-content: space-between;
       align-items: center;
       background-color: $clrPrimary1;
-      border-block-end: 1px solid $clrSecondary4;
       color: $clrPrimary2;
       font-weight: 700;
 
@@ -39,20 +39,23 @@
     }
 
     .chat-body {
-      height: 70vh;
+      height: 74vh;
       width: 100%;
       // height: 100%;
-      background-color: $clrSecondary2;
 
       .chat {
         position: relative;
         width: 100%;
-        padding: 0.5em 1em;
-        background-color: $clrSecondary3;
-        border: 1px solid clrSecondary4;
+        padding: 1em;
+        background-color: $clrSecondary1;
         display: flex;
         align-items: center;
         cursor: pointer;
+        margin-block-end: 0.5em;
+
+        &:last-child{
+          margin: 0;
+        }
 
         img {
           width: 3.5em;
@@ -104,6 +107,37 @@
           width: 1em;
           fill: $clrSecondary7;
         }
+      }
+    }
+  }
+  .unselected-chat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid $clrSecondary3;
+    border-radius: 1.5em;
+    margin-inline-start: 1em;
+    .info-message{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      color: $clrSecondary8;
+      img{
+        height: 200px;
+      }
+      .title{
+        font-size: 1.5em;
+        font-weight: 600;
+        line-height: 32px;
+        margin-block-start: 32px;
+        margin-block-end: 10px;
+      }
+      .subtitle{
+        width: 21em;
+        text-align: center;
       }
     }
   }

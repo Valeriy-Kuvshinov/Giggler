@@ -164,8 +164,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
     <>
       {chatState && (
         <div className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''}`}>
-          <aside className="chat-box">
-            <div className="chat-box-container grid">
+          <aside className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}>
               <section className="user-info-bar flex row">
                 <div className="avatar">
                   {buyer ? (
@@ -190,11 +189,14 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
                       </span>
                     </span>
                   </span>
-                  <span className="remove" onClick={() => setChatState(false)}>
+                  {isFrom !== 'chatPage' && (
+                    <span className="remove" onClick={() => setChatState(false)}>
                     <SvgIcon iconName={'remove'} />
-                  </span>
+                    </span>)
+                  }
                 </div>
               </section>
+            <div className="chat-box-container grid">
 
               <section className="chat-container grid">
                 <div className="message-form grid">

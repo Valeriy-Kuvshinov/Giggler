@@ -5,99 +5,107 @@
   display: inline-block;
   z-index: 10;
   width: fit-content;
-  
+  margin-inline-start: 1em;
+
   &.chat-page {
     position: relative;
     bottom: 0;
     left: 0;
+    border-radius: 1.5em;
   }
 
   .chat-box {
     color: $clrPrimary2;
-    font-family: 'macan-regular';
+    font-family: "macan-regular";
     background: rgba(34, 35, 37, 0.5);
     z-index: 30;
     box-shadow: 0 0 2.17382px rgba(0, 0, 0, 0.049),
       0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
       0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
-    .chat-box-container {
+    border-radius: 1.5em;
+
+    &.chat-page{
+      box-shadow: none;
+    }
+
+    .user-info-bar {
+      align-items: center;
+      padding: 1.5em;
+      height: fit-content;
+      position: relative;
       background-color: $clrPrimary1;
-      padding: 0 1.5em;
-      height: 100%;
-      grid-template-rows: auto 1fr;
+      border-bottom: 1px solid $clrSecondary3;
+      border-radius: 1.5em 1.5em 0 0;
 
-      .user-info-bar {
-        align-items: center;
-        padding: 1.5em 0;
-        height: fit-content;
+      .avatar {
+        background-color: $clrSecondary4;
         position: relative;
-        background-color: $clrPrimary1;
-        border-bottom: 1px solid $clrSecondary3;
+        min-width: 48px;
+        height: 48px;
+        border-radius: 50%;
 
-        .avatar {
-          background-color: $clrSecondary4;
-          position: relative;
-          min-width: 48px;
-          height: 48px;
+        img {
           border-radius: 50%;
+          object-fit: cover;
+        }
 
-          img {
-            border-radius: 50%;
-            object-fit: cover;
-          }
+        .status-dot {
+          position: absolute;
+          bottom: em(-2px);
+          right: em(-2px);
+          width: 1em;
+          height: 1em;
+          background-color: $bgColor3;
+          border: em(2px) solid $clrSecondary3;
+          border-radius: 50%;
+        }
+      }
 
-          .status-dot {
-            position: absolute;
-            bottom: em(-2px);
-            right: em(-2px);
-            border-width: em(2px);
-            width: 1em;
-            height: 1em;
-            background-color: $bgColor3;
-            border-color: $clrPrimary1;
+      .owner-info {
+        width: 100%;
+        justify-content: space-between;
+        padding-inline-start: em(16px);
+
+        .message {
+          font-weight: 600;
+          color: $clrSecondary8;
+          font-size: em(20px);
+        }
+
+        .response-time {
+          font-size: 0.75em;
+          color: $clrSecondary6;
+
+          .dot {
+            align-self: center;
             border-radius: 50%;
-            border-style: solid;
+            height: 0.2em;
+            width: 0.2em;
+            margin: 0 0.5em;
+            background-color: $clrSecondary6;
           }
         }
 
-        .owner-info {
-          width: 100%;
-          justify-content: space-between;
-          padding-inline-start: em(16px);
+        .remove {
+          align-self: flex-start;
+          cursor: pointer;
 
-          .message {
-            font-weight: 600;
-            color: $clrSecondary8;
-            font-size: em(18px);
-          }
-
-          .response-time {
-            font-size: 0.75em;
-            color: $clrSecondary6;
-
-            .dot {
-              align-self: center;
-              border-radius: 50%;
-              height: 0.2em;
-              width: 0.2em;
-              margin: 0 0.5em;
-              background-color: $clrSecondary6;
-            }
-          }
-
-          .remove {
-            align-self: flex-start;
-            cursor: pointer;
-
-            svg {
-              fill: $clrSecondary6;
-              width: 1em;
-              height: 1em;
-            }
+          svg {
+            fill: $clrSecondary6;
+            width: 1em;
+            height: 1em;
           }
         }
       }
+    }
+    .chat-box-container {
+      background-color: $clrPrimary1;
+      padding: 0 1.5em;
+      height: 87%;
+      border-radius: 0 0 1.5em 1.5em;
+      border-block-end: 1px solid $clrPrimary1;
+      // grid-template-rows: auto 1fr;
 
       .chat-container {
         grid-template-rows: 1fr auto;
@@ -122,9 +130,9 @@
                 margin-top: 0.5em;
               }
 
-              &:last-child {
-                margin-bottom: 0.5em;
-              }
+              // &:last-child {
+              //   margin-bottom: 0.5em;
+              // }
 
               .message-body {
                 grid-template-columns: 1fr 24px;
@@ -236,7 +244,7 @@
             }
 
             .send-message-button {
-              font-family: 'macan-bold';
+              font-family: "macan-bold";
               gap: 0.5em;
               padding: 0.625em 1.05em;
               line-height: 1.5em;
