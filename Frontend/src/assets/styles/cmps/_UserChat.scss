@@ -6,6 +6,7 @@
   z-index: 10;
   margin-inline-start: 1em;
   border-block-end: 1px solid $clrSecondary3;
+  flex-grow: 1;
 
   &.chat-page {
     position: relative;
