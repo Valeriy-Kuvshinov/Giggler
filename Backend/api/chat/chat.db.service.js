@@ -16,7 +16,6 @@ export const chatService = {
 async function query(filterBy = {}) {
   try {
     const criteria = _buildCriteria(filterBy)
-    console.log('Criteria: ', criteria)
     const collection = await dbService.getCollection(CHATS_COLLECTION)
     const chats = await collection.find(criteria).toArray()
     console.log(chats)
@@ -27,35 +26,15 @@ async function query(filterBy = {}) {
   }
 }
 
-// async function getByUsersId(usersId) {
-//   try {
-//     const { buyersId, sellersId } = usersId
-
-//     const pipeline = [
-//       {
-//         $match: {
-//           buyersId: buyersId,
-//           sellersId: sellersId,
-//         },
-//       },
-//     ]
-
-//     const collection = await dbService.getCollection(CHATS_COLLECTION)
-//     const chat = await collection.aggregate(pipeline).toArray()
-//     return chat[0]
-//   } catch (err) {
-//     loggerService.error(`while finding chat ${usersId}`, err)
-//     throw err
-//   }
-// }
-async function getByUsersId(usersId) {
-  const { buyerId, sellerId } = usersId
+async function getByUsersId(filterBy) {
+  const { buyerId, sellerId } = filterBy
   try {
+    const criteria = _buildCriteriaCurrChat(filterBy)
     const collection = await dbService.getCollection(CHATS_COLLECTION)
-    const chat = await collection.findOne({ sellerId, buyerId })
+    const chat = await collection.findOne(criteria)
     if (!chat) {
       loggerService.error(`Chat not found with sellerId: ${sellerId} buyerId: ${buyerId}`)
-      //throw new Error(`Chat not found with id: ${usersId}`)
+      throw new Error(`Chat not found with sellerId: ${sellerId} buyerId: ${buyerId}`)
     }
     return chat
   } catch (err) {
@@ -120,6 +99,21 @@ function _buildCriteria(filterBy) {
     criteria.$or = [
       { 'buyer._id': userId },
       { 'seller._id': userId },
+    ]
+  }
+
+  return criteria
+}
+
+
+function _buildCriteriaCurrChat(filterBy) {
+  const criteria = {}
+  const { buyerId, sellerId } = filterBy
+
+  if (filterBy) {
+    criteria.$and = [
+      { 'buyer._id': buyerId },
+      { 'seller._id': sellerId },
     ]
   }
 

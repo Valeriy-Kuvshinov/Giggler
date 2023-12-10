@@ -12,6 +12,7 @@ import {
   removeIsTyping,
   getChat,
   loadEmptyChat,
+  clearCurrChat,
 } from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
 
@@ -32,14 +33,15 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
 
   useEffect(() => {
     loadsChat()
-  }, [])
+  }, [owner, loggedinUser])
 
   async function loadsChat() {
     let newChat
     try {
       newChat = await getChatByUsers({
         sellerId: owner._id,
-        buyerId: isBuyer ? loggedinUser._id : buyer._id,
+        // buyerId: isBuyer ? loggedinUser._id : buyer._id,
+        buyerId: buyer._id,
       })
     } catch (err) {
       console.log('Problem occurred whe getting new chat: ', err)
@@ -65,6 +67,8 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
       socketService.off('chat_add_typing', addTypingUser)
       socketService.off('chat_remove_typing', removeTypingUser)
       clearTimeout(timeoutId.current)
+      setChatState(false)
+      clearCurrChat()
     }
   }, [])
 
@@ -109,6 +113,7 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
 
     try {
       if (currentChat?.messages?.length) {
+
         await saveChat({
           ...currentChat,
           messages: [...currentChat.messages, newMessage],

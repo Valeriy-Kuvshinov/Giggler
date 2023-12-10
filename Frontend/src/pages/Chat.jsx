@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import SvgIcon from '../cmps/SvgIcon'
 import { Loader } from '../cmps/Loader'
 import { useEffect, useState } from 'react'
-import { embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
+import { clearChats, embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
 import { useDeviceType } from '../customHooks/DeviceTypeContext'
 // import { useHistory } from 'react-router-dom'
@@ -16,9 +16,13 @@ export function Chat() {
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
   // console.log(chats)
-  useEffect(() => {
-    if (chats.length < 1) chatsLoading()
-  }, [])
+    useEffect(() => {
+      if (chats.length < 1) chatsLoading()
+
+      return () => {
+        clearChats()
+      }
+    }, [])
 
   async function chatsLoading() {
     try {
