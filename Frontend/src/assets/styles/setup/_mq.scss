@@ -592,16 +592,16 @@
         &.desktop {
           .user-order {
             .order-contents {
-              @media(max-width: 1400px) {
-                grid-template-columns: 300px 150px 125px 100px 55px 6em;
+              @media(max-width: 1200px) {
+                grid-template-columns: 350px 150px 125px 100px 55px 6em;
               }
 
               @media(max-width: 1000px) {
                 grid-template-columns: 280px 150px 125px 100px 55px 6em;
               }
 
-              @media(min-width: 1401px) {
-                grid-template-columns: 600px 150px 125px 100px 55px 6em;
+              @media(min-width: 1201px) {
+                grid-template-columns: 500px 180px 125px 100px 55px 6em;
               }
             }
           }
@@ -1024,32 +1024,34 @@
       &.mobile,
       &.mini-tablet {
         @media(max-width: 480px) {
-          .order-image {
-            height: 120px;
-          }
 
-          .order-info {
-
-            .order-id,
-            .category-name,
-            .seller-name,
-            .order-status {
-              span {
-                &:first-child {
-                  display: none;
-                }
-
-                text-overflow: ellipsis;
-                overflow: hidden;
+          .order-id,
+          .category-name,
+          .seller-name,
+          .order-status {
+            span {
+              &:first-child {
+                display: none;
               }
+
+              text-overflow: ellipsis;
+              overflow: hidden;
             }
           }
         }
+      }
 
-        @media(min-width: 481px) {
-          .order-image {
-            height: 165px;
-          }
+      &.desktop {
+        @media(max-width: 1200px) {
+          grid-template-columns: 60px 380px 120px 150px 85px auto;
+        }
+
+        @media(max-width: 1000px) {
+          grid-template-columns: 60px 280px 120px 150px 85px auto;
+        }
+
+        @media(min-width: 1201px) {
+          grid-template-columns: 60px 380px 120px 150px 85px auto;
         }
       }
     }
@@ -1208,6 +1210,14 @@
 
     .invoice-modal {
       .invoice-header {
+        h1 {
+          span {
+            i {
+              margin-bottom: 0.25em;
+            }
+          }
+        }
+
         h3 {
           font-size: 18px;
           width: 160px;

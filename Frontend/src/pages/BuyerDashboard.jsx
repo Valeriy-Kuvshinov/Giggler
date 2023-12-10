@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { useDeviceType } from "../customHooks/DeviceTypeContext.jsx"
 
 import { orderService } from "../services/order.service.js"
 import { loadOrders } from "../store/order.actions.js"
@@ -18,6 +19,8 @@ export function BuyerDashboard() {
 
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector((storeState) => storeState.orderModule.orders)
+
+    const deviceType = useDeviceType()
 
     useEffect(() => {
         async function fetchOrders() {
@@ -100,7 +103,8 @@ export function BuyerDashboard() {
 
     return (
         <main className="buyer-dashboard-page full flex column">
-            <section className="buyer-orders-list layout-row flex column">
+            <h3>Manage Your Orders</h3>
+            <section className={`buyer-orders-list ${deviceType} layout-row flex column`}>
                 {orders.map(order => order.buyerId === loggedInUser._id &&
                     <BuyerOrder
                         key={order._id}

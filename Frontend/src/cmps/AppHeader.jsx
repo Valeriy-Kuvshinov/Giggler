@@ -36,7 +36,8 @@ export function AppHeader() {
 
   const categories = category
   const isHomePage = useLocation().pathname === '/'
-  const isDashboardPage = useLocation().pathname === '/dashboard'
+  const isDashboardSellerPage = useLocation().pathname === '/dashboard'
+  const isDashboardBuyerPage = useLocation().pathname === '/orders'
   const isGigPage = useLocation().pathname.startsWith('/gig/')
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
@@ -47,7 +48,7 @@ export function AppHeader() {
   const navBarStyles = {
     borderBottom: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
     borderTop: headerStage >= 2 ? '1px solid #e4e5e7' : 'none',
-    display: isDashboardPage ? 'none' : '',
+    display: (isDashboardSellerPage || isDashboardBuyerPage) ? 'none' : '',
   }
   const joinButtonStyles = {
     color: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',

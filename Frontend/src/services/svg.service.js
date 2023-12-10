@@ -447,9 +447,19 @@ const ICONS = {
     <path d="M17.486,20.865a4.664,4.664,0,0,1-2.9-.975L1.218,9.237A1.25,1.25,0,1,1,2.777,7.282L16.141,17.935a2.325,2.325,0,0,0,2.7-.007L32.04,7.287a1.249,1.249,0,1,1,1.569,1.945L20.414,19.873A4.675,4.675,0,0,1,17.486,20.865Z"/>
   </svg>`,
 
-  receiptIcon: `<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#000" fill="none">
-    <path d="M52.35 57.08h-40.7v-50a.11.11 0 0 1 .16-.08l4.11 3.85a.11.11 0 0 0 .13 0L19.35 7a.09.09 0 0 1 .12 0l3.72 3.89a.11.11 0 0 0 .13 0L26.61 7a.09.09 0 0 1 .13 0l2.86 3.87a.1.1 0 0 0 .14 0L33 7a.09.09 0 0 1 .13 0l2.69 3.85a.1.1 0 0 0 .14 0L38.86 7A.1.1 0 0 1 39 7l2.85 3.85a.1.1 0 0 0 .14 0L44.7 7a.09.09 0 0 1 .15 0l2.25 3.84a.09.09 0 0 0 .13 0L52.2 7a.1.1 0 0 1 .15.09ZM19.42 43.04h26.6m-26.6 6.25h26.6" stroke-linecap="round"/>
-    <path d="M37.87 21.74a5.62 5.62 0 0 0-5.28-3.4c-4.76 0-4.94 3.4-4.94 3.4s-.72 4.2 5.11 4.65c6.06.47 5.11 4.65 5.11 4.65s-.62 3.64-5.11 3.87-5.89-4.49-5.89-4.49m5.72-15.11V38.4"/>
+  receiptIcon: `<svg width="48" height="48" viewBox="-6.97 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 65" stroke="#333" stroke-width="2">
+      <path data-name="Path 76" d="m655.055 316-.029 62-4-4-4 4-4-4-4 4-4-4-4 4-4-4-4 4-4-4-4 4-4-4-4.026 4 .027-62Z" stroke-linecap="round" stroke-linejoin="round" transform="translate(-606 -315)"/>
+      <path data-name="Line 85" fill="none" stroke-miterlimit="10" d="M642 364h-23" transform="translate(-606 -315)"/>
+      <path data-name="Line 86" fill="none" stroke-miterlimit="10" d="M642 326h-23" transform="translate(-606 -315)"/>
+      <g data-name="Group 64" stroke-miterlimit="10">
+        <path data-name="Line 87" fill="#fff" d="M631 332v25" transform="translate(-606 -315)"/>
+        <g data-name="Group 63" fill="none">
+          <path data-name="Path 77" d="M631.092 344.5a4.753 4.753 0 1 1 4.908-4.75" transform="translate(-606 -315)"/>
+          <path data-name="Path 78" d="M631.092 344.5a4.753 4.753 0 1 1-4.908 4.75" transform="translate(-606 -315)"/>
+        </g>
+      </g>
+    </g>
   </svg>`,
 
   filterIcon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
