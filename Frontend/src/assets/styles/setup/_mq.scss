@@ -1090,6 +1090,7 @@
   @media (min-width: 601px) {
     width: 55%;
   }
+
   @media (max-width: 600px) {
     width: 100%;
   }
@@ -1210,14 +1211,6 @@
 
     .invoice-modal {
       .invoice-header {
-        h1 {
-          span {
-            i {
-              margin-bottom: 0.25em;
-            }
-          }
-        }
-
         h3 {
           font-size: 18px;
           width: 160px;
