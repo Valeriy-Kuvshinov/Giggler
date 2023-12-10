@@ -4,8 +4,8 @@
   left: 2em;
   display: inline-block;
   z-index: 10;
-  width: fit-content;
   margin-inline-start: 1em;
+  border-block-end: 1px solid $clrSecondary3;
 
   &.chat-page {
     position: relative;
@@ -35,7 +35,7 @@
       height: fit-content;
       position: relative;
       background-color: $clrPrimary1;
-      border-bottom: 1px solid $clrSecondary3;
+      border-block-end: 1px solid $clrSecondary3;
       border-radius: 1.5em 1.5em 0 0;
 
       .avatar {

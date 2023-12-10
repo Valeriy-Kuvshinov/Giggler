@@ -51,7 +51,7 @@ export function Chat() {
 
   return (
     <main
-      className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`}
+      className={`chats layout-row ${deviceType !== 'mobile' ? 'desk' : ''}`}
     >
       <main className="chats-nav">
         <section className="chat-header b">
@@ -137,8 +137,8 @@ export function Chat() {
       <div className='unselected-chat'>
         <div className='info-message'>
         <img src='https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg'/>
-        <span className='title'>Ah, a fresh new inbox</span>
-          <span className='subtitle'>You haven’t started any conversations yet, but when you do, you’ll find them here.</span>
+        <span className='title'>You haven’t selected a chat</span>
+          <span className='subtitle'>Please select a chat to continue a conversation</span>
         </div>
       </div>
       )}
@@ -151,7 +151,7 @@ export function Chat() {
         </div>
       </div>
       )}
-      {chatProps && chatState && deviceType === 'desktop' && (
+      {chatProps && chatState && deviceType !== 'mobile' && (
         <UserChat
           owner={chatProps.owner}
           chatState={chatState}
@@ -161,6 +161,7 @@ export function Chat() {
           isFrom={isFrom}
         />
       )}
+      
       {deviceType === 'desktop' && chatProps && (
         <div>seller details</div>
       )}
