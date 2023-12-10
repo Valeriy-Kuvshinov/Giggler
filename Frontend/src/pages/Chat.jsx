@@ -143,6 +143,5 @@ export function Chat() {
           isFrom={isFrom}
         />
       )}
-    </main>
-  )
+    </main>)
 }
