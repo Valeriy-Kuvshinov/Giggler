@@ -11,7 +11,7 @@ import { GigFilter } from '../cmps/GigFilter.jsx'
 import { loadGigs, setFilter } from '../store/gig.actions.js'
 import { gigService } from '../services/gig.service.js'
 
-export function GigIndex({ onMobileFilter }) {
+export function GigIndex({ onMobileFilter, onFooterUpdate }) {
   const { gigs } = useSelector((storeState) => storeState.gigModule)
   const isLoading = useSelector(storeState => storeState.gigModule.isLoading)
   const [searchParams, setSearchparams] = useSearchParams()
@@ -40,6 +40,10 @@ export function GigIndex({ onMobileFilter }) {
     }
   }
 
+  useEffect(() => {
+    if (!isLoading) onFooterUpdate()
+  }, [isLoading, onFooterUpdate])
+
   function loadSetParams() {
     const newQueryParam = {}
     Object.keys(filterBy).map((key) => {
@@ -50,7 +54,7 @@ export function GigIndex({ onMobileFilter }) {
 
   function setMenuFilter(event, selectedOption) {
     event.preventDefault()
-    let updatedFilterBy = { ...filterBy , page: 1}
+    let updatedFilterBy = { ...filterBy, page: 1 }
 
     switch (isRenderedChoice[1]) {
       case 'delivery_time':
@@ -156,7 +160,6 @@ export function GigIndex({ onMobileFilter }) {
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
 
-
   return (
     <main
       className="gig-index flex column full"
@@ -176,7 +179,7 @@ export function GigIndex({ onMobileFilter }) {
       />
       {currentGigs.length ? (
         <>
-          <GigList gigs={currentGigs}  isLoading={isLoading}/>
+          <GigList gigs={currentGigs} isLoading={isLoading} />
           <Pagination
             currentPage={filterBy.page}
             totalPages={totalPages}

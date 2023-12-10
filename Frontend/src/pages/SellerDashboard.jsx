@@ -1,9 +1,3 @@
-// import {
-//     Chart as ChartJS, ArcElement, LinearScale, BarElement, CategoryScale
-//     , LineController, LineElement, PointElement, Tooltip, Legend, Filler
-// } from 'chart.js'
-// ChartJS.register(ArcElement, CategoryScale, LineController, LinearScale
-//     , LineElement, PointElement, BarElement, Tooltip, Legend, Filler)
 const noResultsImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539881/Giggler/other/bzqrborygalzssnmogax.png'
 
 import { useSelector } from 'react-redux'
@@ -16,7 +10,7 @@ import { SellerSummary } from '../cmps/dashboardCmps/SellerSummary.jsx'
 
 import { loadOrders } from '../store/order.actions.js'
 
-export function SellerDashboard() {
+export function SellerDashboard({ onFooterUpdate }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const orders = useSelector(storeState => storeState.orderModule.orders)
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
@@ -33,6 +27,10 @@ export function SellerDashboard() {
         }
         fetchOrders()
     }, [loggedInUser])
+
+    useEffect(() => {
+        if (!isLoading) onFooterUpdate()
+    }, [isLoading, onFooterUpdate])
 
     const displayedOrders = orders.filter(order => order.sellerId === loggedInUser._id)
 

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-import { UserEditModal } from './UserEditModal.jsx'
-import { updateUser } from '../store/user.actions.js'
-import SvgIcon from './SvgIcon'
-import { loadReviews } from '../store/review.actions'
-import { utilService } from '../services/util.service'
+import { loadReviews } from '../store/review.actions.js'
+import { utilService } from '../services/util.service.js'
 
-export function UserInfo({ watchedUser, loggedinUser }) {
+import { UserEditModal } from './UserEditModal.jsx'
+import SvgIcon from './SvgIcon.jsx'
+
+export function UserInfo({ watchedUser }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)

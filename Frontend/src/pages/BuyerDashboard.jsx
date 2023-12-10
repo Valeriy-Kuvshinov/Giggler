@@ -1,5 +1,8 @@
+const noResultsImg = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539881/Giggler/other/bzqrborygalzssnmogax.png'
+
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
+import { Link } from 'react-router-dom'
 import { useDeviceType } from "../customHooks/DeviceTypeContext.jsx"
 
 import { orderService } from "../services/order.service.js"
@@ -10,7 +13,7 @@ import { BuyerOrder } from "../cmps/BuyerOrder.jsx"
 import { InvoiceModal } from "../cmps/InvoiceModal.jsx"
 import { ReviewSubmit } from "../cmps/ReviewSubmit.jsx"
 
-export function BuyerDashboard() {
+export function BuyerDashboard({ onFooterUpdate }) {
     const [orderDetails, setOrderDetails] = useState({})
     const [selectedOrder, setSelectedOrder] = useState(null)
     const [selectedGig, setSelectedGig] = useState(null)
@@ -77,6 +80,10 @@ export function BuyerDashboard() {
             (orderDetails[order._id] && !orderDetails[order._id].isLoading)
     )
 
+    useEffect(() => {
+        if (allDetailsLoaded) onFooterUpdate()
+    }, [allDetailsLoaded, onFooterUpdate])
+
     function onClickReceipt(event, order) {
         event.stopPropagation()
         setSelectedOrder(order)
@@ -99,7 +106,22 @@ export function BuyerDashboard() {
         setIsRevieweModalOpen(false)
     }
 
+    const displayedOrders = orders.filter(order => order.buyerId === loggedInUser._id)
+
     if (!allDetailsLoaded) return <Loader />
+
+    if (displayedOrders.length === 0) {
+        return (
+            <main className="seller-dashboard-page full flex column">
+                <div className="no-results">
+                    <h3>Whoops, you haven't ordered anything yet!</h3>
+                    <img src={noResultsImg} alt="no results" />
+                    <p>Perhaps your next service is one click away from discovery!</p>
+                    <Link to={`/explore`}>Explore the Market</Link>
+                </div>
+            </main>
+        )
+    }
 
     return (
         <main className="buyer-dashboard-page full flex column">

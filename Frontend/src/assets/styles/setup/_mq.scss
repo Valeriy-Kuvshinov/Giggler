@@ -1037,15 +1037,15 @@
 
       &.desktop {
         @media (max-width: 1200px) {
-          grid-template-columns: 60px 380px 120px 150px 85px auto;
+          grid-template-columns: 70px 330px 150px 120px 90px auto;
         }
 
         @media (max-width: 1000px) {
-          grid-template-columns: 60px 280px 120px 150px 85px auto;
+          grid-template-columns: 70px 260px 130px 120px 90px auto;
         }
 
         @media (min-width: 1201px) {
-          grid-template-columns: 60px 380px 120px 150px 85px auto;
+          grid-template-columns: 70px 480px 180px 120px 100px auto;
         }
       }
     }
@@ -1084,10 +1084,12 @@
   @media (min-width: 601px) {
     padding: 2em 0;
   }
+
   @media (max-width: 600px) {
     padding: 0;
     padding-block-end: 49px;
   }
+
   .chats-nav {
     @media (min-width: 601px) {
       width: 420px;
@@ -1101,6 +1103,7 @@
     @media (min-width: 601px) {
       display: flex;
     }
+
     @media (max-width: 600px) {
       display: none;
     }
@@ -1109,6 +1112,7 @@
   .chat-box-wrapper {
     @media (min-width: 601px) {
       width: 450px;
+
       .chat-page {
         // width: 55%;
       }
@@ -1143,6 +1147,7 @@
         @media (max-width: 600px) {
           padding-block-end: 24px;
         }
+
         .chat-container {
           .message-form {
             .message-container {
@@ -1197,269 +1202,269 @@
       display: none;
     }
   }
-}
 
-.chat-box-wrapper
-  .chat-box
-  .chat-box-container
-  .chat-container
-  .message-form
-  .message-container {
-  @media (min-width: 601px) {
-    max-height: 550px;
-    min-width: 450px;
-  }
-}
-
-// Footer media query
-
-.desktop-footer {
-  @media (max-width: 1400px) {
-    padding: 1em 2em;
+  .chat-box-wrapper
+    .chat-box
+    .chat-box-container
+    .chat-container
+    .message-form
+    .message-container {
+    @media (min-width: 601px) {
+      max-height: 550px;
+      min-width: 450px;
+    }
   }
 
-  @media (max-width: 800px) {
-    flex-direction: column;
-    gap: 1em;
+  // Footer media query
 
-    .footer-part {
+  .desktop-footer {
+    @media (max-width: 1400px) {
+      padding: 1em 2em;
+    }
+
+    @media (max-width: 800px) {
       flex-direction: column;
       gap: 1em;
-      align-items: center;
-      font-weight: 400;
-    }
-  }
 
-  @media (min-width: 801px) {
-    flex-direction: row;
-
-    .footer-part {
-      flex-direction: row;
-      gap: 2em;
-      align-items: baseline;
-      font-weight: 400;
-    }
-  }
-
-  @media (min-width: 1401px) {
-    padding: 1em 0em;
-  }
-}
-
-// Invoice, Review, Sharing a gig modals media query
-
-.modal-wrapper {
-  @media (max-width: 480px) {
-    .invoice-modal,
-    .review-modal,
-    .share-gig-modal {
-      width: 100%;
-    }
-
-    .invoice-modal {
-      .invoice-header {
-        h3 {
-          font-size: 18px;
-          width: 160px;
-        }
-
-        button {
-          i {
-            width: 36px;
-            height: 36px;
-          }
-        }
-      }
-
-      .invoice-body {
-        .info-div {
-          flex-direction: row;
-          gap: 0.5em;
-          padding: 0.5em 0 0.5em 0;
-        }
-
-        .body-start {
-          grid-template-rows: 1fr 1fr;
-
-          .info-div {
-            &:nth-of-type(1) {
-              grid-row: 1;
-            }
-
-            &:nth-of-type(2) {
-              grid-row: 2;
-            }
-          }
-        }
-
-        .body-middle {
-          grid-template-rows: auto auto 1fr 1fr 1fr;
-
-          .info-div {
-            &:nth-of-type(1) {
-              grid-row: 1 / 2;
-            }
-
-            &:nth-of-type(2) {
-              grid-row: 3;
-            }
-
-            &:nth-of-type(3) {
-              grid-row: 4;
-            }
-
-            &:nth-of-type(4) {
-              grid-row: 5;
-            }
-          }
-        }
-
-        .body-end {
-          grid-template-rows: repeat(3, 1fr);
-
-          .info-div {
-            &:nth-of-type(1) {
-              grid-row: 1;
-            }
-
-            &:nth-of-type(2) {
-              grid-row: 2;
-            }
-
-            &:nth-of-type(3) {
-              grid-row: 3;
-            }
-          }
-        }
-      }
-    }
-
-    .review-modal {
-      .reviewed-gig {
-        .title-user-info {
-          h3,
-          h4 {
-            font-size: 16px;
-          }
-        }
-
-        .gig-img {
-          width: 120px;
-          height: 120px;
-        }
-      }
-    }
-  }
-
-  @media (min-width: 481px) {
-    .invoice-modal,
-    .review-modal,
-    .share-gig-modal {
-      width: 70vw;
-    }
-
-    .invoice-modal {
-      .invoice-header {
-        h3 {
-          font-size: 21px;
-          width: fit-content;
-        }
-
-        button {
-          i {
-            width: 25px;
-            height: 25px;
-          }
-        }
-      }
-
-      .invoice-body {
+      .footer-part {
+        flex-direction: column;
         gap: 1em;
+        align-items: center;
+        font-weight: 400;
+      }
+    }
 
-        h2 {
-          border-bottom: 1px solid $clrSecondary5;
-        }
+    @media (min-width: 801px) {
+      flex-direction: row;
 
-        .info-div {
-          flex-direction: column;
-        }
+      .footer-part {
+        flex-direction: row;
+        gap: 2em;
+        align-items: baseline;
+        font-weight: 400;
+      }
+    }
 
-        .body-start {
-          grid-template-columns: 1fr 1fr;
-          gap: 1em;
+    @media (min-width: 1401px) {
+      padding: 1em 0em;
+    }
+  }
 
-          .info-div {
-            &:nth-of-type(1) {
-              grid-column: 1;
-            }
+  // Invoice, Review, Sharing a gig modals media query
 
-            &:nth-of-type(2) {
-              grid-column: 2;
+  .modal-wrapper {
+    @media (max-width: 480px) {
+      .invoice-modal,
+      .review-modal,
+      .share-gig-modal {
+        width: 100%;
+      }
+
+      .invoice-modal {
+        .invoice-header {
+          h3 {
+            font-size: 18px;
+            width: 160px;
+          }
+
+          button {
+            i {
+              width: 36px;
+              height: 36px;
             }
           }
         }
 
-        .body-middle {
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: 1fr 1fr;
-          gap: 1em;
-
+        .invoice-body {
           .info-div {
-            &:nth-of-type(1) {
-              grid-column: 1 / -1;
-              grid-row: 1;
-            }
+            flex-direction: row;
+            gap: 0.5em;
+            padding: 0.5em 0 0.5em 0;
+          }
 
-            &:nth-of-type(2) {
-              grid-column: 1;
-              grid-row: 2;
-            }
+          .body-start {
+            grid-template-rows: 1fr 1fr;
 
-            &:nth-of-type(3) {
-              grid-column: 2;
-              grid-row: 2;
-            }
+            .info-div {
+              &:nth-of-type(1) {
+                grid-row: 1;
+              }
 
-            &:nth-of-type(4) {
-              grid-column: 3;
-              grid-row: 2;
+              &:nth-of-type(2) {
+                grid-row: 2;
+              }
+            }
+          }
+
+          .body-middle {
+            grid-template-rows: auto auto 1fr 1fr 1fr;
+
+            .info-div {
+              &:nth-of-type(1) {
+                grid-row: 1 / 2;
+              }
+
+              &:nth-of-type(2) {
+                grid-row: 3;
+              }
+
+              &:nth-of-type(3) {
+                grid-row: 4;
+              }
+
+              &:nth-of-type(4) {
+                grid-row: 5;
+              }
+            }
+          }
+
+          .body-end {
+            grid-template-rows: repeat(3, 1fr);
+
+            .info-div {
+              &:nth-of-type(1) {
+                grid-row: 1;
+              }
+
+              &:nth-of-type(2) {
+                grid-row: 2;
+              }
+
+              &:nth-of-type(3) {
+                grid-row: 3;
+              }
             }
           }
         }
+      }
 
-        .body-end {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1em;
-
-          .info-div {
-            &:nth-of-type(1) {
-              grid-column: 1;
+      .review-modal {
+        .reviewed-gig {
+          .title-user-info {
+            h3,
+            h4 {
+              font-size: 16px;
             }
+          }
 
-            &:nth-of-type(2) {
-              grid-column: 2;
-            }
-
-            &:nth-of-type(3) {
-              grid-column: 3;
-            }
+          .gig-img {
+            width: 120px;
+            height: 120px;
           }
         }
       }
     }
 
-    .review-modal {
-      .reviewed-gig {
-        .title-user-info {
-          h3,
-          h4 {
+    @media (min-width: 481px) {
+      .invoice-modal,
+      .review-modal,
+      .share-gig-modal {
+        width: 70vw;
+      }
+
+      .invoice-modal {
+        .invoice-header {
+          h3 {
             font-size: 21px;
+            width: fit-content;
+          }
+
+          button {
+            i {
+              width: 25px;
+              height: 25px;
+            }
           }
         }
 
-        .gig-img {
-          width: 150px;
-          height: 120px;
+        .invoice-body {
+          gap: 1em;
+
+          h2 {
+            border-bottom: 1px solid $clrSecondary5;
+          }
+
+          .info-div {
+            flex-direction: column;
+          }
+
+          .body-start {
+            grid-template-columns: 1fr 1fr;
+            gap: 1em;
+
+            .info-div {
+              &:nth-of-type(1) {
+                grid-column: 1;
+              }
+
+              &:nth-of-type(2) {
+                grid-column: 2;
+              }
+            }
+          }
+
+          .body-middle {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr 1fr;
+            gap: 1em;
+
+            .info-div {
+              &:nth-of-type(1) {
+                grid-column: 1 / -1;
+                grid-row: 1;
+              }
+
+              &:nth-of-type(2) {
+                grid-column: 1;
+                grid-row: 2;
+              }
+
+              &:nth-of-type(3) {
+                grid-column: 2;
+                grid-row: 2;
+              }
+
+              &:nth-of-type(4) {
+                grid-column: 3;
+                grid-row: 2;
+              }
+            }
+          }
+
+          .body-end {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1em;
+
+            .info-div {
+              &:nth-of-type(1) {
+                grid-column: 1;
+              }
+
+              &:nth-of-type(2) {
+                grid-column: 2;
+              }
+
+              &:nth-of-type(3) {
+                grid-column: 3;
+              }
+            }
+          }
+        }
+      }
+
+      .review-modal {
+        .reviewed-gig {
+          .title-user-info {
+            h3,
+            h4 {
+              font-size: 21px;
+            }
+          }
+
+          .gig-img {
+            width: 150px;
+            height: 120px;
+          }
         }
       }
     }
