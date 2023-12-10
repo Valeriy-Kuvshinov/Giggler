@@ -16,7 +16,7 @@ export function SellerDashboard({ onFooterUpdate }) {
     const isLoading = useSelector(storeState => storeState.orderModule.isLoading)
 
     useEffect(() => {
-        const fetchOrders = async () => {
+        async function fetchOrders() {
             if (loggedInUser) {
                 try {
                     await loadOrders({ sellerId: loggedInUser._id })
