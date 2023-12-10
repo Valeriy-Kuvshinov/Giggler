@@ -142,6 +142,15 @@ export function Chat() {
         </div>
       </div>
       )}
+      { !chats && (
+      <div className='unselected-chat'>
+        <div className='info-message'>
+        <img src='https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg'/>
+        <span className='title'>Ah, a fresh new inbox</span>
+          <span className='subtitle'>You haven’t started any conversations yet, but when you do, you’ll find them here.</span>
+        </div>
+      </div>
+      )}
       {chatProps && chatState && deviceType === 'desktop' && (
         <UserChat
           owner={chatProps.owner}
