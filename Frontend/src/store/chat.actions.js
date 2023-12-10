@@ -26,6 +26,7 @@ export async function loadChats(user) {
     console.log('cannot load chats, heres why:', err)
   } finally {
     store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    console.log('I AM IN THE ACTION CHAT FINALLY LOADCHATS!');
   }
 }
 
@@ -51,6 +52,7 @@ export async function getChatByUsers(usersId) {
     throw err
   } finally {
     store.dispatch({ type: SET_IS_LOADING, isLoading: false })
+    console.log('I AM IN THE ACTION USERCHAT FINALLY GETCHATBYUSERS!');
   }
 }
 

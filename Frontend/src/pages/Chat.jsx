@@ -13,12 +13,12 @@ export function Chat() {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const deviceType = useDeviceType()
   // const history = useHistory()
-  const [chatState, setChatState] = useState(false)
+  const [chatState, setChatState] = useState(true)
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
   console.log(chats)
   useEffect(() => {
-    chatsLoading()
+    if (chats.length < 1) chatsLoading()
   }, [])
 
   async function chatsLoading() {
@@ -45,27 +45,35 @@ export function Chat() {
 
   function onOpenChat(props) {
     setChatProps(props)
-    setChatState(!chatState)
+    setChatState(true)
   }
 
-  // if (isLoading) return <Loader />
 
   return (
-    <main className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`>
+    <main
+      className={`chats layout-row ${deviceType === 'desktop' ? 'desk' : ''}`}
+    >
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
-          <span onClick={(event) => goBack(event)}>
+         {deviceType === 'mobile' && <span onClick={(event) => goBack(event)}>
             <SvgIcon iconName={'remove'} />
-          </span>
+          </span>}
         </section>
         <ul className="chat-body">
           {chats.length ? (
             <>
-              {chats.map((chat) => {
+              {chats.map((chat, index) => {
                 const { buyer, seller } = chat
                 const role =
                   loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
+                // if (index === 0 && deviceType !== 'mobile') {
+                //   onOpenChat({
+                //     owner: seller,
+                //     buyer: buyer,
+                //     gig: chat.gig,
+                //   })
+                // }
                 return (
                   <li
                     key={chat._id}
@@ -114,7 +122,8 @@ export function Chat() {
             <div>You have no chats opened</div>
           )}
         </ul>
-        {deviceType === 'mobile' && (
+        {console.log('chatState: ' ,chatState)}
+        {chatProps && chatState && deviceType === 'mobile' && (
           <UserChat
             owner={chatProps.owner}
             chatState={chatState}
@@ -124,7 +133,7 @@ export function Chat() {
           />
         )}
       </main>
-      {chatState && deviceType === 'desktop' && (
+      {chatProps && chatState && deviceType === 'desktop' && (
         <UserChat
           owner={chatProps.owner}
           chatState={chatState}

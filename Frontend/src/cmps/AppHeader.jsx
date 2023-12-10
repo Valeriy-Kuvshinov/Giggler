@@ -21,7 +21,7 @@ export function AppHeader() {
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
-  const [chatNotification, setChatNotification] = useState(false)
+  // const [chatNotification, setChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState('')
 
@@ -173,10 +173,6 @@ export function AppHeader() {
               <AsideMenu
                 loggedInUser={loggedinUser}
                 onClose={() => setshowAsideMenu(false)}
-                theBuyer={theBuyer}
-                onChatState={onChatState}
-                chatNotification={chatNotification}
-                setChatNotification={setChatNotification}
               />
             )}
           </div>

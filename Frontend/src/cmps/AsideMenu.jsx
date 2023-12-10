@@ -6,9 +6,7 @@ import SvgIcon from './SvgIcon.jsx'
 import { logout } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
-  chatNotification, setChatNotification,
-}) {
+export function AsideMenu({ loggedInUser, onClose }) {
   const navigate = useNavigate()
   const { openLogin, openSignup } = useModal()
 
@@ -32,7 +30,10 @@ export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
   }
 
   return (
-    <div className="aside-menu flex column" onClick={(e) => e.stopPropagation()}>
+    <div
+      className="aside-menu flex column"
+      onClick={(e) => e.stopPropagation()}
+    >
       {loggedInUser ? (
         <>
           <div className="top-icons flex row">
@@ -40,19 +41,6 @@ export function AsideMenu({ loggedInUser, onClose, theBuyer, onChatState,
               <img src={loggedInUser.imgUrl} alt="user" />
               <span>{loggedInUser.username}</span>
             </div>
-            {theBuyer && (
-              <span
-                className={`chat-icon ${chatNotification ? 'notification' : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setChatNotification(false)
-                  onChatState(e)
-                  onClose()
-                }}
-              >
-                <SvgIcon iconName={'chat'} />
-              </span>
-            )}
           </div>
           <Link to={`/user/${loggedInUser._id}`} onClick={onClose}>
             Profile

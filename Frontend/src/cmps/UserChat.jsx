@@ -156,8 +156,9 @@ export function UserChat({ owner, chatState, setChatState, buyer, gig , isFrom})
     }, 2000)
   }
 
-  if (isLoading || currentChat === undefined || currentChat === null)
-    return <Loader />
+  // if (isLoading || currentChat === undefined || currentChat === null)
+  //   return <Loader />
+  // if (isLoading) return <Loader />
 
   return (
     <>
