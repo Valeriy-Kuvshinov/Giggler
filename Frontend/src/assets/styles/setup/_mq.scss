@@ -500,9 +500,8 @@
 
   .dashboard-container {
     .seller-summary {
-
-      #orders-info-content>div:nth-child(1),
-      #earnings-content>div:nth-child(1) {
+      #orders-info-content > div:nth-child(1),
+      #earnings-content > div:nth-child(1) {
         .info-area {
           @media (max-width: 1400px) {
             grid-template-columns: repeat(3, 1fr);
@@ -586,7 +585,6 @@
     }
 
     .user-orders {
-
       // Desktop
       .user-order-container {
         &.desktop {
@@ -615,7 +613,6 @@
 
 .gig-index {
   @media (max-width: 1400px) {
-
     .gig-results-title,
     .selected-filters-wrapper,
     .gig-list {
@@ -912,7 +909,6 @@
       form {
         .form-inputs {
           .input-group {
-
             &:nth-of-type(3),
             &:nth-of-type(4) {
               grid-template-columns: 1fr 1fr;
@@ -1020,11 +1016,9 @@
 
   .buyer-orders-list {
     .buyer-order {
-
       &.mobile,
       &.mini-tablet {
         @media (max-width: 480px) {
-
           .order-id,
           .category-name,
           .seller-name,
@@ -1115,92 +1109,72 @@
       display: none;
     }
   }
+}
 
-  .chat-box-wrapper {
-    @media (min-width: 601px) {
-      width: 450px;
+.chat-box-wrapper {
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 
-      .chat-page {
-        // width: 55%;
-      }
-    }
+  .chat-box {
+    position: sticky;
+    width: 100%;
+    border: 1px solid $clrSecondary10;
+    height: 765px;
 
     @media (max-width: 600px) {
-      width: 100%;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      max-height: none;
+      position: fixed;
     }
+  }
 
-    .chat-box {
-      @media (max-width: 600px) {
-        width: 100vw;
-        height: 100vh;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        overflow: hidden;
-        max-height: none;
-        position: fixed;
-      }
-
-      @media (min-width: 601px) {
-        position: sticky;
-        width: 100%;
-        // border-radius: 4px;
-        border: 1px solid $clrSecondary10;
-        height: 765px;
-      }
-
-      .chat-box-container {
-        @media (max-width: 600px) {
-          padding-block-end: 24px;
-        }
-
-        .chat-container {
-          .message-form {
-            .message-container {
-              @media (max-width: 600px) {
-                max-height: 630px;
-
-                .message {
-                  .message-text {
-                    font-size: 1em;
-                  }
-                }
-              }
-
-              @media (max-width: 450px) {
-                max-height: 390px;
-                margin-block-end: 2.75em;
-              }
-
-              @media (min-width: 601px) {
-                max-height: 550px;
-                min-width: 450px;
-
-                .message {
-                  .message-text {
-                    font-size: 0.85em;
-                  }
-                }
-              }
+  .chat-box-container {
+    .chat-container {
+      .message-form {
+        .message-container {
+          
+          @media (max-width: 600px) {
+            max-height: 630px;
+            
+            .message .message-text {
+              font-size: 1em;
             }
           }
+          @media (max-width: 450px) {
+            max-height: 390px;
+            margin-block-end: 2.75em;
+          }
+          
+          @media (min-width: 601px) {
+            max-height: 500px;
+            min-width: 450px;
 
-          .chat-footer {
-            @media (max-width: 450px) {
-              position: relative;
-              bottom: 48px;
-
-              .input-container {
-                textarea {
-                  max-height: 2.75em;
-                }
-              }
-
-              .message-options {
-                padding: 0.5em 0 !important;
-              }
+            .message .message-text {
+              font-size: 0.85em;
             }
+          }
+        }
+      }
+
+      .chat-footer {
+        @media (max-width: 450px) {
+          position: relative;
+          bottom: 3.75em;
+
+          .input-container textarea {
+            max-height: 2.75em;
+          }
+
+          .message-options {
+            padding: 0.5em 0;
+
           }
         }
       }
@@ -1210,13 +1184,6 @@
   .user-info {
     @media (min-width: 1250) {
       display: none;
-    }
-  }
-
-  .chat-box-wrapper .chat-box .chat-box-container .chat-container .message-form .message-container {
-    @media (min-width: 601px) {
-      max-height: 550px;
-      min-width: 450px;
     }
   }
 
@@ -1259,7 +1226,6 @@
 
   .modal-wrapper {
     @media (max-width: 480px) {
-
       .invoice-modal,
       .review-modal,
       .share-gig-modal {
@@ -1347,7 +1313,6 @@
       .review-modal {
         .reviewed-gig {
           .title-user-info {
-
             h3,
             h4 {
               font-size: 16px;
@@ -1363,7 +1328,6 @@
     }
 
     @media (min-width: 481px) {
-
       .invoice-modal,
       .review-modal,
       .share-gig-modal {
@@ -1463,7 +1427,6 @@
       .review-modal {
         .reviewed-gig {
           .title-user-info {
-
             h3,
             h4 {
               font-size: 21px;

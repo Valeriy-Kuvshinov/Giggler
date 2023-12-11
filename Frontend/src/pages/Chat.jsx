@@ -2,7 +2,12 @@ import { useSelector } from 'react-redux'
 import SvgIcon from '../cmps/SvgIcon'
 import { Loader } from '../cmps/Loader'
 import { useEffect, useState } from 'react'
-import { clearChats, embedUsersOnChat, loadChats, removeChat } from '../store/chat.actions'
+import {
+  clearChats,
+  embedUsersOnChat,
+  loadChats,
+  removeChat,
+} from '../store/chat.actions'
 import { UserChat } from '../cmps/UserChat'
 import { useDeviceType } from '../customHooks/DeviceTypeContext'
 import { utilService } from '../services/util.service'
@@ -13,17 +18,17 @@ export function Chat() {
   const chats = useSelector((storeState) => storeState.chatModule.chats)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const deviceType = useDeviceType()
-  const [chatState, setChatState] = useState(true)
+  const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
   // console.log(chats)
-    useEffect(() => {
-      if (chats.length < 1) chatsLoading()
+  useEffect(() => {
+    if (chats.length < 1) chatsLoading()
 
-      return () => {
-        clearChats()
-      }
-    }, [])
+    return () => {
+      clearChats()
+    }
+  }, [])
 
   async function chatsLoading() {
     try {
@@ -70,12 +75,12 @@ export function Chat() {
   ]
 
   var time = 1
-  if(chatProps){
+  if (chatProps) {
     time = new Date(chatProps.owner.createdAt * 1000)
     var month = months[time.getMonth()]
     var year = time.getFullYear()
     var deliveredTime
-    
+
     if (!chatProps.owner.lastDeliveredAt) deliveredTime = new Date(Date.now())
     else deliveredTime = new Date(chatProps.owner.lastDeliveredAt)
 
@@ -88,27 +93,25 @@ export function Chat() {
     var renderStars = () => {
       let fullStarsCount = Math.floor(chatProps.owner.rating)
       const isHalfStar = chatProps.owner.rating % 1 >= 0.5
-  
+
       const stars = [...Array(fullStarsCount)].map((_, idx) => (
         <SvgIcon iconName={'star'} key={utilService.makeId()} />
       ))
-  
+
       if (isHalfStar) {
         stars.push(<SvgIcon iconName={'halfstar'} key={utilService.makeId()} />)
         fullStarsCount += 1
       }
-  
+
       const emptyStarsCount = 5 - fullStarsCount
       for (let i = 0; i < emptyStarsCount; i++) {
-        stars.push(<SvgIcon iconName={'emptystar'} key={utilService.makeId()} />)
+        stars.push(
+          <SvgIcon iconName={'emptystar'} key={utilService.makeId()} />
+        )
       }
       return stars
     }
   }
-
-
-
-  // if(chats.length < 1) return <Loader />
 
   return (
     <main
@@ -117,12 +120,16 @@ export function Chat() {
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
-         {deviceType === 'mobile' && <span onClick={(event) => goBack(event)}>
-            <SvgIcon iconName={'remove'} />
-          </span>}
+          {deviceType === 'mobile' && (
+            <span onClick={(event) => goBack(event)}>
+              <SvgIcon iconName={'remove'} />
+            </span>
+          )}
         </section>
-        <ul className="chat-body">
-          {chats.length ? (
+        {isLoading ? (
+          <Loader />
+        ) : chats && chats.length > 0 ? (
+          <ul className="chat-body">
             <>
               {chats.map((chat, index) => {
                 const { buyer, seller } = chat
@@ -179,10 +186,10 @@ export function Chat() {
                 )
               })}
             </>
-          ) : (
-            <div>You have no chats opened</div>
-          )}
-        </ul>
+          </ul>
+        ) : (
+          <div>You have no chats opened</div>
+        )}
         {chatProps && chatState && deviceType === 'mobile' && (
           <UserChat
             owner={chatProps.owner}
@@ -193,23 +200,28 @@ export function Chat() {
           />
         )}
       </main>
-      {chatProps===null && (
-      <div className='unselected-chat'>
-        <div className='info-message'>
-        <img src='https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg'/>
-        <span className='title'>You haven’t selected a chat</span>
-          <span className='subtitle'>Please select a chat to continue a conversation</span>
+      {!chatState && (
+        <div className="unselected-chat">
+          <div className="info-message">
+            <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
+            <span className="title">You haven’t selected a chat</span>
+            <span className="subtitle">
+              Please select a chat to continue a conversation
+            </span>
+          </div>
         </div>
-      </div>
       )}
-      { !chats && (
-      <div className='unselected-chat'>
-        <div className='info-message'>
-        <img src='https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg'/>
-        <span className='title'>Ah, a fresh new inbox</span>
-          <span className='subtitle'>You haven’t started any conversations yet, but when you do, you’ll find them here.</span>
+      {!chats && (
+        <div className="unselected-chat">
+          <div className="info-message">
+            <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
+            <span className="title">Ah, a fresh new inbox</span>
+            <span className="subtitle">
+              You haven’t started any conversations yet, but when you do, you’ll
+              find them here.
+            </span>
+          </div>
         </div>
-      </div>
       )}
       {chatProps && chatState && deviceType !== 'mobile' && (
         <UserChat
@@ -221,70 +233,73 @@ export function Chat() {
           isFrom={isFrom}
         />
       )}
-      
+
       {deviceType === 'desktop' && chatProps && (
-          <section className="user-info">
+        <section className="user-info">
           <div className="info-block flex column">
-        <div className="profile-picture">
-          <img src={chatProps.owner.imgUrl} />
-          <div className='background'><SvgIcon iconName={'user'} /></div>
-          <SvgIcon iconName={userLevel} />
-        </div>
+            <div className="profile-picture">
+              <img src={chatProps.owner.imgUrl} />
+              <div className="background">
+                <SvgIcon iconName={'user'} />
+              </div>
+              <SvgIcon iconName={userLevel} />
+            </div>
 
-        <h2>{chatProps.owner.fullName}</h2>
+            <h2>{chatProps.owner.fullName}</h2>
 
-        <span className="username">@{chatProps.owner.username}</span>
+            <span className="username">@{chatProps.owner.username}</span>
 
-        <div className="stars flex">
-          {renderStars()}
-          <span className="rating">{chatProps.owner.rating}</span>
-          {/* <span className="review-count">
+            <div className="stars flex">
+              {renderStars()}
+              <span className="rating">{chatProps.owner.rating}</span>
+              {/* <span className="review-count">
             ({filteredReviews.length} reviews)
           </span> */}
-        </div>
+            </div>
 
-        <div className="location-and-time">
-          <div className="info-line flex">
-            <span className="data flex">
-              <SvgIcon iconName={'location'} />
-              <span>From</span>
-            </span>
-            <span className="bold">{chatProps.owner.country}</span>
-          </div>
+            <div className="location-and-time">
+              <div className="info-line flex">
+                <span className="data flex">
+                  <SvgIcon iconName={'location'} />
+                  <span>From</span>
+                </span>
+                <span className="bold">{chatProps.owner.country}</span>
+              </div>
 
-          <div className="info-line flex">
-            <span className="data flex">
-              <SvgIcon iconName={'user'} />
-              <span>Member Since</span>
-            </span>
-            <span className="bold">
-              {month.slice(0, 3)} {year}
-            </span>
-          </div>
+              <div className="info-line flex">
+                <span className="data flex">
+                  <SvgIcon iconName={'user'} />
+                  <span>Member Since</span>
+                </span>
+                <span className="bold">
+                  {month.slice(0, 3)} {year}
+                </span>
+              </div>
 
-          <div className="info-line flex">
-            <span className="data flex">
-              <SvgIcon iconName={'clock'} />
-              <span>Avg. Response Time</span>
-            </span>
-            <span className="bold">
-              {utilService.getRandomIntInclusive(2, 12)} Hours
-            </span>
-          </div>
+              <div className="info-line flex">
+                <span className="data flex">
+                  <SvgIcon iconName={'clock'} />
+                  <span>Avg. Response Time</span>
+                </span>
+                <span className="bold">
+                  {utilService.getRandomIntInclusive(2, 12)} Hours
+                </span>
+              </div>
 
-          <div className="info-line flex">
-            <span className="data flex">
-              <SvgIcon iconName={'airplaneIcon'} />
-              <span>Last Delivery</span>
-            </span>
-            <span className="bold">
-              {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
-              {deliveredTime.getFullYear()}
-            </span>
+              <div className="info-line flex">
+                <span className="data flex">
+                  <SvgIcon iconName={'airplaneIcon'} />
+                  <span>Last Delivery</span>
+                </span>
+                <span className="bold">
+                  {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
+                  {deliveredTime.getFullYear()}
+                </span>
+              </div>
+            </div>
           </div>
-         </div>
-         </div>
         </section>
       )}
-    </main>)
+    </main>
+  )
 }

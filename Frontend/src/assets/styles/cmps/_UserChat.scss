@@ -123,9 +123,9 @@
             scrollbar-color: transparent transparent;
             transition: scrollbar-color 0.3s ease-in-out;
 
-            &.chat-page {
-              max-height: 670px;
-            }
+            // &.chat-page {
+            //   max-height: 670px;
+            // }
 
             &::-webkit-scrollbar {
               width: em(6px);
@@ -252,10 +252,17 @@
             justify-content: space-between;
             padding: 0.75em 0 1.5em;
 
+            &.chat-page {
+              padding: 0.75em 0 4.5em 0;
+            }
+
             .addition {
               button {
                 margin-inline-start: 0.5em;
                 background-color: $clrPrimary1;
+              }
+              .smiley-container{
+                position: relative;
               }
             }
 
