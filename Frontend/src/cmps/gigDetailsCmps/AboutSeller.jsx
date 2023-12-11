@@ -35,7 +35,7 @@ export function AboutSeller({ owner }) {
     'December',
   ]
 
-  const createdAt = new Date(owner.createdAt * 1000)
+  const createdAt = new Date(owner.createdAt)
   let month = months[createdAt.getMonth()]
   let year = createdAt.getFullYear()
   let lastDelivery = new Date(owner.lastDelivery)

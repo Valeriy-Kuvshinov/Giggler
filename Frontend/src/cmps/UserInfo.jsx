@@ -34,7 +34,7 @@ export function UserInfo({ watchedUser }) {
     'November',
     'December',
   ]
-  const time = new Date(watchedUser.createdAt * 1000)
+  const time = new Date(watchedUser.createdAt)
   let month = months[time.getMonth()]
   let year = time.getFullYear()
   let deliveredTime
