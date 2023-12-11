@@ -39,6 +39,7 @@ export function AppHeader() {
   const isDashboardSellerPage = useLocation().pathname === '/dashboard'
   const isDashboardBuyerPage = useLocation().pathname === '/orders'
   const isGigPage = useLocation().pathname.startsWith('/gig/')
+  const isChatPage = useLocation().pathname.startsWith('/chat/')
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
   const headerStyles = {
@@ -145,8 +146,9 @@ export function AppHeader() {
   //   setChatState(true)
   // }
 
-  if (isGigPage && deviceType === 'mobile') {
-    return null
+  if (isGigPage && deviceType === 'mobile' ||
+    isChatPage && deviceType === 'mobile') {
+    return
   }
 
   return (

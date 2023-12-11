@@ -258,6 +258,10 @@
           }
         }
       }
+
+      &:last-child {
+        display: none;
+      }
     }
   }
 }

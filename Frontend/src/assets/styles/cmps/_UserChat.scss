@@ -11,6 +11,8 @@
     bottom: 0;
     left: 0;
     border-radius: 1.5em;
+    border: 1px solid $clrSecondary3;
+    max-height: 781px;
   }
 
   .chat-box {
@@ -18,14 +20,15 @@
     font-family: 'macan-regular';
     background: rgba(34, 35, 37, 0.5);
     z-index: 30;
+    border-radius: 1.5em;
     box-shadow: 0 0 2.17382px rgba(0, 0, 0, 0.049),
       0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
       0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
 
-    border-radius: 1.5em;
-
     &.chat-page {
       box-shadow: none;
+      background: none;
+      max-height: 781px;
     }
 
     .user-info-bar {
@@ -253,7 +256,7 @@
             padding: 0.75em 0 1.5em;
 
             &.chat-page {
-              padding: 0.75em 0 4.5em 0;
+              padding: 0.75em 0 0.5em 0;
             }
 
             .addition {

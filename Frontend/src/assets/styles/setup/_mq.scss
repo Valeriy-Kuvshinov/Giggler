@@ -650,7 +650,7 @@
   }
 }
 
-// Gig page media query
+// Gig details page media query
 
 .gig-details {
   @media (max-width: 900px) {
@@ -1087,22 +1087,20 @@
 // User chat media query
 
 .chats-page {
-  @media (min-width: 601px) {
-    padding: 2em 0;
-  }
-
   @media (max-width: 600px) {
     padding: 0;
     padding-block-end: 49px;
+
+    .unselected-chat {
+      display: none;
+    }
   }
 
-  .unselected-chat {
-    @media (min-width: 601px) {
-      display: flex;
-    }
+  @media (min-width: 601px) {
+    padding: 2em 0;
 
-    @media (max-width: 600px) {
-      display: none;
+    .unselected-chat {
+      display: flex;
     }
   }
 }
@@ -1110,15 +1108,8 @@
 .chat-box-wrapper {
   @media (max-width: 600px) {
     width: 100%;
-  }
 
-  .chat-box {
-    position: sticky;
-    width: 100%;
-    border: 1px solid $clrSecondary10;
-    height: 765px;
-
-    @media (max-width: 600px) {
+    .chat-box {
       width: 100vw;
       height: 100vh;
       left: 0;
@@ -1130,6 +1121,7 @@
       position: fixed;
     }
   }
+
 
   .chat-box-container {
     .chat-container {
