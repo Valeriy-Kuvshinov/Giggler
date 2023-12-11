@@ -19,7 +19,7 @@ import { UserChat } from '../cmps/UserChat.jsx'
 import { loadUser } from '../store/user.actions.js'
 import { gigService } from '../services/gig.service.js'
 
-export function GigDetails() {
+export function GigDetails({ onFooterUpdate }) {
   const [gig, setGig] = useState(null)
   const [gigOwner, setGigOwner] = useState(null)
   const [chatState, setChatState] = useState(false)
@@ -51,10 +51,14 @@ export function GigDetails() {
     loadData()
   }, [id, navigate])
 
-  const handleOpenChat = () => {
+  function handleOpenChat() {
     if (loggedInUser) setChatState(true)
     else openLogin()
   }
+
+  useEffect(() => {
+    if (gig && gigOwner) onFooterUpdate()
+  }, [gig, gigOwner, onFooterUpdate])
 
   if (!gig || !gigOwner) return <Loader />
 

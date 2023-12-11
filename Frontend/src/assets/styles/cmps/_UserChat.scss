@@ -20,7 +20,6 @@
     font-family: 'macan-regular';
     background: rgba(34, 35, 37, 0.5);
     z-index: 30;
-    border-radius: 1.5em;
     box-shadow: 0 0 2.17382px rgba(0, 0, 0, 0.049),
       0 1.75px 6.01034px rgba(0, 0, 0, 0.07),
       0 3.63px 14.4706px rgba(0, 0, 0, 0.091), 0 22px 48px rgba(0, 0, 0, 0.14);
@@ -38,7 +37,6 @@
       position: relative;
       background-color: $clrPrimary1;
       border-block-end: 1px solid $clrSecondary3;
-      border-radius: 1.5em 1.5em 0 0;
 
       .avatar {
         background-color: $clrSecondary4;
@@ -104,7 +102,7 @@
 
     .chat-box-container {
       background-color: $clrPrimary1;
-      padding: 0 0.5em;
+      padding: 0 0 0 0.5em;
       height: 87%;
       border-radius: 0 0 1.5em 1.5em;
       border-block-end: 1px solid $clrPrimary1;
@@ -202,6 +200,8 @@
         }
 
         .chat-footer {
+          padding: 0 0.5em 0 0;
+
           .input-container {
             textarea {
               width: 100%;
@@ -256,7 +256,7 @@
             padding: 0.75em 0 1.5em;
 
             &.chat-page {
-              padding: 0.75em 0 0.5em 0;
+              padding: 0.75em 0 0.75em 0;
             }
 
             .addition {

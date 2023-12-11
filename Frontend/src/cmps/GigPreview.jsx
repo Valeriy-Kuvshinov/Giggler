@@ -172,7 +172,7 @@ export function GigPreview({ isFrom, gig }) {
                     </Link>
                   </button>
                   <button onClick={onRemoveGig} className="gig-btn">
-                    <SvgIcon iconName={'deny'} />
+                    <SvgIcon iconName={'trashIcon'} />
                   </button>
                 </div>
               )}

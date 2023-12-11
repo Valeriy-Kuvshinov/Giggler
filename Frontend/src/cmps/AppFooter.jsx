@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
@@ -11,6 +11,10 @@ export function AppFooter({ position }) {
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const { openLogin } = useModal()
   const deviceType = useDeviceType()
+  const isChatPage = useLocation().pathname.startsWith('/chat/')
+
+  if (isChatPage && (deviceType === 'desktop'
+    || deviceType === 'tablet')) return
 
   return deviceType === 'desktop' || deviceType === 'tablet' ? (
     <footer className={`desktop-footer flex full 

@@ -1106,6 +1106,22 @@
     .unselected-chat {
       display: flex;
     }
+
+    .chats-nav {
+      .chat-body {
+        .chat-container {
+          .chat-info {
+            .user-info {
+              .name-wrapper {
+                .username {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1123,59 +1139,81 @@
       overflow: hidden;
       max-height: none;
       position: fixed;
-    }
-  }
+      border-radius: 0;
 
-  .chat-box-container {
-    .chat-container {
-      .message-form {
-        .message-container {
-
-          @media (max-width: 600px) {
-            max-height: 630px;
-
-            .message .message-text {
-              font-size: 1em;
-            }
-          }
-
-          @media (max-width: 450px) {
-            max-height: 390px;
-            margin-block-end: 2.75em;
-          }
-
-          @media (min-width: 601px) {
-            max-height: 500px;
-            min-width: 450px;
-
-            .message .message-text {
-              font-size: 0.85em;
-            }
-          }
-        }
+      .user-info-bar {
+        border-radius: 0;
       }
 
-      .chat-footer {
-        @media (max-width: 450px) {
-          position: relative;
-          bottom: 3.75em;
+      .chat-box-container {
+        .chat-container {
+          .message-form {
+            .message-container {
+              max-height: 630px;
 
-          .input-container textarea {
-            max-height: 2.75em;
-          }
-
-          .message-options {
-            padding: 0.5em 0;
-
+              .message {
+                .message-text {
+                  font-size: 1em;
+                }
+              }
+            }
           }
         }
       }
     }
   }
 
-  .user-info {
-    @media (min-width: 1250) {
-      display: none;
+  @media(max-width: 480px) {
+    .chat-box {
+      .chat-box-container {
+        .chat-container {
+          .message-form {
+            .message-container {
+              max-height: 390px;
+              margin-block-end: 2.75em;
+            }
+          }
+
+          .chat-footer {
+            position: relative;
+            bottom: 3.75em;
+
+            .input-container textarea {
+              max-height: 2.75em;
+            }
+
+            .message-options {
+              padding: 0.5em 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media(min-width: 601px) {
+    .chat-box {
+      border-radius: 1.5em;
+
+      .user-info-bar {
+        border-radius: 1.5em 1.5em 0 0;
+      }
+
+      .chat-box-container {
+        .chat-container {
+          .message-form {
+            .message-container {
+              max-height: 500px;
+
+              .message {
+                .message-text {
+                  font-size: 0.85em;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

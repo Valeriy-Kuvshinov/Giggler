@@ -16,7 +16,6 @@ export function Chat({ onFooterUpdate }) {
   const deviceType = useDeviceType()
   const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
-  const isFrom = 'chatPage'
   // console.log(chats)
 
   useEffect(() => {
@@ -45,10 +44,6 @@ export function Chat({ onFooterUpdate }) {
     }
   }
 
-  function goBack(event) {
-    event.preventDefault()
-  }
-
   function onOpenChat(props) {
     setChatProps(props)
     setChatState(true)
@@ -61,11 +56,6 @@ export function Chat({ onFooterUpdate }) {
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
-          {deviceType === 'mobile' && (
-            <span onClick={(event) => goBack(event)}>
-              <SvgIcon iconName={'remove'} />
-            </span>
-          )}
         </section>
         {isLoading ? (
           <Loader />
@@ -114,7 +104,7 @@ export function Chat({ onFooterUpdate }) {
                       onClick={(event) => onRemoveChat(event, chat._id)}
                       className="erase-chat"
                     >
-                      <SvgIcon iconName={'deny'} />
+                      <SvgIcon iconName={'trashIcon'} />
                     </span>
                   </li>
                 )
@@ -124,15 +114,16 @@ export function Chat({ onFooterUpdate }) {
         ) : (
           <div>You have no chats opened</div>
         )}
-        {chatProps && chatState && deviceType === 'mobile' && (
-          <UserChat
-            owner={chatProps.owner}
-            chatState={chatState}
-            setChatState={setChatState}
-            buyer={chatProps.buyer}
-            gig={chatProps.gig}
-          />
-        )}
+        {chatProps && chatState &&
+          (deviceType === 'mobile' || deviceType === 'mini-tablet') && (
+            <UserChat
+              owner={chatProps.owner}
+              chatState={chatState}
+              setChatState={setChatState}
+              buyer={chatProps.buyer}
+              gig={chatProps.gig}
+            />
+          )}
       </main>
       {!chatState && (
         <div className="unselected-chat">
@@ -156,16 +147,17 @@ export function Chat({ onFooterUpdate }) {
           </div>
         </div>
       )}
-      {chatProps && chatState && deviceType !== 'mobile' && (
-        <UserChat
-          owner={chatProps.owner}
-          chatState={chatState}
-          setChatState={setChatState}
-          buyer={chatProps.buyer}
-          gig={chatProps.gig}
-          isFrom={isFrom}
-        />
-      )}
+      {chatProps && chatState &&
+        (deviceType === 'tablet' || deviceType === 'desktop') && (
+          <UserChat
+            owner={chatProps.owner}
+            chatState={chatState}
+            setChatState={setChatState}
+            buyer={chatProps.buyer}
+            gig={chatProps.gig}
+            isFrom={'chatPage'}
+          />
+        )}
 
       {deviceType === 'desktop' && chatProps && (
         <UserInfo watchedUser={loggedinUser._id === chatProps.gig.ownerId ? chatProps.buyer : chatProps.owner} />

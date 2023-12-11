@@ -1,5 +1,4 @@
 .chats-page {
-  display: flex;
   position: absolute;
   z-index: 20;
   top: 0;
@@ -7,12 +6,164 @@
   width: 100%;
   height: 100%;
 
-  &.desktop,
-  &.tablet {
+  &.desktop {
     position: relative;
     z-index: 0;
     gap: 0.5em;
     grid-template-columns: 1fr 2fr 1fr;
+
+    .chats-nav {
+      grid-column: 1 / 2;
+    }
+
+    .unselected-chat {
+      grid-column: 2 / -1;
+    }
+
+    .chat-box-wrapper {
+      grid-column: 2 / 3;
+    }
+
+    .user-info {
+      grid-column: 3 / -1;
+      color: $clrSecondary6;
+
+      .info-block {
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: fit-content;
+        padding: 0.5em;
+        background-color: $clrPrimary1;
+
+        .profile-picture {
+          position: relative;
+          height: 150px;
+          width: 150px;
+
+          img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          i {
+            position: absolute;
+            bottom: 0px;
+            left: 96px;
+          }
+
+          svg {
+            position: relative;
+            width: 54px;
+            height: 54px;
+          }
+
+          .background {
+            display: none;
+
+            svg {
+              position: relative;
+            }
+          }
+        }
+
+        .stars {
+          align-items: baseline;
+          margin-block-end: 1.25em;
+
+          .rating {
+            padding: 0 0.25em;
+            font-weight: 700;
+          }
+
+          .review-count {
+            color: $clrSecondary11;
+          }
+        }
+
+        h2 {
+          text-align: center;
+          width: 100%;
+          text-transform: capitalize;
+          color: $clrPrimary2;
+          font-weight: 700;
+        }
+
+        .username {
+          text-align: center;
+          width: 100%;
+          margin-block-end: 1.25em;
+        }
+
+        .location-and-time {
+          width: 100%;
+          padding-block-start: 1.25em;
+          border-top: 1px solid $clrSecondary2;
+
+          .info-line {
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-block-end: 1em;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25em;
+
+            .data {
+              align-items: center;
+
+              span {
+                font-weight: 100;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+              }
+
+              svg {
+                margin-inline-end: em(12px);
+              }
+            }
+
+            .bold {
+              font-weight: bold;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              justify-self: end;
+            }
+          }
+        }
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.tablet {
+    position: relative;
+    z-index: 0;
+    gap: 0.5em;
+    grid-template-columns: 1fr 2fr;
+
+    .chats-nav {
+      grid-column: 1 / 2;
+    }
+
+    .unselected-chat {
+      grid-column: 2 / -1;
+    }
+
+    .chat-box-wrapper {
+      grid-column: 2 / -1;
+    }
   }
 
   .chats-nav {
@@ -68,6 +219,7 @@
           border-radius: 50%;
           margin-inline-end: 0.75em;
           object-fit: cover;
+          background: $clrSecondary6;
         }
 
         .chat-info {
@@ -79,12 +231,18 @@
             width: 100%;
             justify-content: space-between;
             align-items: baseline;
+            max-height: 26px;
 
             .name-wrapper {
+              text-overflow: ellipsis;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+
               .name {
-                text-transform: capitalize;
-                max-height: 1em;
-                overflow: hidden;
+                font-family: 'macan-bold';
+                color: $clrPrimary2;
               }
 
               .username {
@@ -97,6 +255,7 @@
             .time {
               font-size: 0.85em;
               color: $clrSecondary7;
+              min-width: 43px;
             }
           }
 
@@ -105,7 +264,7 @@
             max-height: 1.75em;
             text-overflow: ellipsis;
             overflow: hidden;
-            color: $clrPrimary2;
+            color: $clrSecondary5;
           }
         }
       }
@@ -119,6 +278,11 @@
           height: 1em;
           width: 1em;
           fill: $clrSecondary7;
+          transition: all 0.3s;
+
+          &:hover {
+            fill: $bgColor6;
+          }
         }
       }
     }
@@ -152,113 +316,6 @@
       .subtitle {
         width: 21em;
         text-align: center;
-      }
-    }
-  }
-
-  .user-info {
-    color: $clrSecondary6;
-
-    .info-block {
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      height: fit-content;
-      padding: 30px;
-      background-color: $clrPrimary1;
-
-      .profile-picture {
-        position: relative;
-        height: 150px;
-        width: 150px;
-
-        img {
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          object-fit: cover;
-        }
-
-        i {
-          position: absolute;
-          bottom: 0px;
-          left: 96px;
-        }
-
-        svg {
-          position: relative;
-          width: 54px;
-          height: 54px;
-        }
-
-        .background {
-          display: none;
-
-          svg {
-            position: relative;
-          }
-        }
-      }
-
-      .stars {
-        align-items: baseline;
-        margin-block-end: 1.25em;
-
-        .rating {
-          padding: 0 0.25em;
-          font-weight: 700;
-        }
-
-        .review-count {
-          color: $clrSecondary11;
-        }
-      }
-
-      h2 {
-        text-align: center;
-        width: 100%;
-        text-transform: capitalize;
-        color: $clrPrimary2;
-        font-weight: 700;
-      }
-
-      .username {
-        text-align: center;
-        width: 100%;
-        margin-block-end: 1.25em;
-      }
-
-      .location-and-time {
-        width: 100%;
-        padding-block-start: 1.25em;
-        border-top: 1px solid $clrSecondary2;
-
-        .info-line {
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-          margin-block-end: 1em;
-
-          .data {
-            align-items: center;
-
-            span {
-              font-weight: 100;
-            }
-
-            svg {
-              margin-inline-end: em(12px);
-            }
-          }
-
-          .bold {
-            font-weight: bold;
-          }
-        }
-      }
-
-      &:last-child {
-        display: none;
       }
     }
   }
