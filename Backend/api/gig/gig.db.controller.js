@@ -13,7 +13,7 @@ export async function getGigs(req, res) {
       const { search, cat, tag, time, level, min, max, page } = req.query
       filterBy = { search, cat, tag, time, level, min, max, page }
     }
-    loggerService.debug('Getting Gigs', filterBy)
+    // loggerService.debug('Getting Gigs', filterBy)
     const gigs = await gigService.query(filterBy)
     res.json(gigs)
   }
