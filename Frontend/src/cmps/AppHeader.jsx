@@ -147,7 +147,7 @@ export function AppHeader() {
   // }
 
   if (isGigPage && deviceType === 'mobile' ||
-    isChatPage && deviceType === 'mobile') {
+    isChatPage && (deviceType === 'mobile' || deviceType === 'mini-tablet')) {
     return
   }
 

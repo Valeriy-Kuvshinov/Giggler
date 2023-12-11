@@ -56,7 +56,7 @@ export function Chat({ onFooterUpdate }) {
 
   return (
     <main
-      className={`chats-page layout-row ${deviceType !== 'mobile' ? 'desk' : ''}`}
+      className={`chats-page layout-row ${deviceType} grid`}
     >
       <main className="chats-nav">
         <section className="chat-header b">

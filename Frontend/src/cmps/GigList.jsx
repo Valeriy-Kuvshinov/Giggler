@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react"
 import { GigPreview } from "./GigPreview.jsx"
 import { Loader } from "./Loader.jsx"
 
-export function GigList({ gigs , isLoading}) {
+export function GigList({ gigs, isLoading }) {
   const [showGigs, setShowGigs] = useState(false)
   const isFrom = "explore"
 
@@ -12,7 +12,6 @@ export function GigList({ gigs , isLoading}) {
     const timeout = setTimeout(() => {
       setShowGigs(true)
     }, 500)
-
     return () => clearTimeout(timeout)
   }, [])
 

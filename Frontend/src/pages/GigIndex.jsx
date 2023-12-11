@@ -40,10 +40,6 @@ export function GigIndex({ onMobileFilter, onFooterUpdate }) {
     }
   }
 
-  useEffect(() => {
-    if (!isLoading) onFooterUpdate()
-  }, [isLoading, onFooterUpdate])
-
   function loadSetParams() {
     const newQueryParam = {}
     Object.keys(filterBy).map((key) => {
@@ -159,6 +155,15 @@ export function GigIndex({ onMobileFilter, onFooterUpdate }) {
   }
 
   const categorySelect = filterBy.cat ? filterBy.cat : 'category'
+
+  useEffect(() => {
+    if (!isLoading) {
+      const timeout = setTimeout(() => {
+        onFooterUpdate()
+      }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [isLoading, onFooterUpdate])
 
   return (
     <main

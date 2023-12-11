@@ -7,11 +7,11 @@
   width: 100%;
   height: 100%;
 
-  &.desk {
+  &.desktop,
+  &.tablet {
     position: relative;
     z-index: 0;
     gap: 0.5em;
-    display: grid;
     grid-template-columns: 1fr 2fr 1fr;
   }
 
