@@ -72,7 +72,7 @@ export function UserInfo({ watchedUser }) {
           </span>
         </div>
 
-        <div className="location-and-time">
+        <div className="location-and-time" title='the location the user is from'>
           <div className="info-line flex">
             <span className="data flex">
               <SvgIcon iconName={'location'} />
@@ -81,7 +81,7 @@ export function UserInfo({ watchedUser }) {
             <span className="bold">{watchedUser.country}</span>
           </div>
 
-          <div className="info-line flex">
+          <div className="info-line flex" title='the date of user creation'>
             <span className="data flex">
               <SvgIcon iconName={'user'} />
               <span>Member Since</span>
@@ -91,7 +91,7 @@ export function UserInfo({ watchedUser }) {
             </span>
           </div>
 
-          <div className="info-line flex">
+          <div className="info-line flex" title='average response time'>
             <span className="data flex">
               <SvgIcon iconName={'clock'} />
               <span>Avg. Response Time</span>
@@ -101,7 +101,7 @@ export function UserInfo({ watchedUser }) {
             </span>
           </div>
 
-          <div className="info-line flex">
+          <div className="info-line flex" title='last delivery'>
             <span className="data flex">
               <SvgIcon iconName={'airplaneIcon'} />
               <span>Last Delivery</span>
@@ -118,7 +118,7 @@ export function UserInfo({ watchedUser }) {
         <h3 className="description-title">Description</h3>
         <div className="description-box">{watchedUser.description}</div>
 
-        <div className="languages">
+        <div className="languages" title='languages the user speaks'>
           <span className="title">Languages</span>
           {watchedUser.languages && <div className="the-languages">
             {watchedUser.languages.map((language) => (
@@ -131,7 +131,7 @@ export function UserInfo({ watchedUser }) {
           </div>}
         </div>
 
-        <div className="skills">
+        <div className="skills" title='skills of the user'>
           <span className="title">Skills</span>
           {watchedUser.skills && <div className="the-skills flex">
             {watchedUser.skills.map(skill =>
@@ -141,7 +141,7 @@ export function UserInfo({ watchedUser }) {
           </div>}
         </div>
 
-        <div className="educations">
+        <div className="educations" title='educations the user got'>
           <span className="title">Education</span>
           {watchedUser.education && <div className="the-educations">
             {watchedUser.education.map(education =>

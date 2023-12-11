@@ -50,6 +50,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
         <button
           className={`b ${selectedPackage === 'basic' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('basic')}
+          title='basic package'
         >
           Basic
         </button>
@@ -57,6 +58,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
         <button
           className={`b ${selectedPackage === 'standard' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('standard')}
+          title='standard package'
         >
           Standard
         </button>
@@ -64,6 +66,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
         <button
           className={`b ${selectedPackage === 'premium' ? 'checked' : ''}`}
           onClick={() => setSelectedPackage('premium')}
+          title='premium package'
         >
           Premium
         </button>
@@ -72,7 +75,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
       <section className="package-content flex column">
         <div className="type-price flex">
           <span className="b">{packages[selectedPackage].type}</span>
-          <span className="price">${packages[selectedPackage].price * gig.price}</span>
+          <span className="price" title='the price of the gig'>${packages[selectedPackage].price * gig.price}</span>
         </div>
 
         <p>{packages[selectedPackage].desc}</p>
@@ -80,7 +83,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
         <div className="additional-info flex">
           <div className="delivery-wrapper flex">
             <SvgIcon iconName={'clock'} />
-            <span className="delivery b">
+            <span className="delivery b" title='delivery time'>
               {' '}
               {gig.daysToMake} Delivery
             </span>
@@ -88,7 +91,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
 
           <div className="revisions-wrapper flex">
             <SvgIcon iconName={'refresh'} />
-            <span className="revisions b">
+            <span className="revisions b" title='number of revisions'>
               {`${packages[selectedPackage].revisions} Revisions`}
             </span>
           </div>
@@ -105,7 +108,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
             </li>
           ))}
         </ul>
-        <button className="flex" onClick={onContinue}>
+        <button className="flex" onClick={onContinue} title='continue to make purchase'>
           <span className="b">
             Continue
           </span>
@@ -119,6 +122,7 @@ export function GigDetAside({ loggedInUser, gig, deviceType, onGigChange, setCha
             if (loggedInUser) setChatState(true)
             else openLogin()
           }}
+          title='contact seller with chat'
         >
           Contact me
         </button>

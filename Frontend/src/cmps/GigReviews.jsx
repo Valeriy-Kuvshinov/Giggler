@@ -37,9 +37,9 @@ export function GigReviews({ gig }) {
 
     return (
         <section className="gig-reviews">
-            <span className="title">Reviews</span>
+            <span className="title" title='reviews about the gig'>Reviews</span>
 
-            <ReviewBreakdown reviews={fullReviews} context='gig' />
+            <ReviewBreakdown reviews={fullReviews} context='gig'/>
 
             {fullReviews.length !== 0 && (
                 <ul className="reviews">
