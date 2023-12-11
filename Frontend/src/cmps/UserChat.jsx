@@ -171,8 +171,6 @@ export function UserChat({
   }
 
   if (currentChat === undefined || currentChat === null) return <Loader />
-  //   return <Loader />
-  // if (isLoading) return <Loader />
 
   return (
     <>

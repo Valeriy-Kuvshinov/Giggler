@@ -1,17 +1,13 @@
 import { useSelector } from 'react-redux'
-import SvgIcon from '../cmps/SvgIcon'
-import { Loader } from '../cmps/Loader'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
+
 import { useEffect, useState } from 'react'
-import {
-  clearChats,
-  embedUsersOnChat,
-  loadChats,
-  removeChat,
-} from '../store/chat.actions'
-import { UserChat } from '../cmps/UserChat'
-import { useDeviceType } from '../customHooks/DeviceTypeContext'
-import { utilService } from '../services/util.service'
-// import { useHistory } from 'react-router-dom'
+import { clearChats, loadChats, removeChat } from '../store/chat.actions.js'
+
+import { UserChat } from '../cmps/UserChat.jsx'
+import { UserInfo } from '../cmps/UserInfo.jsx'
+import { Loader } from '../cmps/Loader.jsx'
+import SvgIcon from '../cmps/SvgIcon.jsx'
 
 export function Chat() {
   const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
@@ -22,12 +18,10 @@ export function Chat() {
   const [chatProps, setChatProps] = useState(null)
   const isFrom = 'chatPage'
   // console.log(chats)
+
   useEffect(() => {
     if (chats.length < 1) chatsLoading()
-
-    return () => {
-      clearChats()
-    }
+    return () => clearChats()
   }, [])
 
   async function chatsLoading() {
@@ -49,7 +43,6 @@ export function Chat() {
 
   function goBack(event) {
     event.preventDefault()
-    // history.goBack()
   }
 
   function onOpenChat(props) {
@@ -57,65 +50,9 @@ export function Chat() {
     setChatState(true)
   }
 
-  //for side of chat
-
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
-
-  var time = 1
-  if (chatProps) {
-    time = new Date(chatProps.owner.createdAt * 1000)
-    var month = months[time.getMonth()]
-    var year = time.getFullYear()
-    var deliveredTime
-
-    if (!chatProps.owner.lastDeliveredAt) deliveredTime = new Date(Date.now())
-    else deliveredTime = new Date(chatProps.owner.lastDeliveredAt)
-
-    var userLevel = ''
-    if (chatProps.owner.level === 'level 0') userLevel = 'newuser'
-    if (chatProps.owner.level === 'level 1') userLevel = 'level1'
-    if (chatProps.owner.level === 'level 2') userLevel = 'level2'
-    if (chatProps.owner.level === 'level 3') userLevel = 'topuser'
-
-    var renderStars = () => {
-      let fullStarsCount = Math.floor(chatProps.owner.rating)
-      const isHalfStar = chatProps.owner.rating % 1 >= 0.5
-
-      const stars = [...Array(fullStarsCount)].map((_, idx) => (
-        <SvgIcon iconName={'star'} key={utilService.makeId()} />
-      ))
-
-      if (isHalfStar) {
-        stars.push(<SvgIcon iconName={'halfstar'} key={utilService.makeId()} />)
-        fullStarsCount += 1
-      }
-
-      const emptyStarsCount = 5 - fullStarsCount
-      for (let i = 0; i < emptyStarsCount; i++) {
-        stars.push(
-          <SvgIcon iconName={'emptystar'} key={utilService.makeId()} />
-        )
-      }
-      return stars
-    }
-  }
-
   return (
     <main
-      className={`chats layout-row ${deviceType !== 'mobile' ? 'desk' : ''}`}
+      className={`chats-page layout-row ${deviceType !== 'mobile' ? 'desk' : ''}`}
     >
       <main className="chats-nav">
         <section className="chat-header b">
@@ -137,6 +74,7 @@ export function Chat() {
                   loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
                 return (
                   <li
+                    className="chat-container"
                     key={chat._id}
                     onClick={() =>
                       onOpenChat({
@@ -145,11 +83,10 @@ export function Chat() {
                         gig: chat.gig,
                       })
                     }
-                    className="chat"
                   >
                     <img src={chat[role].imgUrl} alt="buyer img" />
                     <div className="chat-info">
-                      <div className="user-info">
+                      <div className="user-info flex">
                         <span className="name-wrapper">
                           <span className="name">{chat[role].fullName}</span>
                           <span className="username">
@@ -158,7 +95,7 @@ export function Chat() {
                         </span>
                         <span className="time">
                           {new Intl.DateTimeFormat('en-US', {
-                            month: 'long',
+                            month: 'short',
                             day: 'numeric',
                           }).format(
                             chat.messages[chat.messages.length - 1].time
@@ -210,8 +147,7 @@ export function Chat() {
             <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
             <span className="title">Ah, a fresh new inbox</span>
             <span className="subtitle">
-              You haven’t started any conversations yet, but when you do, you’ll
-              find them here.
+              You haven’t started any conversations yet, but when you do, you’ll find them here.
             </span>
           </div>
         </div>
@@ -228,70 +164,7 @@ export function Chat() {
       )}
 
       {deviceType === 'desktop' && chatProps && (
-        <section className="user-info">
-          <div className="info-block flex column">
-            <div className="profile-picture">
-              <img src={chatProps.owner.imgUrl} />
-              <div className="background">
-                <SvgIcon iconName={'user'} />
-              </div>
-              <SvgIcon iconName={userLevel} />
-            </div>
-
-            <h2>{chatProps.owner.fullName}</h2>
-
-            <span className="username">@{chatProps.owner.username}</span>
-
-            <div className="stars flex">
-              {renderStars()}
-              <span className="rating">{chatProps.owner.rating}</span>
-              {/* <span className="review-count">
-            ({filteredReviews.length} reviews)
-          </span> */}
-            </div>
-
-            <div className="location-and-time">
-              <div className="info-line flex">
-                <span className="data flex">
-                  <SvgIcon iconName={'location'} />
-                  <span>From</span>
-                </span>
-                <span className="bold">{chatProps.owner.country}</span>
-              </div>
-
-              <div className="info-line flex">
-                <span className="data flex">
-                  <SvgIcon iconName={'user'} />
-                  <span>Member Since</span>
-                </span>
-                <span className="bold">
-                  {month.slice(0, 3)} {year}
-                </span>
-              </div>
-
-              <div className="info-line flex">
-                <span className="data flex">
-                  <SvgIcon iconName={'clock'} />
-                  <span>Avg. Response Time</span>
-                </span>
-                <span className="bold">
-                  {utilService.getRandomIntInclusive(2, 12)} Hours
-                </span>
-              </div>
-
-              <div className="info-line flex">
-                <span className="data flex">
-                  <SvgIcon iconName={'airplaneIcon'} />
-                  <span>Last Delivery</span>
-                </span>
-                <span className="bold">
-                  {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
-                  {deliveredTime.getFullYear()}
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+        <UserInfo watchedUser={ loggedinUser._id === chatProps.gig.ownerId ? chatProps.buyer : chatProps.owner} />
       )}
     </main>
   )

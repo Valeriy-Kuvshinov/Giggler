@@ -13,6 +13,13 @@ export const utilService = {
   formatDate
 }
 
+export const yearlyMonths = [
+  'January', 'February', 'March',
+  'April', 'May', 'June',
+  'July', 'August', 'September',
+  'October', 'November', 'December',
+]
+
 function makeId(length = 6) {
   let txt = ''
   let possible =

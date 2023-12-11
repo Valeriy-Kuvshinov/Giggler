@@ -1086,7 +1086,7 @@
 
 // User chat media query
 
-.chats {
+.chats-page {
   @media (min-width: 601px) {
     padding: 2em 0;
   }
@@ -1094,16 +1094,6 @@
   @media (max-width: 600px) {
     padding: 0;
     padding-block-end: 49px;
-  }
-
-  .chats-nav {
-    @media (min-width: 601px) {
-      width: 420px;
-    }
-
-    @media (max-width: 600px) {
-      width: 100%;
-    }
   }
 
   .unselected-chat {
@@ -1232,6 +1222,25 @@
 // Invoice, Review, Sharing a gig modals media query
 
 .modal-wrapper {
+  @media(max-width: 600px) {
+    .review-modal {
+      .reviewed-gig {
+        .title-user-info {
+
+          h3,
+          h4 {
+            font-size: 18px;
+          }
+        }
+
+        .gig-img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+    }
+  }
+
   @media (max-width: 480px) {
 
     .invoice-modal,
@@ -1329,8 +1338,8 @@
         }
 
         .gig-img {
-          width: 120px;
-          height: 120px;
+          width: 90px;
+          height: 90px;
         }
       }
     }
@@ -1433,7 +1442,9 @@
         }
       }
     }
+  }
 
+  @media(min-width: 601px) {
     .review-modal {
       .reviewed-gig {
         .title-user-info {

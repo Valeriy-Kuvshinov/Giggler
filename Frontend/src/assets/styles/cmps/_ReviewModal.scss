@@ -20,7 +20,13 @@
                 gap: 0.5em;
 
                 h3 {
-                    grid-row: 1 / 2;
+                    margin: 0;
+                    margin-bottom: 0.25em;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
                 }
 
                 .user-info {

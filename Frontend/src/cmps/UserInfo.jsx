@@ -1,15 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { loadReviews } from '../store/review.actions.js'
-import { utilService } from '../services/util.service.js'
+import { utilService, yearlyMonths } from '../services/util.service.js'
 
-import { UserEditModal } from './UserEditModal.jsx'
 import SvgIcon from './SvgIcon.jsx'
 
 export function UserInfo({ watchedUser }) {
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
-
   const reviews = useSelector((storeState) => storeState.reviewModule.reviews)
 
   const filteredReviews = watchedUser
@@ -20,31 +17,13 @@ export function UserInfo({ watchedUser }) {
     loadReviews()
   }, [])
 
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ]
   const time = new Date(watchedUser.createdAt)
-  let month = months[time.getMonth()]
+  let month = yearlyMonths[time.getMonth()]
   let year = time.getFullYear()
   let deliveredTime
 
   if (!watchedUser.lastDeliveredAt) deliveredTime = new Date(Date.now())
   else deliveredTime = new Date(watchedUser.lastDeliveredAt)
-
-  function closeModal() {
-    setIsEditModalOpen(false)
-  }
 
   const renderStars = () => {
     let fullStarsCount = Math.floor(watchedUser.rating)
@@ -128,7 +107,7 @@ export function UserInfo({ watchedUser }) {
               <span>Last Delivery</span>
             </span>
             <span className="bold">
-              {months[deliveredTime.getMonth()].slice(0, 3)}{' '}
+              {yearlyMonths[deliveredTime.getMonth()].slice(0, 3)}{' '}
               {deliveredTime.getFullYear()}
             </span>
           </div>
@@ -173,8 +152,6 @@ export function UserInfo({ watchedUser }) {
           </div>}
         </div>
       </div>
-      {isEditModalOpen && <UserEditModal user={watchedUser} closeModal={closeModal} />}
-      {isEditModalOpen && <div className="modal-background" onClick={closeModal}></div>}
     </section>
   )
 }

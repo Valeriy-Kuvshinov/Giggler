@@ -4,8 +4,6 @@
   left: 2em;
   display: inline-block;
   z-index: 10;
-  //margin: 0 1em;
-  //border-block-end: 1px solid $clrSecondary3;
   flex-grow: 1;
 
   &.chat-page {
@@ -100,13 +98,13 @@
         }
       }
     }
+
     .chat-box-container {
       background-color: $clrPrimary1;
       padding: 0 0.5em;
       height: 87%;
       border-radius: 0 0 1.5em 1.5em;
       border-block-end: 1px solid $clrPrimary1;
-      // grid-template-rows: auto 1fr;
 
       .chat-container {
         grid-template-rows: 1fr auto;
@@ -123,10 +121,6 @@
             scrollbar-color: transparent transparent;
             transition: scrollbar-color 0.3s ease-in-out;
 
-            // &.chat-page {
-            //   max-height: 670px;
-            // }
-
             &::-webkit-scrollbar {
               width: em(6px);
             }
@@ -135,8 +129,12 @@
               background-color: transparent;
             }
 
-            &:hover::-webkit-scrollbar-thumb {
-              background-color: rgba(0, 0, 0, 0.3);
+            &:hover {
+              scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+
+              &::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, 0.3);
+              }
             }
 
             .message {
@@ -199,6 +197,7 @@
             }
           }
         }
+
         .chat-footer {
           .input-container {
             textarea {
@@ -241,6 +240,7 @@
             .char-count {
               display: grid;
               justify-content: end;
+
               span {
                 color: $clrSecondary6;
               }
@@ -261,7 +261,8 @@
                 margin-inline-start: 0.5em;
                 background-color: $clrPrimary1;
               }
-              .smiley-container{
+
+              .smiley-container {
                 position: relative;
               }
             }

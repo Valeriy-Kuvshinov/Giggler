@@ -1,4 +1,4 @@
-.chats {
+.chats-page {
   display: flex;
   position: absolute;
   z-index: 20;
@@ -10,6 +10,9 @@
   &.desk {
     position: relative;
     z-index: 0;
+    gap: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
   }
 
   .chats-nav {
@@ -40,9 +43,8 @@
     .chat-body {
       height: 74vh;
       width: 100%;
-      // height: 100%;
 
-      .chat {
+      .chat-container {
         position: relative;
         width: 100%;
         padding: 1em;
@@ -50,15 +52,19 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-        margin-block-end: 0.5em;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $clrSecondary4;
+        }
 
         &:last-child {
           margin: 0;
         }
 
         img {
-          width: 3.5em;
-          height: 3.5em;
+          width: 3em;
+          height: 3em;
+          min-width: 3em;
           border-radius: 50%;
           margin-inline-end: 0.75em;
           object-fit: cover;
@@ -71,8 +77,8 @@
 
           .user-info {
             width: 100%;
-            display: flex;
             justify-content: space-between;
+            align-items: baseline;
 
             .name-wrapper {
               .name {
@@ -80,6 +86,7 @@
                 max-height: 1em;
                 overflow: hidden;
               }
+
               .username {
                 margin-inline-start: 0.75em;
                 font-size: 0.85em;
@@ -105,7 +112,7 @@
 
       .erase-chat {
         position: absolute;
-        bottom: 1.6em;
+        bottom: 1.4em;
         right: 1em;
 
         svg {
@@ -116,6 +123,7 @@
       }
     }
   }
+
   .unselected-chat {
     justify-content: center;
     align-items: center;
@@ -123,15 +131,18 @@
     border-radius: 1.5em;
     margin-inline-start: 1em;
     flex-grow: 1;
+
     .info-message {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       color: $clrSecondary8;
+
       img {
         height: 200px;
       }
+
       .title {
         font-size: 1.5em;
         font-weight: 600;
@@ -139,15 +150,16 @@
         margin-block-start: 32px;
         margin-block-end: 10px;
       }
+
       .subtitle {
         width: 21em;
         text-align: center;
       }
     }
   }
+
   .user-info {
     color: $clrSecondary6;
-    width: 320px;
 
     .info-block {
       align-items: center;
@@ -156,11 +168,6 @@
       height: fit-content;
       padding: 30px;
       background-color: $clrPrimary1;
-
-      // @media screen and (max-width: 900px) {
-      //   border: 0;
-      //   padding: 2em 0.5em 4em;
-      // }
 
       .profile-picture {
         position: relative;
