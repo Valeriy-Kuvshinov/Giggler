@@ -41,9 +41,10 @@ export function UserChat({
   const deviceType = useDeviceType()
 
   useEffect(() => {
+    clearCurrChat()
     loadsChat()
     autoScroll()
-  }, [owner, loggedinUser])
+  }, [owner, buyer])
 
   async function loadsChat() {
     let newChat
@@ -176,9 +177,8 @@ export function UserChat({
     <>
       {chatState && (
         <div
-          className={`chat-box-wrapper ${
-            isFrom === 'chatPage' ? 'chat-page' : ''
-          }`}
+          className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''
+            }`}
         >
           <aside
             className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}
@@ -218,9 +218,8 @@ export function UserChat({
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div
-                    className={`message-container flex column ${
-                      isFrom === 'chatPage' ? 'chat-page' : ''
-                    }`}
+                    className={`message-container flex column ${isFrom === 'chatPage' ? 'chat-page' : ''
+                      }`}
                     ref={chatContainerRef}
                   >
                     {currentChat.messages?.length > 0 &&
@@ -228,11 +227,10 @@ export function UserChat({
                         return (
                           <div
                             key={index}
-                            className={`message ${
-                              message.user._id === loggedinUser._id
+                            className={`message ${message.user._id === loggedinUser._id
                                 ? 'user-one'
                                 : 'user-two'
-                            } flex column`}
+                              } flex column`}
                           >
                             <div className="message-body grid">
                               <span className="text">{message.message}</span>
@@ -250,11 +248,10 @@ export function UserChat({
                       isTyping.map((user, index) => (
                         <div
                           key={index}
-                          className={`message ${
-                            user._id === loggedinUser._id
+                          className={`message ${user._id === loggedinUser._id
                               ? 'user-one'
                               : 'user-two'
-                          } flex column`}
+                            } flex column`}
                         >
                           <div className="message-body grid">
                             <span className="text">
@@ -333,9 +330,8 @@ export function UserChat({
                     </section>
                   </div>
                   <div
-                    className={`message-options flex row ${
-                      isFrom === 'chatPage' ? 'chat-page' : ''
-                    }`}
+                    className={`message-options flex row ${isFrom === 'chatPage' ? 'chat-page' : ''
+                      }`}
                   >
                     <span className="addition flex">
                       {deviceType !== 'mobile' && (

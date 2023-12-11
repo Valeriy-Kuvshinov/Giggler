@@ -67,6 +67,7 @@ export function loadEmptyChat(emptyChat) {
   store.dispatch({ type: SET_EMPTY_CHAT, emptyChat })
 }
 export function clearCurrChat(){
+  console.log('testing clear')
   store.dispatch({type: CLEAR_CURR_CHAT})
 }
 export function clearChats(){

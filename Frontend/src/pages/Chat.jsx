@@ -9,7 +9,7 @@ import { UserInfo } from '../cmps/UserInfo.jsx'
 import { Loader } from '../cmps/Loader.jsx'
 import SvgIcon from '../cmps/SvgIcon.jsx'
 
-export function Chat() {
+export function Chat({ onFooterUpdate }) {
   const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
   const chats = useSelector((storeState) => storeState.chatModule.chats)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
@@ -31,6 +31,10 @@ export function Chat() {
       console.log("Couldn't load chats:", err)
     }
   }
+
+  useEffect(() => {
+    if (!isLoading) onFooterUpdate()
+  }, [isLoading, onFooterUpdate])
 
   async function onRemoveChat(event, chatId) {
     event.stopPropagation()
@@ -164,7 +168,7 @@ export function Chat() {
       )}
 
       {deviceType === 'desktop' && chatProps && (
-        <UserInfo watchedUser={ loggedinUser._id === chatProps.gig.ownerId ? chatProps.buyer : chatProps.owner} />
+        <UserInfo watchedUser={loggedinUser._id === chatProps.gig.ownerId ? chatProps.buyer : chatProps.owner} />
       )}
     </main>
   )
