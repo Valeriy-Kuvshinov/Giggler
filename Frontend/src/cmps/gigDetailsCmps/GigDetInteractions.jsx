@@ -79,7 +79,7 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
                         <SvgIcon iconName={'arrowDown'} />
                     </Link>
                     <div className="flex row">
-                        <span className="heart" onClick={(e) => likeGig(e)}>
+                        <span className="heart" onClick={(e) => likeGig(e)} title='like the gig to show support'>
                             {isLiked ? (
                                 <SvgIcon iconName={'heartLikedMobileIcon'} />
                             ) : (
@@ -93,7 +93,7 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
                 </div>
             ) : (
                 <div className="gig-interactions flex">
-                    <span className="heart" onClick={(e) => likeGig(e)}>
+                    <span className="heart" onClick={(e) => likeGig(e)} title='like the gig to show support'>
                         {isLiked ? (
                             <SvgIcon iconName={'heartLikedDesktopIcon'} />
                         ) : (

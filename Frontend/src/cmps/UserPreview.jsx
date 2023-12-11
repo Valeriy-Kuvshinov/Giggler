@@ -38,8 +38,8 @@ export function UserPreview({ isFrom, owner, children }) {
         <div className="user-rating-order flex">
           <span className="rating-score flex">
             <SvgIcon iconName={'star'} tag={'span'} />
-            <span className="rate b">{user.rating}</span>
-            <span className="rate-count ">{`(${ratingCount})`}</span>
+            <span className="rate b" title='user rating'>{user.rating}</span>
+            <span className="rate-count">{`(${ratingCount})`}</span>
           </span>
         </div>
         {children}
@@ -68,7 +68,7 @@ export function UserPreview({ isFrom, owner, children }) {
               {`${isFrom === 'gig-details' ? '@' : isFrom === 'gig-details-2' ? '@' : ''}${user.username}`}
             </Link>
             {isFrom === 'userProfile' &&
-              <span className={`user-level ${user.level === 'level 3' ? 'top' : ''}`}>
+              <span className={`user-level ${user.level === 'level 3' ? 'top' : ''}`} title='user level'>
                 {user.level}
               </span>}
           </span>
@@ -81,11 +81,11 @@ export function UserPreview({ isFrom, owner, children }) {
             <div className="rating-order-wrapper">
               <span className="rating-score flex">
                 <SvgIcon iconName="star" />
-                <span className="rate b">{user.rating}</span>
-                <span className="rate-count "> {`(${ratingCount})`}</span>
+                <span className="rate b" title='user rating'>{user.rating}</span>
+                <span className="rate-count"> {`(${ratingCount})`}</span>
               </span>
               {isFrom === 'gig-details' && (
-                <span className="active-orders">
+                <span className="active-orders" title='active orders'>
                   {`${completedOrders} Order${completedOrders !== 1 ? 's' : ''} in Queue`}
                 </span>
               )}
@@ -93,7 +93,7 @@ export function UserPreview({ isFrom, owner, children }) {
           )}
         </div>
         {isFrom === 'explore' &&
-          <span className="level flex row" data-level={user.level}>
+          <span className="level flex row" data-level={user.level} title='user level'>
             {user.level === 'Pro Talent' && <SvgIcon iconName="customCheckMarkSunIcon" />}
             {user.level === 'New Seller' && <SvgIcon iconName="newSeedlingIcon" />}
 
@@ -106,8 +106,8 @@ export function UserPreview({ isFrom, owner, children }) {
         <div className="user-rating-order">
           <span className="rating-score flex">
             <SvgIcon iconName={'star'} tag={'span'} />
-            <span className="rate b">{user.rating}</span>
-            <span className="rate-count ">{`(${ratingCount})`}</span>
+            <span className="rate b" title='user rating'>{user.rating}</span>
+            <span className="rate-count">{`(${ratingCount})`}</span>
           </span>
           <span></span>
         </div>

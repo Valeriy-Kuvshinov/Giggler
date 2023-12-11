@@ -24,7 +24,7 @@ export function UserGigs({ watchedUser, loggedinUser, gigs }) {
       )}
 
       {watchedUser._id === loggedinUser?._id && (
-        <div className="info-block gig seller">
+        <div className="info-block gig seller" title="create a new gig">
           <Link
             to="/gig/edit"
             className={`gig-creation-btn ${gigs.length !== 0 ? "old" : ""}`}

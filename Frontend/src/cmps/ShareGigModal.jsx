@@ -45,7 +45,7 @@ export function ShareGigModal({ onClose }) {
                 <ul className="flex row">
                     <li className="flex column">
                         <a className="flex column"
-                            href={`https://www.facebook.com/sharer/sharer.php?u=${currentURL}`} target="_blank" rel="noopener noreferrer">
+                            href={`https://www.facebook.com/sharer/sharer.php?u=${currentURL}`} target="_blank" rel="noopener noreferrer" title='share gig on Facebook'>
                             <SvgIcon iconName={'shareFacebookIcon'} />
                             <span>Facebook</span>
                         </a>
@@ -53,7 +53,7 @@ export function ShareGigModal({ onClose }) {
 
                     <li className="flex column">
                         <a className="flex column"
-                            href={`https://www.linkedin.com/shareArticle?mini=true&url=${currentURL}`} target="_blank" rel="noopener noreferrer">
+                            href={`https://www.linkedin.com/shareArticle?mini=true&url=${currentURL}`} target="_blank" rel="noopener noreferrer" title='share gig on LinkedIn'>
                             <SvgIcon iconName={'shareLinkedinIcon'} />
                             <span>LinkedIn</span>
                         </a>
@@ -61,7 +61,7 @@ export function ShareGigModal({ onClose }) {
 
                     <li className="flex column">
                         <a className="flex column"
-                            href={`https://twitter.com/intent/tweet?url=${currentURL}`} target="_blank" rel="noopener noreferrer">
+                            href={`https://twitter.com/intent/tweet?url=${currentURL}`} target="_blank" rel="noopener noreferrer" title='share gig on X'>
                             <SvgIcon iconName={'shareTwitterIcon'} />
                             <span>Twitter</span>
                         </a>
@@ -69,7 +69,7 @@ export function ShareGigModal({ onClose }) {
 
                     <li className="flex column">
                         <a className="flex column"
-                            href={`whatsapp://send?text=${currentURL}`} target="_blank" rel="noopener noreferrer">
+                            href={`whatsapp://send?text=${currentURL}`} target="_blank" rel="noopener noreferrer" title='share gig on Whatsapp'>
                             <SvgIcon iconName={'shareWhatsappIcon'} />
                             <span>WhatsApp</span>
                         </a>
@@ -77,7 +77,7 @@ export function ShareGigModal({ onClose }) {
 
                     <li className="flex column" onClick={copyLink}>
                         <SvgIcon iconName={'shareLinkIcon'} />
-                        <span style={isLinkCopied ? { color: 'green' } : {}}>{isLinkCopied ? "Link Copied!" : "Copy Link"}</span>
+                        <span style={isLinkCopied ? { color: 'green' } : {}} title='copy link'>{isLinkCopied ? "Link Copied!" : "Copy Link"}</span>
                     </li>
                 </ul>
             </section>

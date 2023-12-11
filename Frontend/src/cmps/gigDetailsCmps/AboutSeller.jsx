@@ -58,32 +58,32 @@ export function AboutSeller({ owner }) {
         <h3>About The Seller</h3>
         <UserPreview isFrom={'gig-details-2'} owner={owner} />
 
-        <button className="btn-contact b" onClick={(e) => onContactOwner(e)}>
+        <button className="btn-contact b" onClick={(e) => onContactOwner(e)} title='contact user with chat'>
           Contact me
         </button>
       </div>
       <div className="stats-desc">
         <ul className="user-stats grid">
-          <li>
+          <li title='the region the user is from'>
             From<strong>{owner.country}</strong>
           </li>
-          <li>
+          <li title='the user is a member since'>
             Member since
             <strong>
               {month} {year}
             </strong>
           </li>
-          <li>
+          <li title='average response time'>
             Avg. response time
             <strong>about {average} hours ago</strong>
           </li>
-          <li>
+          <li title='last delivery time'>
             Last delivery
             <strong>
               {months[lastDelivery.getMonth()]} {lastDelivery.getFullYear()}
             </strong>
           </li>
-          <li className="language">
+          <li className="language" title='languages spoken by the user'>
             Languages
             <span className="lang-type">
               {owner.languages.map((lang, idx) => (
@@ -93,7 +93,7 @@ export function AboutSeller({ owner }) {
           </li>
         </ul>
         {owner.description && (
-          <div className="seller-desc">
+          <div className="seller-desc" title='user description'> 
             <span>{owner.description}</span>
           </div>
         )}
