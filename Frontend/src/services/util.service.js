@@ -1,3 +1,5 @@
+import SvgIcon from "../cmps/SvgIcon"
+
 export const utilService = {
   makeId,
   makeLorem,
@@ -10,7 +12,7 @@ export const utilService = {
   timeAgoString,
   getRandomColor,
   getRandomMidColor,
-  formatDate
+  formatDate,
 }
 
 export const yearlyMonths = [
@@ -19,6 +21,7 @@ export const yearlyMonths = [
   'July', 'August', 'September',
   'October', 'November', 'December',
 ]
+
 
 function makeId(length = 6) {
   let txt = ''

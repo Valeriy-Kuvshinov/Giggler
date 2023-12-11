@@ -65,6 +65,7 @@ export function UserInfo({ watchedUser }) {
         <span className="username">@{watchedUser.username}</span>
 
         <div className="stars flex">
+          {/* <StarDisplay starCount={watchedUser.rating}/> */}
           {renderStars()}
           <span className="rating">{watchedUser.rating}</span>
           <span className="review-count">
@@ -115,8 +116,7 @@ export function UserInfo({ watchedUser }) {
       </div>
 
       <div className="info-block flex column description">
-        <h3 className="description-title">Description</h3>
-        <div className="description-box">{watchedUser.description}</div>
+        {watchedUser.description&&(<div><h3 className="description-title">Description</h3><div className="description-box">{watchedUser.description}</div></div>)}
 
         <div className="languages" title='languages the user speaks'>
           <span className="title">Languages</span>
