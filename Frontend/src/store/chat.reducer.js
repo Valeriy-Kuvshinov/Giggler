@@ -54,6 +54,7 @@ export function chatReducer(state = initialState, action = {}) {
       return { ...state, chats: [] }
 
     case UPDATE_CURR_CHAT:
+      console.log(action.chat)
       return { ...state, currentChat: action.chat }
 
     case SET_NEW_MSG:

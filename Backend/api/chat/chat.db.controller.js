@@ -3,7 +3,7 @@ import { chatService } from '../chat/chat.db.service.js'
 
 export async function getChat(req, res) {
   try {
-    loggerService.debug('Getting chat by users',req.query)
+    // loggerService.debug('Getting chat by users',req.query)
     const chat = await chatService.getByUsersId(req.query)
     res.send(chat)
   }
@@ -15,7 +15,7 @@ export async function getChat(req, res) {
 
 export async function getChats(req, res) {
   try {
-    loggerService.debug('Getting chats for user:', req.query)
+    // loggerService.debug('Getting chats for user:', req.query)
     const chats = await chatService.query(req.query)
     res.send(chats)
   }
@@ -50,6 +50,7 @@ export async function addChat(req, res) {
 
 export async function updateChat(req, res) {
   try {
+    // loggerService.debug('Updating chat :', req.body._id)
     const chat = { ...req.body, _id: req.params.id }
     const savedChat = await chatService.save(chat)
     res.send(savedChat)
