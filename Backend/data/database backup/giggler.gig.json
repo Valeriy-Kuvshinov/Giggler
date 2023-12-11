@@ -1,0 +1,1367 @@
+[{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a0"
+  },
+  "title": "I will take unique photos of Spiderman",
+  "category": "Photography",
+  "tags": [
+    "Products & Lifestyle",
+    "People & Scenes",
+    "Local Photography"
+  ],
+  "price": 79,
+  "description": "I am actually the real Spiderman...\nMost of my services are sought by American journalists.\nUnfortunately they do not seem to like the web hero...",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b6"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701803666/Giggler/gig-images/ri2kavqqyzcso1pbqawe.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533496/Giggler/gig-images/Spider-Man-Tobey-Maguire-2_uucsxd.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701809607/Giggler/gig-images/sbb9efxy0ms5imr8yfnk.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533489/Giggler/gig-images/5d5d70df4afbf9310528d139_en4cqo.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701784161/Giggler/gig-images/mtqcoctermy6r1ekalvn.jpg"
+  ],
+  "likedByUsers": [],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1e5"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc212"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc213"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc214"
+    },
+    {
+      "$oid": "656342bf590cd878962ce196"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1695643112145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a1"
+  },
+  "title": "I will design a robot logo for you",
+  "category": "Graphics & Design",
+  "tags": [
+    "3D Design",
+    "Visual Design",
+    "Art & Illustration"
+  ],
+  "price": 49,
+  "description": "I will design your robot logo in 24 hours or less, drawn, 3D, whatever you need...",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b7"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533793/Giggler/gig-images/cute-robot-mascot-logo-cartoon-character-illustration_8169-227_cbjsfp.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533790/Giggler/gig-images/cute-robot-holding-clipboard-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-5184_rtr8c7.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533792/Giggler/gig-images/cute-robot-logo-vector-design-template_612390-492_c9prej.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533795/Giggler/gig-images/hand-drawn-data-logo-template_23-2149203374_aehp1z.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533798/Giggler/gig-images/cute-bot-say-users-hello-chatbot-greets-online-consultation_80328-195_spgpi6.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1e6"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc215"
+    },
+    {
+      "$oid": "65632f51590cd878962ce194"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1695643112145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a2"
+  },
+  "title": "I will create logos for your company",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Marketing Design",
+    "Packaging & Covers"
+  ],
+  "price": 60,
+  "description": "I will design a unique and eye-catching logo for your brand.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b8"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534092/Giggler/gig-images/photo-1522139137660-4248e04955b8_cq2j8g.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534087/Giggler/gig-images/premium_photo-1661914978519-52a11fe159a7_wqrmrv.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534084/Giggler/gig-images/photo-1584441405886-bc91be61e56a_ii3ue4.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534085/Giggler/gig-images/photo-1602934445884-da0fa1c9d3b3_zignrq.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534090/Giggler/gig-images/doctype-hi-res_oijjlp.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    },
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1e7"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1e8"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1e9"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1ea"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1eb"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc210"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc211"
+    },
+    {
+      "$oid": "65639cf541dc2023b45f26f7"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1695643112145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a3"
+  },
+  "title": "I will design stunning website templates",
+  "category": "Graphics & Design",
+  "tags": [
+    "Web & App Design",
+    "Product & Gaming",
+    "Architecture & Building Design"
+  ],
+  "price": 60,
+  "description": "I specialize in creating beautiful and responsive website templates that will make your website stand out. Whether you need templates for your personal blog or e-commerce site, I've got you covered.",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b9"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534360/Giggler/gig-images/photo-1530435460869-d13625c69bbf_myr79a.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534364/Giggler/gig-images/photo-1452830978618-d6feae7d0ffa_sv4w24.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534356/Giggler/gig-images/photo-1487014679447-9f8336841d58_qvxcz6.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534357/Giggler/gig-images/photo-1507238691740-187a5b1d37b8_yrefen.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534362/Giggler/gig-images/photo-1551288049-bebda4e38f71_f0qeh7.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    },
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1ec"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1ed"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1ee"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1695643112145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a4"
+  },
+  "title": "I will write engaging blog articles for your niche",
+  "category": "Writing & Translation",
+  "tags": [
+    "Content Writing",
+    "Editing & Critique"
+  ],
+  "price": 30,
+  "description": "Looking for high-quality blog articles to boost your website's SEO and engage your audience? I'm here to help! I specialize in creating informative and engaging articles tailored to your niche.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1ba"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534717/Giggler/gig-images/pexels-photo-265667_ir75sp.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534715/Giggler/gig-images/pexels-photo-262508_gucc4f.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534602/Giggler/gig-images/pexels-photo-267389_dsfyld.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534710/Giggler/gig-images/pexels-photo-5077046_luvix9.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534712/Giggler/gig-images/photo-1586339393565-32161f258eac_ilmzsq.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1ef"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f0"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f1"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696247912145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a5"
+  },
+  "title": "I will compose a personalized song for your special occasion",
+  "category": "Music & Audio",
+  "tags": [
+    "Lessons & Transcriptions",
+    "Music Production & Writing",
+    "Audio Engineering & Post Production"
+  ],
+  "price": 70,
+  "description": "Celebrate your special moments with a custom song composed just for you. Whether it's a wedding, anniversary, or any significant event, I'll create a musical masterpiece that captures the essence of the occasion.",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1bb"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534920/Giggler/gig-images/photo-1605389173375-536da8b69691_ymvogb.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534928/Giggler/gig-images/photo-1518179636502-a54b7294ca20_ujhjmz.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534925/Giggler/gig-images/premium_photo-1664194584496-b0b72f2181e7_flbtae.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534931/Giggler/gig-images/photo-1571512379797-4613cb587cc0_h7orrf.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701534922/Giggler/gig-images/premium_photo-1663047192589-dacd18636fea_gpm7ss.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    },
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1f2"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f3"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f4"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696247912145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a6"
+  },
+  "title": "I will create custom 3D animations for your project",
+  "category": "Video & Animation",
+  "tags": [
+    "3D Animation",
+    "Custom Graphics",
+    "Visual Effects"
+  ],
+  "price": 100,
+  "description": "Transform your ideas into stunning 3D animations! Whether it's for a marketing video, product presentation, or artistic project, I'll bring your vision to life with custom animations and visual effects.",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1bc"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535290/Giggler/gig-images/photo-1627163439134-7a8c47e08208_f7pwtl.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535287/Giggler/gig-images/photo-1625014618427-fbc980b974f5_klhgti.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535285/Giggler/gig-images/photo-1618005198919-d3d4b5a92ead_ku9tbv.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535293/Giggler/gig-images/photo-1611162618071-b39a2ec055fb_vapbex.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535296/Giggler/gig-images/photo-1611339555312-e607c8352fd7_illf2h.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1ba"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1f5"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f6"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f7"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696247912145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a7"
+  },
+  "title": "I will offer professional legal consultation for your business",
+  "category": "Business",
+  "tags": [
+    "Legal Services",
+    "Sales & Customer Care",
+    "Professional Development",
+    "Accounting & Finance"
+  ],
+  "price": 80,
+  "description": "Need expert legal advice for your business? I'm a seasoned attorney with years of experience in corporate law. I can help you with contracts, compliance, and business strategy to ensure legal success.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1bd"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535462/Giggler/gig-images/photo-1521791055366-0d553872125f_xqwrtp.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535453/Giggler/gig-images/photo-1562564055-71e051d33c19_ofazbh.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535459/Giggler/gig-images/photo-1507679799987-c73779587ccf_wmrsiz.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535455/Giggler/gig-images/photo-1505664194779-8beaceb93744_kvwtox.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535465/Giggler/gig-images/photo-1528747008803-f9f5cc8f1a64_ysnznm.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1f8"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1f9"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1fa"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696247912145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a8"
+  },
+  "title": "I will provide coaching for your business growth",
+  "category": "Business",
+  "tags": [
+    "Business Formation",
+    "Business Growth",
+    "General & Administrative"
+  ],
+  "price": 50,
+  "description": "Unlock your potential and achieve business growth with my business coaching services. Together, we'll work on setting and achieving your goals, improving your mindset, and living a more fulfilling life.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1be"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535645/Giggler/gig-images/premium_photo-1661662844210-319fa8ee7fd1_susxtf.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535638/Giggler/gig-images/photo-1600880292203-757bb62b4baf_robfgz.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535642/Giggler/gig-images/premium_photo-1661604346220-5208d18cb34e_jwg0is.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535636/Giggler/gig-images/photo-1455849318743-b2233052fcff_iudeto.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535649/Giggler/gig-images/photo-1542744173-05336fcc7ad4_ibwfub.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1fb"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1fc"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1fd"
+    },
+    {
+      "$oid": "65639dcca4cf70301495ea8c"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696247912145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1a9"
+  },
+  "title": "I will create personalized workout planed videos for your fitness journey",
+  "category": "Video & Animation",
+  "tags": [
+    "Filmed Video Production",
+    "Explainer Videos",
+    "Product Videos"
+  ],
+  "price": 40,
+  "description": "Achieve your fitness goals with customized workout plans tailored to your needs. Whether you want to lose weight, build muscle, or improve your overall health, I'll help you get there.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1bf"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535800/Giggler/gig-images/photo-1601422407692-ec4eeec1d9b3_jvoeoz.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535793/Giggler/gig-images/photo-1518611012118-696072aa579a_mxbrfl.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535804/Giggler/gig-images/premium_photo-1672280783572-4a254a8e71d5_inaqpr.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535790/Giggler/gig-images/photo-1546483875-ad9014c88eba_knlj77.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535797/Giggler/gig-images/photo-1579758629938-03607ccdbaba_t6wke7.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    },
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc1fe"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc1ff"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc200"
+    },
+    {
+      "$oid": "656347d0590cd878962ce198"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1aa"
+  },
+  "title": "I will create handcrafted artisanal candles for your relaxation",
+  "category": "Graphics & Design",
+  "tags": [
+    "Visual Design",
+    "Marketing Design",
+    "Fashion & Merchandise"
+  ],
+  "price": 35,
+  "description": "Experience the soothing ambiance of handcrafted artisanal candles. Each candle is meticulously made with love and care, perfect for creating a relaxing atmosphere in your home or as a thoughtful gift.",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1c0"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535987/Giggler/gig-images/photo-1607713328148-0e55aa0c0772_juzyf3.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535984/Giggler/gig-images/photo-1603905179139-db12ab535ca9_xydrnl.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535991/Giggler/gig-images/photo-1613718653992-bf6cff9434c2_lmjeen.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535995/Giggler/gig-images/premium_photo-1676998174663-b9ea07552949_jfetwn.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701535999/Giggler/gig-images/photo-1571139627689-3a43d1f93a61_iuu5o2.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc201"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc202"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc203"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1ab"
+  },
+  "title": "I will create personalized digital avatars for your social media",
+  "category": "Graphics & Design",
+  "tags": [
+    "Art & Illustration",
+    "Visual Design",
+    "3D Design"
+  ],
+  "price": 50,
+  "description": "Elevate your online presence with custom digital avatars. Whether you're a content creator, gamer, or social media enthusiast, I'll design unique avatars that represent your personality and style.",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1c1"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701863439/Giggler/gig-images/1856ec9952897140028e99266db376c7_fendw7.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536172/Giggler/gig-images/maxresdefault_r3sio7.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536176/Giggler/gig-images/s_ackgcq.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536168/Giggler/gig-images/e0b0b9aed78851f9b5d6e3de764fc931_zbohap.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536165/Giggler/gig-images/comic-book_cbof2f.jpg"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    },
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b7"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc204"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc205"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc206"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1ac"
+  },
+  "title": "I will write a captivating fantasy novel for your reading pleasure",
+  "category": "Writing & Translation",
+  "tags": [
+    "Content Writing",
+    "Editing & Critique",
+    "Translation & Transcription"
+  ],
+  "price": 90,
+  "description": "Embark on an epic adventure with a custom-written fantasy novel. I'll craft a captivating world filled with magic, mythical creatures, and unforgettable characters. Dive into a story you won't want to put down.",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1c2"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536554/Giggler/gig-images/premium_photo-1661301044600-8856088002c7_zbbjzk.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536546/Giggler/gig-images/photo-1518117940395-1ac64e773a75_g5aflo.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536550/Giggler/gig-images/premium_photo-1661270443731-c45d03f37d93_zag1kb.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536540/Giggler/gig-images/photo-1505682634904-d7c8d95cdc50_ppcy4y.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536537/Giggler/gig-images/photo-1501504905252-473c47e087f8_fndv3r.avif"
+  ],
+  "likedByUsers": [],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc207"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc208"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc209"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1ad"
+  },
+  "title": "I will provide virtual reality tours of historical landmarks",
+  "category": "AI Services",
+  "tags": [
+    "AI Artists",
+    "Creative services"
+  ],
+  "price": 60,
+  "description": "Step back in time and explore historical landmarks like never before with immersive virtual reality tours. I'll take you on a journey through the past, providing interactive experiences and historical insights.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1c3"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536723/Giggler/gig-images/istockphoto-1324380506-2048x2048_xuspnc.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536727/Giggler/gig-images/photo-1660312828841-152a42bdf2da_cha85r.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536731/Giggler/gig-images/photo-1660312829388-95b65a28a401_phs8cc.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536736/Giggler/gig-images/photo-1667498606907-1f53824a8105_pvylru.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536740/Giggler/gig-images/premium_photo-1675257063036-b08810d2b134_nzhfch.avif"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc20a"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20b"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20c"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1ae"
+  },
+  "title": "I will provide hilarious video game 'assistance'",
+  "category": "Video & Animation",
+  "tags": [
+    "Video Game Help",
+    "Gaming Shenanigans",
+    "Humor"
+  ],
+  "price": 20,
+  "description": "Are you tired of serious video game help? Look no further! I offer 'assistance' that's guaranteed to make you laugh. Expect unexpected in-game antics, questionable advice, and loads of humor. Let's turn your gaming experience into a comedy show!",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1c4"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536933/Giggler/gig-images/HonkaiStarRail_fight_March7th_NoUID-1024x576_c3iacq.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536938/Giggler/gig-images/photo-1668554245893-2430d0077217_afsqh3.avif",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536942/Giggler/gig-images/steamuserimages-a.akamaihd_iiuqdd.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536924/Giggler/gig-images/1000_F_594676149_iWmSdOenTt4qeIXk2K7ns7jluleq6z30_erykwx.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701536929/Giggler/gig-images/2159e3e67e1d70966fd6a117fa1fc97b_j3ou0e.jpg"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc20d"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20e"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20f"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1696852712145"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1af"
+  },
+  "title": "I will be your spiderman and say anything you want",
+  "category": "Business",
+  "tags": [
+    "Legal Services",
+    "Sales & Customer Care",
+    "Professional Development"
+  ],
+  "price": 101,
+  "description": "I can say Happy Birthday to a family member or friend.\n\nOr some joke between colleagues.\n\nMaximum 60 seconds.\n\nThe file I send is .MP4",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b6"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538094/Giggler/gig-images/be-your-spiderman-and-send-greetings_nkgo24.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538099/Giggler/gig-images/far-from-home-spider-man-suit-141465_800x_mebucx.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538073/Giggler/gig-images/209rdxqn62ya1_ta043o.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538089/Giggler/gig-images/658134955_max_wwx0zu.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538104/Giggler/gig-images/s-l1200_ftkcfd.jpg"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc20b"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20c"
+    },
+    {
+      "$oid": "65679a860d518dc4b86de3e8"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1697543272000"
+  }
+},
+{
+  "_id": {
+    "$oid": "6543aef463bf08be0b6fc1b0"
+  },
+  "title": "I will write you an original soundtrack for a movie or film",
+  "category": "Music & Audio",
+  "tags": [
+    "Music Production & Writing",
+    "Audio Engineering & Post Production",
+    "Sound Design"
+  ],
+  "price": 101,
+  "description": "Hello and welcome, are you a fan of music too?\nI mostly do instrumentals, orchestral and rock soundtracks.\nI have 2 years experience in composing music for both video games and also Hollywood films.\nIf you're interested, just talk to me!",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b6"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538331/Giggler/gig-images/b8dc1fb270d6b7f322feccf3faabfe2aac24ea66_f0anmd.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538336/Giggler/gig-images/composer_zvyoqz.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538350/Giggler/gig-images/make-music-online-free-1024x683_pudc8p.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538326/Giggler/gig-images/240_F_623407783_fttTA4xS771ajMoMRXcGjGg8NoohsAbD_ferfsh.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538355/Giggler/gig-images/webpc-passthru_wpkzlk.webp"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "6543b59663bf08be0b6fc20d"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20e"
+    },
+    {
+      "$oid": "6543b59663bf08be0b6fc20f"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1697919013048"
+  }
+},
+{
+  "_id": {
+    "$oid": "654980af5ddc4d35f6b2ba0c"
+  },
+  "title": "I will do creative modern minimalist business logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 25,
+  "description": "CONGRATULATIONS !!!\n\n        Why to rely only one logo?\n        \n        NOW, Get 2 modern minimalist LOGO concepts and 3 concepts (depends upon purchased package) with unlimited revisions and select one for final files!!!\n        \n                \n        I have more than 7 years experience with 5500+ happy customers on Giggler. So feel free to order.\n        \n        \n        What you get: \n        \n        Vast experience with over 7 years+\n        Passionate and dedicated designer\n        100% vector logo that can be scaled up to required size\n        Delivery.....Never Late.\n        Full Custom Support\n        Clean Design to use\n        Professional touch before delivery\n        100% satisfaction or 100% refund Rule\n        Unlimited revisions until 100% satisfaction\n        Versions for a design included to choose from\n        \n        Note: If you need custom logo/ logo redesign or you have sketch of logo on a paper please inbox me and share your idea first before placing order. \n        \n        What types of logos you can demand with this gig? \n        \n        Creative / Amazing / company / Elegant / Eye Catching / business / Stunning / Modern / Professional / Badge / Text / Unique / branding / Vintage / Minimalist / Simple / Custom Design / Vector / luxury / clothing brand / versatile / real estate\n        \n        Ask if you have any question?\n        \n        or \n        \n        Order!",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654986725ddc4d35f6b2ba2a"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538672/Giggler/gig-images/2ee94deeb1c6c263abfa743aa643f18dad9cf909_qftqjz.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538652/Giggler/gig-images/c7a4d341f35f4b58b0d4395b878831997c161c2d_xlahpm.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538662/Giggler/gig-images/do-awesome-logo-design_gvylnk.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538667/Giggler/gig-images/Gig_pdf_copy_b0jmzm_wf4s9p.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538656/Giggler/gig-images/Capture_w5e6xt.webp"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6549d81597e32fb0ff4b3931"
+    }
+  ],
+  "reviews": [
+    {
+      "$oid": "654982735ddc4d35f6b2ba0f"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba10"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba11"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba12"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba13"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba14"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba15"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba16"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba17"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba18"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba19"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1a"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1b"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1c"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1d"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1e"
+    },
+    {
+      "$oid": "654982735ddc4d35f6b2ba1f"
+    }
+  ],
+  "createdAt": {
+    "$numberLong": "1442024647000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6968f055923ef2922e13"
+  },
+  "title": "I will design professional, modern cartoon, mascot business logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 30,
+  "description": "Welcome to My Cartoon/Mascot logo design Gig\n\n        If you are looking for a Creative Mascot or Modern logo, you are at the Best place. I'm an Expert In logo Designing, and I'm always ready to help my clients. Please take a look at my reviews, and you'll see that I'm a professional who takes his work seriously. \n        \n        My Vision\n        \n        I'm always creating my logo designs by hand drawings. So my designs are always 100% original. No clip arts, recycled graphics, or cheesy icons like what you'll get from my other designers.\n        \n        I provide Unlimited Revisions for every Gig. Because I want to make sure you're happy with my work\n        \n        I'm a Full-time Giggler seller, so you can get lifetime support from me\n        \n        Please Note - IF you need a mascot/cartoon style logo design please book Standard or Premium packages, because the Basic package is only for a creative normal style logo \n        \n        So please make your order or contact me for more details.\n        \n        I'm your friendly seller, Elmer\"",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654b6f33f055923ef2922e23"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539005/Giggler/gig-images/do-professional-logo-designs_pfl3ot.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539011/Giggler/gig-images/do-professional-logo-designs2_zh2l7o.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538988/Giggler/gig-images/Mockup_v0ecb0.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701538994/Giggler/gig-images/Mockup2_avq4sj.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701539000/Giggler/gig-images/3_jynkfk.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1442024647000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6a13f055923ef2922e16"
+  },
+  "title": "I will make the best high quality logos",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 45,
+  "description": "I will make the gig exactly how you describe it\nwith multiple versions free of charge, in a higher package\nyou will get higher variety of  quirks alongisde it.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654b6f33f055923ef2922e23"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701541861/Giggler/gig-images/b3d1df422b12277a3f26d57f263f91b53c044f30_fh1ml2.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701541855/Giggler/gig-images/a8be00844dcd5e75a674a5ae172e737955d512de_m9q8ii.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701541850/Giggler/gig-images/9c4054b207ee7bf295f4a6376b4b7603bfadd71f_jvdjxh.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701541838/Giggler/gig-images/6eb83c1d3f31b6e3a99910ed1a18306acab7d2db_xy4nbm.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701541867/Giggler/gig-images/fd74b8090b20644e559491e49f08f959e2f8f06c_fabeit.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1701163402000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6cc9f055923ef2922e1a"
+  },
+  "title": "I will create modern minimalist and luxury logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 10,
+  "description": "Hello! I enjoy creating and am a skilled logo designer. I have eight years of experience delighting in offering my clients contemporary solutions.\n\n        I will do super cool unique flat business logos in your organization in order to allow it to increase and flourish.\n        \n        I use the strategy of paying close attention to what they have to say in order to meet the expectations and desires of my customers.\n        \n        What I Offer is:\n        \n        ⭐ 24 HOUR DELIVERY for initial design concepts\n        ⭐ UNLIMITED revisions\n        ⭐ FULLY editable files\n        ⭐ FINAL LOGO FILES Delivery: .AI, .PSD.PNG, .PDF, .EPS and JPG.\n        ⭐ It may be added within the particular time body or in advance.\n        \n        \n        What's in My Premium Package\n        \n        ⭐ three concepts\n        ⭐ unlimited revisions\n        ⭐ vector and source files (ai,eps,pdf,png and jpg)\n        ⭐ obvious model\n        ⭐ 3d mockup\n        ⭐ social media kit\n        ⭐ desk bound layout (business card, letterhead and envelope)\n        \n        What's in My Standard Package\n        \n        ⭐ 2 concepts\n        ⭐ unlimited revisions\n        ⭐ vector and supply documents (ai,eps,pdf,png and jpg)\n        ⭐ obvious and 3d mockup\n        ⭐ social media banners\n    \n        What's in My Basic Package\n\n        ⭐ 1 concept\n        ⭐ Unlimited revisions\n        ⭐ Transparent file & 3d Mockup\n        ⭐ no complicated or mascot\n\n        Contact me at any time if you have any questions.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654b7202f055923ef2922e2a"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532267/Giggler/gig-images/038d6c59151fbfb2f7b5772ae52e91b95e3bacc0_kuiyea.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532268/Giggler/gig-images/e89d29b515c47c44921a147f0a15f7e8c7dca381_jawyl8.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532267/Giggler/gig-images/e8ccafdb173bf6d99fc41f26d3cdbd1d77effc78_ybvffa.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532267/Giggler/gig-images/129148_2397_0a784b4a-0382-44a2-93bb-767545591971_pgxsat.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532269/Giggler/gig-images/Mockup_bivnf1.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1672473600000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6d24f055923ef2922e1c"
+  },
+  "title": "I will do super cool unique flat business logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 75,
+  "description": "Hello! I enjoy creating and am a skilled logo designer. I have eight years of experience delighting in offering my clients contemporary solutions.\n\n        I will do super cool unique flat business logos in your organization in order to allow it to increase and flourish.\n        \n        I use the strategy of paying close attention to what they have to say in order to meet the expectations and desires of my customers.\n        \n        What I Offer is:\n        \n        ⭐ 24 HOUR DELIVERY for initial design concepts\n        ⭐ UNLIMITED revisions\n        ⭐ FULLY editable files\n        ⭐ FINAL LOGO FILES Delivery: .AI, .PSD.PNG, .PDF, .EPS and JPG.\n        ⭐ It may be added within the particular time body or in advance.\n        \n        \n        What's in My Premium Package\n        \n        ⭐ three concepts\n        ⭐ unlimited revisions\n        ⭐ vector and source files (ai,eps,pdf,png and jpg)\n        ⭐ obvious model\n        ⭐ 3d mockup\n        ⭐ social media kit\n        ⭐ desk bound layout (business card, letterhead and envelope)\n        \n        What's in My Standard Package\n        \n        ⭐ 2 concepts\n        ⭐ unlimited revisions\n        ⭐ vector and supply documents (ai,eps,pdf,png and jpg)\n        ⭐ obvious and 3d mockup\n        ⭐ social media banners\n    \n        What's in My Basic Package\n\n        ⭐ 1 concept\n        ⭐ Unlimited revisions\n        ⭐ Transparent file & 3d Mockup\n        ⭐ no complicated or mascot\n\n        Contact me at any time if you have any questions.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": "654b7202f055923ef2922e2a",
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532580/Giggler/gig-images/dec568ddc8ce861dd817b5e107c2451c97c12f78_ihf1mv.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532578/Giggler/gig-images/cdd4071d212d7e4b9b82321f3cbeaff1ff17bf29_go4htn.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532577/Giggler/gig-images/e48f71f35b5ee3e2646f2561294a634b5e417eea_zbz76z.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532578/Giggler/gig-images/21_ah1qnv.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532794/Giggler/gig-images/2b222759b5b29b9e379bf124bf5416bc45f338e9_qvkehi.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1672473600000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6d65f055923ef2922e1e"
+  },
+  "title": "I will create unique modern minimalist logo design with brand identity",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 30,
+  "description": "As a skilled graphic designer with a focus on delivering unique, custom logo designs, I am here to help you create a brand identity that is both striking and memorable. With years of experience in the industry, I have honed my skills to create logos that are ahead of the curve and uniquely tailored to your brand.\n        what i can offer\n        \n        logo packages that are specifically designed to meet your unique branding needs. Whether you're a small business looking for a fresh new look or a large corporation seeking to revamp your brand identity, I am here to help.\n        \n        My process begins with a detailed discussion of your brand, your vision, and your goals. From there, I will create 2-4 logo concepts that embody your brand's unique identity. Once you have selected your preferred logo design, I will continue designing the rest of your brand identity, including business cards, letterheads, and more.\n        \n        You will get\n        \n        custom logo design that will elevate your brand identity to new heights. With,\n        \n        Unlimited revisions\n        24/7 friendly service\n        Great communication\n        Superb lifetime aftercare\n        Fast and on time delivery",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b8"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532978/Giggler/gig-images/4739f42e7e0417bd23acbcee07104ad4853e9d1d_by3b0k.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532982/Giggler/gig-images/5d8c489525b1a324b845751c20fd601bd8d83268_gvkhfg.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701532981/Giggler/gig-images/I_will_create_unique_modern_minimalist_logo_design_with_brand_identity_fnhawc_rj0mz5.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533306/Giggler/gig-images/cover_image_-02_srjlxa.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701533307/Giggler/gig-images/cover_image_-01_f8qkln.webp"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1442024647000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654b6dfaf055923ef2922e20"
+  },
+  "title": "I will do embroidery digitizing design into dst pes jef file in 1 hour",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 5,
+  "description": "EMBROIDERY DIGITIZING\n\n        Expert Embroidery Digitizer is here..\n       \n       if you want to Convert/Digitize your logo into any embroidery files then this Gig is for you please contact us or place your order now,,\n       \n       We Convert/Digitize your logos/images/artwork into any embroidery formats you need for embroidery\n       \n       What you will get? \n       \n       DST , EMB , PES , CND , EXP ,VP3 , JEF , HUS , ART files and many more upon your request \n       \n       JPEG file\n       PDF file for preview of the design \n       \n       Our Embroidery Digitizing service??\n       \n        Flat/Regular embroidery digitizing\n        3D Puff/Raised embroidery digitizing\n        Patch embroidery digitizing\n        Applique and many others type of digitizing\n       * We digitize your logo/images/artwork for cap ,hat ,t-shirt ,jacket-back,left chest,bag,towel or in any other size you want for embroidery\n       * Any size digitizing\n       \n       Highly complex designs may incur an extra charges - message me first if you are unsure.\n       \n       Feel free to contact me if you have any question\n       \n       Thanks for your time..",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b8"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542129/Giggler/gig-images/66a71cc2aca148b0ab588276c52d3fbf5022ca4e_fcvezz.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542106/Giggler/gig-images/design-mascot-logo-for-gaming-sports-esports-team-twitch_s0py4i.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542111/Giggler/gig-images/design-mascot-logo-for-gaming-sports-esports-team-twitch2_jy7vp5.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542117/Giggler/gig-images/I_will_design_a_unique_business_logo_for_all_brands_cover_5_k3slnb_rgwzim.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542123/Giggler/gig-images/Portf_xsqubx.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1604563200000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c0438a38a2cef9cc6087b"
+  },
+  "title": "I will create minimalist and luxury logo design for your business",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 65,
+  "description": "Welcome to my modern minimalist and luxury logo design gig!!\n\n        Are you looking for a modern yet luxury and creative logo design for your brand or company?\n        \n        I will craft a 100% custom made unique modern minimalist logo using clean geometric shapes, resulting in a logo minimal in design and boasts luxury and is timeless.\n        \n        WHY ME?\n        \n        Reliable and Quick communication\n        Printable and HQ File size\n        Minimalist Logo and Flat Logo Expert\n        24/7 support, I literally spend my life here at Fiverr for your support.\n        Original concepts based on your instructions.\n        Unlimited Revisions until your satisfaction.\n        \n        This gig assures you all the print resolution solutions and a brand face for your company.\n        \n        NOTE:\n        \n        My portfolio displays logo designs that fall under standard/premium pack only. Please order an appropriate package to receive such a quality of work. \n        \n        The only thing holding you back from your success is the CONTINUE BUTTON on this Gig",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "654c06b4a38a2cef9cc6088b"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542441/Giggler/gig-images/e03cbfb4c19b84d78b748678e1a917758d58b81a_mvsgfv.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542446/Giggler/gig-images/2ef5bae3d7e8488ce96e63e95790ade8a96a4f25_qbbni2.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542465/Giggler/gig-images/d17bb5c50baf944330ab7a59825a5218bc23915b_tp3a5c.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542458/Giggler/gig-images/5523593d4f1263bbba4b7fd58750a0cba80c4a1f_dzkxnj.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542452/Giggler/gig-images/594c7e65359656c282a4c0e2e64e06712e335cd8_vw5u1i.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1546300800000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c0484a38a2cef9cc6087d"
+  },
+  "title": "I will do modern minimalist unique timeless business logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 45,
+  "description": "Welcome to my professional logo design gig \n\n        I specialize in creating luxury, professional, modern, and minimalist logos that accurately represent your brand and appeal to your target audience. With 7 years of experience in the industry, I understand the importance of a logo for your brand and I'm dedicated to helping you create a unique and timeless design that sets your brand apart.\n        \n        What did I offer?\n        \n        100% High-Quality professional Original logo\n        24 Hours Express Delivery\n        Source file / Vector files (AI, EPS, PSD, PDF, PNG, JPEG, and Fonts).\n        PNG Transparent file.\n        100% Original GUARANTEED\n        Free Unlimited revisions until you're totally satisfied\n        Friendly and excellent customer service\n        Additional file types if necessary (SVG,PSD)\n        Lifetime customer support.\n        Branding guide\n        \n        So, don't hesitate to place an order and let's work together to create a stunning, modern, and minimalist logo that accurately represents your brand and sets you apart from the competition.",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "654c072ca38a2cef9cc6088d"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701808314/Giggler/gig-images/161ca42610f90a9a20c277dfe7f06b12f2222476_id2icf.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542603/Giggler/gig-images/a74c62ac1f62d377072693f7e4b5bb43e2c60117_ctck6p.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542596/Giggler/gig-images/656a5d462f7547c67ec98c48f9d60a6605f0fa6b_w5bwyn.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542609/Giggler/gig-images/4_2__bsiz5u_eazgef.jpg",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542615/Giggler/gig-images/5_cocqsw_xplge4.jpg"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1514764800000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c04d5a38a2cef9cc6087f"
+  },
+  "title": "I will design 2 modern minimalist logo for your business",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 15,
+  "description": "Do you want a helping hand for your new business or brand to stay creative? Or are you not satisfied with your existing logo? Look no further, as you are at the correct place.\n\n        As it is the era of the modern minimalist logo. I am in the business of giving your brand a hyper boost, not just a logo.\n        \n        Why me?\n        \n        More than 5 years of experience in Branding Designing\n        Friendly and quick communication\n        High resolution printable files\n        Expert in modern minimalist logo\n        Money back guarantee\n        Flexible Source Formats\n\n        Modern Minimalist Logo | Minimal | Professional | Text | Vintage | Badge | Hand drawn | Feminine | Signature | Custom Logo Design\n        \n        If you want to know anything more please contact me. I am always here for you.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654c0747a38a2cef9cc6088f"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542736/Giggler/gig-images/a05727920329ff7a405ba1e463a5e010e8ca5dfe_f0thpw.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542755/Giggler/gig-images/f51850d23265d0f38e9357cc8afd2034709f42ac_r5kns9.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542762/Giggler/gig-images/8dc434c217a0b7448a35e8ae7e2c18a2134adc62_ik6qjl.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542742/Giggler/gig-images/b9517d0a5369337db2777e71b981f1e05658cd77_jqssr1.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542749/Giggler/gig-images/e14d7a54b8090e4ee44238950f9e85ca84878cd3_swzpj5.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1604582400000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c0521a38a2cef9cc60881"
+  },
+  "title": "I will create minimalist and modern logo design",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 85,
+  "description": "Hello! I'm Nadia and I'm a Spanish graphic designer :)\n\n        Please, before placing an order, reach out to me first in the messages area to talk about the details, so we can make sure that what I offer fits what you are looking for. Do not hesitate to ask me about anything, I'm always happy to answer all your questions!\n        \n        What you will get from me:\n        \n        Professional and custom designs\n        Clean and clear designs presentations\n        Friendly customer service\n        Smooth communication\n        Personalized service\n        Fast responses\n        Attention to detail\n        Final files well organized and easily accessible\n        Personalized and professional advide and guidance through the process\n        High Quality Files\n        \n        Please feel free to reach out to me with any questions! :)",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "654c075ba38a2cef9cc60891"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542905/Giggler/gig-images/aeea6eb8970a3dd6d31d76ba349e6e3aaa99580a_zweuda.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701789789/Giggler/gig-images/18e3e02f7a37c41ea88a017f90f50f472d34f238_qiyv93.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542899/Giggler/gig-images/a7115600ca5f61de93eb1656bc5e9c50412526b7_ehyrrn.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542892/Giggler/gig-images/33f58a4613160c1517b62c2cfb9a0b262213a4b7_yodj0d.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701542912/Giggler/gig-images/ba73119c317db50550243e773e2b04f64d34ce93_orfqtp.webp"
+  ],
+  "likedByUsers": [
+    {
+      "$oid": "6543af7f63bf08be0b6fc1b6"
+    }
+  ],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1442024647000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c0550a38a2cef9cc60883"
+  },
+  "title": "I will design, redesign, vectorize any logo or graphic",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 30,
+  "description": "Logo design is crucial for any business, as it can greatly impact your brand image and recognition. As a graphic designer with 15 years of experience, I understand the importance of creating a strong and memorable logo for both large corporations and small one-person home businesses. I specialize in custom logo creation, using design aesthetics, color psychology, and typography to convey brand messaging and enhance visual communication. With expertise in vector graphics software, I create high-resolution and scalable logos in various file formats suitable for printing, animation, and digital media. Let me help you design a professional and unique logo that represents your brand and attracts customers!",
+  "daysToMake": "Express 24H",
+  "ownerId": {
+    "$oid": "654c077ba38a2cef9cc60893"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543153/Giggler/gig-images/52adab31b0893b62261744881afaeb4d4f46a7c7_b0bxvm.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701789867/Giggler/gig-images/1205bc17c7ac83d02ad9476d145ce12c8e172d74_davagx.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543174/Giggler/gig-images/a8a82895dfd6c2d2ea45b57dda2ad8c3830fb2f2_kpl1y2.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701789891/Giggler/gig-images/0c4223f29955c574f09b1d27bfac1a932842928b_x99uyn.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543167/Giggler/gig-images/a03afba408f5a0abc5473dcdc1c72f1a0b83d6b9_wcpwxr.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1514764800000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c056fa38a2cef9cc60885"
+  },
+  "title": "I will design a sleek, minimalist logo for your business that is both visually appealing and effective",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 35,
+  "description": "I will design a sleek, minimalist logo for your business that is both visually appealing and effective. My logos are created with a focus on simplicity, clarity, and scalability. I will work with you to understand your brand and create a logo that reflects your unique personality and values.\n\n        Features:\n        \n        Original, custom design\n        \n        Unlimited rounds of revisions in Premium Package\n        \n        High-resolution vector files\n        \n        Full ownership of the designed files\n        \n        100% satisfaction guarantee\n        \n        Complete package of final files.\n        \n        Why you should choose me:\n        \n        I am a professional designer with over 10 years of experience.\n        I have a proven track record of creating high-quality logos that help businesses succeed.\n        I am passionate about creating logos that are both beautiful and effective.\n        I am committed to providing excellent customer service.\n\n        Get started today and let me help you create a logo that will make your business stand out!",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b8"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543320/Giggler/gig-images/b0d86abe88ba68236f39ba27d372063563ab4e84_jm4lyp.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543312/Giggler/gig-images/8c5566312e981f93e0bee4dd2801daf1aee1c9e9_tjaxwb.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543297/Giggler/gig-images/eece99dbdacb4d6753549e33b2d0975e0a880c8f_bn51hr.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543305/Giggler/gig-images/f829cb30fa43cc11f36b1c61f1a853cb3ac5691b_rz1ukq.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543291/Giggler/gig-images/b78f12d4aee9ea3e617b479374cd32f983d7a628_qeqbgy.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1604563200000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c05d3a38a2cef9cc60887"
+  },
+  "title": "I will create a custom logo illustration in my style",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 95,
+  "description": "Hi! Let's combine your idea with my artwork!\n        My illustrations can be used for logos, stickers, tattoos, t-shirts, brands, covers, and so on. I provide only my artworks which I draw in my own art style.\n        Please contact me before purchasing the Gig and give me a detailed idea of the design you need. I would like to discuss everything before we start.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": "654986725ddc4d35f6b2ba2a",
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543423/Giggler/gig-images/d50cbd525d7a7d703f08905e04636d9a653f27a0_vlfwoy.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543408/Giggler/gig-images/44e4fbb6e4e587da89622d5336a7ff5f1ceb0838_vwhmnz.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543438/Giggler/gig-images/8a67083b0207d140be9a2651e64f241f13b6eb21_ltvzfs.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543416/Giggler/gig-images/b755921f463379812097dc3a8bf9893e5571a054_zcuznr.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701789914/Giggler/gig-images/1b535992f26aa2337570cf8c93bba1c46917fd95_wle2ph.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1636191847000"
+  }
+},
+{
+  "_id": {
+    "$oid": "654c060aa38a2cef9cc60889"
+  },
+  "title": "I will create cute and funny logo or mascot for your brand",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 19,
+  "description": "Hello,welcome to my page.\n\n        In this page I can help you to make cartoon mascot and logo character.\n        \n        You can choose the package for the features at there.So,hurry up..we'll make your logo together)",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b7"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543787/Giggler/gig-images/a24038e1aa47c654702c0dbe3e8cbffaf498d10f_zewdrv.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701808555/Giggler/gig-images/0f3d0db361dcda3ebc975815bca4544b362e904b_ci5gzu.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543787/Giggler/gig-images/935758747498f9ded325a67594164a5fa3264a5e_u8hlkq.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543787/Giggler/gig-images/e3218c6572a1549393ce5831ffe43fc0b7f29032_pznres.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543787/Giggler/gig-images/2f596568ff7680965d7a5eb61930af0afcaa9bb6_iaohpt.jpg"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1665138486000"
+  }
+},
+{
+  "_id": {
+    "$oid": "6565b1cbd91537a477426205"
+  },
+  "title": "I will create design your company's vision",
+  "category": "Graphics & Design",
+  "tags": [
+    "Logo & Brand Identity",
+    "Art & Illustration",
+    "Marketing Design",
+    "3D Design"
+  ],
+  "price": 19,
+  "description": "Thank you for stopping by! This gig is intended for anyone who\n is looking for a well rounded and undefined design for their\n company or brand. We will try different concepts and ideas to\n get you where you need to be. If you aren't sure where to start,\n this is a good gig to choose.\n\nUnlike a lot of other fiverr artists, my designs do not change\n in quality depending upon what package you choose.\n All of my designs deserve the same attention and quality guarantee.\n My process starts in the traditional form which means\n I begin with paper and pencil. Once that is complete\n I refine it with art and/or calligraphy pens.\n Once that's complete, I bring it into my computer and render\n it digitally. The colors can be whatever you choose and the\n packages are all different. So please read them carefully or\n send me a message if you have any questions.",
+  "daysToMake": "Up to 3 days",
+  "ownerId": {
+    "$oid": "6543af7f63bf08be0b6fc1b7"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543909/Giggler/gig-images/78fe34ecddb886dd10b291634bbf2e03d55ba64e_jkr4dr.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543908/Giggler/gig-images/53e63acc3b534db6ed25e96f651b6b55c6fa319a_k50i1m.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701789935/Giggler/gig-images/125d9a54d0cc99dba0e3b94d471087cca5993258_uwfiau.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543910/Giggler/gig-images/99d9b422c907873158a3a1b88bd40f1aa3f791ed_lzp39v.webp",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701543908/Giggler/gig-images/5ee091d63f9977182138e2836125a7a1986f47b1_gw6yj6.webp"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1700579732000"
+  }
+},
+{
+  "_id": {
+    "$oid": "65723a635dc782fd094e2408"
+  },
+  "title": "I will create you a freelancer site that looks like a major company platform",
+  "category": "Programming & Tech",
+  "tags": [
+    "Website Development",
+    "Website Platforms",
+    "Website Maintenance"
+  ],
+  "price": 0,
+  "description": "Hello, have you heard of Fiverr? Well allow me to introduce myself. Im a fullstack developer that excels in buildings sites for educational purposes.\nCurrently I build and upload web works and sites for free, but maybe that will change soon ;)",
+  "daysToMake": "Up to 7 days",
+  "ownerId": {
+    "$oid": "657238df5dc782fd094e2407"
+  },
+  "imgUrls": [
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984839/Giggler/gig-images/jo1djom9s10sljgfkjj2.png",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984843/Giggler/gig-images/mztdpnobkaehzwijflht.png",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984849/Giggler/gig-images/o3lwa29akurjjczbbvhn.png",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984853/Giggler/gig-images/g0islfbkuqtynvwagqao.png",
+    "https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984857/Giggler/gig-images/qp76gxhvnyctivy3vu6w.png"
+  ],
+  "likedByUsers": [],
+  "reviews": [],
+  "createdAt": {
+    "$numberLong": "1701984535791"
+  }
+}]
