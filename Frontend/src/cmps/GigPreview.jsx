@@ -86,28 +86,34 @@ export function GigPreview({ isFrom, gig }) {
   }
   if (deviceType === 'mobile' || deviceType === 'mini-tablet') {
     return (
-      <li className="mobile-gig-preview grid">
-        <span className={`level ${owner?.level === 'Pro Talent' ? 'pro' : ''}`}>
-          {owner?.level === 'Pro Talent' ? 'Pro' : ''}
-        </span>
-        <img src={updatedGig.imgUrls[0]} alt="gig-img"></img>
-        <div className="mobile-preview-body flex">
-          <UserPreview isFrom={'mobile'} owner={owner} gig={updatedGig}>
-            <Link className="gig-title" to={`/gig/${updatedGig._id}`}>
-              {updatedGig.title}
-            </Link>
-            <div className="gig-price">
-              <span className="from">From</span><span className="price b">{`$${updatedGig.price}`}</span>
-            </div>
-          </UserPreview>
-        </div>
-        <span className="heart" onClick={(e) => likeGig(e)}>
-          {isLiked ? (
-            <SvgIcon iconName={'heartLikedMobileIcon'} />
-          ) : (
-            <SvgIcon iconName={'heartEmptyMobileIcon'} />
-          )}
-        </span>
+      <li className="mobile-gig-preview">
+        <Link className="gig-preview-content grid" to={`/gig/${updatedGig._id}`}>
+          <span className="level flex row" data-level={owner?.level}>
+            {owner?.level === 'Pro Talent' && <SvgIcon iconName="customCheckMarkSunIcon" />}
+            {owner?.level === 'New Seller' && <SvgIcon iconName="newSeedlingIcon" />}
+
+            {owner?.level === 'Pro Talent' ? 'Pro' : owner?.level === 'New Seller' ? 'New' : ''}
+          </span>
+          <img src={updatedGig.imgUrls[0]} alt="gig-img"></img>
+          <div className="mobile-preview-body flex">
+            <UserPreview isFrom={'mobile'} owner={owner} gig={updatedGig}>
+              <span className="gig-title">
+                {updatedGig.title}
+              </span>
+              <div className="gig-price flex">
+                <span className="from">From</span>
+                <span className="price b">{`$${updatedGig.price}`}</span>
+              </div>
+            </UserPreview>
+          </div>
+          <span className="heart" onClick={(e) => likeGig(e)}>
+            {isLiked ? (
+              <SvgIcon iconName={'heartLikedMobileIcon'} />
+            ) : (
+              <SvgIcon iconName={'heartEmptyMobileIcon'} />
+            )}
+          </span>
+        </Link>
       </li>
     )
   }
@@ -178,7 +184,7 @@ export function GigPreview({ isFrom, gig }) {
           </>
         )}
         {isFrom !== 'userProfile' && (
-          <div className="gig-price">
+          <div className="gig-price flex">
             <span className="price b">{`From $${updatedGig.price}`}</span>
           </div>
         )}
