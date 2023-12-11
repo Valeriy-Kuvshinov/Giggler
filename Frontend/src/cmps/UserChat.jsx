@@ -15,6 +15,7 @@ import {
   clearCurrChat,
 } from '../store/chat.actions.js'
 import { Loader } from './Loader.jsx'
+import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
 export function UserChat({
   owner,
@@ -37,6 +38,7 @@ export function UserChat({
   const [smileyChoice, setSmileyChoice] = useState(false)
   const timeoutId = useRef(null)
   const chatContainerRef = useRef(null)
+  const deviceType = useDeviceType()
 
   useEffect(() => {
     loadsChat()
@@ -332,9 +334,13 @@ export function UserChat({
                       <span>{characterCount}/2500</span>
                     </section>
                   </div>
-                  <div className="message-options flex row">
+                  <div
+                    className={`message-options flex row ${
+                      isFrom === 'chatPage' ? 'chat-page' : ''
+                    }`}
+                  >
                     <span className="addition flex">
-                      <span className="emoji-picker-icon">
+                      {deviceType !== 'mobile' && (
                         <span
                           className="smiley-container"
                           onClick={() =>
@@ -344,14 +350,12 @@ export function UserChat({
                           <SvgIcon iconName={'smiley'} />
                           {smileyChoice && (
                             <SmileyChoice
-                              message={message}
                               setMessage={setMessage}
+                              setSmileyChoice={setSmileyChoice}
                             />
                           )}
                         </span>
-                        <div className="emoji-picker-container"></div>
-                      </span>
-
+                      )}
                       <button>
                         <SvgIcon iconName={'loadingFiles'} />
                       </button>

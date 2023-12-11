@@ -1,25 +1,26 @@
 .smiley-choice {
   position: absolute;
-  bottom: 3em;
-  right: 0;
+  bottom: 1.5em;
+  left: 0em;
   z-index: 40;
   display: none;
-  background-color: #fff;
+  background-color: $clrPrimary1;
   border: 1px solid #ccc;
   border-radius: 0.5em;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 1em;
+  padding: 0.5em;
 
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  max-height: 200px;
+  overflow-y: scroll;
+  @media (min-width: 601px){
+    &:not(:hover) {
+      opacity: 0.3;
+    }
+  }
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
 
   li {
-    width: calc(25% - 10px);
-    margin-bottom: 10px;
     text-align: center;
     cursor: pointer;
 

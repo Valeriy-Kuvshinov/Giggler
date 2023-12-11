@@ -74,13 +74,17 @@
             display: flex;
             justify-content: space-between;
 
-            .name {
-              text-transform: capitalize;
-            }
-            .username {
-              margin-inline-start: 0.75em;
-              font-size: 0.85em;
-              color: $clrSecondary7;
+            .name-wrapper {
+              .name {
+                text-transform: capitalize;
+                max-height: 1em;
+                overflow: hidden;
+              }
+              .username {
+                margin-inline-start: 0.75em;
+                font-size: 0.85em;
+                color: $clrSecondary7;
+              }
             }
 
             .time {
