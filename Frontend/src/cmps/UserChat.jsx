@@ -185,7 +185,7 @@ export function UserChat({
           >
             <section className="user-info-bar flex row">
               <div className="avatar">
-                {buyer ? (
+                {isBuyer ? (
                   <img src={owner.imgUrl} alt={owner.username} />
                 ) : (
                   <img src={buyer.imgUrl} alt={buyer.username} />
@@ -194,7 +194,7 @@ export function UserChat({
               </div>
               <div className="owner-info flex">
                 <span>
-                  {buyer ? (
+                  {isBuyer ? (
                     <span className="message flex row">{`Message ${owner.username}`}</span>
                   ) : (
                     <span className="message flex row">{`Message ${buyer.username}`}</span>
@@ -282,7 +282,7 @@ export function UserChat({
                       placeholder={
                         isBuyer
                           ? `Ask ${owner.username} a question about the gig!`
-                          : `Sell your gig...`
+                          : `Send a message...`
                       }
                       value={message}
                       onChange={(e) => onChangeMessage(e)}
