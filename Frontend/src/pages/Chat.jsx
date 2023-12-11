@@ -131,17 +131,10 @@ export function Chat() {
         ) : chats && chats.length > 0 ? (
           <ul className="chat-body">
             <>
-              {chats.map((chat, index) => {
+              {chats.map((chat) => {
                 const { buyer, seller } = chat
                 const role =
                   loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
-                // if (index === 0 && deviceType !== 'mobile') {
-                //   onOpenChat({
-                //     owner: seller,
-                //     buyer: buyer,
-                //     gig: chat.gig,
-                //   })
-                // }
                 return (
                   <li
                     key={chat._id}
