@@ -51,8 +51,12 @@ The following code sample is a custom React hook, designed to detect and handle 
 The 'outsideClick' custom hook provides a way to execute a callback function whenever a click event occurs outside of a specified element.<br>
 The custom hook receives the 'ref' (a React ref object created by useRef) and callback (function) params, for pointing to the DOM element that's wished to have outside click detection, and executing the callback when the outside click happens.<br>
 An example for using the custom hook, when closing a dropdown menu by clicking outside the menu:<br>
+
 import { useState, useEffect, useRef } from 'react'
-import outsideClick from '../../customHooks/outsideClick.js'export function SellerOrder({object, functions}){const [isDropdownVisible, setDropdownVisible] = useState(false)
+import outsideClick from '../../customHooks/outsideClick.js'
+
+export function SellerOrder({object, functions}){
+const [isDropdownVisible, setDropdownVisible] = useState(false)
 const dropdownMenuRef = useRef(null)
 outsideClick(dropdownMenuRef, () => setDropdownVisible(false))
 }
