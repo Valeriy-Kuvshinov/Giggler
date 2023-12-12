@@ -12,7 +12,17 @@ dont hesistate to look at a user' profile or their service' reviews for better r
 
 - **quick service**: In the gig page any user can start a chat with the seller to get furthur details before spending your precious hard earned money, you may always look back previous chat in the chats page.
 
-- **Data Collection**: Fetch weather data from various sources, including APIs, satellite imagery, and meteorological stations.
+- **immediate notifications**: Thanks to the usage of sockets, a way to notify the computer that a action was made, a user will get a immediate notifcation.
+
+## Behind the Scenes Features
+
+- **redux**: We use the store with reducers and actions to use the data across the website with updating at real time
+
+- **socket**: For real time updates of orders, reviews and the chat feature, we use the socket npm library so each user, either the freelancer or the one ordering the gig, will be updated at moment notice
+
+- **mongoDb**: The method of storage for the users, gigs, orders, reviews and chats are all inside collections in a database using MongoDb, the demodata used in the website was made by us, the developer team.
+
+- **cloudinary**:
 
 ## Getting Started
 
