@@ -212,14 +212,36 @@
           margin: 0;
         }
 
-        img {
-          width: 3em;
-          height: 3em;
-          min-width: 3em;
-          border-radius: 50%;
-          margin-inline-end: 0.75em;
-          object-fit: cover;
-          background: $clrSecondary6;
+        .userImg {
+          position: relative;
+          img {
+            width: 3em;
+            height: 3em;
+            min-width: 3em;
+            border-radius: 50%;
+            margin-inline-end: 0.75em;
+            object-fit: cover;
+            background: $clrSecondary6;
+          }
+
+          &.notification::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            width: 12px;
+            height: 12px;
+            background-color: $clr9;
+            border-radius: 50%;
+            animation: grow 0.7s infinite alternate;
+            z-index: 200;
+
+            @keyframes grow {
+              to {
+                scale: 1.2 1.2;
+              }
+            }
+          }
         }
 
         .chat-info {

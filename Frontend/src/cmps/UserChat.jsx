@@ -36,6 +36,7 @@ export function UserChat({
   const [characterCount, setCharacterCount] = useState(0)
   const [message, setMessage] = useState('')
   const [smileyChoice, setSmileyChoice] = useState(false)
+  const [notification, setNotification] = useState(false)
   const timeoutId = useRef(null)
   const chatContainerRef = useRef(null)
   const deviceType = useDeviceType()
@@ -46,6 +47,10 @@ export function UserChat({
     autoScroll()
   }, [owner, buyer])
 
+  // console.log('THIS IS OWNER: ', owner.fullName)
+  // console.log('THIS IS buyer: ', buyer.fullName)
+  console.log('THIS IS currChat: ', currentChat)
+
   async function loadsChat() {
     let newChat
     try {
@@ -54,12 +59,12 @@ export function UserChat({
         buyerId: buyer._id,
       })
     } catch (err) {
-      console.log('Problem occurred whe getting new chat: ', err)
+      console.log('Problem occurred when getting new chat: ', err)
     } finally {
       if (!currentChat) {
         loadEmptyChat({
           seller: owner,
-          buyer: isBuyer ? loggedinUser : buyer,
+          buyer: buyer,
           messages: [],
           gig: gig,
         })
@@ -83,13 +88,25 @@ export function UserChat({
   }, [])
 
   function addMessage(message) {
-    loadNewMsg(message)
-    autoScroll()
+    console.log('addMessage message: ', message.user.fullName)
+    console.log('This is the buyer: ', buyer.fullName)
+    console.log('This is the seller: ', owner.fullName)
+    if (message.user._id === buyer._id || message.user._id === owner._id) {
+      console.log('msging is truthy!!!!!!!!!!!!!!!')
+
+      loadNewMsg(message)
+      autoScroll()
+    }
   }
 
   function addTypingUser(user) {
-    loadIsTyping(user)
-    autoScroll()
+    console.log('isTyping user: ', user.fullName)
+    if (user._id === buyer._id || user._id === owner._id) {
+      console.log('typing is truthy!!!!!!!!!!!!!!!')
+      loadIsTyping(user)
+      autoScroll()
+      setNotification(true)
+    }
   }
 
   function removeTypingUser(userToRemove) {
@@ -98,7 +115,12 @@ export function UserChat({
 
   function autoScroll() {
     if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+      const chatContainer = chatContainerRef.current
+      chatContainer.scrollTop = chatContainer.scrollHeight
+
+      setTimeout(() => {
+        chatContainer.scrollTop = chatContainer.scrollHeight
+      }, 100)
     }
   }
 
@@ -177,14 +199,15 @@ export function UserChat({
     <>
       {chatState && (
         <div
-          className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''
-            }`}
+          className={`chat-box-wrapper ${
+            isFrom === 'chatPage' ? 'chat-page' : ''
+          }`}
         >
           <aside
             className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}
           >
             <section className="user-info-bar flex row">
-              <div className="avatar">
+              <div className={`avatar ${notification ? 'notification' : ''}`}>
                 {isBuyer ? (
                   <img src={owner.imgUrl} alt={owner.username} />
                 ) : (
@@ -218,8 +241,9 @@ export function UserChat({
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div
-                    className={`message-container flex column ${isFrom === 'chatPage' ? 'chat-page' : ''
-                      }`}
+                    className={`message-container flex column ${
+                      isFrom === 'chatPage' ? 'chat-page' : ''
+                    }`}
                     ref={chatContainerRef}
                   >
                     {currentChat.messages?.length > 0 &&
@@ -227,10 +251,11 @@ export function UserChat({
                         return (
                           <div
                             key={index}
-                            className={`message ${message.user._id === loggedinUser._id
+                            className={`message ${
+                              message.user._id === loggedinUser._id
                                 ? 'user-one'
                                 : 'user-two'
-                              } flex column`}
+                            } flex column`}
                           >
                             <div className="message-body grid">
                               <span className="text">{message.message}</span>
@@ -248,10 +273,11 @@ export function UserChat({
                       isTyping.map((user, index) => (
                         <div
                           key={index}
-                          className={`message ${user._id === loggedinUser._id
+                          className={`message ${
+                            user._id === loggedinUser._id
                               ? 'user-one'
                               : 'user-two'
-                            } flex column`}
+                          } flex column`}
                         >
                           <div className="message-body grid">
                             <span className="text">
@@ -284,6 +310,7 @@ export function UserChat({
                       value={message}
                       onChange={(e) => onChangeMessage(e)}
                       onKeyPress={handleKeyPress}
+                      onFocus={() => setNotification(false)}
                     ></textarea>
                   </div>
 
@@ -330,8 +357,9 @@ export function UserChat({
                     </section>
                   </div>
                   <div
-                    className={`message-options flex row ${isFrom === 'chatPage' ? 'chat-page' : ''
-                      }`}
+                    className={`message-options flex row ${
+                      isFrom === 'chatPage' ? 'chat-page' : ''
+                    }`}
                   >
                     <span className="addition flex">
                       {deviceType !== 'mobile' && (

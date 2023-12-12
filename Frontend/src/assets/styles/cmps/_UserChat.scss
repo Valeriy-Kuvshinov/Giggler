@@ -14,6 +14,17 @@
     border: 1px solid $clrSecondary3;
     max-height: 781px;
   }
+  &:not(.chat-page) {
+    .chat-box {
+      .chat-box-container {
+        .message-form {
+          .message-container {
+            padding: 0 1em;
+          }
+        }
+      }
+    }
+  }
 
   .chat-box {
     color: $clrPrimary2;
@@ -48,6 +59,24 @@
         img {
           border-radius: 50%;
           object-fit: cover;
+        }
+        &.notification::after {
+          content: '';
+          position: absolute;
+          bottom: 10px;
+          right: 15px;
+          width: 12px;
+          height: 12px;
+          background-color: $clr9;
+          border-radius: 50%;
+          animation: grow 0.7s infinite alternate;
+          z-index: 200;
+
+          @keyframes grow {
+            to {
+              scale: 1.2 1.2;
+            }
+          }
         }
 
         .status-dot {
