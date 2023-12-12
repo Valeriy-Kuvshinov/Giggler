@@ -24,48 +24,50 @@ dont hesistate to look at a user' profile or their service' reviews for better r
 
 - **cloudinary**: to store our images, user provided images and some svgs we used Cloudinary as our storage service, it even deletes unused images provided by users to not waste the storage space.
 
+## Code Sample
+
+```bash
+import { useEffect } from 'react'
+
+function outsideClick(ref, callback) {
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        callback()
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [ref, callback])
+}
+
+export default outsideClick
+```
+
 ## Getting Started
 
 To begin using the Weather Reports project, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/weather-reports.git
-   cd weather-reports
+   git clone https://github.com/Valeriy-Kuvshinov/Giggler.git
+   cd giggler
    ```
 
 2. **Install Dependencies:**
    ```bash
-   pip install -r requirements.txt
+   npm i
    ```
 
-3. **Configure API Keys:**
-   Obtain API keys for the weather data sources you intend to use and update the configuration files accordingly.
-
-4. **Run the Application:**
+3. **Run the Application:**
    ```bash
-   python app.py
+   npm run dev
    ```
 
-   Access the application at [http://localhost:8000](http://localhost:8000) in your web browser.
-
-## Data Sources
-
-The Weather Reports project supports data retrieval from the following sources:
-
-- OpenWeatherMap API
-- NOAA (National Oceanic and Atmospheric Administration)
-- Weather Data Providers
-
-Ensure you have valid API keys and credentials for the chosen data sources.
-
-## Contributing
-
-Community contributions are welcomed. If you have ideas for new features, improvements, or bug fixes, please open an issue or submit a pull request. Check out our [contribution guidelines](CONTRIBUTING.md) for more details.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+   Access the application at [http://localhost:3030](http://localhost:5173) in your web browser.
 
 ## Acknowledgments
 
