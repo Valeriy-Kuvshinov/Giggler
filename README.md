@@ -49,7 +49,7 @@ export default outsideClick
 
 ## Getting Started
 
-To begin using the Weather Reports project, follow these steps:
+To begin using the Freelancing Services project, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
