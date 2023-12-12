@@ -51,11 +51,17 @@ The following code sample is a custom React hook, designed to detect and handle 
 The 'outsideClick' custom hook provides a way to execute a callback function whenever a click event occurs outside of a specified element.<br>
 The custom hook receives the 'ref' (a React ref object created by useRef) and callback (function) params, for pointing to the DOM element that's wished to have outside click detection, and executing the callback when the outside click happens.<br>
 An example for using the custom hook, when closing a dropdown menu by clicking outside the menu:<br>
+
+```bash
 import { useState, useEffect, useRef } from 'react'
-import outsideClick from '../../customHooks/outsideClick.js'export function SellerOrder({object, functions}){const [isDropdownVisible, setDropdownVisible] = useState(false)
+import outsideClick from '../../customHooks/outsideClick.js'
+
+export function SellerOrder({object, functions}){
+const [isDropdownVisible, setDropdownVisible] = useState(false)
 const dropdownMenuRef = useRef(null)
 outsideClick(dropdownMenuRef, () => setDropdownVisible(false))
 }
+```
 
 ## Giggler Pages Display
 
@@ -99,8 +105,8 @@ To begin using the Freelancing Services project, follow these steps:
 
 ## Acknowledgments
 
-Special thanks to contributors and open-source projects that inspired and supported the development of this Weather Reports project.
+Special thanks to contributors and open-source projects and Fiverr that inspired and supported the development of this Freelancers Service project.
 
 Enjoy exploring and analyzing weather data with the Weather Reports project! If you have any questions or feedback, feel free to reach out.
 
-Happy coding! 🌦️
+Happy coding!
