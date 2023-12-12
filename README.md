@@ -22,7 +22,7 @@ dont hesistate to look at a user' profile or their service' reviews for better r
 
 - **mongoDb**: The method of storage for the users, gigs, orders, reviews and chats are all inside collections in a database using MongoDb, the demodata used in the website was made by us, the developer team.
 
-- **cloudinary**:
+- **cloudinary**: to store our images, user provided images and some svgs we used Cloudinary as our storage service, it even deletes unused images provided by users to not waste the storage space.
 
 ## Getting Started
 
