@@ -288,6 +288,9 @@
               text-overflow: ellipsis;
               overflow: hidden;
               max-width: 250px;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
             }
 
             .erase-chat {
