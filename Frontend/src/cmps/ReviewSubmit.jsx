@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import outsideClick from '../customHooks/outsideClick.js'
 
 import { reviewService } from '../services/review.service.js'
 import { userService } from '../services/user.service.js'
@@ -16,6 +17,7 @@ export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
     const [gigOwner, setGigOwner] = useState(null)
 
     const modalRef = useRef()
+    outsideClick(modalRef, onClose)
 
     function handleModalClick(event) {
         event.stopPropagation()
@@ -134,18 +136,6 @@ export function ReviewSubmit({ loggedInUser, gig, order, onClose }) {
         }
         fetchGigOwner()
     }, [gig.ownerId])
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                onClose()
-            }
-        }
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [onClose])
 
     return (
         <div className="modal-wrapper" onClick={handleModalClick}>

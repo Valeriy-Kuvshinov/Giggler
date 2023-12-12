@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import outsideClick from '../customHooks/outsideClick.js'
 
 import { utilService } from '../services/util.service.js'
 import { userService } from '../services/user.service.js'
@@ -10,25 +11,14 @@ export function InvoiceModal({ order, onClose }) {
     const [buyer, setBuyer] = useState(null)
 
     const modalRef = useRef()
-
-    useEffect(() => {
-        function handleClickOutside(event) {
-            if (modalRef.current && !modalRef.current.contains(event.target)) {
-                onClose()
-            }
-        }
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [onClose])
+    outsideClick(modalRef, onClose)
 
     function handleModalClick(event) {
         event.stopPropagation()
     }
 
     useEffect(() => {
-        const fetchUserDetails = async () => {
+        async function fetchUserDetails() {
             try {
                 if (order?.sellerId) {
                     const sellerInfo = await userService.getById(order.sellerId)

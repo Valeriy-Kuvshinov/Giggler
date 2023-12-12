@@ -1,8 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useModal } from '../customHooks/ModalContext.jsx'
 
-import SvgIcon from './SvgIcon.jsx'
-
 import { logout } from '../store/user.actions.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 

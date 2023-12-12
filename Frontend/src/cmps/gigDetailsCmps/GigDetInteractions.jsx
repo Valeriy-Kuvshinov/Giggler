@@ -108,7 +108,7 @@ export function GigDetInteractions({ loggedInUser, gig, deviceType, onGigChange 
                     </button>
                 </div>
             )}
-            {isModalOpen && <ShareGigModal onClose={closeModal} />}
+            {isModalOpen && <ShareGigModal onClose={closeModal} gigId={gig._id} />}
         </>
     )
 }
