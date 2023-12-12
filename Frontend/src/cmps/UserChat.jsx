@@ -10,7 +10,6 @@ import {
   loadNewMsg,
   loadIsTyping,
   removeIsTyping,
-  getChat,
   loadEmptyChat,
   clearCurrChat,
 } from '../store/chat.actions.js'
@@ -30,7 +29,6 @@ export function UserChat({
     (storeState) => storeState.chatModule.currentChat
   )
   const { isTyping } = useSelector((storeState) => storeState.chatModule)
-  const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
   const isBuyer = loggedinUser && owner._id !== loggedinUser._id
 
   const [characterCount, setCharacterCount] = useState(0)
@@ -47,8 +45,6 @@ export function UserChat({
     autoScroll()
   }, [owner, buyer])
 
-  // console.log('THIS IS OWNER: ', owner.fullName)
-  // console.log('THIS IS buyer: ', buyer.fullName)
   console.log('THIS IS currChat: ', currentChat)
 
   async function loadsChat() {
@@ -138,11 +134,8 @@ export function UserChat({
     }
     setMessage('')
 
-    if (isBuyer) {
-      socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
-    } else {
-      socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
-    }
+    if (isBuyer) socketService.emit('chat-send-msg', { userId: owner._id, newMessage })
+    else socketService.emit('chat-send-msg', { userId: buyer._id, newMessage })
 
     try {
       if (currentChat?.messages?.length) {
@@ -199,9 +192,8 @@ export function UserChat({
     <>
       {chatState && (
         <div
-          className={`chat-box-wrapper ${
-            isFrom === 'chatPage' ? 'chat-page' : ''
-          }`}
+          className={`chat-box-wrapper ${isFrom === 'chatPage' ? 'chat-page' : ''
+            }`}
         >
           <aside
             className={`chat-box ${isFrom === 'chatPage' ? 'chat-page' : ''}`}
@@ -241,9 +233,8 @@ export function UserChat({
               <section className="chat-container grid">
                 <div className="message-form grid">
                   <div
-                    className={`message-container flex column ${
-                      isFrom === 'chatPage' ? 'chat-page' : ''
-                    }`}
+                    className={`message-container flex column ${isFrom === 'chatPage' ? 'chat-page' : ''
+                      }`}
                     ref={chatContainerRef}
                   >
                     {currentChat.messages?.length > 0 &&
@@ -251,11 +242,10 @@ export function UserChat({
                         return (
                           <div
                             key={index}
-                            className={`message ${
-                              message.user._id === loggedinUser._id
-                                ? 'user-one'
-                                : 'user-two'
-                            } flex column`}
+                            className={`message ${message.user._id === loggedinUser._id
+                              ? 'user-one'
+                              : 'user-two'
+                              } flex column`}
                           >
                             <div className="message-body grid">
                               <span className="text">{message.message}</span>
@@ -273,11 +263,10 @@ export function UserChat({
                       isTyping.map((user, index) => (
                         <div
                           key={index}
-                          className={`message ${
-                            user._id === loggedinUser._id
-                              ? 'user-one'
-                              : 'user-two'
-                          } flex column`}
+                          className={`message ${user._id === loggedinUser._id
+                            ? 'user-one'
+                            : 'user-two'
+                            } flex column`}
                         >
                           <div className="message-body grid">
                             <span className="text">
@@ -357,9 +346,8 @@ export function UserChat({
                     </section>
                   </div>
                   <div
-                    className={`message-options flex row ${
-                      isFrom === 'chatPage' ? 'chat-page' : ''
-                    }`}
+                    className={`message-options flex row ${isFrom === 'chatPage' ? 'chat-page' : ''
+                      }`}
                   >
                     <span className="addition flex">
                       {deviceType !== 'mobile' && (

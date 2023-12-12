@@ -196,11 +196,9 @@
       width: 100%;
 
       .chat-container {
-        position: relative;
         width: 100%;
         padding: 1em;
         background-color: $clrSecondary1;
-        display: flex;
         align-items: center;
         cursor: pointer;
 
@@ -214,6 +212,7 @@
 
         .userImg {
           position: relative;
+
           img {
             width: 3em;
             height: 3em;
@@ -245,8 +244,6 @@
         }
 
         .chat-info {
-          display: flex;
-          flex-direction: column;
           width: 100%;
 
           .user-info {
@@ -277,33 +274,38 @@
             .time {
               font-size: 0.85em;
               color: $clrSecondary7;
-              min-width: 43px;
+              min-width: 48px;
+              text-align: right;
             }
           }
 
-          .last-msg {
-            max-width: 250px;
-            max-height: 1.75em;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            color: $clrSecondary5;
-          }
-        }
-      }
+          .bottom-chat-line {
+            grid-template-columns: auto 16px;
+            gap: 0.5em;
 
-      .erase-chat {
-        position: absolute;
-        bottom: 1.4em;
-        right: 1em;
+            .latest-message {
+              color: $clrSecondary5;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              max-width: 250px;
+            }
 
-        svg {
-          height: 1em;
-          width: 1em;
-          fill: $clrSecondary7;
-          transition: all 0.3s;
+            .erase-chat {
+              i {
+                align-self: center;
 
-          &:hover {
-            fill: $bgColor6;
+                svg {
+                  height: 1em;
+                  width: 1em;
+                  fill: $clrSecondary7;
+                  transition: all 0.3s;
+
+                  &:hover {
+                    fill: $bgColor6;
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -317,8 +319,6 @@
     border-radius: 1.5em;
 
     .info-message {
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       color: $clrSecondary8;

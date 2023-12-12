@@ -14,7 +14,6 @@ import SvgIcon from './SvgIcon.jsx'
 
 import { category } from '../services/gig.service.js'
 import { setFilter } from '../store/gig.actions.js'
-import { socketService } from '../services/socket.service.js'
 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -22,7 +21,6 @@ export function AppHeader() {
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   const [showOrdersDropdown, setShowOrdersDropdown] = useState(false)
   const [showAsideMenu, setshowAsideMenu] = useState(false)
-  // const [chatNotification, setChatNotification] = useState(false)
   const [notification, setNotification] = useState(false)
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState('')
 
@@ -61,31 +59,8 @@ export function AppHeader() {
     borderColor: headerStage === 0 && isHomePage ? '#fff' : '#1dbf73',
   }
 
-  // function promptSellerChat(buyer) {
-  //   setNotification(true)
-  //   setChatNotification(true)
-  //   setTheBuyer(buyer)
-  // }
-
-  function newOrderNotification() {
-    setNotification(true)
-  }
-
-  // useEffect(() => {
-  //   socketService.on('chat_seller_prompt', promptSellerChat)
-  //   socketService.on('notify_seller_new_order', newOrderNotification)
-  //   return () => {
-  //     socketService.off('chat_seller_prompt', promptSellerChat)
-  //     socketService.off('notify_seller_new_order', newOrderNotification)
-  //   }
-  // }, [])
-
   useEffect(() => {
-    if (
-      !isHomePage ||
-      deviceType === 'mini-tablet' ||
-      deviceType === 'mobile'
-    ) {
+    if (!isHomePage || deviceType === 'mini-tablet' || deviceType === 'mobile') {
       setHeaderStage(2)
       setHeaderPlaceholderText('Find services...')
     } else {
@@ -123,11 +98,6 @@ export function AppHeader() {
   function setCatFilter(category) {
     setFilter({ ...filterBy, cat: category })
   }
-
-  // function onChatState(e) {
-  //   e.preventDefault()
-  //   setChatState(true)
-  // }
 
   if (isGigPage && deviceType === 'mobile' ||
     isChatPage && (deviceType === 'mobile' || deviceType === 'mini-tablet')) {

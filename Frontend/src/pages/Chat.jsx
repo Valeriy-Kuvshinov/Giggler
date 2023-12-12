@@ -22,7 +22,6 @@ export function Chat() {
 
   useEffect(() => {
     if (chats.length < 1) chatsLoading()
-
     return () => clearChats()
   }, [])
 
@@ -76,8 +75,7 @@ export function Chat() {
                   loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
                 return (
                   <li
-                    className={`chat-container 
-                    `}
+                    className={`chat-container flex`}
                     key={chat._id}
                     onClick={() => {
                       onOpenChat({
@@ -89,15 +87,12 @@ export function Chat() {
                     }}
                   >
                     <div
-                      className={`userImg ${
-                        notificationMsg?.user?._id === chat[role]._id
-                          ? 'notification'
-                          : ''
-                      }`}
+                      className={`userImg ${notificationMsg?.user?._id === chat[role]._id
+                        ? 'notification' : ''}`}
                     >
                       <img src={chat[role].imgUrl} alt="buyer img" />
                     </div>
-                    <div className="chat-info">
+                    <div className="chat-info flex column">
                       <div className="user-info flex">
                         <span className="name-wrapper">
                           <span className="name">{chat[role].fullName}</span>
@@ -114,19 +109,20 @@ export function Chat() {
                           )}
                         </span>
                       </div>
-                      <div className="last-msg">
-                        {/* {chat.messages[chat.messages.length - 1].message} */}
-                        {notificationMsg?.user?._id === chat[role]._id
-                          ? notificationMsg.message
-                          : chat.messages[chat.messages.length - 1].message}
+                      <div className="bottom-chat-line grid">
+                        <span className="latest-message">
+                          {notificationMsg?.user?._id === chat[role]._id
+                            ? notificationMsg.message
+                            : chat.messages[chat.messages.length - 1].message}
+                        </span>
+                        <span
+                          onClick={(event) => onRemoveChat(event, chat._id)}
+                          className="erase-chat flex"
+                        >
+                          <SvgIcon iconName={'trashIcon'} />
+                        </span>
                       </div>
                     </div>
-                    <span
-                      onClick={(event) => onRemoveChat(event, chat._id)}
-                      className="erase-chat"
-                    >
-                      <SvgIcon iconName={'trashIcon'} />
-                    </span>
                   </li>
                 )
               })}
@@ -149,7 +145,7 @@ export function Chat() {
       </main>
       {!chatState && (
         <div className="unselected-chat">
-          <div className="info-message">
+          <div className="info-message flex column">
             <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
             <span className="title">You haven’t selected a chat</span>
             <span className="subtitle">
@@ -160,7 +156,7 @@ export function Chat() {
       )}
       {!chats && (
         <div className="unselected-chat">
-          <div className="info-message">
+          <div className="info-message flex column">
             <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
             <span className="title">Ah, a fresh new inbox</span>
             <span className="subtitle">
