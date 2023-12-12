@@ -47,6 +47,9 @@ function outsideClick(ref, callback) {
 export default outsideClick
 ```
 
+
+![main page]([url](https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984839/Giggler/gig-images/jo1djom9s10sljgfkjj2.png))
+
 ## Getting Started
 
 To begin using the Freelancing Services project, follow these steps:
