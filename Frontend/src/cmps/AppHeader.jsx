@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useModal } from '../customHooks/ModalContext.jsx'
 import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
+import outsideClick from '../customHooks/outsideClick.js'
 
 import { SearchBar } from './SearchBar.jsx'
 import { NavBar } from './NavBar.jsx'
@@ -26,8 +27,11 @@ export function AppHeader() {
   const [headerPlaceholderText, setHeaderPlaceholderText] = useState('')
 
   const userInfoRef = useRef(null)
+  const ordersRef = useRef(null)
   const asideMenuRef = useRef(null)
-  const navigate = useNavigate()
+  outsideClick(userInfoRef, () => setShowUserDropdown(false))
+  outsideClick(ordersRef, () => setShowOrdersDropdown(false))
+  outsideClick(asideMenuRef, () => setshowAsideMenu(false))
 
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const filterBy = useSelector((storeState) => storeState.gigModule.filterBy)
@@ -40,6 +44,7 @@ export function AppHeader() {
   const isDashboardBuyerPage = useLocation().pathname === '/orders'
   const isGigPage = useLocation().pathname.startsWith('/gig/')
   const isChatPage = useLocation().pathname.startsWith('/chat/')
+  const navigate = useNavigate()
 
   const logoColor = headerStage === 0 ? '#fff' : '#404145'
   const headerStyles = {
@@ -64,19 +69,6 @@ export function AppHeader() {
 
   function newOrderNotification() {
     setNotification(true)
-  }
-
-  const closeDropdown = (e) => {
-    if (userInfoRef.current && !userInfoRef.current.contains(e.target)) {
-      setShowUserDropdown(false)
-      setShowOrdersDropdown(false)
-    }
-  }
-
-  const closeAsideMenu = (e) => {
-    if (asideMenuRef.current && !asideMenuRef.current.contains(e.target)) {
-      setshowAsideMenu(false)
-    }
   }
 
   // useEffect(() => {
@@ -114,15 +106,6 @@ export function AppHeader() {
       return () => window.removeEventListener('scroll', handleScroll)
     }
   }, [isHomePage, deviceType])
-
-  useEffect(() => {
-    window.addEventListener('click', closeDropdown)
-    window.addEventListener('click', closeAsideMenu)
-    return () => {
-      window.removeEventListener('click', closeDropdown)
-      window.removeEventListener('click', closeAsideMenu)
-    }
-  }, [])
 
   function handleSearchChange(e) {
     const newSearchQuery = e.target.value
@@ -209,7 +192,7 @@ export function AppHeader() {
                     e.stopPropagation()
                     setShowOrdersDropdown(!showOrdersDropdown)
                   }}
-                  ref={userInfoRef}
+                  ref={ordersRef}
                 >
                   <button
                     className="header-btn orders"

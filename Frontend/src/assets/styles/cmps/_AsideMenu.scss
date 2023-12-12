@@ -1,116 +1,121 @@
-.aside-menu {
+.aside-menu-wrapper {
   position: fixed;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
-  background: white;
-  max-width: 275px;
-  height: 100vh;
-  gap: 1em;
-  z-index: 15;
-  padding: 1em;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .75);
+  z-index: 10;
 
-  .top-icons {
-    justify-content: space-between;
+  .aside-menu {
+    background: white;
+    min-width: 275px;
+    height: 100vh;
+    gap: 1em;
+    z-index: 15;
+    padding: 1em;
 
-    .chat-icon {
-      position: relative;
+    .top-icons {
+      justify-content: space-between;
 
-      i {
+      .chat-icon {
         position: relative;
-        z-index: 5;
 
-        svg {
-          fill: $clrSecondary8;
-          width: 36px;
-          height: 36px;
+        i {
+          position: relative;
+          z-index: 5;
+
+          svg {
+            fill: $clrSecondary8;
+            width: 36px;
+            height: 36px;
+          }
         }
-      }
 
-      &.notification::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 12px;
-        height: 12px;
-        background-color: $clr9;
-        opacity: 0.75;
-        border-radius: 50%;
-        animation: grow 0.7s infinite alternate;
-        z-index: 1;
+        &.notification::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 12px;
+          height: 12px;
+          background-color: $clr9;
+          opacity: 0.75;
+          border-radius: 50%;
+          animation: grow 0.7s infinite alternate;
+          z-index: 1;
 
-        @keyframes grow {
-          to {
-            scale: 1.5 1.5;
+          @keyframes grow {
+            to {
+              scale: 1.5 1.5;
+            }
           }
         }
       }
-    }
 
-    .user-info {
-      gap: 0.5em;
+      .user-info {
+        gap: 0.5em;
 
-      span {
-        color: $clrSecondary8;
-        align-self: center;
-        font-family: 'macan-bold';
+        span {
+          color: $clrSecondary8;
+          align-self: center;
+          font-family: 'macan-bold';
+        }
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
       }
     }
 
-    img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 50%;
+    a,
+    button {
+      color: $clrSecondary6;
+      transition: color 0.3s, background-color 0.3s, border 0.3s;
+
+      &:hover {
+        color: $bgColor3 !important;
+      }
     }
-  }
 
-  a,
-  button {
-    color: $clrSecondary6;
-    transition: color 0.3s, background-color 0.3s, border 0.3s;
+    .join {
+      padding: 9px 16px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: 'macan-bold';
+      background: $bgColor3;
+      border: 1px solid $bgColor3;
+      color: $clrPrimary1;
 
-    &:hover {
-      color: $bgColor3 !important;
+      &:hover {
+        background-color: $bgColor5;
+        border: 1px solid $bgColor5;
+        color: $clrPrimary1 !important;
+      }
     }
-  }
 
-  .join {
-    padding: 9px 16px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-family: 'macan-bold';
-    background: $bgColor3;
-    border: 1px solid $bgColor3;
-    color: $clrPrimary1;
-
-    &:hover {
-      background-color: $bgColor5;
-      border: 1px solid $bgColor5;
-      color: $clrPrimary1 !important;
+    .login {
+      background: none;
+      font-size: 16px;
+      padding: 0;
+      font-family: 'macan-regular';
+      text-align: left;
     }
-  }
 
-  .login {
-    background: none;
-    font-size: 16px;
-    padding: 0;
-    font-family: 'macan-regular';
-    text-align: left;
-  }
-
-  .logout {
-    display: block;
-    padding: 12px 0;
-    color: $clrSecondary6;
-    background: none;
-    font-family: 'macan-regular';
-    font-size: 16px;
-    font-weight: 400;
-    width: 100%;
-    border-top: 1.5px solid $clrSecondary2;
-    text-align: left;
+    .logout {
+      display: block;
+      padding: 12px 0;
+      color: $clrSecondary6;
+      background: none;
+      font-family: 'macan-regular';
+      font-size: 16px;
+      font-weight: 400;
+      width: 100%;
+      border-top: 1.5px solid $clrSecondary2;
+      text-align: left;
+    }
   }
 }

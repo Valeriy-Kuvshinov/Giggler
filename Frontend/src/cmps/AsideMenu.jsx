@@ -28,72 +28,74 @@ export function AsideMenu({ loggedInUser, onClose }) {
   }
 
   return (
-    <div
-      className="aside-menu flex column"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {loggedInUser ? (
-        <>
-          <div className="top-icons flex row">
-            <div className="user-info flex row">
-              <img src={loggedInUser.imgUrl} alt="user" />
-              <span>{loggedInUser.username}</span>
+    <main className="aside-menu-wrapper flex">
+      <section
+        className="aside-menu flex column"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {loggedInUser ? (
+          <>
+            <div className="top-icons flex row">
+              <div className="user-info flex row">
+                <img src={loggedInUser.imgUrl} alt="user" />
+                <span>{loggedInUser.username}</span>
+              </div>
             </div>
-          </div>
-          <Link to={`/user/${loggedInUser._id}`} onClick={onClose}>
-            Profile
-          </Link>
+            <Link to={`/user/${loggedInUser._id}`} onClick={onClose}>
+              Profile
+            </Link>
 
-          <Link to="/explore" onClick={onClose}>
-            {' '}
-            Explore{' '}
-          </Link>
+            <Link to="/explore" onClick={onClose}>
+              {' '}
+              Explore{' '}
+            </Link>
 
-          <Link to="/" onClick={onClose}>
-            Become a Seller
-          </Link>
+            <Link to="/" onClick={onClose}>
+              Become a Seller
+            </Link>
 
-          <Link to="/dashboard" onClick={onClose}>
-            Dashboard
-          </Link>
+            <Link to="/dashboard" onClick={onClose}>
+              Dashboard
+            </Link>
 
-          <Link to="/orders" onClick={onClose}>
-            Orders
-          </Link>
+            <Link to="/orders" onClick={onClose}>
+              Orders
+            </Link>
 
-          <button className="logout" onClick={onLogout}>
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            className="join"
-            onClick={() => {
-              onClose()
-              openSignup()
-            }}
-          >
-            Join
-          </button>
-          <button
-            className="login"
-            onClick={() => {
-              onClose()
-              openLogin()
-            }}
-          >
-            Sign In
-          </button>
-          <Link to="/explore" onClick={onClose}>
-            {' '}
-            Explore{' '}
-          </Link>
-          <Link to="/" onClick={onClose}>
-            Become a Seller
-          </Link>
-        </>
-      )}
-    </div>
+            <button className="logout" onClick={onLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              className="join"
+              onClick={() => {
+                onClose()
+                openSignup()
+              }}
+            >
+              Join
+            </button>
+            <button
+              className="login"
+              onClick={() => {
+                onClose()
+                openLogin()
+              }}
+            >
+              Sign In
+            </button>
+            <Link to="/explore" onClick={onClose}>
+              {' '}
+              Explore{' '}
+            </Link>
+            <Link to="/" onClick={onClose}>
+              Become a Seller
+            </Link>
+          </>
+        )}
+      </section>
+    </main>
   )
 }
