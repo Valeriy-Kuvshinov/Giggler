@@ -105,8 +105,8 @@ To begin using the Freelancing Services project, follow these steps:
 
 ## Acknowledgments
 
-Special thanks to contributors and open-source projects that inspired and supported the development of this Weather Reports project.
+Special thanks to contributors and open-source projects and Fiverr that inspired and supported the development of this Freelancers Service project.
 
 Enjoy exploring and analyzing weather data with the Weather Reports project! If you have any questions or feedback, feel free to reach out.
 
-Happy coding! 🌦️
+Happy coding!
