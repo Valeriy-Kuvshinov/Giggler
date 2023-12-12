@@ -59,7 +59,21 @@ outsideClick(dropdownMenuRef, () => setDropdownVisible(false))
 
 ## Giggler Pages Display
 
+**Main Page** 
+
 ![main page](https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984839/Giggler/gig-images/jo1djom9s10sljgfkjj2.png)
+
+**Profile Page**
+
+![profile page](https://res.cloudinary.com/dgwgcf6mk/image/upload/v1701984857/Giggler/gig-images/qp76gxhvnyctivy3vu6w.png)
+
+**Explore Page**
+
+![explore page](https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702383458/Screenshot_2023-12-12_141609_myuzj5.png)
+
+**Gig Details**
+
+![gig details](https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702383458/Screenshot_2023-12-12_141703_rofcmz.png)
 
 ## Getting Started
 
