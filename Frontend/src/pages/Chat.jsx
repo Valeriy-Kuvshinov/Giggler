@@ -9,17 +9,20 @@ import { UserInfo } from '../cmps/UserInfo.jsx'
 import { Loader } from '../cmps/Loader.jsx'
 import SvgIcon from '../cmps/SvgIcon.jsx'
 
-export function Chat({ onFooterUpdate }) {
+export function Chat() {
   const isLoading = useSelector((storeState) => storeState.chatModule.isLoading)
   const chats = useSelector((storeState) => storeState.chatModule.chats)
   const loggedinUser = useSelector((storeState) => storeState.userModule.user)
   const deviceType = useDeviceType()
   const [chatState, setChatState] = useState(false)
   const [chatProps, setChatProps] = useState(null)
+  const [notificationMsg, setNotificationMsg] = useState(null)
+
   // console.log(chats)
 
   useEffect(() => {
     if (chats.length < 1) chatsLoading()
+
     return () => clearChats()
   }, [])
 
@@ -32,8 +35,10 @@ export function Chat({ onFooterUpdate }) {
   }
 
   useEffect(() => {
-    if (!isLoading) onFooterUpdate()
-  }, [isLoading, onFooterUpdate])
+    socketService.on('chat_add_msg', newMsgNotification)
+
+    return () => socketService.off('chat_add_msg', newMsgNotification)
+  }, [])
 
   async function onRemoveChat(event, chatId) {
     event.stopPropagation()
@@ -49,10 +54,13 @@ export function Chat({ onFooterUpdate }) {
     setChatState(true)
   }
 
+  function newMsgNotification(msg) {
+    // chatsLoading()
+    setNotificationMsg(msg)
+  }
+
   return (
-    <main
-      className={`chats-page layout-row ${deviceType} grid`}
-    >
+    <main className={`chats-page layout-row ${deviceType} grid`}>
       <main className="chats-nav">
         <section className="chat-header b">
           <span>Chat</span>{' '}
@@ -68,17 +76,27 @@ export function Chat({ onFooterUpdate }) {
                   loggedinUser._id === chat.gig.ownerId ? 'buyer' : 'seller'
                 return (
                   <li
-                    className="chat-container"
+                    className={`chat-container 
+                    `}
                     key={chat._id}
-                    onClick={() =>
+                    onClick={() => {
                       onOpenChat({
                         owner: seller,
                         buyer: buyer,
                         gig: chat.gig,
                       })
-                    }
+                      setNotificationMsg('')
+                    }}
                   >
-                    <img src={chat[role].imgUrl} alt="buyer img" />
+                    <div
+                      className={`userImg ${
+                        notificationMsg?.user?._id === chat[role]._id
+                          ? 'notification'
+                          : ''
+                      }`}
+                    >
+                      <img src={chat[role].imgUrl} alt="buyer img" />
+                    </div>
                     <div className="chat-info">
                       <div className="user-info flex">
                         <span className="name-wrapper">
@@ -97,7 +115,10 @@ export function Chat({ onFooterUpdate }) {
                         </span>
                       </div>
                       <div className="last-msg">
-                        {chat.messages[chat.messages.length - 1].message}
+                        {/* {chat.messages[chat.messages.length - 1].message} */}
+                        {notificationMsg?.user?._id === chat[role]._id
+                          ? notificationMsg.message
+                          : chat.messages[chat.messages.length - 1].message}
                       </div>
                     </div>
                     <span
@@ -114,7 +135,8 @@ export function Chat({ onFooterUpdate }) {
         ) : (
           <div>You have no chats opened</div>
         )}
-        {chatProps && chatState &&
+        {chatProps &&
+          chatState &&
           (deviceType === 'mobile' || deviceType === 'mini-tablet') && (
             <UserChat
               owner={chatProps.owner}
@@ -142,12 +164,14 @@ export function Chat({ onFooterUpdate }) {
             <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
             <span className="title">Ah, a fresh new inbox</span>
             <span className="subtitle">
-              You haven’t started any conversations yet, but when you do, you’ll find them here.
+              You haven’t started any conversations yet, but when you do, you’ll
+              find them here.
             </span>
           </div>
         </div>
       )}
-      {chatProps && chatState &&
+      {chatProps &&
+        chatState &&
         (deviceType === 'tablet' || deviceType === 'desktop') && (
           <UserChat
             owner={chatProps.owner}
@@ -160,7 +184,13 @@ export function Chat({ onFooterUpdate }) {
         )}
 
       {deviceType === 'desktop' && chatProps && (
-        <UserInfo watchedUser={loggedinUser._id === chatProps.gig.ownerId ? chatProps.buyer : chatProps.owner} />
+        <UserInfo
+          watchedUser={
+            loggedinUser._id === chatProps.gig.ownerId
+              ? chatProps.buyer
+              : chatProps.owner
+          }
+        />
       )}
     </main>
   )

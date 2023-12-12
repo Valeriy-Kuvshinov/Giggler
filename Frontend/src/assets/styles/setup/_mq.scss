@@ -1149,7 +1149,8 @@
         .chat-container {
           .message-form {
             .message-container {
-              max-height: 630px;
+              // height: 630px;
+              // min-height: 630px;
 
               .message {
                 .message-text {
@@ -1203,7 +1204,9 @@
         .chat-container {
           .message-form {
             .message-container {
+              height: 500px;
               max-height: 500px;
+              min-width: 450px;
 
               .message {
                 .message-text {
