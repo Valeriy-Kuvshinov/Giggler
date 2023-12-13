@@ -28,7 +28,6 @@ Welcome to Giggler, a robust freelancing marketplace designed to facilitate seam
 **Database Management:** Structuring data within MongoDB collections for users, gigs, orders, chats, and reviews.
 
 
-Access the application in the backend using http://localhost:3030 and in the frontend using in your web browser.
 
 ## Highlights
 **Backend Server Logic:** Robust backend implementation with specific routing for API endpoints and comprehensive server-side operations.
@@ -120,6 +119,8 @@ npm i
 ```bash
 npm run dev
 ```
+
+Access the application in the backend using http://localhost:3030 and in the frontend using http://localhost:5173 in your web browser.
 
 ## Acknowledgments
 
