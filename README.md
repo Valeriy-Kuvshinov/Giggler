@@ -1,50 +1,49 @@
-Giggler: A Freelancing Service Marketplace / React & Javascript project for educational purposes 
+# Giggler 
+A Freelancing Service Marketplace / React & Javascript project for educational purposes 
 
-##**Overview**
+## **Overview**
 Welcome to Giggler, a robust freelancing marketplace designed to facilitate seamless interactions between buyers and sellers. Explore a variety of services and connect with professionals worldwide.
 
-##**Key Technologies & Features**
-React & Redux: Utilizing React for a responsive, dynamic frontend, integrated with Redux for efficient state management.
+## **Key Technologies & Features**
+**React & Redux:** Utilizing React for a responsive, dynamic frontend, integrated with Redux for efficient state management.
 
-Node.js & Express.js: Powering the backend with Node.js and Express.js to handle server-side logic and API routing.
+**Node.js & Express.js:** Powering the backend with Node.js and Express.js to handle server-side logic and API routing.
 
-MongoDB: Employing MongoDB for efficient data storage and management of users, gigs, orders, chats, and reviews.
+**MongoDB:** Employing MongoDB for efficient data storage and management of users, gigs, orders, chats, and reviews.
 
-Hooks & Custom Hooks: Leveraging React hooks and custom hooks for optimized functionality and reusability in the codebase.
+**Hooks & Custom Hooks:** Leveraging React hooks and custom hooks for optimized functionality and reusability in the codebase.
 
-Real-time Communication (Sockets): Implementing sockets for instant notifications on order updates, chat messages, and "is typing" indications.
+**Real-time Communication (Sockets):** Implementing sockets for instant notifications on order updates, chat messages, and "is typing" indications.
 
-Full CRUDL Functionality: Providing comprehensive CRUDL operations across the platform with dedicated pages for gig listings (/explore) and filtering options.
+**Full CRUDL Functionality:** Providing comprehensive CRUDL operations across the platform with dedicated pages for gig listings (/explore) and filtering options.
 
-Private Chat: Enabling seamless, private communication between buyers and sellers for enhanced interaction and clarification.
+**Private Chat:** Enabling seamless, private communication between buyers and sellers for enhanced interaction and clarification.
 
-Seller & Buyer Dashboard: Offering dedicated dashboards for sellers and buyers, showcasing order details and facilitating seamless communication to ensure a smooth order process.
+**Seller & Buyer Dashboard:** Offering dedicated dashboards for sellers and buyers, showcasing order details and facilitating seamless communication to ensure a smooth order process.
 
-Fully Responsive Design: Ensuring a user-friendly experience across various devices, from desktops to mobile.
+**Fully Responsive Design:** Ensuring a user-friendly experience across various devices, from desktops to mobile.
 
-Mongo Aggregation: Employing MongoDB's aggregation for complex and efficient searches within the database.
+**Mongo Aggregation:** Employing MongoDB's aggregation for complex and efficient searches within the database.
 
-Database Management: Structuring data within MongoDB collections for users, gigs, orders, chats, and reviews.
+**Database Management:** Structuring data within MongoDB collections for users, gigs, orders, chats, and reviews.
 
 
 Access the application in the backend using http://localhost:3030 and in the frontend using in your web browser.
 
-Highlights
-Backend Server Logic: Robust backend implementation with specific routing for API endpoints and comprehensive server-side operations.
+## Highlights
+**Backend Server Logic:** Robust backend implementation with specific routing for API endpoints and comprehensive server-side operations.
 
-Real-time Notifications: Instant updates on order statuses and chat interactions using sockets for seamless communication.
+**Real-time Notifications:** Instant updates on order statuses and chat interactions using sockets for seamless communication.
 
-Advanced Filtering & Gig Listing: Extensive filtering options (/explore) for gigs based on delivery time, seller level, categories, and price range.
+**Advanced Filtering & Gig Listing:** Extensive filtering options (/explore) for gigs based on delivery time, seller level, categories, and price range.
 
-Seller & Buyer Dashboards: Dedicated dashboards for sellers and buyers to manage orders, track progress, and communicate effectively at every step of the order process.
+**Seller & Buyer Dashboards:** Dedicated dashboards for sellers and buyers to manage orders, track progress, and communicate effectively at every step of the order process.
 
-Profile Customization: Detailed user profiles supporting seamless transitions between buyer and seller roles.
+**Profile Customization:** Detailed user profiles supporting seamless transitions between buyer and seller roles.
 
-Fully Responsive Design: Responsive web design ensuring compatibility across mobile and desktop platforms.
+**Fully Responsive Design:** Responsive web design ensuring compatibility across mobile and desktop platforms.
 
 
-Acknowledgments
-Acknowledging the contributions of open-source projects and supporters that have inspired and aided in the development of this freelancing service project.
 ## Code Sample
 
 ```bash
