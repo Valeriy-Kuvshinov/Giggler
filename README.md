@@ -1,6 +1,8 @@
 # Giggler 
 A Freelancing Service Marketplace / React & Javascript project for educational purposes 
 
+Giggler is now live: [ https://giggler.onrender.com/](https://giggler.onrender.com/)
+
 ## **Overview**
 Welcome to Giggler, a robust freelancing marketplace designed to facilitate seamless interactions between buyers and sellers. Explore a variety of services and connect with professionals worldwide.
 
