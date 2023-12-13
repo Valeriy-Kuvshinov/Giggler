@@ -1,29 +1,50 @@
-# Giggler
-a React Freelance Service Marketplace Project
+Giggler: A Freelancing Service Marketplace / React & Javascript project for educational purposes 
 
-## Overview
+##**Overview**
+Welcome to Giggler, a robust freelancing marketplace designed to facilitate seamless interactions between buyers and sellers. Explore a variety of services and connect with professionals worldwide.
 
-Welcome to Giggler, our freelancing marketplace where you could get assistant from professionals for a cheap price from all around the world,
-dont hesistate to look at a user' profile or their service' reviews for better reasurance the service is to your liking.
+##**Key Technologies & Features**
+React & Redux: Utilizing React for a responsive, dynamic frontend, integrated with Redux for efficient state management.
 
-## Features
+Node.js & Express.js: Powering the backend with Node.js and Express.js to handle server-side logic and API routing.
 
-- **rich variety**: In our app you can find many options for every service in different prices from different regions in multiple languages so all of our users could get the service they need.
+MongoDB: Employing MongoDB for efficient data storage and management of users, gigs, orders, chats, and reviews.
 
-- **quick service**: In the gig page any user can start a chat with the seller to get furthur details before spending your precious hard earned money, you may always look back previous chat in the chats page.
+Hooks & Custom Hooks: Leveraging React hooks and custom hooks for optimized functionality and reusability in the codebase.
 
-- **immediate notifications**: Thanks to the usage of sockets, a way to notify the computer that a action was made, a user will get a immediate notifcation.
+Real-time Communication (Sockets): Implementing sockets for instant notifications on order updates, chat messages, and "is typing" indications.
 
-## Behind the Scenes Features
+Full CRUDL Functionality: Providing comprehensive CRUDL operations across the platform with dedicated pages for gig listings (/explore) and filtering options.
 
-- **redux**: We use the store with reducers and actions to use the data across the website with updating at real time
+Private Chat: Enabling seamless, private communication between buyers and sellers for enhanced interaction and clarification.
 
-- **socket**: For real time updates of orders, reviews and the chat feature, we use the socket npm library so each user, either the freelancer or the one ordering the gig, will be updated at moment notice
+Seller & Buyer Dashboard: Offering dedicated dashboards for sellers and buyers, showcasing order details and facilitating seamless communication to ensure a smooth order process.
 
-- **mongoDb**: The method of storage for the users, gigs, orders, reviews and chats are all inside collections in a database using MongoDb, the demodata used in the website was made by us, the developer team.
+Fully Responsive Design: Ensuring a user-friendly experience across various devices, from desktops to mobile.
 
-- **cloudinary**: to store our images, user provided images and some svgs we used Cloudinary as our storage service, it even deletes unused images provided by users to not waste the storage space.
+Mongo Aggregation: Employing MongoDB's aggregation for complex and efficient searches within the database.
 
+Database Management: Structuring data within MongoDB collections for users, gigs, orders, chats, and reviews.
+
+
+Access the application in the backend using http://localhost:3030 and in the frontend using in your web browser.
+
+Highlights
+Backend Server Logic: Robust backend implementation with specific routing for API endpoints and comprehensive server-side operations.
+
+Real-time Notifications: Instant updates on order statuses and chat interactions using sockets for seamless communication.
+
+Advanced Filtering & Gig Listing: Extensive filtering options (/explore) for gigs based on delivery time, seller level, categories, and price range.
+
+Seller & Buyer Dashboards: Dedicated dashboards for sellers and buyers to manage orders, track progress, and communicate effectively at every step of the order process.
+
+Profile Customization: Detailed user profiles supporting seamless transitions between buyer and seller roles.
+
+Fully Responsive Design: Responsive web design ensuring compatibility across mobile and desktop platforms.
+
+
+Acknowledgments
+Acknowledging the contributions of open-source projects and supporters that have inspired and aided in the development of this freelancing service project.
 ## Code Sample
 
 ```bash
@@ -85,23 +106,21 @@ outsideClick(dropdownMenuRef, () => setDropdownVisible(false))
 
 To begin using the Freelancing Services project, follow these steps:
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/Valeriy-Kuvshinov/Giggler.git
-   cd giggler
-   ```
+**Clone the Repository:**
+```bash
+git clone https://github.com/Valeriy-Kuvshinov/Giggler.git
+cd giggler
+```
 
-2. **Install Dependencies:**
-   ```bash
-   npm i
-   ```
+**Install Dependencies:**
+```bash
+npm i
+```
 
-3. **Run the Application:**
-   ```bash
-   npm run dev
-   ```
-
-   Access the application at [http://localhost:3030](http://localhost:5173) in your web browser.
+ **Run the Application:**
+```bash
+npm run dev
+```
 
 ## Acknowledgments
 
