@@ -1,3 +1,5 @@
+const mailBox = 'https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg'
+
 import { useSelector } from 'react-redux'
 import { useDeviceType } from '../customHooks/DeviceTypeContext.jsx'
 
@@ -18,8 +20,6 @@ export function Chat() {
   const [chatProps, setChatProps] = useState(null)
   const [notificationMsg, setNotificationMsg] = useState(null)
 
-  // console.log(chats)
-
   useEffect(() => {
     if (chats.length < 1) chatsLoading()
     return () => clearChats()
@@ -35,7 +35,6 @@ export function Chat() {
 
   useEffect(() => {
     socketService.on('chat_add_msg', newMsgNotification)
-
     return () => socketService.off('chat_add_msg', newMsgNotification)
   }, [])
 
@@ -54,7 +53,6 @@ export function Chat() {
   }
 
   function newMsgNotification(msg) {
-    // chatsLoading()
     setNotificationMsg(msg)
   }
 
@@ -129,7 +127,11 @@ export function Chat() {
             </>
           </ul>
         ) : (
-          <div>You have no chats opened</div>
+          <div className="no-chats flex column">
+            <SvgIcon iconName={'noChatsFound'} />
+            <span>No Conversations</span>
+            <span>No conversations were found</span>
+          </div>
         )}
         {chatProps &&
           chatState &&
@@ -143,29 +145,30 @@ export function Chat() {
             />
           )}
       </main>
-      {!chatState && (
+      {(chats.length === 0) ? (
         <div className="unselected-chat">
           <div className="info-message flex column">
-            <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
-            <span className="title">You haven’t selected a chat</span>
-            <span className="subtitle">
-              Please select a chat to continue a conversation
-            </span>
-          </div>
-        </div>
-      )}
-      {!chats && (
-        <div className="unselected-chat">
-          <div className="info-message flex column">
-            <img src="https://res.cloudinary.com/dgwgcf6mk/image/upload/v1702205415/Giggler/other/no-conversations.7ea0e44_hjntyr.svg" />
+            <img src={mailBox} alt="Mailbox" />
             <span className="title">Ah, a fresh new inbox</span>
             <span className="subtitle">
-              You haven’t started any conversations yet, but when you do, you’ll
-              find them here.
+              You haven’t started any conversations yet, but when you do, you’ll find them here.
             </span>
           </div>
         </div>
+      ) : (
+        !chatState && (
+          <div className="unselected-chat">
+            <div className="info-message flex column">
+              <img src={mailBox} alt="Mailbox" />
+              <span className="title">You haven’t selected a chat</span>
+              <span className="subtitle">
+                Please select a chat to continue a conversation
+              </span>
+            </div>
+          </div>
+        )
       )}
+
       {chatProps &&
         chatState &&
         (deviceType === 'tablet' || deviceType === 'desktop') && (

@@ -325,7 +325,7 @@
     }
 
     @media (min-width: 1401px) {
-      padding: 1em 0em;
+      padding: 1em;
     }
 
     .container {
@@ -421,6 +421,10 @@
 
     @media (max-width: 600px) {
       display: none;
+    }
+
+    @media (min-width: 1401px) {
+      padding: 0 1em;
     }
   }
 }
@@ -959,6 +963,85 @@
   }
 }
 
+// Purchase page media query
+
+.gig-purchase {
+  @media(max-width: 900px) {
+    flex-direction: column;
+    gap: 2em;
+
+    >* {
+      flex-basis: 100%;
+      max-width: 100%;
+    }
+
+    .purchase-main {
+      flex-basis: 100%;
+      width: 100%;
+      padding: 0;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .purchase-aside-wrapper {
+      width: 100%;
+
+      .purchase-aside {
+        width: 100%;
+
+        .purchased-gig {
+          padding: 1em 0;
+        }
+
+        .payment-summary {
+          padding: 1em 0;
+        }
+      }
+    }
+  }
+
+  @media(min-width: 901px) {
+    gap: 1em;
+
+    .purchase-main {
+      flex-basis: 58.33333%;
+      max-width: 58.33333%;
+
+      .payment-methods {
+        .credit-card {
+          .credit-card-container {
+            .credit-card-form {
+              max-width: 520px;
+            }
+          }
+        }
+      }
+    }
+
+    .purchase-aside-wrapper {
+      width: 41.66667%;
+
+      .purchase-aside {
+        margin: 0 auto;
+        max-width: 377px;
+        border-color: $clrSecondary1 $clrSecondary10;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 0.25em;
+
+        .purchased-gig {
+          border-block-end: 1px solid $clrSecondary1;
+          padding: 1em;
+        }
+
+        .payment-summary {
+          padding: 1em;
+        }
+      }
+    }
+  }
+}
+
 // Profile page media query
 
 .profile-page {
@@ -1204,8 +1287,8 @@
         .chat-container {
           .message-form {
             .message-container {
-              height: 500px;
-              max-height: 500px;
+              height: 450px;
+              max-height: 450px;
               min-width: 450px;
 
               .message {
@@ -1251,7 +1334,11 @@
   }
 
   @media (min-width: 1401px) {
-    padding: 1em 0em;
+    padding: 1em;
+  }
+
+  @media (min-width: 1451px) {
+    padding: 1em 0;
   }
 }
 

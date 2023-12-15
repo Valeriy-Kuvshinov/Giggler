@@ -1,37 +1,31 @@
-import SvgIcon from './SvgIcon.jsx'
-import { packages } from '../services/gig.service.js'
 import { Link } from 'react-router-dom'
 
-export function PurchaseAside({
-  gig,
-  createOrder,
-  packageChoice,
-  handleSubmit,
-  paymentMethod,
-}) {
+import { packages } from '../services/gig.service.js'
+
+import SvgIcon from './SvgIcon.jsx'
+
+export function PurchaseAside({ gig, createOrder, packageChoice,
+  handleSubmit, paymentMethod }) {
   function onConfirmPayment() {
     createOrder()
   }
 
-  console.log('packages: ', packages)
-  console.log('packageChoice: ', packageChoice)
-
   return (
     <aside className="purchase-aside-wrapper">
       <section className="purchase-aside">
-        <section className="gig">
-          <div className="purchase-header">
+        <section className="purchased-gig">
+          <div className="purchase-header flex">
             <img src={gig.imgUrls[0]} alt={gig.title} />
             <p>{gig.title}</p>
           </div>
-          <div className="purchase-package-price">
+          <div className="purchase-package-price flex">
             <span className="b">{packages[packageChoice].type}</span>
             <span>${packages[packageChoice].price * gig.price}</span>
           </div>
 
           <ul className="features">
             {packages[packageChoice].features.map((feature, idx) => (
-              <li key={idx}>
+              <li className="flex row" key={idx}>
                 <SvgIcon
                   iconName={
                     packages[packageChoice].featuresCond[idx]
@@ -47,40 +41,38 @@ export function PurchaseAside({
 
         <section className="payment-summary">
           <div className="summary-table">
-            <div className="service-fee">
+            <div className="service-fee flex">
               <span className="row-title">
                 Service fee
-                {/* <SvgIcon iconName={'questionMarkIcon'} /> */}
               </span>
               <span className="price">
                 ${parseFloat(packages[packageChoice].price * gig.price * 0.1).toFixed(2)}
               </span>
             </div>
 
-            <div className="vat-fee">
-              <span className="row-title">
+            <div className="vat-fee flex">
+              <span className="flex">
                 VAT
-                {/* <SvgIcon iconName={'questionMarkIcon'} /> */}
               </span>
-              <span className="price">
+              <span className="flex">
                 ${parseFloat(packages[packageChoice].price * gig.price * 0.1).toFixed(2)}
               </span>
             </div>
           </div>
           <div className="summary-footer">
-            <div className="total-fee">
+            <div className="total-fee flex">
               <span>You'll pay</span>
               <span>${parseFloat(packages[packageChoice].price * gig.price * 1.2).toFixed(2)}</span>
             </div>
 
-            <div className="delivery-time">
+            <div className="delivery-time flex">
               <span>Total Delivery Time</span>
               <span>{gig.daysToMake}</span>
             </div>
           </div>
           <Link to={`/`}>
             <button
-              className={`confirm-btn ${!paymentMethod ? 'paypal' : ''}`}
+              className={`confirm-btn ${!paymentMethod ? 'paypal flex' : ''}`}
               onClick={() => {
                 onConfirmPayment()
                 handleSubmit()
@@ -90,7 +82,7 @@ export function PurchaseAside({
               {!paymentMethod && <SvgIcon iconName={'paypalIconWhite'} />}
             </button>
           </Link>
-          <div className="secure-payment">
+          <div className="secure-payment flex">
             <SvgIcon iconName={'lockIcon'} />
             <span>SSL Secure Payment</span>
           </div>

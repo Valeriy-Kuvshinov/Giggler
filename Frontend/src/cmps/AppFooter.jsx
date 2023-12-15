@@ -81,7 +81,7 @@ export function AppFooter({ position }) {
       </NavLink>
 
       <NavLink
-        to={loggedinUser ? `/user/${loggedinUser._id}` : '/'}
+        to={loggedinUser ? `/user/${loggedinUser._id}` : '/void'}
         onClick={(e) => {
           if (!loggedinUser) {
             e.preventDefault()

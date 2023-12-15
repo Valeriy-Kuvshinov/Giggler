@@ -38,8 +38,8 @@ export function PurchaseMain({
           <div
             className={`credit-card-container ${paymentMethod ? '' : 'hidden'}`}
           >
-            <form className="credit-card-form">
-              <label className="card-number">
+            <form className="credit-card-form grid">
+              <label className="card-number flex column">
                 <span>Card Number</span>
                 <div className="card-number-input">
                   <input
@@ -58,7 +58,7 @@ export function PurchaseMain({
                 </div>
               </label>
 
-              <label className="expiration-date">
+              <label className="expiration-date flex column">
                 <span>Expiration Date</span>
                 <input
                   type="text"

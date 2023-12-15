@@ -33,11 +33,11 @@ export function GigPurchase() {
   const packageChoice = queryParams.get('package')
 
   useEffect(() => {
-    if (!id || id.length !== 24 || !loggedInUser) {      
+    if (!id || id.length !== 24 || !loggedInUser) {
       navigate('/explore')
       return
     }
-    const loadData = async () => {
+    async function loadData() {
       try {
         await loadGigs()
       } catch (err) {
@@ -58,7 +58,7 @@ export function GigPurchase() {
     )
     try {
       await orderService.save(newOrder)
-      socketService.emit('notify_seller_new_order', {userId: newOrder.sellerId , user: loggedInUser})
+      socketService.emit('notify_seller_new_order', { userId: newOrder.sellerId, user: loggedInUser })
       showSuccessMsg(
         {
           title: 'ORDER ADDED',
@@ -95,7 +95,7 @@ export function GigPurchase() {
   if (!gigs || !gig) return <Loader />
 
   return (
-    <section className="gig-purchase layout-row max-width-container">
+    <section className="gig-purchase flex layout-row">
       <PurchaseMain
         paymentMethod={paymentMethod}
         handlePaymentMethod={handlePaymentMethod}

@@ -192,7 +192,7 @@
     }
 
     .chat-body {
-      height: 74vh;
+      height: 70vh;
       width: 100%;
 
       .chat-container {
@@ -310,6 +310,39 @@
               }
             }
           }
+        }
+      }
+    }
+
+    .no-chats {
+      height: 70vh;
+      width: 100%;
+      padding: 1em;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $clrSecondary3;
+      border-radius: 1.5em;
+      gap: 1em;
+
+      i {
+        svg {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      span {
+        text-align: center;
+
+        &:nth-of-type(1) {
+          color: $clrPrimary2;
+          font-size: 21px;
+          font-family: 'macan-bold';
+        }
+
+        &:nth-of-type(2) {
+          color: $clrSecondary7;
+          font-size: 18px;
         }
       }
     }

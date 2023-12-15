@@ -1,28 +1,284 @@
 .gig-purchase {
-  display: flex;
   width: 100%;
-  margin-top: 2em;
-  margin-bottom: 2em;
-  max-width: 1432px;
-  @media only screen and (max-width: 900px) {
-    flex-direction: column;
-    gap: 1.5em;
+  padding: 32px 16px 64px;
 
-    > * {
-      flex-basis: 100%;
-      max-width: 100%;
+  .purchase-main {
+    color: $clrPrimary2;
+
+    .section-header {
+      padding: 1em;
+      border: 1px solid $clrSecondary14;
+      border-top-left-radius: 0.25em;
+      border-top-right-radius: 0.25em;
+      color: $clrSecondary8;
+      font-weight: 700;
+    }
+
+    .payment-methods {
+      input[type='text'] {
+        display: flex;
+        flex-wrap: nowrap;
+        border: 1px solid $clrSecondary45;
+        border-radius: 0.25em;
+        flex-basis: 100%;
+        align-items: center;
+        height: 2.625em;
+        margin-top: 0.625em;
+      }
+
+      .radio-btn {
+        display: inline-block;
+        position: relative;
+        width: 1.25em;
+        height: 1.25em;
+        flex-shrink: 0;
+        align-self: flex-start;
+        margin-block-end: 3px;
+        border: 1px solid $clrSecondary2;
+        border-radius: 50%;
+        margin-inline-end: 0.5em;
+        cursor: pointer;
+        user-select: none;
+        align-self: center;
+
+        &:hover {
+          border-color: $clrPrimary2;
+        }
+      }
+
+      .selected {
+        .radio-btn {
+          border-color: $clrPrimary2;
+          border-width: 5px;
+        }
+      }
+
+      .credit-type {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 4em;
+        padding-inline-start: 1em;
+
+        .text {
+          margin-inline-end: 16px;
+        }
+
+        img {
+          width: 80px;
+        }
+      }
+
+      .credit-card {
+        border-bottom: 1px solid $clrSecondary14;
+
+        .credit-card-container {
+          padding: 1.5em em(18px);
+          border-top: 1px solid $clrSecondary14;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+          .credit-card-form {
+            gap: 1em;
+            grid-template-areas:
+              'number number'
+              'date code'
+              'first last';
+
+            input {
+              width: 100%;
+            }
+
+            span {
+              font-weight: 700;
+            }
+
+            .card-number {
+              grid-area: number;
+
+              input {
+                flex-wrap: nowrap;
+                border: 1px solid $clrSecondary45;
+                border-radius: 0.25em;
+                flex-basis: 100%;
+                align-items: center;
+                height: 2.625em;
+                margin-top: 0.625em;
+              }
+            }
+
+            .expiration-date {
+              grid-area: date;
+            }
+
+            .security-code {
+              grid-area: code;
+            }
+
+            .first-name {
+              grid-area: first;
+            }
+
+            .last-name {
+              grid-area: last;
+            }
+          }
+        }
+      }
+
+      .paypal {
+        background-color: $clrPrimary1;
+        border-radius: 0 0 4px 4px;
+        border-block-start: 1px solid $clrSecondary2;
+        border-block-end: 1px solid $clrSecondary2;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+      }
     }
   }
-}
 
-.max-width-container {
-  //   margin: 0;
-  padding: 24px 24px 48px;
-  width: 100%;
-  box-sizing: border-box;
+  .purchase-aside-wrapper {
+    padding: 0;
+    max-width: 600px;
+    color: $clrSecondary6;
+    margin: auto;
 
-  @media only screen and (min-width: 600px) {
-    //   margin: 0;
-    padding: 32px 0 64px;
+    .purchase-aside {
+      background-color: $clrPrimary1;
+
+      .purchased-gig {
+        .purchase-header {
+          margin-block-end: 20px;
+
+          img {
+            width: 110px;
+            height: 70px;
+            margin-inline-end: 1em;
+            border-radius: 0.25em;
+            align-self: center;
+          }
+
+          p {
+            font-family: 'macan-bold';
+            font-weight: 600;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            max-height: 77px;
+          }
+        }
+
+        .purchase-package-price {
+          justify-content: space-between;
+          padding: 1em 0;
+          font-weight: 500;
+          background-color: transparent;
+          margin-bottom: 0;
+          text-align: left;
+        }
+
+        .features {
+          list-style: none;
+          padding: 0;
+          color: $clrSecondary6;
+
+          li {
+            align-items: center;
+            padding: em(6px) 0;
+
+            i {
+              margin-inline-end: 9px;
+            }
+          }
+        }
+      }
+
+      .payment-summary {
+        .summary-table {
+          border-bottom: 1px solid $clrSecondary1;
+          padding: 0 0 1em;
+          margin-bottom: 1em;
+
+          .service-fee {
+            justify-content: space-between;
+            padding: 0 0 em(6px);
+          }
+
+          .vat-fee {
+            justify-content: space-between;
+            padding: em(6px) 0 0;
+
+            span {
+              align-items: center;
+            }
+          }
+        }
+
+        .summary-footer {
+          padding-block-end: 1em;
+
+          .total-fee {
+            justify-content: space-between;
+            font-size: em(18px);
+            padding-block-start: 20px;
+            font-weight: 700;
+            padding: 0 0 rem(6px);
+          }
+
+          .not {
+            color: $clrSecondary6;
+          }
+
+          .delivery-time {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: em(6px) 0 0;
+          }
+        }
+
+        .confirm-btn {
+          background-color: $clrPrimary3;
+          color: $clrPrimary1;
+          width: 100%;
+          height: 2.625em;
+          font-family: 'macan-bold';
+          font-size: 1em;
+          line-height: 100%;
+          border-radius: rem(5px);
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: $clrSecondary8;
+          }
+
+          &.paypal {
+            background-color: $clr5;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              background-color: $clr11;
+            }
+          }
+        }
+
+        .secure-payment {
+          color: $clrSecondary6;
+          align-items: center;
+          justify-content: center;
+          font-size: em(14px);
+          line-height: em(22px);
+          margin-top: rem(8px);
+
+          i {
+            margin-inline-end: 0.5em;
+            display: block;
+          }
+        }
+      }
+    }
   }
 }
