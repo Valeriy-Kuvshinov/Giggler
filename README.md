@@ -128,6 +128,4 @@ Access the application in the backend using http://localhost:3030 and in the fro
 
 Special thanks to contributors and open-source projects and Fiverr that inspired and supported the development of this Freelancers Service project.
 
-Enjoy exploring and analyzing weather data with the Weather Reports project! If you have any questions or feedback, feel free to reach out.
-
 Happy coding!
